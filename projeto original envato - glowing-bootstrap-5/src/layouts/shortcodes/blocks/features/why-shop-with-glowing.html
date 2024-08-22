@@ -1,0 +1,44 @@
+{{/*
+Block settings
+-------------------------------------------------
+id			Block ID
+class		Block class extral
+imgWidth 	Image width
+imgHeight 	Image Height
+*/}}
+
+{{- $id := .Get "id" | default "" -}}
+{{- $class := .Get "class" | default "container container-xxl" -}}
+{{- $spacing := .Get "spacing" | default "pt-lg-20 pt-13 pb-lg-21 pb-16" -}}
+{{- $title_class := .Get "title_class" | default "" -}}
+
+{{- if $spacing -}}
+	{{- $class = printf "%s %s" $class $spacing -}}
+{{- end -}}
+
+{{- $imgWidth := .Get "imgWidth" | default "102" -}}
+
+{{- $imgHeight := .Get "imgHeight" | default "118" -}}
+
+<section {{- if $id }} id="{{ $id }}" {{- end -}}>
+    {{ .Inner }}
+	<div {{- if $class }} class="{{ $class }}" {{- end}}>
+		<div class="mb-md-15 mb-11">
+			{{  partial "elements/heading/style-1" (dict "currentPage" . "title" "Why Shop with Glowing?" "titleClass" $title_class "animation" "fadeInUp" ) }}
+		</div>
+		<div class="row gy-30px">
+			<div class="col-md-4" data-animate="fadeInUp">
+                {{ partial  "elements/image-box/style-2" (dict "currentPage" . "title" "Guaranteed PURE" "subtitle" "All Grace formulations adhere to strict purity standards and will never contain harsh or toxic ingredients" "img_dark" "/assets/images/image-box/image-box-white-11.png" "img" "/assets/images/image-box/image-box-11.png"
+				"altContent" "Guaranteed PURE" "imgWidth" $imgWidth "imgHeight" $imgHeight) }}
+			</div>
+			<div class="col-md-4" data-animate="fadeInUp">
+                {{ partial  "elements/image-box/style-2" (dict "currentPage" . "title" "Completely Cruelty-Free" "subtitle" "All Grace formulations adhere to strict purity standards and will never contain harsh or toxic ingredients" "img_dark" "/assets/images/image-box/image-box-white-02.png" "img" "/assets/images/image-box/image-box-02.png"
+				"altContent" "Completely Cruelty-Free" "imgWidth" $imgWidth "imgHeight" $imgHeight) }}
+			</div>
+			<div class="col-md-4" data-animate="fadeInUp">
+                {{ partial  "elements/image-box/style-2" (dict "currentPage" . "title" "Ingredient Sourcing" "subtitle" "All Grace formulations adhere to strict purity standards and will never contain harsh or toxic ingredients" "img_dark" "/assets/images/image-box/image-box-white-03.png" "img" "/assets/images/image-box/image-box-03.png"
+				"altContent" "Ingredient Sourcing" "imgWidth" $imgWidth "imgHeight" $imgHeight) }}
+			</div>
+		</div>
+	</div>
+</section>

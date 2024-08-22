@@ -1,0 +1,27 @@
+{{- $id := .Get "id" | default "you_must_try_daily_skincare_set_2" -}}
+{{- $class := .Get "class" | default "container pt-lg-19 pt-15 pb-lg-18 pb-15" -}}
+
+<section class="bg-body-tertiary" {{- if $id }} id="{{ $id }}" {{- end -}}>
+	{{ .Inner }}
+	<div {{- if $class }} class="{{ $class }}" {{- end}}>
+		{{ partial "elements/heading/style-1" (dict "currentPage" .
+		"subtitle" "You must try"
+		"title" "daily skincare set"
+		"subtitleClass" "text-primary font-primary fs-60px lh-1 mb-4"
+		"titleClass" "text-uppercase mb-0"
+		"class" "mb-7 mt-3"
+		"animation" "fadeInUp"
+		)}}
+		<div class="row gy-15 mb-2">
+			{{- range $item := $.Site.Data.you_must_try_daily_skincare_set_2 -}}
+				<div class="col-lg-4 col-sm-6 col-12">
+					{{ partial  "elements/shop/skins/grid-3" (dict
+					"data" $item
+					"animation" "fadeInUp"
+					) }}
+				</div>
+			{{- end -}}
+		</div>
+
+	</div>
+</section>

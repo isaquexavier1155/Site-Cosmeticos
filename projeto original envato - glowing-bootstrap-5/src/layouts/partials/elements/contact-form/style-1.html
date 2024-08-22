@@ -1,0 +1,55 @@
+{{/***
+Element Parameters
+---------------------------------------------
+$.class: 				Element extra class name
+$.formInputClass:		Input form class
+$.formtextareaClass:	Form input textarea class
+$.checboxClass:			Form check input class
+$.buttonClass:			Button submit class
+$.desc: 				Contact form desc
+$.buttontitle:			Title Button
+*/}}
+
+{{- $formInputClass := "input-focus" -}}
+{{- if isset $ "formInputClass" }}
+    {{- $formInputClass = $.FormInputClass -}}
+{{ end -}}
+
+{{- $formtextareaClass := "mb-6 input-focus" -}}
+{{- if isset $ "formtextareaClass" }}
+    {{- $formtextareaClass = $.formtextareaClass -}}
+{{ end -}}
+
+{{- $checkboxClass := "rounded-0" -}}
+{{- if isset $ "checkboxClass" }}
+    {{- $checkboxClass = $.checkboxClass -}}
+{{ end -}}
+
+{{- $buttonClass := "btn btn-dark btn-hover-bg-primary btn-hover-border-primary px-11" -}}
+{{- if isset $ "buttonClass" }}
+    {{- $buttonClass = $.buttonClass -}}
+{{ end -}}
+
+<form class="contact-form" method="post" action="#">
+	<div class="row mb-8 mb-md-10">
+		<div class="col-md-6 col-12 mb-8 mb-md-0">
+			<input type="text" class="form-control {{- if $formInputClass }} {{ $formInputClass }}{{ end }}" placeholder="Name">
+		</div>
+		<div class="col-md-6 col-12">
+			<input type="email" class="form-control {{- if $formInputClass }} {{ $formInputClass }}{{ end }}" placeholder="Email">
+		</div>
+	</div>
+	<textarea class="form-control {{- if $formtextareaClass }} {{ $formtextareaClass }}{{ end }}" placeholder="Messenger" rows="7"></textarea>
+	<div class="form-check mb-9 text-start">
+		<input class="form-check-input {{- if $checkboxClass }} {{ $checkboxClass }}{{ end }}" type="checkbox" value=""
+			   id="flexCheckDefault">
+        {{- if $.desc }}
+			<label class="form-check-label" for="flexCheckDefault">
+                {{ $.desc | safeHTML }}
+			</label>
+        {{- end }}
+	</div>
+	{{- if $.buttontitle }}
+		<button type="submit" class="{{- if $buttonClass }} {{ $buttonClass }}{{ end }}">{{ $.buttontitle }}</button>
+	{{- end }}
+</form>

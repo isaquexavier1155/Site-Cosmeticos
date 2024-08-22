@@ -1,0 +1,62 @@
+{{/***
+Element Parameters
+---------------------------------------------
+$.class: 			Element extra class name
+$.titleClass: 		Title extra Class
+$.subtitleClass: 	Sub title extra class
+$.descClass: 		Description extra class
+$.descExtraClass: 	Description extra class
+$.subheadingClass: 	Sub Heading extra class
+$.title: 			Heading title
+$.subtitle: 		Heading subtitle
+$.subheading: 		Sub Heading
+$.desc: 			Heading description
+$.animation         Animation
+$.maxWidth         Max Width
+*/}}
+
+{{- $class := "text-center position-relative" -}}
+{{- if isset $ "class" }}
+    {{- $class = $.class -}}
+{{ end -}}
+
+{{- $titleClass := "mb-4 position-relative z-index-2" -}}
+{{- if isset $ "titleClass" }}
+    {{- $titleClass = $.titleClass -}}
+{{ end -}}
+
+{{- $subtitleClass := "position-relative z-index-2 fs-15px mb-6 ls-1 text-body-emphasis fw-semibold" -}}
+{{- if isset $ "subtitleClass" }}
+    {{- $subtitleClass = $.subtitleClass -}}
+{{ end -}}
+
+{{- $descClass := "fs-18px mb-0 z-index-2 position-relative" -}}
+{{- if isset $ "descClass" }}
+    {{- $descClass = $.descClass -}}
+{{ end -}}
+
+{{- if isset $ "descExtraClass" -}}
+    {{- $descClass = printf "%s %s" $descClass $.descExtraClass  -}}
+{{- end -}}
+
+{{- $subheadingClass := "fs-80px fw-normal fs-sm-90px fs-md-142px text-custom-1 font-primary lh-1 top-0 position-absolute w-100 z-index-1" -}}
+{{- if isset $ "subheadingClass" }}
+	{{- $subheadingClass = $.subheadingClass -}}
+{{ end -}}
+
+<div class="{{- if $class -}} {{ $class }}{{- end -}}" {{- if isset $ "maxWidth" }} style="max-width:{{- $.maxWidth -}}" {{- end -}} {{- if isset $ "animation" }} data-animate="{{- $.animation -}}" {{- end -}}>
+	{{- if $.subheading }}
+		<p class="{{ $subheadingClass }}">{{ $.subheading | safeHTML}}</p>
+	{{- end }}
+    {{- if $.subtitle }}
+		<p class="{{- if $subtitleClass -}} {{ $subtitleClass }}{{- end -}}">{{ $.subtitle | safeHTML}}</p>
+    {{- end }}
+    {{- if $.title }}
+		<h2 class="{{- if $titleClass -}} {{ $titleClass }}{{- end -}}">{{ $.title | safeHTML }}</h2>
+    {{- end }}
+    {{- if $.desc }}
+		<p class="{{- if $descClass -}} {{ $descClass }}{{- end -}}">
+            {{ $.desc | safeHTML }}
+		</p>
+    {{- end }}
+</div>

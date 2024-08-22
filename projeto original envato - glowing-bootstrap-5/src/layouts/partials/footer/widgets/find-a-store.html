@@ -1,0 +1,20 @@
+{{/***
+Element Parameters
+---------------------------------------------
+$.titleClass		Element title class extra
+$.subtitleClass		Element subtitle class extra
+$.title				Footer widget title
+$.subtitle			Footer widget subtitle
+*/}}
+
+{{- if $.title }}
+<h3 class="mb-6 {{ $.titleClass }}">{{ $.title | markdownify }}</h3>
+{{- end -}}
+{{- if $.subtitle}}
+<p {{ if $.subtitleClass }} class="{{ $.subtitleClass }}" {{- end }}>{{ $.subtitle }}</p>
+{{- end -}}
+{{- if $.btnContent }}
+<a class="fw-semibold fs-6 text-decoration-none" href="../find-a-store.html">
+	{{ $.btnContent }} <svg class="icon ms-5"><use xlink:href="#icon-arrow-right"></use></svg>
+</a>
+{{- end -}}

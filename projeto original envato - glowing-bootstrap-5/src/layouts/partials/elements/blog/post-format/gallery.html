@@ -1,0 +1,14 @@
+{{/***
+Element Parameters
+---------------------------------------------
+$.class: 			Element extra class name
+$.gallery:          Gallery data
+$.title             Title
+*/}}
+<div class="slick-slider slick-slider-arrow-inside post-gallery" data-slick-options='{"slidesToShow": 1, "dots": false}'>
+    {{- range $item := $.gallery -}}
+        <div>
+            {{ partial "elements/blog/post-format/image" (dict "image" $item "title" $.title ) }}
+        </div>
+    {{- end -}}
+</div>

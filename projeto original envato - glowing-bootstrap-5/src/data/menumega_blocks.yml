@@ -1,0 +1,59 @@
+-   title: Group 1
+    items:
+      -   title: Blog
+          url: "/blocks/blog.html"
+
+      -   title: Banner
+          url: "/blocks/banner.html"
+
+      - title: Call To Action
+        url: "/blocks/call-to-action.html"
+
+      -   title: Hero
+          url: "/blocks/hero.html"
+
+
+-   title: Group 2
+    items:
+      -   title: Products
+          url: "/blocks/products.html"
+
+      -   title: Products Slide
+          url: "/blocks/products-slide.html"
+
+      -   title: Product Tabs
+          url: "/blocks/product-tabs.html"
+
+      -   title: News Letter
+          url: "/blocks/news-letter.html"
+
+
+
+-   title: Group 3
+    items:
+      - title: Features
+        url: "/blocks/features.html"
+
+      - title: Info
+        url: "/blocks/info.html"
+
+      - title: Instagram
+        url: "/blocks/instagram.html"
+
+      - title: Video
+        url: "/blocks/video.html"
+
+
+-   title: Group 4
+    items:
+      - title: Team
+        url: "/blocks/team.html"
+
+      - title: Testimonials
+        url: "/blocks/testimonials.html"
+
+      - title: Header
+        url: "/blocks/header.html"
+
+      - title: Footer
+        url: "/blocks/footer.html"

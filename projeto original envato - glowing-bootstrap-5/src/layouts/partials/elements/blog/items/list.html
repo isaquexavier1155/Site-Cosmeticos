@@ -1,0 +1,61 @@
+{{/***
+Element Parameters
+---------------------------------------------
+$.class: 			Element extra class name
+$.data
+    - title             Title
+    - cat               Category
+    - author            Author
+    - date              Date
+    - desc              Description
+    - image             Image data {src, width, height}
+    - post_format:       Format of post: standard, video, gallery
+    - gallery           Gallery
+    - video_src         Video Src
+$.animation         Animation
+*/}}
+
+{{- $post_format := "standard" -}}
+{{- if (and (isset $.data "post_format") (ne $.data.post_format "") (ne $.data.post_format nil))  }}
+    {{- $post_format = $.data.post_format -}}
+{{- end -}}
+<article class="card card-post-list bg-transparent border-0 {{- if isset $ "class" }} {{ $.class }} {{- end -}}" {{- if isset $ "animation"  }} data-animate="{{- $.animation -}}" {{- end -}} >
+    <div class="row align-items-center">
+        <div class="col-md-6 col-lg-12 col-xl-6">
+            <figure class="card-img-top mb-7 mb-md-0 mb-lg-7 mb-xl-0">
+                {{- if eq $post_format "standard" -}}
+                    {{ partial "elements/blog/post-format/image" (dict "image" $.data.image "title" $.data.title ) }}
+                {{- end -}}
+
+                {{- if eq $post_format "gallery" -}}
+                    {{ partial "elements/blog/post-format/gallery" (dict "gallery" $.data.gallery "title" $.data.title ) }}
+                {{- end -}}
+
+                {{- if eq $post_format "video" -}}
+                    {{ partial "elements/blog/post-format/video" (dict "image" $.data.image "video_src" $.data.video_src "title" $.data.title ) }}
+                {{- end -}}
+
+
+
+            </figure>
+        </div>
+        <div class="col-md-6 col-lg-12 col-xl-6">
+            <div class="card-body p-0">
+                <ul class="post-meta list-inline lh-1 d-flex flex-wrap fs-13px text-uppercase ls-1 fw-semibold m-0">
+                    <li class="list-inline-item border-end pe-5 me-5"><a
+                                class="text-reset text-decoration-none text-primary-hover" href="#"
+                                title="{{- $.data.cat -}}">{{- $.data.cat -}}</a></li>
+                    <li class="list-inline-item">{{- $.data.date -}}</li>
+                </ul>
+                <h4 class="card-title fs-5 lh-base mt-5 pt-2 mb-0"><a class="text-decoration-none" href="../blog/details-01.html" title="{{- $.data.title -}}">{{- $.data.title -}}</a></h4>
+                <p class="card-text mt-4 mb-9">{{- $.data.desc -}}</p>
+                <a class="btn-link border-bottom text-decoration-none text-capitalize"
+                   href="../blog/details-01.html" title="{{- $.data.title -}}">Read more
+                    <svg class="icon icon-arrow-right">
+                        <use xlink:href="#icon-arrow-right"></use>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </div>
+</article>

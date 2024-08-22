@@ -1,0 +1,42 @@
+{{/*
+Block settings
+-------------------------------------------------
+id			Block ID
+class		Block class extral
+*/}}
+{{- $id := .Get "id" | default "" -}}
+{{- $class := .Get "class" | default "container container-xxl" -}}
+{{- $subtitleClass := "fs-15px mb-5 fw-semibold text-body-calculate" -}}
+<section {{- if $id }} id="{{ $id }}" {{- end -}} {{- if $class }} class="{{ $class }}" {{- end}}>
+    {{ .Inner }}
+	<div class="row gy-30px">
+		<div class="col-lg-6" data-animate="fadeInUp">
+			{{ partial  "elements/banner/style-1" (dict
+			"currentPage" .
+			"subtitle" "NEW COLLECTION"
+			"title" "Intensive Glow C+ Serum"
+			"image" "/assets/images/banner/banner-01.jpg" "width" "690" "height" "420"
+			"img_dark" "/assets/images/banner/banner-white-01.jpg"
+			"btnContent" "Explore More"
+			"btnClass" "btn-white px-6 shadow-sm"
+			"subtitleClass" $subtitleClass
+			"titleClass" "mw-md-60 pe-xl-15  fs-3 pe-0"
+			"altContent" "Intensive Glow C+ Serum"
+			) }}
+		</div>
+		<div class="col-lg-6" data-animate="fadeInUp">
+			{{ partial  "elements/banner/style-1" (dict
+			"currentPage" .
+			"subtitle" ""
+			"title" "25% off Everything"
+			"desc" "Makeup with extended range in colors for every human."
+			"descClass"	"mw-md-60 pe-xl-20"
+			"btnClass" "btn-white shadow-sm"
+			"image" "/assets/images/banner/banner-02.jpg" "width" "690" "height" "420"
+			"img_dark" "/assets/images/banner/banner-white-02.jpg"
+			"titleClass" "fs-3 pe-15" "btnContent" "Shop Sale"
+			"altContent" "25% off Everything"
+			)}}
+		</div>
+	</div>
+</section>

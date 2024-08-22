@@ -1,0 +1,45 @@
+items:
+  - img: "/assets/images/landing/blog-landing-05.jpg"
+    img_dark: "/assets/images/landing/blog-landing-white-05.jpg"
+    url: /blog/classic.html
+    title: Blog Classic
+  - img: "/assets/images/landing/blog-landing-02.jpg"
+    img_dark: "/assets/images/landing/blog-landing-white-02.jpg"
+    url: /blog/grid.html
+    title: Blog Grid
+  - img: "/assets/images/landing/blog-landing-01.jpg"
+    img_dark: "/assets/images/landing/blog-landing-white-01.jpg"
+    url: /blog/grid-sidebar.html
+    title: Blog Grid Sidebar
+  - img: "/assets/images/landing/blog-landing-03.jpg"
+    img_dark: "/assets/images/landing/blog-landing-white-03.jpg"
+    url: /blog/masonry.html
+    title: Blog Masonry
+  - img: "/assets/images/landing/blog-landing-04.jpg"
+    img_dark: "/assets/images/landing/blog-landing-white-04.jpg"
+    url: /blog/list.html
+    title: Blog List
+options:
+  dots: false
+  arrows: true
+  slidesToShow: 3
+  responsive:
+    - breakpoint: 1560
+      settings:
+        dots: true
+        arrows: false
+    - breakpoint: 1200
+      settings:
+        dots: true
+        arrows: false
+        slidesToShow: 2
+    - breakpoint: 992
+      settings:
+        dots: true
+        arrows: false
+        slidesToShow: 2
+    - breakpoint: 768
+      settings:
+        dots: true
+        arrows: false
+        slidesToShow: 1

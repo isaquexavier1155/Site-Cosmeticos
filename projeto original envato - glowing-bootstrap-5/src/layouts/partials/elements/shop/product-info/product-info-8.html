@@ -1,0 +1,198 @@
+{{/***
+Element Parameters
+---------------------------------------------
+
+$.class:				Element extra class name
+$.title: 				Shop title
+$.oldprice: 			Shop old price
+$.price: 				Shop price
+$.point: 				Shop point
+$.rate 					Rating
+$.readreview: 			Shop read reviews
+$.subtitle: 			Shop subtitle
+$.sku: 					Shop sku
+$.category: 			Shop category
+*/}}
+
+{{- $class := "pb-8" -}}
+{{- if isset $ "class" }}
+    {{- $class = $.class -}}
+{{ end -}}
+
+{{- $listProductClass := "mb-7" -}}
+{{- if isset $ "listProductClass" }}
+    {{- $listProductClass = $.listProductClass -}}
+{{ end -}}
+
+{{- $contentClass := "border rounded p-6" -}}
+{{- if isset $ "contentClass" }}
+    {{- $contentClass = $.contentClass -}}
+{{ end -}}
+
+{{- $imgClass := "pe-6" -}}
+{{- if isset $ "imgClass" }}
+    {{- $imgClass = $.imgClass -}}
+{{ end -}}
+
+{{- $productTitleClass := "mb-3 pb-1" -}}
+{{- if isset $ "productTitleClass" }}
+    {{- $productTitleClass = $.productTitleClass -}}
+{{ end -}}
+
+{{- $boxListStarClass := "me-0 fs-12px mb-5" -}}
+{{- if isset $ "boxListStarClass" }}
+    {{- $boxListStarClass = $.boxListStarClass -}}
+{{ end -}}
+
+{{- $listStarClass := "list-inline-item me-0" -}}
+{{- if isset $ "listStarClass" }}
+    {{- $listStarClass = $.listStarClass -}}
+{{ end -}}
+
+{{- $reviewsClass := "mb-0 ms-4 ps-1 fs-12px" -}}
+{{- if isset $ "reviewsClass" }}
+    {{- $reviewsClass = $.reviewsClass -}}
+{{ end -}}
+
+{{- $quantityClass := "w-100 px-6 py-3 text-center border-0 fs-18px fw-bold" -}}
+{{- if isset $ "quantityClass" }}
+    {{- $quantityClass = $.quantityClass -}}
+{{ end -}}
+
+{{- $priceClass := "text-body-emphasis fw-bold ms-4" -}}
+{{- if isset $ "priceClass" }}
+    {{- $priceClass = $.priceClass -}}
+{{ end -}}
+
+{{- $addToBagClass := "btn btn-lg fs-18px btn-dark btn-block mt-4 border-0 w-100 btn-hover-bg-primary" -}}
+{{- if isset $ "addToBagClass" }}
+    {{- $addToBagClass = $.addToBagClass -}}
+{{ end -}}
+
+{{ partial "elements/shop/product-info/items/header" (dict "title" $.title
+"oldprice" $.oldprice "price" $.price
+"subtitle" $.subtitle
+"rate" $.rate
+"point" $.point "readreview" $.readreview
+) }}
+<form class="{{- if $class}}{{$class}}{{- end}}">
+	<ul class="list-unstyled product-info mb-0">
+		<li class="{{- if $listProductClass}}{{$listProductClass}}{{- end}}">
+			<div class="d-flex align-items-center {{- if $contentClass}} {{$contentClass}}{{- end}}">
+				<a href="#" class="d-block {{- if $imgClass}} {{$imgClass}}{{- end}}"><img src="#" data-src="/assets/images/shop/product-info-product-01.jpg" class="lazy-image" width="84" height="112" alt="Natural Coconut Cleansing Oil"></a>
+				<div class="d-flex justify-content-between w-100">
+					<div>
+						<a class="text-decoration-none d-block {{- if $productTitleClass}}{{$productTitleClass}}{{- end}}" href="#">Natural Coconut Cleansing Oil</a>
+						<div class="d-flex align-items-center flex-wrap {{- if $boxListStarClass}} {{$boxListStarClass}}{{- end}}">
+							<ul class="list-inline d-flex mb-0">
+								<li class="{{- if $listStarClass}}{{$listStarClass}}{{- end}}">
+									<span class="text-primary"><i class="fas fa-star"></i></span>
+								</li>
+								<li class="{{- if $listStarClass}}{{$listStarClass}}{{- end}}">
+									<span class="text-primary"><i class="fas fa-star"></i></span>
+								</li>
+								<li class="{{- if $listStarClass}}{{$listStarClass}}{{- end}}">
+									<span class="text-primary"><i class="fas fa-star"></i></span>
+								</li>
+								<li class="{{- if $listStarClass}}{{$listStarClass}}{{- end}}">
+									<span class="text-primary"><i class="fas fa-star"></i></span>
+								</li>
+								<li class="{{- if $listStarClass}}{{$listStarClass}}{{- end}}">
+									<span class="text-primary"><i class="fas fa-star"></i></span>
+								</li>
+							</ul>
+							<p class="{{- if $reviewsClass}}{{$reviewsClass}}{{- end}}">(149)</p>
+						</div>
+						<div class="input-group position-relative list-product">
+							<a href="#" class="shop-down position-absolute translate-middle-y top-50 start-0 ps-7 product-info-2-minus"><i class="far fa-minus"></i></a>
+							<input name="number" type="number" id="number-natural-coconut-cleansing-oil" class="product-info-2-quantity form-control {{- if $quantityClass}} {{$quantityClass}}{{- end}}" value="1" required="">
+							<a href="#" class="shop-up position-absolute translate-middle-y top-50 end-0 pe-7 product-info-2-plus"><i class="far fa-plus"></i>
+							</a>
+						</div>
+					</div>
+					<span class="{{- if $priceClass}}{{$priceClass}}{{- end}}">$39.00</span>
+				</div>
+			</div>
+		</li>
+		<li class="{{- if $listProductClass}}{{$listProductClass}}{{- end}}">
+			<div class="d-flex align-items-center {{- if $contentClass}} {{$contentClass}}{{- end}}">
+				<a href="#" class="d-block {{- if $imgClass}} {{$imgClass}}{{- end}}"><img src="#" data-src="/assets/images/shop/product-info-product-03.jpg" class="lazy-image" width="84" height="112" alt="Natural Coconut Cleansing Oil"></a>
+				<div class="d-flex justify-content-between w-100">
+					<div>
+						<a class="text-decoration-none d-block {{- if $productTitleClass}}{{$productTitleClass}}{{- end}}" href="#">Priming Moisturizer</a>
+						<div class="d-flex align-items-center flex-wrap {{- if $boxListStarClass}} {{$boxListStarClass}}{{- end}}">
+							<ul class="list-inline d-flex mb-0">
+								<li class="list-inline-item {{- if $listStarClass}} {{$listStarClass}}{{- end}}">
+									<span class="text-primary"><i class="fas fa-star"></i></span>
+								</li>
+								<li class="list-inline-item {{- if $listStarClass}} {{$listStarClass}}{{- end}}">
+									<span class="text-primary"><i class="fas fa-star"></i></span>
+								</li>
+								<li class="list-inline-item {{- if $listStarClass}} {{$listStarClass}}{{- end}}">
+									<span class="text-primary"><i class="fas fa-star"></i></span>
+								</li>
+								<li class="list-inline-item {{- if $listStarClass}} {{$listStarClass}}{{- end}}">
+									<span class="text-primary"><i class="fas fa-star"></i></span>
+								</li>
+								<li class="list-inline-item {{- if $listStarClass}} {{$listStarClass}}{{- end}}">
+									<span class="text-primary"><i class="fas fa-star"></i></span>
+								</li>
+							</ul>
+							<p class="{{- if $reviewsClass}}{{$reviewsClass}}{{- end}}">(149)</p>
+						</div>
+						<div class="input-group position-relative list-product">
+							<a href="#" class="shop-down position-absolute translate-middle-y top-50 start-0 ps-7 product-info-2-minus"><i class="far fa-minus"></i></a>
+							<input name="number" type="number" id="number-priming-moisturizer" class="product-info-2-quantity form-control {{- if $quantityClass}} {{$quantityClass}}{{- end}}" value="1" required="">
+							<a href="#" class="shop-up position-absolute translate-middle-y top-50 end-0 pe-7 product-info-2-plus"><i class="far fa-plus"></i>
+							</a>
+						</div>
+					</div>
+					<span class="{{- if $priceClass}}{{$priceClass}}{{- end}}">$39.00</span>
+				</div>
+			</div>
+		</li>
+		<li class="{{- if $listProductClass}}{{$listProductClass}}{{- end}}">
+			<div class="d-flex align-items-center {{- if $contentClass}} {{$contentClass}}{{- end}}">
+				<a href="#" class="d-block {{- if $imgClass}} {{$imgClass}}{{- end}}"><img src="#" data-src="/assets/images/shop/product-info-product-02.jpg" class="lazy-image" width="84" height="112" alt="Natural Coconut Cleansing Oil"></a>
+				<div class="d-flex justify-content-between w-100">
+					<div>
+						<a class="text-decoration-none d-block {{- if $productTitleClass}}{{$productTitleClass}}{{- end}}" href="#">Cleansing Balm</a>
+						<div class="d-flex align-items-center flex-wrap {{- if $boxListStarClass}} {{$boxListStarClass}}{{- end}}">
+							<ul class="list-inline d-flex mb-0">
+								<li class="list-inline-item {{- if $listStarClass}} {{$listStarClass}}{{- end}}">
+									<span class="text-primary"><i class="fas fa-star"></i></span>
+								</li>
+								<li class="list-inline-item {{- if $listStarClass}} {{$listStarClass}}{{- end}}">
+									<span class="text-primary"><i class="fas fa-star"></i></span>
+								</li>
+								<li class="list-inline-item {{- if $listStarClass}} {{$listStarClass}}{{- end}}">
+									<span class="text-primary"><i class="fas fa-star"></i></span>
+								</li>
+								<li class="list-inline-item {{- if $listStarClass}} {{$listStarClass}}{{- end}}">
+									<span class="text-primary"><i class="fas fa-star"></i></span>
+								</li>
+								<li class="list-inline-item {{- if $listStarClass}} {{$listStarClass}}{{- end}}">
+									<span class="text-primary"><i class="fas fa-star"></i></span>
+								</li>
+							</ul>
+							<p class="{{- if $reviewsClass}}{{$reviewsClass}}{{- end}}">(149)</p>
+						</div>
+						<div class="input-group position-relative list-product">
+							<a href="#" class="shop-down position-absolute translate-middle-y top-50 start-0 ps-7 product-info-2-minus"><i class="far fa-minus"></i></a>
+							<input name="number" type="number" id="number-cleansing-balm" class="product-info-2-quantity form-control {{- if $quantityClass}} {{$quantityClass}}{{- end}}" value="1" required="">
+							<a href="#" class="shop-up position-absolute translate-middle-y top-50 end-0 pe-7 product-info-2-plus"><i class="far fa-plus"></i>
+							</a>
+						</div>
+					</div>
+					<span class="{{- if $priceClass}}{{$priceClass}}{{- end}}">$39.00</span>
+				</div>
+			</div>
+		</li>
+	</ul>
+	<button type="submit" class="{{- if $addToBagClass}}{{$addToBagClass}}{{- end}}">Add To Bag</button>
+</form>
+{{ partial "elements/shop/product-info/items/action" (dict "compare" "true" "wishlist" "true" "share" "true")}}
+{{ partial "elements/shop/product-info/items/list-more-info" (dict "sku" $.sku "category" $.category)}}
+<div class="mt-13">
+    {{ partial "elements/shop/product-info/items/product-accordions" (dict "currentPage" $.currentPage)}}
+</div>

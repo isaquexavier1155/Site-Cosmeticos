@@ -1,0 +1,37 @@
+{{/***
+Element Parameters
+---------------------------------------------
+$.class: 			Element extra class name
+$.buttonClass: 		Button Class
+$.formInputClass	Form input class
+$.buttontitle: 		News letter button
+*/}}
+
+{{- $class := "pt-8" -}}
+{{- if isset $ "class" }}
+    {{- $class = $.class -}}
+{{ end -}}
+
+{{- $formInputClass := "bg-body rounded-left" -}}
+{{- if isset $ "formInputClass" }}
+    {{- $formInputClass = $.formInputClass -}}
+{{ end -}}
+
+{{- $buttonClass := "btn-dark btn-hover-bg-primary btn-hover-border-primary" -}}
+{{- if isset $ "buttonClass" }}
+    {{- $buttonClass = $.buttonClass -}}
+{{ end -}}
+
+{{- $buttonTitle := "Subscribe" -}}
+{{- if isset $ "buttonTitle" }}
+	{{- $buttonTitle = $.buttonTitle -}}
+{{ end -}}
+
+<form class="{{- if $class }} {{ $class }}{{ end }}">
+	<div class="input-group position-relative">
+		<input type="email" class="form-control {{- if $formInputClass }} {{ $formInputClass }}{{ end }}" placeholder="Enter your email address">
+		<button type="submit" class="btn {{- if $buttonClass }} {{ $buttonClass }}{{ end }} ms-0">
+			{{ $buttonTitle }}
+		</button>
+	</div>
+</form>

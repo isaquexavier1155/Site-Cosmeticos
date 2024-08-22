@@ -1,0 +1,28 @@
+@if $enable-dark-mode {
+	@include color-mode(dark) {
+		.landing-ready {
+			background-color: var(--#{$prefix}section-color-2);
+		}
+
+		.landing-demos-link-background {
+			background-color: var(--#{$prefix}section-color-2);
+		}
+
+		.landing-blog-post-background {
+			background-color: var(--#{$prefix}section-color-2);
+		}
+
+		.text-custom-1 {
+			color: #787878;
+		}
+
+		.hover-bg-color-02 {
+			background-color: var(--#{$prefix}section-color-2);
+		}
+
+		.hover-bg-color-02:hover,
+		.landing-blog-post-background:hover {
+			background-color: var(--#{$prefix}section-color-8);
+		}
+	}
+}

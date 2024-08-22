@@ -1,0 +1,51 @@
+.button-readmore:hover{
+	text-decoration: none;
+	border-bottom: 1px solid black !important;
+}
+.name-recent-item{
+	letter-spacing: 2px;
+}
+.post-footer-tags:hover{
+	color: black !important;
+	transition: 0.3s;
+}
+.post-footer-icon:hover{
+	color: #4e7661 !important;
+	transition: 0.3s;
+}
+.post-footer-arrow-left{
+	left: -40px;
+}
+.post-footer-arrow-right{
+	right: -40px;
+}
+.btn-cate-style-2:hover{
+	background-color: black ;
+	color: white ;
+	transition: 0.5s;
+}
+.list-style-circle{
+	list-style: disc !important;
+}
+.btn-style4-read:hover{
+	background-color: #4e7661!important;
+}
+.btn-iframe:hover{
+	background-color: #e2e6ea!important;
+	transition: 0.3s !important;
+}
+.btn-play-video{
+	padding: 45px !important;
+	&:hover{
+		background-color: #e2e6ea !important;
+		transition: 0.3s !important;
+		border-color: #e2e6ea !important;
+	}
+}
+.item-style-4-link{
+	word-break: break-all !important;
+	&:hover{
+		color: #e2e6ea !important;
+		transition: 0.2s !important;
+	}
+}

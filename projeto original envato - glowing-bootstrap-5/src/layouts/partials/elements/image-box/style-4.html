@@ -1,0 +1,76 @@
+{{/***
+Element Parameters
+---------------------------------------------
+$.class: 			Element extra class name
+$.imgClass: 		Image Class
+$.titleClass: 		Title extra Class
+$.shopClass: 		Shop now extra class
+$.iconClass: 		icon extra class
+$.contentClass 		Icon box content class
+$.img: 				Image box image
+$.title: 			Image box title
+*/}}
+{{- $class := "" -}}
+{{- if isset $ "class" }}
+{{- $class = $.class -}}
+{{ end -}}
+
+{{- $imgClass := "img-fluid lazy-image" -}}
+{{- if isset $ "imgClass" }}
+{{- $imgClass = $.imgClass -}}
+{{ end -}}
+
+{{- $titleClass := "text-decoration-none fs-4 mb-4 d-block fw-semibold" -}}
+{{- if isset $ "titleClass" }}
+{{- $titleClass = $.titleClass -}}
+{{ end -}}
+
+{{- $shopClass := "btn btn-link fw-semibold text-body-emphasis" -}}
+{{- if isset $ "shopClass" }}
+{{- $shopClass = $.shopClass -}}
+{{ end -}}
+
+{{- $iconClass := "fs-14px ps-2 ms-1" -}}
+{{- if isset $ "iconClass" }}
+{{- $iconClass = $.iconClass -}}
+{{ end -}}
+
+{{- $width := "960" -}}
+{{- if isset $ "width" }}
+    {{- $width = $.width -}}
+{{ end -}}
+
+{{- $height := "640" -}}
+{{- if isset $ "height" }}
+    {{- $height = $.height -}}
+{{ end -}}
+
+{{- $contentClass := "card-body text-body-emphasis text-center pt-9 mt-2" -}}
+{{- if isset $ "contentClass" }}
+{{- $contentClass = $.contentClass -}}
+{{ end -}}
+
+{{- $img := "" -}}
+{{- if isset $ "img" }}
+{{- $img = $.img -}}
+{{ end -}}
+
+{{- $img_dark := "" -}}
+{{- if isset $ "img_dark" }}
+{{- $img_dark = $.img_dark -}}
+{{ end -}}
+<div class="card border-0 {{- if $class }} {{ $class }}{{- end }}">
+	{{- if $.img}}
+	<div class="image-box-4">
+		{{  partial "the-image" (dict "currentPage" $.currentPage "img" $img "img_dark" $img_dark "class" $imgClass "width" $width "height" $height) }}
+	</div>
+	{{- end}}
+	<div class="{{- if $contentClass}}{{$contentClass}}{{- end}}">
+		{{- if $.title}}
+		<h5 class="card-title {{- if $titleClass}}{{$titleClass}}{{- end}}"><a class="color-inherit text-decoration-none" href="#">{{$.title}}</a></h5>
+		{{- end}}
+		{{- if $.btnshop }}
+		<a href="#" title="Shop now" class="{{- if $shopClass}}{{$shopClass}}{{- end}}">{{ $.btnshop }} <i class="far fa-arrow-right {{- if $iconClass}} {{$iconClass}}{{- end}}"></i></a>
+		{{- end }}
+	</div>
+</div>

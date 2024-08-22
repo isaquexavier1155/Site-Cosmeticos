@@ -1,0 +1,86 @@
+{{/***
+Element Parameters
+---------------------------------------------
+$.class: 			Element extra class name
+$.imgClass: 		Image Class
+$.titleClass: 		Title extra Class
+$.subtitleClass: 	Sub title extra class
+$.contentClass 		Icon box content class
+$.shopClass: 		Shop now extra class
+$.img: 				Image box image
+$.title: 			Image box title
+$.subtitle: 		Image box subtitle
+$.hotproduct: 		Hot product
+*/}}
+{{- $class := "" -}}
+{{- if isset $ "class" }}
+{{- $class = $.class -}}
+{{ end -}}
+
+{{- $imgClass := "d-flex justify-content-center position-relative" -}}
+{{- if isset $ "imgClass" }}
+{{- $imgClass = $.imgClass -}}
+{{ end -}}
+
+{{- $hotproductClass := "mb-2 text-primary fw-normal fst-italic lh-1" -}}
+{{- if isset $ "hotproductClass" }}
+{{- $hotproductClass = $.hotproductClass -}}
+{{ end -}}
+
+{{- $titleClass := "fs-2 text-uppercase mb-8" -}}
+{{- if isset $ "titleClass" }}
+{{- $titleClass = $.titleClass -}}
+{{ end -}}
+
+{{- $subtitleClass := "mb-7 fs-18px" -}}
+{{- if isset $ "subtitleClass" }}
+{{- $subtitleClass = $.subtitleClass -}}
+{{ end -}}
+
+{{- $contentClass := "card-body text-center pt-7 mt-3" -}}
+{{- if isset $ "contentClass" }}
+{{- $contentClass = $.contentClass -}}
+{{ end -}}
+
+{{- $shopClass := "btn btn-link fw-semibold text-body-emphasis text-decoration-underline" -}}
+{{- if isset $ "shopClass" }}
+{{- $shopClass = $.shopClass -}}
+{{ end -}}
+
+
+{{- $width := "98" -}}
+{{- if isset $ "width" }}
+    {{- $width = $.width -}}
+{{ end -}}
+
+
+{{- $height := "251" -}}
+{{- if isset $ "height" }}
+    {{- $height = $.height -}}
+{{ end -}}
+
+<div class="position-relative image-box-5 border-0 mx-auto">
+	{{- if $.img}}
+	<div class="image-box-image {{- if $imgClass}} {{ $imgClass }}{{- end}}">
+		<img data-src="{{ $.img }}" class="img-fluid lazy-image" width="{{- if $width}}{{$width}}{{- end}}" height="{{- if $height}}{{$height}}{{- end}}" alt="{{ $.title}}" src="#"/>
+	</div>
+	{{- end}}
+	<div class="card-body text-center pt-13">
+		{{- if $.hotproduct}}
+		<h6 class="image-box-hot position-absolute font-primary start-50 text-nowrap{{- if $hotproductClass}} {{$hotproductClass}}{{- end}}">
+			{{ $.hotproduct}}</h6>
+		{{- end}}
+		{{- if $.title}}
+		<h3 class="{{- if $titleClass}}{{$titleClass}}{{- end}}">{{ $.title}}</h3>
+		{{- end}}
+		{{- if $.subtitle}}
+		<p class="mx-auto {{- if $subtitleClass}} {{$subtitleClass}}{{- end}}" style="max-width: 390px">{{ $.subtitle}}</p>
+		{{- end}}
+		<a href="shop-page-04.html" class="{{- if $shopClass}}{{$shopClass}}{{- end}}">
+			Shop Now
+			<svg class="icon icon-arrow-right">
+				<use xlink:href="#icon-arrow-right"></use>
+			</svg>
+		</a>
+	</div>
+</div>

@@ -1,0 +1,43 @@
+{{/***
+Element Parameters
+---------------------------------------------
+$.class:				Element extra class name
+$.subtitleClass: 		Subtitle Class
+$.titleClass: 			Title Class
+$.buttonClass: 			Button Class
+*/}}
+{{- $class := "" -}}
+{{- if isset $ "class" }}
+	{{- $class = $.class -}}
+{{ end -}}
+{{- $subtitleClass := "text-white mb-8 fw-semibold fs-4" -}}
+{{- if isset $ "subtitleClass" }}
+	{{- $subtitleClass = $.subtitleClass -}}
+{{ end -}}
+
+{{- $titleClass := "text-white fw-semibold mb-8 hero-title-2" -}}
+{{- if isset $ "titleClass" }}
+	{{- $titleClass = $.titleClass -}}
+{{ end -}}
+
+{{- $buttonClass := "pb-2 bg-transparent fw-semibold text-decoration-none hero-link p-0 text-white" -}}
+{{- if isset $ "buttonClass" }}
+{{- $buttonClass = $.buttonClass -}}
+{{ end -}}
+<div class="hero vh-100 position-relative d-flex align-items-end {{- if $class}} {{$class}}{{- end}}">
+	<div class="video-cover">
+		<iframe class="border-0" id="existing-iframe-example"
+				src="https://www.youtube.com/embed/U5DhkJrtUjM?autoplay=1&amp;rel=0&amp;playsinline=1&amp;mute=1&amp;controls=0&amp;loop=1&amp;playlist=U5DhkJrtUjM"></iframe>
+		<div class="card-img-overlay"></div>
+	</div>
+	<div data-animate="fadeInDown" class="container container-wide pb-15 p-xl-15 position-relative">
+		{{ partial "elements/hero/hero-element/content.html" (dict "currentPage" .
+		"subtitle" "Find Inspration"
+		"title" "Natural Mineral <br> Water Spray"
+		"button2" "Discover Now"
+		"subtitleClass" $subtitleClass
+		"titleClass" $titleClass
+		"button2Class" $buttonClass
+		) }}
+	</div>
+</div>

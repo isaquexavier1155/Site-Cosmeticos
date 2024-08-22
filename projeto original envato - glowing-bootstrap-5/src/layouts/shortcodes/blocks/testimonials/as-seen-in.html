@@ -1,0 +1,31 @@
+{{/*
+Block settings
+-------------------------------------------------
+id			Block ID
+class		Block class extral
+*/}}
+{{- $id := .Get "id" | default "" -}}
+{{- $class := .Get "class" | default "pt-14 pb-16 py-lg-19 bg-section-2" -}}
+
+<section {{- if $id }} id="{{ $id }}" {{- end -}} {{- if $class }} class="{{ $class }}" {{- end}}>
+	{{ .Inner }}
+
+	<div class="container container-xxl">
+        {{  partial "elements/heading/style-1" (dict "currentPage" . "title" "As seen in" "animation" "fadeInUp" ) }}
+		<div class="slick-slider mt-12" data-slick-options='{"slidesToShow": 3,"dots":false,"arrows":false,"responsive":[{"breakpoint": 992,"settings": {"slidesToShow": 2,"dots":true}},{"breakpoint": 768,"settings": {"slidesToShow": 2,"dots":true}},{"breakpoint": 576,"settings": {"slidesToShow": 1,"dots":true}}]}'>
+			<div data-animate="fadeInUp">
+                {{ partial "elements/testimonials/style-1" (dict "currentPage" . "img_dark" "/assets/images/testimonial/testimonial-white-03.png" "title" "Also the customer service is phenomenal. I would purchase again." "img" "/assets/images/testimonial/testimonial-03.png"
+				"altContent" "Also the customer service is phenomenal. I would purchase again.") }}
+			</div>
+			<div data-animate="fadeInUp">
+                {{ partial "elements/testimonials/style-1" (dict "currentPage" . "img_dark" "/assets/images/testimonial/testimonial-white-02.png" "title" "Great product line. Very attentive staff to deal with." "img" "/assets/images/testimonial/testimonial-02.png"
+                "altContent" "Great product line. Very attentive staff to deal with.") }}
+			</div>
+
+			<div data-animate="fadeInUp">
+                {{ partial "elements/testimonials/style-1" (dict "currentPage" . "img_dark" "/assets/images/testimonial/testimonial-white-01.png" "title" "Looking to affordably upgrade your everyday dinnerware? Look no further than e.Space" "img" "/assets/images/testimonial/testimonial-01.png"
+                "altContent" "Looking to affordably upgrade your everyday dinnerware? Look no further than e.Space") }}
+			</div>
+		</div>
+	</div>
+</section>

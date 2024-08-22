@@ -1,0 +1,18 @@
+---
+layout: blocks
+header: header-01
+footer: footer-01
+title: "Blocks - Blog"
+---
+{{< blocks/page-title/default title="Blocks - Blog" desc="Copy any custom block snippet below and paste it on your page to build your website easily." />}}
+
+<section class="bg-body-tertiary pb-16 pb-lg-21 pt-lg-8">
+	{{< docs/example no_margin=true container="container container-xxl">}}
+	{{< blocks/blog/from-our-blog />}}
+	{{</ docs/example >}}
+</section>
+<section class="pb-16 pb-lg-21 pt-lg-8">
+	{{< docs/example no_margin=true container="container">}}
+	{{< blocks/blog/from-our-blog-2 />}}
+	{{</ docs/example >}}
+</section>

@@ -1,0 +1,56 @@
+- title: Enriched Duo
+  reviews: 2947
+  rate: 100
+  price:
+    regular: "29.00"
+  image:
+    src: '/assets/images/products/product-01-330x440.jpg'
+    width: 330
+    height: 440
+- title: Shield Spray
+  reviews: 2947
+  rate: 100
+  price:
+    regular: "29.00"
+  image:
+    src: '/assets/images/products/product-02-330x440.jpg'
+    width: 330
+    height: 440
+- title: Vital Eye Cream
+  reviews: 2947
+  rate: 80
+  price:
+    regular: "39.00"
+    sale: "29.00"
+  image:
+    src: '/assets/images/products/product-05-330x440.jpg'
+    width: 330
+    height: 440
+- title: Supreme Moisture Mask
+  reviews: 2947
+  rate: 80
+  price:
+    regular: "39.00"
+    sale: "29.00"
+  image:
+    src: '/assets/images/products/product-03-330x440.jpg'
+    width: 330
+    height: 440
+- title: Supreme Polishing Treatment
+  reviews: 2947
+  rate: 100
+  price:
+    regular: "29.00"
+  image:
+    src: '/assets/images/products/product-15-330x440.jpg'
+    width: 330
+    height: 440
+- title: Scalp Moisturizing Cream
+  reviews: 2947
+  rate: 100
+  price:
+    regular: "29.00"
+  image:
+    src: '/assets/images/products/product-06-330x440.jpg'
+    width: 330
+    height: 440

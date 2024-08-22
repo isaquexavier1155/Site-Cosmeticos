@@ -1,0 +1,32 @@
+<header id="header" class="header z-index-5 header-sticky header-sticky-smart disable-transition-all">
+	<div class="topbar border-bottom " style="background-color: #EDE1D0">
+		<div class="container-wide container">
+			<p class="mb-0 text-dark opacity-50 text-center p-4 fs-6 fw-semibold">Free shipping on all U.S. orders $50+</p>
+		</div>
+	</div>
+	<div class="sticky-area">
+		<div class="main-header nav navbar bg-body navbar-light navbar-expand-xl py-6 py-xl-0">
+			<div class="container-wide container flex-nowrap">
+                {{ partial "header/items/menu-mobile-toggle" }}
+
+				<div class="d-none d-xl-flex w-xl-50">
+					<ul class="navbar-nav">
+						{{ partial "menu/menu-default" (dict "page" . "nav_item_class" "py-xl-11 py-0 me-xxl-12 me-xl-10" "nav_link_class" "py-xl-0 px-xl-0 text-uppercase fw-semibold ls-1 fs-15px fs-xl-14px" ) }}
+					</ul>
+				</div>
+                {{ partial "header/items/logo" (dict "context" .
+                "logo" "/assets/images/others/logo-black-02.png"
+                "logo_dark" "/assets/images/others/logo-white-02.png"
+                "width" "179" "height" "48"
+                "class" "py-4 text-center w-xl-50") }}
+				<div class="icons-actions d-flex justify-content-end w-xl-50 fs-28px text-body-emphasis">
+                    {{ partial "header/items/icon-search" }}
+                    {{ partial "header/items/icon-account" }}
+                    {{ partial "header/items/icon-wishlist" }}
+                    {{ partial "header/items/icon-cart" }}
+					{{ partial "header/items/color-modes" (dict "currentPage" . )}}
+				</div>
+			</div>
+		</div>
+	</div>
+</header>

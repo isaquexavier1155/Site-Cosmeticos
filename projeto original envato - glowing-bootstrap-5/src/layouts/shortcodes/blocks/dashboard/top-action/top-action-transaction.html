@@ -1,0 +1,17 @@
+{{/***
+Block Parameters
+---------------------------------------------
+
+$.class:            Element extra class name
+
+*/}}
+
+{{- $class := .Get "class" | default "row mb-9 align-items-center justify-content-between" -}}
+
+
+<div {{- if $class }} class="{{ $class }}" {{- end}}>
+	{{ .Inner }}
+	<div class="col-sm-6 mb-8 mb-sm-0">
+		<h2 class="fs-4 mb-0">Transactions</h2>
+	</div>
+</div>

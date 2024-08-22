@@ -1,0 +1,23 @@
+{{ .Inner }}
+{{- $id := .Get "id" | default "" -}}
+{{- $class := .Get "class" | default "container-fluid px-10 px-xl-21 px-lg-15 pt-lg-18 pb-lg-21 py-15" -}}
+
+<section {{- if $id }} id="{{ $id }}" {{- end -}} {{- if $class }} class="{{ $class }}" {{- end}}>
+	<div class="pb-8 pb-lg-16 text-center container px-10 px-lg-25">
+        {{ partial  "elements/heading/style-1" (dict "currentPage" .
+        "title" "GET THE SKIN YOU WANT TO FEEL"
+		"titleClass" "fs-40px fs-xl-80px fs-lg-60px fw-semibold"
+        "subtitle" "Because you need time for yourself"
+		"subtitleClass" "fs-4 fw-semibold text-body-emphasis mb-9 font-primary") }}
+	</div>
+	<div class="row mt-9 gy-8">
+		{{- range $item := $.Site.Data.get_the_skin_you_want_to_feel.items }}
+			<div class="col-lg-3 col-sm-6 col-12">
+				{{ partial "elements/shop/skins/grid-2" (dict
+					"data" $item
+					"size" "md"
+				) }}
+			</div>
+		{{- end -}}
+	</div>
+</section>

@@ -1,0 +1,58 @@
+{{ .Inner }}
+{{/*
+Block settings
+-------------------------------------------------
+id			Block ID
+class		Block class extral
+*/}}
+{{- $id := .Get "id" | default "" -}}
+{{- $class := .Get "class" | default "" -}}
+<section {{- if $id }} id="{{ $id }}" {{- end -}} {{- if $class }} class="{{ $class }}" {{- end}}>
+	<div class="hero container">
+		<div class="row g-8">
+			<div class="col-12 col-lg-8 mb-md-0" data-animate="fadeInUp">
+				<div class="border-0 text-center hero-hover-shine hero-hover hero-power-1">
+					<div data-bg-src="/assets/images/hero-slider/hero-slider-39.jpg"
+						 class="lazy-bg card-img bg-image h-100 hero-hover-item"></div>
+					<div class="position-absolute start-0 top-0 p-10 p-md-14 justify-content-start text-start">
+                        {{ partial "elements/hero/hero-element/content.html" (dict "currentPage" .
+                        "title" "Empower Yourself"
+                        "desc" "Get the skin you want to feel"
+                        "button2" "Shop Now"
+                        "button2Class" "p-0 text-white"
+                        "titleClass" "mb-7 text-white fs-2"
+                        "descClass" "text-white"
+						"contentClass" "text-start"
+                        ) }}
+					</div>
+				</div>
+			</div>
+			<div class="col-12 col-lg-4 hero-power-2">
+				<div class="row g-sm-8 g-lg-0 h-100">
+					<div class="col-12 col-sm-6 col-lg-12 h-auto" data-animate="fadeInUp">
+						<div class="border-0 text-center hero-hover-shine hero-hover h-100">
+							{{ partial "overlay" (dict "currentPage" . "img" "/assets/images/hero-slider/hero-slider-40.jpg" "imgDark" "/assets/images/hero-slider/hero-slider-white-40.jpg" "class" "card-img hero-hover-item bg-image h-100") }}
+							<div class="card-img-overlay p-14 align-items-center d-flex justify-content-center">
+                                {{ partial "elements/hero/hero-element/content.html" (dict "currentPage" .
+                                "button1" "Haircare"
+                                "button1Class" "btn btn-white px-10  shadow-sm z-index-1"
+                                ) }}
+							</div>
+						</div>
+					</div>
+					<div class="col-12 col-sm-6 col-lg-12 h-auto mt-8 mt-lg-8" data-animate="fadeInUp">
+						<div class="border-0 text-center hero-hover-shine hero-hover h-100">
+							{{ partial "overlay" (dict "currentPage" . "img" "/assets/images/hero-slider/hero-slider-41.jpg" "imgDark" "/assets/images/hero-slider/hero-slider-white-41.jpg" "class" "card-img hero-hover-item bg-image h-100") }}
+							<div class="card-img-overlay p-14 align-items-center d-flex justify-content-center">
+                                {{ partial "elements/hero/hero-element/content.html" (dict "currentPage" .
+                                "button1" "Skincare"
+                                "button1Class" "btn btn-white px-10 shadow-sm z-index-1"
+                                ) }}
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

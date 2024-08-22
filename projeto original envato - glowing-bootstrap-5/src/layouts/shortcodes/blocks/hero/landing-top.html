@@ -1,0 +1,45 @@
+{{/*
+Block settings
+-------------------------------------------------
+id			Block ID
+class		Block class extral
+*/}}
+{{- $id := .Get "id" | default "" -}}
+{{- $class := .Get "class" | default "parallax-layers pt-lg-22 pt-18 pb-12 d-flex justify-content-center flex-column overflow-hidden bg-image landing-page landing-top-min-height bg-body-tertiary" -}}
+
+<section {{- if $id }} id="{{ $id }}" {{- end -}} {{- if $class }} class="{{ $class }}" {{- end}} >
+	<div class=" text-center position-absolute m-0 end-0 top-0 d-xl-block d-none">
+		<img src="/assets/images/header/hero-01.png" alt="Background hero 01" width="300" class="img-fluid">
+	</div>
+    {{ .Inner }}
+	<p class="fw-normal text-center text-primary landing-page-subtitle font-primary" data-animate="fadeInUp">Made for You!</p>
+	<h2 class="text-center px-6 landing-page-title" data-animate="fadeInUp">Beauty &amp; Cosmetics Shop HTML Template</h2>
+	<div class="mt-lg-13 mt-10 position-relative w-100 mx-auto landing-top-container">
+		<div class="layer z-index-2 text-center position-relative mx-lg-22">
+			{{  partial "the-image" (dict "currentPage" . "img" "/assets/images/sliders/slider-landing-01.png" "img_dark" "/assets/images/sliders/slider-landing-white-01.png" "class" "img-fluid" "width" "931" "height" "550" "alt" "Slider Landing 01") }}
+		</div>
+		<div class="layer position-absolute z-index-1 d-none d-lg-block landing-top-img-2">
+			{{  partial "the-image" (dict "currentPage" . "img" "/assets/images/sliders/slider-landing-02.png" "img_dark" "/assets/images/sliders/slider-landing-white-02.png" "class" "img-fluid" "width" "339" "height" "227" "alt" "Slider Landing 02") }}
+		</div>
+		<div class="layer position-absolute z-index-1 d-none d-lg-block landing-top-img-3">
+			{{  partial "the-image" (dict "currentPage" . "img" "/assets/images/sliders/slider-landing-03.png" "class" "img-fluid" "class_light" "light-mode-img" "width" "426" "height" "290" "alt" "Slider Landing 03") }}
+			{{  partial "the-image" (dict "currentPage" . "img_dark" "/assets/images/sliders/slider-landing-white-03.png" "class" "img-fluid mb-14 ms-lg-14" "width" "318" "height" "169" "alt" "Slider Landing 03") }}
+		</div>
+		<div class="layer position-absolute z-index-1 d-none d-lg-block landing-top-img-4">
+			<img src="#" data-src="/assets/images/sliders/slider-landing-04.png" alt="Slider Landing 04" class="img-fluid lazy-image" width="120" height="120">
+		</div>
+		<div class="layer position-absolute z-index-1 d-none d-lg-block landing-top-img-5">
+			{{  partial "the-image" (dict "currentPage" . "img" "/assets/images/sliders/slider-landing-05.png" "img_dark" "/assets/images/sliders/slider-landing-white-05.png" "class" "img-fluid" "width" "362" "height" "235" "alt" "Slider Landing 05") }}
+		</div>
+		<div class="layer position-absolute z-index-3 d-none d-lg-block landing-top-img-6">
+			{{  partial "the-image" (dict "currentPage" . "img" "/assets/images/sliders/slider-landing-06.png" "class" "img-fluid" "class_light" "light-mode-img" "width" "230" "height" "287" "alt" "Slider Landing 06") }}
+		</div>
+		<div class="layer position-absolute z-index-3 d-none d-lg-block landing-top-img-7">
+			{{  partial "the-image" (dict "currentPage" . "img" "/assets/images/sliders/slider-landing-07.png" "class" "img-fluid" "class_light" "light-mode-img" "width" "449" "height" "289" "alt" "Slider Landing 07") }}
+			{{  partial "the-image" (dict "currentPage" . "img_dark" "/assets/images/sliders/slider-landing-white-07.png" "class_img_dark" "float-end mb-14 me-10" "class" "img-fluid" "width" "204" "height" "124" "alt" "Slider Landing 07") }}
+		</div>
+	</div>
+	<div class=" text-center position-absolute m-0 start-0 bottom-0 d-xl-block d-none">
+		<img src="/assets/images/header/hero-02.png" alt="Background hero 02" width="450" class="img-fluid lazy-image">
+	</div>
+</section>

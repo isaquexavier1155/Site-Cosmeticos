@@ -1,0 +1,68 @@
+{{/***
+Element Parameters
+---------------------------------------------
+$.context			Context object
+$.titleClass		Element title class extra
+$.subtitleClass		Element subtitle class extra
+$.logo				Logo Url
+$.logo_dark			Logo Dark Url
+$.width				Logo Width
+$.height			Logo Height
+$.socialClass
+$.img_paypal		Footer widget paypal
+$.paypalClass		Footer widget paypal class	Footer widget
+$.subtitle			Footer widget subtitle
+*/}}
+
+{{- $class := "mt-0 mt-lg-20 pt-lg-4" -}}
+{{- if isset $ "class" }}
+    {{- $class = $.class -}}
+{{ end -}}
+
+{{ $logo := "/assets/images/others/logo.png" }}
+{{- if isset $ "logo" -}}
+	{{- $logo = $.logo -}}
+{{- end -}}
+
+{{ $logo_dark := "/assets/images/others/logo-white.png" }}
+{{- if isset $ "logo_dark" -}}
+	{{- $logo_dark = $.logo_dark -}}
+{{- end -}}
+
+{{ $width := "179" }}
+{{- if isset $ "width" -}}
+	{{- $width = $.width -}}
+{{- end -}}
+
+{{ $height := "26" }}
+{{- if isset $ "height" -}}
+	{{- $height = $.height -}}
+{{- end -}}
+
+<div class="row align-items-center {{ $class }}">
+	<div class="{{ $.socialClass }}">
+		<p class="mb-0">© Glowing 2023</p>
+		<ul class="list-inline fs-18px ms-6 mb-0">
+			<li class="list-inline-item me-8">
+				<a href="#"><i class="fab fa-twitter"></i></a>
+			</li>
+			<li class="list-inline-item me-8">
+				<a href="#"><i class="fab fa-facebook-f"></i></a>
+			</li>
+			<li class="list-inline-item me-8">
+				<a href="#"><i class="fab fa-instagram"></i></a>
+			</li>
+			<li class="list-inline-item">
+				<a href="#"><i class="fab fa-youtube"></i></a>
+			</li>
+		</ul>
+	</div>
+	<div class="col-sm-12 col-lg-4 text-md-center order-1 order-lg-2 {{ $.imgLogoClass }}">
+		<a class="d-inline-block" href="/">
+			{{  partial "the-image" (dict "currentPage" $.context "img" $logo "img_dark" $logo_dark "width" $width "height" $height "class" "img-fluid" "alt" $.context.Site.Title) }}
+		</a>
+    </div>
+	<div class="{{ $.paypalClass }}">
+		<img src="#" data-src="/assets/images/footer/img_1.png" width="313" height="28" alt="Paypal" class="img-fluid lazy-image">
+	</div>
+</div>

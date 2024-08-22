@@ -1,0 +1,57 @@
+- name: goodness
+  image:
+    src: '/assets/images/client-logo/client-logo-01.png'
+    srcDark: '/assets/images/client-logo/client-logo-white-01.png'
+    width: 150
+    height: 82
+  link: "#"
+  content: "Millions of combinations, meaning you get a totally unique piece of furniture exactly the way you want it."
+- name: grandgolden
+  image:
+    src: '/assets/images/client-logo/client-logo-02.png'
+    srcDark: '/assets/images/client-logo/client-logo-white-02.png'
+    width: 150
+    height: 82
+  link: "#"
+  content: "Great tags, Millie has got used to it, nothing like the old tin tags of years gone by. Light weight and great colours available."
+- name: parker
+  image:
+    src: '/assets/images/client-logo/client-logo-03.png'
+    srcDark: '/assets/images/client-logo/client-logo-white-03.png'
+    width: 150
+    height: 82
+  link: "#"
+  content: "Amazing product. The results are so transformative in texture and my face feels plump and healthy. Highly recommend!"
+- name: thebeast
+  image:
+    src: '/assets/images/client-logo/client-logo-04.png'
+    srcDark: '/assets/images/client-logo/client-logo-white-04.png'
+    width: 150
+    height: 82
+  link: "#"
+  content: "Millions of combinations, meaning you get a totally unique piece of furniture exactly the way you want it."
+- name: hayden
+  image:
+    src: '/assets/images/client-logo/client-logo-05.png'
+    srcDark: '/assets/images/client-logo/client-logo-white-05.png'
+    width: 150
+    height: 82
+  link: "#"
+  content: "Great tags, Millie has got used to it, nothing like the old tin tags of years gone by. Light weight and great colours available."
+- name: goodmood
+  image:
+    src: '/assets/images/client-logo/client-logo-06.png'
+    srcDark: '/assets/images/client-logo/client-logo-white-06.png'
+    width: 150
+    height: 82
+  link: "#"
+  content: "Millions of combinations, meaning you get a totally unique piece of furniture exactly the way you want it."
+- name: goodness
+  image:
+    src: '/assets/images/client-logo/client-logo-01.png'
+    srcDark: '/assets/images/client-logo/client-logo-white-01.png'
+    width: 150
+    height: 82
+  link: "#"
+  content: "Millions of combinations, meaning you get a totally unique piece of furniture exactly the way you want it."
+

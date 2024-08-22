@@ -1,0 +1,39 @@
+{{/***
+Element Parameters
+---------------------------------------------
+$.contentClass: 		Content Class
+$.subtitleClass: 		Subtitle Class
+$.titleClass: 			Title Class
+$.DescClass: 			Desc Class
+$.ButtonClass: 			Button Class
+*/}}
+<div class="hero-content {{- if $.contentClass}} {{$.contentClass}}{{- end}}">
+	<div data-animate="fadeInDown">
+		{{- if $.subtitle}}
+		<p class="{{- if $.subtitleClass}}{{$.subtitleClass}}{{- end}}">{{ $.subtitle }}</p>
+		{{- end}}
+		{{- if $.title -}}
+		<h1 class="{{- if $.titleClass}}{{$.titleClass}}{{- end}}">{{ $.title | safeHTML }}</h1>
+		{{- end -}}
+		{{- if $.desc}}
+		<p class="hero-desc {{- if $.descClass}} {{$.descClass}}{{- end}}">{{ $.desc}}</p>
+		{{- end}}
+		{{- if $.price}}
+		<p class="fs-5 fw-semibold text-body-emphasis mb-7">Starting at $7.99 </p>
+		{{- end}}
+	</div>
+
+	{{- if $.button1}}
+	<a href="#" data-animate="fadeInUp" class="{{- if $.button1Class}}{{$.button1Class}}{{- end}}">
+		{{ $.button1 }}
+	</a>
+	{{- end}}
+	{{- if $.button2}}
+	<a href="#" data-animate="fadeInUp" class="pb-2 bg-transparent fw-semibold text-decoration-none hero-link {{- if $.button2Class}} {{$.button2Class}}{{- end}}">
+		{{$.button2}}
+		<svg class="icon">
+			<use xlink:href="#icon-arrow-right"></use>
+		</svg>
+	</a>
+	{{- end}}
+</div>

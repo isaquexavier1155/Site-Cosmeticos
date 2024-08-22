@@ -1,0 +1,25 @@
+{{- $id := .Get "id" | default "from_our_blog" -}}
+{{- $class := .Get "class" | default "pt-14 pb-15 py-lg-18 mb-3 mt-1" -}}
+<section {{- if $id }} id="{{ $id }}" {{- end -}}>
+    {{ .Inner }}
+    <div  {{- if $class }} class="{{ $class }}" {{- end}}>
+        <div class="container">
+            {{ partial  "elements/heading/style-1" (dict "currentPage" . "animation" "fadeInUp" "descExtraClass" "mw-xl-50 mw-lg-75 ms-auto me-auto" "title" "From Our Blog" "desc" "Our bundles were designed to conveniently package your tanning essentials while saving you money.") }}
+        </div>
+        <div class="container container-xxl mt-12 pt-3">
+            <div class="slick-slider" data-slick-options='{{ $.Site.Data.from_our_blog.options | jsonify }}'>
+                {{- range $item := $.Site.Data.from_our_blog.items -}}
+                    <div>
+                        {{ partial  "elements/blog/items/grid-3" (dict
+                        "data" $item
+                        "animation" "fadeInUp"
+                        ) }}
+                    </div>
+                {{- end -}}
+            </div>
+            <div class="text-center pt-2" data-animate="fadeInUp">
+                <a href="#" class="mt-12 btn btn-outline-dark">View All Posts</a>
+            </div>
+        </div>
+    </div>
+</section>

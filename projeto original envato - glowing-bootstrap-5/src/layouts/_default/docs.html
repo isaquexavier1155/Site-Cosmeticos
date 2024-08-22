@@ -1,0 +1,140 @@
+{{- define "head_end" }}
+	<link rel="stylesheet"
+		  href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/styles/base16/railscasts.min.css">
+{{- end }}
+{{ define "body_override" }}
+<body data-bs-spy="scroll" data-bs-target="#docs-toc">
+{{ end }}
+{{ define "main" }}
+{{ partial "docs/header" . }}
+
+{{- $content_class := "col-xl-10 col-lg-10 order-xl-2 py-4 px-lg-8" -}}
+{{- if (eq .Page.Params.toc true) -}}
+	{{- $content_class = "col-xl-8 col-lg-10 order-xl-2 py-4 px-lg-8" -}}
+{{- end -}}
+
+<main class="wrapper">
+	<div class="container-xxl">
+		<div class="row">
+			<aside class="col-lg-2">
+				{{ partial "docs/sidebar" . }}
+			</aside>
+			<div class="{{ $content_class }}">
+				{{ partial "docs/intro" . }}
+				<article class="doc-content py-6">
+					{{ .Content }}
+				</article>
+
+				{{ partial "docs/footer" . }}
+			</div>
+			{{ if (eq .Page.Params.toc true) }}
+			<div class="col-xl-2 order-xl-2">
+				<div class="docs-toc-wrap pt-8 d-none d-xl-block">
+					<h6 class="py-6">
+						<svg class="bi me-4" aria-hidden="true"><use xlink:href="#book-half"></use></svg>
+						<span>On this page</span>
+					</h6>
+					<nav class="docs-toc">
+						<ul id="docs-toc" data-toc-headings="h2.doc-toc-heading,h3.doc-toc-heading"></ul>
+					</nav>
+				</div>
+			</div>
+			{{ end }}
+		</div>
+	</div>
+</main>
+{{ end }}
+
+{{- define "scripts" -}}
+<script src="/assets/vendors/jquery-toc/jquery.toc.min.js"></script>
+<script src="/assets/vendors/fuse/fuse.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.14.7/beautify-html.min.js"></script>
+{{- end -}}
+
+{{- define "footer" -}}
+{{ partial "docs/icons" . }}
+<div id="doc-search-modal-container" class="doc-search-modal-container visually-hidden">
+	<div class="doc-search-modal">
+		<header class="doc-search-header">
+			<form class="doc-search-form">
+				<label class="doc-search-magnifier-label" for="docsearch-input" id="docsearch-label">
+					<svg width="20" height="20" viewBox="0 0 20 20">
+						<path d="M14.386 14.386l4.0877 4.0877-4.0877-4.0877c-2.9418 2.9419-7.7115 2.9419-10.6533 0-2.9419-2.9418-2.9419-7.7115 0-10.6533 2.9418-2.9419 7.7115-2.9419 10.6533 0 2.9419 2.9418 2.9419 7.7115 0 10.6533z" stroke="currentColor" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round"></path>
+					</svg>
+				</label>
+				<div class="doc-search-loading-indicator">
+					<svg viewBox="0 0 38 38" stroke="currentColor" stroke-opacity=".5">
+						<g fill="none" fill-rule="evenodd">
+							<g transform="translate(1 1)" stroke-width="2">
+								<circle stroke-opacity=".3" cx="18" cy="18" r="18"></circle>
+								<path d="M36 18c0-9.94-8.06-18-18-18">
+									<animateTransform attributeName="transform" type="rotate" from="0 18 18" to="360 18 18" dur="1s" repeatCount="indefinite"></animateTransform>
+								</path>
+							</g>
+						</g>
+					</svg>
+				</div>
+				<input class="doc-search-input" id="docsearch-input" autocomplete="off" placeholder="Search docs" maxlength="64" type="search">
+			</form>
+		</header>
+		<div class="doc-search-result">
+			<div class="doc-search-start-screen">No recent searches</div>
+			<div class="doc-search-no-result">
+				<div class="doc-search-result-icon">
+					<svg width="40" height="40" viewBox="0 0 20 20" fill="none" fill-rule="evenodd" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M15.5 4.8c2 3 1.7 7-1 9.7h0l4.3 4.3-4.3-4.3a7.8 7.8 0 01-9.8 1m-2.2-2.2A7.8 7.8 0 0113.2 2.4M2 18L18 2"></path></svg>
+				</div>
+				<div class="doc-search-result-message">
+					No results for "<span></span>"
+				</div>
+			</div>
+			<div class="doc-search-result-list">
+				<ul>
+					<li></li>
+				</ul>
+			</div>
+		</div>
+		<footer class="doc-search-footer">
+			<ul class="doc-search-commands">
+				<li>
+					<kbd class="doc-search-commands-key">
+						<svg width="15" height="15" aria-label="Enter key" role="img">
+							<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2">
+								<path d="M12 3.53088v3c0 1-1 2-2 2H4M7 11.53088l-3-3 3-3"></path>
+							</g>
+						</svg>
+					</kbd>
+					<span class="doc-search-label">to select</span>
+				</li>
+				<li>
+					<kbd class="doc-search-commands-key">
+						<svg width="15" height="15" aria-label="Arrow down" role="img">
+							<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2">
+								<path d="M7.5 3.5v8M10.5 8.5l-3 3-3-3"></path>
+							</g>
+						</svg>
+					</kbd>
+					<kbd class="doc-search-commands-key">
+						<svg width="15" height="15" aria-label="Arrow up" role="img">
+							<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2">
+								<path d="M7.5 11.5v-8M10.5 6.5l-3-3-3 3"></path>
+							</g>
+						</svg>
+					</kbd>
+					<span class="doc-search-label">to navigate</span>
+				</li>
+				<li>
+					<kbd class="doc-search-commands-key">
+						<svg width="15" height="15" aria-label="Escape key" role="img">
+							<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2">
+								<path d="M13.6167 8.936c-.1065.3583-.6883.962-1.4875.962-.7993 0-1.653-.9165-1.653-2.1258v-.5678c0-1.2548.7896-2.1016 1.653-2.1016.8634 0 1.3601.4778 1.4875 1.0724M9 6c-.1352-.4735-.7506-.9219-1.46-.8972-.7092.0246-1.344.57-1.344 1.2166s.4198.8812 1.3445.9805C8.465 7.3992 8.968 7.9337 9 8.5c.032.5663-.454 1.398-1.4595 1.398C6.6593 9.898 6 9 5.963 8.4851m-1.4748.5368c-.2635.5941-.8099.876-1.5443.876s-1.7073-.6248-1.7073-2.204v-.4603c0-1.0416.721-2.131 1.7073-2.131.9864 0 1.6425 1.031 1.5443 2.2492h-2.956"></path>
+							</g>
+						</svg>
+					</kbd>
+					<span class="doc-search-label">to close</span>
+				</li>
+			</ul>
+		</footer>
+	</div>
+</div>
+{{- end -}}

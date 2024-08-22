@@ -1,0 +1,19 @@
+---
+layout: blocks
+header: none
+footer: footer-01
+title: "Blocks - Header"
+---
+{{< header.inline >}}
+{{ partial "header/header-04" .}}
+{{</ header.inline >}}
+{{< blocks/page-title/default title="Blocks - Header 04" desc="Copy custom block snippet below and paste it on your page to build your website easily." />}}
+<section class="pb-lg-21 pb-16">
+	<div class="container">
+		{{< docs/example lang="html" show_preview="false" code_preview="true" no_margin="true">}}
+		{{< header.inline >}}
+		{{ partial "header/header-04" .}}
+		{{</ header.inline >}}
+	{{</ docs/example >}}
+</div>
+</section>

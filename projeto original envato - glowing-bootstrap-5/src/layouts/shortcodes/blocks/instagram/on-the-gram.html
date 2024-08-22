@@ -1,0 +1,23 @@
+{{/*
+Block settings
+-------------------------------------------------
+id			Block ID
+class		Block class extral
+*/}}
+{{- $id := .Get "id" | default "" -}}
+{{- $class := .Get "class" | default "pt-15 pt-lg-16" -}}
+
+<section {{- if $id }} id="{{ $id }}" {{- end -}} {{- if $class }} class="{{ $class }}" {{- end}}>
+    {{ .Inner }}
+	<div class="container container-xxl">
+		<div class="row align-items-center">
+			<div class="col-md-6 mb-md-9" data-animate="fadeInUp">
+				<h2 class="fs-3 mb-0">On the Gram</h2>
+			</div>
+			<div class="col-md-6 mb-10 mb-md-9" data-animate="fadeInUp">
+				<p class="fs-18px fw-semibold text-primary text-md-end mb-0">@Glowing_cosmetics</p>
+			</div>
+		</div>
+		{{ partial "elements/instagram/style-1" (dict "currentPage" . "data" "instagram" "space" "6" "slidesToShow" "5" "slidesToShow1366" "5" "slidesToShow992" "2" "slidesToShow768" "3" "slidesToShow576" "2" "animation" "fadeInUp")}}
+	</div>
+</section>

@@ -1,0 +1,72 @@
+{{/***
+Block Parameters
+---------------------------------------------
+
+$.product_num 		Number of product to show
+$.split_header 		Split Header
+
+*/}}
+
+{{- $product_num := .Get "product_num" | default "10" -}}
+{{- $split_header := .Get "split_header" | default "" -}}
+
+{{- $product_item_class := "col-sm-6 col-xl-custom px-5" -}}
+
+{{ .Inner }}
+{{- if eq $split_header true -}}
+{{- $product_item_class = "col-sm-6 col-xl-3 px-5" -}}
+	<div class="card mb-7 rounded-4 p-7">
+		<div class="card-body bg-transparent p-0">
+			{{ partial "dashboard/filter/style-02" }}
+		</div>
+	</div>
+	<div class="row mx-n5">
+		{{- range $index, $product := $.Site.Data.dashboard.products_field.seller_products -}}
+			<div class="col-sm-6 col-xl-3 px-5">
+				<div class="card rounded-4 card-product mb-7">
+					<a href="../shop/product-details-v1.html" title="{{$product.name}}">
+						<img src="#" data-src="{{ $product.img}}"
+							 alt="{{$product.title}}" class="lazy-image card-img-top" width="270" height="360">
+					</a>
+					<div class="card-body p-6 d-flex flex-nowrap align-items-center justify-content-between">
+						<div class="">
+							<a href="#" class="cart-title">{{$product.name}}</a>
+							<div class="price text-primary fw-500">{{$product.price}}</div>
+						</div>
+						<a href="add-product-1.html" class="btn btn-primary py-4 px-5 btn-xs fs-13px me-3"><i class="far fa-pen me-2"></i> Edit</a>
+					</div>
+				</div>
+			</div>
+		{{- end -}}
+	</div>
+{{- else -}}
+	<div class="card mb-4 rounded-4 p-7">
+		<div class="card-header bg-transparent px-0 pt-0 pb-7">
+			{{ partial "dashboard/filter/style-02" }}
+		</div>
+		<div class="card-body py-7 px-0">
+			<div class="row mx-n5">
+				{{- range $index, $product := $.Site.Data.dashboard.sellers_list_field.seller_products -}}
+				{{- if lt $index $product_num }}
+				<div class="col-sm-6 col-xl-custom px-5">
+					<div class="card rounded-4 card-product mb-7">
+						<a href="../shop/product-details-v1.html" title="{{$product.name}}">
+							<img src="#" data-src="{{ $product.img}}"
+								 alt="{{$product.title}}" class="card-img-top lazy-image" width="270" height="360">
+						</a>
+						<div class="card-body p-6">
+							<a href="#" class="cart-title">{{$product.name}}</a>
+							<div class="price mb-4 text-primary fw-500">{{$product.price}}</div>
+							<div class="d-flex flex-nowrap">
+								<a href="add-product-1.html" class="btn btn-primary py-4 px-5 btn-xs fs-12px me-3"><i class="far fa-pen me-2"></i> Edit</a>
+								<a href="#" class="btn btn-outline-primary btn-hover-bg-danger btn-hover-border-danger btn-hover-text-light py-4 px-5 fs-12px btn-xs me-3"><i class="far fa-trash me-2"></i> Delete</a>
+							</div>
+						</div>
+					</div>
+				</div>
+				{{- end -}}
+				{{- end -}}
+			</div>
+		</div>
+	</div>
+{{- end -}}

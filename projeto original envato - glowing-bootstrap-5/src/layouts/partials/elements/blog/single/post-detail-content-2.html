@@ -1,0 +1,98 @@
+{{/***
+Element Parameters
+---------------------------------------------
+$.currentPage: 		$.currentPage.Page, $.currentPage.Site
+$.class: 			Element extra class name
+$descClass			Text of content Class
+$subTitleClass		sub title Class
+$badgeClass			Class of badge
+$.subTitle			sub Title
+$.desc				Text of content
+$.imgQuote			Quote image
+$.imgWidth 			image Quote width
+$.imgHeight 		image Quote height
+$.img2Width 		image 2 width
+$.img2Height 		image 2 height
+
+*/}}
+{{- $class := "" -}}
+{{- if isset $ "class" }}
+    {{- $class = $.class -}}
+{{ end -}}
+
+{{- $descClass := "mb-6" -}}
+{{- if isset $ "descClass" }}
+    {{- $descClass = $.descClass -}}
+{{ end -}}
+
+{{- $subtitleClass := "fs-18px text-body-emphasis mt-4 mb-6" -}}
+{{- if isset $ "subtitleClass" }}
+    {{- $subtitleClass = $.subtitleClass -}}
+{{ end -}}
+
+{{- $imgWidth := "1170" -}}
+{{- if isset $ "imgWidth" }}
+    {{- $imgWidth = $.imgWidth -}}
+{{- end -}}
+
+{{- $imgHeight := "700" -}}
+{{- if isset $ "imgHeight" }}
+    {{- $imgHeight = $.imgHeight -}}
+{{- end -}}
+
+{{- $imgQuote := "/assets/images/blog/quote2.png" -}}
+{{- if isset $ "quoteBgClass" }}
+    {{- $imgQuote = $.imgQuote -}}
+{{ end -}}
+
+{{- $img2Width := "42" -}}
+{{- if isset $ "img2Width" }}
+    {{- $img2Width = $.img2Width -}}
+{{- end -}}
+
+{{- $img2Height := "31" -}}
+{{- if isset $ "img2Height" }}
+    {{- $img2Height = $.img2Height -}}
+{{- end -}}
+
+{{- $badgeClass := "bg-primary text-white" -}}
+{{- if isset $ "badgeClass" }}
+    {{- $badgeClass = $.badgeClass -}}
+{{ end -}}
+<div class="{{- if $.class }} {{ $.class }}{{ end }}">
+	<div class="px-lg-25 px-0">
+		<p class="{{- if $subtitleClass }} {{ $subtitleClass }}{{ end }}">We do good to the planet while delivering smiles to your loved ones. We believe even the smallest choices we make can have a significant impact over time. That’s why it’s our goal to make eco-friendly alternatives more accessible than ever.</p>
+		<p class="{{- if $descClass }} {{ $descClass }}{{ end }}">Awkwardness gives me great comfort. I’ve never been cool, but I’ve felt cool. I’ve been in the cool place, but I wasn’t really cool – I was trying to pass for hip or cool. It’s the awkwardness that’s nice. We look our best in subdued colors, sophisticated cuts, and a general air of sleek understatement. I like the body. I like to design everything to do with the body.</p>
+	</div>
+	<img  data-src="/assets/images/blog/detail-content-2.jpg" width="{{ $imgWidth }}" height="{{ $imgHeight }}" alt="" class="lazy-image mb-13 img-fluid mt-10" src="#">
+	<div class="px-lg-25 px-0">
+		<p class="{{- if $descClass }} {{ $descClass }}{{ end }}">If I fell in love with a woman for an artistic reason, or from the point of view of my work, I think it would rob her of something. We live in an era of globalization and the era of the woman. Never in the history of the world have women <span class="text-body-emphasis">been more in control of their destiny.</span></p>
+		<p class="{{- if $subtitleClass }} {{ $subtitleClass }}{{ end }}">Your imagination, our creation</p>
+		<p class="{{- if $descClass }} {{ $descClass }}{{ end }}">Complexion-perfecting natural foundation enriched with antioxidant-packed superfruits, vitamins, and other skin-nourishing nutrients. Creamy liquid formula sets with a pristine matte finish for soft, velvety smooth skin. Made using clean, non-toxic ingredients, our products are designed for everyone...}</p>
+	</div>
+	<h3 class="text-center my-12">Shop the story</h3>
+	<div class="slick-slider" data-slick-options="{{ $.currentPage.Site.Data.product_shop_the_story.options | jsonify }}">
+		{{- range $item := $.currentPage.Site.Data.product_shop_the_story.items }}
+		<div class="mb-6">
+			{{ partial "elements/shop/skins/grid-2" (dict
+			"data" $item
+			) }}
+		</div>
+		{{- end -}}
+	</div>
+	<div class="text-center px-lg-25 px-0">
+		<a href="#" class="btn btn-dark btn-hover-bg-primary btn-hover-border-primary btn-hover-text-light shadow-none mt-12">Shop all products</a>
+		<p class="mt-13 text-start">Awkwardness gives me great comfort. I’ve never been cool, but I’ve felt cool. I’ve been in the cool place, but I wasn’t really cool – I was trying to pass for hip or cool. It’s the awkwardness that’s nice. We look our best in subdued colors, sophisticated cuts, and a general air of sleek understatement. I like the body. I like to design everything to do with the body.</p>
+		<div class="row mt-11 text-start">
+			<div class="col-md-6 col-12">
+				<img data-src="{{ $imgQuote }}" width="{{ $img2Width }}" height="{{ $img2Height }}" alt="" class="lazy-image img-fluid mt-8" src="#">
+				<h2 class="mt-11 me-md-13 me-lg-10 me-xl-13">Because You Need Time for Yourself.</h2>
+				<p class="fw-semibold text-uppercase mt-11 text-body-emphasis ls-1">maggie.e</p>
+			</div>
+			<div class="col-md-6 col-12">
+				<p class="pe-md-10">Complexio n-perfecting natural foundation enriched with antioxidant-packed superfruits, vitamins, and other skin-nourishing nutrients. Creamy liquid formula sets with a pristine matte finish for soft, velvety smooth skin. Made using clean, non-toxic ingredients, our products are designed for everyone...</p>
+				<p class="">Looking for love in all the wrong places? Start with something pure, something good for you, and something that makes you feel pampered like a princess. We’re talking about clean beauty gift sets, of course – and we’ve got a bouquet of beauties for yourself or someone you love. Remember those grand travel plans we had for 2020? This body care duo makes you feel like you’re lying in a spa tent on a warm sandy beach.</p>
+			</div>
+		</div>
+	</div>
+</div>

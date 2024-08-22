@@ -1,0 +1,43 @@
+{{/***
+Element Parameters
+---------------------------------------------
+$.sizeClass 		Size extra Class
+$.listSizeClass 	List Size extra Class
+$.sizeItemClass 	Size item extra Class
+$.size1: 			Shop size 1
+$.size2: 			Shop size 2
+*/}}
+
+{{- $sizeClass := "form-group shop-swatch mb-7 d-flex align-items-center" -}}
+{{- if isset $ "sizeClass" }}
+    {{- $sizeClass = $.sizeClass -}}
+{{ end -}}
+
+{{- $listSizeClass := "list-inline-item me-4 fw-semibold" -}}
+{{- if isset $ "listSizeClass" }}
+    {{- $listSizeClass = $.listSizeClass -}}
+{{ end -}}
+
+{{- $sizeItemClass := "fs-14px p-4 d-block rounded text-decoration-none border" -}}
+{{- if isset $ "sizeItemClass" }}
+    {{- $sizeItemClass = $.sizeItemClass -}}
+{{ end -}}
+
+<div class="{{- if $sizeClass}}{{- $sizeClass}}{{- end}}">
+	<span class="fw-semibold text-body-emphasis me-7">Size: </span>
+	<ul class="list-inline d-flex justify-content-start mb-0">
+        {{- if $.size1}}
+			<li class="{{- if $listSizeClass}}{{$listSizeClass}}{{- end}}">
+				<input type="radio" id="radio1" name="radio" class="product-info-size d-none" checked>
+				<label for="radio1" class="{{- if $sizeItemClass}}{{$sizeItemClass}}{{- end}}" data-var="full size">{{$.size1}}</label>
+			</li>
+        {{- end}}
+        {{- if $.size2}}
+			<li class="{{- if $listSizeClass}}{{$listSizeClass}}{{- end}}">
+				<input type="radio" id="radio2" name="radio" class="product-info-size d-none">
+				<label for="radio2" class="{{- if $sizeItemClass}}{{$sizeItemClass}}{{- end}}" data-var="full size">{{$.size2}}</label>
+			</li>
+        {{- end}}
+
+	</ul>
+</div>

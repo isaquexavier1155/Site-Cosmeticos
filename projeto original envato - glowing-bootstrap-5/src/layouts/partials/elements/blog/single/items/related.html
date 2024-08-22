@@ -1,0 +1,30 @@
+{{/***
+Element Parameters
+---------------------------------------------
+$.data
+*/}}
+
+{{- $data := index $.currentPage.Site.Data $.data -}}
+
+{{ .Inner }}
+<div class="pt-14 pb-13 pb-lg-15 pt-lg-18 mx-n5" id="post_related">
+	<div class="container">
+		{{ partial  "elements/heading/style-1" (dict "title" "Related Posts" "titleClass" "mb-6 fs-3") }}
+	</div>
+	<div class="container container-xxl mt-10 pt-3">
+		<div class="slick-slider" data-slick-options='{{ $data.options | jsonify }}'>
+			{{- range $item := $data.items -}}
+				<div>
+					{{ partial  "elements/blog/items/grid-3" (dict
+					"titleClass" "card-title fs-6 lh-base mt-5 pt-2 mb-0"
+					"data" $item
+					"animation" "fadeInUp"
+					) }}
+				</div>
+			{{- end -}}
+		</div>
+	</div>
+</div>
+<div class="col-12 mt-5 mb-7">
+	<div class="border-bottom"></div>
+</div>

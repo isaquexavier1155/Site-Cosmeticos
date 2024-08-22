@@ -1,0 +1,9 @@
+items:
+  - img: /assets/images/shop/product-gallery-05.jpg
+  - img: /assets/images/shop/product-09.jpg
+  - img: /assets/images/shop/product-08.jpg
+checkboxs:
+  - product: Daily Perfecting Cream - $29.00
+    index: customCheck2
+  - product: Dry-Touch Oil Mist - $29.00
+    index: customCheck3

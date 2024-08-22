@@ -1,0 +1,55 @@
+items:
+  - item:
+      banner:
+        src: '/assets/images/others/new-collection-01.jpg'
+        width: 426
+        height: 522
+      product:
+        title: Facial cleanser
+        reviews: 2947
+        rate: 80
+        price:
+          regular: "39.00"
+          sale: "29.00"
+        image:
+          src: '/assets/images/products/product-09-330x440.jpg'
+          width: 330
+          height: 440
+      heading:
+        subtitle: "New Collection"
+        title: "Discover Our Autumn Skincare"
+        desc: "Made using clean, non-toxic ingredients, our products are designed for everyone."
+        button:
+          text: "Explore More"
+          url: "#"
+  - item:
+      banner:
+        src: '/assets/images/others/new-collection-02.jpg'
+        width: 426
+        height: 522
+      product:
+        title: Shield Conditioner
+        reviews: 2947
+        rate: 80
+        price:
+          regular: "40.00"
+        image:
+          src: '/assets/images/products/product-03-330x440.jpg'
+          width: 330
+          height: 440
+      heading:
+        subtitle: "New Collection"
+        title: "Discover Our Autumn Skincare"
+        desc: "Made using clean, non-toxic ingredients, our products are designed for everyone."
+        button:
+          text: "Explore More"
+          url: "#"
+options:
+  dots: false
+  arrows: true
+  slidesToShow: 1
+  responsive:
+    - breakpoint: 992
+      settings:
+        dots: true
+        arrows: false

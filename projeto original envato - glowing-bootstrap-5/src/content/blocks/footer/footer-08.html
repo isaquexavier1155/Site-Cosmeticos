@@ -1,0 +1,18 @@
+---
+layout: blocks
+footer: none
+title: "Blocks - Footer"
+---
+{{< blocks/page-title/default title="Blocks - Footer 08" desc="Copy custom block snippet below and paste it on your page to build your website easily." />}}
+<section class="pb-lg-21 pb-16 border-bottom">
+	<div class="container  container-xxl">
+		{{< docs/example lang="html" show_preview="false" code_preview="true" no_margin="true">}}
+		{{< header.inline >}}
+		{{ partial "footer/footer-08" .}}
+		{{</ header.inline >}}
+	{{</ docs/example >}}
+</div>
+</section>
+{{< header.inline >}}
+{{ partial "footer/footer-08" .}}
+{{</ header.inline >}}

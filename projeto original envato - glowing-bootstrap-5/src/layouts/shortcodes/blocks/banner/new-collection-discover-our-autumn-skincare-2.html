@@ -1,0 +1,40 @@
+{{/*
+Block settings
+-------------------------------------------------
+id			Block ID
+class		Block class extral
+*/}}
+{{- $id := .Get "id" | default "" -}}
+{{- $class := .Get "class" | default "pt-16 py-lg-19 pb-15" -}}
+
+<section {{- if $id }} id="{{ $id }}" {{- end -}} {{- if $class }} class="{{ $class }}" {{- end}}>
+    {{ .Inner }}
+	<div class="container container-xxl">
+		<div class="row gx-30px gy-30px">
+			<div class="col-12 col-lg-8 col-md-7" data-animate="fadeInUp">
+                {{ partial  "elements/banner/style-6" (dict
+				"currentPage" .
+				"subtitle" "NEW COLLECTION"
+                "title" "Discover Our Autumn Skincare"
+                "subtitleClass" "fs-18px text-white fw-bold" "titleClass" "text-body-emphasis"
+                "image" "/assets/images/banner/banner-40.jpg" "width" "930" "height" "420"
+                "btnContent" "Explore More"
+                "titleClass" "text-white font-primary fw-normal mw-lg-60 pe-xl-25 pe-lg-10 pe-md-0 pe-sm-20"
+				"altContent" "Discover Our Autumn Skincare") }}
+			</div>
+			<div class="col-12 col-lg-4 col-md-5" data-animate="fadeInUp">
+                {{ partial  "elements/banner/style-1" (dict
+				"currentPage" .
+				"subtitle" ""
+                "title" "25% off Everything"
+                "desc" "Makeup with extended range in colors for every human."
+                "descClass"	"mw-xl-60"
+                "image" "/assets/images/banner/banner-08.jpg" "width" "690" "height" "420"
+                "titleClass" "font-primary fw-normal fs-3" "btnContent" "Shop Sale"
+                "altContent" "25% off Everything"
+				"ignore_dark_mode" "true")}}
+			</div>
+		</div>
+	</div>
+</section>
+

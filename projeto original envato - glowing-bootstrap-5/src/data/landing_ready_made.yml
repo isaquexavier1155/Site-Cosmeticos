@@ -1,0 +1,42 @@
+items1:
+  - img: "/assets/images/landing/landing-ready-made-01.jpg"
+    img_dark: "/assets/images/landing/landing-ready-made-white-01.jpg"
+    title: About Us 02
+    url: "/about-us-02.html"
+  - img: "/assets/images/landing/landing-ready-made-02.jpg"
+    img_dark: "/assets/images/landing/landing-ready-made-white-02.jpg"
+    title: About Us 02
+    url: "/about-us-02.html"
+  - img: "/assets/images/landing/landing-ready-made-03.jpg"
+    img_dark: "/assets/images/landing/landing-ready-made-white-03.jpg"
+    title: About Us 01
+    url: "/about-us-01.html"
+  - img: "/assets/images/landing/landing-ready-made-04.jpg"
+    img_dark: "/assets/images/landing/landing-ready-made-white-04.jpg"
+    title: About Us 01
+    url: "/about-us-01.html"
+  - img: "/assets/images/landing/landing-ready-made-05.jpg"
+    img_dark: "/assets/images/landing/landing-ready-made-white-05.jpg"
+    title: About Us 02
+    url: "/about-us-02.html"
+items2:
+  - img: "/assets/images/landing/landing-ready-made-06.jpg"
+    img_dark: "/assets/images/landing/landing-ready-made-white-06.jpg"
+    title: Find a Store
+    class: "mb-9 mb-sm-0"
+    url: "/find-a-store.html"
+  - img: "/assets/images/landing/landing-ready-made-07.jpg"
+    img_dark: "/assets/images/landing/landing-ready-made-white-07.jpg"
+    title: Contact Us 01
+    class: "mb-9 mb-sm-0"
+    url: "/contact-us-01.html"
+  - img: "/assets/images/landing/landing-ready-made-08.jpg"
+    img_dark: "/assets/images/landing/landing-ready-made-white-08.jpg"
+    title: FAQs
+    class: "mb-9 mb-sm-0"
+    url: "/faqs.html"
+  - img: "/assets/images/landing/landing-ready-made-09.jpg"
+    img_dark: "/assets/images/landing/landing-ready-made-white-09.jpg"
+    title: Contact Us 02
+    class: ""
+    url: "/contact-us-02.html"

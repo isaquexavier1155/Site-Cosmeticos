@@ -1,0 +1,912 @@
+icon_boxes:
+  - icon: circle-dollar
+    typeIcon: svg
+    color: text-green
+    background: bg-green-light
+    title: Revenue
+    price: $13,456.5
+    description: Shipping fees are not included.
+  - icon: fas fa-truck
+    color: text-success
+    background: bg-success-light
+    title: Orders
+    price: 53.668
+    description: Excluding orders in transit
+  - icon: fas fa-qrcode
+    color: text-warning
+    background: bg-warning-light
+    title: Products
+    price: 9.856
+    description: In 19 Categories
+  - icon: fas fa-shopping-bag
+    color: text-info
+    background: bg-info-light
+    title: Monthly Earning
+    price: $6,982
+    description: Based in your local time.
+members:
+  - image: /assets//images/dashboard/avatar-4.png
+    name: Patric Adams
+    add: Sanfrancisco
+  - image: /assets//images/dashboard/avatar-2.png
+    name: Dilan Specter
+    add: Sanfrancisco
+  - image: /assets//images/dashboard/avatar-3.png
+    name: Tomas Baker
+    add: Sanfrancisco
+activities:
+  - time: Today
+    action: Lorem ipsum dolor sit amet consectetur
+  - time: 17 May
+    action: Debitis nesciunt voluptatum dicta reprehenderit
+    active: true
+  - time: 13 May
+    action: Accusamus voluptatibus voluptas.
+  - time: 05 April
+    action: At vero eos et accusamus et iusto odio dignissi
+  - time: 26 Mar
+    action: Responded to need “Volunteer Activities
+marketing_chanels:
+  - net: Facebook
+    rate: 15
+  - net: Instagram
+    rate: 65
+  - net: Google
+    rate: 51
+  - net: Twitter
+    rate: 80
+  - net: Other
+    rate: 80
+
+products_field:
+  type_action: products_actions
+  checkbox: true
+
+  fields:
+    - field: "#ID"
+    - field: Name
+    - field: Email
+    - field: Total
+    - field: Status
+    - field: Date
+    - field: Actions
+
+  values:
+    - product_img: '/assets/images/products/product-03-75x100.jpg'
+      product_name: Flowers cotton dress
+      total: $44.25
+      status: Active
+      badge: rounded-pill alert py-3 px-4 mb-0 alert-success
+      regitered: 02.11.2021
+    - product_img: '/assets/images/products/product-04-75x100.jpg'
+      product_name: Hoodie with pocket
+      total: $7.50
+      status: Active
+      badge: rounded-pill alert py-3 px-4 mb-0 alert-success
+      regitered: 02.11.2021
+    - product_img: '/assets/images/products/product-06-75x100.jpg'
+      product_name: Oversize cotton sweatshirt
+      total: $43.50
+      status: Active
+      badge: rounded-pill alert py-3 px-4 mb-0 alert-success
+      regitered: 02.11.2021
+    - product_img: '/assets/images/products/product-09-75x100.jpg'
+      product_name: Striped cotton-blend sweatshirt
+      total: $99.00
+      status: Archived
+      badge: rounded-pill alert py-3 px-4 mb-0 alert-warning
+      regitered: 02.11.2021
+    - product_img: '/assets/images/products/product-03-75x100.jpg'
+      product_name: Flowers cotton dress
+      total: $44.25
+      status: Active
+      badge: rounded-pill alert py-3 px-4 mb-0 alert-success
+      regitered: 02.11.2021
+    - product_img: '/assets/images/products/product-04-75x100.jpg'
+      product_name: Hoodie with pocket
+      total: $7.50
+      status: Disabled
+      badge: rounded-pill alert py-3 px-4 mb-0 alert-danger
+      regitered: 02.11.2021
+    - product_img: '/assets/images/products/product-06-75x100.jpg'
+      product_name: Oversize cotton sweatshirt
+      total: $43.50
+      status: Active
+      badge: rounded-pill alert py-3 px-4 mb-0 alert-success
+      regitered: 02.11.2021
+    - product_img: '/assets/images/products/product-09-75x100.jpg'
+      product_name: Striped cotton-blend sweatshirt
+      total: $99.00
+      status: Archived
+      badge: rounded-pill alert py-3 px-4 mb-0 alert-warning
+      regitered: 02.11.2021
+    - product_img: '/assets/images/products/product-03-75x100.jpg'
+      product_name: Flowers cotton dress
+      total: $44.25
+      status: Active
+      badge: rounded-pill alert py-3 px-4 mb-0 alert-success
+      regitered: 02.11.2021
+    - product_img: '/assets/images/products/product-04-75x100.jpg'
+      product_name: Hoodie with pocket
+      total: $7.50
+      status: Disabled
+      badge: rounded-pill alert py-3 px-4 mb-0 alert-danger
+      regitered: 02.11.2021
+    - product_img: '/assets/images/products/product-06-75x100.jpg'
+      product_name: Oversize cotton sweatshirt
+      total: $43.50
+      status: Active
+      badge: rounded-pill alert py-3 px-4 mb-0 alert-success
+      regitered: 02.11.2021
+    - product_img: '/assets/images/products/product-09-75x100.jpg'
+      product_name: Striped cotton-blend sweatshirt
+      total: $99.00
+      status: Archived
+      badge: rounded-pill alert py-3 px-4 mb-0 alert-warning
+      regitered: 02.11.2021
+  seller_products:
+    - img: '/assets/images/products/product-01-330x440.jpg'
+      name: Facial cleanser
+      price: $34.50
+    - img: '/assets/images/products/product-02-330x440.jpg'
+      name: Bio-shroom Rejuvenating Serum
+      price: $18.00
+    - img: '/assets/images/products/product-03-330x440.jpg'
+      name: Coffee Bean Caffeine Eye Cream
+      price: $34.50
+    - img: '/assets/images/products/product-04-330x440.jpg'
+      name: Coffee Bean Caffeine Eye Cream
+      price: $79.00
+    - img: '/assets/images/products/product-05-330x440.jpg'
+      name: Facial cleanser
+      price: $34.50
+    - img: '/assets/images/products/product-06-330x440.jpg'
+      name: Coffee Bean Caffeine Eye Cream
+      price: $18.00
+    - img: '/assets/images/products/product-07-330x440.jpg'
+      name: Facial cleanser
+      price: $79.00
+    - img: '/assets/images/products/product-08-330x440.jpg'
+      name: Bio-shroom Rejuvenating Serum
+      price: $34.50
+
+product_categories_field:
+  type_action: product_categories_actions
+  checkbox: true
+
+  fields:
+    - field: ID
+    - field: Name
+    - field: Description
+    - field: Slug
+    - field: Order
+    - field: Actions
+
+  values:
+    - id: 1
+      name: Sweaters
+      des: Sweaters
+      slug: /sweaters
+      order: 1
+    - id: 2
+      name: Dress
+      des: Dress
+      slug: /dress
+      order: 2
+    - id: 3
+      name: Coats & Jackets
+      des: Coats & Jackets
+      slug: /coats-jackets
+      order: 3
+    - id: 4
+      name: Handbag
+      des: Handbag
+      slug: /handbag
+      order: 4
+    - id: 5
+      name: Boots
+      des: Boots
+      slug: /boots
+      order: 5
+    - id: 6
+      name: Sunglasses
+      des: Sunglasses
+      slug: /sunglasses
+      order: 6
+    - id: 7
+      name: Shirts
+      des: Shirts
+      slug: /shirts
+      order: 7
+
+latest_order_field:
+  type_action: view_details
+  checkbox: true
+
+  fields:
+    - field: Order ID
+    - field: Billing Name
+    - field: Date
+    - field: Total
+    - field: Payment Status
+    - field: Payment Method
+    - field: View Details
+
+  values:
+    - id: SK2540
+      name: Neal Matthews
+      date: 07 Oct, 2021
+      total: $400
+      status: paid
+      badge: badge-soft-success
+      payment: Mastercard
+    - id: SK2541
+      name: Jamal Burnett
+      date: 07 Oct, 2021
+      total: $380
+      status: Chargeback
+      badge: badge-soft-danger
+      payment:  Visa
+    - id: SK2542
+      name: Juan Mitchell
+      date: 06 Oct, 2021
+      total: $384
+      status: Paid
+      badge: badge-soft-success
+      payment: Paypal
+    - id: SK2543
+      name: Barry Dick
+      date: 05 Oct, 2021
+      total: $412
+      status: Paid
+      badge: badge-soft-success
+      payment: Mastercard
+    - id: SK2544
+      name: Ronald Taylor
+      date: 04 Oct, 2021
+      total: $404
+      status: Refund
+      badge: badge-soft-warning
+      payment: Visa
+    - id: SK2545
+      name: Jacob Hunter
+      date: 04 Oct, 2021
+      total: $392
+      status: Paid
+      badge: badge-soft-success
+      payment: Paypal
+order_list_field:
+  type_action: order_list_actions
+  checkbox: false
+
+  fields:
+    - field: "#ID"
+    - field: Name
+    - field: Email
+    - field: Total
+    - field: Status
+    - field: Date
+    - field: Actions
+
+  values:
+    - id: 0901
+      name: Marvin McKinney
+      email: marvin@example.com
+      order_date: 03.12.2020
+      total: $9.00
+      status: Pending
+      badge: rounded-pill alert py-3 px-4 mb-0 alert-warning
+    - id: 2323
+      name: Leslie Alexander
+      email: leslie@example.com
+      order_date: 21.02.2020
+      total: $46.61
+      status: Pending
+      badge: rounded-pill alert py-3 px-4 mb-0 alert-warning
+    - id: 1233
+      name: Esther Howard
+      email: esther@example.com
+      order_date: 03.12.2020
+      total: $9.00
+      status: Cancel
+      badge: rounded-pill alert py-3 px-4 mb-0 alert-danger
+    - id: 0901
+      name: Marvin McKinney
+      email: marvin@example.com
+      order_date: 03.12.2020
+      total: $9.00
+      status: Received
+      badge: rounded-pill alert py-3 px-4 mb-0 alert-success
+    - id: 2323
+      name: Leslie Alexander
+      email: leslie@example.com
+      order_date: 21.02.2020
+      total: $46.61
+      status: Received
+      badge: rounded-pill alert py-3 px-4 mb-0 alert-success
+    - id: 1233
+      name: Esther Howard
+      email: esther@example.com
+      order_date: 03.12.2020
+      total: $9.00
+      status: Received
+      badge: rounded-pill alert py-3 px-4 mb-0 alert-success
+    - id: 0901
+      name: Marvin McKinney
+      email: marvin@example.com
+      order_date: 03.12.2020
+      total: $9.00
+      status: Pending
+      badge: rounded-pill alert py-3 px-4 mb-0 alert-warning
+    - id: 2323
+      name: Leslie Alexander
+      email: leslie@example.com
+      order_date: 21.02.2020
+      total: $46.61
+      status: Received
+      badge: rounded-pill alert py-3 px-4 mb-0 alert-success
+    - id: 1233
+      name: Esther Howard
+      email: esther@example.com
+      order_date: 03.12.2020
+      total: $9.00
+      status: Cancel
+      badge: rounded-pill alert py-3 px-4 mb-0 alert-danger
+    - id: 0901
+      name: Marvin McKinney
+      email: marvin@example.com
+      order_date: 03.12.2020
+      total: $9.00
+      status: Received
+      badge: rounded-pill alert py-3 px-4 mb-0 alert-success
+    - id: 2323
+      name: Leslie Alexander
+      email: leslie@example.com
+      order_date: 21.02.2020
+      total: $46.61
+      status: Pending
+      badge: rounded-pill alert py-3 px-4 mb-0 alert-warning
+    - id: 1233
+      name: Esther Howard
+      email: esther@example.com
+      order_date: 03.12.2020
+      total: $9.00
+      status: Received
+      badge: rounded-pill alert py-3 px-4 mb-0 alert-success
+    - id: 2323
+      name: Leslie Alexander
+      email: leslie@example.com
+      order_date: 21.02.2020
+      total: $46.61
+      status: Received
+      badge: rounded-pill alert py-3 px-4 mb-0 alert-success
+    - id: 1233
+      name: Esther Howard
+      email: esther@example.com
+      order_date: 03.12.2020
+      total: $9.00
+      status: Cancel
+      badge: rounded-pill alert py-3 px-4 mb-0 alert-danger
+  order_detail:
+    - img: '/assets/images/products/product-03-75x100.jpg'
+      name: Flowers cotton dress
+      price: $44.25
+      quantity: 2
+      total: $88.50
+    - img: '/assets/images/products/product-04-75x100.jpg'
+      name: Hoodie with pocket
+      price: $7.50
+      quantity: 2
+      total: $15.00
+    - img: '/assets/images/products/product-06-75x100.jpg'
+      name: Oversize cotton sweatshirt
+      price: $43.50
+      quantity: 2
+      total: $87.00
+    - img: '/assets/images/products/product-09-75x100.jpg'
+      name: Striped cotton-blend sweatshirt
+      price: $99.00
+      quantity: 3
+      total: $297.00
+
+order_list2_field:
+  type_action: order_list_actions
+  checkbox: false
+
+  fields:
+    - field: "#ID"
+    - field: Customer Name
+    - field: Price
+    - field: Status
+    - field: Date
+    - field: Actions
+
+  values:
+    - id: 0901
+      name: Marvin McKinney
+      order_date: 03.12.2020
+      total: $9.00
+      status: Pending
+      badge: rounded-pill alert py-3 px-4 mb-0 alert-warning
+    - id: 2323
+      name: Leslie Alexander
+      order_date: 21.02.2020
+      total: $46.61
+      status: Pending
+      badge: rounded-pill alert py-3 px-4 mb-0 alert-warning
+    - id: 1233
+      name: Esther Howard
+      order_date: 03.12.2020
+      total: $9.00
+      status: Cancel
+      badge: rounded-pill alert py-3 px-4 mb-0 alert-danger
+    - id: 0901
+      name: Marvin McKinney
+      order_date: 03.12.2020
+      total: $9.00
+      status: Received
+      badge: rounded-pill alert py-3 px-4 mb-0 alert-success
+    - id: 2323
+      name: Leslie Alexander
+      order_date: 21.02.2020
+      total: $46.61
+      status: Received
+      badge: rounded-pill alert py-3 px-4 mb-0 alert-success
+    - id: 1233
+      name: Esther Howard
+      order_date: 03.12.2020
+      total: $9.00
+      status: Received
+      badge: rounded-pill alert py-3 px-4 mb-0 alert-success
+    - id: 0901
+      name: Marvin McKinney
+      order_date: 03.12.2020
+      total: $9.00
+      status: Pending
+      badge: rounded-pill alert py-3 px-4 mb-0 alert-warning
+    - id: 2323
+      name: Leslie Alexander
+      order_date: 21.02.2020
+      total: $46.61
+      status: Received
+      badge: rounded-pill alert py-3 px-4 mb-0 alert-success
+    - id: 1233
+      name: Esther Howard
+      order_date: 03.12.2020
+      total: $9.00
+      status: Cancel
+      badge: rounded-pill alert py-3 px-4 mb-0 alert-danger
+    - id: 0901
+      name: Marvin McKinney
+      order_date: 03.12.2020
+      total: $9.00
+      status: Received
+      badge: rounded-pill alert py-3 px-4 mb-0 alert-success
+sellers_list_field:
+  type_action: view_details
+  checkbox: false
+
+  fields:
+    - field: Seller
+    - field: Email
+    - field: Status
+    - field: Registered
+    - field: Action
+
+  cards:
+    - id: 409
+      name: Marvin McKinney
+      email: mary90@example.com
+      img: '/assets/images/dashboard/avatar-1.png'
+    - id: 478
+      name: Leslie Alexander
+      email: leslie@example.com
+      img: '/assets/images/dashboard/avatar-2.png'
+    - id: 171
+      name: Marvin McKinney
+      email: leslie@example.com
+      img: '/assets/images/dashboard/avatar-3.png'
+    - id: 705
+      name: Floyd Miles
+      email: fedor12@example.com
+      img: '/assets/images/dashboard/avatar-4.png'
+    - id: 409
+      name: Marvin McKinney
+      email: mary90@example.com
+      img: '/assets/images/dashboard/avatar-2.png'
+    - id: 478
+      name: Leslie Alexander
+      email: leslie@example.com
+      img: '/assets/images/dashboard/avatar-3.png'
+    - id: 171
+      name: Marvin McKinney
+      email: leslie@example.com
+      img: '/assets/images/dashboard/avatar-4.png'
+    - id: 705
+      name: Floyd Miles
+      email: fedor12@example.com
+      img: '/assets/images/dashboard/avatar-1.png'
+  values:
+    - seller_img: '/assets/images/dashboard/avatar-1.png'
+      seller_id: 407
+      seller_name: Mary Monasa
+      email: monalisa@example.com
+      regitered: 03.12.2020
+      status: Active
+      badge: rounded-pill alert py-3 px-4 mb-0 alert-success
+    - seller_img: '/assets/images/dashboard/avatar-2.png'
+      seller_id: 478
+      seller_name: Marvin McKinney
+      email: eleanor2020@example.com
+      regitered: 03.12.2020
+      status: Active
+      badge: rounded-pill alert py-3 px-4 mb-0 alert-success
+    - seller_img: '/assets/images/dashboard/avatar-3.png'
+      seller_id: 407
+      seller_name: Jonatan Ive
+      email: mrjohn@example.com
+      regitered: 03.12.2020
+      status: Inactive
+      badge: rounded-pill alert py-3 px-4 mb-0 alert-danger
+    - seller_img: '/assets/images/dashboard/avatar-4.png'
+      seller_id: 478
+      seller_name: Alexandra Pena
+      email: eleanor2020@example.com
+      regitered: 03.12.2020
+      status: Active
+      badge: rounded-pill alert py-3 px-4 mb-0 alert-success
+    - seller_img: '/assets/images/dashboard/avatar-1.png'
+      seller_id: 407
+      seller_name: Marvin McKinney
+      email: eleanor2020@example.com
+      regitered: 03.12.2020
+      status: Active
+      badge: rounded-pill alert py-3 px-4 mb-0 alert-success
+    - seller_img: '/assets/images/dashboard/avatar-2.png'
+      seller_id: 478
+      seller_name: Alexandra Pena
+      email: monalisa@example.com
+      regitered: 03.12.2020
+      status: Inactive
+      badge: rounded-pill alert py-3 px-4 mb-0 alert-danger
+    - seller_img: '/assets/images/dashboard/avatar-3.png'
+      seller_id: 407
+      seller_name: Marvin McKinney
+      email: eleanor2020@example.com
+      regitered: 03.12.2020
+      status: Active
+      badge: rounded-pill alert py-3 px-4 mb-0 alert-success
+    - seller_img: '/assets/images/dashboard/avatar-4.png'
+      seller_id: 478
+      seller_name: Alexandra Pena
+      email: monalisa@example.com
+      regitered: 03.12.2020
+      status: Active
+      badge: rounded-pill alert py-3 px-4 mb-0 alert-success
+    - seller_img: '/assets/images/dashboard/avatar-1.png'
+      seller_id: 407
+      seller_name: Marvin McKinney
+      email: eleanor2020@example.com
+      regitered: 03.12.2020
+      status: Active
+      badge: rounded-pill alert py-3 px-4 mb-0 alert-success
+    - seller_img: '/assets/images/dashboard/avatar-2.png'
+      seller_id: 478
+      seller_name: Alexandra Pena
+      email: monalisa@example.com
+      regitered: 03.12.2020
+      status: Active
+      badge: rounded-pill alert py-3 px-4 mb-0 alert-success
+  seller_products:
+    - img: '/assets/images/products/product-01-270x360.jpg'
+      name: Facial cleanser
+      price: $34.50
+    - img: '/assets/images/products/product-02-270x360.jpg'
+      name: Bio-shroom Rejuvenating Serum
+      price: $18.00
+    - img: '/assets/images/products/product-03-270x360.jpg'
+      name: Coffee Bean Caffeine Eye Cream
+      price: $34.50
+    - img: '/assets/images/products/product-04-270x360.jpg'
+      name: Coffee Bean Caffeine Eye Cream
+      price: $79.00
+    - img: '/assets/images/products/product-05-270x360.jpg'
+      name: Facial cleanser
+      price: $34.50
+    - img: '/assets/images/products/product-06-270x360.jpg'
+      name: Coffee Bean Caffeine Eye Cream
+      price: $18.00
+    - img: '/assets/images/products/product-07-270x360.jpg'
+      name: Facial cleanser
+      price: $79.00
+    - img: '/assets/images/products/product-08-270x360.jpg'
+      name: Bio-shroom Rejuvenating Serum
+      price: $34.50
+    - img: '/assets/images/products/product-09-270x360.jpg'
+      name: Coffee Bean Caffeine Eye Cream
+      price: $18.00
+    - img: '/assets/images/products/product-10-270x360.jpg'
+      name: Facial cleanser
+      price: $79.00
+    - img: '/assets/images/products/product-11-270x360.jpg'
+      name: Bio-shroom Rejuvenating Serum
+      price: $34.50
+    - img: '/assets/images/products/product-12-270x360.jpg'
+      name: Coffee Bean Caffeine Eye Cream
+      price: $79.00
+    - img: '/assets/images/products/product-13-270x360.jpg'
+      name: Facial cleanser
+      price: $18.00
+    - img: '/assets/images/products/product-14-270x360.jpg'
+      name: Bio-shroom Rejuvenating Serum
+      price: $79.00
+    - img: '/assets/images/products/product-15-270x360.jpg'
+      name: Coffee Bean Caffeine Eye Cream
+      price: $34.50
+    - img: '/assets/images/products/product-16-270x360.jpg'
+      name: Facial cleanser
+      price: $34.50
+    - img: '/assets/images/products/product-01-270x360.jpg'
+      name: Coffee Bean Caffeine Eye Cream
+      price: $18.00
+    - img: '/assets/images/products/product-02-270x360.jpg'
+      name: Facial cleanser
+      price: $79.00
+    - img: '/assets/images/products/product-03-270x360.jpg'
+      name: Bio-shroom Rejuvenating Serum
+      price: $34.50
+    - img: '/assets/images/products/product-04-270x360.jpg'
+      name: Coffee Bean Caffeine Eye Cream
+      price: $79.00
+
+transaction_field:
+  type_action: transaction_actions
+  checkbox: false
+
+  fields:
+    - field: Transaction ID
+    - field: Paid
+    - field: Method
+    - field: Date
+    - field: Action
+
+  values:
+    - id: 456667
+      transaction_date: 16.12.2020, 14:21
+      total: $294.00
+      method: Amex
+      method_img: '/assets/images/dashboard/card-1.png'
+    - id: 134768
+      transaction_date: 16.12.2020, 14:21
+      total: $294.00
+      method: Master card
+      method_img: '/assets/images/dashboard/master-card.png'
+    - id: 887780
+      transaction_date: 16.12.2020, 14:21
+      total: $294.00
+      method: Paypal
+      method_img: '/assets/images/dashboard/card-3.png'
+    - id: 887780
+      transaction_date: 16.12.2020, 14:21
+      total: $294.00
+      method: Visa
+      method_img: '/assets/images/dashboard/card-4.png'
+    - id: 456667
+      transaction_date: 16.12.2020, 14:21
+      total: $294.00
+      method: Amex
+      method_img: '/assets/images/dashboard/card-1.png'
+    - id: 134768
+      transaction_date: 16.12.2020, 14:21
+      total: $294.00
+      method: Master card
+      method_img: '/assets/images/dashboard/master-card.png'
+    - id: 134768
+      transaction_date: 16.12.2020, 14:21
+      total: $294.00
+      method: Master card
+      method_img: '/assets/images/dashboard/master-card.png'
+    - id: 887780
+      transaction_date: 16.12.2020, 14:21
+      total: $294.00
+      method: Paypal
+      method_img: '/assets/images/dashboard/card-3.png'
+    - id: 887780
+      transaction_date: 16.12.2020, 14:21
+      total: $294.00
+      method: Visa
+      method_img: '/assets/images/dashboard/card-4.png'
+    - id: 456667
+      transaction_date: 16.12.2020, 14:21
+      total: $294.00
+      method: Amex
+      method_img: '/assets/images/dashboard/card-1.png'
+    - id: 134768
+      transaction_date: 16.12.2020, 14:21
+      total: $294.00
+      method: Master card
+      method_img: '/assets/images/dashboard/master-card.png'
+    - id: 887780
+      transaction_date: 16.12.2020, 14:21
+      total: $294.00
+      method: Paypal
+      method_img: '/assets/images/dashboard/card-3.png'
+reviews_field:
+  type_action: order_list_actions
+  checkbox: false
+
+  fields:
+    - field: "#ID"
+    - field: Product
+    - field: Name
+    - field: Rating
+    - field: Date
+    - field: Actions
+
+  values:
+    - id: 23
+      name: Hoodie with pocket
+      des: Devon Lane
+      rating: 60%
+      date: 10.03.2020
+    - id: 24
+      name: Flowers cotton dress
+      des: Guy Hawkins
+      rating: 80%
+      date: 04.12.2019
+    - id: 25
+      name: Oversize cotton sweatshirt
+      des: Steven John
+      rating: 90%
+      date: 10.03.2020
+    - id: 26
+      name: Striped cotton-blend sweatshirt
+      des: Guy Hawkins
+      rating: 80%
+      date: 04.12.2019
+    - id: 27
+      name: Long-sleeve Maxi Dress
+      des: Devon Lane
+      rating: 100%
+      date: 10.03.2020
+    - id: 28
+      name: Linen-blend Shirt
+      des: Guy Hawkins
+      rating: 70%
+      date: 04.12.2019
+    - id: 29
+      name: Drawstring T-shirt Dress
+      des: Devon Lane
+      rating: 100%
+      date: 10.03.2020
+    - id: 30
+      name: Boxy Denim Jacket
+      des: Guy Hawkins
+      rating: 80%
+      date: 04.12.2019
+    - id: 31
+      name: Linen Check Blazer
+      des: Devon Lane
+      rating: 20%
+      date: 10.03.2020
+    - id: 32
+      name: Tinted Sunglasses
+      des: Guy Hawkins
+      rating: 80%
+      date: 04.12.2019
+    - id: 33
+      name: Polarised Sunglasses
+      des: Devon Lane
+      rating: 50%
+      date: 10.03.2020
+    - id: 34
+      name: Quilted Shopper
+      des: Guy Hawkins
+      rating: 90%
+      date: 04.12.2019
+    - id: 35
+      name: Flowers cotton dress
+      des: Guy Hawkins
+      rating: 80%
+      date: 04.12.2019
+brands_values:
+  - img: '/assets/images/dashboard/brand-1.jpg'
+    name: Cardinal
+    items: 398 items
+  - img: '/assets/images/dashboard/brand-2.jpg'
+    name: BirdFly
+    items: 13 items
+  - img: '/assets/images/dashboard/brand-3.jpg'
+    name: Cocorico
+    items: 25 items
+  - img: '/assets/images/dashboard/brand-4.jpg'
+    name: Yogilist
+    items: 56 items
+  - img: '/assets/images/dashboard/brand-5.jpg'
+    name: Acerie
+    items: 90 items
+  - img: '/assets/images/dashboard/brand-6.jpg'
+    name: Shivakin
+    items: 66 items
+  - img: '/assets/images/dashboard/brand-7.jpg'
+    name: Acera
+    items: 44 items
+  - img: '/assets/images/dashboard/brand-8.jpg'
+    name: Lion electronics
+    items: 75 items
+  - img: '/assets/images/dashboard/brand-9.jpg'
+    name: TwoHand
+    items: 93 items
+  - img: '/assets/images/dashboard/brand-10.jpg'
+    name: Kiaomin
+    items: 15 items
+  - img: '/assets/images/dashboard/brand-11.jpg'
+    name: Nokine
+    items: 26 items
+  - img: '/assets/images/dashboard/brand-12.jpg'
+    name: Doblet
+    items: 87 items
+  - img: '/assets/images/dashboard/brand-13.jpg'
+    name: Company name
+    items: 79 items
+  - img: '/assets/images/dashboard/brand-14.jpg'
+    name: Talius
+    items: 39 items
+  - img: '/assets/images/dashboard/brand-15.jpg'
+    name: Bitmule
+    items: 111 items
+  - img: '/assets/images/dashboard/brand-16.jpg'
+    name: Zeleny Kocur
+    items: 234 items
+  - img: '/assets/images/dashboard/brand-17.jpg'
+    name: LifeSpan
+    items: 14 items
+  - img: '/assets/images/dashboard/brand-18.jpg'
+    name: Shark Attach
+    items: 16 items
+
+topActionIndex:
+  - type: btn
+    btnClass: btn btn-primary
+    typeIcon: svg
+    icon : file-plus
+    textBtn: Create report
+
+topActionProduct:
+  - type: btn
+    btnClass: btn btn-outline-primary btn-hover-bg-primary me-4
+    textBtn: Export
+  - type: btn
+    btnClass: btn btn-outline-primary btn-hover-bg-primary me-4
+    textBtn: Import
+  - type: btn
+    btnClass: btn btn-primary
+    textBtn: Create new
+
+topActionSeller:
+  - type: btn
+    btnClass: btn btn-primary
+    typeIcon: icon
+    icon : far fa-plus
+    textBtn: Create new
+
+topActionAddNewProduct:
+  - type: btn
+    btnClass: btn btn-outline-primary me-4
+    textBtn: Save to draft
+  - type: btn
+    btnClass: btn btn-primary
+    textBtn: Publish
+
+topActionBrands:
+  - type: btn
+    btnClass: btn btn-primary
+    typeIcon: svg
+    icon: file-plus
+    textBtn: Add New Brand
+
+
+topActionStarterPage:
+  - type: btn
+    btnClass: btn btn-primary
+    textBtn: Create New

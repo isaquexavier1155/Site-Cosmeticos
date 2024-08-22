@@ -1,0 +1,53 @@
+{{/***
+Element Parameters
+---------------------------------------------
+$.class: 			Element extra class name
+$.contentClass:		Product review content class
+$.totalrate:        Total rate of product
+$.rate: 			Number rate product
+$.btnClass: 		Product review button
+$.icon: 			Icon pencil
+$.desc: 			Description review
+$.contentbtn:       Product review Content Button
+*/}}
+
+{{- $class := "d-md-flex justify-content-between align-items-center" -}}
+{{- if isset $ "class" }}
+{{- $class = $.class -}}
+{{ end -}}
+
+{{- $contentClass := "d-flex align-items-center" -}}
+{{- if isset $ "contentClass" }}
+{{- $contentClass = $.contentClass -}}
+{{ end -}}
+
+{{- $btnClass := "btn-outline-dark" -}}
+{{- if isset $ "btnClass" }}
+{{- $btnClass = $.btnClass -}}
+{{ end -}}
+
+<div class="{{- if $class }} {{ $class }}{{ end }}">
+	<div class="{{- if $contentClass }} {{ $contentClass }}{{ end }}">
+		{{- if $.totalrate -}}
+		<h4 class="fs-1 me-9 mb-0">{{ $.totalrate }}</h4>
+		{{- end }}
+		<div class="p-0">
+			{{- if $.rate -}}
+			{{ partial "elements/shop/items/rate" (dict "rate" $.rate "align" "start" "class" "mb-4" "size" "fs-6")}}
+			{{- end }}
+			{{- if $.desc -}}
+				<p class="mb-0">{{ $.desc }}</p>
+			{{- end }}
+		</div>
+	</div>
+	<div class="text-md-end mt-md-0 mt-7">
+		<a href="#customer-review" class="btn {{- if $btnClass }} {{ $btnClass }}{{ end }}" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="customer-review">
+			{{- if $.icon -}}
+			<svg class="icon">
+				<use xlink:href="#{{ $.icon }}"></use>
+			</svg>
+			Wire A Review
+			{{- end }}
+		</a>
+	</div>
+</div>

@@ -1,0 +1,21 @@
+mapbox_options:
+  center: [-106.53671888774004, 35.12362056187368]
+  setLngLat: [-106.53671888774004, 35.12362056187368]
+  zoom: 5
+  style: "mapbox://styles/mapbox/light-v10"
+
+
+mapbox_marker:
+  - position: [-102.53671888774004, 38.12362056187368]
+    className: "marker"
+    backgroundImage: "/assets/images/others/marker.png"
+    backgroundRepeat: "no-repeat"
+    width: "70px"
+    height: "70px"
+
+  - position: [-109.03671888774004, 33.02362056187368]
+    className: "marker"
+    backgroundImage: "/assets/images/others/marker.png"
+    backgroundRepeat: "no-repeat"
+    width: "70px"
+    height: "70px"

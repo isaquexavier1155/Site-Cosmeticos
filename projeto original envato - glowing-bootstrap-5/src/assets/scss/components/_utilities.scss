@@ -1,0 +1,15 @@
+.cursor-pointer {
+	cursor: pointer;
+}
+
+.color-inherit {
+	color: inherit !important;
+}
+
+.border-transparent {
+	border-color: transparent !important;
+}
+
+.text-body-emphasis-hover:hover {
+	color: var(--#{$prefix}emphasis-color) !important;
+}

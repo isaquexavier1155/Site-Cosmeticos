@@ -1,0 +1,44 @@
+.widget-color-item{
+	width: 20px;
+	height: 20px;
+	border-radius: 50%;
+	position: relative;
+}
+.widget-color-item::before{
+	content: '' !important;
+	width: 28px !important;
+	height: 28px !important;
+	display: block !important;
+	position: absolute !important;
+	left: -5px !important;
+	top: -5px !important;
+	border-radius: 50% !important;
+	transition: all .2s linear !important;
+	border: 2px solid #ccc !important;
+	opacity: 0 !important;
+	transform: scale(1.2) !important;
+}
+.widget-color-item-contain:hover{
+	.widget-color-item::before{
+		opacity: 1 !important;
+		transform: scale(1) !important;
+	}
+}
+.black{
+	background-color: black;
+}
+.pink{
+	background-color: pink;
+}
+.white{
+	background-color: white;
+}
+.maroon{
+	background-color: maroon;
+}
+.red{
+	background-color: red;
+}
+.dark-heathe{
+	background-color: #5E5E5E;
+}

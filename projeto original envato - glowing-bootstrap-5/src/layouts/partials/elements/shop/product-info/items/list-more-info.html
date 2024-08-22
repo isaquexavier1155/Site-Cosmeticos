@@ -1,0 +1,85 @@
+{{/***
+Element Parameters
+---------------------------------------------
+$.listInfoClass 	List info extra Class
+$.infoTitleClass	Info title extra Class
+$.listIconClass 	List icon extra Class
+$.iconShareClass	Icon share extra Class
+$.listClass			List extra Class
+$.infoContentClass	Info content extra Class
+$.sku				Shop sku
+$.category			Shop category
+$.share				Shop share
+*/}}
+
+{{- $listClass := "single-product-meta list-unstyled border-top pt-7 mt-7" -}}
+{{- if isset $ "listClass" }}
+    {{- $listClass = $.listClass -}}
+{{ end -}}
+
+{{- $listInfoClass := "d-flex mb-4 pb-2 align-items-center" -}}
+{{- if isset $ "listInfoClass" }}
+    {{- $listInfoClass = $.listInfoClass -}}
+{{ end -}}
+
+{{- $infoTitleClass := "text-body-emphasis fw-semibold fs-14px" -}}
+{{- if isset $ "infoTitleClass" }}
+    {{- $infoTitleClass = $.infoTitleClass -}}
+{{ end -}}
+
+{{- $infoContentClass := "ps-4" -}}
+{{- if isset $ "infoContentClass" }}
+    {{- $infoContentClass = $.infoContentClass -}}
+{{ end -}}
+
+{{- $listIconClass := "list-inline-item me-7" -}}
+{{- if isset $ "listIconClass" }}
+    {{- $listIconClass = $.listIconClass -}}
+{{ end -}}
+
+{{- $iconShareClass := "fs-14px text-body" -}}
+{{- if isset $ "iconShareClass" }}
+    {{- $iconShareClass = $.iconShareClass -}}
+{{ end -}}
+
+<ul class="{{- if $listClass}}{{$listClass}}{{- end}}">
+	{{- if $.sku}}
+		<li class="{{- if $listInfoClass}}{{$listInfoClass}}{{- end}}">
+			<span class="{{- if $infoTitleClass}}{{$infoTitleClass}}{{- end}}">Sku:</span>
+			<span class="{{- if $infoContentClass}}{{$infoContentClass}}{{- end}}">{{$.sku}}</span>
+		</li>
+	{{- end}}
+    {{- if $.category}}
+		<li class="{{- if $listInfoClass}}{{$listInfoClass}}{{- end}}">
+			<span class="{{- if $infoTitleClass}}{{$infoTitleClass}}{{- end}}">Categories:</span>
+			<span class="{{- if $infoContentClass}}{{$infoContentClass}}{{- end}}">{{$.category}}</span>
+		</li>
+    {{- end}}
+	{{- if $.share}}
+		<li class="{{- if $listInfoClass}}{{$listInfoClass}}{{- end}}">
+			<span class="{{- if $infoTitleClass}}{{$infoTitleClass}}{{- end}}">Share:</span>
+			<ul class="list-inline d-flex align-items-center mb-0 col-8 col-lg-10 ps-4">
+				<li class="{{- if $listIconClass}}{{$listIconClass}}{{- end}}">
+					<a href="#" class="{{- if $iconShareClass}}{{$iconShareClass}}{{- end}} product-info-share" data-bs-toggle="tooltip" data-bs-title="Twitter">
+						<i class="fab fa-twitter"></i>
+					</a>
+				</li>
+				<li class="{{- if $listIconClass}}{{$listIconClass}}{{- end}}">
+					<a href="#" class="{{- if $iconShareClass}}{{$iconShareClass}}{{- end}} product-info-share" data-bs-toggle="tooltip" data-bs-title="Facebook">
+						<i class="fab fa-facebook-f"></i>
+					</a>
+				</li>
+				<li class="{{- if $listIconClass}}{{$listIconClass}}{{- end}}">
+					<a href="#" class="{{- if $iconShareClass}}{{$iconShareClass}}{{- end}} product-info-share" data-bs-toggle="tooltip" data-bs-title="Instagram">
+						<i class="fab fa-instagram"></i>
+					</a>
+				</li>
+				<li class="list-inline-item">
+					<a href="#" class="{{- if $iconShareClass}}{{$iconShareClass}}{{- end}} product-info-share" data-bs-toggle="tooltip" data-bs-title="Youtube">
+						<i class="fab fa-youtube"></i>
+					</a>
+				</li>
+			</ul>
+		</li>
+	{{- end}}
+</ul>

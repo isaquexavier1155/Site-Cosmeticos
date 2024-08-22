@@ -1,0 +1,14 @@
+{{/*
+Block settings
+-------------------------------------------------
+id			Block ID
+class		Block class extral
+*/}}
+{{- $id := .Get "id" | default "" -}}
+{{- $class := .Get "class" | default "" -}}
+{{- $button1Class := "btn btn-lg btn-dark btn-hover-bg-primary btn-hover-border-primary" -}}
+
+<section {{- if $id }} id="{{ $id }}" {{- end -}} {{- if $class }} class="{{ $class }}" {{- end}}>
+	{{ .Inner }}
+    {{ partial "elements/hero/style-01" (dict "currentPage" . "data" "hero-home-1" "button1Class" $button1Class "contentClass" "text-start" "descClass" "text-body-calculate fs-18px mb-11") }}
+</section>

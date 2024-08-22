@@ -1,0 +1,60 @@
+{{/*
+Block settings
+-------------------------------------------------
+id			Block ID
+class		Block class extral
+*/}}
+{{- $id := .Get "id" | default "" -}}
+{{- $class := .Get "class" | default "" -}}
+
+<section {{- if $id }} id="{{ $id }}" {{- end -}} {{- if $class }} class="{{ $class }}" {{- end}}>
+    {{ .Inner }}
+	<div class="container">
+		<div class="row gy-30px gx-30px">
+			<div class="col-12 col-lg-5" data-animate="fadeInUp">
+                {{ partial  "elements/banner/style-9" (dict "title" "25% off Everything"
+                "desc" "Makeup with extended range in colors for every human."
+                "image" "/assets/images/banner/banner-48.jpg" "width" "450" "height" "450"
+                "btnContent" "Shop Sale"
+                "titleClass" "mw-xl-60 mw-lg-0 w-md-80 mb-7 fs-42px"
+                "altContent" "25% off Everything"
+				"descClass" "fs-18px w-md-70 text-body"
+				"ignore_dark_mode" "true")}}
+			</div>
+			<div class="col-12 col-lg-7" data-animate="fadeInUp">
+                {{ partial  "elements/banner/style-10" (dict
+				"currentPage" .
+				"subtitle" ""
+                "title" ""
+                "image" "/assets/images/banner/banner-46.jpg"
+				"img_dark" "/assets/images/banner/banner-white-46.jpg"
+				"width" "690" "height" "450"
+                "btnContent" ""
+                "titleClass" "") }}
+			</div>
+		</div>
+		<div class="row mt-0 gy-30px gx-30px" data-animate="fadeInUp">
+			<div class="col-12 col-lg-7">
+                {{ partial  "elements/banner/style-10" (dict "subtitle" ""
+				"currentPage" .
+                "title" ""
+                "image" "/assets/images/banner/banner-47.jpg"
+				"img_dark" "/assets/images/banner/banner-white-47.jpg"
+				"width" "690" "height" "450"
+                "btnContent" ""
+                "titleClass" ""
+				"altContent" "") }}
+			</div>
+			<div class="col-12 col-lg-5" data-animate="fadeInUp">
+                {{ partial  "elements/banner/style-9" (dict "title" "Get The Skin You Want To Feel"
+                "desc" "Makeup with extended range in colors for every human."
+                "image" "/assets/images/banner/banner-48.jpg" "width" "450" "height" "450"
+                "btnContent" "Shop Now"
+                "titleClass" "mb-7 fs-42px"
+				"altContent" "Get The Skin You Want To Feel"
+				"descClass" "fs-18px w-md-70 text-body"
+				"ignore_dark_mode" "true")}}
+			</div>
+		</div>
+	</div>
+</section>

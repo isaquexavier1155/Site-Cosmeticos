@@ -1,0 +1,26 @@
+{{/*
+Block settings
+-------------------------------------------------
+id			Block ID
+class		Block class extral
+*/}}
+{{- $class := .Get "class" | default "bg-image bg-fixed vh-100 d-flex align-items-center" -}}
+
+<section data-full-page="25% off Everything"
+		data-bg-src="/assets/images/hero-slider/hero-slider-23.jpg" {{- if $class }} class="lazy-bg {{ $class }}" {{- end}}>
+    {{ .Inner }}
+	<div class="container container-xxl hero">
+		<div class="row">
+			<div class="mx-auto text-center">
+                {{ partial "elements/hero/hero-element/content.html" (dict "currentPage" .
+                "subtitle" "25% off Everything"
+                "title" "Made using clean, non-toxic ingredients"
+                "button2" "Shop Sale"
+                "subtitleClass" "hero-title text-white fw-500 hero-title-3"
+                "titleClass" "fs-4 text-white fw-semibold mb-12"
+                "button2Class" "p-0 mt-11 text-white"
+                ) }}
+			</div>
+		</div>
+	</div>
+</section>

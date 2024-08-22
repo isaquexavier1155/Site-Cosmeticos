@@ -1,0 +1,38 @@
+{{/***
+Element Parameters
+---------------------------------------------
+$.titleClass		Element title class extra
+$.subtitleClass		Element subtitle class extra
+$.socialClass
+$.img_paypal		Footer widget paypal
+$.paypalClass		Footer widget paypal class	Footer widget
+$.subtitle			Footer widget subtitle
+*/}}
+
+{{- $class := "mt-0 mt-lg-20 pt-lg-4" -}}
+{{- if isset $ "class" }}
+    {{- $class = $.class -}}
+{{ end -}}
+
+<div class="row align-items-center {{ $class }}">
+	<div class="{{ $.socialClass }}">
+		<p class="mb-0">© Glowing 2023</p>
+		<ul class="list-inline fs-18px ms-6 mb-0">
+			<li class="list-inline-item me-8">
+				<a href="#"><i class="fab fa-twitter"></i></a>
+			</li>
+			<li class="list-inline-item me-8">
+				<a href="#"><i class="fab fa-facebook-f"></i></a>
+			</li>
+			<li class="list-inline-item me-8">
+				<a href="#"><i class="fab fa-instagram"></i></a>
+			</li>
+			<li class="list-inline-item">
+				<a href="#"><i class="fab fa-youtube"></i></a>
+			</li>
+		</ul>
+	</div>
+	<div class="{{ $.paypalClass }}">
+		<img src="#" data-src="/assets/images/footer/img_1.png" width="313" height="28" alt="Paypal" class="img-fluid lazy-image">
+	</div>
+</div>

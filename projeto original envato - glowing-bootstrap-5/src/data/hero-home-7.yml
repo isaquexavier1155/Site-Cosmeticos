@@ -1,0 +1,28 @@
+items:
+  - subtitle:
+    img: "/assets/images/hero-slider/hero-slider-15.jpg"
+    imgDark: "/assets/images/hero-slider/hero-slider-white-15.jpg"
+    title: "Love Your Skin Naturally"
+    desc: "Made using clean, non-toxic ingredients, our products are designed for everyone."
+    button1: "Shop Now"
+  - subtitle:
+    img: "/assets/images/hero-slider/hero-slider-16.jpg"
+    imgDark: "/assets/images/hero-slider/hero-slider-white-16.jpg"
+    title: "Our Autumn Skincare"
+    desc: "Made using clean, non-toxic ingredients, our products are designed for everyone."
+    button1: "Shop Now"
+  - subtitle:
+    img: "/assets/images/hero-slider/hero-slider-17.jpg"
+    imgDark: "/assets/images/hero-slider/hero-slider-white-17.jpg"
+    title: "Love Your Skin Naturally"
+    desc: "Made using clean, non-toxic ingredients, our products are designed for everyone."
+    button1: "Shop Now"
+config:
+  slidesToShow: 1
+  infinite: true
+  dots: false
+  arrows: false
+  fade: true
+  autoplay: true
+  cssEase: ease-in-out
+  speed: 600

@@ -1,0 +1,57 @@
+{{- /*
+  Usage: `example args`
+
+  `args` are all optional and can be one of the following:
+    * id: the `div`'s id - default: ""
+    * class: any extra class(es) to be added to the `div` - default: ""
+    * show_preview: if the preview should be output in the HTML - default: `true`
+    * show_markup: if the markup should be output in the HTML - default: `true`
+*/ -}}
+
+{{- $id := .Get "id" -}}
+{{- $class := .Get "class" -}}
+{{- $lang := .Get "lang" | default "html" -}}
+{{- $show_preview := .Get "show_preview" | default "true" -}}
+{{- $show_markup := .Get "show_markup" | default "true" -}}
+{{- $container := .Get "container" | default "" -}}
+{{- $no_margin := .Get "no_margin" | default "false" -}}
+{{- $code_preview := .Get "code_preview" | default "false" -}}
+{{- $input := .Inner -}}
+
+{{ $seed := "example" }}
+{{ $random_id := delimit (shuffle (split (md5 $seed) "" )) "" }}
+
+<div class="card doc-example {{ if eq $no_margin "false" -}} mb-12 mt-6 {{ end }}">
+	{{- if eq $show_preview "true" -}}
+		<div class="card-body">
+			<div{{ with $id }} id="{{ . }}"{{ end }} class="doc-example-preview{{ with $class }} {{ . }}{{ end }}">
+				{{- $input -}}
+			</div>
+		</div>
+	{{- end -}}
+	<div class="doc-example-markup-container {{- if $container }} {{ $container }}{{ end -}}">
+		<div class="doc-example-markup-content">
+			{{- if eq $show_markup "true" -}}
+				{{- if eq $show_preview "true" -}}
+					<div class="card-footer position-relative doc-example-markup-header py-5">
+						<a class="collapse-link collapsed" data-bs-toggle="collapse" href="#example-{{ $random_id }}" aria-expanded="true">
+							<span>View example's code</span>
+						</a>
+					</div>
+				{{- end -}}
+
+				<div id="example-{{ $random_id }}" class="card-footer {{- if eq $lang "html" }} hljs-markup {{ end -}} {{- if eq $code_preview "true" }}code-preview overflow-auto {{ end -}}  p-0 accordion-collapse collapse {{ if ne $show_preview "true" }}show border-top-0{{ end }}">
+					<div class="doc-example-markup">
+						{{- $content := replaceRE `<svg class="bd-placeholder-img(?:-lg)?(?: *?bd-placeholder-img-lg)? ?(.*?)".*?<\/svg>\n` `<img src="..." class="$1" alt="...">` $input -}}
+						{{- $content = replaceRE ` (class=" *?")` "" $content -}}
+						{{- if eq $lang "html" }}
+							<pre><code class="hljs language-html" data-content="{{ $content | jsonify }}"></code></pre>
+						{{- else -}}
+							{{- highlight (trim $content "\n") $lang "" -}}
+						{{ end -}}
+					</div>
+				</div>
+			{{- end -}}
+		</div>
+	</div>
+</div>

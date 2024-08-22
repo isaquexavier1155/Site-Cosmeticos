@@ -1,0 +1,22 @@
+{{ .Inner }}
+<div class="card mb-4 rounded-4">
+	<div class="card-body p-7">
+		<h2 class="card-title fs-4 mb-6">Products by seller</h2>
+		<div class="row mx-n5">
+			{{- range $product := $.Site.Data.dashboard.sellers_list_field.seller_products -}}
+			<div class="col-sm-6 col-xl-custom px-5">
+				<div class="card rounded-xl card-product mb-7">
+					<a href="../shop/product-details-v1.html" title="{{$product.name}}">
+						<img src="#" data-src="{{ $product.img}}"
+							 alt="{{$product.title}}" class="lazy-image card-img-top" width="270" height="360">
+					</a>
+					<div class="card-body p-6">
+						<a href="#" class="cart-title">{{$product.name}}</a>
+						<div class="price mb-4 text-primary fw-500">{{$product.price}}</div>
+					</div>
+				</div>
+			</div>
+			{{- end -}}
+		</div>
+	</div>
+</div>

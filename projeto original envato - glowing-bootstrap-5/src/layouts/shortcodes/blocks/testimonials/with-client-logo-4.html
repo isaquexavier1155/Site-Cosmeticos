@@ -1,0 +1,36 @@
+{{/*
+Block settings
+-------------------------------------------------
+id			Block ID
+class		Block class extral
+*/}}
+{{- $id := .Get "id" | default "with_client_logo_4" -}}
+{{- $class := .Get "class" | default "container pt-lg-20 pb-lg-19 pt-15 pb-16" -}}
+{{- $currentPage := .  -}}
+<section {{- if $id }} id="{{ $id }}" {{- end }} class="bg-body-tertiary" >
+	{{ .Inner }}
+	<div {{- if $class }} class="{{ $class }}" {{- end}}>
+		<div class="row mb-11 mb-lg-15">
+			<div class="col-lg-9 offset-lg-1 col-xl-8 offset-xl-2">
+				<div class="slick-slider main" data-slick-options='{"slidesToShow": 1,"dots":false,"arrows":false, "asNavFor": "#{{- $id }} .thumb"}'>
+					{{ range $item := $.Site.Data.with_client_logo_1 }}
+						<div class="text-center">
+							<h4 class="mb-0">"{{- $item.content -}}"</h4>
+						</div>
+
+					{{- end -}}
+				</div>
+			</div>
+		</div>
+
+		<div class="slick-slider thumb" data-slick-options='{"slidesToShow": 6,"focusOnSelect": true,"arrows": false, "dots": false, "asNavFor": "#{{- $id }} .main", "responsive":[{"breakpoint":992,"settings":{"dots":true,"slidesToShow":4}},{"breakpoint":768,"settings":{"dots":true,"slidesToShow":3}},{"breakpoint":576,"settings":{"dots":true,"slidesToShow":2}}] }'>
+			{{ range $item := $.Site.Data.with_client_logo_1 }}
+				<div class="client-logo-item">
+					{{  partial "the-image" (dict "currentPage" $currentPage "img" $item.image.src "img_dark" $item.image.srcDark "class" "w-auto mx-auto opacity-30" "width" $item.image.width "height" $item.image.height "alt" $item.name) }}
+				</div>
+			{{- end -}}
+		</div>
+
+	</div>
+</section>
+

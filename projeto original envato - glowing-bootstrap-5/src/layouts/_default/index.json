@@ -1,0 +1,10 @@
+{{- $.Scratch.Add "index" slice -}}
+{{- range .Site.RegularPages -}}
+	{{- if eq .Params.layout "docs" -}}
+		{{- $url := .Permalink | relURL -}}
+		{{- $content := replaceRE `((<pre tabindex="0" class="chroma">))(.|\n)*?(<\/code><\/pre>)` "" .Content -}}
+		{{- $content := $content | plainify -}}
+		{{- $.Scratch.Add "index" (dict "title" .Title "tags" .Params.tags "description" .Params.description "contents" $content "permalink" $url ) -}}
+	{{- end -}}
+{{- end -}}
+{{- $.Scratch.Get "index" | jsonify -}}

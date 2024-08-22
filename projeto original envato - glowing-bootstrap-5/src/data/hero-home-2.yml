@@ -1,0 +1,30 @@
+items:
+  - subtitle: "Find Inspration"
+    img: "/assets/images/hero-slider/hero-slider-04.jpg"
+    title: "Body Daily<br>Oil Wash"
+    desc:
+    button2: "Discover Now"
+  - subtitle: "Shop Our Set"
+    img: "/assets/images/hero-slider/hero-slider-05.jpg"
+    title: "The 3-Step<br>Skincare Routine"
+    desc:
+    button2: "Discover Now"
+  - subtitle: "New Arrivals"
+    img: "/assets/images/hero-slider/hero-slider-06.jpg"
+    title: "Cleanser<br>Concentrate"
+    desc:
+    button2: "Discover Now"
+config:
+  slidesToShow: 1
+  infinite: true
+  dots: false
+  arrows: false
+  fade: true
+  autoplay: true
+  cssEase: ease-in-out
+  speed: 600
+  autoplaySpeed: 9000
+creativeDots:
+  - title: "01."
+  - title: "02."
+  - title: "03."

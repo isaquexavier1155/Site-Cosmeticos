@@ -1,0 +1,16 @@
+{{/*
+Block settings
+-------------------------------------------------
+id			Block ID
+class		Block class extral
+*/}}
+{{- $id := .Get "id" | default "" -}}
+{{- $class := .Get "class" | default "py-25" -}}
+
+<section {{- if $id }} id="{{ $id }}" {{- end }} class="py-3" data-animate="fadeInUp">
+	{{ .Inner }}
+	{{  partial "overlay" (dict "currentPage" . "img" "/assets/images/others/video-03.jpg" "imgDark" "/assets/images/banner/banner-white-42.jpg") }}
+	<div class="d-flex align-items-center justify-content-center {{- if $class }} {{ $class }} {{- end -}}">
+		{{ partial "elements/video/style-1" (dict "link" "https://www.youtube.com/watch?v=6v2L2UGZJAM" "extraClass" "my-15")}}
+	</div>
+</section>

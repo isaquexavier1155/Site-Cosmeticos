@@ -1,0 +1,23 @@
+.pagination {
+  --#{$prefix}pagination-size: 40px;
+}
+
+.page-link {
+  width: var(--#{$prefix}pagination-size);
+  height: var(--#{$prefix}pagination-size);
+  text-align: center;
+  line-height: var(--#{$prefix}pagination-size);
+  border-radius: 100%;
+  padding: 0;
+  font-weight: 600;
+}
+
+
+.pagination-lg {
+  --#{$prefix}pagination-size: 50px;
+}
+
+.pagination-sm {
+  --#{$prefix}pagination-size: 30px;
+}
+

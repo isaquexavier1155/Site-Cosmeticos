@@ -1,0 +1,28 @@
+.bg-image, .bg-overlay {
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-attachment: scroll;
+	background-position: center center;
+	position: relative;
+}
+
+.bg-auto {
+	background-size: auto !important;
+}
+
+.bg-full {
+	background-size: 100% !important;
+}
+
+.bg-fixed {
+	background-attachment: fixed !important;
+}
+
+.bg-cover {
+	background-size: cover !important;
+}
+
+.bg-overlay {
+	top: 0;
+	left: 0;
+}

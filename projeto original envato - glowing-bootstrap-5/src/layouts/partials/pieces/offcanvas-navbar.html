@@ -1,0 +1,16 @@
+{{ $menu := "menu" }}
+{{- if $.Page.Params.menu_mobile }}
+{{ $menu = $.Page.Params.menu_mobile }}
+{{ end -}}
+
+<div class="navbar">
+	<div id="offCanvasNavBar" class="offcanvas offcanvas-start" style="--bs-offcanvas-width: 310px">
+		{{ partial "header/items/menu-offcanvas-header" (dict "context" . ) }}
+		<div class="offcanvas-body pt-0 mb-2">
+			<ul class="navbar-nav">
+				{{ partial "menu/menu-default" (dict "page" . "dropdown_hover_enable" "false" "menu" $menu "nav_item_class" "py-0" "nav_link_class" "text-uppercase fw-semibold ls-1 fs-15px" "suffix" "-canvas" ) }}
+			</ul>
+		</div>
+		{{ partial "header/items/menu-offcanvas-footer" }}
+	</div>
+</div>

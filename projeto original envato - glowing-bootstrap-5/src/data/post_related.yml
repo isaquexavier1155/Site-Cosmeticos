@@ -1,0 +1,35 @@
+items:
+  - title: Our Favorite Multitasking Products
+    cat: Videos
+    image:
+      src: '/assets/images/blog/post-12-237x288.jpg'
+      width: 237
+      height: 288
+  - title: How to Plop Hair for Bouncy, Beautiful Curls
+    cat: Videos
+    image:
+      src: '/assets/images/blog/post-05-237x288.jpg'
+      width: 237
+      height: 288
+  - title: Are You Washing Your Face Properly?
+    cat: Videos
+    image:
+      src: '/assets/images/blog/post-03-237x288.jpg'
+      width: 237
+      height: 288
+options:
+  dots: false
+  arrows: false
+  slidesToShow: 3
+  responsive:
+    - breakpoint: 1200
+      settings:
+        slidesToShow: 3
+    - breakpoint: 992
+      settings:
+        dots: true
+        slidesToShow: 2
+    - breakpoint: 768
+      settings:
+        dots: true
+        slidesToShow: 1

@@ -1,0 +1,30 @@
+{{ .Inner }}
+{{ .Inner }}
+{{- $id := .Get "id" | default "" -}}
+{{- $class := .Get "class" | default "container container-xxl pt-15 pb-16 pb-lg-18 pt-lg-19" -}}
+{{- $currentPage := .  -}}
+
+<section {{- if $id }} id="{{ $id }}" {{- end -}} {{- if $class }} class="{{ $class }}" {{- end}}>
+    {{ partial  "elements/heading/style-1" (dict "currentPage" . "title" "Because You Need Time for Yourself. <br> Blend Beauty in You" "subtitle" "SHOP BY CATEGORIES" "animation" "fadeInUp") }}
+	<div class="row mt-13">
+		{{- range $item := $.Site.Data.product_category_1 }}
+			<div class="col-lg-3 col-md-6 col-12" data-animate="fadeInUp">
+				{{ partial "elements/shop/product-category-1" (dict
+					"currentPage" $currentPage
+					"img" $item.img
+					"img_dark" $item.img_dark
+					"imgWidth" $item.imgWidth
+					"imgHeight" $item.imgHeight
+					"namePro" $item.namePro
+					"linkPro" $item.linkPro
+					"numberItem" $item.numberItem
+				) }}
+			</div>
+		{{- end -}}
+	</div>
+	<div class="text-center mt-10">
+		<a href="../shop/shop-layout-v1.html" target="_blank" class="btn btn-outline-dark">
+			Shop All Products
+		</a>
+	</div>
+</section>

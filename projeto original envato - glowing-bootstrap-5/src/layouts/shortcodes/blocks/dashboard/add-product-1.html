@@ -1,0 +1,140 @@
+{{ .Inner }}
+<div class="row">
+	<div class="col-xxl-9">
+		<div class="row">
+			<div class="col-lg-8">
+				<div class="card mb-8 rounded-4">
+					<div class="card-header p-7 bg-transparent">
+						<h4 class="fs-18 mb-0 font-weight-500">Basic</h4>
+					</div>
+					<div class="card-body p-7">
+						<form class="form-border-1">
+							<div class="mb-8">
+								<label for="product_title" class="mb-4 fs-13px ls-1 fw-bold text-uppercase">Product title</label>
+								<input type="text" placeholder="Type here" class="form-control" id="product_title">
+							</div>
+							<div class="mb-8">
+								<label class="mb-4 fs-13px ls-1 fw-bold text-uppercase">Full description</label>
+								<textarea placeholder="Type here" class="form-control" rows="4"></textarea>
+							</div>
+							<div class="row">
+								<div class="col-lg-4">
+									<div class="mb-8">
+										<label class="mb-4 fs-13px ls-1 fw-bold text-uppercase" for="regular-price">Regular price</label>
+										<input placeholder="$" type="text" class="form-control" id="regular-price">
+									</div>
+								</div>
+								<div class="col-lg-4">
+									<div class="mb-8">
+										<label class="mb-4 fs-13px ls-1 fw-bold text-uppercase" for="promotional-price">Promotional price</label>
+										<input placeholder="$" type="text" class="form-control" id="promotional-price">
+									</div>
+								</div>
+								<div class="col-lg-4">
+									<label class="mb-4 fs-13px ls-1 fw-bold text-uppercase" for="currency">Currency</label>
+									<select class="form-select" id="currency">
+										<option>USD</option>
+										<option>EUR</option>
+										<option>RUBL</option>
+									</select>
+								</div>
+							</div>
+							<div class="mb-8">
+								<label class="mb-4 fs-13px ls-1 fw-bold text-uppercase" for="tax-rate">Tax rate</label>
+								<input type="text" placeholder="%" class="form-control" id="tax-rate">
+							</div>
+							<label class="form-check mb-5" for="make-template">
+								<input class="form-check-input" type="checkbox" value="" id="make-template">
+								<span class="form-check-label"> Make a template </span>
+							</label>
+						</form>
+					</div>
+				</div>
+				<!-- card end// -->
+				<div  class="card mb-8 rounded-4">
+					<div class="card-header p-7 bg-transparent">
+						<h4 class="fs-18px mb-0 font-weight-500">Shipping</h4>
+					</div>
+					<div class="card-body p-7">
+						<form class="form-border-1">
+							<div class="row">
+								<div class="col-lg-6">
+									<div class="mb-8">
+										<label for="width" class="mb-4 fs-13px ls-1 fw-bold text-uppercase">Width</label>
+										<input type="text" placeholder="inch" class="form-control" id="width">
+									</div>
+								</div>
+								<div class="col-lg-6">
+									<div class="mb-8">
+										<label for="height" class="mb-4 fs-13px ls-1 fw-bold text-uppercase">Height</label>
+										<input type="text" placeholder="inch" class="form-control" id="height">
+									</div>
+								</div>
+							</div>
+							<div class="mb-8">
+								<label for="weight" class="mb-4 fs-13px ls-1 fw-bold text-uppercase">Weight</label>
+								<input type="text" placeholder="gam" class="form-control" id="weight">
+							</div>
+							<div class="mb-8">
+								<label for="shipping-fee" class="mb-4 fs-13px ls-1 fw-bold text-uppercase">Shipping fees</label>
+								<input type="text" placeholder="$" class="form-control" id="shipping-fee">
+							</div>
+						</form>
+					</div>
+				</div>
+				<!-- card end// -->
+			</div>
+			<div class="col-lg-4">
+				<div  class="card mb-8 rounded-4">
+					<div class="card-header p-7 bg-transparent">
+						<h4 class="fs-18px mb-0 font-weight-500">Media</h4>
+					</div>
+					<div class="card-body p-7">
+						<div class="input-upload">
+							<div class="mb-7">
+								<img src="/assets/images/dashboard/upload.svg" width="102" class="d-block mx-auto" alt="">
+							</div>
+							<input class="form-control" type="file">
+						</div>
+					</div>
+				</div>
+				<!-- card end// -->
+				<div  class="card mb-8 rounded-4">
+					<div class="card-header p-7 bg-transparent">
+						<h4 class="fs-18px mb-0 font-weight-500">Organization</h4>
+					</div>
+					<div class="card-body p-7">
+						<div class="row mx-n3">
+							<div class="col-sm-6 mb-6 px-3">
+								<label class="mb-4 fs-13px ls-1 fw-bold text-uppercase " for="category">Category</label>
+								<select class="form-select" id="category">
+									<option>Automobiles</option>
+									<option>Home items</option>
+									<option>Electronics</option>
+									<option>Smartphones</option>
+									<option>Sport items</option>
+									<option>Baby and Tous</option>
+								</select>
+							</div>
+							<div class="col-sm-6 mb-6 px-3">
+								<label class="mb-4 fs-13px ls-1 fw-bold text-uppercase" for="sub-category">Sub-category</label>
+								<select class="form-select" id="sub-category">
+									<option>Nissan</option>
+									<option>Honda</option>
+									<option>Mercedes</option>
+									<option>Chevrolet</option>
+								</select>
+							</div>
+							<div class="mb-5 col-12 px-3">
+								<label for="tag" class="mb-4 fs-13px ls-1 fw-bold text-uppercase">Tags</label>
+								<input type="text" class="form-control" id="tag">
+							</div>
+						</div>
+						<!-- row.// -->
+					</div>
+				</div>
+				<!-- card end// -->
+			</div>
+		</div>
+	</div>
+</div>

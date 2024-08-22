@@ -1,0 +1,37 @@
+{{/***
+Element Parameters
+---------------------------------------------
+$.class: 			Element extra class name
+$.submitClass		Class of submit button
+*/}}
+{{- $class := "pt-lg-12 pt-10" -}}
+{{- if isset $ "class" }}
+    {{- $class = $.class -}}
+{{ end -}}
+
+<div {{- if $class }} class="{{ $class }}"{{ end }}>
+	<h3 class="text-center mb-11">Leave a Comment</h3>
+	<form class="row gy-30px">
+		<div class="col-sm-6">
+			<label for="input_comment_name" class="visually-hidden">Name</label>
+			<input type="text" class="form-control" id="input_comment_name" name="input_comment_name" placeholder="Name" />
+		</div>
+		<div class="col-sm-6">
+			<label for="input_comment_email" class="visually-hidden">Email</label>
+			<input type="email" class="form-control" id="input_comment_email" name="input_comment_email" placeholder="Email">
+		</div>
+		<div class="col-12">
+			<label for="input_comment_message" class="visually-hidden">Email</label>
+			<textarea class="form-control" name="input_comment_message" id="input_comment_message" placeholder="Message" rows="6"></textarea>
+		</div>
+		<div class="col-12 mt-8">
+			<div class="form-check">
+				<input type="checkbox" class="form-check-input" id="input_comment_remember">
+				<label class="form-check-label" for="input_comment_remember">Save my name, email in this browse for the next time I comment</label>
+			</div>
+		</div>
+		<div class="col-12 text-center">
+			<button type="submit" class="btn btn-dark btn-hover-bg-primary btn-hover-border-primary">Submit</button>
+		</div>
+	</form>
+</div>

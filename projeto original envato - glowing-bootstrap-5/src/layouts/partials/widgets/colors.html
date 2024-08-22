@@ -1,0 +1,61 @@
+{{/***
+Element Parameters
+---------------------------------------------
+$.currentPage: 		$.currentPage.Page, $.currentPage.Site
+$.name          Widget Name
+$.class		    Element class extra
+$.cateClass     Category Class
+$.subCateClass  Category Chidren Class
+$.parentCateClass  Category Parent Class
+$.title		    Widget Title
+$.id            ID wrapper
+$.data		    Data
+*/}}
+
+{{- $title := "Colors" -}}
+{{- if isset $ "title" }}
+    {{- $title = $.title -}}
+{{ end -}}
+
+{{- $id := "widget_product_colors" -}}
+{{- if isset $ "id" }}
+    {{- $id = $.id -}}
+{{ end -}}
+
+{{- $data := $.currentPage.Site.Data.widget_product_colors -}}
+{{- if isset $ "data" }}
+    {{- $data = $.data -}}
+{{ end -}}
+
+{{- $widgetName := "product_colors" -}}
+{{- if isset $ "name" -}}
+    {{- $widgetName = $.name -}}
+{{- end -}}
+
+{{ $wrapperClass := printf "%s%s" "widget widget-" $widgetName }}
+{{- if isset $ "class" -}}
+    {{ $wrapperClass = printf "%s %s" $wrapperClass $.class }}
+{{- end -}}
+
+
+<div class="{{- $wrapperClass -}}">
+    {{- if $title -}}
+        {{ partial "widgets/widget-title" $title}}
+    {{- end -}}
+    {{- if $data }}
+        <ul class="navbar-nav navbar-nav-cate" id="{{- $id -}}">
+            {{ range $item := $data }}
+                {{- $cateClass := "text-reset position-relative d-block text-decoration-none text-body-emphasis-hover d-flex align-items-center" -}}
+                {{- if isset $ "cateClass" -}}
+                    {{- $cateClass = printf "%s %s" $cateClass $.cateClass -}}
+                {{- end -}}
+                <li class="nav-item">
+                    {{ if ($item.is_active) }}
+                        {{- $cateClass = printf "%s%s" $cateClass " active" -}}
+                    {{ end }}
+                    <a href="{{ $item.url }}" title="{{ $item.title }}" class="{{- $cateClass -}}"><span class="square rounded-circle me-4" style="background-color: {{ $item.color | safeHTMLAttr}}"></span> <span class="text-hover-underline">{{ $item.title }}</span></a>
+                </li>
+            {{ end }}
+        </ul>
+    {{ end -}}
+</div>

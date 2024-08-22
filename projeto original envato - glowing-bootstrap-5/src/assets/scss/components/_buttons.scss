@@ -1,0 +1,69 @@
+//
+// Button White
+//
+.btn-white {
+	$value: $white;
+	@include button-variant(
+			$value,
+			$value,
+		$hover-background: $black,
+		$hover-border: $black,
+		$active-background: $black,
+		$active-border: $black
+	)
+}
+
+.btn-outline-white {
+	@include button-outline-variant($white);
+}
+
+
+//
+// Button Black
+//
+.btn-black {
+	$value: $black;
+	@include button-variant(
+			$value,
+			$value,
+		$hover-background: $white,
+		$hover-border: $white,
+		$active-background: $white,
+		$active-border: $white
+	);
+}
+
+.btn-outline-black {
+	@include button-outline-variant($black);
+}
+
+.btn-outline-dark {
+	--#{$prefix}btn-border-color: #{$border-color};
+	--#{$prefix}btn-box-shadow: 0 0;
+}
+
+.btn-hover-border-body-emphasis-color {
+	--#{$prefix}btn-hover-border-color: var(--#{$prefix}emphasis-color);
+}
+
+.btn-hove-border-body-emphasis-color {
+	--#{$prefix}btn-hover-border-color: var(--#{$prefix}emphasis-color);
+}
+
+.btn-text-light-body-emphasis {
+	--#{$prefix}btn-color: var(--#{$prefix}emphasis-color);
+}
+
+.btn-outline {
+	--#{$prefix}btn-border-color: #{$border-color};
+}
+
+@if $enable-dark-mode {
+	@include color-mode(dark) {
+		.btn-outline-dark {
+			--#{$prefix}btn-border-color: #{$border-color-dark};
+			--#{$prefix}btn-color: #{$body-emphasis-color-dark};
+		}
+	}
+}
+

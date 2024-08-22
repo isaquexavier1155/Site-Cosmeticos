@@ -1,0 +1,43 @@
+.form-control {
+	border-color: $input-bg;
+
+	&:focus {
+		border-color: var(--#{$prefix}primary) !important;
+		background: $input-bg;
+	}
+}
+
+.input-group {
+	> .form-control:focus ~ .form-control-append {
+		z-index: 3;
+	}
+}
+
+.form-control-no-border {
+	border-color: transparent;
+}
+
+.select2-container--bootstrap-5 .selection .select2-selection {
+	min-height: $input-height;
+	padding: 0;
+
+	.select2-selection__rendered,
+	.select2-search,
+	.select2-search__field {
+		min-height: $input-height !important;
+	}
+
+	.select2-search__field {
+		padding: 0 $input-padding-x;
+	}
+}
+
+.form-check-input-body-emphasis:checked {
+	background-color: var(--#{$prefix}emphasis-color);
+	border-color: var(--#{$prefix}emphasis-color);
+}
+
+.form-check-input-dark:checked {
+	background-color: var(--#{$prefix}dark);
+	border-color: var(--#{$prefix}dark);
+}

@@ -1,0 +1,33 @@
+{{- $id := .Get "id" | default "our_best_sellers_4" -}}
+{{- $class := .Get "class" | default "py-lg-17 py-15" -}}
+{{- $title_class := .Get "title_class" | default "mb-6 mt-2 font-primary fw-normal" -}}
+{{- $sliderClass := .Get "sliderClass" | default "" -}}
+
+<section {{- if $id }} id="{{ $id }}" {{- end -}} >
+	{{ .Inner }}
+	<div {{- if $class }} class="{{ $class }}" {{- end}}>
+		<div class="container container-xxl mb-13 d-xl-flex" data-animate="fadeInUp">
+			{{ partial  "elements/heading/style-1" (dict "currentPage" .
+			"align" "left"
+			"class" "flex-grow-1"
+			"title" "Our Bestsellers"
+			"desc" "Looking for something specific? Shop by category to find your perfect piece of jewellery!"
+			"descExtraClass" "mw-xl-40 mw-lg-50 mw-md-75"
+			"titleClass" $title_class
+			"animation" "fadeInUp"
+			)
+			}}
+		</div>
+		<div class="container-fluid">
+			<div data-animate="fadeInUp" class="slick-slider our-best-seller-4 mb-0" data-slick-options='{{ $.Site.Data.our_bestSeller_4.options | jsonify }}'>
+				{{- range $item := $.Site.Data.our_bestSeller_4.items -}}
+				<div data-animate="fadeInUp">
+				{{ partial  "elements/shop/skins/grid-1" (dict
+					"data" $item
+					) }}
+				</div>
+				{{- end -}}
+			</div>
+		</div>
+	</div>
+</section>

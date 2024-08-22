@@ -1,0 +1,39 @@
+{{ .Inner }}
+{{- $id := .Get "id" | default "product_tabs" -}}
+{{- $class := .Get "class" | default "container container-xxl pt-15" -}}
+
+<section {{- if $id }} id="{{ $id }}" {{- end -}} {{- if $class }} class="{{ $class }}" {{- end}} data-bs-toggle="tab-accordion">
+	<ul class="nav nav-tabs border-0 d-lg-flex justify-content-center mb-12 d-none" role="tablist">
+		{{- range $index, $item := $.Site.Data.product_tabs -}}
+			<li class="nav-item" role="presentation">
+				<h2 class="mb-0 px-2 mx-1">
+					<button class="nav-link px-10 py-0 border-0 text-body-emphasis opacity-30 {{- if eq $index 0 }} active {{- end -}}" id="{{ $item.title | urlize }}-tab" data-bs-toggle="tab" data-bs-target="#{{ $item.title | urlize }}-tab-pane" type="button" role="tab" aria-controls="#{{ $item.title | urlize }}-tab-pane" aria-selected="{{- if eq $index 0 -}}true{{- else -}}false{{- end -}}">{{- $item.title -}}</button>
+				</h2>
+			</li>
+		{{- end -}}
+	</ul>
+	<div class="tab-content accordion" id="accordion_{{- $id -}}">
+		{{- range $index, $item := $.Site.Data.product_tabs -}}
+			<div class="accordion-item d-block opacity-100 border-lg-0 tab-pane fade {{- if eq $index 0 }} show active {{- end -}}" id="{{ $item.title | urlize }}-tab-pane" role="tabpanel" aria-labelledby="{{ $item.title | urlize }}-tab" tabindex="0">
+				<h2 class="accordion-header d-lg-none" id="{{ $item.title | urlize }}-heading">
+					<button class="accordion-button h5 fs-5 {{- if ne $index 0 }} collapsed {{- end -}}" type="button" data-bs-toggle="collapse" data-bs-target="#{{ $item.title | urlize }}-collapse" aria-expanded="true" aria-controls="{{ $item.title | urlize }}-collapse">
+						{{- $item.title -}}
+					</button>
+				</h2>
+				<div id="{{ $item.title | urlize }}-collapse" class="accordion-collapse collapse {{- if eq $index 0 }} show {{- end -}}" aria-labelledby="{{ $item.title | urlize }}-heading" data-bs-parent="#accordion_{{- $id -}}">
+					<div class="accordion-body p-lg-0">
+						<div class="row gy-50px">
+							{{- range $product := $item.items -}}
+								<div class="col-lg-4 col-xl-3 col-sm-6">
+									{{ partial  "elements/shop/skins/grid-1" (dict
+									"data" $product
+									) }}
+								</div>
+							{{- end -}}
+						</div>
+					</div>
+				</div>
+			</div>
+		{{- end -}}
+	</div>
+</section>

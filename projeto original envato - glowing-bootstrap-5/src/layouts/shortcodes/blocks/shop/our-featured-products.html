@@ -1,0 +1,24 @@
+{{- $id := .Get "id" | default "" -}}
+{{- $class := .Get "class" | default "container container-xxl py-lg-17 pt-14 pb-16" -}}
+
+<section {{- if $id }} id="{{ $id }}" {{- end -}} >
+    {{ .Inner }}
+    <div {{- if $class }} class="{{ $class }}" {{- end}}>
+        {{ partial  "elements/heading/style-1" (dict "currentPage" .
+        "class" "mb-13 pb-3"
+		"animation" "fadeInUp"
+        "titleClass" "mb-5"
+        "title" "Our Featured Products"
+        "desc" "Get the skin you want to feel") }}
+        <div class="slick-slider" data-slick-options='{{ $.Site.Data.our_feature_product.options | jsonify }}'>
+            {{- range $item := $.Site.Data.our_feature_product.items -}}
+                <div>
+                    {{ partial  "elements/shop/skins/grid-1" (dict
+                    "data" $item
+					"animation" "fadeInUp"
+                    ) }}
+                </div>
+            {{- end -}}
+        </div>
+    </div>
+</section>

@@ -1,0 +1,57 @@
+{{/*
+Block settings
+-------------------------------------------------
+id			Block ID
+class		Block class extral
+*/}}
+{{- $id := .Get "id" | default "" -}}
+{{- $class := .Get "class" | default "" -}}
+
+<section {{- if $id }} id="{{ $id }}" {{- end -}} {{- if $class }} class="{{ $class }}" {{- end}} >
+    {{ .Inner }}
+	<div class="bg-body-secondary py-5">
+		<nav aria-label="breadcrumb">
+			<ol class="breadcrumb breadcrumb-site py-0 d-flex justify-content-center">
+				<li class="breadcrumb-item"><a class="text-decoration-none text-body" href="#">Home</a>
+				</li>
+				<li class="breadcrumb-item active pl-0 d-flex align-items-center" aria-current="page">Contact Us</li>
+			</ol>
+		</nav>
+	</div>
+	<div class="container">
+       <div class="text-center pt-13 mb-13 mb-lg-15">
+           {{ partial  "elements/heading/style-1" (dict "title" "Keep In Touch with Us"
+           "titleClass" "fs-36px mb-7"
+           "desc" "We’re talking about clean beauty gift sets, of course – and we’ve got a bouquet of beauties for yourself or someone you love."
+           "descClass" "fs-18px mb-0 w-lg-60 w-xl-50 mx-md-13 mx-lg-auto"
+           ) }}
+	   </div>
+		{{ partial "elements/map/style-1" (dict
+		"access_token"  $.Site.Data.mapbox_access_token.access_token
+		"height" "530px"
+		"mapbox_options"  $.Site.Data.contact_info.mapbox_options
+		"mapbox_marker"  $.Site.Data.contact_info.mapbox_marker
+		"effect"  "true"
+		)}}
+	</div>
+</section>
+<section class="py-15 py-lg-18">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-7">
+				<h2 class="mb-11 fs-3">Sent A Message</h2>
+                {{ partial  "elements/contact-form/style-1" (dict "currentPage" . "desc" "Save my name, email in this browse for the next time I comment" "buttontitle" "Submit" ) }}
+			</div>
+			<div class="col-lg-5 ps-lg-18 ps-xl-21 mt-13 mt-lg-0">
+                {{ partial "elements/icon-box/style-2" (dict "class" "mb-11 me-15"
+				"iconClass" "d-none"
+				"title" "Address"
+                "desc" "<p class=\"mb-5 fs-6\">3245 Abbot Kinney BLVD – <br> PH Venice, CA 124</p><p class=\"mb-5\">76 East Houston Street New York City</p>"
+                "btnContent" "Get Direction") }}
+                {{ partial "elements/icon-box/style-2" (dict "title" "Contact"
+                "iconClass" "d-none"
+                "desc" "<p class=\"mb-3 fs-6\">Mobile:<span class=\"text-body-emphasis\"> 068 26589 996</span></p><p class=\"mb-3 fs-6\">Hotline:<span class=\"text-body-emphasis\"> 1900 26886</span></p><p class=\"mb-0 fs-6\">E-mail: hello@grace.com</p>") }}
+			</div>
+		</div>
+	</div>
+</section>

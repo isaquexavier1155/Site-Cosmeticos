@@ -1,0 +1,58 @@
+{{/***
+Element Parameters
+---------------------------------------------
+$.class:            Element extra class name
+$.iconClass:        Icon Class
+$.titleClass:       Title extra class
+$.descClass:    	Description extra class
+$.btnClass:    		Button extra class
+$.icon				Icon box icon
+$.title:            Icon box title
+$.desc:        		Icon box description
+$.btnContent		Icon box button content
+*/}}
+{{- $class := "" -}}
+{{- if isset $ "class" }}
+    {{- $class = $.class -}}
+{{ end -}}
+
+{{- $iconClass := "pe-lg-9 pe-8" -}}
+{{- if isset $ "iconClass" }}
+    {{- $iconClass = $.iconClass -}}
+{{ end -}}
+
+{{- $titleClass := "fs-5 mb-6" -}}
+{{- if isset $ "titleClass" }}
+    {{- $titleClass = $.titleClass -}}
+{{ end -}}
+
+{{- $descClass := "" -}}
+{{- if isset $ "descClass" }}
+	{{- $descClass = $.descClass -}}
+{{ end -}}
+
+{{- $directionClass := "text-decoration-none border-bottom border-dark fw-semibold fs-6" -}}
+{{- if isset $ "directionClass" }}
+    {{- $directionClass = $.directionClass -}}
+{{ end -}}
+
+<div class="d-flex align-items-start {{- if $class }} {{ $class }}{{- end }}">
+	<div class="{{- if $iconClass}}{{$iconClass}}{{- end}}">
+		<svg class="icon fs-2">
+			<use xlink:href="#{{- if $.icon}}{{$.icon}}{{- end}}"></use>
+		</svg>
+	</div>
+	<div>
+        {{- if $.title}}
+			<h3 class="{{- if $titleClass}}{{$titleClass}}{{- end}}">{{$.title}}</h3>
+        {{- end}}
+        {{- if $.desc }}
+			<div class="fs-6 {{- if $descClass}} {{$descClass}}{{- end }}">
+                {{ $.desc | safeHTML }}
+			</div>
+        {{- end}}
+		{{- if $.btnContent }}
+			<a href="#" class="text-decoration-none border-bottom border-currentColor fw-semibold fs-6">{{ $.btnContent }}</a>
+		{{ end -}}
+	</div>
+</div>

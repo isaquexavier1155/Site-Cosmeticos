@@ -1,0 +1,26 @@
+{{- $id := .Get "id" | default "featured_products_our_featured_products" -}}
+{{- $class := .Get "class" | default "container pt-lg-19 pb-xl-23 pt-15 pb-16" -}}
+<section {{- if $id }} id="{{ $id }}" {{- end -}} >
+	{{ .Inner }}
+	<div {{- if $class }} class="{{ $class }}" {{- end}}>
+		{{ partial  "elements/heading/style-1" (dict "currentPage" .
+		"class" "mb-12"
+		"titleClass" "mb-0 font-primary fw-normal pt-1"
+		"subtitleClass" "text-uppercase fw-semibold ls-1 mb-4 pb-2"
+		"title" "Our Featured Products"
+		"subtitle" "featured products") }}
+		<div class="row gy-11">
+			{{- range $item := $.Site.Data.featured_products_our_featured_products -}}
+				<div class="col-lg-3 col-sm-6 col-12">
+					{{ partial  "elements/shop/skins/grid-1" (dict
+					"data" $item
+					"animation" "fadeInUp"
+					) }}
+				</div>
+			{{- end -}}
+		</div>
+		<div class="text-center mt-12 pt-3" data-animate="fadeInUp">
+			<a href="#" class="btn btn-outline-dark">Shop All Products</a>
+		</div>
+	</div>
+</section>

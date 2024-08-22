@@ -1,0 +1,99 @@
+{{ .Inner }}
+{{- $id := .Get "id" | default "" -}}
+{{- $class := .Get "class" | default "container container-xxl pt-6 pb-20" -}}
+{{- $id2 := .Get "id2" | default "" -}}
+{{- $class2 := .Get "class2" | default "container container-xxl pt-16 pb-17 " -}}
+{{- $id3 := .Get "id3" | default "" -}}
+{{- $class3 := .Get "class3" | default "container container-xxl pt-16 pb-17 " -}}
+<section {{- if $id }} id="{{ $id }}" {{- end -}} {{- if $class }} class="{{ $class }}" {{- end}}>
+	<div class="row ">
+		<div class="col-md-6 col-lg-5 pe-md-13">
+			<div class="position-sticky top-0">
+				{{ partial "elements/shop/product-gallery/product-gallery-5" . }}
+			</div>
+		</div>
+		<div class="col-md-6 col-lg-4 pt-md-0 pt-10 mt-md-0 mt-6">
+			{{ partial "elements/shop/product-info/product-info-5" (dict
+			"currentPage" .
+			"title" "Natural Coconut Cleansing Oil"
+			"oldprice" "39.00" "price" "29.00"
+			"size1" "Full size" "size2" "Mini size"
+			"point" "4.86" "readreview" "Read 2947 reviews"
+			"subtitle" "Niacinamide and Vitamin C are two anti-aging superstars but not usually formulated together because of their different pH levels."
+			"sku" "SF09281" "category" "Makeup, Skincare"
+			"rate" "100"
+			) }}
+		</div>
+		<div class="col-lg-3 d-lg-block d-none">
+			{{ partial "elements/blog/widget-search"
+			(dict "class" "mb-12")}}
+			{{ partial "elements/shop/widget-hightlight" (dict "currentPage" .) }}
+			{{ partial "elements/blog/recent-product" (dict "currentPage" .) }}
+			{{ partial "elements/blog/widget-banner" (dict
+			"img" "/assets/images/blog/widget-banner-img.jpg"
+			"title" "Be your kind of beauty")}}
+		</div>
+	</div>
+</section>
+<div class="border-top w-100 h-1px"></div>
+<section {{- if $id }} id="{{ $id2 }}" {{- end -}} {{- if $class }} class="{{ $class2 }}" {{- end}}>
+	{{ partial  "elements/heading/style-1" (dict "currentPage" .
+	"title" "You may also like"
+	"titleClass" "mb-12") }}
+	<div class="slick-slider" data-slick-options="{{ $.Site.Data.our_bestSeller_1.options | jsonify }}">
+		{{- range $item := $.Site.Data.product_collection_our_best_sellers.items }}
+		<div class="mb-6">
+			{{ partial "elements/shop/skins/grid-2" (dict
+			"data" $item
+			"size" "md"
+			) }}
+		</div>
+		{{- end -}}
+	</div>
+</section>
+<div class="border-top w-100 h-1px"></div>
+<section {{- if $id }} id="{{ $id3 }}" {{- end -}} {{- if $class }} class="{{ $class3 }}" {{- end}}>
+	{{ partial  "elements/heading/style-1" (dict "currentPage" .
+	"title" "Customer Reviews"
+	"titleClass" "mb-12") }}
+	<div class="row ">
+		<div class=" col-lg-3 col-md-5">
+			<div class="position-sticky top-0 mb-md-0 mb-12">
+				{{ partial "elements/shop/product-review/product-review-info-2" (dict "currentPage" . "data" "product_review_info2" "rate" "90" "icon" "icon-Pencil" "btnContent" "Wire A Review" "buttonReview" "true")}}
+			</div>
+		</div>
+		<div class="ps-lg-12 ps-auto col-lg-9 col-md-7">
+			{{ partial "elements/shop/product-review/product-review-form" (dict "icon" "icon-Camera" "btnContentAdd" "Add Photos" "btnContentSubmit" "Submit Now")}}
+			{{ partial  "elements/shop/product-review/product-filter-review" (dict "currentPage" . "title" "Filter Review" ) }}
+			{{ partial "elements/shop/product-review/product-review-list" (dict "currentPage" .
+			"class" "mt-12"
+			"data" "product_review_list"
+			)}}
+			<nav class="pt-8">
+				<ul class="pagination justify-content-center align-items-center mb-0 fs-16 font-weight-600">
+					<li class="page-item fs-18 d-none d-sm-block">
+						<a class="page-link rounded-circle w-40px h-40 p-0 justify-content-center align-items-center d-flex" href="#" tabindex="-1"><i class="far fa-angle-double-left"></i></a>
+					</li>
+					<li class="page-item">
+						<a class="page-link rounded-circle w-40px h-40 p-0 justify-content-center align-items-center d-flex" href="#">1</a>
+					</li>
+					<li class="page-item active" aria-current="page">
+						<a class="page-link rounded-circle w-40px h-40 p-0 justify-content-center align-items-center d-flex" href="#">2</a>
+					</li>
+					<li class="page-item">
+						<a class="page-link rounded-circle w-40px h-40 p-0 justify-content-center align-items-center d-flex" href="#">3</a>
+					</li>
+					<li class="page-item">
+						<a class="page-link rounded-circle w-40px h-40 p-0 justify-content-center align-items-center d-flex" href="#">...</a>
+					</li>
+					<li class="page-item">
+						<a class="page-link rounded-circle w-40px h-40 p-0 justify-content-center align-items-center d-flex" href="#">6</a>
+					</li>
+					<li class="page-item fs-18 d-none d-sm-block">
+						<a class="page-link rounded-circle w-40px h-40 p-0 justify-content-center align-items-center d-flex" href="#"><i class="far fa-angle-double-right"></i></a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+</section>

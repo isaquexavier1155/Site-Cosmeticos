@@ -1,0 +1,88 @@
+- title: Dashboard
+  url: /dashboard/dashboard.html
+  icon: fas fa-home-lg-alt
+- title: Products
+  url: /#
+  icon: fas fa-shopping-bag
+  key: product
+  submenu:
+    - title: Product List
+      url: /dashboard/product-list.html
+    - title: Product Grid
+      url: /dashboard/product-grid.html
+    - title: Product Grid 2
+      url: /dashboard/product-grid-02.html
+    - title: Categoried
+      url: /dashboard/product-categories.html
+- title: Order
+  url: /#
+  icon: fas fa-shopping-cart
+  key: order
+  submenu:
+    - title: Order List 1
+      url: /dashboard/order-list.html
+    - title: Order List 2
+      url: /dashboard/order-list-2.html
+    - title: Order detail
+      url: /dashboard/order-detail.html
+- title: Sellers
+  url: /#
+  icon: fas fa-users
+  key: sellers
+  submenu:
+    - title: Sellers Cards
+      url: /dashboard/sellers-cards.html
+    - title: Sellers List
+      url: /dashboard/sellers-list.html
+    - title: Sellers Profile
+      url: /dashboard/sellers-profile.html
+- title: Add Product
+  url: /#
+  icon: fas fa-plus-square
+  key: add_product
+  submenu:
+    - title: Add Product 1
+      url: /dashboard/add-product-1.html
+    - title: Add Product 2
+      url: /dashboard/add-product-2.html
+    - title: Add Product 3
+      url: /dashboard/add-product-3.html
+    - title: Add Product 4
+      url: /dashboard/add-product-4.html
+- title: Transactions
+  url: /#
+  icon: fas fa-circle-dollar-to-slot
+  key: transaction
+  submenu:
+    - title: Transactions 1
+      url: /dashboard/transactions-1.html
+    - title: Transactions 2
+      url: /dashboard/transactions-2.html
+- title: Account
+  url: /#
+  icon: fas fa-user
+  key: account
+  submenu:
+    - title: User login
+      url: /user-login.html
+    - title: User registration
+      url: /user-registration.html
+- title: Reivews
+  url: /dashboard/reviews.html
+  icon: fas fa-comment-alt
+- title: Brand
+  url: /dashboard/brands.html
+  icon: fas fa-certificate
+- title: Setting
+  url: /#
+  icon: fas fa-cog
+  key: setting
+  separate: true
+  submenu:
+    - title: Profile settings
+      url: /dashboard/profile-settings.html
+    - title: Site settings
+      url: /dashboard/site-settings.html
+- title: Starter page
+  url: /dashboard/starter-page.html
+  icon: fas fa-tag

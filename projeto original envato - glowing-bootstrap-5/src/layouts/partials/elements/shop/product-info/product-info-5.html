@@ -1,0 +1,39 @@
+{{/***
+Element Parameters
+---------------------------------------------
+
+$.class:				Element extra class name
+$.title: 				Shop title
+$.oldprice: 			Shop old price
+$.price: 				Shop price
+$.size1:				Shop size 1
+$.size2:				Shop size 2
+$.point: 				Shop point
+$.rate 					Rating
+$.readreview: 			Shop read reviews
+$.subtitle: 			Shop subtitle
+$.sku: 					Shop sku
+$.category: 			Shop category
+*/}}
+
+{{- $class := "pb-8" -}}
+{{- if isset $ "class" }}
+    {{- $class = $.class -}}
+{{ end -}}
+
+{{ partial "elements/shop/product-info/items/header" (dict "title" $.title
+"oldprice" $.oldprice "price" $.price
+"subtitle" $.subtitle
+"rate" $.rate
+"point" $.point "readreview" $.readreview
+) }}
+<form class="{{- if $class}}{{$class}}{{- end}}">
+    {{ partial "elements/shop/product-info/items/size" (dict "size1" $.size1 "size2" $.size2) }}
+    {{ partial "elements/shop/product-info/items/select-color" }}
+    {{ partial "elements/shop/product-info/items/add-to-bag"}}
+</form>
+{{ partial "elements/shop/product-info/items/action" (dict "compare" "true" "wishlist" "true" "share" "true")}}
+{{ partial "elements/shop/product-info/items/list-more-info" (dict "sku" $.sku "category" $.category)}}
+<div class="mt-13">
+    {{ partial "elements/shop/product-info/items/product-accordions" (dict "currentPage" $.currentPage)}}
+</div>

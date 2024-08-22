@@ -1,0 +1,270 @@
+// Utilities custom
+$utilities: () !default;
+$utilities: map-merge(
+		(
+			"bg-opacity": (
+				css-var: true,
+				class: bg-opacity,
+				values: (
+					10: .10,
+					15: .15,
+					20: .20,
+					25: .25,
+					30: .30,
+					35: .35,
+					40: .35,
+					50: .5,
+					75: .75,
+					100: 1
+				)
+			),
+			"opacity": (
+					property: opacity,
+					values: (
+							0: 0,
+							25: .25,
+							30: .30,
+							50: .5,
+							75: .75,
+							100: 1,
+					)
+			),
+			"width": (
+				responsive: true,
+				property: width,
+				class: w,
+				values: (
+					0: 0,
+					1: 1%,
+					10: 10%,
+					15: 10%,
+					20: 20%,
+					25: 25%,
+					30: 30%,
+					40: 40%,
+					50: 50%,
+					60: 60%,
+					70: 70%,
+					75: 75%,
+					80: 80%,
+					100: 100%,
+					40px: 40px,
+					52px: 52px,
+					72px: 72px,
+					auto: auto
+				)
+			),
+			"height": (
+				responsive: true,
+				property: height,
+				class: h,
+				values: (
+					0: 0%,
+					25: 25%,
+					50: 50%,
+					75: 75%,
+					100: 100%,
+					auto: auto,
+				)
+			),
+			"max-width": (
+				responsive: true,
+				property: max-width,
+				class: mw,
+				values: (
+					25: 25%,
+					30: 30%,
+					35: 35%,
+					40: 40%,
+					50: 50%,
+					60: 60%,
+					75: 75%,
+					100: 100%,
+					120px: 120px,
+					160px: 160px,
+				)
+			),
+			"max-height": (
+				property: max-height,
+				class: mh,
+				values: (
+					100: 100%,
+					none: none
+				)
+			),
+			"font-size": (
+				rfs: true,
+				responsive: true,
+				property: font-size,
+				class: fs,
+				values: $font-sizes
+			),
+			"letter-spacing": (
+				responsive: true,
+				property: letter-spacing,
+				class: ls,
+				values: (
+					0: 0,
+					1: 0.1em,
+					2: 0.2em,
+					3: 0.3em,
+					4: 0.4em,
+					5: 0.5em,
+					15 : 0.15em
+				)
+			),
+			"transition-all": (
+				responsive: true,
+				property: transition,
+				class: transition-all,
+				values: (
+					1: all 0.3s,
+					2: all 0.5s,
+				)
+			),
+			"font-weight": (
+				property: font-weight,
+				class: fw,
+				values: (
+					light: $font-weight-light,
+					lighter: $font-weight-lighter,
+					normal: $font-weight-normal,
+					500: 500,
+					bold: $font-weight-bold,
+					semibold: $font-weight-semibold,
+					bolder: $font-weight-bolder
+				)
+			),
+			"line-height": (
+				property: line-height,
+				class: lh,
+				values: (
+					1: 1,
+					2: 2,
+					sm: $line-height-sm,
+					base: $line-height-base,
+					lg: $line-height-lg,
+					xl: $line-height-xl,
+					12: 1.2,
+					30px: 30px,
+					45px: 45px,
+					52px: 52px,
+					115px: 115px,
+				)
+			),
+			"font-family": (
+				property: font-family,
+				class: font,
+				values: (
+					monospace: var(--#{$prefix}font-monospace),
+					body: var(--#{$prefix}body-font-family),
+					primary: var(--#{$prefix}primary-font-family),
+					secondary: var(--#{$prefix}secondary-font-family),
+				)
+			),
+			"z-index": (
+				property: z-index,
+				class: z-index,
+				values: (
+					1: 1,
+					2: 2,
+					3: 3,
+					4: 4,
+					5: 5
+				)
+			),
+			"position": (
+				responsive: true,
+				property: position,
+				values: static relative absolute fixed sticky
+			),
+			"top": (
+				responsive: true,
+				property: top,
+				values: $position-values
+			),
+			"bottom": (
+				responsive: true,
+				property: bottom,
+				values: $position-values
+			),
+			"start": (
+				responsive: true,
+				property: left,
+				class: start,
+				values: $position-values
+			),
+			"end": (
+				responsive: true,
+				property: right,
+				class: end,
+				values: $position-values
+			),
+			"translate-middle": (
+				responsive: true,
+				property: transform,
+				class: translate-middle,
+				values: (
+					null: translate(-50%, -50%),
+					x: translateX(-50%),
+					y: translateY(-50%),
+				)
+			),
+			"column-count": (
+				responsive: true,
+				property: column-count,
+				class: column-count,
+				values: (
+					1: 1,
+					2: 2,
+					3: 3,
+					4: 4,
+					5: 5,
+					6: 6,
+				)
+			),
+			"img-ratio": (
+				responsive: true,
+				property: aspect-ratio,
+				class: img-ratio,
+				values: (
+					auto: auto,
+					1x1: 1 / 1,
+					3x2: 3 / 2,
+					4x3: 4 / 3,
+					16x9: 16 / 9,
+					2x3: 2 / 3,
+					3x4: 2 / 3,
+				)
+			),
+			"border": (
+					responsive: true,
+					property: border,
+					values: (
+							null: var(--#{$prefix}border-width) var(--#{$prefix}border-style) var(--#{$prefix}border-color),
+							0: 0,
+					)
+			),
+
+			"btn-border-width": (
+				css-var: true,
+				css-variable-name: btn-border-width,
+				class: btn-border,
+				values: $border-widths
+			),
+
+			"shadow": (
+					property: box-shadow,
+					class: shadow,
+					values: (
+						null: $box-shadow,
+						sm: $box-shadow-sm,
+						lg: $box-shadow-lg,
+						1: 0px 0px 4px rgba(0, 0, 0, 0.1),
+						none: none,
+					)
+			),
+		),
+		$utilities
+);
+

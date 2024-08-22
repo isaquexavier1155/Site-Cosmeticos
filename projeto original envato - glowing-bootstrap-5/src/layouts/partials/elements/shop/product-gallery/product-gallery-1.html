@@ -1,0 +1,76 @@
+{{/***
+Element Parameters
+---------------------------------------------
+
+$.class:				Element extra class name
+$.sliderThumbClass: 	Slider thumbnail Class
+$.itemThumbClass: 		Item thumbnail Class
+$.iconThumbClass: 		Icon thumbnail Class
+$.iconClass: 			Icon Class
+$.data
+*/}}
+{{- $class := "" -}}
+{{- if isset $ "class" }}
+    {{- $class = $.class -}}
+{{ end -}}
+
+{{- $sliderThumbClass := "ps-1 ms-n3 me-n4 mx-xl-0" -}}
+{{- if isset $ "sliderThumbClass" }}
+    {{- $sliderThumbClass = $.sliderThumbClass -}}
+{{ end -}}
+
+{{- $itemThumbClass := "mx-3 mx-xl-0 px-0 mb-xl-7" -}}
+{{- if isset $ "itemThumbClass" }}
+    {{- $itemThumbClass = $.itemThumbClass -}}
+{{ end -}}
+
+{{- $iconThumbClass := "text-body-emphasis bg-body" -}}
+{{- if isset $ "iconThumbClass" }}
+    {{- $iconThumbClass = $.iconThumbClass -}}
+{{ end -}}
+
+{{- $iconClass := "btn btn-white" -}}
+{{- if isset $ "iconClass" }}
+    {{- $iconClass = $.iconClass -}}
+{{ end -}}
+
+{{- $data := index $.currentPage.Site.Data $.data -}}
+
+<div class="row {{- if $class}} {{$class}}{{ end -}}">
+	<div class="col-xl-2 pe-xl-0 order-1 order-xl-0 mt-5 mt-xl-0">
+		<div id="vertical-slider-thumb" class="slick-slider slick-slider-thumb {{- if $sliderThumbClass}} {{$sliderThumbClass}}{{- end}}" data-slick-options='{{ $data.config1 | jsonify }}'>
+            {{- range $item := $data.items }}
+                {{- if isset $item "video" -}}
+					<div class="position-relative cursor-pointer {{- if $itemThumbClass}} {{$itemThumbClass}}{{- end}}">
+						<img src="#" data-src="{{$item.thumb}}" class="w-100 lazy-image" alt="product gallery" width="{{ $data.imageSize.thumb.width }}" height="{{ $data.imageSize.thumb.height }}">
+						<div class="card-img-overlay d-inline-flex flex-column align-items-center justify-content-center">
+							<div class="d-flex justify-content-center align-items-center rounded-circle product-gallery-video-thumb {{- if $iconThumbClass}} {{$iconThumbClass}}{{- end}}">
+								<i class="fas fa-play"></i>
+							</div>
+						</div>
+					</div>
+                {{- else -}}
+					<img src="#" data-src="{{$item.thumb}}" class="cursor-pointer lazy-image {{- if $itemThumbClass}} {{$itemThumbClass}}{{- end}}" width="{{ $data.imageSize.thumb.width }}" height="{{ $data.imageSize.thumb.height }}" title="" alt="">
+                {{- end -}}
+            {{ end -}}
+		</div>
+	</div>
+	<div class="col-xl-10 ps-xl-8 pe-xl-0 order-0 order-xl-1">
+		<div id="vertical-slider-slides" class="slick-slider slick-slider-arrow-inside slick-slider-dots-inside slick-slider-dots-light g-0" data-slick-options='{{ $data.config2 | jsonify }}'>
+            {{- range $item := $data.items }}
+                {{- if isset $item "video" -}}
+					<div class="position-relative">
+						<img src="#" data-src="{{ $item.img }}" width="{{ $data.imageSize.img.width }}" height="{{ $data.imageSize.img.height }}" title="" class="h-auto lazy-image" alt="">
+						<div class="card-img-overlay d-inline-flex flex-column align-items-center justify-content-center">
+							<a href="{{ $item.video }}" class="view-video d-flex justify-content-center align-items-center rounded-circle product-gallery-video {{- if $iconClass}} {{$iconClass}}{{- end}}">
+								<i class="fas fa-play"></i>
+							</a>
+						</div>
+					</div>
+                {{- else -}}
+					<a href="{{ $item.img }}" data-gallery="product-gallery" data-thumb-src="{{ $item.img }}"><img src="#" data-src="{{ $item.img }}" width="{{ $data.imageSize.img.width }}" height="{{ $data.imageSize.img.height }}" title="" class="h-auto lazy-image" alt=""></a>
+                {{- end -}}
+            {{ end -}}
+		</div>
+	</div>
+</div>

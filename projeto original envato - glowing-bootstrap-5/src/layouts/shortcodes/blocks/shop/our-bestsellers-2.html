@@ -1,0 +1,33 @@
+{{- $id := .Get "id" | default "our_best_seller_2" -}}
+{{- $class := .Get "class" | default "container container-xxl" -}}
+{{- $spacing := .Get "spacing" | default "container container-xxl pt-14 pt-lg-18" -}}
+{{- $title_class := .Get "title_class" | default "" -}}
+{{- $title_spacing := .Get "title_spacing" | default "mb-9 mt-3" -}}
+
+{{- if $spacing -}}
+    {{- $class = printf "%s %s" $class $spacing -}}
+{{- end -}}
+
+
+
+<section {{- if $id }} id="{{ $id }}" {{- end -}}>
+    {{ .Inner }}
+    <div {{- if $class }} class="{{ $class }}" {{- end}}>
+        <div class="row align-items-center {{- if $title_spacing}} {{ $title_spacing }} {{- end}}">
+            <div class="col-sm-8" data-animate="fadeInUp">
+                <h2 class="h3 mb-0 {{- if $title_class}} {{ $title_class }} {{- end}}">Our Bestsellers</h2>
+            </div>
+            <div class="col-sm-4 text-sm-end" data-animate="fadeInUp"><a href="#" class="btn btn-link p-0 text-body-emphasis text-decoration-none fw-semibold text-primary-hover">Shop All Products <svg class="icon"><use xlink:href="#icon-arrow-right"></use></svg></a></div>
+        </div>
+        <div class="slick-slider" data-slick-options='{{ $.Site.Data.our_bestSeller_2.options | jsonify }}' data-animate="fadeInUp">
+            {{- range $item := $.Site.Data.our_bestSeller_2.items -}}
+                <div>
+                    {{ partial  "elements/shop/skins/grid-1" (dict
+                    "data" $item
+					"animation" "fadeInUp"
+                    ) }}
+                </div>
+            {{- end -}}
+        </div>
+    </div>
+</section>

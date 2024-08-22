@@ -1,0 +1,41 @@
+items:
+  - title: How to Plop Hair for Bouncy, Beautiful Curls
+    cat: Life style
+    author: Admin
+    date: Jan 19th, 2021
+    image:
+      src: '/assets/images/blog/post-01-450x290.jpg'
+      width: 450
+      height: 290
+  - title: Which foundation formula is right for your skin?
+    cat: Life style
+    author: Admin
+    date: Jan 19th, 2021
+    image:
+      src: '/assets/images/blog/post-05-450x290.jpg'
+      width: 450
+      height: 290
+  - title: How To Choose The Right Sofa for your home
+    cat: Life style
+    author: Admin
+    date: Jan 19th, 2021
+    image:
+      src: '/assets/images/blog/post-06-450x290.jpg'
+      width: 450
+      height: 290
+options:
+  dots: false
+  arrows: false
+  slidesToShow: 3
+  responsive:
+    - breakpoint: 1200
+      settings:
+        slidesToShow: 3
+    - breakpoint: 992
+      settings:
+        dots: true
+        slidesToShow: 2
+    - breakpoint: 768
+      settings:
+        dots: true
+        slidesToShow: 1

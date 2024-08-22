@@ -1,0 +1,35 @@
+{{/***
+Element Parameters
+---------------------------------------------
+$.class: 			Element extra class name
+$.data
+    - title             Title
+    - reviews           reviews
+    - rate              rate
+    - price
+        - regular
+        - sale
+    - image
+        - src
+        - width
+        - height
+$.animation         Animation
+$.size 				Actions size
+*/}}
+{{- $size := "md" -}}
+{{- if isset $ "size" -}}
+	{{- $size = $.size -}}
+{{- end -}}
+
+<div class="card card-product grid-1 bg-transparent border-0 {{- if isset $ "class" }} {{ $.class }} {{- end -}}"  {{- if isset $ "animation" }} data-animate="{{- $.animation -}}" {{- end -}}>
+	   <figure class="card-img-top position-relative mb-7 overflow-hidden " >
+		   {{ partial "elements/shop/items/image" (dict "image" $.data.image "title" $.data.title ) }}
+		   {{ partial "elements/shop/items/sale-flash" (dict "price" $.data.price "is_new" $.data.is_new) }}
+		   {{ partial "elements/shop/items/actions" (dict "size" $size) }}
+	   </figure>
+	   <div class="card-body text-center p-0">
+		   {{ partial "elements/shop/items/price" (dict "price" $.data.price) }}
+		   {{ partial "elements/shop/items/title" (dict "title" $.data.title) }}
+		   {{ partial "elements/shop/items/rate" (dict "rate" $.data.rate "reviews" $.data.reviews) }}
+	   </div>
+</div>

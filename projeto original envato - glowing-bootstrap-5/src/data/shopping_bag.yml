@@ -1,0 +1,24 @@
+- product: "Natural Coconut Cleansing Oil"
+  img: "/assets/images/products/product-03-75x100.jpg"
+  width: 60
+  height: 80
+  price: "39.00"
+  sale_price: "29.00"
+  total_price: "48.00"
+  stock: ""
+- product: "Super Pure"
+  img: "/assets/images/products/product-06-75x100.jpg"
+  width: 60
+  height: 80
+  price: "39.00"
+  sale_price: "29.00"
+  total_price: "48.00"
+  stock: ""
+- product: "Cleansing Balm"
+  img: "/assets/images/products/product-09-75x100.jpg"
+  width: 60
+  height: 80
+  price: "39.00"
+  sale_price: "29.00"
+  total_price: "48.00"
+  stock: "out of stock"

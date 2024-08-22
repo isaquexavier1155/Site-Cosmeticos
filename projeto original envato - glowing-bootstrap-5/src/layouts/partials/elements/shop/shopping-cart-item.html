@@ -1,0 +1,218 @@
+{{/***
+Element Parameters
+---------------------------------------------
+$.class:                Element extra class name
+$.currentPage:            $.currentPage.Page, $.currentPage.Site
+$.titleClass:            Title extra Class
+$.btnCountinueShopping: Button extra Class
+$.btnClearShopping:    Button extra Class
+$.btnUpdateCart:        Button extra Class
+$.title:                Title Shopping Cart
+*/}}
+
+{{- $data := index $.currentPage.Site.Data $.data -}}
+
+{{- $class := "" -}}
+{{- if isset $ "class" }}
+{{- $class = $.class -}}
+{{ end -}}
+
+{{- $titleClass := "fs-2 mt-12 mb-13" -}}
+{{- if isset $ "titleClass" }}
+{{- $titleClass = $.titleClass -}}
+{{ end -}}
+
+{{- $btnCountinueShopping := "btn-outline-dark me-8 text-nowrap my-5" -}}
+{{- if isset $ "btnCountinueShopping" }}
+{{- $btnCountinueShopping = $.btnCountinueShopping -}}
+{{ end -}}
+
+{{- $btnClearShopping := "btn-link p-0 border-0 border-bottom border-secondary text-decoration-none rounded-0 my-5 fw-semibold " -}}
+{{- if isset $ "btnClearShopping" }}
+{{- $btnClearShopping = $.btnClearShopping -}}
+{{ end -}}
+
+{{- $btnUpdateCart := "btn-outline-dark my-5" -}}
+{{- if isset $ "btnUpdateCart" }}
+{{- $btnUpdateCart = $.btnUpdateCart -}}
+{{ end -}}
+
+<div class="shopping-cart {{- if $class }} {{ $class }}{{ end }}">
+	{{- if $.title }}
+	<h2 class="text-center {{- if $titleClass }} {{ $titleClass }}{{ end }}">{{ $.title }}</h2>
+	{{- end -}}
+	<form class="table-responsive-md pb-8 pb-lg-10">
+		<table class="table border">
+			<thead class="bg-body-secondary">
+			<tr class="fs-15px letter-spacing-01 fw-semibold text-uppercase text-body-emphasis">
+				<th scope="col" class="fw-semibold border-1 ps-11">products</th>
+				<th scope="col" class="fw-semibold border-1">quantity</th>
+				<th colspan="2" class="fw-semibold border-1">Price</th>
+			</tr>
+			</thead>
+			<tbody>
+			{{- if $data }}
+			{{ range $item := $data }}
+
+			{{- $itemsTableClass := "position-relative" -}}
+			{{ if $item.stock }}
+			{{- $itemsTableClass = "position-relative opacity-50" -}}
+			{{ end }}
+
+			<tr class="{{ $itemsTableClass }}">
+				<th scope="row" class="pe-5 ps-8 py-7 shop-product">
+					<div class="d-flex align-items-center">
+						<div class="form-check">
+							{{ if $item.stock }}
+							<input class="form-check-input rounded-0" type="checkbox" name="check-product"
+								   value="checkbox" disabled>
+							{{else}}
+							<input class="form-check-input rounded-0" type="checkbox" name="check-product"
+								   value="checkbox">
+							{{ end }}
+						</div>
+						<div class="ms-6 me-7">
+							<img src="#" data-src="{{ $item.img }}" class="lazy-image" width="{{ $item.width }}" height="{{ $item.height }}"
+								 alt="Natural Coconut Cleansing Oil">
+						</div>
+						<div class="">
+							<p class="fw-500 mb-1 text-body-emphasis">{{ $item.product }}</p>
+							<p class="card-text">
+								{{- if $item.sale_price }}
+								<span class="fs-13px fw-500 text-decoration-line-through pe-3">${{ $item.price }}</span>
+								<span class="fs-15px fw-bold text-body-emphasis">${{ $item.sale_price }}</span>
+								{{ else }}
+								<span class="fs-15px fw-bold text-body-emphasis">${{ $item.price }}</span>
+								{{ end }}
+							</p>
+						</div>
+					</div>
+					{{ if $item.stock }}
+					<div class="position-absolute top-0 start-0">
+						<span
+							class="badge rounded-0 text-uppercase fs-14px px-5 py-4 product-stock ls-1 fw-semibold p-0">{{ $item.stock }}</span>
+					</div>
+					{{ end }}
+				</th>
+				<td class="align-middle">
+					<div class="input-group position-relative shop-quantity">
+						<a href="#" class="shop-down position-absolute z-index-2"><i class="far fa-minus"></i></a>
+						{{ if $item.stock }}
+						<input name="number[]" type="number"
+							   class="form-control form-control-sm px-10 py-4 fs-6 text-center border-0" value="1"
+							   required="" disabled>
+						{{else}}
+						<input name="number[]" type="number"
+							   class="form-control form-control-sm px-10 py-4 fs-6 text-center border-0" value="1"
+							   required="">
+						{{ end }}
+						<a href="#" class="shop-up position-absolute z-index-2"><i class="far fa-plus"></i>
+						</a>
+					</div>
+				</td>
+				<td class="align-middle">
+					<p class="mb-0 text-body-emphasis fw-bold mr-xl-11">${{ $item.total_price }}</p>
+				</td>
+				<td class="align-middle text-end pe-8">
+					<a href="#" class="d-block text-secondary">
+						<i class="fa fa-times"></i>
+					</a>
+				</td>
+			</tr>
+			{{ end }}
+			{{ end }}
+			<tr>
+				<td class="pt-5 pb-10 position-relative bg-body ps-0 left">
+					<a href="../shop/shop-layout-v1.html" title="Countinue Shopping"
+					   class="btn {{- if $btnCountinueShopping }} {{ $btnCountinueShopping }}{{ end }}">
+						Countinue Shopping
+					</a>
+					<button type="submit" value="Clear Shopping Cart"
+							class="btn {{- if $btnClearShopping }} {{ $btnClearShopping }}{{ end }}">
+						<i class="fa fa-times me-3"></i>
+						Clear Shopping Cart
+					</button>
+				</td>
+				<td colspan="3" class="text-end pt-5 pb-10 position-relative bg-body right pe-0">
+					<button type="submit" value="Update Cart"
+							class="btn {{- if $btnUpdateCart }} {{ $btnUpdateCart }}{{ end }}">Update Cart
+					</button>
+				</td>
+			</tr>
+			</tbody>
+		</table>
+	</form>
+	<div class="row pt-8 pt-lg-11 pb-16 pb-lg-18">
+		<div class="col-lg-4 pt-2">
+			<h4 class="fs-24 mb-6">Coupon Discount</h4>
+			<p class="mb-7">Enter you coupon code if you have one.</p>
+			<form>
+				<input type="text" class="form-control mb-7" placeholder="Enter coupon code here">
+				<button type="submit" class="btn btn-dark btn-hover-bg-primary btn-hover-border-primary">
+					Apply coupon
+				</button>
+			</form>
+		</div>
+		<div class="col-lg-4 pt-lg-2 pt-10">
+			<h4 class="fs-24 mb-6">Shipping Caculator</h4>
+			<form>
+				<div class="d-flex mb-5">
+					<div class="form-check me-6 me-lg-9">
+						<input class="form-check-input form-check-input-body-emphasis" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+						<label class="form-check-label" for="flexRadioDefault1">
+							Free shipping
+						</label>
+					</div>
+					<div class="form-check">
+						<input class="form-check-input form-check-input-body-emphasis" type="radio" name="flexRadioDefault" id="flexRadioDefault2"
+							   checked>
+						<label class="form-check-label" for="flexRadioDefault2">
+							Flat rate: $75
+						</label>
+					</div>
+				</div>
+				<div class="dropdown bg-body-secondary rounded mb-7">
+					<a href="#"
+					   class="form-select text-body-emphasis dropdown-toggle d-flex justify-content-between align-items-center text-decoration-none text-secondary position-relative d-block"
+					   role="button" data-bs-toggle="dropdown" aria-expanded="false">
+						Viet Nam
+					</a>
+					<div class="dropdown-menu w-100 px-0 py-4">
+						{{ range $item := $.currentPage.Site.Data.shopping_coupon_shipping.country }}
+						<a class="dropdown-item px-6 py-4" href="#">{{ $item.item }}</a>
+						{{ end }}
+					</div>
+				</div>
+				<input type="text" class="form-control mb-7" placeholder="State / County" required="">
+				<input type="text" class="form-control mb-7" placeholder="City" required="">
+				<input type="text" class="form-control mb-7" placeholder="Postcode / Zip">
+				<button type="submit" class="btn btn-dark btn-hover-bg-primary btn-hover-border-primary">
+					Update total
+				</button>
+			</form>
+		</div>
+		<div class="col-lg-4 pt-lg-0 pt-11">
+			<div class="card border-0" style="box-shadow: 0 0 10px 0 rgba(0,0,0,0.1)">
+				<div class="card-body px-9 pt-6">
+					<div class="d-flex align-items-center justify-content-between mb-5">
+						<span>Subtotal:</span>
+						<span class="d-block ml-auto text-body-emphasis fw-bold">$99.00</span>
+					</div>
+					<div class="d-flex align-items-center justify-content-between">
+						<span>Shipping:</span>
+						<span class="d-block ml-auto text-body-emphasis fw-bold">$0</span>
+					</div>
+				</div>
+				<div class="card-footer bg-transparent px-0 pt-5 pb-7 mx-9">
+					<div class="d-flex align-items-center justify-content-between fw-bold mb-7">
+						<span class="text-secondary text-body-emphasis">Total pricre:</span>
+						<span class="d-block ml-auto text-body-emphasis fs-4 fw-bold">$99.00</span>
+					</div>
+					<a href="../shop/checkout.html"
+					   class="btn w-100 btn-dark btn-hover-bg-primary btn-hover-border-primary"
+					   title="Check Out">Check Out</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

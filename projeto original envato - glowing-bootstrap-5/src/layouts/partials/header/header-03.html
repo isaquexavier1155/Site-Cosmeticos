@@ -1,0 +1,57 @@
+<header id="header" class="header header-sticky header-sticky-smart disable-transition-all z-index-5">
+	<div class="topbar">
+		<div class="bg-primary overflow-hidden">
+			<div class="pt-4 pb-3 text-white move-text-animate fw-semibold text-nowrap">
+				<span class="text-uppercase me-16">Free shipping on all u.s</span>
+				<span class="text-uppercase me-16">We also make emails.</span>
+				<span class="text-uppercase me-16">The complete extra sale 20% off look</span>
+				<span class="text-uppercase me-16">Free shipping on all u.s</span>
+				<span class="text-uppercase me-16">We also make emails.</span>
+				<span class="text-uppercase me-16">The complete extra sale 20% off look</span>
+				<span class="text-uppercase me-16">Free shipping on all u.s</span>
+				<span class="text-uppercase me-16">We also make emails.</span>
+				<span class="text-uppercase me-16">The complete extra sale 20% off look</span>
+			</div>
+		</div>
+		<div class="border-bottom d-none d-lg-block">
+			<div class="container-wide container py-2">
+				<div class="row py-4">
+					<div class="w-70 d-flex align-items-center">
+						<span class="font-weight-normal pe-8">
+							<img src="/assets/images/others/flag-02.jpg" alt="flag-02" class="me-4">
+							Ship to: <strong class="font-weight-500 text-secondary ps-3">USA</strong>
+						</span>
+						<span class="d-flex align-items-center pe-8">{{ partial "svg-icon" (dict "icon" "mobile" "class" "me-4") }} Call: +32 9006868</span>
+						<span class="d-flex align-items-center">{{ partial "svg-icon" (dict "icon" "envelope" "class" "me-4") }}hi@gracecosmetic.com</span>
+					</div>
+					<div class="icons-actions d-flex justify-content-end w-30 fs-28px text-body-emphasis">
+						{{ partial "header/items/icon-account" "px-6 d-inline-block" }}
+						{{ partial "header/items/icon-wishlist" (dict "class" "px-6 me-4 d-inline-block") }}
+						{{ partial "header/items/icon-cart" (dict "class" "px-6 me-n4 d-inline-block" ) }}
+						{{ partial "header/items/color-modes" (dict "currentPage" . )}}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="sticky-area">
+		<div class="main-header nav navbar bg-body navbar-light navbar-expand-xl py-6 py-xl-0">
+			<div class="container-wide container flex-nowrap">
+				{{ partial "header/items/menu-mobile-toggle" }}
+				<div class="d-none d-xl-flex w-xl-50">
+					<ul class="navbar-nav">
+						{{ partial "menu/menu-default" (dict "page" . "nav_item_class" "py-xl-11 py-0 me-xxl-12 me-xl-10" "nav_link_class" "py-xl-0 px-xl-0 text-uppercase fw-semibold ls-1 fs-15px fs-xl-14px" ) }}
+					</ul>
+				</div>
+				{{ partial "header/items/logo" (dict "context" . ) }}
+				<div class="w-xl-50 d-flex align-items-center fs-28px">
+					<div class="d-none d-xl-block w-60 ms-auto">
+						{{ partial "header/items/search-box-1" }}
+					</div>
+					{{ partial "header/items/icon-search" (dict "class" "fs-28px text-body-emphasis d-block d-xl-none") }}
+					{{ partial "header/items/color-modes" (dict "currentPage" . "class" "ps-5 d-block d-xl-none")}}
+				</div>
+			</div>
+		</div>
+	</div>
+</header>

@@ -1,0 +1,95 @@
+{{/***
+Element Parameters
+---------------------------------------------
+$.Title
+$.Discount
+*/}}
+
+
+{{- $class := .Get "class" | default "mt-lg-n5 pb-13 pb-lg-16" -}}
+
+{{- $Title := "Frequently Bought Togheter" -}}
+{{- if isset $ "Title" }}
+{{- $Title = $.Title -}}
+{{ end -}}
+
+{{- $Discount := "20" -}}
+{{- if isset $ "Discount" }}
+{{- $Discount = $.Discount -}}
+{{ end -}}
+
+{{- $TotalPrice := "$82.00" -}}
+{{- if isset $ "TotalPrice" }}
+{{- $TotalPrice = $.TotalPrice -}}
+{{ end -}}
+
+{{- $ThisItem := " Natural Coconut Cleansing Oil" -}}
+{{- if isset $ "ThisItem" }}
+{{- $ThisItem = $.ThisItem -}}
+{{ end -}}
+
+<section class="{{- if $class}}{{$class}}{{- end}}">
+	{{ .Inner }}
+	<div class="container">
+		<div class="row">
+			<div class="col-12">
+				<h3>{{$Title}}</h3>
+				<p class="text-secondary text-body-emphasis  mb-7 mt-5">You will get <a class="text-primary" href="#">{{$Discount}}%
+					OFF</a> on each product</p>
+			</div>
+			<div class="col-12">
+				<form class="row align-items-center frequently-bought-togheter">
+					{{- range $items := $.Site.Data.frequently_bought_toghether.items }}
+					<div class="col-4 col-md-2 frequently-bought-togheter-item">
+						<div class="position-relative">
+							<div class="position-absolute pos-fixed-top-right z-index-2 w-100 p-5">
+								<div class="p-3 content-change-vertical">
+									<a href="#" title=""
+									   class="add-to-item bg-body text-body-emphasis hover-dark shadow-1 d-flex justify-content-center align-items-center rounded-circle float-end"
+									   style="width:32px;height:32px" data-bs-toggle="tooltip" data-bs-html="true"
+									   data-bs-placement="left" data-bs-added="Added" data-bs-title="Add Item">
+										<svg class="icon icon-plus fs-20px">
+											<use xlink:href="#icon-plus"></use>
+										</svg>
+									</a>
+									<input class="form-check-input d-none" type="checkbox" name="Facial cleanser">
+								</div>
+							</div>
+							<img class="w-100 lazy-image" src="#" data-src="{{$items.img}}" alt="{{$Title}}" width="170" height="227">
+						</div>
+					</div>
+					{{- end}}
+					<div class="col-md-6 mt-md-0 mt-9">
+						<div class="card border-0">
+							<div class="card-body p-0">
+								<p class="card-text fs-6 mb-7">Total price: <span
+									class="text-body-emphasis fs-5 ps-5 fw-bold">{{$TotalPrice}}</span></p>
+								<button type="submit" class="btn btn-dark btn-hover-bg-primary px-12 border-transparent">Add
+									Selected Items
+								</button>
+							</div>
+						</div>
+					</div>
+					<div class="col-12 mt-5">
+						<div class="form-check text-body-emphasis mt-5 mb-6">
+							<input class="form-check-input form-check-input-dark rounded-0" name="customCheck1"
+								   type="checkbox" value="" id="customCheck1" checked="">
+							<label class="form-check-label" for="customCheck1">
+								<span class="text-body">This items:</span>{{$ThisItem}}
+							</label>
+						</div>
+						{{- range $items := $.Site.Data.frequently_bought_toghether.checkboxs }}
+						<div class="form-check text-body-emphasis mb-6">
+							<input class="form-check-input form-check-input-dark rounded-0" name="{{$items.index}}"
+								   type="checkbox" value="" id="{{$items.index}}" checked="">
+							<label class="form-check-label" for="{{$items.index}}">
+								{{$items.product}}
+							</label>
+						</div>
+						{{- end}}
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</section>

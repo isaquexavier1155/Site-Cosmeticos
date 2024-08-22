@@ -1,0 +1,50 @@
+{{/*
+Block settings
+-------------------------------------------------
+id			Block ID
+class		Block class extral
+*/}}
+{{- $id := .Get "id" | default "" -}}
+{{- $class := .Get "class" | default "parallax-layers position-relative overflow-hidden landing-page bg-body-tertiary" -}}
+
+
+<section {{- if $id }} id="{{ $id }}" {{- end -}} {{- if $class }} class="{{ $class }}" {{- end}}>
+	<div class=" text-center position-absolute m-0 end-0 top-0 d-lg-block d-none">
+		<img src="/assets/images/header/hero-footer-01.png" alt="Background hero 01" width="300" class="img-fluid">
+	</div>
+	<div class=" text-center end-50 position-absolute d-md-block d-none">
+		<img src="/assets/images/header/hero-footer-shadow-01.png" alt="Background hero" width="550" class="img-fluid">
+	</div>
+    {{ .Inner }}
+	<div class="container container-wide py-wide-25 position-relative">
+		<div class="z-index-10 pb-wide-22 mt-wide-n16 py-19 text-center">
+			<img data-animate="fadeInUp" src="/assets/images/landing/landing-image-01.png" class="mb-10" alt="Banner Landing 02">
+			<h2 data-animate="fadeInUp" class="mx-auto mb-7 landing-top-subtitle landing-page-title landing-bottom-title">Building Your Dream Cosmetics Store</h2>
+			<p data-animate="fadeInUp" class="mb-5 text-primary fw-normal landing-bottom-subtitle font-primary">with Glowing</p>
+		</div>
+		<div class="layer z-index-1 position-absolute d-none d-wide-block landing-bottom-img-1">
+			{{  partial "the-image" (dict "currentPage" . "img" "/assets/images/landing/landing-bottom-image-01.jpg" "img_dark" "/assets/images/landing/landing-bottom-image-white-01.png" "class" "landing-bottom-rotate" "width" "710" "height" "452" "alt" "Banner Landing 01") }}
+		</div>
+		<div class="layer position-absolute z-index-2 d-none d-wide-block landing-bottom-img-2">
+			{{  partial "the-image" (dict "currentPage" . "img" "/assets/images/landing/landing-bottom-image-02.png" "img_dark" "/assets/images/landing/landing-bottom-image-white-02.png" "width" "426" "height" "597" "alt" "Banner Landing 02") }}
+		</div>
+		<div class="layer position-absolute z-index-2 d-none d-wide-block landing-bottom-img-3">
+			{{  partial "the-image" (dict "currentPage" . "img" "/assets/images/landing/landing-bottom-image-03.jpg" "img_dark" "/assets/images/landing/landing-bottom-image-white-03.png" "class" "landing-bottom-rotate" "width" "647" "height" "406" "alt" "Banner Landing 03") }}
+		</div>
+		<div class="layer position-absolute z-index-2 d-none d-wide-block landing-bottom-img-4">
+			{{  partial "the-image" (dict "currentPage" . "img" "/assets/images/landing/landing-bottom-image-04.jpg" "img_dark" "/assets/images/landing/landing-bottom-image-white-04.png" "class" "landing-bottom-rotate" "width" "586" "height" "324" "alt" "Banner Landing 04") }}
+		</div>
+		<div class="layer position-absolute z-index-2 d-none d-wide-block landing-bottom-img-5">
+			<img class="landing-bottom-rotate overflow-hidden lazy-image" style="border-radius: 10px" src="#" data-src="/assets/images/landing/landing-bottom-image-05.jpg" alt="Banner Landing 02" width="185" height="396">
+		</div>
+	</div>
+	<div class=" text-center position-absolute bottom-0 d-lg-block d-none">
+		<img src="/assets/images/header/hero-footer-02.png" alt="Background hero 01" width="500" class="img-fluid">
+	</div>
+	<div class=" text-center position-absolute bottom-0 d-md-block d-none">
+		<img src="/assets/images/header/hero-footer-shadow-02.png" alt="Background hero 01" width="450" class="img-fluid">
+	</div>
+	<div class=" text-center position-absolute bottom-0 end-0 d-md-block d-none">
+		<img src="/assets/images/header/hero-footer-shadow-03.png" alt="Background hero 01" width="350" class="img-fluid">
+	</div>
+</section>

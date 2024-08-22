@@ -1,0 +1,110 @@
+{{/***
+Element Parameters
+---------------------------------------------
+$.page				Current context: $.page.Site | $.page.Page
+$.menu				Menu source (data menu file)
+$.nav_item_class	Nav item class extra (class for li.nav-item)
+$.nav_link_class	Nav link class extra (class for a.nav-link)
+$.suffix 			Suffix for Canvas menu
+$.dropdown_hover_enable	enable dropdown hover. Default: true
+*/}}
+
+{{ $dropdownHoverClass := " dropdown-hover" }}
+{{- if eq $.dropdown_hover_enable "false" }}
+	{{ $dropdownHoverClass = "" }}
+{{ end -}}
+
+
+{{ $menu_src := "menu" }}
+{{- if isset $ "menu" }}
+	{{ $menu_src = $.menu }}
+{{ end -}}
+
+{{- $suffix := "" -}}
+{{- if isset $ "suffix" }}
+	{{ $suffix = $.suffix }}
+{{ end -}}
+
+{{- $data := index $.page.Site.Data $menu_src -}}
+
+{{- range $item := $data -}}
+
+	{{- $liClasses := "nav-item transition-all-xl-1" -}}
+	{{ if $.nav_item_class }}
+		{{- $liClasses = printf "%s %s" $liClasses $.nav_item_class -}}
+	{{ end }}
+
+	{{- $aClasses := "nav-link d-flex justify-content-between position-relative" -}}
+	{{ if $.nav_link_class }}
+		{{- $aClasses = printf "%s %s" $aClasses $.nav_link_class -}}
+	{{ end }}
+
+	{{- $aAttr := "" -}}
+	{{- if or $item.megamenu $item.submenu -}}
+		{{- $liClasses = printf "%s%s%s" $liClasses " dropdown" $dropdownHoverClass -}}
+		{{- $aClasses = printf "%s%s" $aClasses " dropdown-toggle" -}}
+		{{- $aAttr = "data-bs-toggle=\"dropdown\"" -}}
+	{{- end -}}
+	{{- if or $item.megamenu -}}
+		{{- $liClasses = printf "%s%s" $liClasses " dropdown-fullwidth" -}}
+	{{- end -}}
+	{{ if eq $item.size "full" }}
+		{{- $liClasses = printf "%s%s" $liClasses " position-static" -}}
+	{{ end }}
+	<li class="{{ $liClasses }}">
+		<a class="{{ $aClasses }}"
+		   href="{{ $item.url }}" {{ $aAttr | safeHTMLAttr  }}{{ if or $item.megamenu $item.submenu }} id="menu-item-{{ $item.title | urlize }}{{$suffix}}" aria-haspopup="true" aria-expanded="false" {{- end }}>{{ $item.title }}</a>
+		{{- if $item.megamenu -}}
+			<div class="dropdown-menu mega-menu start-0 py-6 {{ if eq $item.size "full" }} w-100{{ end }}"
+				 aria-labelledby="menu-item-{{ $item.title | urlize }}{{$suffix}}"
+				 {{ if eq $item.size "fix" }}style="width:{{ $item.width }}"{{ end }}>
+				{{ partial $item.megamenu $.page }}
+			</div>
+		{{- end -}}
+		{{- if $item.submenu -}}
+			<ul class="dropdown-menu py-6" aria-labelledby="menu-item-{{ $item.title | urlize }}{{$suffix}}">
+				{{- range $sub_item := $item.submenu -}}
+					{{- if eq $sub_item.type "divider" -}}
+						<li class="dropdown-divider"></li>
+					{{ else }}
+						{{- $liClasses = "" -}}
+						{{- $aClasses := "dropdown-item pe-6" -}}
+						{{- $aAttr := "" -}}
+						{{- if or $sub_item.submenu -}}
+							{{- if $sub_item.direction -}}
+								{{- $liClasses = printf "%s%s%s" $sub_item.direction " dropdown-submenu" $dropdownHoverClass -}}
+							{{- else -}}
+								{{- $liClasses = printf "%s%s" "dropend" $dropdownHoverClass -}}
+							{{- end -}}
+							{{- $aClasses = printf "%s%s" $aClasses " dropdown-toggle d-flex justify-content-between" -}}
+						{{- end -}}
+						<li {{if $liClasses }} class="{{ $liClasses }}"{{ end }}{{ if $sub_item.submenu }} aria-haspopup="true" aria-expanded="false" {{- end }}>
+							<a class="{{ $aClasses }} border-hover"
+							   href="{{ $sub_item.url }}" {{ if $sub_item.submenu }} data-bs-toggle="dropdown" id="menu-item-{{ $sub_item.title | urlize }}{{$suffix}}"{{ end }}>
+							<span class="border-hover-target">
+								{{ $sub_item.title }}
+							</span>
+							</a>
+							{{- if or $sub_item.submenu -}}
+								<ul class="dropdown-menu py-6"
+									aria-labelledby="menu-item-{{ $sub_item.title | urlize }}{{$suffix}}" data-bs-popper="none">
+									{{- range $sub_item2 := $sub_item.submenu -}}
+										{{- if eq $sub_item2.type "divider" -}}
+											<li class="dropdown-divider"></li>
+										{{ else }}
+											<li>
+												<a class="dropdown-item border-hover" href="{{ $sub_item2.url }}">
+													<span class="border-hover-target">{{ $sub_item2.title }}</span>
+												</a>
+											</li>
+										{{- end -}}
+									{{- end -}}
+								</ul>
+							{{- end -}}
+						</li>
+					{{- end -}}
+				{{- end -}}
+			</ul>
+		{{- end -}}
+	</li>
+{{- end -}}

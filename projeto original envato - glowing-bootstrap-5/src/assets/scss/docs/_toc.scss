@@ -1,0 +1,38 @@
+// stylelint-disable selector-max-type
+.docs-toc-wrap {
+	position: sticky;
+	top: 72px;
+
+	h6 {
+		font-size: 1.125rem;
+		transform: translateX(-6px);
+	}
+}
+
+.docs-toc {
+	padding-left: 1.5rem;
+	border-left: double 3px var(--bs-border-color);
+
+	ul {
+		list-style: none;
+		padding-left: 0;
+
+		ul {
+			padding-left: 20px;
+			font-size: 0.875em;
+			margin-bottom: 0.5rem;
+		}
+	}
+
+	a {
+		text-decoration: none;
+		color: var(--bs-body-color);
+		line-height: 1.8;
+
+		&:hover,
+		&.active {
+			color: var(--bs-primary);
+			font-weight: 600;
+		}
+	}
+}

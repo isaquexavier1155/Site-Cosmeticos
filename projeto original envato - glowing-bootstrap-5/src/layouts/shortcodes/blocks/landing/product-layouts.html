@@ -1,0 +1,27 @@
+{{/*
+Block settings
+-------------------------------------------------
+id			Block ID
+class		Block class extral
+*/}}
+{{- $id := .Get "id" | default "product" -}}
+{{- $class := .Get "class" | default "pb-13 pb-lg-16 pt-13 pt-lg-20" -}}
+
+<section {{- if $id }} id="{{ $id }}" {{- end -}} {{- if $class }} class="{{ $class }}" {{- end}}>
+    {{ .Inner }}
+	<div class="container container-wide">
+		<div class="row align-items-center">
+			<div class="col-lg-5 ms-xl-n11 order-lg-3 pb-9 pb-lg-0">
+				<span class="d-block landing-count-layout fw-bold text-primary mb-6" data-animate="fadeInUp">08<sup class="landing-count-layout-sup ps-6">+</sup></span>
+				<h2 class="landing-layout-title mb-7" data-animate="fadeInUp">Product Layouts</h2>
+				<p class="fs-18px landing-layout-desc" data-animate="fadeInUp">Various product layouts with great UX allow you to select the matching style for your store.</p>
+			</div>
+			<div class="col-lg-2 col-4 order-lg-2" data-animate="fadeInUp">
+				{{  partial "the-image" (dict "currentPage" . "img" "/assets/images/landing/landing-product-layout-02.png" "img_dark" "/assets/images/landing/landing-product-layout-white-02.png" "class" "ms-xl-n16 img-fluid" "width" "278" "height" "484" "alt" "Product Layout Mobile") }}
+			</div>
+			<div class="col-lg-5 col-8 order-lg-1" data-animate="fadeInLeft">
+				{{  partial "the-image" (dict "currentPage" . "img" "/assets/images/landing/landing-product-layout-01.jpg" "img_dark" "/assets/images/landing/landing-product-layout-white-01.jpg" "class" "ms-xl-n17 img-fluid landing-product-img" "width" "740" "height" "740" "alt" "Product Layout") }}
+			</div>
+		</div>
+	</div>
+</section>

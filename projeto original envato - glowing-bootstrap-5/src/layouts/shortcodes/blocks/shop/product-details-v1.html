@@ -1,0 +1,61 @@
+{{ .Inner }}
+{{- $id := .Get "id" | default "" -}}
+{{- $class := .Get "class" | default "container pt-6 pb-13 pb-lg-20" -}}
+{{- $id2 := .Get "id2" | default "" -}}
+{{- $class2 := .Get "class2" | default "container pt-15 pb-15 pt-lg-17 pb-lg-20" -}}
+{{- $id3 := .Get "id3" | default "" -}}
+{{- $class3 := .Get "class3" | default "container pt-15 pb-15 pt-lg-17 pb-lg-20" -}}
+
+<section {{- if $id }} id="{{ $id }}" {{- end -}} {{- if $class }} class="{{ $class }}" {{- end}}>
+	<div class="row ">
+		<div class="col-md-6 pe-lg-13">
+			{{ partial "elements/shop/product-gallery/product-gallery-1" (dict "currentPage" . "data" "product_gallery_1_video")}}
+		</div>
+		<div class="col-md-6 pt-md-0 pt-10">
+            {{ partial "elements/shop/product-info/product-info-1" (dict "title" "Natural Coconut Cleansing Oil"
+            "subtitle" "Niacinamide and Vitamin C are two anti-aging superstars but not usually formulated together because of their different pH levels."
+            "oldprice" "39.00" "price" "29.00"
+            "point" "4.86"
+			"rate" "96"
+			"readreview" "Read 2947 reviews"
+            "size1" "Full size" "size2" "Mini size"
+            "sku" "SF09281" "category" "Makeup, Skincare"
+            ) }}
+		</div>
+	</div>
+</section>
+<div class="border-top w-100"></div>
+{{ partial  "elements/shop/product-info/items/product-tabs" (dict "currentPage" . "wrapClass" "container pt-15 pb-12 pt-lg-17 pb-lg-20" )}}
+<div class="border-top w-100 h-1px"></div>
+<section {{- if $id2 }} id="{{ $id2 }}" {{- end -}} {{- if $class2 }} class="{{ $class2 }}" {{- end}}>
+	{{ partial  "elements/heading/style-1" (dict "currentPage" .
+	"title" "You may also like"
+	"titleClass" "mb-12"
+	"isH3Tag" true) }}
+	<div class="slick-slider" data-slick-options="{{ $.Site.Data.our_bestSeller_1.options | jsonify }}">
+		{{- range $item := $.Site.Data.product_collection_our_best_sellers.items }}
+		<div class="mb-6">
+			{{ partial "elements/shop/skins/grid-2" (dict
+			"data" $item
+			"size" "sm"
+			) }}
+		</div>
+		{{- end -}}
+	</div>
+</section>
+<div class="border-top w-100"></div>
+<section {{- if $id3 }} id="{{ $id3 }}" {{- end -}} {{- if $class3 }} class="{{ $class3 }}" {{- end}}>
+	{{ partial  "elements/heading/style-1" (dict "currentPage" .
+	"title" "Customer Reviews"
+	"titleClass" "mb-12"
+	"isH3Tag" true) }}
+	<div class="mb-11">
+		{{ partial "elements/shop/product-review/product-review-info-1" (dict "totalrate" "4.86" "rate" "96" "desc" "2947 Reviews, 18 Q&As" "icon" "icon-Pencil")}}
+	</div>
+	{{ partial "elements/shop/product-review/product-review-form" (dict "icon" "icon-Camera" "btnContentAdd" "Add Photos" "contentBtnSubmit" "Submit Now")}}
+	{{ partial  "elements/shop/product-review/product-filter-review" (dict "currentPage" .	"title" "Filter Review" ) }}
+	{{ partial "elements/shop/product-review/product-review-list" (dict "currentPage" .	"class" "mt-12"
+	"data" "product_review_list"
+	)}}
+	{{ partial  "elements/paging/pagination" (dict "animate" "false")}}
+</section>

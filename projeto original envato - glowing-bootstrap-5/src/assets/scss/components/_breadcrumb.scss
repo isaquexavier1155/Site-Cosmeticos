@@ -1,0 +1,25 @@
+.breadcrumb-item {
+	// The separator between breadcrumbs (by default, a forward-slash: "/")
+	+ .breadcrumb-item {
+		display: flex;
+		align-items: center;
+
+		&::before {
+			width: 20px;
+			height: 1px;
+			background-color: currentColor;
+			margin-right: var(--#{$prefix}breadcrumb-item-padding-x);
+			padding-right: 0;
+			content: '';
+		}
+	}
+
+	a {
+		color: inherit;
+
+		&:hover {
+			text-decoration: none;
+			color: var(--#{$prefix}breadcrumb-item-active-color);
+		}
+	}
+}

@@ -1,0 +1,28 @@
+{{/*
+Block settings
+-------------------------------------------------
+id			Block ID
+class		Block class extral
+*/}}
+{{- $id := .Get "id" | default "" -}}
+{{- $class := .Get "class" | default "bg-body-tertiary py-lg-18 py-16" -}}
+
+<section {{- if $id }} id="{{ $id }}" {{- end -}} {{- if $class }} class="{{ $class }}" {{- end}}>
+    {{ .Inner }}
+	<div class="container container-xxl">
+		<div class="row">
+			<div class="col-md-4" data-animate="fadeInUp">
+                {{ partial  "elements/image-box/style-2" (dict "currentPage" . "title" "Guaranteed PURE" "imgWidth" "102" "imgHeight" "118" "subtitle" "All Grace formulations adhere to strict purity standards and will never contain harsh or toxic ingredients" "img_dark" "/assets/images/image-box/image-box-white-11.png" "img" "/assets/images/image-box/image-box-11.png"
+				"altContent" "Guaranteed PURE") }}
+			</div>
+			<div class="col-md-4" data-animate="fadeInUp">
+                {{ partial  "elements/image-box/style-2" (dict "currentPage" . "title" "Completely Cruelty-Free" "imgWidth" "102" "imgHeight" "118" "subtitle" "All Grace formulations adhere to strict purity standards and will never contain harsh or toxic ingredients" "img_dark" "/assets/images/image-box/image-box-white-02.png" "img" "/assets/images/image-box/image-box-02.png"
+				"altContent" "Completely Cruelty-Free") }}
+			</div>
+			<div class="col-md-4" data-animate="fadeInUp">
+                {{ partial  "elements/image-box/style-2" (dict "currentPage" . "title" "Ingredient Sourcing" "imgWidth" "102" "imgHeight" "118" "subtitle" "All Grace formulations adhere to strict purity standards and will never contain harsh or toxic ingredients" "img_dark" "/assets/images/image-box/image-box-white-03.png" "img" "/assets/images/image-box/image-box-03.png"
+				"altContent" "Ingredient Sourcing") }}
+			</div>
+		</div>
+	</div>
+</section>

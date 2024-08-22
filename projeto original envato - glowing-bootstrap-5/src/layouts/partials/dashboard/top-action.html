@@ -1,0 +1,34 @@
+{{/***
+Element Parameters
+---------------------------------------------
+
+$.class:            Element extra class name
+$.data                Action list
+*/}}
+
+{{- if isset $ "class" }}
+{{- $class = $.class -}}
+{{ end -}}
+
+
+{{- if $.data }}
+	{{ range $item := $.data }}
+
+	{{- if eq $item.type "btn" }}
+	<a href="#" class="{{ $item.btnClass }}">
+		{{- if $item.icon }}
+		{{ if eq $item.typeIcon "svg"}}
+		<svg class="icon mt-n3">
+			<use xlink:href="#{{$item.icon}}"></use>
+		</svg>
+		{{ else }}
+		<i class="{{ $item.icon }}"></i>
+		{{ end }}
+		<span class="d-inline-block ml-1">{{ $item.textBtn }}</span>
+		{{ else }}
+		{{ $item.textBtn }}
+		{{- end}}
+	</a>
+	{{- end}}
+	{{ end }}
+{{- end -}}

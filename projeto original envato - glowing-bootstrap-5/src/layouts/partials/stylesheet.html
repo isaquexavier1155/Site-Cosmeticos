@@ -1,0 +1,38 @@
+<!-- Vendors Stylesheet -->
+<link rel="stylesheet" href="/assets/vendors/lightgallery/css/lightgallery-bundle.min.css">
+<link rel="stylesheet" href="/assets/vendors/fontawesome/css/all.min.css">
+<link rel="stylesheet" href="/assets/vendors/animate/animate.min.css">
+<link rel="stylesheet" href="/assets/vendors/slick/slick.css">
+<link rel="stylesheet" href="/assets/vendors/mapbox-gl/mapbox-gl.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+<!-- Extra Css -->
+{{- range $.Page.Params.extra_css -}}
+	<link rel="stylesheet" href="{{ . }}">
+{{ end -}}
+
+<!-- Fonts stylesheet -->
+{{- $path_to_font := "https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" -}}
+{{- if $.Page.Params.font -}}
+	{{- $path_to_font = $.Page.Params.font -}}
+{{- end -}}
+{{ if ne $path_to_font "none" -}}
+	<link href="{{ $path_to_font }}" rel="stylesheet">
+{{ end -}}
+
+<!-- Site Stylesheet -->
+{{- $styleIn := "scss/theme.scss" -}}
+{{- $styleOut := "assets/css/theme.css" -}}
+{{- if $.Page.Params.theme -}}
+	{{- $styleIn = printf "%s%s%s" "scss/themes/" $.Page.Params.theme ".scss" -}}
+	{{- $styleOut = printf "%s%s%s" "assets/css/theme-" $.Page.Params.theme ".css" -}}
+{{- end -}}
+
+{{ if (eq "docs" $.Page.Params.layout) }}
+	{{- $styleIn = "scss/docs/docs.scss" -}}
+	{{- $styleOut = "assets/css/docs.css" -}}
+{{ end }}
+
+{{- $sass := resources.Get $styleIn -}}
+{{- $sassOptions := dict "targetPath" $styleOut "outputStyle" "expanded" "precision" 6 -}}
+{{- $style := $sass | resources.ToCSS $sassOptions -}}
+<link rel="stylesheet" href="{{ $style.RelPermalink }}">

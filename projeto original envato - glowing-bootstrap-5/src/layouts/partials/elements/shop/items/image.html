@@ -1,0 +1,23 @@
+{{/***
+Element Parameters
+---------------------------------------------
+$.class: 			Element extra class name
+$.image:            Image data: src, width, height
+$.imageClass        Image Class
+$.title             Title
+*/}}
+
+{{- $imageClass := "img-fluid lazy-image w-100" -}}
+{{- if isset $ "imageClass" -}}
+    {{- $imageClass = $.imageClass -}}
+{{- end -}}
+
+{{- $wrapClass := "hover-zoom-in d-block" -}}
+{{- if isset $ "class" -}}
+    {{- $wrapClass = $.class -}}
+{{- end -}}
+
+
+<a href="/shop/product-details-v1.html" class="{{- $wrapClass -}}" title="{{- $.title -}}">
+    <img src="#" data-src="{{- $.image.src -}}" class="{{- $imageClass -}}" alt="{{- $.title -}}" width="{{- $.image.width -}}" height="{{- $.image.height -}}">
+</a>

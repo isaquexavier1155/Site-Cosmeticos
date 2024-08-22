@@ -1,0 +1,70 @@
+{{/***
+Element Parameters
+---------------------------------------------
+$.class: 				Element extra class name
+$.currentPage: 			$.currentPage.Page, $.currentPage.Site
+$.titleClass: 			Title extra Class
+$.title: 				Title Checkout Order Summary
+*/}}
+{{- $class := "border-0 rounded-0 shadow" -}}
+{{- if isset $ "class" }}
+	{{- $class = $.class -}}
+{{ end -}}
+
+{{- $titleClass := "fs-4 mb-8" -}}
+{{- if isset $ "titleClass" }}
+	{{- $titleClass = $.titleClass -}}
+{{ end -}}
+
+{{- $data := index $.currentPage.Site.Data $.data -}}
+
+<div class="card {{- if $class }} {{ $class }}{{ end }}">
+	<div class="card-header px-0 mx-10 bg-transparent py-8">
+		{{- if $.title }}
+			<h4 class="{{ if $titleClass }}{{ $titleClass }}{{ end }}">{{ $.title }}</h4>
+		{{ end }}
+		{{- if $data }}
+			{{ range $item := $data }}
+				<div class="d-flex w-100 mb-7">
+					<div class="me-6">
+						<img src="#" data-src={{ $item.img }} class="lazy-image" width="{{ $item.width }}" height="{{ $item.height }}" alt="{{ $item.title }}">
+					</div>
+					<div class="d-flex flex-grow-1">
+						<div class="pe-6">
+							<a href="#" class="">{{ $item.title }}<span class="text-body"> x1</span></a>
+							{{- if $item.size }}
+								<p class="fs-14px text-body-emphasis mb-0 mt-1">Size:
+									<span class="text-body">{{ $item.size }}</span>
+								</p>
+							{{ end }}
+							{{- if $item.color }}
+								<p class="fs-14px text-body-emphasis mb-0 mt-1">Color:
+									<span class="text-body">{{ $item.color }}</span>
+								</p>
+							{{ end }}
+						</div>
+						<div class="ms-auto">
+							<p class="fs-14px text-body-emphasis mb-0 fw-bold">${{ $item.price}}</p>
+						</div>
+					</div>
+				</div>
+			{{ end }}
+		{{ end }}
+	</div>
+	<div class="card-body px-10 py-8">
+		<div class="d-flex align-items-center mb-2">
+			<span>Subtotal:</span>
+			<span class="d-block ms-auto text-body-emphasis fw-bold">${{ $.subtotal }}</span>
+		</div>
+		<div class="d-flex align-items-center">
+			<span>Shipping:</span>
+			<span class="d-block ms-auto text-body-emphasis fw-bold">${{ $.shipping }}</span>
+		</div>
+	</div>
+	<div class="card-footer bg-transparent py-5 px-0 mx-10">
+		<div class="d-flex align-items-center fw-bold mb-6">
+			<span class="text-body-emphasis p-0">Total pricre:</span>
+			<span class="d-block ms-auto text-body-emphasis fs-4 fw-bold">${{ $.totalprice }}</span>
+		</div>
+	</div>
+</div>

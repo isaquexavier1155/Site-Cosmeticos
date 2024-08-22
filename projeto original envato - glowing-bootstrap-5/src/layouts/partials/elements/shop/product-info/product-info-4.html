@@ -1,0 +1,67 @@
+{{/***
+Element Parameters
+---------------------------------------------
+
+$.quantityItemClass	Quantity extra Class
+
+$.selectTitleClass 	List bottom extra Class
+$.addClass			Add to bag extra Class
+$.title: 			Shop title
+$.oldprice: 		Shop old price
+$.price: 			Shop price
+$.point: 			Shop point
+$.rate 				Rating
+$.readreview: 		Shop read reviews
+$.subtitle: 		Shop subtitle
+$.sku: 				Shop sku
+$.category: 		Shop category
+*/}}
+
+{{- $selectTitleClass := "text-body-emphasis fw-semibold py-5" -}}
+{{- if isset $ "selectTitleClass" }}
+    {{- $selectTitleClass = $.selectTitleClass -}}
+{{ end -}}
+
+{{- $addClass := "btn btn-lg btn-dark btn-block mb-7 mt-8 w-100 btn-hover-bg-primary btn-hover-border-primary" -}}
+{{- if isset $ "addClass" }}
+    {{- $addClass = $.addClass -}}
+{{ end -}}
+
+{{ partial "elements/shop/product-info/items/header" (dict "title" $.title
+"oldprice" $.oldprice "price" $.price
+"subtitle" $.subtitle
+"rate" $.rate
+"point" $.point "readreview" $.readreview
+) }}
+<form>
+	<div class="row align-items-end">
+		<div class="col-sm-6 form-group">
+			<label class="{{- if $selectTitleClass}}{{$selectTitleClass}}{{- end}}" for="size">Select a size: </label>
+			<select name="size" class="form-control w-100 product-info-2-quantity" id="size">
+				<option value="50ml" selected="">50ml</option>
+				<option value="70ml">70ml</option>
+				<option value="90ml">90ml</option>
+				<option value="100ml">100ml</option>
+			</select>
+		</div>
+		<div class="col-sm-6 form-group">
+			<label class="{{- if $selectTitleClass}}{{$selectTitleClass}}{{- end}}" for="quantity">Quantity: </label>
+			<select name="size" class="form-control w-100 product-info-2-quantity" id="quantity">
+				<option value="1" selected="">1</option>
+				<option value="2">2</option>
+				<option value="3">3</option>
+				<option value="4">4</option>
+			</select>
+		</div>
+		<div class="col-12">
+			<button type="submit" class="{{- if $addClass}}{{$addClass}}{{- end}}">
+				Add To Bag
+			</button>
+		</div>
+	</div>
+</form>
+{{ partial "elements/shop/product-info/items/action" (dict "compare" "true" "wishlist" "true" "share" "true")}}
+{{ partial "elements/shop/product-info/items/list-more-info" (dict "sku" $.sku "category" $.category)}}
+<div class="mt-11">
+    {{ partial "elements/shop/product-info/items/product-accordions" (dict "currentPage" $.currentPage)}}
+</div>

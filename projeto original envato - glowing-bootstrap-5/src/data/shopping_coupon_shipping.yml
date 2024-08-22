@@ -1,0 +1,10 @@
+options_ship:
+  - item: "Free shipping"
+  - item: "Flat rate: $75"
+country:
+  - item: "Andorra"
+  - item: "San Marino"
+  - item: "Tunisia"
+  - item: "Micronesia"
+  - item: "Solomon Islands"
+  - item: "Macedonia"

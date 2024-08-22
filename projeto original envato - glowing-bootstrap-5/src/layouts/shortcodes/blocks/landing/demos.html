@@ -1,0 +1,35 @@
+{{/*
+Block settings
+-------------------------------------------------
+id			Block ID
+class		Block class extral
+*/}}
+{{- $id := .Get "id" | default "demos" -}}
+{{- $class := .Get "class" | default "pt-lg-19 pt-16 pb-lg-15 pb-10 landing-demos" -}}
+{{- $data := index $.Site.Data.landing_demos -}}
+{{- $currentPage := . -}}
+
+<section {{- if $id }} id="{{ $id }}" {{- end -}} {{- if $class }} class="{{ $class }}" {{- end}} >
+    {{ .Inner }}
+	<div class="container container-xxl">
+		<span class="d-block text-center fw-bold text-primary lh-1 mb-3 landing-count-layout" data-animate="fadeInUp">18<sup class="landing-count-layout-sup ps-6">+</sup></span>
+		<h2 class="text-center landing-layout-title mb-0" data-animate="fadeInUp">Impressive Demos</h2>
+		<p class="shop-layout-subtitle fw-normal text-center text-primary mb-13 font-primary" data-animate="fadeInUp">Unique Homepages</p>
+		<div class="row text-center">
+            {{- if $data}}
+            	{{ range $item := $data.items }}
+					<div class="col-lg-4 col-md-6" data-animate="fadeInUp">
+						<div class="card border-0 px-6 landing-shop-image mb-12 bg-section-9">
+							<a href="{{ $item.url }}" target="_blank" class="d-block card-img rounded pt-9 mt-6 bg-section-8" title="{{ $item.title}}">
+								{{  partial "the-image" (dict "currentPage" $currentPage "img" $item.img "img_dark" $item.img_dark "class" "landing-demos-img img-fluid" "width" "370" "height" "283" "alt" $item.title) }}
+							</a>
+							<div class="card-body py-7 px-0">
+								<h4 class="card-text fs-5 fw-bold"><a href="{{ $item.url }}" class="color-inherit" target="_blank" title="{{ $item.title}}">{{ $item.title}}</a></h4>
+							</div>
+						</div>
+					</div>
+				{{ end }}
+			{{ end }}
+		</div>
+	</div>
+</section>

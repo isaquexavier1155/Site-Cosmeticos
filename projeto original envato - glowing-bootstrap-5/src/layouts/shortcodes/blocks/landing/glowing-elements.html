@@ -1,0 +1,27 @@
+{{/*
+Block settings
+-------------------------------------------------
+id			Block ID
+class		Block class extral
+*/}}
+{{- $id := .Get "id" | default "" -}}
+{{- $class := .Get "class" | default "bg-section-5 pt-7 pb-15 pb-lg-7" -}}
+
+<section {{- if $id }} id="{{ $id }}" {{- end -}} {{- if $class }} class="{{ $class }}" {{- end}}>
+    {{ .Inner }}
+	<div class="container container-xxl">
+		<div class="row align-items-center">
+			<div class="col-lg-8 mb-7 mb-lg-0">
+				{{  partial "the-image" (dict "currentPage" . "img" "/assets/images/landing/landing-element.png" "img_dark" "/assets/images/landing/landing-element-white.png" "class" "img-fluid" "class_img_dark" "mb-md-12 mb-8" "width" "930" "height" "636" "alt" "Glowing Elements") }}
+			</div>
+			<div class="col-lg-4 ps-xl-13">
+				<div class="card bg-transparent border-0">
+					<div class="card-body p-0 text-center text-lg-start">
+						<h2 data-animate="fadeInUp" class="card-title fs-1 text-white mb-7 mb-lg-9">Glowing<br>Elements</h2>
+						<p data-animate="fadeInUp" class="card-text text-white fs-18px opacity-75 mx-auto mx-lg-0 landing-element-desc">Pre-designed elements with specifically useful function facilitate the success of your online store.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

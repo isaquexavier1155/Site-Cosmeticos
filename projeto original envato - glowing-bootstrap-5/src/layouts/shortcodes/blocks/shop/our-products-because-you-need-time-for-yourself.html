@@ -1,0 +1,31 @@
+{{ .Inner }}
+{{- $id := .Get "id" | default "" -}}
+{{- $class := .Get "class" | default "container pt-12 pb-lg-16 pb-16" -}}
+
+<section {{- if $id }} id="{{ $id }}" {{- end -}}>
+	<div  {{- if $class }} class="{{ $class }}" {{- end}}>
+		{{ partial  "elements/heading/style-2" (dict "currentPage" .
+		"title" "Because You Need Time for Yourself. Blend Beauty in You"
+		"subtitle" "OUR PRODUCTS"
+		"subheading" "Glowing Beauty"
+		"class" "text-center position-relative pt-12 pt-lg-17 pb-11 pb-lg-14 mx-auto"
+		"maxWidth" "700px"
+		"animation" "fadeInUp") }}
+		<div class="row gy-8">
+			{{- range $item := $.Site.Data.our_products_because_you_need_time_for_yourself.items }}
+			<div class="col-lg-3 col-sm-6 col-12">
+				{{ partial "elements/shop/skins/grid-2" (dict
+				"data" $item
+				"size" "sm"
+				"animation" "fadeInUp"
+				) }}
+			</div>
+			{{- end -}}
+		</div>
+		<div class="text-center mt-12">
+			<a href="#" target="_blank" class="btn btn-outline-dark" data-animate="fadeInUp">
+				Shop All Product
+			</a>
+		</div>
+	</div>
+</section>

@@ -1,0 +1,54 @@
+{{/***
+Element Parameters
+---------------------------------------------
+$.currentPage: 		$.currentPage.Page, $.currentPage.Site
+$.class: 			Element extra class name
+$.name              Widget Name
+$.title		        Widget Title
+$.data		    Data
+*/}}
+
+{{- $title := "Recent posts" -}}
+{{- if isset $ "title" }}
+    {{- $title = $.title -}}
+{{ end -}}
+
+{{- $widgetName := "post" -}}
+{{- if isset $ "name" -}}
+    {{- $widgetName = $.name -}}
+{{- end -}}
+
+{{ $wrapperClass := printf "%s%s" "widget widget-" $widgetName }}
+
+{{- if isset $ "class" -}}
+    {{ $wrapperClass = printf "%s %s" $wrapperClass $.class }}
+{{- end -}}
+
+
+{{- $data := $.currentPage.Site.Data.widget_recent_posts -}}
+{{- if isset $ "data" }}
+    {{- $data = $.data -}}
+{{ end -}}
+
+<div class="{{- $wrapperClass -}}">
+    {{- if $title -}}
+        {{ partial "widgets/widget-title" $title}}
+    {{- end -}}
+    {{- if $data -}}
+        <ul class="list-unstyled mb-0 row gy-7 gx-0">
+            {{ range $item := $data }}
+                <li class="col-12">
+                    <div class="card border-0 flex-row">
+                        <figure class="flex-shrink-0 mb-0 me-7">
+                            {{ partial "elements/blog/post-format/image" (dict "image" $item.image "title" $item.title "class" "d-block" "imageClass" "img-fluid lazy-image" ) }}
+                        </figure>
+                        <div class="card-body p-0">
+                            <h5 class="card-text fw-semibold ls-1 text-uppercase fs-13px mb-3 text-body text-primary-hover"><a class="text-decoration-none text-reset" href="#" title="{{- $item.cat -}}">{{- $item.cat -}}</a></h5>
+                            <h4 class="card-title mb-0 text-body-emphasis fs-15px lh-base text-primary-hover"><a class="text-decoration-none text-reset" href="../blog/details-01.html" title="{{- $item.title -}}">{{- $item.title -}}</a></h4>
+                        </div>
+                    </div>
+                </li>
+            {{- end -}}
+        </ul>
+    {{- end -}}
+</div>

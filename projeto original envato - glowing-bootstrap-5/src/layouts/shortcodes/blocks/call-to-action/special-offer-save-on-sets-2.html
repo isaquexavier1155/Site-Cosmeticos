@@ -1,0 +1,31 @@
+{{/*
+Block settings
+-------------------------------------------------
+id			Block ID
+class		Block class extral
+*/}}
+{{- $id := .Get "id" | default "special_offer_save_on_sets_2" -}}
+{{- $class := .Get "class" | default "" -}}
+
+<section {{- if $id }} id="{{ $id }}" {{- end }} class="bg-section-2 {{ if $class }} {{ $class }} {{- end}}">
+    {{ .Inner }}
+	<div class="container">
+		<div class="row align-items-center">
+			<div class="col-lg-6 px-0 bg-image bg-col-lg-half-screen-left lazy-bg" data-bg-src="/assets/images/Countdown/countdown-06.jpg" data-animate="fadeInUp">
+				<div class="py-25 my-xl-21 my-lg-8"></div>
+			</div>
+			<div class="col-lg-6 py-lg-10 py-16 ps-lg-10 ps-xl-18 order-2" data-animate="fadeInUp">
+                {{ partial "elements/heading/style-1" (dict "subtitle" "SPECIAL OFFER <span class=\"badge bg-primary fs-15px py-3 px-4 ms-4\">-20%</span>"
+                "align" "left"
+				"title" "Save on Sets"
+                "desc" "Made using clean, non-toxic ingredients, our products are designed for everyone."
+                "descClass" "fs-18px w-md-70 w-lg-100 w-xl-75 mb-7 text-body"
+                ) }}
+				{{ partial  "elements/countdown/style-1" (dict "time" "Jan 27, 2024 18:24:25"
+				)}}
+				<a href="#" class="mt-11 btn btn-dark btn-hover-text-light btn-hover-bg-primary btn-hover-border-primary shadow-sm">Get Only $39,00</a>
+			</div>
+		</div>
+	</div>
+</section>
+

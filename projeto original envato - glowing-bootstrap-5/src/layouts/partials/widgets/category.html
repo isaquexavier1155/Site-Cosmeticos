@@ -1,0 +1,100 @@
+{{/***
+Element Parameters
+---------------------------------------------
+$.currentPage: 		$.currentPage.Page, $.currentPage.Site
+$.name          Widget Name
+$.class		    Element class extra
+$.cateClass     Category Class
+$.subCateClass  Category Chidren Class
+$.parentCateClass  Category Parent Class
+$.title		    Widget Title
+$.id            ID wrapper
+$.data		    Data
+*/}}
+
+{{- $title := "Category" -}}
+{{- if isset $ "title" }}
+    {{- $title = $.title -}}
+{{ end -}}
+
+{{- $id := "widget_category" -}}
+{{- if isset $ "id" }}
+    {{- $id = $.id -}}
+{{ end -}}
+
+{{- $data := $.currentPage.Site.Data.widget_category -}}
+{{- if isset $ "data" }}
+    {{- $data = $.data -}}
+{{ end -}}
+
+{{- $widgetName := "category" -}}
+{{- if isset $ "name" -}}
+    {{- $widgetName = $.name -}}
+{{- end -}}
+
+{{ $wrapperClass := printf "%s%s" "widget widget-" $widgetName }}
+{{- if isset $ "class" -}}
+    {{ $wrapperClass = printf "%s %s" $wrapperClass $.class }}
+{{- end -}}
+
+
+<div class="{{- $wrapperClass -}}">
+    {{- if $title -}}
+        {{ partial "widgets/widget-title" $title}}
+    {{- end -}}
+    {{- if $data }}
+        <ul class="navbar-nav navbar-nav-cate" id="{{- $id -}}">
+            {{ range $item := $data }}
+                {{- $cateClass := "text-reset position-relative d-block text-decoration-none text-body-emphasis-hover d-flex align-items-center" -}}
+                {{- if isset $ "cateClass" -}}
+                    {{- $cateClass = printf "%s %s" $cateClass $.cateClass -}}
+                {{- end -}}
+                {{- $subCateClass := $cateClass -}}
+                {{- if isset $ "subCateClass" -}}
+                    {{- $subCateClass = printf "%s %s" $subCateClass $.subCateClass -}}
+                {{- end -}}
+
+                {{- if isset $ "parentCateClass" -}}
+                    {{- $cateClass = printf "%s %s" $cateClass $.parentCateClass -}}
+                {{- end -}}
+
+
+                <li class="nav-item">
+                    {{ if ($item.is_active) }}
+                        {{- $cateClass = printf "%s%s" $cateClass " active" -}}
+                    {{ end }}
+
+                    {{- if $item.submenu -}}
+                        {{- $submenuClasses := "collapse" -}}
+                        {{ if ($item.is_active) }}
+                            {{- $submenuClasses = printf "%s%s" $submenuClasses " show" -}}
+                        {{ end }}
+
+
+                        <a href="{{ $item.url }}" title="{{ $item.title }}"
+                           class="{{- $cateClass -}}">
+                            <span class="text-hover-underline me-2">{{ $item.title }} </span>
+                            <span   data-bs-toggle="collapse"
+                                    data-bs-target="#cat_{{ $item.title | urlize }}"
+                                    class="caret flex-grow-1 d-flex align-items-center justify-content-end {{- if $item.is_active }} collapsed {{- end -}}"><svg
+                                        class="icon"><use xlink:href="#icon-plus"></use></svg></span> </a>
+                        <div id="cat_{{ $item.title | urlize }}" class="{{- $submenuClasses -}}" data-bs-parent="#{{- $id -}}">
+                            <ul class="navbar-nav nav-submenu ps-8">
+                                {{- range $sub_item := $item.submenu -}}
+                                    <li class="nav-item">
+                                        <a class="{{- $subCateClass -}}"
+                                           href="{{ $sub_item.url }}"><span
+                                                    class="text-hover-underline">{{- $sub_item.title -}}</span></a>
+                                    </li>
+                                {{- end -}}
+                            </ul>
+                        </div>
+                    {{- else -}}
+                        <a href="{{ $item.url }}" title="{{ $item.title }}"
+                           class="{{- $cateClass -}}"><span class="text-hover-underline">{{ $item.title }}</span></a>
+                    {{- end -}}
+                </li>
+            {{ end }}
+        </ul>
+    {{ end -}}
+</div>

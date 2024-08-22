@@ -1,0 +1,51 @@
+{{/*
+Block settings
+-------------------------------------------------
+id			Block ID
+class		Block class extral
+*/}}
+{{- $id := .Get "id" | default "" -}}
+{{- $class := .Get "class" | default "py-lg-18 pt-15 pb-16" -}}
+
+<section {{- if $id }} id="{{ $id }}" {{- end -}} {{- if $class }} class="{{ $class }}" {{- end}}>
+    {{ .Inner }}
+	<div class="container container-xxl">
+		<div class="text-center mb-13">
+			<h3 class="fs-3 mx-auto mb-9" style="max-width: 483px">
+				We pride ourselves on have a team of highly skilled
+			</h3>
+			<p class="mx-auto" style="max-width: 608px">Not cool. Our tightly knitted fabric holds its form after repeated wear. Plus, Aldays dress up or down, no prob. So you can wear them all day. Get it?</p>
+		</div>
+		<div class="slick-slider" data-slick-options='{"slidesToShow": 4,"dots":false,"arrows":false,"responsive":[{"breakpoint": 1200,"settings": {"slidesToShow": 3,"arrows":false,"dots":true}},{"breakpoint": 768,"settings": {"slidesToShow": 2,"arrows":false,"dots":true}},{"breakpoint": 576,"settings": {"slidesToShow": 1,"arrows":false,"dots":true}}]}'>
+			<div>
+                {{ partial "elements/team-member/style-1" (dict "image" "/assets/images/others/our-team-01.jpg"
+                "width" "330" "height" "437"
+                "content" "text-center"
+                "title" "Slava Fedutik"
+                "subtitle" "Founder, Chief Creative"
+				"altContent" "Slava Fedutik")}}
+			</div>
+			<div>
+                {{ partial "elements/team-member/style-1" (dict "image" "/assets/images/others/our-team-02.jpg"
+                "width" "330" "height" "437"
+                "content" "text-center"
+                "title" "Jennifer C." "subtitle" "Founder, CEO"
+				"altContent" "Jennifer C.")}}
+			</div>
+			<div>
+                {{ partial "elements/team-member/style-1" (dict "image" "/assets/images/others/our-team-03.jpg"
+                "width" "330" "height" "437"
+				"content" "text-center"
+                "title" "Valeriia Nadopta" "subtitle" "Founder, C0O"
+				"altContent" "Valeriia Nadopta")}}
+			</div>
+			<div>
+                {{ partial "elements/team-member/style-1" (dict "image" "/assets/images/others/our-team-04.jpg"
+                "width" "330" "height" "437"
+                "content" "text-center"
+                "title" "John Henry" "subtitle" "Founder, Chief Creative"
+				"altContent" "John Henry")}}
+			</div>
+		</div>
+	</div>
+</section>

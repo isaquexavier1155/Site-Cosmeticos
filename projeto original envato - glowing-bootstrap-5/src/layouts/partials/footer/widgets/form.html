@@ -1,0 +1,19 @@
+{{/***
+Element Parameters
+---------------------------------------------
+$.titleClass		Element title class extra
+$.subtitleClass		Element subtitle class extra
+$.title				Footer widget title
+$.subtitle			Footer widget subtitle
+*/}}
+
+<form {{- if $.formClass }} class="{{ $.formClass }}" {{- end -}}>
+	<div class="input-group position-relative">
+		<input type="email" class="form-control rounded pe-15 {{ $.class }}" placeholder="Your email">
+		<button type="submit" class="btn fs-28px bg-transparent text-secondary position-absolute btn-custom px-8 z-index-5 h-100 lh-0">
+			<svg class="icon icon-long-arrow-right">
+				<use xlink:href="#icon-long-arrow-right"></use>
+			</svg>
+		</button>
+	</div>
+</form>

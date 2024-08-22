@@ -1,0 +1,41 @@
+{{/*
+Block settings
+-------------------------------------------------
+id			Block ID
+class		Block class extral
+*/}}
+{{- $id := .Get "id" | default "" -}}
+{{- $class := .Get "class" | default "pb-14 py-lg-18" -}}
+
+<section {{- if $id }} id="{{ $id }}" {{- end -}} {{- if $class }} class="{{ $class }}" {{- end}}>
+    {{ .Inner }}
+	<div class="container container-xxl">
+		<div class="row">
+			<div class="col-lg-6">
+                {{ partial "elements/image-box/style-4" (dict
+				"currentPage" .
+				"img" "/assets/images/background/bg-about-02.jpg"
+				"class" "hover-zoom-in"
+				"contentClass" ""
+                ) }}
+			</div>
+			<div class="col-lg-6 px-xxl-18 mt-12 mt-lg-0">
+				<h2 class="mb-8">About Glowing</h2>
+				<p>Complexion-perfecting natural foundation enriched with antioxidant-packed superfruits, vitamins, and other skin-nourishing nutrients. Creamy liquid formula sets with a pristine matte finish for soft, velvety smooth skin. Made using clean, non-toxic ingredients, our products are designed for everyone...</p>
+				<p class="mb-xl-16">If I fell in love with a woman for an artistic reason, or from the point of view of my work, I think it would rob her of something. We live in an era of globalization and the era of the woman. Never in the history of the world have women <span class="text-body-emphasis" >been more in control of their destiny.</span></p>
+				<div class="row">
+					<div class="col-md-6">
+                        {{ partial "elements/icon-box/style-2" (dict "title" "Message"
+                        "iconClass" "d-none"
+                        "desc" "<p class=\"mb-6 fs-15px\">Send us a text & an ambassador will respond when available.</p> <p class=\"m-0 fs-6 fw-bold text-primary\">1-814-251-9966</p>") }}
+					</div>
+					<div class="col-md-6 pt-9 pt-md-0">
+                        {{ partial "elements/icon-box/style-2" (dict "title" "Store Hours"
+                        "iconClass" "d-none"
+                        "desc" "<dl class=\"d-flex mb-0\"><dt class=\"pe-3 fs-6 text-body-emphasis fw-500\" style=\"width: 110px\">Mon – Fri:</dt><dd class=\"mb-0\"> 08:30 – 20:00</dd></dl><dl class=\"d-flex mb-0\"><dt class=\"pe-3 fs-6 text-body-emphasis fw-500\" style=\"width: 110px\">Sat & Sun:</dt><dd class=\"mb-0\"> 09:30 – 21:30</dd></dl>") }}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

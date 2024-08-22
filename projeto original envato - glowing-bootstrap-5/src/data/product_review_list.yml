@@ -1,0 +1,55 @@
+- title: Favorite Foundation
+  name: JENNIFER C.
+  image_avt: "/assets/images/others/single-product-01.png"
+  desc: "I order the samples so as not to make mistakes when choosing my color Is a good product as a light shade but the sample doesn't contain enough product to cover the skin and decide clearly, around my eyes I used the “peach bisque”. I used with primer all mu face and finished texture is good. At the end for my latin tan skin a choose “golden peach” But is out of stock the primer I think is a good match."
+  sub: Orlando, FL
+  rate: 100
+  like: 10
+  dislike: 1
+  date: 5
+
+- title: Good as light coverage
+  name: JENNIFER C.
+  image_avt: "/assets/images/others/product-review-avatar-01.jpg"
+  image_review:
+    - img: "/assets/images/others/single-product-03.jpg"
+    - img: "/assets/images/others/single-product-02.jpg"
+  desc: "The foundation feels light on my face, and the color matches great. Also the customer service is phenomenal. I would purchase again."
+  sub: Georgia
+  rate: 80
+  like: 12
+  dislike: 4
+  date: 3
+- title: Favorite Foundation
+  name: JENNIFER C.
+  image_avt: "/assets/images/others/product-review-avatar-03.jpg"
+  image_review:
+    - img: "/assets/images/others/single-product-03.jpg"
+    - img: "/assets/images/others/single-product-02.jpg"
+  desc: "The foundation feels light on my face, and the color matches great. Also the customer service is phenomenal. I would purchase again."
+  sub: Orlando, FL
+  rate: 100
+  like: 10
+  dislike: 0
+  date: 3
+- title: Favorite Foundation
+  name: JENNIFER C.
+  image_avt: "/assets/images/others/product-review-avatar-02.jpg"
+  desc: "I order the samples so as not to make mistakes when choosing my color Is a good product as a light shade but the sample doesn’t contain enough product to cover the skin and decide clearly, around my eyes I used the “peach bisque”.I used with primer all mu face and finished texture is good. At the end for my latin tan skin a choose “golden peach” But is out of stock the primer I think is a good match."
+  sub: Orlando, FL
+  rate: 100
+  like: 10
+  dislike: 0
+  date: 3
+- title: Good as light coverage
+  name: Lucille D
+  image_review:
+    - img: "/assets/images/others/single-product-03.jpg"
+    - img: "/assets/images/others/single-product-02.jpg"
+  image_avt: "/assets/images/others/product-review-avatar-03.jpg"
+  desc: "The foundation feels light on my face, and the color matches great. Also the customer service is phenomenal. I would purchase again."
+  sub: Georgia
+  rate: 100
+  like: 10
+  dislike: 0
+  date: 3

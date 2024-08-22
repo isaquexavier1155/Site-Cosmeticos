@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en" {{- if eq $.Site.Params.enableDarkMode true}} data-bs-theme="light" {{- end -}}>
+<head>
+	{{ block "head_start" . }}{{ end }}
+	{{ partial "head" . }}
+	{{ block "head_end" . }}{{ end }}
+</head>
+{{ block "body_override" . }}
+<body {{- if $.Page.Params.bodyClass }} class="{{ $.Page.Params.bodyClass}}" {{- end }} {{- range $key, $value := $.Page.Params.bodyDataAttr }} data-{{ $key | safeHTMLAttr }}="{{ $value }}" {{- end }}>
+{{ end }}
+{{ block "main" . }}{{ end }}
+
+<!-- Jquery scripts -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+{{ block "scripts" . }}{{ end }}
+{{ partial "scripts" . }}
+
+{{ partial "pieces/icons" . }}
+{{ block "footer" . }}{{ end }}
+</body>
+</html>

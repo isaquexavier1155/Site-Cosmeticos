@@ -1,0 +1,35 @@
+<footer class="pt-14 pt-lg-20 pb-16 footer">
+	<div class="container container-xxl pt-4">
+		<div class="row">
+			<div class="col-lg-5 col-12 mb-11 mb-lg-0">
+                {{ partial "footer/widgets/find-a-store" (dict "title" "Care for Your Skin, <br> Care for Your Beauty"
+                "subtitle" "Smile with the reflection of the glow. Let your Skin define your age and not the years"
+                "subtitleClass" "pe-xl-24 mb-lg-11"
+                "btnContent" "Find a store") }}
+
+			</div>
+			<div class="col-lg col-md-4 col-12 mb-11 mb-lg-0">
+                {{ partial "footer/widgets/widget-title" (dict "title" "Company")}}
+                {{ partial "footer/widgets/menu" (dict
+                "subtitleClass" "text-body"
+                "data" $.Site.Data.footer_menu_company ) }}
+			</div>
+			<div class="col-lg col-md-4 col-12 mb-11 mb-lg-0">
+                {{ partial "footer/widgets/widget-title" (dict "title" "Useful links")}}
+                {{ partial "footer/widgets/menu" (dict
+                "subtitleClass" "text-body"
+                "data" $.Site.Data.footer_menu_useful_links ) }}
+			</div>
+			<div class="col-lg col-md-4 col-12 mb-11 mb-lg-0">
+                {{ partial "footer/widgets/widget-title" (dict "title" "Information")}}
+                {{ partial "footer/widgets/menu" (dict
+                "subtitleClass" "text-body"
+                "data" $.Site.Data.footer_menu_information ) }}
+			</div>
+		</div>
+		{{ partial "footer/widgets/bottom-bar" (dict
+		"context" .
+		"socialClass" "col-12 col-md-6 col-lg-4 d-flex align-items-center order-2 order-lg-1 mt-7 mt-md-11 mt-lg-0"
+		"paypalClass" "col-sm-12 col-md-6 col-lg-4 order-3 text-md-end mt-7 mt-md-11 mt-lg-0")}}
+	</div>
+</footer>

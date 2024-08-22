@@ -1,0 +1,72 @@
+{{/***
+Element Parameters
+---------------------------------------------
+$.class: 			Element extra class name
+$.titleClass: 		Title extra Class
+$.subtitleClass: 	Sub title extra class
+$.descClass: 		Description extra class
+$.contentClass:		News letter content class
+$.formInputClass:	Input form class
+$.buttonClass:		Button submit class
+$.formCheckClass:	Form check class
+$.ChecboxClass:		Form check input class
+$.title:			Title check input
+$.desc: 			Heding description
+$.subtitle:			Subtitle check input
+$.buttontitle:		Title Button
+*/}}
+
+
+{{- $class := "" -}}
+{{- if isset $ "class" }}
+    {{- $class = $.class -}}
+{{ end -}}
+
+{{- $descClass := "fs-14px" -}}
+{{- if isset $ "descClass" }}
+    {{- $descClass = $.descClass -}}
+{{ end -}}
+
+{{- $contentClass := "input-group position-relative mb-11 form-border-transparent" -}}
+{{- if isset $ "contentClass" }}
+    {{- $contentClass = $.contentClass -}}
+{{ end -}}
+
+{{- $formInputClass := "bg-body rounded-left" -}}
+{{- if isset $ "formInputClass" }}
+    {{- $formInputClass = $.formInputClass -}}
+{{ end -}}
+
+{{- $buttonClass := "btn btn-dark btn-hover-bg-primary btn-hover-border-primary rounded ms-0" -}}
+{{- if isset $ "buttonClass" }}
+    {{- $buttonClass = $.buttonClass -}}
+{{ end -}}
+
+{{- $formCheckClass := "d-flex justify-content-center" -}}
+{{- if isset $ "formCheckClass" }}
+    {{- $formCheckClass = $.formCheckClass -}}
+{{ end -}}
+
+{{- $checboxClass := "me-4 rounded" -}}
+{{- if isset $ "checboxClass" }}
+    {{- $checboxClass = $.checboxClass -}}
+{{ end -}}
+
+<div class="text-center {{- if $.class }} {{ $.class }}{{ end }}">
+	<div class="{{- if $contentClass }} {{ $contentClass }}{{ end }}">
+		<input type="email" class="form-control {{- if $formInputClass }} {{ $formInputClass }}{{ end }}"
+			   placeholder="Enter your email address">
+        {{- if $.buttontitle }}
+			<button type="submit" class=" {{- if $buttonClass }} {{ $buttonClass }}{{ end }}">{{ $.buttontitle }}</button>
+        {{- end }}
+	</div>
+	<div class="form-check {{- if $formCheckClass }} {{ $formCheckClass }}{{ end }}">
+		<input class="form-check-input {{- if $checboxClass }} {{ $checboxClass }}{{ end }}" type="checkbox" value=""
+			   id="flexCheckDefault">
+        {{- if $.desc }}
+			<label class="form-check-label text-body {{- if $descClass }} {{ $descClass }}{{ end }}" for="flexCheckDefault">
+                {{ $.desc | safeHTML }}
+			</label>
+        {{- end }}
+	</div>
+</div>

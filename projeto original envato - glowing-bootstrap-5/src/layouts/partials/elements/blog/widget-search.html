@@ -1,0 +1,20 @@
+{{/***
+Element Parameters
+---------------------------------------------
+$.class: 			Element extra class name
+*/}}
+{{- $class := "" -}}
+{{- if isset $ "class" }}
+    {{- $class = $.class -}}
+{{ end -}}
+<div class="{{- if $.class }} {{ $.class }}{{ end }}">
+	<h3 class="card-title fs-5 mb-0">
+		Search
+	</h3>
+	<form class="mx-auto w-100 mt-6">
+		<div class="input-group">
+			<input type="text" class="form-control border-0 ps-12 pe-7 py-5 position-relative" placeholder="Search" aria-describedby="button-addon1">
+			<button class="position-absolute border-0 bg-transparent text-secondary fs-5 text-body-emphasis px-7 py-4" type="submit" id="button-addon1"><i class="far fa-search"></i></button>
+		</div>
+	</form>
+</div>

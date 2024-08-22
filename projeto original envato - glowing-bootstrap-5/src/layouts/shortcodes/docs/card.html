@@ -1,0 +1,10 @@
+{{- $card_body := .Get "card_body" | default true -}}
+<div class="card mb-12 mt-6">
+	{{ if eq $card_body true }}
+	<div class="card-body">
+	{{ end }}
+	{{ .Inner }}
+	{{ if eq $card_body true }}
+	</div>
+	{{ end }}
+</div>

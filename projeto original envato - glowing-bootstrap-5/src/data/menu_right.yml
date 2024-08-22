@@ -1,0 +1,10 @@
+- title: Blocks
+  url: "#"
+  megamenu: menu/megamenu-blocks.html
+  size: fix
+  width: 800px
+
+- title: Docs
+  url: "#"
+  megamenu: menu/megamenu-docs.html
+

@@ -1,0 +1,34 @@
+items:
+  - img: /assets/images/shop/product-gallery-05.jpg
+    thumb: /assets/images/shop/product-gallery-05-154x205.jpg
+  - img: /assets/images/shop/product-gallery-06.jpg
+    thumb: /assets/images/shop/product-gallery-06-154x205.jpg
+  - img: /assets/images/shop/product-gallery-07.jpg
+    thumb: /assets/images/shop/product-gallery-07-154x205.jpg
+  - img: /assets/images/shop/product-gallery-08.jpg
+    thumb: /assets/images/shop/product-gallery-08-154x205.jpg
+imageSize:
+  img:
+    width: 540
+    height: 720
+  thumb:
+    width: 75
+    height: 100
+
+config1:
+  slidesToShow: 4
+  vertical: true
+  arrows: false
+  dots: false
+  asNavFor: "#vertical-slider-slides"
+  focusOnSelect: true
+  responsive:
+    - breakpoint: 1260
+      settings:
+        vertical: false
+config2:
+  slidesToShow: 1
+  arrows: false
+  dots: false
+  fade: true
+  asNavFor: "#vertical-slider-thumb"

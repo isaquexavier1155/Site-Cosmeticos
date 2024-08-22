@@ -1,0 +1,16 @@
+items:
+  - img: /assets/images/shop/product-gallery-05.jpg
+  - img: /assets/images/shop/product-gallery-06.jpg
+  - img: /assets/images/shop/product-gallery-07.jpg
+  - img: /assets/images/shop/product-gallery-08.jpg
+    video: https://www.youtube.com/watch?v=6v2L2UGZJAM
+imageSize:
+  img:
+    width: 448
+    height: 579
+slidesToShow: 2
+arrows: false
+responsive:
+  - breakpoint: 1260
+    settings:
+      slidesToShow: 1

@@ -1,0 +1,24 @@
+- title: 'Moisturizers'
+  img: '/assets/images/image-box/image-box-04.jpg'
+  img_dark: '/assets/images/image-box/image-box-white-04.jpg'
+  subtitle: 12
+- title: 'Toners'
+  img: '/assets/images/image-box/image-box-05.jpg'
+  img_dark: '/assets/images/image-box/image-box-white-05.jpg'
+  subtitle: 12
+- title: 'Masks'
+  img: '/assets/images/image-box/image-box-06.jpg'
+  img_dark: '/assets/images/image-box/image-box-white-06.jpg'
+  subtitle: 12
+- title: 'Kits'
+  img: '/assets/images/image-box/image-box-07.jpg'
+  img_dark: '/assets/images/image-box/image-box-white-07.jpg'
+  subtitle: 12
+- title: 'Serum'
+  img: '/assets/images/image-box/image-box-08.jpg'
+  img_dark: '/assets/images/image-box/image-box-white-08.jpg'
+  subtitle: 12
+- title: 'Oil Cleansers'
+  img: '/assets/images/image-box/image-box-09.jpg'
+  img_dark: '/assets/images/image-box/image-box-white-09.jpg'
+  subtitle: 12

@@ -1,0 +1,28 @@
+<!-- Modal -->
+<div class="modal fade" id="quickViewModal" aria-labelledby="quickViewModal" aria-hidden="true">
+	<div class="modal-dialog modal-xl">
+		<div class="modal-content">
+			<div class="modal-header border-0 py-5">
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body pt-0">
+				<div class="row ">
+					<div class="col-md-6 pe-13">
+						{{ partial "elements/shop/product-gallery/product-gallery-2"  (dict "currentPage" . ) }}
+					</div>
+					<div class="col-md-6 pt-md-0 pt-10">
+						{{ partial "elements/shop/product-info/product-info-2" (dict "title" "Natural Coconut Cleansing Oil"
+						"oldprice" "39.00" "price" "29.00"
+						"point" "4.86" "readreview" "Read 2947 reviews"
+						"subtitle" "Niacinamide and Vitamin C are two anti-aging superstars but not usually formulated together because of their different pH levels."
+						"sku" "SF09281" "category" "Makeup, Skincare"
+						"rate" "100"
+						"link" "/shop/product-details-v1.html"
+						"idNumber" "QuickViewNumber"
+						) }}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

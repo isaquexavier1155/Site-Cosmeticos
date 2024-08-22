@@ -1,0 +1,8 @@
+
+<div class="row g-5">
+    {{- range $item := $.Site.Data.product_gallery_7.items }}
+		<div class="col-6">
+			<a href="{{$item.img}}" data-gallery="gallery7" data-thumb-src="{{ $item.img }}"><img src="#" data-src="{{$item.img}}" class="img-fluid lazy-image h-auto" width="{{ $.Site.Data.product_gallery_7.imageSize.img.width }}" height="{{ $.Site.Data.product_gallery_7.imageSize.img.height }}" alt=""></a>
+		</div>
+	{{- end}}
+</div>

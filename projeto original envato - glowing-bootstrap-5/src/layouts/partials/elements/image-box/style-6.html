@@ -1,0 +1,48 @@
+{{/***
+Element Parameters
+---------------------------------------------
+$.class: 			Element extra class name
+$.titleClass: 		Title extra Class
+$.subtitleClass: 	Sub title extra class
+$.shopClass: 		Shop now extra class
+$.title: 			Image box title
+$.subtitle: 		Image box subtitle
+*/}}
+{{- $class := "" -}}
+{{- if isset $ "class" }}
+{{- $class = $.class -}}
+{{ end -}}
+
+{{- $titleClass := "mb-9 pb-2 fw-normal fs-2 font-primary image-box-6-title" -}}
+{{- if isset $ "titleClass" }}
+{{- $titleClass = $.titleClass -}}
+{{ end -}}
+
+{{- $subtitleClass := "mb-11 fs-18px" -}}
+{{- if isset $ "subtitleClass" }}
+{{- $subtitleClass = $.subtitleClass -}}
+{{ end -}}
+
+{{- $shopClass := "btn btn-dark btn-hover-bg-primary btn-hover-border-primary" -}}
+{{- if isset $ "shopClass" }}
+{{- $shopClass = $.shopClass -}}
+{{ end -}}
+
+<div class="container image-box-6 position-relative">
+	{{- if $.logo}}
+	<div class="d-flex justify-content-center mb-7">
+		<img src="{{$.logo}}" class="lazy-image" width="90" height="90" alt="{{$.title}}">
+	</div>
+	{{- end}}
+	<div class="text-center">
+		{{- if $.title}}
+		<h2 class="mx-auto {{- if $titleClass}} {{$titleClass}}{{- end}}">
+			{{$.title}}
+		</h2>
+		{{- end}}
+		{{- if $.subtitle}}
+		<p class="mx-auto image-box-6-subtitle {{- if $subtitleClass}} {{$subtitleClass}}{{- end}}">{{$.subtitle}}</p>
+		{{- end}}
+		<a class="image-box-6-shop-now {{- if $shopClass}} {{$shopClass}}{{- end}}" href="#" >Shop Now</a>
+	</div>
+</div>

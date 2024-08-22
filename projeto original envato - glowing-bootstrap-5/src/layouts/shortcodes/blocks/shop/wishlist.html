@@ -1,0 +1,10 @@
+{{ .Inner }}
+{{- $id := .Get "id" | default "" -}}
+{{- $class := .Get "class" | default "container container-xxl mb-13 mb-lg-15" -}}
+
+<section {{- if $id }} id="{{ $id }}" {{- end -}} {{- if $class }} class="{{ $class }}" {{- end}}>
+    {{ partial  "elements/heading/style-1" (dict "currentPage" . "title" "Wishlist" "titleClass" "mb-13" ) }}
+    {{ partial  "elements/shop/product-pages/product-wishlist" (dict "currentPage" .
+    "buttoncontinue" "Countinue Shopping"
+    "buttonupdate" "Update Cart" ) }}
+</section>

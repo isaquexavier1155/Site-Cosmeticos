@@ -1,0 +1,50 @@
+{{/*
+Block settings
+-------------------------------------------------
+id			Block ID
+class		Block class extral
+*/}}
+{{- $id := .Get "id" | default "" -}}
+{{- $class := .Get "class" | default "pt-14 pt-lg-16 pb-8 pb-md-12 pb-lg-16" -}}
+
+<section {{- if $id }} id="{{ $id }}" {{- end -}} {{- if $class }} class="{{ $class }}" {{- end}} >
+    {{ .Inner }}
+	<div class="container container-xxl">
+        <div class="mb-11">
+            {{ partial  "elements/heading/style-1" (dict "title" "More to Discover" "animation" "fadeInUp"
+			) }}
+		</div>
+		<div class="row">
+			<div class="col-md-4 mb-9 mb-md-0" data-animate="fadeInUp">
+                {{ partial "elements/image-box/style-4" (dict
+				"currentPage" .
+				"class" "hover-zoom-in"
+				"title" "Find a Store"
+				"titleClass" "text-decoration-none fs-4 d-block fw-semibold"
+				"img" "/assets/images/image-box/image-box-21.jpg"
+                "btnshop" "Our Store"
+                ) }}
+			</div>
+			<div class="col-md-4 mb-9 mb-md-0" data-animate="fadeInUp">
+                {{ partial "elements/image-box/style-4" (dict
+				"currentPage" .
+				"class" "hover-zoom-in"
+				"title" "From Our Blog"
+				"titleClass" "text-decoration-none fs-4 d-block fw-semibold"
+				"img" "/assets/images/image-box/image-box-13.jpg"
+                "btnshop" "Read more"
+                ) }}
+			</div>
+			<div class="col-md-4 mb-9 mb-md-0" data-animate="fadeInUp">
+                {{ partial "elements/image-box/style-4" (dict
+				"currentPage" .
+				"class" "hover-zoom-in"
+				"title" "Our Story"
+				"titleClass" "text-decoration-none fs-4 d-block fw-semibold"
+				"img" "/assets/images/image-box/image-box-14.jpg"
+                "btnshop" "View More"
+                ) }}
+			</div>
+		</div>
+	</div>
+</section>

@@ -1,0 +1,59 @@
+{{ .Inner }}
+{{- $id := .Get "id" | default "" -}}
+{{- $class := .Get "class" | default "container container-xxl py-14 py-lg-17" -}}
+
+<section {{- if $id }} id="{{ $id }}" {{- end -}} {{- if $class }} class="{{ $class }}" {{- end}}>
+	<div class="mb-13">
+        {{  partial "elements/heading/style-1" (dict "currentPage" . "title" "Shop by Categories" "desc" "Our products are designed for everyone."  "animation" "fadeInUp") }}
+	</div>
+	<div class="row">
+	   <div class="col-lg-6" data-animate="fadeInUp">
+           {{ partial  "elements/banner/style-4" (dict
+		   "currentPage" .
+		   "image" "/assets/images/banner/banner-18.jpg"
+		   "img_dark" "/assets/images/banner/banner-white-18.jpg"
+		   "imageClass" "img-fluid"
+           "width" "690" "height" "690"
+           "btnClass" "btn-white px-12"
+           "btnContent" "Skincare")}}
+	   </div>
+	   <div class="col-lg-6 mt-9 pt-2 mt-lg-0 pt-lg-0">
+		   <div class="row">
+			   <div class="col-md-6" data-animate="fadeInUp">
+					{{ partial  "elements/banner/style-4" (dict
+				   		"currentPage" .
+				   		"image" "/assets/images/banner/banner-15.jpg"
+				   		"img_dark" "/assets/images/banner/banner-white-15.jpg"
+						"imageClass" "img-fluid"
+						"width" "330" "height" "330"
+						"btnClass" "btn-white px-12"
+						"btnContent" "Bodycare"
+					)}}
+			   </div>
+			   <div class="col-md-6 mt-9 pt-2 mt-md-0 pt-md-0" data-animate="fadeInUp">
+				    {{ partial  "elements/banner/style-4" (dict
+				   		"currentPage" .
+				   		"image" "/assets/images/banner/banner-16.jpg"
+				   		"img_dark" "/assets/images/banner/banner-white-16.jpg"
+						"imageClass" "img-fluid"
+						"width" "330" "height" "330"
+						"btnClass" "btn-white px-12"
+						"btnContent" "Accessories"
+				   )}}
+			   </div>
+		   </div>
+		   <div class="row">
+			   <div class="col-12 mt-9 pt-2" data-animate="fadeInUp">
+                   {{ partial  "elements/banner/style-4" (dict
+				   "currentPage" .
+				   "image" "/assets/images/banner/banner-17.jpg"
+				   "img_dark" "/assets/images/banner/banner-white-17.jpg"
+				   "imageClass" "img-fluid"
+                   "width" "690" "height" "330"
+                   "btnClass" "btn-white px-12"
+                   "btnContent" "Haircare")}}
+			   </div>
+		   </div>
+	   </div>
+   </div>
+</section>

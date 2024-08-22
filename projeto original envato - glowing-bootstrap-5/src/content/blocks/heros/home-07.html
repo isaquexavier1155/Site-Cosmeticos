@@ -1,0 +1,19 @@
+---
+layout: blocks
+footer: footer-01
+header: none
+---
+{{< header.inline >}}
+{{ partial "header/header-07" .}}
+{{</ header.inline >}}
+{{< blocks/hero/home-07 />}}
+<section class="py-lg-21 py-16">
+	<div class="container container-xxl">
+		{{< docs/example lang="html" show_preview="false" code_preview="true" no_margin="true">}}
+		{{< header.inline >}}
+		{{ partial "header/header-07" .}}
+		{{</ header.inline >}}
+		{{< blocks/hero/home-07 />}}
+		{{</ docs/example >}}
+	</div>
+</section>

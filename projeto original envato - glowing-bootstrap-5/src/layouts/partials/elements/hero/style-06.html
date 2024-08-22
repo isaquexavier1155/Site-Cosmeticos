@@ -1,0 +1,112 @@
+{{/***
+Element Parameters
+---------------------------------------------
+$.slickSliderClass:		Slick slider Class
+$.class:				Element extra class name
+$.sliderClass: 			Slider Class
+$.subtitleClass: 		Subtitle Class
+$.titleClass: 			Title Class
+$.DescClass: 			Desc Class
+$.ButtonClass: 			Button Class
+*/}}
+
+{{- $slickSliderClass := "" -}}
+{{- if isset $ "slickSliderClass" }}
+    {{- $slickSliderClass = $.slickSliderClass -}}
+{{ end -}}
+
+{{- $class := "vh-100 d-flex align-items-center" -}}
+{{- if isset $ "class" }}
+    {{- $class = $.class -}}
+{{ end -}}
+
+{{- $sliderClass := "container container-xxl pt-10 pb-11" -}}
+{{- if isset $ "sliderClass" }}
+    {{- $sliderClass = $.sliderClass -}}
+{{ end -}}
+
+{{- $subtitleClass := "text-body-emphasis mb-8 text-uppercase fw-semibold fs-15px" -}}
+{{- if isset $ "subtitleClass" }}
+    {{- $subtitleClass = $.subtitleClass -}}
+{{ end -}}
+
+{{- $titleClass := "mb-7 hero-title" -}}
+{{- if isset $ "titleClass" }}
+    {{- $titleClass = $.titleClass -}}
+{{ end -}}
+
+{{- $descClass := "fs-18px mb-11" -}}
+{{- if isset $ "descClass" }}
+    {{- $descClass = $.descClass -}}
+{{ end -}}
+
+{{- $button1Class := "btn btn-lg btn-dark btn-hover-bg-primary btn-hover-border-primary" -}}
+{{- if isset $ "button1Class" }}
+    {{- $button1Class = $.button1Class -}}
+{{ end -}}
+
+{{- $button2Class := "p-0 fs-6 text-white" -}}
+{{- if isset $ "button2Class" }}
+    {{- $button2Class = $.button2Class -}}
+{{ end -}}
+
+{{- $cardClass := "card border-0 ps-lg-1 mx-md-0 mx-auto hero-card" -}}
+{{- if isset $ "cardClass" }}
+    {{- $cardClass = $.cardClass -}}
+{{ end -}}
+
+{{- $contentClass := "card-body p-11" -}}
+{{- if isset $ "contentClass" }}
+    {{- $contentClass = $.contentClass -}}
+{{ end -}}
+
+{{ $imgDark := "" }}
+{{- $currentPage := $.currentPage -}}
+
+{{- $data := index $.currentPage.Site.Data $.data -}}
+{{- $ignore_dark_mode := $.ignore_dark_mode | default "false" -}}
+<div class="slick-slider hero hero-{{$.currentPage.Page.Params.header}} {{- if $slickSliderClass}} {{$slickSliderClass}}{{- end}}"
+	 data-slick-options='{{ $data.config | jsonify }}' {{- if eq $ignore_dark_mode "true" }} data-bs-theme="light" {{- end -}}>
+    {{- if $data}}
+        {{ range $item := $data.items }}
+			<div class="{{- if $class}} {{$class}}{{- end}}">
+				{{- if isset $item "imgDark" }}
+				{{- $imgDark = $item.imgDark -}}
+				{{ end -}}
+				{{ partial "overlay" (dict "currentPage" $currentPage "img" $item.img "imgDark" $imgDark) }}
+				<div class="position-relative z-index-2 {{ if $sliderClass}}{{$sliderClass}}{{- end}}">
+					<div class="{{- if $cardClass}}{{$cardClass}}{{- end}}">
+						<div class="{{- if $contentClass}}{{$contentClass}}{{- end}}">
+							<div data-animate="fadeInDown">
+                                {{- if $item.subtitle}}
+									<p class="{{- if $subtitleClass}}{{$subtitleClass}}{{- end}}">{{ $item.subtitle }}</p>
+                                {{- end}}
+								<h1 class="{{- if $titleClass}}{{$titleClass}}{{- end}}">{{ $item.title | safeHTML }}</h1>
+                                {{- if $item.desc}}
+									<p class="hero-desc {{- if $descClass}} {{$descClass}}{{- end}}">{{ $item.desc}}</p>
+                                {{- end}}
+                                {{- if $item.price}}
+									<p class="fs-5 fw-semibold text-body-emphasis mb-7">Starting at $7.99 </p>
+                                {{- end}}
+							</div>
+                            {{- if $item.button1}}
+								<a href="#" data-animate="fadeInUp" class="{{- if $button1Class}}{{$button1Class}}{{- end}}">
+                                    {{ $item.button1 }}
+								</a>
+                            {{- end}}
+                            {{- if $item.button2}}
+								<a href="#" data-animate="fadeInUp" class="pb-2 bg-transparent fw-semibold text-decoration-none hero-link {{- if $button2Class}} {{$button2Class}}{{- end}}">
+                                    {{$item.button2}}
+									<svg class="icon">
+										<use xlink:href="#icon-arrow-right"></use>
+									</svg>
+								</a>
+                            {{- end}}
+						</div>
+					</div>
+
+				</div>
+			</div>
+        {{ end }}
+    {{- end}}
+</div>

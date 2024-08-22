@@ -1,0 +1,72 @@
+{{/***
+Element Parameters
+---------------------------------------------
+$.class: 			Element extra class name
+$.titleClass: 		Title extra Class
+$.imageClass:   	Image extra Class
+$.subtitleClass: 	Sub title extra class
+$.contentClass:		Banner content class
+$.btnClass: 		Banner button
+$.image: 			Banner image
+$.width: 			Width Image
+$.height: 			Height Image
+$.subtitle: 		Banner subtitle
+$.title: 			Banner title
+$.icon: 			Icon arrow icon
+$.desc: 			Banner desc
+$.btnContent:       Banner Content Button
+$.altContent: 		Banner alt content
+*/}}
+{{- $class := "hover-zoom-in hover-shine" -}}
+{{- if isset $ "class" }}
+{{- $class = $.class -}}
+{{ end -}}
+
+{{- $imageClass := "object-fit-cover" -}}
+{{- if isset $ "imageClass" }}
+{{- $imageClass = $.imageClass -}}
+{{ end -}}
+
+{{- $titleClass := "" -}}
+{{- if isset $ "titleClass" }}
+{{- $titleClass = $.titleClass -}}
+{{ end -}}
+
+{{- $subtitleClass := "mb-md-8 mb-5 fw-semibold fs-md-24px fs-6 text-white" -}}
+{{- if isset $ "subtitleClass" }}
+{{- $subtitleClass = $.subtitleClass -}}
+{{ end -}}
+
+{{- $contentClass := "d-inline-flex flex-column justify-content-center align-items-center p-12 m-2" -}}
+{{- if isset $ "contentClass" }}
+{{- $contentClass = $.contentClass -}}
+{{ end -}}
+
+{{- $btnClass := "btn-link fs-6 text-white border-0 border-bottom p-0 border-white text-decoration-none" -}}
+{{- if isset $ "btnClass" }}
+{{- $btnClass = $.btnClass -}}
+{{ end -}}
+{{- $ignore_dark_mode := $.ignore_dark_mode | default "false" -}}
+
+<div class="card border-0 rounded-0 {{- if $class }} {{ $class }}{{ end }}" {{- if eq $ignore_dark_mode "true" }} data-bs-theme="light" {{- end -}}>
+	{{- if $.image -}}
+	<img class="w-100 card-img {{- if $imageClass }} {{ $imageClass }}{{ end }}" width="{{- $.width }}" height="{{- $.height }}" src="{{ $.image }}" alt="{{ $.altContent }}">
+	{{- end -}}
+	<div class="card-img-overlay {{- if $contentClass }} {{ $contentClass }}{{ end }}">
+		{{- if $.subtitle -}}
+		<h5 class="card-subtitle ls-1 {{- if $subtitleClass }} {{ $subtitleClass }}{{ end }}">{{ $.subtitle }}</h5>
+		{{- end -}}
+		{{- if $.title -}}
+		<h3 class="card-title lh-45px fw-normal text-white text-uppercase{{- if $titleClass }} {{ $titleClass }}{{ end }}">{{ $.title}}</h3>
+		{{- end -}}
+		<div class="mt-md-12 mt-4">
+			{{- if $.btnContent -}}
+			<a href="#" class="btn {{- if $btnClass }} {{ $btnClass }}{{ end }}">{{ $.btnContent }}
+				{{- if $.icon -}}
+				<svg class="icon"><use xlink:href="#{{ $.icon }}"></use></svg>
+				{{- end -}}
+			</a>
+			{{- end -}}
+		</div>
+	</div>
+</div>

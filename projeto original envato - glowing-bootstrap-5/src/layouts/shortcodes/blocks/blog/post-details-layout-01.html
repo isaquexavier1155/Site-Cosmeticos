@@ -1,0 +1,26 @@
+{{ .Inner }}
+
+<section class="pt-10 pb-16 pb-lg-18">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-4">
+				<div class="position-sticky top-0">
+					{{ partial "elements/blog/sidebar" (dict "currentPage" . "position" "left" ) }}
+				</div>
+			</div>
+			<div class="col-lg-8">
+				{{ partial "elements/blog/single/items/meta-top" }}
+				{{ partial "elements/blog/single/post-detail-content-1" }}
+				{{ partial "elements/blog/single/items/meta-bottom" (dict "currentPage" .
+					"subtitleL" "How to Plop Hair for Bouncy, Beautiful Curls"
+					"subtitleR" "Our Favorite Multitasking Products"
+				)}}
+				{{ partial "elements/blog/single/items/related" (dict "currentPage" . "data" "post_related")}}
+				{{ partial "elements/blog/single/items/post-comment-list" (dict "currentPage" .
+					"img" "true"
+					"comment" "5 Comments") }}
+				{{ partial "elements/blog/single/items/post-comment-form"}}
+			</div>
+		</div>
+	</div>
+</section>

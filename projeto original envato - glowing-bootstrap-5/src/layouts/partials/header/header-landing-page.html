@@ -1,0 +1,21 @@
+<header id="header" class="header header-sticky z-index-5 header-sticky-smart disable-transition-all position-absolute start-0 end-0">
+	<div class="sticky-area">
+		<div class="main-header nav navbar navbar-light navbar-expand-xl py-6 py-xl-0">
+			<div class="container-wide container flex-nowrap">
+				{{ partial "header/items/menu-mobile-toggle" (dict "page" . "menu" "menu_landing" ) }}
+				{{ partial "header/items/logo" (dict "context" .
+				"class" "py-4 mx-auto w-xl-50") }}
+				<div class="d-none d-xl-flex" id="landingMenu">
+					<ul class="navbar-nav">
+						{{ partial "menu/menu-default" (dict "page" . "menu" "menu_landing" "nav_item_class" "nav-item py-5 py-lg-8 px-0 px-lg-7" "nav_link_class" "nav-link fs-6 text-capitalize fw-semibold hover-primary p-0" ) }}
+					</ul>
+				</div>
+				<div class="icons-actions d-flex justify-content-end w-xl-50 fs-28px text-body-emphasis">
+					{{ partial "header/items/color-modes" (dict "currentPage" . "class" "px-5")}}
+					<a href="#" class="btn btn-white lh-2 border-0 d-none d-xl-inline-block" style ="box-shadow: 0 4px 21px 0 rgba(0,0,0,0.15)">Purchase now</a>
+					{{ partial "header/items/icon-search" (dict "page" . "class" "px-xl-6 d-xl-none" ) }}
+				</div>
+			</div>
+		</div>
+	</div>
+</header>

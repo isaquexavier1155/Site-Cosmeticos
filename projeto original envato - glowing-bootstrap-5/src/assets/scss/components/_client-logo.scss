@@ -1,0 +1,9 @@
+.client-logo-item {
+	cursor: pointer;
+	&.slick-current,
+	&:hover {
+		img {
+			opacity: 1 !important;
+		}
+	}
+}

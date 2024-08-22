@@ -1,0 +1,55 @@
+-   title: Shop Pages
+    items:
+        -   title: Shop Layout <sup>v1</sup>
+            url: "/shop/shop-layout-v1.html"
+        -   title: Shop Layout <sup>v2</sup>
+            url: "/shop/shop-layout-v2.html"
+        -   title: Shop Layout <sup>v3</sup>
+            url: "/shop/shop-layout-v3.html"
+        -   title: Shop Layout <sup>v4</sup>
+            url: "/shop/shop-layout-v4.html"
+        -   title: Shop Layout <sup>v5</sup>
+            url: "/shop/shop-layout-v5.html"
+
+-   title: Product Pages
+    items:
+        -   title: Product Detail <sup>v1</sup>
+            url: "/shop/product-details-v1.html"
+        -   title: Product Detail <sup>v2</sup>
+            url: "/shop/product-details-v2.html"
+        -   title: Product Detail <sup>v3</sup>
+            url: "/shop/product-details-v3.html"
+        -   title: Product Detail <sup>v4</sup>
+            url: "/shop/product-details-v4.html"
+        -   title: Product Detail <sup>v5</sup>
+            url: "/shop/product-details-v5.html"
+        -   title: Product Detail <sup>v6</sup>
+            url: "/shop/product-details-v6.html"
+        -   title: Product Detail <sup>v7</sup>
+            url: "/shop/product-details-v7.html"
+        -   title: Product Detail <sup>v8</sup>
+            url: "/shop/product-details-v8.html"
+-   title: Product Types
+    items:
+        -   title: Product Simple
+            url: "/shop/product-simple.html"
+        -   title: Product Variable
+            url: "/shop/product-variable.html"
+        -   title: Product Time Limit
+            url: "/shop/product-time-limit.html"
+        -   title: Product Grouped
+            url: "/shop/product-grouped.html"
+-   title: Other Pages
+    items:
+        -   title: Shopping Cart
+            url: "/shop/shopping-cart.html"
+        -   title: Compare
+            url: "/shop/compare.html"
+        -   title: Wishlist
+            url: "/shop/wishlist.html"
+        -   title: Checkout
+            url: "/shop/checkout.html"
+        -   title: Register
+            url: "/user-registration.html"
+        -   title: Login
+            url: "/user-login.html"

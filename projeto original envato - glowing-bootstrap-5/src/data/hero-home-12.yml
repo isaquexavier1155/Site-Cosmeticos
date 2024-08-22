@@ -1,0 +1,25 @@
+items:
+  - subtitle:
+    img: "/assets/images/hero-slider/hero-slider-29.jpg"
+    title: "Be Your Kind of Beauty"
+    desc:
+    button1: "Shop Now"
+  - subtitle:
+    img: "/assets/images/hero-slider/hero-slider-30.jpg"
+    title: "Be Your Kind of Beauty"
+    desc:
+    button1: "Shop Now"
+  - subtitle:
+    img: "/assets/images/hero-slider/hero-slider-31.jpg"
+    title: "Be Your Kind of Beauty"
+    desc:
+    button1: "Shop Now"
+config:
+  slidesToShow: 1
+  infinite: true
+  dots: false
+  arrows: false
+  fade: true
+  autoplay: true
+  cssEase: ease-in-out
+  speed: 600

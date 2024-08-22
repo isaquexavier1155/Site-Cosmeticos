@@ -1,0 +1,71 @@
+{{/***
+Element Parameters
+---------------------------------------------
+$.class: 			Element extra class name
+$.imgClass: 		Image Class
+$.titleClass: 		Title extra Class
+$.subtitleClass: 	Sub title extra class
+$.contentClass 		Icon box content class
+$.img: 				Image box image
+$.title: 			Image box title
+$.subtitle: 		Image box subtitle
+*/}}
+{{- $class := "card border-0 fw-semibold" -}}
+{{- if isset $ "class" }}
+{{- $class = $.class -}}
+{{ end -}}
+
+{{- $imgClass := "rounded-circle mx-auto" -}}
+{{- if isset $ "imgClass" }}
+{{- $imgClass = $.imgClass -}}
+{{ end -}}
+
+{{- $titleClass := "fs-5 text-center position-relative" -}}
+{{- if isset $ "titleClass" }}
+{{- $titleClass = $.titleClass -}}
+{{ end -}}
+
+{{- $subtitleClass := "fw-bold fs-14px position-absolute top-0 me-n6 mt-n3 end-0 top-50 translate-middle-y" -}}
+{{- if isset $ "subtitleClass" }}
+{{- $subtitleClass = $.subtitleClass -}}
+{{ end -}}
+
+{{- $contentClass := "card-body pt-9 pb-0 d-flex justify-content-center px-0" -}}
+{{- if isset $ "contentClass" }}
+{{- $contentClass = $.contentClass -}}
+{{ end -}}
+
+
+{{- $img := "" -}}
+{{- if isset $ "img" }}
+{{- $img = $.img -}}
+{{ end -}}
+
+{{- $img_dark := "" -}}
+{{- if isset $ "img_dark" }}
+{{- $img_dark = $.img_dark -}}
+{{ end -}}
+
+{{- $currentPage := "" -}}
+{{- if isset $ "currentPage" }}
+{{- $currentPage = $.currentPage -}}
+{{ end -}}
+<div class="{{- if $class}} {{ $class }} {{ end }}">
+	{{- if $.img}}
+	<a href="#" class="{{- if $imgClass}}{{ $imgClass }}{{ end }} hover-zoom-in w-100 image-box-1">
+		{{  partial "the-image" (dict "currentPage" $currentPage "img" $img "img_dark" $img_dark "class" "img-fluid card-img" "width" "160" "height" "160" "alt" $.title) }}
+	</a>
+	{{- end}}
+	<div class="{{- if $contentClass}}{{ $contentClass }}{{ end }}">
+		{{- if $.title}}
+		<h4 class="{{- if $titleClass}}{{ $titleClass }}{{ end }}">
+			<a href="#" class="text-decoration-none">{{ $.title }}</a>
+			{{- if $.subtitle}}
+			<span class="{{- if $subtitleClass}} {{ $subtitleClass }} {{ end }}">
+			{{.subtitle}}
+		</span>
+			{{- end}}
+		</h4>
+		{{- end}}
+	</div>
+</div>

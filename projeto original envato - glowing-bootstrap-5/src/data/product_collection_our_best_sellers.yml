@@ -1,0 +1,104 @@
+items:
+  - title: Shield Conditioner
+    reviews: 2947
+    rate: 80
+    price:
+      regular: "40.00"
+      sale: "30.00"
+    image:
+      src: '/assets/images/products/product-01-330x440.jpg'
+      width: 330
+      height: 440
+  - title: Perfecting Facial Oil
+    reviews: 2947
+    rate: 100
+    price:
+      regular: "20.00"
+    image:
+      src: '/assets/images/products/product-02-330x440.jpg'
+      width: 330
+      height: 440
+  - title: Enriched Hand & Body Wash
+    reviews: 2947
+    rate: 100
+    is_new: true
+    price:
+      regular: "29.00"
+    image:
+      src: '/assets/images/products/product-03-330x440.jpg'
+      width: 330
+      height: 440
+  - title: Shield Shampoo
+    reviews: 2947
+    rate: 80
+    price:
+      regular: "25.00"
+      sale: "19.00"
+    image:
+      src: '/assets/images/products/product-04-330x440.jpg'
+      width: 330
+      height: 440
+  - title: Enriched Hand Wash
+    reviews: 2947
+    rate: 80
+    price:
+      regular: "39.00"
+      sale: "29.00"
+    image:
+      src: '/assets/images/products/product-05-330x440.jpg'
+      width: 330
+      height: 440
+  - title: Enriched Duo
+    reviews: 2947
+    rate: 100
+    price:
+      regular: "29.00"
+    image:
+      src: '/assets/images/products/product-06-330x440.jpg'
+      width: 330
+      height: 440
+  - title: Shield Spray
+    reviews: 2947
+    rate: 100
+    price:
+      regular: "29.00"
+    image:
+      src: '/assets/images/products/product-07-330x440.jpg'
+      width: 330
+      height: 440
+
+  - title: Shield Spray
+    reviews: 2947
+    rate: 90
+    price:
+      regular: "39.00"
+      sale: "25.00"
+    image:
+      src: '/assets/images/products/product-08-330x440.jpg'
+      width: 330
+      height: 440
+
+options:
+  centerMode: true
+  centerPadding: calc((100% - 1440px) / 2)
+  infinite: true
+  dots: false
+  arrows: false
+  slidesToShow: 4
+  slidesToScroll: 2
+  responsive:
+    - breakpoint: 1200
+      settings:
+        dots: false
+        arrows: false
+        slidesToShow: 3
+    - breakpoint: 992
+      settings:
+        dots: false
+        arrows: false
+        slidesToShow: 2
+    - breakpoint: 576
+      settings:
+        dots: false
+        arrows: false
+        slidesToShow: 1

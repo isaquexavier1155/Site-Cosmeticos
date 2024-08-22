@@ -1,0 +1,8 @@
+{{ $header := "header/header-01" }}
+{{- if $.Page.Params.header | and (ne $.Page.Params.header "none") -}}
+	{{- $header = path.Join "header/" $.Page.Params.header -}}
+{{- end -}}
+
+{{- if ne $.Page.Params.header "none" -}}
+{{ partial $header . }}
+{{- end -}}

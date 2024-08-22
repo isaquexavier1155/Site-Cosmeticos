@@ -1,0 +1,93 @@
+- title: How to Plop Hair for Bouncy, Beautiful Curls
+  cat: Life style
+  author: Admin
+  date: Jan 19th, 2021
+  image:
+    src: '/assets/images/blog/post-01-370x450.jpg'
+    width: 370
+    height: 450
+- title: How to Plop Hair for Bouncy, Beautiful Curls
+  cat: Life style
+  author: Admin
+  date: Jan 19th, 2021
+  image:
+    src: '/assets/images/blog/post-01-370x240.jpg'
+    width: 370
+    height: 240
+- title: How to Plop Hair for Bouncy, Beautiful Curls
+  cat: Life style
+  author: Admin
+  date: Jan 19th, 2021
+  image:
+    src: '/assets/images/blog/post-01-450x290.jpg'
+    width: 450
+    height: 290
+- title: How to Plop Hair for Bouncy, Beautiful Curls
+  cat: Life style
+  author: Admin
+  date: Jan 19th, 2021
+  desc: At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum...
+  image:
+    src: '/assets/images/blog/post-01-370x240.jpg'
+    width: 370
+    height: 240
+- title: How to Plop Hair for Bouncy, Beautiful Curls
+  cat: Life style
+  author: Admin
+  author_image: '/assets/images/others/author-avatar.jpg'
+  date: Jan 19th, 2021
+  view: 134
+  desc: At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum...
+  image:
+    src: '/assets/images/blog/post-01-770x470.jpg'
+    width: 770
+    height: 470
+- title: How to Plop Hair for Bouncy, Beautiful Curls
+  cat: Life style
+  author: Admin
+  author_image: '/assets/images/others/author-avatar.jpg'
+  date: Jan 19th, 2021
+  view: 134
+  desc: At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum...
+  post_format: quote
+  quote:
+    content: We believe even the smallest choices we make can have a significant impact over time.
+    cite: Maggie e.
+    author: Orlando, FL
+- title: How to Plop Hair for Bouncy, Beautiful Curls
+  cat: Life style
+  author: Admin
+  author_image: '/assets/images/others/author-avatar.jpg'
+  date: Jan 19th, 2021
+  view: 134
+  desc: At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum...
+  post_format: video
+  video_src: https://www.youtube.com/watch?v=6v2L2UGZJAM
+  image:
+    src: '/assets/images/blog/post-01-770x470.jpg'
+    width: 770
+    height: 470
+- title: How to Plop Hair for Bouncy, Beautiful Curls
+  cat: Life style
+  author: Admin
+  author_image: '/assets/images/others/author-avatar.jpg'
+  date: Jan 19th, 2021
+  view: 134
+  desc: At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum...
+  post_format: link
+  link: http://themeforest.net/user/g5theme
+- title: How to Plop Hair for Bouncy, Beautiful Curls
+  cat: Life style
+  author: Admin
+  author_image: '/assets/images/others/author-avatar.jpg'
+  date: Jan 19th, 2021
+  view: 134
+  desc: At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum...
+  post_format: gallery
+  gallery:
+    - src: '/assets/images/blog/post-08-770x470.jpg'
+      width: 770
+      height: 470
+    - src: '/assets/images/blog/post-01-770x470.jpg'
+      width: 770
+      height: 470

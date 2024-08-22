@@ -1,0 +1,43 @@
+{{/*
+Block settings
+-------------------------------------------------
+id			Block ID
+class		Block class extral
+*/}}
+{{- $id := .Get "id" | default "" -}}
+{{- $class := .Get "class" | default "" -}}
+
+<section {{- if $id }} id="{{ $id }}" {{- end -}} {{- if $class }} class="{{ $class }}" {{- end}}>
+    {{ .Inner }}
+	<div class="container-fluid px-9">
+		<div class="row gy-30px gx-30px">
+			<div class="col-12 col-md-4" data-animate="fadeInUp">
+                {{ partial  "elements/banner/style-4" (dict "title" "Autumn Skincare"
+                "image" "/assets/images/banner/banner-28.jpg" "width" "468" "height" "468"
+                "btnClass" "btn-link p-0 fw-semibold text-white text-decoration-none"
+				"btnContent" "Disvover Now "
+                "imageClass" "lazy-image"
+                "icon" "icon-arrow-right"
+				"altContent" "Autumn Skincare") }}
+			</div>
+			<div class="col-12 col-md-4" data-animate="fadeInUp">
+                {{ partial  "elements/banner/style-4" (dict "title" "Sale 40% Off"
+                "image" "/assets/images/banner/banner-26.jpg" "width" "468" "height" "468"
+                "btnClass" "btn-link p-0 fw-semibold text-white text-decoration-none"
+				"btnContent" "Shop Sale "
+				"imageClass" "lazy-image"
+                "icon" "icon-arrow-right"
+                "altContent" "Sale 40% Off") }}
+			</div>
+			<div class="col-12 col-md-4" data-animate="fadeInUp">
+                {{ partial  "elements/banner/style-4" (dict "title" "Save on Sets"
+                "image" "/assets/images/banner/banner-27.jpg" "width" "468" "height" "468"
+                "btnClass" "btn-link p-0 fw-semibold text-white text-decoration-none"
+				"btnContent" "Disvover Now "
+                "imageClass" "lazy-image"
+                "icon" "icon-arrow-right"
+                "altContent" "Save on Sets") }}
+			</div>
+		</div>
+	</div>
+</section>

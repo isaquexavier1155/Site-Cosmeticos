@@ -1,0 +1,43 @@
+items:
+  - title: Shield Conditioner
+    reviews: 2947
+    rate: 80
+    price:
+      regular: "29.00"
+    image:
+      src: '/assets/images/products/product-01-450x600.jpg'
+      width: 450
+      height: 600
+  - title: Perfecting Facial Oil
+    reviews: 2947
+    rate: 100
+    price:
+      regular: "29.00"
+    image:
+      src: '/assets/images/products/product-02-450x600.jpg'
+      width: 450
+      height: 600
+  - title: Enriched Hand & Body Wash
+    reviews: 2947
+    rate: 100
+    price:
+      regular: "29.00"
+    image:
+      src: '/assets/images/products/product-06-450x600.jpg'
+      width: 450
+      height: 600
+options:
+  dots: false
+  arrows: false
+  slidesToShow: 3
+  responsive:
+    - breakpoint: 992
+      settings:
+        dots: true
+        arrows: false
+        slidesToShow: 2
+    - breakpoint: 576
+      settings:
+        dots: true
+        arrows: false
+        slidesToShow: 1

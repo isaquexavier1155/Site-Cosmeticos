@@ -1,0 +1,82 @@
+{{/***
+Element Parameters
+---------------------------------------------
+$.class: 			Element extra class name
+$personClass		Person Class
+$viewClass			View number Class
+$titleClass			Title Class
+$.timeClass			time Class
+$.title				Title
+$.imgSymbol			image symbol of element
+$.time				Time of element
+$.view				Views number
+$.person			Name of person
+*/}}
+{{- $class := "" -}}
+{{- if isset $ "class" }}
+{{- $class = $.class -}}
+{{ end -}}
+
+{{- $personClass := "px-6 text-body-emphasis border-0 text-body" -}}
+{{- if isset $ "personClass" }}
+{{- $personClass = $.personClass -}}
+{{ end -}}
+
+{{- $person := "Admin" -}}
+{{- if isset $ "person" }}
+{{- $person = $.person -}}
+{{- end -}}
+
+{{- $title := "Are You Washing Your Face Properly?" -}}
+{{- if isset $ "title" }}
+{{- $title = $.title -}}
+{{- end -}}
+
+{{- $imgSymbol := "/assets/images/blog/post-detail-header-img.png" -}}
+{{- if isset $ "imgSymbol" }}
+{{- $imgSymbol = $.imgSymbol -}}
+{{- end -}}
+
+{{- $titleClass := "px-6 text-body-emphasis border-0 fw-500 mb-4 fs-3 " -}}
+{{- if isset $ "titleClass" }}
+{{- $titleClass = $.titleClass -}}
+{{ end -}}
+
+{{- $timeClass := "px-6" -}}
+{{- if isset $ "timeClass" }}
+{{- $timeClass = $.timeClass -}}
+{{ end -}}
+
+{{- $time := "Jan 19, 2021" -}}
+{{- if isset $ "time" }}
+{{- $time = $.time -}}
+{{ end -}}
+
+{{- $viewClass := "ps-5" -}}
+{{- if isset $ "viewClass" }}
+{{- $viewClass = $.viewClass -}}
+{{ end -}}
+
+{{- $view := "134 views" -}}
+{{- if isset $ "view" }}
+{{- $view = $.view -}}
+{{ end -}}
+
+
+<div class="{{- if $.class }} {{ $.class }}{{ end }} text-center mb-13">
+	<a href="#" class="btn btn-light btn-hover-bg-dark btn-hover-border-dark btn-hover-text-light shadow-none py-0 px-6 mb-6">
+		Life Style
+	</a>
+	<h2 class="{{- if $titleClass }} {{ $titleClass }}{{ end }}">
+		{{ $title }}
+	</h2>
+	<ul class="list-inline fs-15px fw-semibold letter-spacing-01 d-flex justify-content-center align-items-center">
+		<li><img data-src="{{ $imgSymbol }}" alt="Grace" class="lazy-image img-fluid" src="#"></li>
+		<li class="border-end {{- if $personClass }} {{ $personClass }}{{ end }}">
+			By
+			<a href="#">{{ $person }}</a>
+		</li>
+		<li class="list-inline-item {{- if $timeClass }} {{ $timeClass }}{{ end }}">{{ $time }}</li>
+		<li class="ms-5 list-style-disc">{{ $view }}</li>
+	</ul>
+</div>

@@ -1,0 +1,20 @@
+{{/***
+Block Parameters
+---------------------------------------------
+
+$.class:            Element extra class name
+
+*/}}
+
+{{- $class := .Get "class" | default "row mb-9 align-items-center" -}}
+
+<div {{- if $class }} class="{{ $class }}" {{- end}}>
+	{{ .Inner }}
+	<div class="col-sm-6 mb-8 mb-sm-0">
+		<h2 class="fs-4 mb-0">Dashboard</h2>
+		<p class="mb-0">Whole data about your business here</p>
+	</div>
+	<div class="col-sm-6 d-flex flex-wrap justify-content-sm-end">
+		{{ partial "dashboard/top-action" (dict "data" $.Site.Data.dashboard.topActionIndex) }}
+	</div>
+</div>

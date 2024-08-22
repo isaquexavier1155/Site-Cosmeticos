@@ -1,0 +1,79 @@
+{{/***
+Element Parameters
+---------------------------------------------
+$.class: 			Element extra class name
+$.titleClass: 		Title extra Class
+$.imageClass:   	Image extra Class
+$.contentClass:		Banner content class
+$.btnClass: 		Banner button
+$.icon: 			Icon arrow icon
+$.image: 			Banner image
+$.width: 			Width Image
+$.height: 			Height Image
+$.title: 			Banner title
+$.btnContent:       Banner Content Button
+$.altContent: 		Banner alt content
+*/}}
+
+{{- $class := "banner-05 hover-zoom-in hover-shine" -}}
+{{- if isset $ "class" }}
+{{- $class = $.class -}}
+{{ end -}}
+
+{{- $titleClass := "" -}}
+{{- if isset $ "titleClass" }}
+{{- $titleClass = $.titleClass -}}
+{{ end -}}
+
+{{- $imageClass := "object-fit-cover" -}}
+{{- if isset $ "imageClass" }}
+{{- $imageClass = $.imageClass -}}
+{{ end -}}
+{{- $imageClass := printf "card-img %s" $imageClass -}}
+
+{{- $contentClass := "d-inline-flex flex-column justify-content-end px-11 pt-11 pb-9 mb-2" -}}
+{{- if isset $ "contentClass" }}
+{{- $contentClass = $.contentClass -}}
+{{ end -}}
+
+{{- $btnClass := "btn-link text-decoration-none p-0 fw-semibold" -}}
+{{- if isset $ "btnClass" }}
+{{- $btnClass = $.btnClass -}}
+{{ end -}}
+
+{{- $img := "" -}}
+{{- if isset $ "image" }}
+{{- $img = $.image -}}
+{{ end -}}
+
+{{- $img_dark := "" -}}
+{{- if isset $ "img_dark" }}
+{{- $img_dark = $.img_dark -}}
+{{ end -}}
+
+{{- $currentPage := "" -}}
+{{- if isset $ "currentPage" }}
+{{- $currentPage = $.currentPage -}}
+{{ end -}}
+
+{{- $ignore_dark_mode := $.ignore_dark_mode | default "false" -}}
+
+<div class="card border-0 rounded-0 {{- if $class }} {{ $class }}{{ end }}" {{- if eq $ignore_dark_mode "true" }} data-bs-theme="light" {{- end -}}>
+	{{- if $.image -}}
+	{{  partial "the-image" (dict "currentPage" $currentPage "img" $img "img_dark" $img_dark "class" $imageClass "alt" $.altContent "width" $.width  "height" $.height) }}
+	{{- end -}}
+	<div class="card-img-overlay {{- if $contentClass }} {{ $contentClass }}{{ end }}">
+		{{- if $.title -}}
+		<h3 class="card-title fw-semibold {{- if $titleClass }} {{ $titleClass }}{{ end }}">{{ $.title | safeHTML }}</h3>
+		{{- end -}}
+		<div>
+			{{- if $.btnContent -}}
+			<a href="#" class="btn {{- if $btnClass }} {{ $btnClass }}{{ end }}">{{ $.btnContent }}
+				{{- if $.icon -}}
+				<svg class="icon"><use xlink:href="#{{ $.icon }}"></use></svg>
+				{{- end -}}
+			</a>
+			{{- end -}}
+		</div>
+	</div>
+</div>

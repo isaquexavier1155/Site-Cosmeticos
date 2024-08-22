@@ -1,0 +1,88 @@
+{{/***
+Element Parameters
+---------------------------------------------
+$.class: 			Element extra class name
+$.titleClass: 		Title extra Class
+$.imageClass:   	Image extra Class
+$.subtitleClass: 	Sub title extra class
+$.descClass: 		Description extra class
+$.contentClass:		Banner content class
+$.btnClass: 		Banner button
+$.image: 			Banner image
+$.width: 			Width Image
+$.height: 			Height Image
+$.subtitle: 		Banner subtitle
+$.title: 			Banner title
+$.desc: 			Banner desc
+$.btnContent:       Banner Button Content
+$.altContent: 		Banner alt content
+*/}}
+{{- $class := "banner-01 hover-zoom-in hover-shine" -}}
+{{- if isset $ "class" }}
+{{- $class = $.class -}}
+{{ end -}}
+
+{{- $imageClass := "object-fit-cover card-img" -}}
+{{- if isset $ "imageClass" }}
+{{- $imageClass = $.imageClass -}}
+{{ end -}}
+
+{{- $titleClass := "" -}}
+{{- if isset $ "titleClass" }}
+{{- $titleClass = $.titleClass -}}
+{{ end -}}
+
+{{- $subtitleClass := "fs-18px mb-4 fw-semibold" -}}
+{{- if isset $ "subtitleClass" }}
+{{- $subtitleClass = $.subtitleClass -}}
+{{ end -}}
+
+{{- $contentClass := "p-md-12 m-md-2 p-8" -}}
+{{- if isset $ "contentClass" }}
+{{- $contentClass = $.contentClass -}}
+{{ end -}}
+
+{{- $btnClass := "btn-white" -}}
+{{- if isset $ "btnClass" }}
+{{- $btnClass = $.btnClass -}}
+{{ end -}}
+
+{{- $currentPage := "" -}}
+{{- if isset $ "currentPage" }}
+{{- $currentPage = $.currentPage -}}
+{{ end -}}
+
+{{- $imageDark := "" -}}
+{{- if isset $ "imageDark" }}
+{{- $imageDark = $.imageDark -}}
+{{ end -}}
+
+{{- $img_dark := "" -}}
+{{- if isset $ "img_dark" }}
+{{- $img_dark = $.img_dark -}}
+{{ end -}}
+
+{{- $ignore_dark_mode := $.ignore_dark_mode | default "false" -}}
+
+<div class="card border-0 rounded-0 {{- if $class }} {{ $class }}{{ end }}" {{- if eq $ignore_dark_mode "true" }} data-bs-theme="light" {{- end -}}>
+	{{- if $.image -}}
+	{{  partial "the-image" (dict "currentPage" $currentPage "img" $.image "img_dark" $img_dark "class" $imageClass "alt" $.altContent "width" $.width  "height" $.height) }}
+	{{- end -}}
+	<div class="card-img-overlay d-inline-flex flex-column {{- if $contentClass }} {{ $contentClass }}{{ end }}">
+		{{- if $.subtitle -}}
+			<h6 class="card-subtitle ls-1 {{- if $subtitleClass }} {{ $subtitleClass }}{{ end }}">{{ $.subtitle }}</h6>
+		{{- end -}}
+		{{- if $.title -}}
+			<h3 class="card-title lh-45px {{- if $titleClass }} {{ $titleClass }}{{ end }}">{{ $.title}}</h3>
+		{{- end -}}
+		{{- if $.desc -}}
+		<p class="card-text fs-15px text-body-emphasis {{- if $.descClass }} {{ $.descClass }}{{ end }}">{{ $.desc}}</p>
+		{{- end -}}
+		<div class="mt-7">
+			{{- if $.btnContent -}}
+				<a href="#" class="btn {{- if $btnClass }} {{ $btnClass }}{{ end }}">{{ $.btnContent }}</a>
+			{{- end -}}
+		</div>
+	</div>
+</div>
+

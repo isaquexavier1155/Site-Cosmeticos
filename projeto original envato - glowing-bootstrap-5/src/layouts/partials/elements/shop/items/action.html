@@ -1,0 +1,68 @@
+{{/***
+Element Parameters
+---------------------------------------------
+$.class: 			Element extra class name
+$.direction         Direction, accept: vertical | horizontal
+$.type              Type - accept: add_to_cart | quick-view | wishlist | compare
+$.size              Size - accept: md | sm
+*/}}
+
+{{- $href := "#" -}}
+
+{{- $type := "add_to_cart" -}}
+{{- if isset $ "type" -}}
+    {{- $type = $.type -}}
+{{- end -}}
+
+{{- $title := "Add To Cart" -}}
+{{- $icon := "icon-shopping-bag-open-light" -}}
+
+{{- if eq $type "wishlist" -}}
+    {{- $title = "Add To Wishlist"  -}}
+    {{- $icon = "icon-star-light" -}}
+{{- else if eq $type "compare" -}}
+	{{- $href = "/shop/compare.html"  -}}
+    {{- $title = "Compare"  -}}
+    {{- $icon = "icon-arrows-left-right-light" -}}
+{{- end -}}
+
+
+{{- $direction := "horizontal" -}}
+{{- if isset $ "direction" -}}
+    {{- $direction = $.direction -}}
+{{- end -}}
+
+{{- $tooltip_placement := "top" -}}
+{{- if eq $direction "vertical" -}}
+    {{- $tooltip_placement = "left" -}}
+{{- end -}}
+
+
+{{- $size := "md" -}}
+{{- if isset $ "size" -}}
+    {{- $size = $.size -}}
+{{- end -}}
+
+{{- $class := $type -}}
+{{- if eq $size "sm" -}}
+    {{- $class = printf "%s %s" $class "sm"  -}}
+{{- end -}}
+
+{{- $no_shadow := $.no_shadow | default "false" -}}
+
+{{- if eq $type "quick-view" -}}
+	<a class="text-body-emphasis bg-body bg-dark-hover text-light-hover rounded-circle square product-action {{- if eq $no_shadow "false" }} shadow-sm {{- end -}}{{- if $class }} {{$class}} {{- end -}}"
+	   href="#" data-bs-toggle="tooltip" data-bs-placement="{{- $tooltip_placement -}}" data-bs-title="Quick View">
+		<span data-bs-toggle="modal" data-bs-target="#quickViewModal" class="d-flex align-items-center justify-content-center">
+			<svg class="icon icon-eye-light">
+				<use xlink:href="#icon-eye-light"></use>
+			</svg>
+		</span>
+	</a>
+{{- else -}}
+	<a class="text-body-emphasis bg-body bg-dark-hover text-light-hover rounded-circle square product-action {{- if eq $no_shadow "false" }} shadow-sm {{- end -}}{{- if $class }} {{$class}} {{- end -}}" href="{{$href}}" data-bs-toggle="tooltip" data-bs-placement="{{- $tooltip_placement -}}" data-bs-title="{{- $title -}}">
+		<svg class="icon {{ $icon -}}">
+			<use xlink:href="#{{- $icon -}}"></use>
+		</svg>
+	</a>
+{{- end -}}

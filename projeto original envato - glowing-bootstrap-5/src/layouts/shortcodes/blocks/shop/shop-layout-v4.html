@@ -1,0 +1,18 @@
+{{ .Inner }}
+<div class="container container-xxl pb-16 pb-lg-18 mb-lg-3">
+    <div class="row gy-50px">
+        {{- range $index, $item := $.Site.Data.shop_layout_v4 -}}
+            {{- $class := "col-xl-3" -}}
+                {{- if in (slice 4 5 6) (mod $index 7) -}}
+                    {{- $class = "col-xl-4" -}}
+                 {{- end -}}
+            <div class="col-sm-6 col-lg-4 {{ $class -}}">
+                {{ partial  "elements/shop/skins/grid-1" (dict
+                "data" $item
+                "animation" "fadeInUp"
+                ) }}
+            </div>
+        {{- end -}}
+    </div>
+    {{ partial  "elements/paging/pagination" }}
+</div>

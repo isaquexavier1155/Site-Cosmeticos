@@ -1,0 +1,39 @@
+{{/***
+Element Parameters
+---------------------------------------------
+
+$.actionItemClass: 		Action item Class
+$.wishlist: 			Shop add to wishlist
+$.compare: 				Shop compare
+*/}}
+
+{{- $actionItemClass := "rounded-circle" -}}
+{{- if isset $ "actionItemClass" }}
+    {{- $actionItemClass = $.actionItemClass -}}
+{{ end -}}
+
+<div class="position-absolute z-index-2 w-100 d-flex justify-content-end">
+	<div class="p-6">
+		{{- if $.wishlist}}
+			<a href="#" class="d-flex align-items-center justify-content-center product-gallery-action {{- if $actionItemClass}} {{$actionItemClass}}{{- end}}" data-bs-toggle="tooltip" data-bs-placement="left" data-bs-title="Add to wishlist">
+				<svg class="icon fs-4">
+					<use xlink:href="#icon-star-light"></use>
+				</svg>
+			</a>
+		{{- end}}
+		{{- if $.compare}}
+			<a href="/shop/compare.html" class="d-flex align-items-center justify-content-center mt-5 product-gallery-action {{- if $actionItemClass}} {{$actionItemClass}}{{- end}}" data-bs-toggle="tooltip" data-bs-placement="left" data-bs-title="Compare">
+				<svg class="icon fs-4">
+					<use xlink:href="#icon-arrows-left-right-light"></use>
+				</svg>
+			</a>
+		{{- end}}
+        {{- if $.video}}
+			<a href="https://www.youtube.com/watch?v=6v2L2UGZJAM" class="view-video d-flex align-items-center justify-content-center mt-5 product-gallery-action {{- if $actionItemClass}} {{$actionItemClass}}{{- end}}" data-bs-toggle="tooltip" data-bs-placement="left" data-bs-title="Play Video">
+				<svg class="icon fs-4">
+					<use xlink:href="#icon-Play"></use>
+				</svg>
+			</a>
+        {{- end}}
+	</div>
+</div>

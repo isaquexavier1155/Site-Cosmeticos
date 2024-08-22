@@ -1,0 +1,46 @@
+{{/***
+Element Parameters
+---------------------------------------------
+$.class: 			Element extra class name
+$.name              Widget Name
+$.title		        Widget Title
+$.data		    Data
+*/}}
+
+{{- $title := "Tags" -}}
+{{- if isset $ "title" }}
+    {{- $title = $.title -}}
+{{ end -}}
+
+{{- $widgetName := "tags" -}}
+{{- if isset $ "name" -}}
+    {{- $widgetName = $.name -}}
+{{- end -}}
+
+{{ $wrapperClass := printf "%s%s" "widget widget-" $widgetName }}
+
+{{- if isset $ "class" -}}
+    {{ $wrapperClass = printf "%s %s" $wrapperClass $.class }}
+{{- end -}}
+
+{{- $data := $.currentPage.Site.Data.widget_tags -}}
+{{- if isset $ "data" }}
+    {{- $data = $.data -}}
+{{ end -}}
+
+<div class="{{- $wrapperClass -}}">
+    {{- if $title -}}
+        {{ partial "widgets/widget-title" $title}}
+    {{- end -}}
+    {{- if $data }}
+        <ul class="w-100 mt-n4 list-unstyled d-flex flex-wrap mb-0">
+            {{- range $item := $data -}}
+                <li class="me-6 mt-4">
+                    <a href="{{- $item.url -}}" title="{{- $item.title -}}" class="text-reset d-block text-decoration-none text-body-emphasis-hover text-hover-underline">{{- $item.title -}}</a>
+                </li>
+            {{- end -}}
+        </ul>
+    {{ end -}}
+
+
+</div>

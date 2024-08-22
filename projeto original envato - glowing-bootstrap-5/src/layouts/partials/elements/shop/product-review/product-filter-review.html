@@ -1,0 +1,82 @@
+{{/***
+Element Parameters
+---------------------------------------------
+$.class: 			Element extra class name
+$.currentPage: 		$.currentPage.Page, $.currentPage.Site
+$.contentClass:		Product review content class
+$.btnSubmit: 		Button Submit form
+$.btnAdd:   		Button Add Photos
+$title: 			Title Product review
+$.icon: 			Icon camera icon
+$.contentBtnAdd: 	Content Button Add
+$.contentBtnSubmit: Content Button Submit
+*/}}
+
+{{- $class := "" -}}
+{{- if isset $ "class" }}
+	{{- $class = $.class -}}
+{{ end -}}
+
+
+<div class="product-filter-review {{- if $class }} {{- $class }}{{ end }}">
+	{{ if $.title }}
+		<h3 class="fs-5">{{ $.title }}</h3>
+	{{ end }}
+	<ul class="list-inline mb-8 mx-n3 filter-review">
+		{{ range $item := $.currentPage.Site.Data.filter_review.items }}
+			{{- range $value1 := $item.item1 -}}
+				<li class="list-inline-item spacing">
+					<a href="#" class="btn btn-outline btn-hove-border-body-emphasis-color btn-border-1 py-4 px-6 fw-500">
+						{{ $value1.title }}
+					</a>
+				</li>
+			{{- end -}}
+			{{- range $value2 := $item.item2 -}}
+				<li class="list-inline-item">
+				<a class="btn btn-outline btn-hove-border-body-emphasis-color btn-border-1 py-4 px-6 fw-500" data-bs-toggle="collapse" href="#collapseExample"
+				   role="button" aria-expanded="false" aria-controls="collapseExample">
+					{{ $value2.title }}
+				</a>
+				</li>
+			{{- end -}}
+			{{- range $value3 := $item.item3 -}}
+				<li class="collapse m-3 list-inline-item collapse" id="collapseExample">
+					{{- range $item3 := $value3.item -}}
+						<ul class="list-inline list-inline-item">
+							<li class="list-inline-item">
+								<a href="#"
+								   class="btn btn-outline btn-hove-border-body-emphasis-color btn-border-1 py-4 px-6 fw-500">
+									{{ $item3.title }}
+								</a>
+							</li>
+						</ul>
+					{{ end }}
+				</li>
+			{{ end }}
+		{{ end }}
+	</ul>
+	<div class="row gy-15px align-items-center spacing-02">
+		<div class="col-auto search-review w-100 px-4">
+			<div class="form-group product-review-form">
+				<div class="input-group-prepend position-absolute z-index-10">
+					<button class="btn btn-link text-secondary fs-15px px-7" type="submit"><i class="far fa-search"></i>
+					</button>
+				</div>
+				<input type="text" id="search_reviews" name="search_reviews" class="form-control fs-15px pe-7 ps-13  rounded"
+					   placeholder="Search reviews">
+				<label for="search_reviews" class="visually-hidden">Search reviews</label>
+			</div>
+		</div>
+		{{ range $item := $.currentPage.Site.Data.filter_review.filter }}
+			<div class="col-auto dropdown skin-goal px-4">
+				<label for="{{ $item.id }}" class="visually-hidden">{{ $item.title }}</label>
+				<select name="{{ $item.id }}" id="{{ $item.id }}" class="form-select">
+					{{- range $doc := $item.values -}}
+					<option>{{ $doc.value }}</option>
+					{{- end -}}
+				</select>
+			</div>
+		{{- end -}}
+	</div>
+</div>
+

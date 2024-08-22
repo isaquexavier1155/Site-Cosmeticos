@@ -1,0 +1,34 @@
+{{/***
+Element Parameters
+---------------------------------------------
+$.class				Element class extra
+$.dropMenuClass		Dropmenu class extra
+$.buttonClass		Button class extra
+*/}}
+{{ $class := "" }}
+{{- if isset $ "class" }}
+	{{- $class = $.class -}}
+{{ end -}}
+
+{{ $dropMenuClass := "dropdown-menu-end py-5" }}
+{{- if isset $ "dropMenuClass" }}
+	{{- $dropMenuClass = $.dropMenuClass -}}
+{{ end -}}
+
+{{ $buttonClass := "dropdown-menu-end fs-13px" }}
+{{- if isset $ "buttonClass" }}
+    {{- $buttonClass = $.buttonClass -}}
+{{ end -}}
+
+<div class="dropdown {{- if $class }} {{ $class }} {{- end -}}">
+	<span class="d-inline-block me-3"><img src="../assets/images/header/flag.jpg" alt=""></span>
+	<button class="btn btn-link dropdown-toggle fw-semibold text-uppercase ls-1 p-0 {{- if $buttonClass }} {{ $buttonClass }} {{- end -}}"
+			type="button" data-bs-toggle="dropdown" aria-expanded="false">English
+	</button>
+	<div class="dropdown-menu {{- if $dropMenuClass }} {{ $dropMenuClass }} {{- end -}}" style="min-width: unset">
+		<a class="dropdown-item py-1" href="#">French</a>
+		<a class="dropdown-item py-1" href="#">Spanish</a>
+		<a class="dropdown-item py-1" href="#">Korean</a>
+		<a class="dropdown-item py-1" href="#">Chinese</a>
+	</div>
+</div>

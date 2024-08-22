@@ -1,0 +1,102 @@
+{{/***
+Element Parameters
+---------------------------------------------
+$.slickSliderClass:		Slick slider Class
+$.class:				Element extra class name
+$.sliderClass: 			Slider Class
+$.subtitleClass: 		Subtitle Class
+$.titleClass: 			Title Class
+$.DescClass: 			Desc Class
+$.ButtonClass: 			Button Class
+*/}}
+
+{{- $slickSliderClass := "" -}}
+{{- if isset $ "slickSliderClass" }}
+    {{- $slickSliderClass = $.slickSliderClass -}}
+{{ end -}}
+
+{{- $class := "" -}}
+{{- if isset $ "class" }}
+    {{- $class = $.class -}}
+{{ end -}}
+
+{{- $sliderClass := "container container-xxl mx-auto" -}}
+{{- if isset $ "sliderClass" }}
+    {{- $sliderClass = $.sliderClass -}}
+{{ end -}}
+
+{{- $subtitleClass := "text-body-emphasis mb-8 text-uppercase fw-semibold hero-title font-primary" -}}
+{{- if isset $ "subtitleClass" }}
+    {{- $subtitleClass = $.subtitleClass -}}
+{{ end -}}
+
+{{- $titleClass := "mb-7 hero-title-2 text-uppercase" -}}
+{{- if isset $ "titleClass" }}
+    {{- $titleClass = $.titleClass -}}
+{{ end -}}
+
+{{- $descClass := "fs-18px mb-11" -}}
+{{- if isset $ "descClass" }}
+    {{- $descClass = $.descClass -}}
+{{ end -}}
+
+{{- $button1Class := "btn btn-dark rounded btn-hover-bg-primary border-0" -}}
+{{- if isset $ "button1Class" }}
+    {{- $button1Class = $.button1Class -}}
+{{ end -}}
+
+{{- $button2Class := "p-0 text-body-emphasis" -}}
+{{- if isset $ "button2Class" }}
+    {{- $button2Class = $.button2Class -}}
+{{ end -}}
+
+{{- $contentClass := "text-md-start pb-10 pt-12 py-md-18 py-xl-25" -}}
+{{- if isset $ "contentClass" }}
+    {{- $contentClass = $.contentClass -}}
+{{ end -}}
+
+{{- $currentPage := $.currentPage -}}
+
+{{- $data := index $.currentPage.Site.Data $.data -}}
+
+<div class="slick-slider hero {{- if $slickSliderClass}} {{$slickSliderClass}}{{- end}}"
+	 data-slick-options='{{ $data.config | jsonify }}'>
+    {{- if $data}}
+        {{ range $item := $data.items }}
+			<div>
+				<div class="{{- if $sliderClass}}{{$sliderClass}}{{- end}}">
+					<div class="row position-relative">
+						<div class="col-12 col-md-6 col-lg-5 col-xl-4 d-flex align-items-center order-1 order-md-0">
+							<div class="w-100">
+								{{ partial "elements/hero/hero-element/content.html" (dict "currentPage" .
+								"subtitle" $item.subtitle
+								"title" $item.title
+								"desc" $item.desc
+								"price" $item.price
+								"button1" $item.button1
+								"button2" $item.button2
+								"subtitleClass" $subtitleClass
+								"titleClass" $titleClass
+								"descClass" $descClass
+								"button1Class" $button1Class
+								"button2Class" $button2Class
+								"contentClass" $contentClass
+								) }}
+							</div>
+						</div>
+						<div class="col-12 col-md-6 col-lg-7 col-xl-8 order-0 order-md-1 d-flex custom-col-stretched-right px-md-0">
+							<div class="d-flex w-100 {{- if $class}} {{$class}}{{- end}}">
+								{{ $imgDark := "" }}
+								{{- if isset $item "imgDark" }}
+								{{- $imgDark = $item.imgDark -}}
+								{{ end -}}
+								{{  partial "the-image" (dict "currentPage" $currentPage "img" $item.img "img_dark" $imgDark "class" "img-fluid" "alt" $item.title) }}
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+        {{ end }}
+    {{- end}}
+</div>

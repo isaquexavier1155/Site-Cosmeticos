@@ -1,0 +1,59 @@
+{{/***
+Element Parameters
+---------------------------------------------
+$.class: 			Element extra class
+$.title: 			Banner title
+$.btnText 			Banner button text
+$.btnLink 			Banner button link
+$.btnLinkTarget 	Button link target
+$.img: 				Banner image
+$.imgWidth 			Banner image width
+$.imgHeight 		Banner image height
+*/}}
+
+{{ $title := "Be your kind of beauty" }}
+{{- if isset $ "title" }}
+    {{- $title = $.title -}}
+{{- end -}}
+
+{{- $btnText := "Explore More" -}}
+{{- if isset $ "btnText" }}
+    {{- $btnText = $.btnText -}}
+{{- end -}}
+
+{{- $btnLink := "#" -}}
+{{- if isset $ "btnLink" }}
+    {{- $btnLink = $.btnLink -}}
+{{- end -}}
+
+{{- $btnLinkTarget := "_blank" -}}
+{{- if isset $ "btnLinkTarget" }}
+    {{- $btnLinkTarget = $.btnLinkTarget -}}
+{{- end -}}
+
+{{- $img := "/assets/images/blog/widget-banner-img.jpg" -}}
+{{- if isset $ "img" }}
+    {{- $img = $.img -}}
+{{- end -}}
+
+{{- $imgWidth := "340" -}}
+{{- if isset $ "imgWidth" }}
+    {{- $imgWidth = $.imgWidth -}}
+{{- end -}}
+
+{{- $imgHeight := "343" -}}
+{{- if isset $ "imgHeight" }}
+    {{- $imgHeight = $.imgHeight -}}
+{{- end -}}
+
+<div class="card border-0 hover-shine {{- if $.class }} {{ $.class }}{{ end }}">
+	<img class="card-img img-fluid lazy-image" data-src="{{ $img }}" alt="{{ $title }}" width="{{ $imgWidth }}"
+		 height="{{ $imgHeight }}" src="#">
+	<div class="card-img-overlay pt-8 pb-7 px-14 d-flex flex-column align-items-center justify-content-between">
+		<h2 class="fw-semibold text-uppercase fs-30px lh-12 text-white text-center">{{ $title }}</h2>
+		<a href="{{ $.btnLink }}" {{- if $btnLinkTarget }} target="{{ $btnLinkTarget }}" {{ end }}
+		   class="btn btn-white shadow-none">
+            {{ $btnText }}
+		</a>
+	</div>
+</div>

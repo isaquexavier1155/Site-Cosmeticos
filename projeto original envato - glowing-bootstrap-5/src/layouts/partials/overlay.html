@@ -1,0 +1,23 @@
+{{/***
+Element Parameters
+---------------------------------------------
+$.contentClass: 		Content Class
+$.subtitleClass: 		Subtitle Class
+$.titleClass: 			Title Class
+$.DescClass: 			Desc Class
+$.ButtonClass: 			Button Class
+*/}}
+{{- $colorMode := $.currentPage.Site.Params.enableDarkMode -}}
+
+{{ $class := "position-absolute z-index-1 w-100 h-100" }}
+{{- if isset $ "class" -}}
+{{- $class = $.class -}}
+{{- end -}}
+{{- if $.img}}
+<div class="lazy-bg bg-overlay {{ $class }}  {{ if (and (eq $colorMode true) ( isset $ "imgDark") (ne $.imgDark "")) }} light-mode-img {{- end -}}" data-bg-src="{{ $.img }}">
+</div>
+{{- end}}
+{{- if (and (eq $colorMode true) ( isset $ "imgDark")  (ne $.imgDark ""))}}
+<div class="lazy-bg bg-overlay dark-mode-img {{ $class }}" data-bg-src="{{ $.imgDark }}">
+</div>
+{{- end -}}

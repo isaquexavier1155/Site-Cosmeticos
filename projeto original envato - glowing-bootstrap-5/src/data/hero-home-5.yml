@@ -1,0 +1,28 @@
+items:
+  - subtitle: "New Collection"
+    img: "/assets/images/hero-slider/hero-slider-10.jpg"
+    imgDark: "/assets/images/hero-slider/hero-slider-white-10.jpg"
+    title: "Get The Skin<br>You Want To Feel"
+    desc:
+    button2: "Discover Now"
+  - subtitle: "The pearl glow"
+    img: "/assets/images/hero-slider/hero-slider-11.jpg"
+    imgDark: "/assets/images/hero-slider/hero-slider-white-11.jpg"
+    title: "Let’s Introduce Skin<br>with The Shine"
+    desc:
+    button2: "Discover Now"
+  - subtitle: "Get the glow"
+    img: "/assets/images/hero-slider/hero-slider-12.jpg"
+    imgDark: "/assets/images/hero-slider/hero-slider-white-12.jpg"
+    title: "Love Your Skin<br>Naturally"
+    desc:
+    button2: "Discover Now"
+config:
+  slidesToShow: 1
+  infinite: true
+  dots: false
+  arrows: false
+  fade: true
+  autoplay: true
+  cssEase: ease-in-out
+  speed: 600

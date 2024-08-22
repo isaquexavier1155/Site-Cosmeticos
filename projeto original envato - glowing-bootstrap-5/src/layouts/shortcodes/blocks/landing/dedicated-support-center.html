@@ -1,0 +1,52 @@
+{{/*
+Block settings
+-------------------------------------------------
+id			Block ID
+class		Block class extral
+*/}}
+{{- $id := .Get "id" | default "" -}}
+{{- $class := .Get "class" | default "pt-15 pt-lg-18 pb-lg-20 pb-16" -}}
+
+<section {{- if $id }} id="{{ $id }}" {{- end -}} {{- if $class }} class="{{ $class }}" {{- end}}>
+    {{ .Inner }}
+	<div class="container container-xxl landing-support">
+		<h2 data-animate="fadeInUp" class="text-center fs-1 mb-7">Dedicated Support Center </h2>
+		<p data-animate="fadeInUp" class="text-center fs-18px mb-12">Have a problem? Let us help you!</p>
+		<div class="row">
+			<div data-animate="fadeInUp" class="col-md-6 mb-10 mb-md-0">
+				<div class="card rounded border-0 landing-support-shadow pe-lg-11 ps-lg-12 px-9">
+					<div class="row mx-0 align-items-center landing-support-item">
+						<div class="col-sm-6 px-0 order-sm-2">
+							<img src="#" data-src="/assets/images/landing/landing-support-01.png" class="img-fluid lazy-image" alt="Dedicated Support" width="264" height="250">
+						</div>
+						<div class="col-sm-6 px-0">
+							<div class="card-body p-0 pb-sm-0 pb-9">
+								<h5 class="card-title fs-28px text-primary"><span class="landing-support-underline">Dedicated</span>
+									<br>
+									<span class="landing-support-underline">Support</span></h5>
+								<p class="card-text fs-18px">Ready to help and solve your problems at any time</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div data-animate="fadeInUp" class="col-md-6">
+				<div class="card rounded border-0 landing-support-shadow pe-lg-11 ps-lg-12 px-9">
+					<div class="row mx-0 align-items-center landing-support-item">
+						<div class="col-sm-6 px-0 order-sm-2">
+							<img src="#" data-src="/assets/images/landing/landing-support-02.png" class="img-fluid lazy-image" alt="Dedicated Support" width="207" height="178">
+						</div>
+						<div class="col-sm-6 px-0">
+							<div class="card-body p-0 pb-sm-0 pb-9">
+								<h5 class="card-title fs-28px text-primary"><span class="landing-support-underline">Extensive</span>
+									<br>
+									<span class="landing-support-underline">Documentation</span></h5>
+								<p class="card-text fs-18px">Detailed instructions from installing to updating</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

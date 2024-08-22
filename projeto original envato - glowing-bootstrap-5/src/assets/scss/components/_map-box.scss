@@ -1,0 +1,80 @@
+.map-box-has-effect {
+	.mapboxgl-marker {
+		&:before, &:after {
+			width: 200px;
+			height: 200px;
+			border: 2px solid #666;
+			border-radius: 50%;
+			background-clip: padding-box;
+			position: absolute;
+			left: 50%;
+			top: 50%;
+			-webkit-opacity: 0;
+			-moz-opacity: 0;
+			opacity: 0;
+			-webkit-transform: translate(-50%, -50%);
+			-ms-transform: translate(-50%, -50%);
+			transform: translate(-50%, -50%);
+			animation: gel-map-animationSignal linear 2s;
+			-webkit-animation-iteration-count: infinite;
+			animation-iteration-count: infinite;
+			display: block;
+			content: '';
+		}
+
+		&:before {
+			box-shadow: inset 0 0 35px 10px rgba(38, 38, 38, 0.3);
+			border-color: rgba(38, 38, 38, 0.4);
+			-webkit-animation-delay: .5s;
+			animation-delay: .5s;
+		}
+
+		&:after {
+			box-shadow: inset 0 0 35px 10px #666;
+			-webkit-animation-delay: 1s;
+			animation-delay: 1s;
+		}
+
+		&.no-image {
+			left: 0;
+			top: -15px;
+			width: unset;
+			height: unset;
+		}
+	}
+}
+
+@keyframes gel-map-animationSignal {
+	0% {
+		-webkit-opacity: 0;
+		-moz-opacity: 0;
+		opacity: 0;
+		-webkit-transform: translate(-50%, -50%) scale(0.3);
+		-ms-transform: translate(-50%, -50%) scale(0.3);
+		transform: translate(-50%, -50%) scale(0.3);
+	}
+	1% {
+		-webkit-transform: translate(-50%, -50%) scale(0.32);
+		-ms-transform: translate(-50%, -50%) scale(0.32);
+		transform: translate(-50%, -50%) scale(0.32);
+		-webkit-opacity: 0.1;
+		-moz-opacity: 0.1;
+		opacity: 0.1;
+	}
+	20% {
+		-webkit-opacity: 0.5;
+		-moz-opacity: 0.5;
+		opacity: 0.5;
+		-webkit-transform: translate(-50%, -50%) scale(0 0.45);
+		-ms-transform: translate(-50%, -50%) scale(0 0.45);
+		transform: translate(-50%, -50%) scale(0 0.45);
+	}
+	60% {
+		-webkit-transform: translate(-50%, -50%) scale(0.75);
+		-ms-transform: translate(-50%, -50%) scale(0.75);
+		transform: translate(-50%, -50%) scale(0.75);
+		-webkit-opacity: 0.35;
+		-moz-opacity: 0.35;
+		opacity: 0.35;
+	}
+}

@@ -1,0 +1,364 @@
+Arrows:
+    -   title: arrow-down
+        icon: <i class="fas fa-arrow-down fa-fw"></i>
+    -   title: arrow-down-1-9
+        icon: <i class="fa-solid fa-arrow-down-1-9"></i>
+    -   title: arrow-down-9-1
+        icon: <i class="fa-solid fa-arrow-down-9-1"></i>
+    -   title: arrow-down-a-z
+        icon: <i class="fa-solid fa-arrow-down-a-z"></i>
+    -   title: arrow-down-short-wide
+        icon: <i class="fa-solid fa-arrow-down-short-wide"></i>
+    -   title: arrow-left
+        icon: <i class="fa-solid fa-arrow-left"></i>
+    -   title: arrow-right
+        icon: <i class="fa-solid fa-arrow-right"></i>
+    -   title: arrow-pointer
+        icon: <i class="fa-solid fa-arrow-pointer"></i>
+    -   title: arrow-right-arrow-left
+        icon: <i class="fas fa-arrow-right-arrow-left"></i>
+    -   title: arrow-trend-down
+        icon: <i class="fas fa-arrow-trend-down"></i>
+    -   title: arrow-trend-up
+        icon: <i class="fas fa-arrow-trend-up"></i>
+    -   title: arrow-turn-down
+        icon: <i class="fas fa-arrow-turn-down"></i>
+
+brandLogos:
+    -   title: google
+        icon: <i class="fa-brands fa-google"></i>
+    -   title: bandcamp
+        icon: <i class="fa-brands fa-bandcamp"></i>
+    -   title: reddit
+        icon: <i class="fa-brands fa-reddit"></i>
+    -   title: wordpress
+        icon: <i class="fa-brands fa-wordpress"></i>
+    -   title: yahoo
+        icon: <i class="fa-brands fa-yahoo"></i>
+    -   title: html5
+        icon: <i class="fa-brands fa-html5"></i>
+    -   title: css3
+        icon: <i class="fa-brands fa-css3"></i>
+    -   title: font-awesome
+        icon: <i class="fa-brands fa-font-awesome"></i>
+    -   title: digg
+        icon: <i class="fa-brands fa-digg"></i>
+    -   title: envelope
+        icon: <i class="fa-solid fa-envelope"></i>
+    -   title: facebook
+        icon: <i class="fa-brands fa-facebook"></i>
+    -   title: google-plus-g
+        icon: <i class="fa-brands fa-google-plus-g"></i>
+
+
+Business:
+    -   title: briefcase
+        icon: <i class="fas fa-briefcase"></i>
+    -   title: business-time
+        icon: <i class="fas fa-business-time"></i>
+    -   title: user-tie
+        icon: <i class="fas fa-user-tie"></i>
+    -   title: bullseye
+        icon: <i class="fas fa-bullseye"></i>
+    -   title: chart-line
+        icon: <i class="fas fa-chart-line"></i>
+    -   title: bullhorn
+        icon: <i class="fas fa-bullhorn"></i>
+    -   title: fax
+        icon: <i class="fas fa-fax"></i>
+    -   title: address-card
+        icon: <i class="fas fa-address-card"></i>
+    -   title: bars-progress
+        icon: <i class="fas fa-bars-progress"></i>
+    -   title: bars-staggered
+        icon: <i class="fas fa-bars-staggered"></i>
+    -   title: calculator
+        icon: <i class="fas fa-calculator"></i>
+    -   title: calendar-days
+        icon: <i class="fas fa-calendar-days"></i>
+
+Chat:
+    -   title: rocketchat
+        icon: <i class="fa-brands fa-rocketchat"></i>
+    -   title: comment-medical
+        icon: <i class="fa-solid fa-comment-medical"></i>
+    -   title: comment
+        icon: <i class="fa-solid fa-comment"></i>
+    -   title: comment-dots
+        icon: <i class="fa-solid fa-comment-dots"></i>
+    -   title: comment-sms
+        icon: <i class="fa-solid fa-comment-sms"></i>
+    -   title: comments
+        icon: <i class="fa-solid fa-comments"></i>
+    -   title: headset
+        icon: <i class="fa-solid fa-headset"></i>
+    -   title: message
+        icon: <i class="fa-solid fa-message"></i>
+    -   title: comment-slash
+        icon: <i class="fa-solid fa-comment-slash"></i>
+    -   title: whatsapp
+        icon: <i class="fa-brands fa-whatsapp"></i>
+    -   title: square-whatsapp
+        icon: <i class="fa-brands fa-square-whatsapp"></i>
+    -   title: snapchat
+        icon: <i class="fa-brands fa-snapchat"></i>
+
+cloudAndWeb:
+    -   title: cloud
+        icon: <i class="fa-solid fa-cloud"></i>
+    -   title: cloud-arrow-down
+        icon: <i class="fa-solid fa-cloud-arrow-down"></i>
+    -   title: cloud-arrow-up
+        icon: <i class="fa-solid fa-cloud-arrow-up"></i>
+    -   title: cloud-bolt
+        icon: <i class="fa-solid fa-cloud-bolt"></i>
+    -   title: soundcloud
+        icon: <i class="fa-brands fa-soundcloud"></i>
+    -   title: cloudscale
+        icon: <i class="fa-brands fa-cloudscale"></i>
+    -   title: mixcloud
+        icon: <i class="fa-brands fa-mixcloud"></i>
+    -   title: server
+        icon: <i class="fa-solid fa-server"></i>
+    -   title: sitemap
+        icon: <i class="fa-solid fa-sitemap"></i>
+    -   title: network-wired
+        icon: <i class="fa-solid fa-network-wired"></i>
+    -   title: circle-nodes
+        icon: <i class="fa-solid fa-circle-nodes"></i>
+    -   title: ethernet
+        icon: <i class="fa-solid fa-ethernet"></i>
+
+Communication:
+    -   title: tower-cell
+        icon: <i class="fa-solid fa-tower-cell"></i>
+    -   title: tty
+        icon: <i class="fa-solid fa-tty"></i>
+    -   title: mobile
+        icon: <i class="fa-solid fa-mobile"></i>
+    -   title: mobile-button
+        icon: <i class="fa-solid fa-mobile-button"></i>
+    -   title: mobile-retro
+        icon: <i class="fa-solid fa-mobile-retro"></i>
+    -   title: mobile-screen
+        icon: <i class="fa-solid fa-mobile-screen"></i>
+    -   title: mobile-screen-button
+        icon: <i class="fa-solid fa-mobile-screen-button"></i>
+    -   title: envelope
+        icon: <i class="fa-solid fa-envelope"></i>
+    -   title: envelope-circle-check
+        icon: <i class="fa-solid fa-envelope-circle-check"></i>
+    -   title: phone-flip
+        icon: <i class="fa-solid fa-phone-flip"></i>
+    -   title: mill-sign
+        icon: <i class="fa-solid fa-mill-sign"></i>
+    -   title: truck-fast
+        icon: <i class="fa-solid fa-truck-fast"></i>
+
+Construction:
+    -   title: helmet-safety
+        icon: <i class="fa-solid fa-helmet-safety"></i>
+    -   title: person-digging
+        icon: <i class="fa-solid fa-person-digging"></i>
+    -   title: trowel
+        icon: <i class="fa-solid fa-trowel"></i>
+    -   title: trowel-bricks
+        icon: <i class="fa-solid fa-trowel-bricks"></i>
+    -   title: brush
+        icon: <i class="fa-solid fa-brush"></i>
+    -   title: bucket
+        icon: <i class="fa-solid fa-bucket"></i>
+    -   title: compass-drafting
+        icon: <i class="fa-solid fa-compass-drafting"></i>
+    -   title: hammer
+        icon: <i class="fa-solid fa-hammer"></i>
+    -   title: paint-roller
+        icon: <i class="fa-solid fa-paint-roller"></i>
+    -   title: ruler-combined
+        icon: <i class="fa-solid fa-ruler-combined"></i>
+    -   title: ruler-horizontal
+        icon: <i class="fa-solid fa-ruler-horizontal"></i>
+    -   title: ruler-vertical
+        icon: <i class="fa-solid fa-ruler-vertical"></i>
+
+Content:
+    -   title: arrows-to-circle
+        icon: <i class="fa-solid fa-arrows-to-circle"></i>
+    -   title: copy
+        icon: <i class="fa-solid fa-copy"></i>
+    -   title: copyright
+        icon: <i class="fa-solid fa-copyright"></i>
+    -   title: clipboard
+        icon: <i class="fa-solid fa-clipboard"></i>
+    -   title: clone
+        icon: <i class="fa-solid fa-clone"></i>
+    -   title: file-import
+        icon: <i class="fa-solid fa-file-import"></i>
+    -   title: print
+        icon: <i class="fa-solid fa-print"></i>
+    -   title: registered
+        icon: <i class="fa-solid fa-registered"></i>
+    -   title: trademark
+        icon: <i class="fa-solid fa-trademark"></i>
+    -   title: border-all
+        icon: <i class="fa-solid fa-border-all"></i>
+    -   title: table-cells-large
+        icon: <i class="fa-solid fa-table-cells-large"></i>
+    -   title: grip
+        icon: <i class="fa-solid fa-grip"></i>
+
+designTools:
+    -   title: crop
+        icon: <i class="fa-solid fa-crop"></i>
+    -   title: crop-simple
+        icon: <i class="fa-solid fa-crop-simple"></i>
+    -   title: marker
+        icon: <i class="fa-solid fa-marker"></i>
+    -   title: ruler
+        icon: <i class="fa-solid fa-ruler"></i>
+    -   title: droplet
+        icon: <i class="fa-solid fa-droplet"></i>
+    -   title: font-awesome
+        icon: <i class="fa-solid fa-font-awesome"></i>
+    -   title: layer-group
+        icon: <i class="fa-solid fa-layer-group"></i>
+    -   title: copy
+        icon: <i class="fa-solid fa-copy"></i>
+    -   title: wand-magic-sparkles
+        icon: <i class="fa-solid fa-wand-magic-sparkles"></i>
+    -   title: figma
+        icon: <i class="fa-brands fa-figma"></i>
+    -   title: palette
+        icon: <i class="fa-solid fa-palette"></i>
+    -   title: eye
+        icon: <i class="fa-solid fa-eye"></i>
+
+Devices:
+    -   title: desktop
+        icon: <i class="fa-solid fa-desktop"></i>
+    -   title: house-laptop
+        icon: <i class="fa-solid fa-house-laptop"></i>
+    -   title: tablet-screen-button
+        icon: <i class="fa-solid fa-tablet-screen-button"></i>
+    -   title: mobile-screen
+        icon: <i class="fa-solid fa-mobile-screen"></i>
+    -   title: computer-mouse
+        icon: <i class="fa-solid fa-computer-mouse"></i>
+    -   title: download
+        icon: <i class="fa-solid fa-download"></i>
+    -   title: keyboard
+        icon: <i class="fa-solid fa-keyboard"></i>
+    -   title: plug
+        icon: <i class="fa-solid fa-plug"></i>
+    -   title: floppy-disk
+        icon: <i class="fa-solid fa-floppy-disk"></i>
+    -   title: tv
+        icon: <i class="fa-solid fa-tv"></i>
+    -   title: upload
+        icon: <i class="fa-solid fa-upload"></i>
+    -   title: headphones
+        icon: <i class="fa-solid fa-headphones"></i>
+
+Emoji:
+    -   title: face-grin-wink
+        icon: <i class="fa-regular fa-face-grin-wink"></i>
+    -   title: face-grin-squint
+        icon: <i class="fa-regular fa-face-grin-squint"></i>
+    -   title: face-grin-stars
+        icon: <i class="fa-regular fa-face-grin-stars"></i>
+    -   title: face-smile-beam
+        icon: <i class="fa-regular fa-face-smile-beam"></i>
+    -   title: face-smile-wink
+        icon: <i class="fa-regular fa-face-smile-wink"></i>
+    -   title: face-tired
+        icon: <i class="fa-regular fa-face-tired"></i>
+    -   title: face-grin-hearts
+        icon: <i class="fa-regular fa-face-grin-hearts"></i>
+    -   title: face-frown
+        icon: <i class="fa-regular fa-face-frown"></i>
+    -   title: face-flushed
+        icon: <i class="fa-regular fa-face-flushed"></i>
+    -   title: face-rolling-eyes
+        icon: <i class="fa-regular fa-face-rolling-eyes"></i>
+    -   title: face-sad-cry
+        icon: <i class="fa-regular fa-face-sad-cry"></i>
+    -   title: face-angry
+        icon: <i class="fa-regular fa-face-angry"></i>
+
+Security:
+    -   title: lock
+        icon: <i class="fa-solid fa-lock"></i>
+    -   title: lock-open
+        icon: <i class="fa-solid fa-lock-open"></i>
+    -   title: fingerprint
+        icon: <i class="fa-solid fa-fingerprint"></i>
+    -   title: shield-halved
+        icon: <i class="fa-solid fa-shield-halved"></i>
+    -   title: eye
+        icon: <i class="fa-solid fa-eye"></i>
+    -   title: eye-slash
+        icon: <i class="fa-solid fa-eye-slash"></i>
+    -   title: key
+        icon: <i class="fa-solid fa-key"></i>
+    -   title: shield-heart
+        icon: <i class="fa-solid fa-shield-heart"></i>
+    -   title: file-shield
+        icon: <i class="fa-solid fa-file-shield"></i>
+    -   title: ban
+        icon: <i class="fa-solid fa-ban"></i>
+    -   title: user-lock
+        icon: <i class="fa-solid fa-user-lock"></i>
+    -   title: user-shield
+        icon: <i class="fa-solid fa-user-shield"></i>
+
+Shopping:
+    -   title: bag-shopping
+        icon: <i class="fa-solid fa-bag-shopping"></i>
+    -   title: basket-shopping
+        icon: <i class="fa-solid fa-basket-shopping"></i>
+    -   title: tag
+        icon: <i class="fa-solid fa-tag"></i>
+    -   title: tags
+        icon: <i class="fa-solid fa-tags"></i>
+    -   title: barcode
+        icon: <i class="fa-solid fa-barcode"></i>
+    -   title: amazon-pay
+        icon: <i class="fa-brands fa-apple-pay"></i>
+    -   title: truck-fast
+        icon: <i class="fa-solid fa-truck-fast"></i>
+    -   title: truck
+        icon: <i class="fa-solid fa-truck"></i>
+    -   title: bookmark
+        icon: <i class="fa-solid fa-bookmark"></i>
+    -   title: btc
+        icon: <i class="fa-brands fa-btc"></i>
+    -   title: store-slash
+        icon: <i class="fa-solid fa-store-slash"></i>
+    -   title: heart
+        icon: <i class="fa-solid fa-heart"></i>
+
+Users:
+    -   title: user
+        icon: <i class="fa-solid fa-user"></i>
+    -   title: users
+        icon: <i class="fa-solid fa-users"></i>
+    -   title: user-check
+        icon: <i class="fa-solid fa-user-check"></i>
+    -   title: user-clock
+        icon: <i class="fa-solid fa-user-clock"></i>
+    -   title: user-secret
+        icon: <i class="fa-solid fa-user-secret"></i>
+    -   title: user-slash
+        icon: <i class="fa-solid fa-user-slash"></i>
+    -   title: user-tag
+        icon: <i class="fa-solid fa-user-tag"></i>
+    -   title: users-between-lines
+        icon: <i class="fa-solid fa-users-between-lines"></i>
+    -   title: circle-user
+        icon: <i class="fa-solid fa-circle-user"></i>
+    -   title: person-running
+        icon: <i class="fa-solid fa-person-running"></i>
+    -   title: person-shelter
+        icon: <i class="fa-solid fa-person-shelter"></i>
+    -   title: person-skating
+        icon: <i class="fa-solid fa-person-skating"></i>

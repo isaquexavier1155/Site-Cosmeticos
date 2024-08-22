@@ -1,0 +1,33 @@
+{{/***
+Element Parameters
+---------------------------------------------
+$.class: 			Element extra class name
+$.btnClass: 		Button Play Class
+$.link:  			Link video
+$.icon: 			Icon Play
+*/}}
+
+{{- $class := "bg-body text-body-emphasis fs-2 bg-dark-hover text-light-hover" -}}
+{{- if isset $ "class" }}
+{{- $class = $.class -}}
+{{ end -}}
+
+{{- if isset $ "extraClass" -}}
+	{{- $class = printf "%s %s" $class $.extraClass -}}
+{{- end -}}
+
+{{- $icon := "icon-play-fill" -}}
+{{- if isset $ "icon" }}
+	{{- $icon = $.icon -}}
+{{ end -}}
+
+{{- $size := "115px" -}}
+{{- if isset $ "size" }}
+	{{- $size = $.size -}}
+{{ end -}}
+<a href="{{ $.link }}" class="square view-video rounded-circle z-index-1 {{- if $class }} {{ $class }}{{- end -}}" style="--square-size:{{- $size -}};">
+	{{- if $icon -}}
+		<svg class="icon"><use xlink:href="#{{ $icon }}"></use></svg>
+	{{- end -}}
+</a>
+

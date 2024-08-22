@@ -1,0 +1,53 @@
+<header id="header" class="header header-sticky header-sticky-smart disable-transition-all z-index-5">
+	<div class="topbar" style="background-color: #DAFAF4;">
+		<div class="container">
+			<p class="mb-0 text-dark text-center p-4 fs-14px fw-medium ls-1 text-uppercase">
+				Workwide shipping • Free shipping on orders overs $100
+			</p>
+		</div>
+	</div>
+	<div class="header-above mb-3">
+		<div class="container d-none d-xl-block">
+			<div class="pt-8 d-flex">
+				<div class="w-50 d-flex">
+					<div class ="d-flex align-items-center justify-content-start">
+                        {{ partial "header/items/dropdown-language" (dict "class" "me-10" ) }}
+                        {{ partial "header/items/dropdown-currency" }}
+					</div>
+				</div>
+                {{ partial "header/items/logo" (dict "context" . ) }}
+				<div class="icons-actions d-flex justify-content-end w-xl-50 fs-28px text-body-emphasis">
+                    {{ partial "header/items/search-box-2" }}
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="sticky-area">
+		<div class="main-header nav navbar bg-body navbar-light navbar-expand-xl py-6 py-xl-0">
+			<div class="container">
+				<div class="d-flex d-xl-none w-100">
+                    {{ partial "header/items/menu-mobile-toggle" }}
+					<div class="d-flex mx-auto">
+                        {{ partial "header/items/logo" (dict "context" . ) }}
+					</div>
+					<div class="icons-actions d-flex justify-content-end w-xl-50 fs-28px text-body-emphasis w-72px">
+                        {{ partial "header/items/icon-search" }}
+						{{ partial "header/items/color-modes" (dict "currentPage" . )}}
+					</div>
+				</div>
+				<div class="d-none d-xl-flex w-xl-50"></div>
+				<div class="d-none d-xl-flex w-xl-50">
+					<ul class="navbar-nav">
+						{{ partial "menu/menu-default" (dict "page" . "nav_item_class" "py-xl-7 py-0 me-xxl-12 me-xl-10" "nav_link_class" "py-xl-0 px-xl-0 fw-semibold ls-1 fs-6 fs-xl-15px text-body-emphasis" ) }}
+					</ul>
+				</div>
+				<div class="icons-actions d-flex justify-content-end w-xl-50 fs-28px text-body-emphasis">
+                    {{ partial "header/items/icon-account" }}
+                    {{ partial "header/items/icon-wishlist" }}
+                    {{ partial "header/items/icon-cart" (dict "total" false) }}
+					{{ partial "header/items/color-modes" (dict "currentPage" . "class" "ps-5 d-none d-xl-inline-block")}}
+				</div>
+			</div>
+		</div>
+	</div>
+</header>

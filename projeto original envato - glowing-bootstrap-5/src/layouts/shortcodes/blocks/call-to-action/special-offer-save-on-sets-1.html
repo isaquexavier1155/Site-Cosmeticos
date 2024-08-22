@@ -1,0 +1,26 @@
+{{/*
+Block settings
+-------------------------------------------------
+id			Block ID
+class		Block class extral
+*/}}
+{{- $id := .Get "id" | default "specia_offer_save_on_sets_1" -}}
+{{- $class := .Get "class" | default "container container-xxl" -}}
+
+<section {{- if $id }} id="{{ $id }}" {{- end -}}>
+    {{ .Inner }}
+	<div {{- if $class }} class="{{ $class }}" {{- end}}>
+		<div class="row g-0 align-items-center">
+			<div class="col-lg-6 mb-12 mb-lg-0">
+				<img data-src="/assets/images/banner/banner-55.jpg" alt="banner" class="img-fluid lazy-image w-100" width="705" height="620" src="#">
+			</div>
+			<div class="col-xl-5 col-lg-6 offset-xl-1 ps-lg-10 pe-xl-18">
+				<p class="text-uppercase text-body-emphasis fw-semibold ls-1 d-flex align-items-center pb-2">Special offer <span class="badge bg-primary fs-15px py-3 px-5 ms-5 ls-0 fw-bold lh-12">-20%</span></p>
+				<h2 class="mb-5">Save on Sets</h2>
+				<p class="fs-18px mb-5">Made using clean, non-toxic ingredients, our products are designed for everyone.</p>
+				{{ partial  "elements/countdown/style-1" (dict "time" "Jan 22, 2024 00:00:00" )}}
+				<a href="#" class="btn btn-dark btn-hover-bg-primary btn-hover-border-primary mt-9">Get Only $39,00</a>
+			</div>
+		</div>
+	</div>
+</section>

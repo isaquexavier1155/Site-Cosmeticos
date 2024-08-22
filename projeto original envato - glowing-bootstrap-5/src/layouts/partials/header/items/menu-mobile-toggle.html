@@ -1,0 +1,25 @@
+{{/***
+Element Parameters
+---------------------------------------------
+$        Button toggle class extra
+*/}}
+
+{{ $classWrapper := "w-72px d-flex d-xl-none" }}
+{{ if isset $ "classWrapper" }}
+{{ $classWrapper = $.classWrapper }}
+{{ end }}
+
+{{ $class := "p-4" }}
+{{ if $ }}
+{{ $class = $ }}
+{{ end }}
+<div class="{{ $classWrapper }}">
+	<button class="navbar-toggler align-self-center  border-0 shadow-none px-0 canvas-toggle {{- if $class }} {{ $class }}{{ end }}" type="button"
+			data-bs-toggle="offcanvas"
+			data-bs-target="#offCanvasNavBar"
+			aria-controls="offCanvasNavBar"
+			aria-expanded="false"
+			aria-label="Toggle Navigation">
+		<span class="fs-24 toggle-icon"></span>
+	</button>
+</div>

@@ -1,0 +1,23 @@
+<header id="header" class="header header-sticky header-sticky-smart disable-transition-all z-index-5">
+	<div class="sticky-area">
+		<div class="main-header nav navbar bg-body navbar-light navbar-expand-xl py-6 py-xl-0">
+			<div class="container-fluid px-10 px-xl-21 px-lg-15 flex-nowrap">
+                {{ partial "header/items/menu-mobile-toggle" }}
+                {{ partial "header/items/logo" (dict "context" . "class" "py-4 mx-auto w-xl-50" ) }}
+				<div class="d-none d-xl-flex w-xl-50">
+					<ul class="navbar-nav">
+						{{ partial "menu/menu-default" (dict "page" . "nav_item_class" "py-xl-11 py-0 me-xxl-12 me-xl-10" "nav_link_class" "py-xl-0 px-xl-0 text-uppercase fw-semibold ls-1 fs-15px fs-xl-14px" ) }}
+					</ul>
+				</div>
+				<div class="icons-actions d-flex justify-content-end w-xl-50 fs-28px text-body-emphasis">
+                    {{ partial "header/items/icon-search" }}
+                    {{ partial "header/items/icon-account" }}
+                    {{ partial "header/items/icon-wishlist" }}
+                    {{ partial "header/items/icon-cart" }}
+					{{ partial "header/items/color-modes" (dict "currentPage" . )}}
+				</div>
+			</div>
+		</div>
+	</div>
+</header>
+

@@ -1,0 +1,38 @@
+{{/*
+Block settings
+-------------------------------------------------
+id			Block ID
+class		Block class extral
+*/}}
+{{- $id := .Get "id" | default "shops" -}}
+{{- $class := .Get "class" | default "bg-body-tertiary pt-lg-20 py-15 pb-lg-17" -}}
+{{- $data := index $.Site.Data.landing_shop_layouts -}}
+{{- $currentPage := . -}}
+
+<section {{- if $id }} id="{{ $id }}" {{- end -}} {{- if $class }} class="{{ $class }}" {{- end}}>
+    {{ .Inner }}
+	<div class="container-fluid">
+		<span class="d-block text-center landing-count-layout fw-bold text-primary mb-6 lh-1" data-animate="fadeInUp">05<sup class="landing-count-layout-sup ps-6">+</sup></span>
+		<h2 class="text-center landing-layout-title mb-7" data-animate="fadeInUp">Modern Shop Layouts</h2>
+		<p class="fs-18px text-center" data-animate="fadeInUp">Modern and elegant shop layouts provide excellent shopping experience</p>
+		<div class="slick-slider mb-8 mt-11" data-slick-options='{{ $data.config | jsonify }}'>
+            {{- if $data}}
+                {{ range $item := $data.items }}
+					<div data-animate="fadeInUp">
+						<div class="card border-0 bg-transparent mt-8">
+							<a href="{{ $item.url }}" class="landing-shop-image card-img rounded-lg" tabindex="0" target="_blank" title="{{ $item.title }}">
+								{{  partial "the-image" (dict "currentPage" $currentPage "img" $item.img "img_dark" $item.img_dark "width" "570" "height" "320" "alt" $item.title) }}
+							</a>
+							<div class="card-body px-0">
+								<h4 class="card-text fs-18px text-center text-secondary mt-7"><a href="{{ $item.url }}" target="_blank" tabindex="0" title="{{ $item.title }}">{{ $item.title }}</a></h4>
+							</div>
+						</div>
+					</div>
+                {{ end }}
+            {{ end }}
+		</div>
+		<div class="landing-shop-arrow">
+			<div class="container position-relative d-flex align-items-center justify-content-center"></div>
+		</div>
+	</div>
+</section>

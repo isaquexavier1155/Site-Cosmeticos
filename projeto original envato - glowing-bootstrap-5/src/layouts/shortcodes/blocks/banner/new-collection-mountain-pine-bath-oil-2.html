@@ -1,0 +1,42 @@
+{{/*
+Block settings
+-------------------------------------------------
+id			Block ID
+class		Block class extral
+*/}}
+{{- $id := .Get "id" | default "" -}}
+{{- $class := .Get "class" | default "" -}}
+
+<section {{- if $id }} id="{{ $id }}" {{- end -}} {{- if $class }} class="{{ $class }}" {{- end}}>
+    {{ .Inner }}
+	<div class="container container-xxl">
+		<div class="row gy-30px">
+			<div class="col-lg-6" data-animate="fadeInUp">
+                {{ partial  "elements/banner/style-1" (dict
+				"currentPage" .
+				"subtitle" "NEW COLLECTION"
+				"subtitleClass" "text-white mb-4"
+                "title" "Mountain Pine Bath Oil"
+                "image" "/assets/images/banner/banner-38.jpg" "width" "690" "height" "420"
+                "btnContent" "Explore More"
+				"btnClass" "btn-white px-6 shadow-sm"
+                "titleClass" "fw-normal font-primary text-white mw-75 pe-xl-25 pe-lg-0 pe-md-25 fs-3 pe-5"
+				"altContent" "Mountain Pine Bath Oil") }}
+			</div>
+			<div class="col-lg-6" data-animate="fadeInUp">
+                {{ partial  "elements/banner/style-1" (dict
+				"currentPage" .
+				"subtitle" ""
+                "title" "25% off Everything"
+                "desc" "Makeup with extended range in colors for every human."
+                "descClass"	"mw-md-60 pe-xl-20"
+				"btnClass" "btn-white px-8 shadow-sm"
+                "image" "/assets/images/banner/banner-39.jpg" "width" "690" "height" "420"
+                "titleClass" "fw-normal font-primary fs-3 pe-15" "btnContent" "Shop Sale"
+                "altContent" "25% off Everything"
+				"ignore_dark_mode" "true")}}
+			</div>
+		</div>
+	</div>
+</section>
+

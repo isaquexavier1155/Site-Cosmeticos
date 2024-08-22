@@ -1,0 +1,33 @@
+{{/*
+Block settings
+-------------------------------------------------
+id			Block ID
+class		Block class extral
+*/}}
+{{- $id := .Get "id" | default "" -}}
+{{- $class := .Get "class" | default "pt-15 pt-lg-18" -}}
+
+<section {{- if $id }} id="{{ $id }}" {{- end -}} {{- if $class }} class="{{ $class }}" {{- end}}>
+    {{ .Inner }}
+	<div class="container container-xxl">
+		<div class="row align-items-center">
+			<div class="col-md-6 col-xl-5 order-1 px-xl-6" data-animate="fadeInUp">
+                {{ partial  "elements/heading/style-1" (dict "align" "left" "title" "BEAUTY INSPIRED BY REAL LIFE"
+				"titleClass" "fs-20 mb-8 me-lg-20"
+                "desc" "Lorem ipsum dolor sit amet, consectetur adipi, scing seddo eiusmod temporincididunt ut labore et dolore magna aliqua."
+				"descClass" "fs-18px mb-0 me-lg-13"
+				"class" "mb-10"
+                ) }}
+				<a href="#" class="btn btn-link fw-semibold text-body-emphasis text-decoration-underline p-0">Discover Now
+					<svg class="icon icon-arrow-right">
+						<use xlink:href="#icon-arrow-right"></use>
+					</svg>
+				</a>
+			</div>
+			<div class="col-md-6 c0l-xl-7 order-2 position-relative" data-animate="fadeInUp">
+				<img src="#" data-src="/assets/images/others/other-image-01.png" alt="other-01" class="img-rotating lazy-image img-fluid img-by-real-life position-absolute d-none d-lg-block" height="131" width="130">
+				{{  partial "the-image" (dict "currentPage" . "img" "/assets/images/others/other-image-02.png" "img_dark" "/assets/images/others/other-image-white-02.png" "class" "img-fluid" "width" "792" "height" "727" "alt" "other-02") }}
+			</div>
+		</div>
+	</div>
+</section>

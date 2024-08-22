@@ -1,0 +1,14 @@
+{{/***
+Element Parameters
+---------------------------------------------
+$.class: 			Element extra class name
+$.direction         Direction, accept: vertical | horizontal
+*/}}
+
+{{- $class := "btn btn-add-to-cart btn-dark btn-hover-bg-primary btn-hover-border-primary" -}}
+
+{{- if isset $ "class" -}}
+    {{- $class = printf "%s %s" $class $.class -}}
+{{- end -}}
+
+<a href="#" class="{{- $class -}}">Add To Cart</a>

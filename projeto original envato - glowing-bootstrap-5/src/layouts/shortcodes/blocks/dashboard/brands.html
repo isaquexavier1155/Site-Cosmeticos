@@ -1,0 +1,23 @@
+{{ .Inner }}
+<div class="card mb-4 rounded-4 p-7">
+	<div class="card-header bg-transparent px-0 pt-0 pb-7">
+		{{ partial "dashboard/filter/style-06" }}
+	</div>
+	<div class="card-body pt-7 pb-0 px-0">
+		<div class="row mx-n5">
+			{{- range $brand:= $.Site.Data.dashboard.brands_values -}}
+			<div class="col-6 col-sm-4 col-lg-3 col-xl-2 px-5 mb-8">
+				<div class="card rounded-4">
+					<div class="card-header p-7 bg-transparent">
+						<img src="#" data-src="{{ $brand.img }}" class="lazy-image" alt="{{$brand.name}}" width="166" height="84">
+					</div>
+					<div class="card-body text-center p-7">
+						<h6 class="card-title m-0 fs-15px fw-600">{{$brand.name}}</h6>
+						<a href="#" title="{{$brand.name}}" class="text-primary text-decoration-none fs-14px"> {{$brand.items}}</a>
+					</div>
+				</div>
+			</div>
+			{{- end -}}
+		</div>
+	</div>
+</div>

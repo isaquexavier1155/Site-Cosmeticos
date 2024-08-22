@@ -1,0 +1,29 @@
+@import "../theme";
+
+// Documentation css
+// Load docs components
+@import "variables";
+@import "navbar";
+@import "search";
+//@import "masthead";
+//@import "ads";
+@import "content";
+//@import "skippy";
+@import "sidebar";
+@import "layout";
+@import "toc";
+//@import "footer";
+@import "component-examples";
+@import "buttons";
+@import "callouts";
+@import "brand";
+@import "colors";
+@import "placeholder-img";
+
+// Load docs dependencies
+@import "syntax";
+@import "anchor";
+//@import "algolia";
+
+// Load docs custom css
+@import "custom";

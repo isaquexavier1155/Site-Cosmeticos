@@ -1,0 +1,115 @@
+{{/***
+Element Parameters
+---------------------------------------------
+$.iconClass	 			Icon extra Class
+$.infoClass	 			Info extra Class
+$.formClass				Form extra Class
+$.buyMoreClass			Buy more extra Class
+$.listBuyMoreClass		List buy more extra Class
+$.buyMoreItemClass		Buy more item extra Class
+$.buyMoreContentClass	Buy more content extra Class
+$.addClass				Add extra Class
+$.title: 				Shop title
+$.oldprice: 			Shop old price
+$.price: 				Shop price
+$.point: 				Shop point
+$.rate 					Rating
+$.readreview: 			Shop read reviews
+$.subtitle: 			Shop subtitle
+$.sku: 					Shop sku
+$.category: 			Shop category
+*/}}
+{{- $class := "" -}}
+{{- if isset $ "class" }}
+    {{- $class = $.class -}}
+{{ end -}}
+
+{{- $iconClass := "fs-5 me-4 pe-2 align-text-bottom" -}}
+{{- if isset $ "iconClass" }}
+    {{- $iconClass = $.iconClass -}}
+{{ end -}}
+
+{{- $infoClass := "mb-4 pb-2" -}}
+{{- if isset $ "infoClass" }}
+    {{- $infoClass = $.infoClass -}}
+{{ end -}}
+
+{{- $formClass := "mb-9 pb-2" -}}
+{{- if isset $ "formClass" }}
+    {{- $formClass = $.formClass -}}
+{{ end -}}
+
+{{- $buyMoreClass := "text-body-emphasis fs-18px fw-semibold" -}}
+{{- if isset $ "buyMoreClass" }}
+    {{- $buyMoreClass = $.buyMoreClass -}}
+{{ end -}}
+
+{{- $listBuyMoreClass := "border border-2 px-7" -}}
+{{- if isset $ "listBuyMoreClass" }}
+    {{- $listBuyMoreClass = $.listBuyMoreClass -}}
+{{ end -}}
+
+{{- $buyMoreItemClass := "py-7" -}}
+{{- if isset $ "buyMoreItemClass" }}
+    {{- $buyMoreItemClass = $.buyMoreItemClass -}}
+{{ end -}}
+
+{{- $buyMoreContentClass := "fs-18px mb-3 pb-1 text-body-emphasis" -}}
+{{- if isset $ "buyMoreContentClass" }}
+    {{- $buyMoreContentClass = $.buyMoreContentClass -}}
+{{ end -}}
+
+{{- $addClass := "btn btn-outline-dark lh-1" -}}
+{{- if isset $ "addClass" }}
+    {{- $addClass = $.addClass -}}
+{{ end -}}
+<div class="{{ if $class}}{{$class}}{{- end}}">
+
+{{ partial "elements/shop/product-info/items/header" (dict "title" $.title
+"oldprice" $.oldprice "price" $.price
+"subtitle" $.subtitle
+"rate" $.rate
+"point" $.point "readreview" $.readreview
+) }}
+<p class="{{- if $infoClass}}{{$infoClass}}{{- end}}">
+	<span class="text-body-emphasis">
+		<svg class="icon {{- if $iconClass}} {{$iconClass}}{{- end}}">
+			<use xlink:href="#icon-eye-light"></use>
+		</svg>
+		17 people
+	</span>
+	are viewing this right now
+</p>
+<p class="{{- if $infoClass}}{{$infoClass}}{{- end}} text-body-emphasis">
+	<svg class="icon {{- if $iconClass}} {{$iconClass}}{{- end}}">
+		<use xlink:href="#icon-Timer"></use>
+	</svg>
+	Only 9 left in stock
+</p>
+<div class="progress mb-7" style="height: 4px;">
+	<div class="progress-bar w-25" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+</div>
+<form class="{{- if $formClass}}{{$formClass}}{{- end}}">
+    {{ partial "elements/shop/product-info/items/add-to-bag"}}
+</form>
+<p class="{{- if $buyMoreClass}}{{$buyMoreClass}}{{- end}}">Buy more save more!</p>
+<ul class="list-unstyled {{- if $listBuyMoreClass}} {{$listBuyMoreClass}}{{- end}}">
+	<li class="d-flex justify-content-between align-items-center border-2 border-bottom {{- if $buyMoreItemClass}} {{$buyMoreItemClass}}{{- end}}">
+		<div>
+			<p class="{{- if $buyMoreContentClass}}{{$buyMoreContentClass}}{{- end}}">3 items get <span class="text-primary">5% OFF</span></p>
+			<p class="mb-0">on each product</p>
+		</div>
+		<button type="button" class="{{- if $addClass}}{{$addClass}}{{- end}}">Add</button>
+	</li>
+	<li class="d-flex justify-content-between align-items-center {{- if $buyMoreItemClass}} {{$buyMoreItemClass}}{{- end}}">
+		<div>
+			<p class="{{- if $buyMoreContentClass}}{{$buyMoreContentClass}}{{- end}}">5 items get <span class="text-primary">10% OFF</span></p>
+			<p class="mb-0">on each product</p>
+		</div>
+		<button type="button" class="{{- if $addClass}}{{$addClass}}{{- end}}">Add</button>
+	</li>
+</ul>
+{{ partial "elements/shop/product-info/items/action" (dict "compare" "true" "wishlist" "true")}}
+{{ partial "elements/shop/product-info/items/list-more-info" (dict "sku" $.sku "category" $.category "share" "true")}}
+{{ partial "elements/shop/product-info/items/product-accordions" (dict "currentPage" $.currentPage)}}
+</div>

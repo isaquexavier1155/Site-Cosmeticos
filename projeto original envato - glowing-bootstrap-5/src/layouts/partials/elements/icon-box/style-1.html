@@ -1,0 +1,56 @@
+{{/***
+Element Parameters
+---------------------------------------------
+$.class: 			Element extra class name
+$.currentPage: 		$.currentPage.Page, $.currentPage.Site
+$.iconClass: 		Title extra Class
+$.titleClass: 		Title extra Class
+$.subtitleClass: 	Sub title extra class
+$.descClass: 		Description extra class
+$.contentClass 		Icon box content class
+$.icon: 			Icon box icon
+$.title: 			Icon box title
+$.subtitle: 		Icon box subtitle
+$.desc: 			Icon box description
+*/}}
+
+{{- $iconClass := "fs-70px text-primary" -}}
+{{- if isset $ "iconClass" }}
+	{{- $iconClass = $.iconClass -}}
+{{ end -}}
+
+{{- $titleClass := "fs-5 mb-4 pb-2" -}}
+{{- if isset $ "titleClass" }}
+	{{- $titleClass = $.titleClass -}}
+{{ end -}}
+
+{{- $subtitleClass := "fs-5 mb-" -}}
+{{- if isset $ "subtitleClass" }}
+	{{- $subtitleClass = $.subtitleClass -}}
+{{ end -}}
+
+{{- $descClass := "fs-18px mb-0" -}}
+{{- if isset $ "descClass" }}
+	{{- $descClass = $.descClass -}}
+{{ end -}}
+
+{{- $contentClass := "" -}}
+{{- if isset $ "contentClass" }}
+	{{- $contentClass = $.contentClass -}}
+{{ end -}}
+<div class="icon-box icon-box-style-1 card border-0 text-center {{- if $.class }} {{ $.class }}{{ end }}">
+	<div class="icon-box-icon card-img {{- if $iconClass }} {{ $iconClass }}{{ end }}">
+		<svg class="icon"><use xlink:href="#{{ $.icon }}"></use></svg>
+	</div>
+	<div class="icon-box-content card-body {{- if $contentClass }} {{ $contentClass }}{{ end }}">
+		{{- if $.subtitle }}
+		<p class="icon-box-subtitle {{- if $subtitleClass }} {{ $subtitleClass }}{{ end }}">{{ $.subtitle }}</p>
+		{{- end }}
+		{{- if $.title }}
+		<h3 class="icon-box-title card-title {{- if $titleClass }} {{ $titleClass }}{{ end }}">{{ $.title }}</h3>
+		{{- end }}
+		{{- if $.desc }}
+		<p class="icon-box-desc card-text {{- if $descClass }} {{ $descClass }}{{ end }}">{{ $.desc }}</p>
+		{{- end }}
+	</div>
+</div>

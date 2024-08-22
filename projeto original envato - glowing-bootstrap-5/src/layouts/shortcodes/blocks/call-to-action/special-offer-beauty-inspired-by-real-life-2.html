@@ -1,0 +1,37 @@
+{{/*
+Block settings
+-------------------------------------------------
+id			Block ID
+class		Block class extral
+*/}}
+{{- $id := .Get "id" | default "specia_offer_beauty_inspired_by_real_life_2" -}}
+{{- $class := .Get "class" | default "container" -}}
+
+<section class="bg-section-5 overflow-hidden" {{- if $id }} id="{{ $id }}" {{- end -}} >
+	{{ .Inner }}
+	<div {{- if $class }} class="{{ $class }}" {{- end}}>
+		<div class="row call-to-action-2">
+			<div class="col-lg-6 bg-image py-25 py-lg-0 order-lg-1 bg-col-lg-half-screen-right lazy-bg" data-bg-src="/assets/images/banner/banner-02.jpg" data-animate="fadeInUp">
+				<div class="card-img-overlay d-flex align-items-center justify-content-center w-lg-half-screen">
+					{{ partial "elements/video/style-1" (dict "link" "https://www.youtube.com/watch?v=6v2L2UGZJAM")}}
+				</div>
+			</div>
+			<div class="col-lg-6 ps-6" data-animate="fadeInUp">
+				<div class="py-lg-23 py-16 mt-lg-3 mb-lg-5 ms-lg-auto text-white content-wrap">
+					{{ partial "elements/heading/style-1" (dict
+					"subtitle" "Special offer"
+					"subtitleClass" "fs-15px mb-7 ls-1  fw-semibold text-uppercase"
+					"title" "Beauty Inspired by Real Life"
+					"titleExtraClass" "mw-lg-60 pt-1 text-reset"
+					"desc" "Made using clean, non-toxic ingredients, our products are designed for everyone."
+					"descExtraClass" "mw-lg-75"
+					"align" "left"
+					) }}
+					<a href="#" class="btn btn-white mt-10 mb-2">Discover Now</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+

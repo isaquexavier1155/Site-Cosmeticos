@@ -1,0 +1,25 @@
+<footer class="pt-14 pt-lg-19 pb-16 footer bg-image" data-bg-src="/assets/images/background/bg-footer-01.jpg">
+	<div class="container container-xxl pt-4">
+		<div class="row">
+			<div class="col-lg-5 col-12 mb-13 mb-lg-0">
+                {{ partial "footer/widgets/news-letter" (dict "titleClass" "text-white" "subtitleClass" "text-white me-xl-24 mb-lg-11 mb-9") }}
+                {{ partial "footer/widgets/form" (dict "class" "py-5 border-0" "formClass" "pe-xl-21")}}
+			</div>
+			<div class="col-lg col-md-4 col-12 mb-11 mb-md-8 mb-lg-0 text-white">
+                {{ partial "footer/widgets/widget-title" (dict "title" "Company" "class" "text-white")}}
+                {{ partial "footer/widgets/company-info" (dict "class" "text-white") }}
+			</div>
+			<div class="col-lg col-md-4 col-12 mb-11 mb-lg-0 text-white">
+                {{ partial "footer/widgets/widget-title" (dict "title" "Useful links" "class" "text-white")}}
+                {{ partial "footer/widgets/menu" (dict
+                "subtitleClass" "text-white"
+				"data" $.Site.Data.footer_menu_useful_links ) }}
+			</div>
+			<div class="col-lg col-md-4 col-12 mb-11 mb-lg-0">
+                {{ partial "footer/widgets/widget-title" (dict "title" "Social Media" "class" "text-white")}}
+				{{ partial "footer/widgets/social-media"}}
+			</div>
+		</div>
+        {{ partial "footer/widgets/bottom-bar-2" }}
+	</div>
+</footer>

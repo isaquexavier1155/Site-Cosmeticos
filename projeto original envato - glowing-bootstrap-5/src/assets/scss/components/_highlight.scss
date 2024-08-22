@@ -1,0 +1,92 @@
+.doc-example-markup-header {
+	--#{$prefix}doc-example-icon: #{escape-svg(url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' fill='currentColor' viewBox='0 0 16 16'><path fill-rule='evenodd' d='M7.646 4.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1-.708.708L8 5.707l-5.646 5.647a.5.5 0 0 1-.708-.708l6-6z'/></svg>"))};
+	--#{$prefix}doc-example-collapsed-icon: #{escape-svg(url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' fill='currentColor' viewBox='0 0 16 16'><path fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/></svg>"))};
+	background-color: transparent;
+
+	a {
+		text-decoration: none;
+		color: var(--#{$prefix}emphasis-color);
+		font-weight: 600;
+
+		&:before {
+			display: inline-block;
+			content: "";
+			vertical-align: -.125em;
+			background-image: var(--#{$prefix}doc-example-icon);
+			background-repeat: no-repeat;
+			background-size: .875em .875em;
+			width: .875em;
+			height: .875em;
+		}
+
+		&.collapsed:before {
+			background-image: var(--#{$prefix}doc-example-collapsed-icon);
+		}
+	}
+}
+
+.doc-example-markup {
+	.highlight {
+		background-color: transparent;
+		padding-bottom: 0;
+
+		pre {
+			tab-size: 4;
+		}
+	}
+}
+
+.doc-example-markup-content > .code-preview {
+	max-height: 500px;
+}
+
+.doc-example-markup pre {
+	font-size: 14px;
+	margin-bottom: 0;
+	color: #e6e1dc;
+	background: #2b2b2b;
+}
+
+.hljs-markup {
+	.btn-clipboard,
+	.btn-edit {
+		color: #fff;
+		background-color: #2b2b2b;
+	}
+}
+
+.layout-blocks {
+	.doc-example {
+		border: none;
+		background-color: transparent;
+
+		> .card-body {
+			padding: 0;
+		}
+	}
+
+	.doc-example-markup-content {
+		border: solid 1px var(--#{$prefix}border-color);
+		border-radius: 5px;
+		overflow: hidden;
+	}
+
+	.doc-example-markup-header {
+		font-size: 18px;
+		padding: 20px !important;
+		border: none;
+	}
+}
+
+.doc-example-preview > .btn {
+	margin: 0.25rem 0.125rem;
+}
+
+@if $enable-dark-mode {
+	@include color-mode(dark) {
+		.doc-example-markup-header {
+			--#{$prefix}doc-example-icon: #{escape-svg(url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' fill='#{$body-emphasis-color-dark}' viewBox='0 0 16 16'><path fill-rule='evenodd' d='M7.646 4.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1-.708.708L8 5.707l-5.646 5.647a.5.5 0 0 1-.708-.708l6-6z'/></svg>"))};
+			--#{$prefix}doc-example-collapsed-icon: #{escape-svg(url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' fill='#{$body-emphasis-color-dark}' viewBox='0 0 16 16'><path fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/></svg>"))};
+		}
+	}
+}

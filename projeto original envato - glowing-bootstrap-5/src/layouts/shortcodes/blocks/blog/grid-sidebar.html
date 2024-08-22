@@ -1,0 +1,31 @@
+{{/*
+Block settings
+-------------------------------------------------
+class		Block class extral
+*/}}
+{{- $class := .Get "class" | default "container mb-lg-18 mb-16 pb-3" -}}
+
+<div {{- if $class }} class="{{ $class}}"{{ end -}}>
+	{{ .Inner }}
+	<div class="row">
+		<div class="col-lg-8">
+			<div class="row gy-50px">
+				{{- range $item := $.Site.Data.blog_grid_sidebar -}}
+					<div class="col-sm-6">
+						{{ partial  "elements/blog/items/grid-2" (dict
+						"data" $item
+						"animation" "fadeInUp"
+						) }}
+					</div>
+				{{- end -}}
+			</div>
+			{{ partial  "elements/paging/pagination" }}
+		</div>
+		<div class="col-lg-4">
+			<div class="position-sticky top-0">
+				{{ partial "elements/blog/sidebar" (dict "currentPage" . "position" "right" ) }}
+			</div>
+		</div>
+	</div>
+</div>
+

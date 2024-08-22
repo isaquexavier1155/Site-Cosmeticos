@@ -1,0 +1,26 @@
+{{/*
+Block settings
+-------------------------------------------------
+id			Block ID
+class		Block class extral
+*/}}
+{{- $id := .Get "id" | default "" -}}
+{{- $class := .Get "class" | default "pt-lg-17 pb-lg-18 pt-15 pb-16" -}}
+
+<section {{- if $id }} id="{{ $id }}" {{- end -}} {{- if $class }} class="{{ $class }}" {{- end}}>
+    {{ .Inner }}
+	<div class="container text-center mt-lg-3">
+		<div class="row">
+			<div class="col-lg-6 border-0 border-lg-end" data-animate="fadeInUp">
+				<h3 class="mx-auto fs-4 mb-6">Follow Us on</h3>
+				<p class="mx-auto mb-10 newletter-follow-desc"> Shapes and proportions are for your intellect. I’ve treated the waistcoat as if it were a corset.</p>
+                {{ partial  "elements/socical-icons/style-1" (dict "currentPage" . "listClass" "me-7 me-lg-12" "socialitemClass" "fs-5 mb-0") }}
+			</div>
+			<div class="col-lg-6 mt-11 mt-lg-0" data-animate="fadeInUp">
+				<h3 class="mx-auto fs-4 mb-6">Let’s Stay in Touch</h3>
+				<p class="mx-auto mb-10">We’ll shout you $10 off your first order.</p>
+                {{ partial  "elements/news-letter/style-1" (dict "currentPage" . "buttontitle" "Subscribe" "class" "mx-auto newletter-follow-form" ) }}
+			</div>
+		</div>
+	</div>
+</section>

@@ -1,0 +1,42 @@
+{{/***
+Element Parameters
+---------------------------------------------
+$.class: 			Element extra class name
+$.animation         Animation
+$.currentPage: 		$.currentPage.Page, $.currentPage.Site
+$.contentClass 		Instagram content class
+$.width: 			Width Image
+$.height: 			Height Image
+$.slidesToShow: 	slides To Show
+$.slidesToShow1336: slides To Show
+$.slidesToShow992: 	slides To Show
+$.slidesToShow768: 	slides To Show
+$.slidesToShow576: 	slides To Show
+$.space:
+*/}}
+
+{{- $class := "slick-slider" -}}
+{{- if isset $ "class" }}
+{{- $class = $.class -}}
+{{ end -}}
+
+{{- $effectClass := "hover-zoom-in hover-shine" -}}
+{{- if isset $ "effectClass" }}
+{{- $effectClass = $.effectClass -}}
+{{ end -}}
+
+{{- $data := index $.currentPage.Site.Data $.data -}}
+
+<div class="mx-n{{ $.space }} {{- if $class }} {{ $class }}{{ end }}" data-slick-options='{"slidesToShow": {{ $.slidesToShow }},"infinite":false,"autoplay":false,"dots":false,"arrows":false,"responsive":[{"breakpoint": 1366,"settings": {"slidesToShow":{{ $.slidesToShow1366 }} }},{"breakpoint": 992,"settings": {"slidesToShow":{{ $.slidesToShow992 }}}},{"breakpoint": 768,"settings": {"slidesToShow": {{ $.slidesToShow768 }}}},{"breakpoint": 576,"settings": {"slidesToShow": {{ $.slidesToShow576 }}}}]}'>
+{{- if $data }}
+		{{ range $item := $data }}
+			<div class="px-{{ $.space }}" {{- if isset $ "animation" }} data-animate="{{- $.animation -}}" {{- end -}}>
+				<a href="{{- $item.src -}}" title="{{- $item.title -}}" data-gallery="instagram" class="{{- if $effectClass }} {{ $effectClass }}{{ end }}  card-img-overlay-hover hover-zoom-in hover-shine d-block">
+					<img class="lazy-image img-fluid w-100" width="{{- $item.width -}}" height="{{- $item.height -}}" data-src="{{- $item.thumb -}}" alt="{{- $item.title -}}" src="#">
+					<span class="card-img-overlay bg-dark bg-opacity-30"></span>
+				</a>
+			</div>
+		{{ end }}
+{{- end -}}
+</div>
+

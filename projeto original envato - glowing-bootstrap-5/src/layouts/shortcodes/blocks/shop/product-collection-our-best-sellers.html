@@ -1,0 +1,23 @@
+{{ .Inner }}
+{{- $id := .Get "id" | default "" -}}
+{{- $class := .Get "class" | default "container container-xxl py-lg-18 py-15" -}}
+
+<section {{- if $id }} id="{{ $id }}" {{- end -}} {{- if $class }} class="{{ $class }}" {{- end}}>
+	{{ partial  "elements/heading/style-1" (dict "currentPage" .
+	"title" "OUR BEST SELLERS"
+	"titleClass" "fs-1 fw-bold"
+	"subtitle" "Product collection"
+	"subtitleClass" "fs-5 fw-semibold font-primary text-body-emphasis"
+	"animation" "fadeInUp") }}
+	<div class="row mt-lg-10 mt-8 gy-8">
+		{{- range $item := $.Site.Data.product_collection_our_best_sellers.items }}
+		<div class="col-lg-3 col-sm-6 col-12">
+			{{ partial "elements/shop/skins/grid-2" (dict
+			"data" $item
+			"size" "sm"
+			"animation" "fadeInUp"
+			) }}
+		</div>
+		{{- end -}}
+	</div>
+</section>

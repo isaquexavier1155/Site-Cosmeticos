@@ -1,0 +1,14 @@
+.banner-02 {
+	max-height: 913px;
+	@include media-breakpoint-down(lg) {
+		height: 100%;
+	}
+}
+.banner-06 {
+	.custom-img {
+		height: 650px;
+		@include media-breakpoint-down(md) {
+			height: 400px;
+		}
+	}
+}

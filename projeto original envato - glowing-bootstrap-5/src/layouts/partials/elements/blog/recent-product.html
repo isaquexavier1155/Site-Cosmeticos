@@ -1,0 +1,67 @@
+{{/***
+Element Parameters
+---------------------------------------------
+$.class: 			Element extra class name
+$.nameClass: 		name extra Class
+$.titleClass: 		titleription extra class
+$.name: 			Item Style name
+$.title: 			Item Style titleription
+$.currentPage: 		$.currentPage.Page, $.currentPage.Site
+*/}}
+
+{{- $class := "" -}}
+{{- if isset $ "class" }}
+{{- $class = $.class -}}
+{{ end -}}
+
+{{- $nameClass := "card-title text-decoration-none fs-15px mb-3 text-body-emphasis name-recent-item" -}}
+{{- if isset $ "nameClass" }}
+{{- $nameClass = $.nameClass -}}
+{{ end -}}
+
+{{- $oldPriceClass := "text-body pe-4 mb-2 fs-13px" -}}
+{{- if isset $ "oldPriceClass" }}
+{{- $oldPriceClass = $.oldPriceClass -}}
+{{ end -}}
+
+{{- $newPriceClass := "text-body-emphasis fw-bold mb-3 fs-14px" -}}
+{{- if isset $ "newPriceClass" }}
+{{- $newPriceClass = $.newPriceClass -}}
+{{ end -}}
+
+{{- $titleClass := "fs-15px mb-6 fw-semibold" -}}
+{{- if isset $ "titleClass" }}
+{{- $titleClass = $.titleClass -}}
+{{ end -}}
+
+<div class="{{- if $.class }} {{ $.class }}{{ end }}">
+	<h2 class="fw-semibold fs-5 mb-6">
+		Recent Products
+	</h2>
+	{{- range $item := $.currentPage.Site.Data.recent_product -}}
+	<div class="card mb-7 d-flex flex-row border-0" >
+		<a href="{{- $item.url -}}" title="{{ $.title }}" class="">
+			<img src="#" data-src="{{- $item.img -}}" class="img-fluid lazy-image" width="{{- $item.imgWidth -}}" height="{{- $item.imgHeight -}}" alt="{{- $item.title -}}">
+		</a>
+		<div class="card-body py-4 pe-0">
+			<div class="d-flex">
+				<p class="text-decoration-line-through {{- if $oldPriceClass }} {{ $oldPriceClass }}{{ end }}">{{ $item.oldPrice }}</p>
+				<p class="{{- if $newPriceClass }} {{ $newPriceClass }}{{ end }}">{{ $item.newPrice }}</p>
+			</div>
+			<a href="{{ $item.url }}" class="{{- if $nameClass }} {{ $nameClass }}{{ end }}">
+				{{- $item.name -}}
+			</a>
+			<div class="d-flex">
+				<ul class="list-inline mb-0 fs-12px text-primary me-4">
+					<li class="list-inline-item me-0"><i class="fas fa-star"></i></li>
+					<li class="list-inline-item me-0"><i class="fas fa-star"></i></li>
+					<li class="list-inline-item me-0"><i class="fas fa-star"></i></li>
+					<li class="list-inline-item me-0"><i class="fas fa-star"></i></li>
+					<li class="list-inline-item me-0"><i class="fas fa-star"></i></li>
+				</ul>
+				<span class="card-text fs-14px font-weight-normal">( {{ $item.views }} )</span>
+			</div>
+		</div>
+	</div>
+	{{- end -}}
+</div>

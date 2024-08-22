@@ -1,0 +1,102 @@
+header:
+  - title: Header 01
+    url: /blocks/headers/header-01.html
+  - title: Header 02
+    url: /blocks/headers/header-02.html
+  - title: Header 03
+    url: /blocks/headers/header-03.html
+  - title: Header 04
+    url: /blocks/headers/header-04.html
+  - title: Header 05
+    url: /blocks/headers/header-05.html
+  - title: Header 06
+    url: /blocks/headers/header-06.html
+  - title: Header 07
+    url: /blocks/headers/header-07.html
+  - title: Header 08
+    url: /blocks/headers/header-08.html
+  - title: Header 09
+    url: /blocks/headers/header-09.html
+  - title: Header 10
+    url: /blocks/headers/header-10.html
+  - title: Header 11
+    url: /blocks/headers/header-11.html
+  - title: Header 12
+    url: /blocks/headers/header-12.html
+  - title: Header 13
+    url: /blocks/headers/header-13.html
+  - title: Header 14
+    url: /blocks/headers/header-14.html
+  - title: Header 15
+    url: /blocks/headers/header-15.html
+  - title: Header 16
+    url: /blocks/headers/header-16.html
+  - title: Header 17
+    url: /blocks/headers/header-17.html
+
+
+heros:
+  - title: Hero Home  01
+    url: /blocks/heros/home-01.html
+  - title: Hero Home  02
+    url: /blocks/heros/home-02.html
+  - title: Hero Home  03
+    url: /blocks/heros/home-03.html
+  - title: Hero Home  04
+    url: /blocks/heros/home-04.html
+  - title: Hero Home  05
+    url: /blocks/heros/home-05.html
+  - title: Hero Home  06
+    url: /blocks/heros/home-06.html
+  - title: Hero Home  07
+    url: /blocks/heros/home-07.html
+  - title: Hero Home  08
+    url: /blocks/heros/home-08.html
+  - title: Hero Home  09
+    url: /blocks/heros/home-09.html
+  - title: Hero Home  10
+    url: /blocks/heros/home-10.html
+  - title: Hero Home  11
+    url: /blocks/heros/home-11.html
+  - title: Hero Home  12
+    url: /blocks/heros/home-12.html
+  - title: Hero Home  13
+    url: /blocks/heros/home-13.html
+  - title: Hero Home  14
+    url: /blocks/heros/home-14.html
+  - title: Hero Home 15 Hot Product 1
+    url: /blocks/heros/home-15-hot-product-1.html
+  - title: Hero Home 15 Hot Product 2
+    url: /blocks/heros/home-15-hot-product-2.html
+  - title: Hero Home  16
+    url: /blocks/heros/home-16.html
+  - title: Hero Home  17
+    url: /blocks/heros/home-17.html
+
+footer:
+  - title: Footer  01
+    url: /blocks/footer/footer-01.html
+  - title: Footer  02
+    url: /blocks/footer/footer-02.html
+  - title: Footer  03
+    url: /blocks/footer/footer-03.html
+  - title: Footer  04
+    url: /blocks/footer/footer-04.html
+  - title: Footer  05
+    url: /blocks/footer/footer-05.html
+  - title: Footer  06
+    url: /blocks/footer/footer-06.html
+  - title: Footer  07
+    url: /blocks/footer/footer-07.html
+  - title: Footer  08
+    url: /blocks/footer/footer-08.html
+  - title: Footer  09
+    url: /blocks/footer/footer-09.html
+  - title: Footer  10
+    url: /blocks/footer/footer-10.html
+  - title: Footer  11
+    url: /blocks/footer/footer-11.html
+  - title: Footer  12
+    url: /blocks/footer/footer-12.html
+  - title: Footer  13
+    url: /blocks/footer/footer-13.html

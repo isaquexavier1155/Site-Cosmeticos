@@ -1,0 +1,41 @@
+{{/*
+Block settings
+-------------------------------------------------
+id			Block ID
+class		Block class extral
+*/}}
+{{- $id := .Get "id" | default "blog" -}}
+{{- $class := .Get "class" | default "pt-lg-19 pt-13 pb-lg-16 pb-12" -}}
+{{- $currentPage := . -}}
+
+<section {{- if $id }} id="{{ $id }}" {{- end -}} {{- if $class }} class="{{ $class }}" {{- end}}>
+    {{ .Inner }}
+	<div class="container container-xxl">
+		<div class="row align-items-center">
+			<div class="col-lg-7 text-lg-start"  data-animate="fadeInUp">
+				{{  partial "the-image" (dict "currentPage" . "img" "/assets/images/landing/landing-blog-01.png" "img_dark" "/assets/images/landing/landing-blog-white-01.png" "class" "img-fluid" "width" "730" "height" "434" "alt" "Blog List Layouts") }}
+			</div>
+			<div class="col-lg-5 mt-lg-0 mt-13">
+				<span data-animate="fadeInUp" class="d-block landing-count-layout-1 fw-bold text-primary mb-6">05<sup class="landing-count-layout-1-sup ps-6">+</sup></span>
+				<h2 data-animate="fadeInUp" class="mb-6 mt-lg-0 mt-5">Blog List Layouts</h2>
+				<p data-animate="fadeInUp" class="pb-0 fs-18px landing-layout-desc">Various attractive blog layouts enable users to create impressive blog in order to grow store’s audience.</p>
+			</div>
+		</div>
+		<div class="pt-11 pt-lg-18">
+			<div class="slick-slider" data-slick-options='{{ $.Site.Data.landing_blog_list_layouts.options | jsonify }}'>
+				{{- range $item := $.Site.Data.landing_blog_list_layouts.items -}}
+				<div class="box slick-slide" data-slick-index="3" aria-hidden="true">
+					<div class="card border-0 bg-transparent fadeInUp animated" data-animate="fadeInUp">
+						<a href="{{$item.url}}" class="card-img rounded-3 hover-bg-color-02 px-8 pt-12" tabindex="-1">
+							{{  partial "the-image" (dict "currentPage" $currentPage "img" $item.img "img_dark" $item.img_dark "class" "shadow-3 mw-100" "width" "402" "height" "275" "alt" "Blog List") }}
+						</a>
+						<div class="card-body p-0">
+							<h4 class="card-text fs-20px fw-bold mt-8"><a href="{{$item.url}}" tabindex="-1">{{$item.title}}</a></h4>
+						</div>
+					</div>
+				</div>
+				{{- end -}}
+			</div>
+		</div>
+	</div>
+</section>

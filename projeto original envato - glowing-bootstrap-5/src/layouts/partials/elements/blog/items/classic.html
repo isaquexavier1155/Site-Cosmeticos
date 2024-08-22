@@ -1,0 +1,63 @@
+{{/***
+Element Parameters
+---------------------------------------------
+$.class: 			Element extra class name
+$.data
+    - title             Title
+    - cat               Category
+    - author            Author
+    - author_image      Author Image
+    - date              Date
+    - desc              Description
+    - view              View Count
+    - image             Image data {src, width, height}
+    - post_format:       Format of post: standard, video, gallery
+    - gallery           Gallery
+    - video_src         Video Src
+    - quote             Quote
+    - link              Link
+$.animation         Animation
+*/}}
+
+{{- $post_format := "standard" -}}
+{{- if (and (isset $.data "post_format") (ne $.data.post_format "") (ne $.data.post_format nil))  }}
+    {{- $post_format = $.data.post_format -}}
+{{- end -}}
+<article class="card card-post-classic bg-transparent border-0 {{- if isset $ "class" }} {{ $.class }} {{- end -}}" {{- if isset $ "animation"  }} data-animate="{{- $.animation -}}" {{- end -}} >
+    <figure class="card-img-top position-relative mb-10">
+        {{- if eq $post_format "standard" -}}
+            {{ partial "elements/blog/post-format/image" (dict "image" $.data.image "title" $.data.title ) }}
+        {{- end -}}
+
+        {{- if eq $post_format "gallery" -}}
+            {{ partial "elements/blog/post-format/gallery" (dict "gallery" $.data.gallery "title" $.data.title ) }}
+        {{- end -}}
+
+        {{- if eq $post_format "video" -}}
+            {{ partial "elements/blog/post-format/video" (dict "image" $.data.image "video_src" $.data.video_src "title" $.data.title ) }}
+        {{- end -}}
+
+
+        {{- if eq $post_format "quote" -}}
+            {{ partial "elements/blog/post-format/quote" (dict "quote" $.data.quote ) }}
+        {{- end -}}
+
+        {{- if eq $post_format "link" -}}
+            {{ partial "elements/blog/post-format/link" (dict "link" $.data.link ) }}
+        {{- end -}}
+
+
+        <a href="#" class="post-item-cate btn btn-text-light-body-emphasis btn-hover-bg-dark btn-hover-text-light fw-500 btn-light post-cat position-absolute top-100 start-50 translate-middle py-2 px-7 border-0" title="{{- $.data.cat -}}">{{- $.data.cat -}}</a>
+    </figure>
+    <div class="card-body text-center px-md-9 py-0">
+        <h4 class="card-title fs-3 mb-6 pb-2 mt-3"><a class="text-decoration-none" href="../blog/details-01.html" title="{{- $.data.title -}}">{{- $.data.title -}}</a></h4>
+        <ul class="post-meta list-inline lh-1 d-flex flex-wrap justify-content-center m-0 align-items-center">
+            <li class="list-inline-item border-end pe-5 me-5 ps-11 position-relative"><img data-src="{{- $.data.author_image -}}" width="32" height="32" class="rounded-circle position-absolute start-0 top-0 bottom-0 m-auto img-fluid lazy-image d-inline-flex" alt="{{- $.data.author -}}" src="#"> By <a href="#" title="{{- $.data.author -}}">{{- $.data.author -}}</a></li>
+            <li class="list-inline-item me-5">{{- $.data.date -}}</li>
+            <li class="list-inline-item me-5"><span style="--square-size: 4px;" class="square rounded-circle bg-dark bg-opacity-30"></span></li>
+            <li class="list-inline-item">{{$.data.view}} views</li>
+        </ul>
+        <p class="card-text post-desc mt-6 mb-10">{{- $.data.desc -}}</p>
+        <a href="../blog/details-01.html" class="btn btn-dark btn-hover-bg-primary btn-hover-text-light btn-hover-border-primary">Read More</a>
+    </div>
+</article>

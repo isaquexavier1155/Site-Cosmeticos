@@ -1,0 +1,123 @@
+{{/***
+Element Parameters
+---------------------------------------------
+$.infoClass	 		Info extra Class
+$.formClass			Form extra Class
+$.listBottomClass 	List bottom extra Class
+$.bottomTitleClass	Bottom title extra Class
+$.listShareClass	List share extra Class
+$.shareItemClass	Share item extra Class
+$.title: 			Shop title
+$.oldprice: 		Shop old price
+$.price: 			Shop price
+$.point: 			Shop point
+$.rate 				Rating
+$.readreview: 		Shop read reviews
+$.subtitle: 		Shop subtitle
+$.sku: 				Shop sku
+$.category: 		Shop category
+*/}}
+
+{{- $infoClass := "mb-4 pb-2" -}}
+{{- if isset $ "infoClass" }}
+    {{- $infoClass = $.infoClass -}}
+{{ end -}}
+
+{{- $formClass := "mb-9 pb-2" -}}
+{{- if isset $ "formClass" }}
+    {{- $formClass = $.formClass -}}
+{{ end -}}
+
+{{- $listBottomClass := "row mb-4 pb-2" -}}
+{{- if isset $ "listBottomClass" }}
+    {{- $listBottomClass = $.listBottomClass -}}
+{{ end -}}
+
+{{- $bottomTitleClass := "d-block col-4 col-lg-2 text-body-emphasis fw-semibold fs-14px" -}}
+{{- if isset $ "bottomTitleClass" }}
+    {{- $bottomTitleClass = $.bottomTitleClass -}}
+{{ end -}}
+
+{{- $listShareClass := "list-inline d-flex justify-content-start mb-0 fs-6" -}}
+{{- if isset $ "listShareClass" }}
+    {{- $listShareClass = $.listShareClass -}}
+{{ end -}}
+
+{{- $shareItemClass := "text-body text-decoration-none product-info-share" -}}
+{{- if isset $ "shareItemClass" }}
+    {{- $shareItemClass = $.shareItemClass -}}
+{{ end -}}
+
+{{- $link := "" -}}
+{{- if isset $ "link" }}
+{{- $link = $.link -}}
+{{ end -}}
+
+{{- $idNumber := "number" -}}
+{{- if isset $ "idNumber" }}
+{{- $idNumber = $.idNumber -}}
+{{ end -}}
+
+{{ partial "elements/shop/product-info/items/header" (dict "title" $.title
+"oldprice" $.oldprice "price" $.price
+"subtitle" $.subtitle
+"rate" $.rate
+"point" $.point "readreview" $.readreview
+"link" $link
+) }}
+
+<p class="{{- if $infoClass}}{{$infoClass}}{{- end}}">
+	<span class="text-body-emphasis">
+		<svg class="icon fs-5 me-4 pe-2 align-text-bottom">
+			<use xlink:href="#icon-eye-light"></use>
+		</svg>
+		17 people
+	</span>
+	are viewing this right now
+</p>
+<p class="{{- if $infoClass}}{{$infoClass}}{{- end}} text-body-emphasis">
+	<svg class="icon fs-5 me-4 pe-2 align-text-bottom">
+		<use xlink:href="#icon-Timer"></use>
+	</svg>
+	Only 9 left in stock
+</p>
+<div class="progress mb-7" style="height: 4px;">
+	<div class="progress-bar w-25" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+</div>
+<form class="{{- if $formClass}}{{$formClass}}{{- end}}">
+    {{ partial "elements/shop/product-info/items/add-to-bag" (dict "idNumber" $idNumber)}}
+</form>
+<p class="{{- if $infoClass}}{{$infoClass}}{{- end}}">
+	<span class="text-body-emphasis">
+		<svg class="icon fs-28px me-2 pe-4">
+			<use xlink:href="#icon-delivery-1"></use>
+		</svg>Get it between:
+	</span> Feb 3 - Feb 14,2021
+</p>
+<p class="{{- if $infoClass}}{{$infoClass}}{{- end}}">
+	<span class="text-body-emphasis">
+		<svg class="icon fs-28px me-2 pe-4">
+			<use xlink:href="#icon-Package"></use>
+		</svg>Free Shipping & Returns:
+	</span> On all orders over $200
+</p>
+<div class="card border-0 bg-body-tertiary rounded text-center mt-7">
+	<div class="pt-8 px-5">
+		<img class="img-fluid" src="/assets/images/shop/product-info-2.png" alt="pay" width="357" height="28">
+	</div>
+	<div class="card-body pt-6 pb-7">
+		<p class="fs-14px fw-normal mb-0">Guarantee safe &amp; secure checkout</p>
+	</div>
+</div>
+{{ partial "elements/shop/product-info/items/list-more-info" (dict "sku" $.sku "category" $.category)}}
+<ul class="{{- if $listShareClass}}{{$listShareClass}}{{- end}}">
+	<li class="list-inline-item">
+		<a class="{{- if $shareItemClass}}{{$shareItemClass}}{{- end}} product-info-share" href="#"><i class="fab fa-facebook-f me-4"></i> Facebook</a>
+	</li>
+	<li class="list-inline-item ms-7">
+		<a class="{{- if $shareItemClass}}{{$shareItemClass}}{{- end}} product-info-share" href="#"><i class="fab fa-instagram me-4"></i> Instagram</a>
+	</li>
+	<li class="list-inline-item ms-7">
+		<a class="{{- if $shareItemClass}}{{$shareItemClass}}{{- end}} product-info-share" href="#"><i class="fab fa-youtube me-4"></i> Youtube</a>
+	</li>
+</ul>

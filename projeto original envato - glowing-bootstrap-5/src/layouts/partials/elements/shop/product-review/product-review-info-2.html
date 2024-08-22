@@ -1,0 +1,62 @@
+{{/***
+Element Parameters
+---------------------------------------------
+$.class: 			Element extra class name
+$.currentPage: 		$.currentPage.Page, $.currentPage.Site
+$.rate: 			Number rate product
+$.btnClass: 		Product review button
+$.icon: 			Icon pencil
+$.btnContent:       Product review Content Button
+$.buttonReview: 	Button review
+$.buttonQuest: 		Button quest
+*/}}
+
+{{- $class := "product-review-info" -}}
+{{- if isset $ "class" }}
+{{- $class = $.class -}}
+{{ end -}}
+
+{{- $btnClass := "btn-outline-dark" -}}
+{{- if isset $ "btnClass" }}
+{{- $btnClass = $.btnClass -}}
+{{ end -}}
+
+{{- $data := index $.currentPage.Site.Data $.data -}}
+<div class="card text-center border border-2 rounded {{ if $class }} {{- $class }}{{ end }}">
+	<div class="card-body px-4 py-10">
+		<h5 class="card-title fs-1 mb-6">4.86</h5>
+		{{- if $.rate -}}
+		{{ partial "elements/shop/items/rate" (dict "rate" $.rate "align" "center" "class" "mb-4" "size" "fs-15px")}}
+		{{- end }}
+		<p class="card-text mb-5 mt-4">2947 Reviews, 18 Q&As</p>
+		<div class="mb-8">
+			{{- if $data }}
+				{{ range $item := $data }}
+				<div class="d-flex align-items-center justify-content-center mb-5">
+					<p class="text-start m-0 review-star">{{ $item.title }}</p>
+					<div class="mx-5 d-block mw-160px mw-lg-120px mw-sm-60 w-100">
+						<div class="progress" style="height: 6px;">
+							<div class="progress-bar" role="progressbar" aria-label="Example 1px high" style="width: {{ $item.percent }}" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+						</div>
+					</div>
+					<p class="text-end m-0 review-percent">{{ $item.percent }}</p>
+				</div>
+				{{ end }}
+			{{- end }}
+		</div>
+		{{- if $.buttonReview }}
+		<a href="#customer-review" class="btn {{- if $btnClass}} {{ $btnClass }}{{ end }}" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="customer-review">
+			{{- if $.icon -}}
+				<svg class="icon">
+					<use xlink:href="#{{ $.icon }}"></use>
+				</svg>
+			{{- end -}}
+			{{- if $.btnContent }}
+				{{ $.btnContent }}
+			{{- end -}}
+		</a>
+        {{- end }}
+	</div>
+</div>
+
+

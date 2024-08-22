@@ -1,0 +1,57 @@
+{{/***
+Element Parameters
+---------------------------------------------
+$.class:				Element extra class name
+$.sliderClass: 			Slider Class
+$.subtitleClass: 		Subtitle Class
+$.titleClass: 			Title Class
+$.DescClass: 			Desc Class
+$.ButtonClass: 			Button Class
+$.Img: 					Image
+*/}}
+
+{{- $class := "bg-section-2" -}}
+{{- if isset $ "class" }}
+    {{- $class = $.class -}}
+{{ end -}}
+
+{{- $subtitleClass := "fs-4 fw-semibold text-primary mb-8" -}}
+{{- if isset $ "subtitleClass" }}
+    {{- $subtitleClass = $.subtitleClass -}}
+{{ end -}}
+
+{{- $titleClass := "mx-auto hero-540 fs-1 mb-4 px-4" -}}
+{{- if isset $ "titleClass" }}
+    {{- $titleClass = $.titleClass -}}
+{{ end -}}
+
+{{- $descClass := "fs-18px text-body-calculate" -}}
+{{- if isset $ "descClass" }}
+    {{- $descClass = $.descClass -}}
+{{ end -}}
+
+{{- $buttonClass := "btn btn-lg btn-dark mt-6 btn-hover-bg-primary btn-hover-border-primary" -}}
+{{- if isset $ "buttonClass" }}
+    {{- $buttonClass = $.buttonClass -}}
+{{ end -}}
+
+{{- $img := "/assets/images/hero-slider/hero-slider-07.jpg" -}}
+{{- if isset $ "img" }}
+    {{- $img = $.img -}}
+{{ end -}}
+
+<div class="row align-items-center hero hero-{{$.currentPage.Page.Params.header}} mx-0 {{- if $class}} {{$class}}{{- end}}">
+	<div class="col-lg-6 order-1 order-lg-0 text-center py-lg-0 py-16 px-sm-0 px-6">
+		<div data-animate="fadeInUp" class="{{- if $subtitleClass}}{{$subtitleClass}}{{- end}}">The Perfect Skincare</div>
+		<h2 data-animate="fadeInUp" class="{{- if $titleClass}}{{$titleClass}}{{- end}}">Care for Your Skin, Care for Your Beauty</h2>
+		<p data-animate="fadeInUp" class="mx-auto hero-desc {{- if $descClass}} {{$descClass}}{{- end}}" >Made using clean, non-toxic ingredients, our products are designed for everyone.</p>
+		<a data-animate="fadeInUp" href="shop-page-04.html" class="{{- if $buttonClass}}{{$buttonClass}}{{- end}}">Shop Now</a>
+	</div>
+	<div class="col-lg-6 order-0 order-lg-1 px-0">
+		{{- if $img}}
+		<div class="d-block hover-zoom-in hover-shine">
+			<img src="#" data-src="{{$img}}" class="lazy-image img-fluid w-100 vh-100 object-fit-cover" alt="slider" width="952" height="770">
+		</div>
+		{{- end}}
+	</div>
+</div>

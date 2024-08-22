@@ -1,0 +1,18 @@
+{{/***
+Element Parameters
+---------------------------------------------
+$.class: 			Element extra class name
+$.icon				Icon Name
+using: partial_name "current-icon" OR partial_name (dict "class" "custom-class" "icon" "current-icon")
+*/}}
+{{- $class := "" -}}
+{{- if isset $ "class" -}}
+	{{- $class = $.class -}}
+{{- end -}}
+
+{{- $icon := $ -}}
+{{- if isset $ "icon" }}
+	{{- $icon = $.icon -}}
+{{- end -}}
+
+<svg class="icon {{- if $class }} {{ $class }} {{- end -}}"><use xlink:href="#{{ $icon }}"></use></svg>

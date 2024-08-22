@@ -1,0 +1,21 @@
+{{ .Inner }}
+
+{{ partial "dashboard/overview/overview-top" (dict "data" $.Site.Data.dashboard.icon_boxes) }}
+<div class="row">
+	<div class="col-xl-8">
+		{{ partial "dashboard/overview/sale-statistics" }}
+		<div class="row">
+			<div class="col-lg-5">
+				{{ partial "dashboard/overview/new-members" (dict "data" $.Site.Data.dashboard.members)}}
+			</div>
+			<div class="col-lg-7">
+				{{ partial "dashboard/overview/recent-activities" (dict "data" $.Site.Data.dashboard.activities)}}
+			</div>
+		</div>
+
+	</div>
+	<div class="col-xl-4">
+		{{ partial "dashboard/overview/revenue-base-on-area" }}
+		{{ partial "dashboard/overview/marketing-chanel" (dict "data" $.Site.Data.dashboard.marketing_chanels)}}
+	</div>
+</div>

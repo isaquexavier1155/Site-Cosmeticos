@@ -1,0 +1,29 @@
+{{/***
+Element Parameters
+---------------------------------------------
+$.class: 			Element extra class name
+$.currentPage: 		$.currentPage.Page, $.currentPage.Site
+$.iconItemClass		Icon item class
+$.iconLinkClass: 	Icon link class
+*/}}
+
+{{- $class := "fs-5" -}}
+{{- if isset $ "class" }}
+	{{- $class = $.class -}}
+{{ end -}}
+
+
+{{- $iconItemClass := "ms-10" -}}
+{{- if isset $ "iconItemClass" }}
+	{{- $iconItemClass = $.iconItemClass -}}
+{{ end -}}
+
+<ul class="social-icons list-inline mb-0 {{- if $class }} {{ $class }}{{ end }}">
+	{{ range $index, $item := $.data }}
+		<li class="list-inline-item {{ if ne $index 0 }} {{- if $iconItemClass }} {{ $iconItemClass }}{{ end }}{{ end }}">
+			<a {{- if $.iconLinkClass }} class="{{ $.iconLinkClass }}" {{- end }} href="{{ $item.url }}" title="{{ $item.title }}">
+				{{partial "svg-icon" $item.icon }}
+			</a>
+		</li>
+	{{ end }}
+</ul>

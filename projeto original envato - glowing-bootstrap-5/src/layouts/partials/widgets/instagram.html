@@ -1,0 +1,43 @@
+{{/***
+Element Parameters
+---------------------------------------------
+$.class: 			Element extra class name
+$.name              Widget Name
+$.title		        Widget Title
+*/}}
+{{- $title := "Follow us" -}}
+{{- if isset $ "title" }}
+    {{- $title = $.title -}}
+{{ end -}}
+
+{{- $widgetName := "instagram" -}}
+{{- if isset $ "name" -}}
+    {{- $widgetName = $.name -}}
+{{- end -}}
+
+{{ $wrapperClass := printf "%s%s" "widget widget-" $widgetName }}
+
+{{- if isset $ "class" -}}
+    {{ $wrapperClass = printf "%s %s" $wrapperClass $.class }}
+{{- end -}}
+
+{{- $data := $.currentPage.Site.Data.widget_instagram -}}
+
+<div class="{{- $wrapperClass -}}">
+	<div class="d-flex align-items-baseline justify-content-between">
+        {{- if $title -}}
+            {{ partial "widgets/widget-title" $title}}
+        {{- end -}}
+		<a href="#" class="text-primary text-hover-underline">@GRACE</a>
+	</div>
+	<div class="row g-10px">
+        {{- range $item := $data -}}
+			<div class="col-4">
+				<a class="card-img-overlay-hover hover-zoom-in d-block" href="{{- $item.src -}}" title="{{- $item.title -}}" data-gallery="widget_instagram">
+					<img class="lazy-image img-fluid w-100" width="{{- $item.width -}}" height="{{- $item.height -}}" data-src="{{- $item.thumb -}}" alt="{{- $item.title -}}" src="#">
+					<span class="card-img-overlay bg-dark bg-opacity-30"></span>
+				</a>
+			</div>
+        {{- end -}}
+	</div>
+</div>

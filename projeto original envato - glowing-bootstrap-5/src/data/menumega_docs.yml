@@ -1,0 +1,17 @@
+- title: Documentation
+  desc: Kick-start customization
+  icon: book
+  url: "/docs/usage/getting-started.html"
+- title: UI Kit
+  desc: Flexible components
+  icon: layer-group
+  url: "/docs/components/accordion.html"
+- title: Changelog
+  desc: Regular updates
+  icon: pen-to-square
+  url: "/docs/usage/changelog.html"
+- title: Support
+  desc: https://sp.g5plus.net/
+  icon: headset
+  url: https://sp.g5plus.net/
+  target: blank

@@ -1,0 +1,69 @@
+{{/***
+Element Parameters
+---------------------------------------------
+$.class				Element class extra
+$.context			Context object
+$.logo				Logo Url
+$.logo_dark			Logo Dark Url
+$.width				Logo Width
+$.height			Logo Height
+$.stickyLogo		Sticky Logo
+$.stickyLogo_dark	Sticky Logo Dark
+*/}}
+
+{{- $colorMode := $.context.Site.Params.enableDarkMode -}}
+
+	{{ $class := "px-8 py-4 mx-auto" }}
+{{- if isset $ "class" -}}
+	{{- $class = $.class -}}
+{{- end -}}
+
+{{ $logo := "/assets/images/others/logo.png" }}
+{{- if isset $ "logo" -}}
+	{{- $logo = $.logo -}}
+{{- end -}}
+
+{{ $logo_dark := "/assets/images/others/logo-white.png" }}
+{{- if isset $ "logo_dark" -}}
+	{{- $logo_dark = $.logo_dark -}}
+{{- end -}}
+
+{{ $width := "179" }}
+{{- if isset $ "width" -}}
+	{{- $width = $.width -}}
+{{- end -}}
+
+{{ $height := "26" }}
+{{- if isset $ "height" -}}
+	{{- $height = $.height -}}
+{{- end -}}
+
+
+{{ $stickyLogo_dark := "" }}
+{{ $stickyLogo := "" }}
+{{- if isset $ "stickyLogo" }}
+	{{ $stickyLogo = "/assets/images/others/logo.png" }}
+	{{- if $.stickyLogo }}
+		{{ $stickyLogo = $.stickyLogo }}
+	{{ end -}}
+
+	{{ $stickyLogo_dark = "/assets/images/others/logo-white.png" }}
+	{{- if $.stickyLogo_dark }}
+    		{{ $stickyLogo_dark = $.stickyLogo_dark }}
+    	{{ end -}}
+
+	{{ $class = printf "%s %s" "has-sticky-logo" $class }}
+{{ end -}}
+
+<a href="/" class="navbar-brand {{- if $class }} {{ $class }}{{ end }}">
+	<img class="light-mode-img" src="{{ $logo }}" width="{{ $width }}" height="{{ $height }}" alt="{{ $.context.Site.Title }}">
+	{{- if (eq $colorMode true)}}
+	<img class="dark-mode-img" src="{{ $logo_dark }}" width="{{ $width }}" height="{{ $height }}" alt="{{ $.context.Site.Title }}">
+	{{- end -}}
+	{{- if isset $ "stickyLogo" }}
+	<img class="sticky-logo sticky-logo-light" src="{{ $stickyLogo }}" width="{{ $width }}" height="{{ $height }}" alt="{{ $.context.Site.Title }}">
+	{{- if (eq $colorMode true)}}
+	<img class="sticky-logo sticky-logo-dark" src="{{ $stickyLogo_dark }}" width="{{ $width }}" height="{{ $height }}" alt="{{ $.context.Site.Title }}">
+	{{- end -}}
+	{{ end -}}
+</a>

@@ -1,0 +1,26 @@
+items:
+  - subtitle: "Because you need time for yourself"
+    img: "/assets/images/hero-slider/hero-slider-42.jpg"
+    title: "Natural Mineral Water Spray"
+    desc:
+    button2: "Discover Now"
+  - subtitle: "Because you need time for yourself"
+    img: "/assets/images/hero-slider/hero-slider-43.jpg"
+    title: "Natural Mineral Water Spray"
+    desc:
+    button2: "Discover Now"
+  - subtitle: "Because you need time for yourself"
+    img: "/assets/images/hero-slider/hero-slider-44.jpg"
+    title: "Natural Mineral Water Spray"
+    desc:
+    button2: "Discover Now"
+config:
+  slidesToShow: 1
+  infinite: true
+  dots: false
+  arrows: false
+  fade: true
+  autoplay: true
+  cssEase: ease-in-out
+  speed: 600
+  autoplaySpeed: 9000

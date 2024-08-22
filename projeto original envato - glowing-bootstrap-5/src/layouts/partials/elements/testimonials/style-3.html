@@ -1,0 +1,43 @@
+{{/***
+Element Parameters
+---------------------------------------------
+$.class: 			Element extra class name
+$.imgClass: 		Image Class
+$.titleClass: 		Title extra Class
+$.authorClass 		Author extra class
+$.img: 				testimonials image
+$.title: 			testimonials title
+$.author: 			testimonials author
+$.altContent		Testimonials Alt Content
+*/}}
+{{- $class := "px-6 text-center" -}}
+{{- if isset $ "class" }}
+{{- $class = $.class -}}
+{{ end -}}
+
+{{- $imgClass := "mx-auto mb-11" -}}
+{{- if isset $ "imgClass" }}
+{{- $imgClass = $.imgClass -}}
+{{ end -}}
+
+{{- $titleClass := "text-primary fs-3 mb-12 pb-2" -}}
+{{- if isset $ "titleClass" }}
+{{- $titleClass = $.titleClass -}}
+{{ end -}}
+
+{{- $authorClass := "fs-15px fw-bold text-uppercase mb-4" -}}
+{{- if isset $ "authorClass" }}
+{{- $authorClass = $.authorClass -}}
+{{ end -}}
+
+<div class="{{- if $class}}{{$class}}{{- end}}" {{- if isset $ "animation" }} data-animate="{{- $.animation -}}" {{- end -}}>
+	{{- if $.img}}
+	<img src="#" data-src="{{$.img}}" alt="{{ $.altContent }}" class="lazy-image{{- if $imgClass}} {{$imgClass}}{{- end}}" style="width: 80px; height: 80px">
+	{{- end}}
+	{{- if $.title}}
+	<p class="{{- if $titleClass}}{{$titleClass}}{{- end}}">“{{$.title}}“</p>
+	{{- end}}
+	{{- if $.author}}
+	<h4 class="{{- if $authorClass}}{{$authorClass}}{{- end}}">{{$.author}}</h4>
+	{{- end}}
+</div>

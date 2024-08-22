@@ -1,0 +1,79 @@
+{{/***
+Element Parameters
+---------------------------------------------
+$.class: 			Element extra class name
+$.listClass: 		List extra Class
+$.imgClass: 		Image Class
+$.titleClass: 		Title extra Class
+$.contentClass 		testimonial content class
+$.authorClass 		Author extra class
+$.img: 				testimonial image
+$.title: 			testimonial title
+$.author: 			testimonial author
+$.rate 				Testimonial rate
+$.position: 		testimonial position
+$.altContent		Testimonial Alt Content
+*/}}
+{{- $class := "px-6 py-0" -}}
+{{- if isset $ "class" }}
+{{- $class = $.class -}}
+{{ end -}}
+
+{{- $listClass := "list-inline mb-7" -}}
+{{- if isset $ "listClass" }}
+{{- $listClass = $.listClass -}}
+{{ end -}}
+
+{{- $listitemClass := "list-inline-item text-primary tex fs-14 me-0" -}}
+{{- if isset $ "listitemClass" }}
+{{- $listitemClass = $.listitemClass -}}
+{{ end -}}
+
+{{- $imgClass := "me-7" -}}
+{{- if isset $ "imgClass" }}
+{{- $imgClass = $.imgClass -}}
+{{ end -}}
+
+{{- $titleClass := "fs-5 text-primary fw-semibold mb-11" -}}
+{{- if isset $ "titleClass" }}
+{{- $titleClass = $.titleClass -}}
+{{ end -}}
+
+{{- $contentClass := "d-flex align-items-center" -}}
+{{- if isset $ "contentClass" }}
+{{- $contentClass = $.contentClass -}}
+{{ end -}}
+
+{{- $authorClass := "fw-bold text-uppercase mb-1 fs-15px fw-bold ls-1" -}}
+{{- if isset $ "authorClass" }}
+{{- $authorClass = $.authorClass -}}
+{{ end -}}
+<div class="{{- if $class}}{{$class}}{{- end}}" {{- if isset $ "animation" }} data-animate="{{- $.animation -}}" {{- end -}}>
+	<div class="card border-0 bg-section-3 rounded p-sm-11 p-9">
+		<div class="card-body px-4">
+			{{- if $.rate -}}
+				{{ partial "elements/shop/items/rate" (dict "rate" $.rate "align" "start" "class" "mb-6" "size" "fs-14px")}}
+			{{- end }}
+            {{- if $.title}}
+				<p class="{{- if $titleClass}}{{$titleClass}}{{- end}}">
+					“ {{$.title}} “
+				</p>
+            {{- end}}
+			<div class="{{- if $contentClass}}{{$contentClass}}{{- end}}">
+				<div class="d-flex justify-content-start align-items-center">
+					{{- if $.img}}
+						<img src="#" data-src="{{- $.img}}" alt="{{ $.atContent }}" class="lazy-image{{- if $imgClass}} {{$imgClass}}{{- end}}" style="width: 60px; height: 60px">
+					{{- end}}
+					<div class="author-info">
+						{{- if $.author}}
+							<h4 class="{{- if $authorClass}}{{$authorClass}}{{- end}}">{{$.author}}</h4>
+						{{- end}}
+						{{- if $.position}}
+							<p class="mb-0">{{$.position}}</p>
+						{{- end}}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,24 @@
+{{/*
+Block settings
+-------------------------------------------------
+id			Block ID
+class		Block class extral
+*/}}
+{{- $id := .Get "id" | default "" -}}
+{{- $class := .Get "class" | default "pt-lg-19 pt-10" -}}
+
+<section {{- if $id }} id="{{ $id }}" {{- end -}} {{- if $class }} class="{{ $class }}" {{- end}}>
+    {{ .Inner }}
+	<div class="container container-xxl">
+		<div class="row align-items-center">
+			<div class="col-lg-7 text-lg-end order-lg-2" data-animate="fadeInUp">
+				{{  partial "the-image" (dict "currentPage" . "img" "assets/images/landing/landing-mobile-optimized-01.png" "img_dark" "assets/images/landing/landing-mobile-optimized-white-01.png" "class" "img-fluid" "width" "732" "height" "452" "alt" "Mobile Optimized") }}
+			</div>
+			<div class="col-lg-5 order-lg-1">
+				<h2 class="fs-1 mb-6 mt-lg-0 mt-12" data-animate="fadeInUp">Mobile Optimized</h2>
+				<p class="pb-0 fs-18px landing-post-desc" data-animate="fadeInUp">Glowing provides a ready-made mobile design with
+					impressive UI and the seamless shopping experience for mobile users.</p>
+			</div>
+		</div>
+	</div>
+</section>

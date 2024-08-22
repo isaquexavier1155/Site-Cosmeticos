@@ -1,0 +1,17 @@
+{{/*
+Block settings
+-------------------------------------------------
+id			Block ID
+class		Block class extral
+*/}}
+{{- $id := .Get "id" | default "about_introduction" -}}
+{{- $class := .Get "class" | default "container py-18 py-lg-25" -}}
+
+<section class="position-relative" {{- if $id }} id="{{ $id }}" {{- end }}>
+	{{ partial "overlay" (dict "currentPage" . "img" "/assets/images/background/bg-about-01.jpg" "imgDark" "/assets/images/banner/banner-white-42.jpg") }}
+	{{ .Inner }}
+	<div {{- if $class }} class="position-relative z-index-2 {{ $class }}" {{- end}} >
+		<p class="fw-semibold ls-15 text-uppercase text-body-emphasis mb-lg-7 mt-lg-16">Introducing</p>
+		<h2 class="fs-56px mb-7">About Glowing</h2>
+	</div>
+</section>

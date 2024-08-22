@@ -1,0 +1,31 @@
+---
+layout: blocks
+header: header-01
+footer: footer-01
+title: "Blocks - Footer"
+---
+{{< blocks/page-title/default title="Blocks - Footer" desc="Copy any custom block snippet below and paste it on your page to build your website easily." />}}
+<section class="pb-14 pb-lg-21 pt-lg-10">
+	<div class="container">
+		<table class="table table-bordered table-striped">
+			<thead class="table-primary">
+			<tr>
+				<th style="width: 80%" class="py-5 px-10 fs-5">Footer Style</th>
+				<th class="py-5 fs-5 text-center">Preview</th>
+			</tr>
+			</thead>
+			<tbody>
+			{{< blocks.inline >}}
+			{{- range $blocks := $.Site.Data.blocks_example.footer }}
+			<tr>
+				<td class="align-middle px-10 text-body-emphasis">{{ $blocks.title }}</td>
+				<td class="p-5"><a href="{{ $blocks.url }}" class="btn btn-dark w-100 btn-hover-bg-primary btn-hover-border-primary btn-sm py-4" target="_blank">
+					Preview</a>
+				</td>
+			</tr>
+			{{- end -}}
+			{{</ blocks.inline >}}
+			</tbody>
+		</table>
+	</div>
+</section>

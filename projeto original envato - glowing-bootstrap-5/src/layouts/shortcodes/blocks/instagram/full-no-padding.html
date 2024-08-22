@@ -1,0 +1,15 @@
+{{/*
+Block settings
+-------------------------------------------------
+id			Block ID
+class		Block class extral
+*/}}
+{{- $id := .Get "id" | default "" -}}
+{{- $class := .Get "class" | default "" -}}
+
+<section {{- if $id }} id="{{ $id }}" {{- end -}} {{- if $class }} class="{{ $class }}" {{- end}}>
+    {{ .Inner }}
+	<div>
+        {{ partial "elements/instagram/style-1" (dict "currentPage" . "data" "instagram" "space" "0" "slidesToShow" "6" "slidesToShow1366" "5" "slidesToShow992" "4" "slidesToShow768" "3" "slidesToShow576" "2" "animation" "fadeInUp")}}
+	</div>
+</section>

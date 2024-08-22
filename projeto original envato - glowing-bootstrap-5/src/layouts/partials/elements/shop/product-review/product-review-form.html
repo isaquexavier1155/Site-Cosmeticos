@@ -1,0 +1,106 @@
+{{/***
+Element Parameters
+---------------------------------------------
+$.class: 			Element extra class name
+$.contentClass:		Product review content class
+$.btnSubmit: 		Button Submit form
+$.btnAdd:   		Button Add Photos
+$.icon: 			Icon camera icon
+$.contentBtnAdd: 	Content Button Add
+$.contentBtnSubmit: Content Button Submit
+*/}}
+
+{{- $class := "" -}}
+{{- if isset $ "class" }}
+{{- $class = $.class -}}
+{{ end -}}
+
+{{- $contentClass := "d-flex align-items-center" -}}
+{{- if isset $ "contentClass" }}
+{{- $contentClass = $.contentClass -}}
+{{ end -}}
+
+{{- $btnAdd := "btn-outline-dark me-7 rounded border border-2 fs-6 fw-semibold mb-0" -}}
+{{- if isset $ "btnAdd" }}
+{{- $btnAdd = $.btnAdd -}}
+{{ end -}}
+
+{{- $btnSubmit := "btn-dark btn-hover-bg-primary btn-hover-border-primary fw-semibold" -}}
+{{- if isset $ "btnSubmit" }}
+{{- $btnSubmit = $.btnSubmit -}}
+{{ end -}}
+
+
+<div class="collapse mb-14" id="customer-review">
+	<form class="product-review-form {{- if $class }} {{ $class }}{{ end }}">
+		<div class="row">
+			<div class="col-sm-4">
+				<div class="form-group mb-7">
+					<label class="mb-4 fs-6 fw-semibold text-body-emphasis" for="reviewName">Name</label>
+					<input id="reviewName" class="form-control" type="text" name="name">
+				</div>
+			</div>
+			<div class="col-sm-4">
+				<div class="form-group mb-4">
+					<label class="mb-4 fs-6 fw-semibold text-body-emphasis" for="reviewEmail">Email</label>
+					<input id="reviewEmail" type="email" name="email" class="form-control">
+				</div>
+			</div>
+		</div>
+		<div>
+			<p class="mt-4 mb-5 fs-6 fw-semibold text-body-emphasis">Your Rating*</p>
+			<div class="form-group mb-6 d-flex justify-content-start">
+				<div class="rate-input">
+					<input type="radio" id="star5" name="rate" value="5" style="">
+					<label for="star5" title="text" class="mb-0 mr-1 lh-1">
+						<i class="far fa-star"></i>
+					</label>
+					<input type="radio" id="star4" name="rate" value="5" style="">
+					<label for="star4" title="text" class="mb-0 mr-1 lh-1">
+						<i class="far fa-star"></i>
+					</label>
+					<input type="radio" id="star3" name="rate" value="5" style="">
+					<label for="star3" title="text" class="mb-0 mr-1 lh-1">
+						<i class="far fa-star"></i>
+					</label>
+					<input type="radio" id="star2" name="rate" value="5" style="">
+					<label for="star2" title="text" class="mb-0 mr-1 lh-1">
+						<i class="far fa-star"></i>
+					</label>
+					<input type="radio" id="star1" name="rate" value="5" style="">
+					<label for="star1" title="text" class="mb-0 mr-1 lh-1">
+						<i class="far fa-star"></i>
+					</label>
+				</div>
+			</div>
+		</div>
+		<div class="form-group mb-7">
+			<label class="mb-4 fs-6 fw-semibold text-body-emphasis" for="reviewTitle">Title of Review:</label>
+			<input id="reviewTitle" type="text" name="title" class="form-control">
+		</div>
+		<div class="form-group mb-10">
+			<label class="mb-4 fs-6 fw-semibold text-body-emphasis" for="reviewMessage">How was your overall experience?</label>
+			<textarea id="reviewMessage" class="form-control" name="message" rows="5"></textarea>
+		</div>
+		<div class="d-flex">
+			<div class="me-4">
+				<div class="input-group align-items-center">
+					{{- if $.contentBtnAdd -}}
+						<label class="btn {{- if $btnAdd }} {{ $btnAdd }}{{ end }}" for="reviewrAddPhoto">
+							{{- if $.icon -}}
+								<svg class="icon">
+									<use xlink:href="#{{ $.icon }}"></use>
+								</svg>
+							{{- end -}}
+							{{ $.contentBtnAdd }}
+						</label>
+					{{- end }}
+					<input type="file" name="img" class="form-control border" id="reviewrAddPhoto">
+				</div>
+			</div>
+			{{- if $.contentBtnSubmit -}}
+				<button type="submit" class="btn {{- if $btnSubmit }} {{ $btnSubmit }}{{ end }}">{{ $.contentBtnSubmit }}</button>
+			{{- end }}
+		</div>
+	</form>
+</div>

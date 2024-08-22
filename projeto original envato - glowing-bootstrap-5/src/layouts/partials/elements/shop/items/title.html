@@ -1,0 +1,19 @@
+{{/***
+Element Parameters
+---------------------------------------------
+$.class: 			Element extra class name
+$.title:
+*/}}
+{{- $class := "fs-15px fw-500" -}}
+
+{{- if isset $ "class" -}}
+    {{- $class = $.class -}}
+{{- end -}}
+
+{{- $spacing := "mb-3" -}}
+{{- if isset $ "spacing" -}}
+    {{- $spacing = $.spacing -}}
+{{- end -}}
+{{- $class = printf "%s %s" $class $spacing -}}
+
+<h4 class="product-title card-title text-primary-hover text-body-emphasis {{ $class -}}"><a class="text-decoration-none text-reset" href="/shop/product-details-v1.html">{{- $.title -}}</a></h4>

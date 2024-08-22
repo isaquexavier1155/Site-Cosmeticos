@@ -1,0 +1,8 @@
+.gtf-back-to-top {
+	opacity: 0;
+	transition: opacity 0.5s;
+
+	&.in {
+		opacity: 1;
+	}
+}

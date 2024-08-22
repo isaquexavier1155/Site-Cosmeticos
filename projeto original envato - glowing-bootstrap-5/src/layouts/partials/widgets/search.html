@@ -1,0 +1,40 @@
+{{/***
+Element Parameters
+---------------------------------------------
+$.class: 			Element extra class name
+$.name              Widget Name
+$.title		        Widget Title
+$.placeholder: 		placeholder
+*/}}
+{{- $placeholder := "Search" -}}
+{{- if isset $ "placeholder" }}
+    {{- $placeholder = $.placeholder -}}
+{{ end -}}
+
+{{- $title := "Search" -}}
+{{- if isset $ "title" }}
+    {{- $title = $.title -}}
+{{ end -}}
+
+{{- $widgetName := "search" -}}
+{{- if isset $ "name" -}}
+    {{- $widgetName = $.name -}}
+{{- end -}}
+
+{{ $wrapperClass := printf "%s%s" "widget widget-" $widgetName }}
+
+{{- if isset $ "class" -}}
+    {{ $wrapperClass = printf "%s %s" $wrapperClass $.class }}
+{{- end -}}
+
+<div class="{{- $wrapperClass -}}">
+    {{- if $title -}}
+        {{ partial "widgets/widget-title" $title}}
+    {{- end -}}
+    <form action="#">
+        <div class="input-group">
+            <button type="submit" class="input-group-text bg-transparent px-4 border-0 position-absolute z-index-4 text-body-emphasis fs-5 start-0 top-0 bottom-0 m-auto"><svg class="icon icon-magnifying-glass-light"><use xlink:href="#icon-magnifying-glass-light"></use></svg></button>
+            <input type="search" name="search" class="form-control ps-11" placeholder="{{- $placeholder -}}">
+        </div>
+    </form>
+</div>

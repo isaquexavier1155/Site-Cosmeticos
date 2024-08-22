@@ -1,0 +1,33 @@
+{{/***
+Element Parameters
+---------------------------------------------
+$.class				Element class extra
+$.dropMenuClass		Dropmenu class extra
+$.buttonClass		Button class extra
+*/}}
+{{ $class := "" }}
+{{- if isset $ "class" }}
+	{{- $class = $.class -}}
+{{ end -}}
+
+{{ $dropMenuClass := "dropdown-menu-end py-5" }}
+{{- if isset $ "dropMenuClass" }}
+	{{- $dropMenuClass = $.dropMenuClass -}}
+{{ end -}}
+
+{{ $buttonClass := "dropdown-menu-end fs-15px" }}
+{{- if isset $ "buttonClass" }}
+    {{- $buttonClass = $.buttonClass -}}
+{{ end -}}
+
+<div class="dropdown {{- if $class }} {{ $class }} {{- end -}}">
+	<button class="btn btn-link dropdown-toggle fw-semibold text-uppercase ls-1 p-0 {{- if $buttonClass }} {{ $buttonClass }} {{- end -}}"
+			type="button" data-bs-toggle="dropdown" aria-expanded="false">USD
+	</button>
+	<div class="dropdown-menu {{- if $dropMenuClass }} {{ $dropMenuClass }} {{- end -}}" style="min-width: unset">
+		<a class="dropdown-item py-1" href="#">EUR</a>
+		<a class="dropdown-item py-1" href="#">GBP</a>
+		<a class="dropdown-item py-1" href="#">JPY</a>
+		<a class="dropdown-item py-1" href="#">AUD</a>
+	</div>
+</div>

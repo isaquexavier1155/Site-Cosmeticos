@@ -1,0 +1,30 @@
+{{/*
+Block settings
+-------------------------------------------------
+id			Block ID
+class		Block class extral
+*/}}
+{{- $id := .Get "id" | default "section-05" -}}
+{{- $class := .Get "class" | default "bg-image bg-fixed vh-100 d-flex align-items-center" -}}
+
+<section {{- if $id }} id="{{ $id }}" {{- end -}} {{- if $class }} class="lazy-bg {{ $class }}" {{- end}}
+		data-full-page="Be yourself more - do care more"
+		data-full-page-dots="dark"
+		data-bg-src="/assets/images/hero-slider/hero-slider-24.jpg"
+		 data-bs-theme="light">
+    {{ .Inner }}
+	<div class="container container-xxl hero">
+		<div class="row">
+			<div class="col-xl-5 offset-xl-7 col-lg-6 offset-lg-6 text-center">
+                {{ partial "elements/hero/hero-element/content.html" (dict "currentPage" .
+                "subtitle" "Made for You!"
+                "title" "Be yourself more, do care more"
+                "button2" "Discover now"
+                "subtitleClass" "hero-title text-primary pb-7 font-primary"
+                "titleClass" "hero-title-2 text-body-emphasis fw-500 mt-n4 mb-lg-12 mb-9"
+                "button2Class" "p-0 mt-7 text-body-emphasis"
+                ) }}
+			</div>
+		</div>
+	</div>
+</section>

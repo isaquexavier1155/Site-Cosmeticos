@@ -1,0 +1,26 @@
+items:
+  - subtitle: "Made for you!"
+    img: "/assets/images/hero-slider/hero-slider-34.jpg"
+    imgDark: "/assets/images/hero-slider/hero-slider-white-34.jpg"
+    title: "skincare natural"
+    desc:
+    button2: "Discover Now"
+  - subtitle: "Made for you!"
+    img: "/assets/images/hero-slider/hero-slider-35.jpg"
+    title: "skincare natural"
+    desc:
+    button2: "Discover Now"
+  - subtitle: "Made for you!"
+    img: "/assets/images/hero-slider/hero-slider-36.jpg"
+    title: "skincare natural"
+    desc:
+    button2: "Discover Now"
+config:
+  slidesToShow: 1
+  infinite: true
+  dots: false
+  arrows: false
+  fade: true
+  autoplay: true
+  cssEase: ease-in-out
+  speed: 600

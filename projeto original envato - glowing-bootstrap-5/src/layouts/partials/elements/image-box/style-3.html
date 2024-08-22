@@ -1,0 +1,44 @@
+{{/***
+Element Parameters
+---------------------------------------------
+$.imgClass: 		Image Class
+$.titleClass: 		Title extra Class
+$.subtitleClass: 	Sub title extra class
+$.img: 				Image box image
+$.title: 			Image box title
+$.subtitle: 		Image box subtitle
+$.altContent: 		Image box alt content
+*/}}
+
+{{- $imgClass := "me-9" -}}
+{{- if isset $ "imgClass" }}
+{{- $imgClass = $.imgClass -}}
+{{ end -}}
+
+{{- $titleClass := "fs-4 mb-6" -}}
+{{- if isset $ "titleClass" }}
+{{- $titleClass = $.titleClass -}}
+{{ end -}}
+
+{{- $subtitleClass := "mb-0 pe-lg-12" -}}
+{{- if isset $ "subtitleClass" }}
+{{- $subtitleClass = $.subtitleClass -}}
+{{ end -}}
+
+<div class="d-flex">
+	{{- if $.img}}
+	<div class="{{- if $imgClass}}{{ $imgClass }}{{ end }}">
+		<img data-src="{{ $.img }}" alt="{{ $.altContent }}" width="90" height="90" class="lazy-image" src="#"/>
+	</div>
+	{{- end}}
+	<div>
+		{{- if $.title}}
+		<h3 class="{{- if $titleClass}}{{$titleClass}}{{end}}">
+			{{$.title}}
+		</h3>
+		{{- end}}
+		{{- if $.subtitle}}
+		<p class="{{- if $subtitleClass}}{{$subtitleClass}}{{end}}">{{$.subtitle}}</p>
+		{{- end}}
+	</div>
+</div>

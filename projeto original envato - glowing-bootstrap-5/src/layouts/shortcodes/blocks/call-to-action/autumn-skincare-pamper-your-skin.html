@@ -1,0 +1,29 @@
+{{/*
+Block settings
+-------------------------------------------------
+id			Block ID
+class		Block class extral
+*/}}
+{{- $id := .Get "id" | default "section-02" -}}
+{{- $class := .Get "class" | default "bg-image bg-fixed vh-100 d-flex align-items-center" -}}
+
+<section {{- if $id }} id="{{ $id }}" {{- end -}} {{- if $class }} class="lazy-bg {{ $class }}" {{- end}}
+		data-full-page="Autumn Skincare"
+		data-bg-src="/assets/images/hero-slider/hero-slider-22.jpg"
+		 data-bs-theme="light">
+    {{ .Inner }}
+	<div class="container container-xxl hero">
+		<div class="row">
+			<div class="col-xl-5 col-lg-6 text-center">
+                {{ partial "elements/hero/hero-element/content.html" (dict "currentPage" .
+                "subtitle" "Autumn Skincare"
+                "title" "Pamper Your Skin"
+                "button2" "Shop Now"
+                "subtitleClass" "hero-title text-primary pb-6 mb-5 font-primary"
+                "titleClass" "hero-title-2 text-body-emphasis fw-500 mb-lg-12 mb-9"
+                "button2Class" "p-0 mt-11 text-body-emphasis"
+                ) }}
+			</div>
+		</div>
+	</div>
+</section>

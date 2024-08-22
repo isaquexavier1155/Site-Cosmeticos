@@ -1,0 +1,28 @@
+{{/*
+Block settings
+-------------------------------------------------
+id			Block ID
+class		Block class extral
+*/}}
+{{- $id := .Get "id" | default "product-feature" -}}
+{{- $class := .Get "class" | default "pt-lg-5" -}}
+{{- $data := index $.Site.Data.landing_shop_feature -}}
+{{- $currentPage := . -}}
+
+<section {{- if $id }} id="{{ $id }}" {{- end -}} {{- if $class }} class="{{ $class }}" {{- end}}>
+	{{ .Inner }}
+	<div class="container container-xxl">
+		<div class="row">
+			{{ range $item := $data.items }}
+			<div class="col-lg-4 col-md-6 mb-11">
+				<div class="card border-0 hover-bg-color" data-animate="fadeInUp">
+					{{  partial "the-image" (dict "currentPage" $currentPage "img" $item.img "class" "rounded-4 w-100 h-auto" "width" "434" "height" "316" "alt" $item.title) }}
+					<div class="card-body p-0">
+						<h4 class="card-text fs-20px fw-bold text-center mt-lg-7">{{ $item.title }}</h4>
+					</div>
+				</div>
+			</div>
+			{{ end }}
+		</div>
+	</div>
+</section>

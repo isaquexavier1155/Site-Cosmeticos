@@ -1,0 +1,55 @@
+{{/***
+Element Parameters
+---------------------------------------------
+$.boxQuantityClass	 	Box quantity extra Class
+$.quantityClass	 		Quantity extra Class
+$.numberClass	 		Number extra Class
+$.boxButtonClass	 	Box button extra Class
+$.buttonClass	 		Button extra Class
+*/}}
+
+{{- $boxQuantityClass := "col-sm-4" -}}
+{{- if isset $ "boxQuantityClass" }}
+    {{- $boxQuantityClass = $.boxQuantityClass -}}
+{{ end -}}
+
+{{- $quantityClass := "text-body-emphasis fw-semibold fs-15px pb-6" -}}
+{{- if isset $ "quantityClass" }}
+    {{- $quantityClass = $.quantityClass -}}
+{{ end -}}
+
+{{- $numberClass := "w-100 px-6 text-center" -}}
+{{- if isset $ "numberClass" }}
+    {{- $numberClass = $.numberClass -}}
+{{ end -}}
+
+{{- $boxButtonClass := "col-sm-8 pt-9 mt-2 mt-sm-0 pt-sm-0" -}}
+{{- if isset $ "boxbuttonClass" }}
+    {{- $boxButtonClass = $.boxButtonClass -}}
+{{ end -}}
+
+{{- $buttonClass := "btn btn-lg btn-dark w-100" -}}
+{{- if isset $ "buttonClass" }}
+    {{- $buttonClass = $.buttonClass -}}
+{{ end -}}
+
+{{- $idNumber := "number" -}}
+{{- if isset $ "idNumber" }}
+{{- $idNumber = $.idNumber -}}
+{{ end -}}
+
+<div class="row align-items-end">
+	<div class="form-group {{- if $boxQuantityClass}} {{$boxQuantityClass}}{{- end}}">
+		<label class="{{- if $quantityClass}} {{$quantityClass}}{{- end}}" for="{{$idNumber}}">Quantity: </label>
+		<div class="input-group position-relative w-100 input-group-lg">
+			<a href="#" class="shop-down position-absolute translate-middle-y top-50 start-0 ps-7 product-info-2-minus"><i class="far fa-minus"></i></a>
+			<input name="number" type="number" id="{{$idNumber}}" class="product-info-2-quantity form-control {{- if $numberClass}} {{$numberClass}}{{- end}}" value="1" required="">
+			<a href="#" class="shop-up position-absolute translate-middle-y top-50 end-0 pe-7 product-info-2-plus"><i class="far fa-plus"></i>
+			</a>
+		</div>
+	</div>
+	<div class="{{- if $boxButtonClass}}{{$boxButtonClass}}{{- end}}">
+		<button type="submit" class="btn-hover-bg-primary btn-hover-border-primary {{- if $buttonClass}} {{$buttonClass}}{{- end}}">Add To Bag
+		</button>
+	</div>
+</div>

@@ -1,0 +1,131 @@
+{{/***
+Element Parameters
+---------------------------------------------
+$.class: 				Element extra class name
+$.currentPage: 			$.currentPage.Page, $.currentPage.Site
+$.checkBoxClass: 		CheckBox Extra class
+$.checkBoxContent: 		Content Checkbox
+*/}}
+
+{{- $class := "" -}}
+{{- if isset $ "class" }}
+	{{- $class = $.class -}}
+{{ end -}}
+
+{{- $titleClass := "fs-4 pt-4 mb-7" -}}
+{{- if isset $ "titleClass" }}
+	{{- $titleClass = $.titleClass -}}
+{{ end -}}
+
+{{- $dropdownClass := "bg-body-secondary rounded" -}}
+{{- if isset $ "dropdownClass" }}
+	{{- $dropdownClass = $.dropdownClass -}}
+{{ end -}}
+
+{{- $checkBoxClass := "rounded-0 me-4" -}}
+{{- if isset $ "checkBoxClass" }}
+	{{- $checkBoxClass = $.checkBoxClass -}}
+{{ end -}}
+
+<div class="checkout {{- if $class }} {{ $class }}{{ end }}">
+	<p class="mb-5">Returning customer?
+		<a href="#" data-bs-toggle="modal" data-bs-target="#signInModal">Click here to login</a>
+	</p>
+	<p>Have a coupon?
+		<a data-bs-toggle="collapse" href="#collapsecoupon" role="button" aria-expanded="false" aria-controls="collapsecoupon">Click here to enter your code</a>
+	</p>
+	<div class="collapse" id="collapsecoupon">
+		<div class="card mw-60 border-0">
+			<div class="card-body py-10 px-8 my-10 border">
+				<p class="card-text text-body-emphasis mb-8">
+					If you have a coupon code, please apply it below.</p>
+				<div class="input-group position-relative">
+					<input type="email" class="form-control bg-body rounded-end" placeholder="Your Email*">
+					<button type="submit" class="btn btn-dark btn-hover-bg-primary btn-hover-border-primary">
+						Apply Coupon
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	{{- if $.title }}
+		<h4 class="{{ if $titleClass }}{{ $titleClass }}{{ end }}">{{ $.title }}</h4>
+	{{ end }}
+
+	<div class="mb-7">
+		<label class="mb-5 fs-13px letter-spacing-01 fw-semibold text-uppercase">name</label>
+		<div class="row">
+			<div class="col-md-6 mb-md-0 mb-7">
+				<input type="text" class="form-control" id="first-name" name="firstname" placeholder="First Name" required="">
+			</div>
+			<div class="col-md-6">
+				<input type="text" class="form-control" id="last-name" name="lasttname" placeholder="Last Name" required="">
+			</div>
+		</div>
+	</div>
+
+	<div class="mb-7">
+		<div class="row">
+			<div class="col-md-8 mb-md-0 mb-7">
+				<label for="street-address" class="mb-5 fs-13px letter-spacing-01 fw-semibold text-uppercase">Street	Address</label>
+				<input type="text" class="form-control" id="street-address" name="streetaddress" required="">
+			</div>
+			<div class="col-md-4">
+				<label for="apt" class="mb-5 fs-13px letter-spacing-01 fw-semibold text-uppercase">APT/Suite</label>
+				<input type="text" class="form-control" id="apt" name="apt" required="">
+			</div>
+		</div>
+	</div>
+
+	<div class="mb-7">
+		<div class="row">
+			<div class="col-md-4 mb-md-0 mb-7">
+				<label for="city" class="mb-5 fs-13px letter-spacing-01 fw-semibold text-uppercase">City</label>
+				<input type="text" class="form-control" id="city" name="city" required="">
+			</div>
+			<div class="col-md-4 mb-md-0 mb-7">
+				<label for="state" class="mb-5 fs-13px letter-spacing-01 fw-semibold text-uppercase">State</label>
+				<input type="text" class="form-control" id="state" name="state" required="">
+			</div>
+			<div class="col-md-4">
+				<label for="zip" class="mb-5 fs-13px letter-spacing-01 fw-semibold text-uppercase">zip code</label>
+				<input type="text" class="form-control" id="zip" name="zip" required="">
+			</div>
+		</div>
+	</div>
+
+	<div class="mb-7">
+		<label class="mb-5 fs-13px letter-spacing-01 fw-semibold text-uppercase">Country</label>
+		<div class="dropdown {{- if $dropdownClass }} {{ $dropdownClass }}{{ end }}">
+			<a href="#" class="form-select dropdown-toggle d-flex justify-content-between align-items-center text-decoration-none text-secondary p-5 position-relative d-block" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+				Viet Nam
+			</a>
+			<div class="dropdown-menu w-100 px-0 py-4">
+				{{ range $item := $.currentPage.Site.Data.shopping_coupon_shipping.country }}
+					<a class="dropdown-item px-6 py-4" href="#">{{ $item.item }}</a>
+				{{ end }}
+			</div>
+		</div>
+	</div>
+
+	<div class="mb-7">
+		<label class="mb-5 fs-13px letter-spacing-01 fw-semibold text-uppercase">info</label>
+		<div class="row">
+			<div class="col-md-6 mb-md-0 mb-7">
+				<input type="email" class="form-control" id="email" name="email" placeholder="Email" required="">
+			</div>
+			<div class="col-md-6">
+				<input type="number" class="form-control" id="phone" name="phone" placeholder="Phone number" required="">
+			</div>
+		</div>
+	</div>
+
+	<div class="mt-6 mb-5 form-check">
+		<input type="checkbox" class="form-check-input {{- if $checkBoxClass }} {{ $checkBoxClass }}{{ end }}" name="customCheck6" id="customCheck5">
+		<label class="text-body-emphasis" for="customCheck5">
+			<span class="text-body-emphasis">{{ $.checkBoxContent }}</span>
+		</label>
+	</div>
+</div>

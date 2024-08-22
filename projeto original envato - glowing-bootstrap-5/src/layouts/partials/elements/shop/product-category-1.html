@@ -1,0 +1,57 @@
+{{/***
+Element Parameters
+---------------------------------------------
+
+$.class:				Element extra class name
+$.numberItemClass		Item Number Class
+$nameProClass			Product name Class
+$.img					Image of product
+$.namePro: 				Name of product
+$.imgWidth				image width
+$.imgHeight				image height
+$.linkPro:              Link of Product
+$.numberItem			Item Number
+*/}}
+{{- $class := "" -}}
+{{- if isset $ "class" }}
+    {{- $class = $.class -}}
+{{ end -}}
+
+{{- $nameProClass := "fw-semibold mb-5" -}}
+{{- if isset $ "nameProClass" }}
+{{- $nameProClass = $.nameProClass -}}
+{{ end -}}
+
+{{- $numberItemClass := "fw-semibold mb-5" -}}
+{{- if isset $ "numberItemClass" }}
+{{- $numberItemClass = $.numberItemClass -}}
+{{ end -}}
+
+{{- $imgWidth := "545" -}}
+{{- if isset $ "imgWidth" }}
+{{- $imgWidth = $.imgWidth -}}
+{{- end -}}
+
+{{- $imgHeight := "611" -}}
+{{- if isset $ "imgHeight" }}
+{{- $imgHeight = $.imgHeight -}}
+{{- end -}}
+
+{{- $img := "" -}}
+{{- if isset $ "img" }}
+{{- $img = $.img -}}
+{{ end -}}
+
+{{- $img_dark := "" -}}
+{{- if isset $ "img_dark" }}
+{{- $img_dark = $.img_dark -}}
+{{ end -}}
+<div class="card border-0 {{- if $.class }} {{ $.class }}{{ end }}">
+	<a href="{{ $.linkPro }}" class="hover-shine img-scale overflow-hidden">
+		{{  partial "the-image" (dict "currentPage" $.currentPage "img" $img "img_dark" $img_dark "class" "card-img-top img-scale-change img-fluid" "width" $imgWidth "height" $imgHeight "alt" $.namePro) }}
+	</a>
+	<div class="card-body text-center px-0 py-7">
+		<h4 class="card-title {{- if $nameProClass }} {{ $nameProClass }}{{ end }}"><a href="{{ $.linkPro }}">{{ $.namePro }}</a></h4>
+		<p class="card-text">{{ $.numberItem }} items</p>
+	</div>
+</div>

@@ -1,0 +1,31 @@
+{{/***
+Element Parameters
+---------------------------------------------
+$.class: 			Element extra class name
+$.titleClass		Title Class
+$.currentPage: 		$.currentPage.Page, $.currentPage.Site
+
+*/}}
+{{- $class := "" -}}
+{{- if isset $ "class" }}
+    {{- $class = $.class -}}
+{{ end -}}
+
+{{- $titleClass := "text-body lh-30px shop-widget-cate-text" -}}
+{{- if isset $ "titleClass" }}
+{{- $titleClass = $.titleClass -}}
+{{ end -}}
+
+<div class="{{- if $.class }} {{ $.class }}{{ end }}">
+	<h3 class="card-title fs-5 mb-0">
+		Hightlight
+	</h3>
+	<ul class="mt-5 list-unstyled">
+		{{- range $item := $.currentPage.Site.Data.shop_widget_hightlight -}}
+		<li class="mt-2 me-5">
+			<a href="{{- $item.url -}}" title="{{- $item.title -}}" class="{{- if $titleClass }} {{ $titleClass }}{{ end }}">{{- $item.title -}}</a>
+		</li>
+		{{- end -}}
+	</ul>
+</div>
+

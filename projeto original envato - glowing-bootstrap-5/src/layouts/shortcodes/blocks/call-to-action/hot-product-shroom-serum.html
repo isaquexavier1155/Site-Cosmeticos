@@ -1,0 +1,27 @@
+{{/*
+Block settings
+-------------------------------------------------
+id			Block ID
+class		Block class extral
+*/}}
+{{- $id := .Get "id" | default "" -}}
+{{- $class := .Get "class" | default "container container-xxl pb-lg-18 pb-14" -}}
+
+<section {{- if $id }} id="{{ $id }}" {{- end -}}>
+    {{ .Inner }}
+	<div  {{- if $class }} class="{{ $class }}" {{- end}}>
+		<div class="row">
+			<div class="col-lg-7 order-1 order-lg-1" data-animate="fadeInUp">
+				{{  partial "the-image" (dict "currentPage" . "img" "/assets/images/others/hot-product-02.png" "img_dark" "/assets/images/others/hot-product-white-02.png" "class" "img-fluid" "width" "787" "height" "727") }}
+			</div>
+			<div class="col-lg-5 order-2 order-lg-2 px-xl-6 mt-14 mt-lg-0 mb-lg-0" data-animate="fadeInUp">
+				{{ partial "elements/image-box/style-5" (dict "title" "shroom serum"
+				"subtitle" "Lorem ipsum dolor sit amet, consectetur adipi, scing seddo eiusmod temporincididunt ut labore et dolore magna aliqua."
+				"hotproduct" "Hot Product"
+				"img" "/assets/images/image-box/image-box-22.png"
+				) }}
+			</div>
+		</div>
+	</div>
+</section>
+

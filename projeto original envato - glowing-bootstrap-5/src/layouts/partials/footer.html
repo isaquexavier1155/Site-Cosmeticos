@@ -1,0 +1,8 @@
+{{ $footer := "footer/footer-01" }}
+{{- if $.Page.Params.footer | and (ne $.Page.Params.footer "none") -}}
+{{- $footer = path.Join "footer/" $.Page.Params.footer -}}
+{{- end -}}
+
+{{- if ne $.Page.Params.footer "none" -}}
+{{ partial $footer . }}
+{{- end -}}

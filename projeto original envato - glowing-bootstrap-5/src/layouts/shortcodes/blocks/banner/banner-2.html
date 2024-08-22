@@ -1,0 +1,26 @@
+{{/*
+Block settings
+-------------------------------------------------
+id			Block ID
+class		Block class extral
+*/}}
+{{- $id := .Get "id" | default "" -}}
+{{- $class := .Get "class" | default "pt-lg-20 pt-15" -}}
+
+<section {{- if $id }} id="{{ $id }}" {{- end -}} {{- if $class }} class="{{ $class }}" {{- end}}>
+    {{ .Inner }}
+	<div class="container container-xxl">
+		<div class="row gy-30px">
+			<div class="col-lg-6">
+                {{ partial  "elements/banner/style-10" (dict
+                "image" "/assets/images/banner/banner-14.jpg" "width" "690" "height" "450"
+                "imageClass" "lazy-image") }}
+			</div>
+			<div class="col-lg-6">
+                {{ partial  "elements/banner/style-10" (dict
+                "image" "/assets/images/banner/banner-13.jpg" "width" "690" "height" "450"
+				"imageClass" "lazy-image") }}
+			</div>
+		</div>
+	</div>
+</section>

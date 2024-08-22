@@ -1,0 +1,43 @@
+{{/***
+Element Parameters
+---------------------------------------------
+$.class: 			Element extra class name
+$.data
+    - title             Title
+    - cat               Category
+    - author            Author
+    - date              Date
+    - image             Image data {src, width, height}
+    - post_format:       Format of post: standard, video, gallery
+    - gallery           Gallery
+    - video_src         Video Src
+$.animation         Animation
+*/}}
+
+{{- $post_format := "standard" -}}
+{{- if (and (isset $.data "post_format") (ne $.data.post_format "") (ne $.data.post_format nil))  }}
+    {{- $post_format = $.data.post_format -}}
+{{- end -}}
+<article class="card card-post-grid-1 bg-transparent border-0 {{- if isset $ "class" }} {{ $.class }} {{- end -}}" {{- if isset $ "animation" }} data-animate="{{- $.animation -}}" {{- end -}} >
+    <figure class="card-img-top position-relative mb-10">
+        {{- if eq $post_format "standard" -}}
+            {{ partial "elements/blog/post-format/image" (dict "image" $.data.image "title" $.data.title ) }}
+        {{- end -}}
+
+        {{- if eq $post_format "gallery" -}}
+            {{ partial "elements/blog/post-format/gallery" (dict "gallery" $.data.gallery "title" $.data.title ) }}
+        {{- end -}}
+
+        {{- if eq $post_format "video" -}}
+            {{ partial "elements/blog/post-format/video" (dict "image" $.data.image "video_src" $.data.video_src "title" $.data.title ) }}
+        {{- end -}}
+        <a href="#" class="post-item-cate btn btn-light btn-text-light-body-emphasis btn-hover-bg-dark btn-hover-text-light fw-500 post-cat position-absolute top-100 start-50 translate-middle py-2 px-7 border-0" title="{{- $.data.cat -}}">{{- $.data.cat -}}</a>
+    </figure>
+    <div class="card-body text-center px-md-9 py-0">
+        <h4 class="card-title lh-base mb-9"><a class="text-decoration-none" href="../blog/details-01.html" title="{{- $.data.title -}}">{{- $.data.title -}}</a></h4>
+        <ul class="post-meta list-inline lh-1 d-flex flex-wrap justify-content-center m-0">
+            <li class="list-inline-item border-end pe-5 me-5">By <a href="#" title="{{- $.data.author -}}">{{- $.data.author -}}</a></li>
+            <li class="list-inline-item">{{- $.data.date -}}</li>
+        </ul>
+    </div>
+</article>

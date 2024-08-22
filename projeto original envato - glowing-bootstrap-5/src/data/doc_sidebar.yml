@@ -1,0 +1,64 @@
+# This file holds all sidebar menu's entries.
+# The logic for the sidebar generation is in "site/layouts/partials/docs-sidebar.html".
+
+-   title: Usage
+    icon: book-half
+    icon_color: indigo
+    pages:
+        -   title: Getting Started
+        -   title: Changelog
+        -   title: Credits
+
+-   title: Content
+    icon: ui-radios
+    icon_color: success
+    pages:
+      -   title: Typography
+      -   title: Reboot
+      -   title: Images
+      -   title: Tables
+      -   title: Figures
+
+-   title: Styleguide
+    icon: file-earmark-richtext
+    icon_color: blue
+    pages:
+        -   title: Colors
+        -   title: Color Modes
+        -   title: Fonts
+        -   title: SVG Icons
+        -   title: Font Icons
+        -   title: Misc
+
+-   title: Components
+    icon: menu-button-wide-fill
+    icon_color: pink
+    pages:
+        -   title: Accordion
+        -   title: Alerts
+        -   title: Background
+        -   title: Badges
+        -   title: Buttons
+        -   title: Card
+        -   title: Carousel
+        -   title: Dropdowns
+        -   title: Form Elements
+        -   title: Ratios
+        -   title: Modal
+        -   title: Pagination
+        -   title: Shadows
+        -   title: Tabs
+        -   title: Tooltips & Popovers
+        -   title: Heading
+        -   title: Posts
+        -   title: Product
+        -   title: Banner
+        -   title: Testimonials
+        -   title: Team Member
+        -   title: Icon Box
+        -   title: Image Box
+        -   title: Instagram
+        -   title: Map
+        -   title: News Letter
+        -   title: Countdown
+        -   title: Client Logo

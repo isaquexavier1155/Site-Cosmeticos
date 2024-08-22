@@ -1,0 +1,22 @@
+{{/***
+Block Parameters
+---------------------------------------------
+
+$.class:            Element extra class name
+$.title 			Title
+
+*/}}
+
+{{- $class := .Get "class" | default "row mb-9 align-items-center justify-content-between" -}}
+{{- $title := .Get "title" | default "Product List" -}}
+
+<div {{- if $class }} class="{{ $class }}" {{- end}}>
+	{{ .Inner }}
+	<div class="col-md-6 mb-8 mb-md-0">
+		<h2 class="fs-4 mb-0">{{ $title }}</h2>
+		<p>Lorem ipsum dolor sit amet.</p>
+	</div>
+	<div class="col-md-6 d-flex flex-wrap justify-content-md-end">
+		{{ partial "dashboard/top-action" (dict "data" $.Site.Data.dashboard.topActionProduct) }}
+	</div>
+</div>

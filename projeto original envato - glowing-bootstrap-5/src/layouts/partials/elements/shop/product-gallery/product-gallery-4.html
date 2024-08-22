@@ -1,0 +1,18 @@
+{{/***
+Element Parameters
+---------------------------------------------
+$.img1: 				Shop image 1
+$.img2: 				Shop image 2
+$.img3: 				Shop image 3
+$.img4: 				Shop image 4
+*/}}
+{{- $class := "" -}}
+{{- if isset $ "class" }}
+    {{- $class = $.class -}}
+{{ end -}}
+<div class="slick-slider g-0 {{ if $class}}{{$class}}{{- end}}" data-slick-options='{{ $.Site.Data.product_gallery_4 | jsonify }}'>
+	{{- $imageSize := $.Site.Data.product_gallery_4.imageSize -}}
+    {{- range $item := $.Site.Data.product_gallery_4.items }}
+		<a href="{{$item.img}}" data-gallery="gallery4" data-thumb-src="{{ $item.img }}"><img src="#" data-src="{{$item.img}}" class="lazy-image" width="{{ $imageSize.img.width }}" height="{{ $imageSize.img.height }}" alt=""></a>
+	{{- end}}
+</div>

@@ -1,0 +1,23 @@
+{{/***
+Block Parameters
+---------------------------------------------
+
+$.class:            Element extra class name
+
+*/}}
+
+{{- $class := .Get "class" | default "row mb-9 align-items-center" -}}
+{{- $classInner := .Get "classInner" | default "col-xxl-9" -}}
+{{ .Inner }}
+<div {{- if $class }} class="{{ $class }}" {{- end}}>
+	<div {{- if $classInner }} class="{{ $classInner }}" {{- end}}>
+		<div class="row">
+			<div class="col-sm-6 mb-8 mb-sm-0">
+				<h2 class="fs-4 mb-0">Add New Product</h2>
+			</div>
+			<div class="col-sm-6 d-flex flex-wrap justify-content-sm-end">
+				{{ partial "dashboard/top-action" (dict "data" $.Site.Data.dashboard.topActionAddNewProduct) }}
+			</div>
+		</div>
+	</div>
+</div>

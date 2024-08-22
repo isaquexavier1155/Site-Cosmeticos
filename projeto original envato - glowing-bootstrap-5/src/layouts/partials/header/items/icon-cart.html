@@ -1,0 +1,35 @@
+{{/***
+Element Parameters
+---------------------------------------------
+$.class				Element class extra
+$.badgeSkin			Bagde skin: dark | light
+$.total 			Total text
+*/}}
+{{- $class := "px-5 d-none d-xl-inline-block" -}}
+{{- if isset $ "class" }}
+{{- $class = $.class -}}
+{{ end -}}
+
+{{- $badgeSkin := $.badgeSkin | default "dark" -}}
+{{- $badgeClasses := "bg-dark text-white" -}}
+{{- if ne $badgeSkin "dark" -}}
+	{{- $badgeClasses = "bg-white text-dark" -}}
+{{- end -}}
+
+{{- $total := true -}}
+{{- if isset $ "total" }}
+	{{- $total = $.total -}}
+{{ end -}}
+
+
+<div class="{{ $class }}">
+	<a class="position-relative lh-1 color-inherit text-decoration-none" href="#" data-bs-toggle="offcanvas"
+	   data-bs-target="#shoppingCart"
+	   aria-controls="shoppingCart"
+	   aria-expanded="false">
+		<svg class="icon icon-star-light">
+			<use xlink:href="#icon-shopping-bag-open-light"></use>
+		</svg>
+		<span class="badge {{ $badgeClasses }} position-absolute top-0 start-100 translate-middle mt-4 rounded-circle fs-13px p-0 square" style="--square-size: 18px">3</span>
+	</a>
+</div>

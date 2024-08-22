@@ -1,0 +1,56 @@
+{{/***
+Element Parameters
+---------------------------------------------
+$.class: 			Element extra class name
+$.currentPage: 		$.currentPage.Page, $.currentPage.Site
+$.countItemClass: 	Count Item Class
+$.timeClass: 		Time Class
+$.separateClass: 	Separate Class
+$.time: 			Time CountDown
+*/}}
+
+{{- $class := "countdown ms-n4 ms-md-n7" -}}
+{{- if isset $ "class" }}
+	{{- $class = $.class -}}
+{{ end -}}
+
+{{- $countItemClass := "px-md-7 px-4 fs-1" -}}
+{{- if isset $ "countItemClass" }}
+	{{- $countItemClass = $.countItemClass -}}
+{{ end -}}
+
+
+{{- $timeClass := "fw-semibold text-primary font-primary" -}}
+{{- if isset $ "timeClass" }}
+	{{- $timeClass = $.timeClass -}}
+{{ end -}}
+
+{{- $separateClass := "fw-semibold fs-1 text-primary" -}}
+{{- if isset $ "separateClass" }}
+	{{- $separateClass = $.separateClass -}}
+{{ end -}}
+
+
+<div class="d-flex {{- if $class }} {{ $class }}{{ end }}" data-countdown="true" data-countdown-end="{{ $.time }}">
+	<div class="countdown-item text-center {{- if $countItemClass }} {{ $countItemClass }}{{ end }}">
+		<span class="day {{- if $timeClass }} {{ $timeClass }}{{ end }}"></span>
+	</div>
+
+	<div class="separate {{- if $separateClass }} {{ $separateClass }}{{ end }}">:</div>
+
+	<div class="countdown-item text-center {{- if $countItemClass }} {{ $countItemClass }}{{ end }}">
+		<span class="hour {{- if $timeClass }} {{ $timeClass }}{{ end }}"></span>
+	</div>
+
+	<div class="separate {{- if $separateClass }} {{ $separateClass }}{{ end }}">:</div>
+
+	<div class="countdown-item text-center {{- if $countItemClass }} {{ $countItemClass }}{{ end }}">
+		<span class="minute {{- if $timeClass }} {{ $timeClass }}{{ end }}"></span>
+	</div>
+
+	<div class="separate {{- if $separateClass }} {{ $separateClass }}{{ end }}">:</div>
+
+	<div class="countdown-item text-center {{- if $countItemClass }} {{ $countItemClass }}{{ end }}">
+		<span class="second {{- if $timeClass }} {{ $timeClass }}{{ end }}"></span>
+	</div>
+</div>

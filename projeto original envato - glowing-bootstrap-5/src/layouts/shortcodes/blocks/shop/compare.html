@@ -1,0 +1,10 @@
+{{ .Inner }}
+{{- $id := .Get "id" | default "" -}}
+{{- $class := .Get "class" | default "container container-xxl pb-15 pb-lg-17" -}}
+
+<section {{- if $id }} id="{{ $id }}" {{- end -}} {{- if $class }} class="{{ $class }}" {{- end}}>
+	{{ partial  "elements/heading/style-1" (dict "currentPage" .
+	"title" "Compare"
+	"titleClass" "my-12") }}
+	{{ partial "elements/shop/product-pages/product-compare" (dict "currentPage" . "data" "product_compare") }}
+</section>

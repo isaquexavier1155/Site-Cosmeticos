@@ -1,0 +1,28 @@
+{{/*
+Block settings
+-------------------------------------------------
+id			Block ID
+class		Block class extral
+*/}}
+{{- $id := .Get "id" | default "" -}}
+{{- $class := .Get "class" | default "" -}}
+
+<section {{- if $id }} id="{{ $id }}" {{end}} class="bg-section-3 {{ if $class }}{{ $class }}{{- end}}">
+{{ .Inner }}
+	<div class="container container-xxl">
+		<div class="row align-items-end">
+			<div class="col-lg-4 order-2 order-lg-1 px-xl-6 pb-16 pt-12 py-lg-18 py-xl-22" data-animate="fadeInUp">
+                {{ partial  "elements/heading/style-1" (dict "align" "left" "subtitle" "NEW COLLECTION"
+                "title" "Discover Our Autumn Skincare"
+                "desc" "Made using clean, non-toxic ingredients, our products are designed for everyone."
+				"titleClass" "fs-20 w-md-50 w-lg-100 w-xl-80 mb-4 me-7 me-md-25"
+				"descClass" "fs-18px mb-0 text-body-calculate"
+                ) }}
+				<a href="#" class="mt-10 btn btn-white shadow-sm">Explore More</a>
+			</div>
+			<div class="col-lg-8 order-1 order-lg-2" data-animate="fadeIn">
+				{{  partial "the-image" (dict "currentPage" . "img" "/assets/images/others/other-bg.png" "img_dark" "/assets/images/others/other-bg-white.png" "class" "img-fluid" "width" "923" "height" "640" "alt" "other-01") }}
+			</div>
+		</div>
+	</div>
+</section>

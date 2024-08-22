@@ -1,0 +1,28 @@
+.primary-sidebar {
+	.widget + .widget {
+		margin-top: 45px;
+	}
+}
+
+.navbar-nav-cate {
+	--nav-item-spacing: 10px;
+
+	li + li {
+		margin-top: var(--nav-item-spacing);
+	}
+
+	ul.nav-submenu {
+		margin-top: var(--nav-item-spacing);
+	}
+
+	.active {
+		color: var(--#{$prefix}emphasis-color) !important;
+	}
+}
+
+.widget-product_colors {
+	.square {
+		--square-size: 20px;
+		border: 1px solid #e3e3e3;
+	}
+}

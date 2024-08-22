@@ -1,0 +1,53 @@
+<header id="header" class="header header-sticky header-sticky-smart disable-transition-all z-index-5">
+	<div class="bg-body border-bottom">
+		<div class="container-xxl container d-lg-flex d-none py-4">
+			<div class="w-50">
+				<ul class="list-inline mb-0 d-flex">
+					<li class="list-inline-item d-flex align-items-center me-8 fs-6 fw-medium text-body-emphasis ">
+						<svg class="icon me-4 d-block"><use xlink:href="#instagram"></use></svg>
+						<span>100k Followers</span>
+					</li>
+					<li class="list-inline-item d-flex align-items-center fs-6 fw-medium text-body-emphasis">
+						<svg class="icon me-4"><use xlink:href="#facebook"></use></svg>
+						<span>300k Followers</span>
+					</li>
+				</ul>
+			</div>
+			<div class="w-100 text-center">
+				<p class="mb-0 fs-16x fw-medium text-body-emphasis ">Free shipping on all U.S. orders $50+
+					<span class="mx-1">|</span>
+					<a href="" class="border-bottom border-dark text-decoration-none">Discover More</a>
+				</p>
+			</div>
+			<div class="w-50 d-none d-lg-block">
+				<div class ="d-flex align-items-center justify-content-end">
+					<p class="mb-0 fs-6 text-body-emphasis fw-medium me-10">
+						<svg class="icon me-4"><use xlink:href="#location-dot"></use></svg>
+						<span>Find a Store</span>
+					</p>
+                    {{ partial "header/items/dropdown-currency" }}
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="sticky-area">
+		<div class="main-header nav navbar bg-body navbar-light navbar-expand-xl py-6 py-xl-0">
+			<div class="container-xxl container flex-nowrap">
+                {{ partial "header/items/menu-mobile-toggle" }}
+				<div class="d-none d-xl-flex w-xl-50">
+					<ul class="navbar-nav">
+						{{ partial "menu/menu-default" (dict "page" . "nav_item_class" "py-xl-11 py-0 me-xxl-12 me-xl-10" "nav_link_class" "py-xl-0 px-xl-0 text-uppercase fw-semibold ls-1 fs-15px fs-xl-14px" ) }}
+					</ul>
+				</div>
+                {{ partial "header/items/logo" (dict "context" . ) }}
+				<div class="icons-actions d-flex justify-content-end w-xl-50 fs-28px text-body-emphasis">
+                    {{ partial "header/items/icon-search" }}
+                    {{ partial "header/items/icon-account" }}
+                    {{ partial "header/items/icon-wishlist" }}
+                    {{ partial "header/items/icon-cart" }}
+					{{ partial "header/items/color-modes" (dict "currentPage" . )}}
+				</div>
+			</div>
+		</div>
+	</div>
+</header>

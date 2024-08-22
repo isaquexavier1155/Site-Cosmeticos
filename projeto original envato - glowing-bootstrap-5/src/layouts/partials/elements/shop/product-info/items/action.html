@@ -1,0 +1,50 @@
+{{/***
+Element Parameters
+---------------------------------------------
+$.actionClass 		Action extra Class
+$.iconClass			Icon extra Class
+$.titleClass 		title extra Class
+*/}}
+
+
+{{- $actionClass := "text-decoration-none fw-semibold fs-6 me-9 pe-2 d-flex align-items-center" -}}
+{{- if isset $ "actionClass" }}
+    {{- $actionClass = $.actionClasss -}}
+{{ end -}}
+
+{{- $iconClass := "fs-5" -}}
+{{- if isset $ "iconClass" }}
+    {{- $iconClass = $.iconClass -}}
+{{ end -}}
+
+{{- $titleClass := "ms-4 ps-2" -}}
+{{- if isset $ "titleClass" }}
+    {{- $titleClass = $.titleClass -}}
+{{ end -}}
+
+<div class="d-flex align-items-center flex-wrap">
+	{{- if $.compare}}
+		<a href="../shop/compare.html" class="{{- if $actionClass}}{{$actionClass}}{{- end}}">
+			<svg class="icon {{- if $iconClass}} {{$iconClass}}{{- end}}">
+				<use xlink:href="#icon-arrows-left-right-light"></use>
+			</svg>
+			<span class="{{- if $titleClass}}{{$titleClass}}{{- end}}">Compare</span>
+		</a>
+	{{- end}}
+	{{- if $.wishlist}}
+		<a href="#" class="{{- if $actionClass}}{{$actionClass}}{{- end}}">
+			<svg class="icon {{- if $iconClass}} {{$iconClass}}{{- end}}">
+				<use xlink:href="#icon-star-light"></use>
+			</svg>
+			<span class="{{- if $titleClass}}{{$titleClass}}{{- end}}">Add to wishlist</span>
+		</a>
+	{{- end}}
+    {{- if $.share}}
+		<a href="#" class="{{- if $actionClass}}{{$actionClass}}{{- end}}">
+			<svg class="icon {{- if $iconClass}} {{$iconClass}}{{- end}}">
+				<use xlink:href="#icon-ShareNetwork"></use>
+			</svg>
+			<span class="{{- if $titleClass}}{{$titleClass}}{{- end}}">Share</span>
+		</a>
+    {{- end}}
+</div>

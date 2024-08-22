@@ -1,0 +1,117 @@
+.sticky-area {
+	width: 100%;
+	transition: all 0.5s;
+	z-index: 999;
+}
+.sticky {
+	.sticky-area {
+		box-shadow: $dropdown-box-shadow;
+	}
+
+	.has-sticky-logo {
+		img {
+			display: none;
+		}
+		.sticky-logo {
+			display: block;
+		}
+	}
+}
+
+.navbar-light-sticky .icons-actions {
+	--#{$prefix}light-rgb: 0, 0, 0;
+	--#{$prefix}dark-rgb: 255, 255, 255;
+	--#{$prefix}white-rgb: 0, 0, 0;
+	--#{$prefix}navbar-color: #{$navbar-light-color};
+	--#{$prefix}navbar-hover-color: #{$navbar-light-hover-color};
+	--#{$prefix}navbar-disabled-color: #{$navbar-light-disabled-color};
+	--#{$prefix}navbar-active-color: #{$navbar-light-active-color};
+	--#{$prefix}emphasis-color: #fff;
+}
+
+.header-sticky-smart {
+	.sticky-area {
+		transform: none;
+
+		&.header-hidden {
+			transform: translateY(-100%);
+		}
+	}
+}
+
+.header {
+	.dropdown-toggle::after,
+	.dropdown-toggle::before {
+		align-self: center;
+	}
+}
+.has-sticky-logo {
+	.sticky-logo {
+		display: none;
+	}
+}
+
+.search-box-2 {
+	input {
+		border: solid 2px #d9dbd8;
+		&:focus {
+			border-color: var(--#{$prefix}black);
+		}
+	}
+}
+.sticky {
+	#header .nav-item {
+		padding-top: 30px!important;
+		padding-bottom: 30px!important;
+	}
+}
+
+// Custom special header style
+.hero-header-01 .vh-100,
+.hero-header-02 .vh-100,
+.hero-header-05 .vh-100{
+	height: calc(100vh - 143px) !important;
+}
+
+.hero-header-03 .vh-100 {
+	height: calc(100vh - 204px)!important;
+}
+.hero-header-04 .vh-100,
+.hero-header-06 .vh-100 {
+	height: calc(100vh - 190px) !important;
+}
+
+.hero-header-07 .vh-100,
+.hero-header-11 .vh-100,
+.hero-header-12 .vh-100{
+	height: calc(100vh - 145px) !important;
+}
+
+@include media-breakpoint-down(xl){
+	.hero-content {
+		text-align: center;
+	}
+	.hero-creative-dots {
+		display: none!important;
+	}
+	.hero .vh-100{
+		height: auto!important;
+	}
+
+	.hero-header-03 .vh-100 {
+		height: auto!important;
+		aspect-ratio: 16 / 9;
+	}
+}
+
+@if $enable-dark-mode {
+	@include color-mode(dark) {
+		.navbar-light-sticky .icons-actions {
+			--#{$prefix}light-rgb: 255, 255, 255;
+			--#{$prefix}dark-rgb: 0, 0, 0;
+			--#{$prefix}white-rgb: #{to-rgb($white)};
+			--#{$prefix}navbar-color: #{$navbar-light-color};
+			--#{$prefix}emphasis-color: #000;
+		}
+	}
+}

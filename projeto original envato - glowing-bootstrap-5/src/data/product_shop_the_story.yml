@@ -1,0 +1,57 @@
+items:
+  - title: Coffee Bean Caffeine Eye Cream
+    reviews: 2947
+    rate: 100
+    price:
+      regular: "29.00"
+    image:
+      src: '/assets/images/products/product-03-270x360.jpg'
+      width: 270
+      height: 360
+  - title: Coffee Bean Caffeine Eye Cream
+    reviews: 2947
+    rate: 100
+    price:
+      regular: "29.00"
+    image:
+      src: '/assets/images/products/product-04-270x360.jpg'
+      width: 270
+      height: 360
+  - title: Facial cleanser
+    reviews: 2947
+    rate: 100
+    is_new: true
+    price:
+      regular: "39.00"
+      sale: "29.00"
+    image:
+      src: '/assets/images/products/product-07-270x360.jpg'
+      width: 270
+      height: 360
+  - title: Coffee Bean Caffeine Eye Cream
+    reviews: 2947
+    rate: 100
+    price:
+      regular: "29.00"
+    image:
+      src: '/assets/images/products/product-06-270x360.jpg'
+      width: 270
+      height: 360
+
+options:
+  dots: false
+  arrows: false
+  slidesToShow: 4
+  responsive:
+    - breakpoint: 992
+      settings:
+        arrows: true
+        slidesToShow: 3
+    - breakpoint: 768
+      settings:
+        arrows: true
+        slidesToShow: 2
+    - breakpoint: 576
+      settings:
+        arrows: true
+        slidesToShow: 1

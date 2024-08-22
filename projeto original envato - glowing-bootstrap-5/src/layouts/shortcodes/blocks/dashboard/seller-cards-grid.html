@@ -1,0 +1,29 @@
+{{ .Inner }}
+<div class="card mb-4 rounded-4 p-7">
+	<div class="card-header bg-transparent px-0 pt-0 pb-7">
+		{{ partial "dashboard/filter/style-03" }}
+	</div>
+	<div class="card-body py-7 px-0">
+		<div class="row">
+			{{- range $seller := $.Site.Data.dashboard.sellers_list_field.cards -}}
+			<div class="col-sm-6 col-lg-3 mb-9">
+				<div class="card card-user rounded-4">
+					<div class="card-header text-center">
+						<img class="img-avatar lazy-image" src="#" data-src="{{$seller.img}}"
+							 alt="{{$seller.name}}" width="112" height="112">
+					</div>
+					<div class="card-body text-center p-7">
+						<h5 class="card-title mt-12 fs-6 mb-6">{{$seller.name}}</h5>
+						<div class="card-text text-muted">
+							<p class="m-0">Seller ID: #{{$seller.id}}</p>
+							<p class="mb-0">{{$seller.email}}</p>
+						</div>
+						<a href="./dashboard/sellers-profile.html"
+						   class="btn btn-sm btn-primary fs-14px mt-6">View details</a>
+					</div>
+				</div>
+			</div>
+			{{- end -}}
+		</div>
+	</div>
+</div>

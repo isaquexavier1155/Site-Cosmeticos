@@ -1,0 +1,38 @@
+{{/*
+Block settings
+-------------------------------------------------
+id			Block ID
+class		Block class extral
+*/}}
+{{- $id := .Get "id" | default "" -}}
+{{- $class := .Get "class" | default "mt-lg-6 pt-lg-14 pb-lg-19 py-15 position-relative mb-lg-5" -}}
+
+<section {{- if $id }} id="{{ $id }}" {{- end }} class="bg-section-6 {{- if $class }} {{ $class }} {{- end}}">
+    {{ .Inner }}
+	<div class="blend-beauty-top position-absolute start-50 translate-middle-x d-none d-xl-block w-100 mx-auto">
+		<div class="row align-items-end w-100 mx-0">
+			<div class="col-6" data-animate="fadeInUp">
+				<img src="#" data-src="/assets/images/others/other-image-05.jpg" class="lazy-image" alt="Blend Beauty In You" height="297" width="430">
+			</div>
+			<div class="col-6 text-end mb-3" data-animate="fadeInUp">
+				<img src="#" data-src="/assets/images/others/other-image-06.jpg" alt="Blend Beauty In You" class="img-fluid lazy-image" height="336" width="269">
+				<img src="#" data-src="/assets/images/others/other-image-08.png" alt="other-01" class="img-rotating lazy-image img-fluid img-blend-beauty position-absolute d-none d-lg-block" height="131" width="130">
+			</div>
+		</div>
+	</div>
+	<div class="container position-relative z-index-2">
+		<div class="text-center" data-animate="fadeInUp">
+			{{ partial "elements/image-box/style-6" (dict "title" "Because You Need Time for Yourself. Blend Beauty in You" "subtitle" "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur" "logo" "/assets/images/others/other-image-07.png" "subtitleClass" "mb-11 fs-18px text-body") }}
+		</div>
+	</div>
+	<div class="blend-beauty-bottom container position-absolute start-50 translate-middle-x d-none d-xl-block w-100 mx-auto">
+		<div class="row p-0">
+			<div class="col-6" data-animate="fadeInUp">
+				<img src="#" data-src="/assets/images/others/other-image-03.jpg" alt="Blend Beauty In You" class="img-fluid lazy-image" height="195" width="163">
+			</div>
+			<div class="col-6 text-end mb-3" data-animate="fadeInUp">
+				<img src="#" data-src="/assets/images/others/other-image-04.jpg" alt="Blend Beauty In You" class="img-fluid lazy-image" width="195" height="233">
+			</div>
+		</div>
+	</div>
+</section>

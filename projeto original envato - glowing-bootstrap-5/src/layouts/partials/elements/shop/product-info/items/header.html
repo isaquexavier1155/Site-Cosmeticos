@@ -1,0 +1,75 @@
+{{/***
+Element Parameters
+---------------------------------------------
+$.priceClass: 		Price extra Class
+$.titleClass: 		Title extra Class
+$.reviewsClass 		Review extra Class
+$.StarItemClass 	Star extra Class
+$.title: 			Shop title
+$.oldprice: 		Shop old price
+$.price: 			Shop price
+$.point: 			Shop point
+$.rate: 			Rating
+$.readreview: 		Shop read reviews
+$.subtitle: 		Shop subtitle
+*/}}
+
+{{- $priceClass := "d-flex align-items-center mb-6" -}}
+{{- if isset $ "priceClass" }}
+    {{- $priceClass = $.priceClass -}}
+{{ end -}}
+
+{{- $titleClass := "mb-4 pb-2 fs-4" -}}
+{{- if isset $ "titleClass" }}
+    {{- $titleClass = $.titleClass -}}
+{{ end -}}
+
+{{- $reviewsClass := "d-flex align-items-center fs-15px mb-6" -}}
+{{- if isset $ "reviewsClass" }}
+    {{- $reviewsClass = $.reviewsClass -}}
+{{ end -}}
+
+{{- $StarItemClass := "list-inline-item me-0 fs-12px" -}}
+{{- if isset $ "StarItemClass" }}
+    {{- $StarItemClass = $.StarItemClass -}}
+{{ end -}}
+
+
+{{- $link := "" -}}
+{{- if isset $ "link" }}
+{{- $link = $.link -}}
+{{ end -}}
+
+<p class="{{- if $priceClass}}{{$priceClass}}{{- end}}">
+    {{- if $.price}}
+        {{- if $.oldprice}}
+			<span class="text-decoration-line-through">{{$.oldprice}}</span>
+        {{- end}}
+		<span class="fs-18px text-body-emphasis ps-6 fw-bold">{{$.price}}</span>
+    {{- end}}
+	<span class="badge text-bg-primary fs-6 fw-semibold ms-7 px-6 py-3">20%</span>
+</p>
+{{- if $.title}}
+	<h1 class="{{- if $titleClass}}{{$titleClass}}{{- end}}">
+		{{- if ne $link "" }}
+		<a href="{{- $.link }}" title="{{$.title}}">
+		{{ end -}}
+        {{$.title}}
+
+		{{- if ne $link "" }}
+		</a>
+		{{ end -}}
+	</h1>
+{{- end}}
+<div class="{{- if $reviewsClass}}{{$reviewsClass}}{{- end}}">
+    {{- if $.point}}
+		<p class="mb-0 fw-semibold text-body-emphasis">{{$.point}}</p>
+    {{- end}}
+	{{ partial "elements/shop/items/rate" (dict "class" "mb-0 px-6 rating-result" "rate" $.rate)}}
+    {{- if $.readreview}}
+		<a href="#" class="border-start ps-6 text-body">{{$.readreview}}</a>
+    {{- end}}
+</div>
+{{- if $.subtitle}}
+	<p class="fs-15px">{{$.subtitle}}</p>
+{{- end}}

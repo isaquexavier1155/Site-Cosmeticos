@@ -1,0 +1,73 @@
+items:
+  - img: "/assets/images/landing/landing-home-01.jpg"
+    img_dark: "/assets/images/landing/landing-home-white-01.jpg"
+    title: Home 01
+    url: "/home-01.html"
+  - img: "/assets/images/landing/landing-home-02.jpg"
+    img_dark: "/assets/images/landing/landing-home-white-02.jpg"
+    title: Home 02
+    url: "/home-02.html"
+  - img: "/assets/images/landing/landing-home-03.jpg"
+    img_dark: "/assets/images/landing/landing-home-white-03.jpg"
+    title: Home 03
+    url: "/home-03.html"
+  - img: "/assets/images/landing/landing-home-04.jpg"
+    img_dark: "/assets/images/landing/landing-home-white-04.jpg"
+    title: Home 04
+    url: "/home-04.html"
+  - img: "/assets/images/landing/landing-home-05.jpg"
+    img_dark: "/assets/images/landing/landing-home-white-05.jpg"
+    title: Home 05
+    url: "/home-05.html"
+  - img: "/assets/images/landing/landing-home-06.jpg"
+    img_dark: "/assets/images/landing/landing-home-white-06.jpg"
+    title: Home 06
+    url: "/home-06.html"
+  - img: "/assets/images/landing/landing-home-07.jpg"
+    img_dark: "/assets/images/landing/landing-home-white-07.jpg"
+    title: Home 07
+    url: "/home-07.html"
+  - img: "/assets/images/landing/landing-home-08.jpg"
+    img_dark: "/assets/images/landing/landing-home-white-08.jpg"
+    title: Home 08
+    url: "/home-08.html"
+  - img: "/assets/images/landing/landing-home-09.jpg"
+    img_dark: "/assets/images/landing/landing-home-white-09.jpg"
+    title: Home 09
+    url: "/home-09.html"
+  - img: "/assets/images/landing/landing-home-10.jpg"
+    img_dark: "/assets/images/landing/landing-home-white-10.jpg"
+    title: Home 10
+    url: "/home-10.html"
+  - img: "/assets/images/landing/landing-home-11.jpg"
+    img_dark: "/assets/images/landing/landing-home-white-11.jpg"
+    title: Home 11
+    url: "/home-11.html"
+  - img: "/assets/images/landing/landing-home-12.jpg"
+    img_dark: "/assets/images/landing/landing-home-white-12.jpg"
+    title: Home 12
+    url: "/home-12.html"
+  - img: "/assets/images/landing/landing-home-13.jpg"
+    img_dark: "/assets/images/landing/landing-home-white-13.jpg"
+    title: Home 13
+    url: "/home-13.html"
+  - img: "/assets/images/landing/landing-home-14.jpg"
+    img_dark: "/assets/images/landing/landing-home-white-14.jpg"
+    title: Home 14
+    url: "/home-14.html"
+  - img: "/assets/images/landing/landing-home-15.jpg"
+    img_dark: "/assets/images/landing/landing-home-white-15.jpg"
+    title: Home 15
+    url: "/home-15.html"
+  - img: "/assets/images/landing/landing-home-16.jpg"
+    img_dark: "/assets/images/landing/landing-home-white-16.jpg"
+    title: Home 16
+    url: "/home-16.html"
+  - img: "/assets/images/landing/landing-home-17.jpg"
+    img_dark: "/assets/images/landing/landing-home-white-17.jpg"
+    title: Home 17
+    url: "/home-17.html"
+  - img: "/assets/images/landing/landing-home-18.jpg"
+    img_dark: "/assets/images/landing/landing-home-white-18.jpg"
+    title: Home 18
+    url: "/home-18.html"

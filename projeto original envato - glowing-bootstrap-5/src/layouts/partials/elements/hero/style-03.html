@@ -1,0 +1,118 @@
+{{/***
+Element Parameters
+---------------------------------------------
+$.class:				Element extra class name
+$.sliderClass: 			Slider Class
+$.subtitleClass: 		Subtitle Class
+$.titleClass: 			Title Class
+$.DescClass: 			Desc Class
+$.ButtonClass: 			Button Class
+$.Img: 					Image
+*/}}
+
+{{- $class := "container mt-8" -}}
+{{- if isset $ "class" }}
+    {{- $class = $.class -}}
+{{ end -}}
+
+{{- $columnClass := "col-md-6 mb-9 mb-md-0" -}}
+{{- if isset $ "columnClass" }}
+    {{- $columnClass = $.columnClass -}}
+{{ end -}}
+
+{{- $contentClass := "px-10 py-11 justify-content-end hero-overlay" -}}
+{{- if isset $ "contentClass" }}
+    {{- $contentClass = $.contentClass -}}
+{{ end -}}
+
+{{- $titleClass := "fs-2 text-white mb-5" -}}
+{{- if isset $ "titleClass" }}
+    {{- $titleClass = $.titleClass -}}
+{{ end -}}
+
+{{- $buttonClass := "text-white p-0 fw-semibold text-decoration-none" -}}
+{{- if isset $ "buttonClass" }}
+    {{- $buttonClass = $.buttonClass -}}
+{{ end -}}
+
+{{- $imgClass := "card-img" -}}
+{{- if isset $ "imgClass" }}
+    {{- $imgClass = $.imgClass -}}
+{{ end -}}
+{{- $imgClass := printf "object-fit-cover w-100 %s" $imgClass -}}
+
+{{- $containerClass := "" -}}
+{{- if isset $ "containerClass" }}
+    {{- $containerClass = $.containerClass -}}
+{{ end -}}
+
+{{- $img_dark1 := "" -}}
+{{- if isset $ "img_dark1" }}
+{{- $img_dark1 = $.img_dark1 -}}
+{{ end -}}
+
+{{- $img_dark2 := "" -}}
+{{- if isset $ "img_dark2" }}
+{{- $img_dark2 = $.img_dark2 -}}
+{{ end -}}
+
+{{- $currentPage := "" -}}
+{{- if isset $ "currentPage" }}
+{{- $currentPage = $.currentPage -}}
+{{ end -}}
+
+<div class="hero hero-{{$.currentPage.Page.Params.header}} {{- if $class}} {{$class}}{{- end}}">
+	<div class="row">
+		<div data-animate="fadeInUp" class="{{- if $columnClass}}{{$columnClass}}{{- end}}">
+			<div class="d-flex justify-content-center border-0 text-center hero-hover-shine hover-zoom-in {{- if $containerClass}} {{$containerClass}}{{- end}}">
+				{{- if $.img1}}
+				{{  partial "the-image" (dict "currentPage" $currentPage "img" $.img1 "img_dark" $img_dark1 "class" $imgClass "alt" $.title1 "width" "570"  "height" "700") }}
+				{{- end}}
+				<div class="card-img-overlay d-inline-flex flex-column {{- if $contentClass}} {{$contentClass}}{{- end}}">
+					{{- if $.subtitle}}
+						<p class="card-text fs-6 fs-sm-18px fs-md-4 text-white mb-4">
+							{{$.subtitle}}
+						</p>
+					{{- end}}
+					{{- if $.title1}}
+						<h3 class="card-title {{- if $titleClass}} {{$titleClass}}{{- end}}">{{$.title1}}</h3>
+					{{- end}}
+					<div>
+						<a href="#" class="pb-2 btn btn-link {{- if $buttonClass}} {{$buttonClass}}{{- end}}">
+							Discover Now
+							<svg class="icon icon-arrow-right">
+								<use xlink:href="#icon-arrow-right"></use>
+							</svg>
+						</a>
+					</div>
+				</div>
+			</div>
+
+		</div>
+		<div data-animate="fadeInUp" class="{{- if $columnClass}} {{$columnClass}}{{- end}}">
+			<div class="d-flex justify-content-center border-0 text-center hero-hover-shine hover-zoom-in {{- if $containerClass}} {{$containerClass}}{{- end}}">
+                {{- if $.img2}}
+					{{  partial "the-image" (dict "currentPage" $currentPage "img" $.img2 "img_dark" $img_dark2 "class" $imgClass "alt" $.title2 "width" "570"  "height" "700") }}
+				{{- end}}
+				<div class="card-img-overlay d-inline-flex flex-column {{- if $contentClass}} {{$contentClass}}{{- end}}">
+                    {{- if $.subtitle}}
+						<p class="card-text fs-6 fs-sm-18px fs-md-4 text-white mb-4">
+							{{- $.subtitle}}
+						</p>
+                    {{- end}}
+                    {{- if $.title2}}
+						<h3 class="card-title {{- if $titleClass}} {{$titleClass}}{{- end}}">{{$.title2}}</h3>
+                    {{- end}}
+					<div>
+						<a href="#" class="pb-2 btn btn-link {{- if $buttonClass}} {{$buttonClass}}{{- end}}">
+							Discover Now
+							<svg class="icon icon-arrow-right">
+								<use xlink:href="#icon-arrow-right"></use>
+							</svg>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

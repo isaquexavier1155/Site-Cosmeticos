@@ -1,0 +1,7 @@
+{{ .Inner }}
+{{- $id := .Get "id" | default "" -}}
+{{- $class := .Get "class" | default "container" -}}
+
+<section {{- if $id }} id="{{ $id }}" {{- end -}} {{- if $class }} class="{{ $class }}" {{- end}}>
+    {{ partial "elements/shop/shopping-cart-item" (dict "currentPage" . "data" "shopping_cart" "title" "Shopping Cart")}}
+</section>

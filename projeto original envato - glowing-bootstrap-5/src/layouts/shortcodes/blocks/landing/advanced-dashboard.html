@@ -1,0 +1,26 @@
+{{/*
+Block settings
+-------------------------------------------------
+id			Block ID
+class		Block class extral
+*/}}
+{{- $id := .Get "id" | default "dashboard" -}}
+{{- $class := .Get "class" | default "pt-lg-22 pt-16 pb-lg-17 pb-16" -}}
+{{ .Inner }}
+<section id="{{ $id }}" class="{{ $class }}">
+	<div class="container container-custom text-center">
+		<h2 class="fs-1 lh-116 mb-7 position-relative d-inline-block" data-bs-animate="fadeInUp">
+			Advanced Dashboard <span
+			class="landing-lable-new position-absolute fs-6 fw-bold lh-1 d-block text-white ls-1 px-5 py-4 lh-13">New</span>
+		</h2>
+		<p class="fs-18px mx-auto mb-12" style="max-width: 480px" data-bs-animate="fadeInUp">helps you keep track
+			of your business'
+			profits and growth
+			as well as analyzing your customer’s insights, </p>
+		<div data-bs-animate="fadeInUp" class="landing-ready-item">
+			<a href="../dashboard/dashboard.html" target="_blank" class="d-block landing-ready-hover shadow-none" title="Advanced Dashboard">
+				{{  partial "the-image" (dict "currentPage" . "img" "/assets/images/landing/landing-dashboard.png" "img_dark" "/assets/images/landing/landing-dashboard-white.jpg" "class" "mw-100 h-auto" "class_img_dark" "mb-lg-6" "width" "1170" "height" "459" "alt" "Advanced Dashboard") }}
+			</a>
+		</div>
+	</div>
+</section>

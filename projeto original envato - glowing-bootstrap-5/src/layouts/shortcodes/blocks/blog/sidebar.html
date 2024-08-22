@@ -1,0 +1,15 @@
+{{- $position := .Get "position" | default "left" -}}
+{{- $class := "pe-xl-9 me-xl-2" -}}
+{{- if eq $position "right" -}}
+    {{- $class = "ps-xl-9 ms-xl-2" -}}
+{{- end -}}
+<aside class="primary-sidebar {{ $class -}}">
+    {{ .Inner }}
+    {{ partial  "widgets/search"}}
+    {{ partial  "widgets/category" (dict "currentPage" . ) }}
+    {{ partial  "widgets/posts" (dict "currentPage" . ) }}
+    {{ partial  "widgets/banner" (dict "currentPage" . ) }}
+    {{ partial  "widgets/tags" (dict "currentPage" . ) }}
+    {{ partial  "widgets/instagram" (dict "currentPage" . ) }}
+</aside>
+

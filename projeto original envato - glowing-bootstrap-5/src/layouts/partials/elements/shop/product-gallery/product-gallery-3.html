@@ -1,0 +1,14 @@
+{{/***
+Element Parameters
+---------------------------------------------
+$.imgClass: 			Image extra Class
+*/}}
+
+{{- $imgClass := "mb-7 img-fluid h-auto" -}}
+{{- if isset $ "imgClass" }}
+    {{- $imgClass = $.imgClass -}}
+{{ end -}}
+
+{{- range $item := $.Site.Data.product_gallery_3.items }}
+	<a href="{{$item.img}}" data-gallery="gallery3" data-thumb-src="{{ $item.img }}"><img src="#" data-src="{{$item.img}}" class="lazy-image {{- if $imgClass}} {{$imgClass}}{{- end}}" width="{{ $.Site.Data.product_gallery_3.imageSize.img.width }}" height="{{ $.Site.Data.product_gallery_3.imageSize.img.height }}" alt=""></a>
+{{- end}}

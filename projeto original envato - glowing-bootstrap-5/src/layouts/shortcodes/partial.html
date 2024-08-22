@@ -1,0 +1,3 @@
+{{- $partial_name := .Inner -}}
+{{- $partial_name = path.Join "" $partial_name -}}
+{{- partial $partial_name . -}}

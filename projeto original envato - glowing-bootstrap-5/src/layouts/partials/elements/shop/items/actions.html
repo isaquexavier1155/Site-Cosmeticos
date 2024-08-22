@@ -1,0 +1,43 @@
+{{/***
+Element Parameters
+---------------------------------------------
+$.class: 			Element extra class name
+$.direction         Direction, accept: vertical | horizontal
+$.size              Size - accept: md | sm
+*/}}
+
+{{- $direction := "horizontal" -}}
+{{- if isset $ "direction" -}}
+    {{- $direction = $.direction -}}
+{{- end -}}
+
+
+{{- $class := "position-absolute d-flex z-index-2 product-actions " -}}
+{{- $class = printf "%s %s" $class $direction -}}
+
+{{- $tooltip_placement := "top" -}}
+{{- if eq $direction "vertical" -}}
+    {{- $tooltip_placement = "left" -}}
+{{- end -}}
+
+{{- $size := "md" -}}
+{{- if isset $ "size" -}}
+    {{- $size = $.size -}}
+{{- end -}}
+
+{{- $cartClass := "position-absolute z-index-2 text-nowrap" -}}
+{{- if eq $size "sm" -}}
+	{{- $cartClass = printf "%s %s" $cartClass "btn-sm px-6 py-3 lh-2" -}}
+{{- end -}}
+
+<div class="{{- $class -}}">
+    {{- if eq $direction "horizontal" -}}
+        {{ partial "elements/shop/items/action" (dict "direction" $direction "type" "add_to_cart" "size" $size) }}
+    {{- end -}}
+    {{ partial "elements/shop/items/action" (dict "direction" $direction "type" "quick-view" "size" $size) }}
+    {{ partial "elements/shop/items/action" (dict "direction" $direction "type" "wishlist" "size" $size) }}
+    {{ partial "elements/shop/items/action" (dict "direction" $direction "type" "compare" "size" $size) }}
+</div>
+{{- if eq $direction "vertical" -}}
+    {{ partial "elements/shop/items/add-to-cart" (dict "class" $cartClass) }}
+{{- end -}}

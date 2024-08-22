@@ -1,0 +1,82 @@
+{{/***
+Element Parameters
+---------------------------------------------
+$.class: 			Element extra class name
+$.name              Widget Name
+$.title		        Widget Title
+$.btnText 			Banner button text
+$.btnLink 			Banner button link
+$.btnLinkTarget 	Button link target
+$.img: 				Banner image
+$.imgWidth 			Banner image width
+$.imgHeight 		Banner image height
+$.bannerTitle: 			Banner title
+*/}}
+{{- $title := "" -}}
+{{- if isset $ "title" }}
+    {{- $title = $.title -}}
+{{ end -}}
+
+{{- $widgetName := "banner" -}}
+{{- if isset $ "name" -}}
+    {{- $widgetName = $.name -}}
+{{- end -}}
+
+{{ $wrapperClass := printf "%s%s" "widget widget-" $widgetName }}
+
+{{- if isset $ "class" -}}
+    {{ $wrapperClass = printf "%s %s" $wrapperClass $.class }}
+{{- end -}}
+
+
+{{- $img := "/assets/images/blog/widget-banner-img.jpg" -}}
+{{- if isset $ "img" }}
+    {{- $img = $.img -}}
+{{- end -}}
+
+{{- $imgWidth := "340" -}}
+{{- if isset $ "imgWidth" }}
+    {{- $imgWidth = $.imgWidth -}}
+{{- end -}}
+
+{{- $imgHeight := "343" -}}
+{{- if isset $ "imgHeight" }}
+    {{- $imgHeight = $.imgHeight -}}
+{{- end -}}
+
+{{- $btnLink := "#" -}}
+{{- if isset $ "btnLink" }}
+    {{- $btnLink = $.btnLink -}}
+{{- end -}}
+
+{{- $btnLinkTarget := "_blank" -}}
+{{- if isset $ "btnLinkTarget" }}
+    {{- $btnLinkTarget = $.btnLinkTarget -}}
+{{- end -}}
+
+{{- $btnText := "Explore More" -}}
+{{- if isset $ "btnText" }}
+    {{- $btnText = $.btnText -}}
+{{- end -}}
+
+{{ $bannerTitle := "Be your kind of beauty" }}
+{{- if isset $ "bannerTitle" }}
+    {{- $bannerTitle = $.bannerTitle -}}
+{{- end -}}
+
+<div class="{{- $wrapperClass -}}">
+    {{- if $title -}}
+        {{ partial "widgets/widget-title" $title}}
+    {{- end -}}
+    <div class="card border-0">
+        <img class="card-img img-fluid lazy-image" data-src="{{ $img }}" alt="{{ $bannerTitle }}" width="{{ $imgWidth }}"
+             height="{{ $imgHeight }}" src="#">
+        <div class="card-img-overlay pt-8 pb-7 px-xl-14 d-flex flex-column align-items-center justify-content-between">
+            <h2 class="fw-semibold text-uppercase fs-30px lh-12 text-white text-center">{{ $bannerTitle }}</h2>
+            <a href="{{ $.btnLink }}" {{- if $btnLinkTarget }} target="{{ $btnLinkTarget }}" {{ end }}
+               class="btn btn-white shadow-none">
+                {{ $btnText }}
+            </a>
+        </div>
+    </div>
+</div>

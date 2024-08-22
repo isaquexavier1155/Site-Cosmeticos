@@ -1,0 +1,43 @@
+{{- $id := .Get "id" | default "new_collection_discover_our_autumn_skincare" -}}
+{{- $class := .Get "class" | default "container container-xxl" -}}
+{{- $spacing := .Get "spacing" | default "py-lg-17 pt-15 pb-21" -}}
+{{- if $spacing -}}
+	{{- $class = printf "%s %s" $class $spacing -}}
+{{- end -}}
+<section class="bg-body-tertiary" id="{{- if $id -}} {{ $id }} {{- end -}}">
+	{{ .Inner }}
+	<div {{- if $class }} class="{{ $class }}" {{- end}}>
+		<div class="slick-slider my-2" data-slick-options='{{ $.Site.Data.new_collection_discover_our_autumn_skincare.options | jsonify }}'>
+			{{- range $item := $.Site.Data.new_collection_discover_our_autumn_skincare.items -}}
+				<div>
+					<div class="container">
+						<div class="row align-items-center">
+							<div class="col-12 col-xl-4 pe-xl-11 mb-13 mb-xl-0" data-animate="fadeInUp">
+								{{ partial "elements/heading/style-1" (dict "currentPage" .
+								"subtitle" $item.item.heading.subtitle
+								"subtitleClass" "text-uppercase ls-1 fw-semibold pb-2 text-body"
+								"title" $item.item.heading.title
+								"titleClass" "font-primary fw-normal mb-7"
+								"desc" $item.item.heading.desc
+								"descExtraClass" "pb-2 text-body"
+								"align" "left"
+								) }}
+								<a href="{{- $item.item.heading.button.url  -}}" class="btn btn-white shadow mt-9">{{- $item.item.heading.button.text  -}}</a>
+							</div>
+
+							<div class="col-12 col-sm-5 col-xl-3 ps-xl-9" data-animate="fadeInUp">
+								{{ partial  "elements/shop/skins/grid-2" (dict
+								"data" $item.item.product
+								) }}
+							</div>
+							<div class="col-7 d-none d-sm-block col-xl-5 ps-xl-11" data-animate="fadeInUp">
+								<img data-src="{{- $item.item.banner.src -}}" width="{{- $item.item.banner.width -}}" height="{{- $item.item.banner.height -}}" alt="..." class="lazy-image w-100 img-fluid" src="#">
+							</div>
+						</div>
+					</div>
+				</div>
+			{{- end -}}
+		</div>
+	</div>
+</section>
+

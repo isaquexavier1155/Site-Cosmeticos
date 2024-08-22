@@ -1,0 +1,35 @@
+{{/***
+Element Parameters
+---------------------------------------------
+$.class: 			Element extra class name
+$.data
+    - title             Title
+    - reviews           reviews
+    - rate              rate
+    - price
+        - regular
+        - sale
+    - image
+        - src
+        - width
+        - height
+$.animation         Animation
+*/}}
+<div class="card flex-md-row card-product list bg-transparent border-0 {{- if isset $ "class" }} {{ $.class }} {{- end -}}"  {{- if isset $ "animation" }} data-animate="{{- $.animation -}}" {{- end -}}>
+    <figure class="card-img-top position-relative mb-md-0 mb-7 overflow-hidden flex-md-shrink-0">
+        {{ partial "elements/shop/items/image" (dict "image" $.data.image "title" $.data.title ) }}
+        {{ partial "elements/shop/items/sale-flash" (dict "price" $.data.price "is_new" $.data.is_new) }}
+    </figure>
+    <div class="card-body flex-md-grow-1 p-0 pt-md-9">
+        {{ partial "elements/shop/items/price" (dict "price" $.data.price "align" "left" "size" "lg") }}
+        {{ partial "elements/shop/items/title" (dict "title" $.data.title "class" "fs-4 fw-semibold" "spacing" "mb-5") }}
+        {{ partial "elements/shop/items/rate" (dict "rate" $.data.rate "reviews" $.data.reviews "align" "left" "class" "mb-5") }}
+        {{ partial "elements/shop/items/desc" (dict "desc" $.data.desc "class" "mb-10") }}
+        <div class="d-flex flex-wrap horizontal">
+            {{ partial "elements/shop/items/add-to-cart" (dict "class" "") }}
+            {{ partial "elements/shop/items/action" (dict "type" "wishlist" "no_shadow" "true") }}
+			{{ partial "elements/shop/items/action" (dict "type" "quick-view" "no_shadow" "true") }}
+            {{ partial "elements/shop/items/action" (dict "type" "compare" "no_shadow" "true") }}
+        </div>
+    </div>
+</div>

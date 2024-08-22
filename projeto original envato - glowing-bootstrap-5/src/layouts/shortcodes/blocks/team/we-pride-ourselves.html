@@ -1,0 +1,43 @@
+{{/*
+Block settings
+-------------------------------------------------
+id			Block ID
+class		Block class extral
+*/}}
+{{- $id := .Get "id" | default "" -}}
+{{- $class := .Get "class" | default "pt-lg-18 pb-lg-16 pt-15 pb-md-13 pb-16" -}}
+
+<section {{- if $id }} id="{{ $id }}" {{- end -}} {{- if $class }} class="{{ $class }}" {{- end}}>
+	{{ .Inner }}
+	<div class="container">
+		<div class="text-center mx-auto w-xl-40 w-lg-50 mb-12 mb-lg-15">
+			<h3 class="fs-3">
+				We pride ourselves on have a team of highly skilled
+			</h3>
+		</div>
+		<div class="slick-slider mx-xl-n11" data-slick-options='{"slidesToShow": 3,"dots":false,"arrows":false,"responsive":[{"breakpoint": 768,"settings": {"slidesToShow": 2,"arrows":false,"dots":true}},{"breakpoint": 576,"settings": {"slidesToShow": 1,"arrows":false,"dots":true}}]}'>
+            <div class="px-xl-11">
+                {{ partial "elements/team-member/style-1" (dict "image" "/assets/images/others/our-team-01.jpg"
+				"width" "377" "height" "446"
+                "content" "text-start"
+                "title" "Slava Fedutik"
+                "subtitle" "- Founder, Chief Creative"
+				"altContent" "Slava Fedutik")}}
+			</div>
+            <div class="px-xl-11">
+                {{ partial "elements/team-member/style-1" (dict "image" "/assets/images/others/our-team-02.jpg"
+                "width" "377" "height" "446"
+                "content" "text-start"
+                "title" "Jennifer C." "subtitle" "- Founder, CEO"
+				"altContent" "Jennifer C.")}}
+			</div>
+            <div class="px-xl-11">
+                {{ partial "elements/team-member/style-1" (dict "image" "/assets/images/others/our-team-03.jpg"
+                "width" "377" "height" "446"
+				"content" "text-start"
+                "title" "Valeriia Nadopta" "subtitle" "- Founder, C0O"
+				"altContent" "Valeriia Nadopta")}}
+			</div>
+		</div>
+	</div>
+</section>

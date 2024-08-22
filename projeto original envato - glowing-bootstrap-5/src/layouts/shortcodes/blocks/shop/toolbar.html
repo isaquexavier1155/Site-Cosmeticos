@@ -1,0 +1,70 @@
+{{ .Inner }}
+{{- $id := .Get "id" | default "" -}}
+{{- $class := .Get "class" | default "container container-xxl" -}}
+
+{{- $filter_enable := .Get "filter_enable" | default true -}}
+{{- $layout := .Get "layout" | default "grid" -}}
+
+
+
+<section {{- if $id }} id="{{ $id }}" {{- end -}} {{- if $class }} class="{{ $class }}" {{- end}}>
+    <div class="tool-bar mb-11 align-items-center justify-content-between d-lg-flex">
+        <div class="tool-bar-left mb-6 mb-lg-0 fs-18px">We found <span class="text-body-emphasis fw-semibold">95</span> products available for you</div>
+        <div class="tool-bar-right align-items-center {{ if eq $filter_enable true -}} d-lg-flex {{- else -}} d-flex {{ end -}}">
+            <ul class="list-unstyled d-flex align-items-center list-inline me-lg-7 me-0 {{ if eq $filter_enable true -}} mb-6 mb-lg-0 {{- else -}} mb-0 {{ end -}}">
+                <li class="list-inline-item me-7">
+                    <a class="fs-32px text-body-emphasis-hover {{- if eq $layout "grid" -}}  text-body-emphasis {{- else }}  text-muted  {{- end -}}" href="{{- if eq $layout "grid" -}}#{{- else -}}/shop/shop-layout-v2.html{{- end -}}">
+                        <svg class="icon icon-squares-four">
+                            <use xlink:href="#icon-squares-four"></use>
+                        </svg>
+                    </a>
+                </li>
+                <li class="list-inline-item me-0">
+                    <a class="fs-32px text-body-emphasis-hover {{- if eq $layout "list" -}}  text-body-emphasis {{- else }}  text-muted  {{- end -}}" href="{{- if eq $layout "list" -}}#{{- else -}}/shop/shop-layout-v5.html{{- end -}}">
+                        <svg class="icon icon-list">
+                            <use xlink:href="#icon-list"></use>
+                        </svg>
+                    </a>
+                </li>
+                {{- if eq $filter_enable true -}}
+                <li class="list-inline-item d-lg-none ms-auto">
+                    <a data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" class="btn btn-hover-border-primary btn-hover-bg-primary btn-hover-text-light btn-dark"><svg class="icon icon-SlidersHorizontal fs-4 me-4">
+                            <use xlink:href="#icon-SlidersHorizontal"></use>
+                        </svg> Filter</a>
+                </li>
+                {{- end -}}
+            </ul>
+            <ul class="list-unstyled d-flex align-items-center list-inline mb-0 {{- if eq $filter_enable false }} ms-auto  {{- end -}}">
+                <li class="list-inline-item me-0 {{- if eq $filter_enable true }} w-100 w-lg-auto   {{- end -}}">
+                    <select class="form-select {{- if eq $filter_enable true }} w-100 w-lg-auto   {{- end -}}" name="orderby">
+                        <option selected="selected">Default sorting</option>
+                        <option value="popularity">Sort by popularity</option>
+                        <option value="rating">Sort by average rating</option>
+                        <option value="date">Sort by latest</option>
+                        <option value="price">Sort by price: low to high</option>
+                        <option value="price-desc">Sort by price: high to low</option>
+                    </select>
+                </li>
+                {{- if eq $filter_enable true -}}
+                <li class="list-inline-item d-none d-lg-block ms-7">
+                    <a data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" class="btn btn-hover-border-primary btn-hover-bg-primary btn-hover-text-light btn-dark"><svg class="icon icon-SlidersHorizontal fs-4 me-4">
+                            <use xlink:href="#icon-SlidersHorizontal"></use>
+                        </svg> Filter</a>
+                </li>
+                {{- end -}}
+            </ul>
+        </div>
+    </div>
+</section>
+
+{{- if eq $filter_enable true -}}
+<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+    <div class="offcanvas-header">
+        <h5 class="offcanvas-title fs-3" id="offcanvasExampleLabel">Filter</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+        {{ partial "elements/shop/sidebar" (dict "currentPage" . "class" "" ) }}
+    </div>
+</div>
+{{- end -}}

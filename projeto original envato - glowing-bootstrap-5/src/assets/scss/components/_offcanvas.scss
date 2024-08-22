@@ -1,0 +1,13 @@
+.offcanvas-footer {
+	display: flex;
+	flex-shrink: 0;
+	margin-top: auto;
+	padding: var(--bs-offcanvas-padding-y) var(--bs-offcanvas-padding-x);
+}
+
+
+.offcanvas {
+	&.offcanvas-top {
+		bottom: auto;
+	}
+}

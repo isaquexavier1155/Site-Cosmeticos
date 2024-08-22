@@ -1,0 +1,144 @@
+.slick-dotted {
+	margin-bottom: 44px;
+}
+.slick-slider {
+	margin-top: calc(-1 * var(--#{$prefix}gutter-y));
+	margin-right: calc(-.5 * var(--#{$prefix}gutter-x));
+	margin-left: calc(-.5 * var(--#{$prefix}gutter-x));
+
+	&-thumb {
+		.slick-current {
+			border: solid 1px var(--#{$prefix}black);;
+		}
+	}
+
+	&-arrow-inside {
+		.slick-prev {
+			left: 0;
+			right: auto;
+			margin-left: 1.5rem;
+		}
+
+		.slick-next {
+			right: 0;
+			left: auto;
+			margin-right: 1.5rem;
+		}
+	}
+
+
+
+	&-dots-inside {
+		margin-bottom: 0;
+		.slick-dots {
+			top: auto;
+			bottom: 0;
+			margin-bottom: 1rem;
+		}
+	}
+	&-dots-light {
+		.slick-dots {
+			--#{$prefix}black: var(--#{$prefix}white);
+		}
+	}
+}
+.slick-slide {
+	padding-right: calc(var(--#{$prefix}gutter-x) * .5);
+	padding-left: calc(var(--#{$prefix}gutter-x) * .5);
+	margin-top: var(--#{$prefix}gutter-y);
+}
+.slick-vertical {
+	--#{$prefix}gutter-x: 0;
+}
+
+.slick-dots {
+	position: absolute;
+	display: flex!important;
+	justify-content: center;
+	align-items: center;
+	list-style: none;
+	padding: 0;
+	margin-top: 30px;
+	margin-bottom: 0;
+	left: 0;
+	right: 0;
+	top: 100%;
+	z-index: 1;
+
+	li {
+		cursor: pointer;
+		text-align: center;
+		padding: 0 10px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+
+		span {
+			display: inline-block;
+			line-height: 8px;
+			width: 8px;
+			height: 8px;
+			color: var(--#{$prefix}emphasis-color);
+			background: currentColor;
+			border-radius: 50%;
+		}
+
+		&.slick-active span {
+			width: 14px;
+			height: 14px;
+			line-height: 14px;
+			display: inline-block;
+			border: 1px solid currentColor;
+			background: 0 0;
+		}
+	}
+}
+
+.slick-arrow {
+	position: absolute;
+	font-size: 18px;
+	width: 2.6667em;
+	height: 2.6667em;
+	top: 0;
+	bottom: 0;
+	margin-top: auto;
+	margin-bottom: auto;
+	border-radius: 50%;
+	border: solid 2px var(--#{$prefix}border-color);
+	box-shadow: 0 0 0 0 rgba(var(--#{$prefix}body-color-rgb), .15);
+	background-color: var(--#{$prefix}body-bg);
+	color: var(--#{$prefix}secondary-color);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+	transition: all .3s;
+	z-index: 1;
+
+	&.slick-disabled {
+		cursor: no-drop;
+	}
+
+	&:hover {
+		color: var(--#{$prefix}emphasis-color);
+		border-color: transparent;
+		box-shadow: 0 3px 10px 0 rgba(var(--#{$prefix}body-color-rgb), .15);
+	}
+}
+
+.slick-prev {
+	right: 100%;
+	margin-right: 0.5rem;
+}
+
+.slick-next {
+	left: 100%;
+	margin-left: 0.5rem;
+}
+
+.slick-arrows-inline {
+	display: flex;
+	.slick-arrow {
+		position: static;
+	}
+}

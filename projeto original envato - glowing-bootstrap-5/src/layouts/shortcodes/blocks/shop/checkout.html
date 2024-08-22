@@ -1,0 +1,20 @@
+{{ .Inner }}
+{{- $id := .Get "id" | default "" -}}
+{{- $class := .Get "class" | default "container pb-14 pb-lg-19" -}}
+
+<section {{- if $id }} id="{{ $id }}" {{- end -}} {{- if $class }} class="{{ $class }}" {{- end}}>
+    {{ partial  "elements/heading/style-1" (dict "currentPage" .
+    "title" "Check out") }}
+	<form class="pt-12">
+		<div class="row">
+			<div class="col-lg-4 pb-lg-0 pb-14 order-lg-last">
+				{{ partial "elements/shop/product-pages/checkout-order-summary" (dict "currentPage" . "data" "checkout_order_summary" "title" "Order Summary" "subtotal" "99.00" "shipping" "0" "totalprice" "99.00" )}}
+			</div>
+			<div class="col-lg-8 order-lg-first pe-xl-20 pe-lg-6">
+				{{ partial "elements/shop/product-pages/checkout-shipping-info" (dict "currentPage" . "title" "Shipping Information" "checkBoxContent" "Billing address is the same as shipping" )}}
+
+				{{ partial "elements/shop/product-pages/checkout-payment-info" (dict "currentPage" . "title" "Payment Infomation" "btnContent" "Place Order")}}
+			</div>
+		</div>
+	</form>
+</section>

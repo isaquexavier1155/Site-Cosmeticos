@@ -1,0 +1,62 @@
+{{/***
+Element Parameters
+---------------------------------------------
+
+$.id:					Element extra id name
+$.class:				Element extra class name
+$.idThumb:				Element extra id name
+$.sliderThumbClass: 	Slider thumbnail Class
+$.itemThumbClass: 		Item thumbnail Class
+$.iconThumbClass: 		Icon thumbnail Class
+$.iconClass: 			Icon Class
+$.img1: 				Shop image 1
+$.img2: 				Shop image 2
+$.img3: 				Shop image 3
+$.img4: 				Shop image 4
+*/}}
+
+{{- $id := "slider" -}}
+{{- if isset $ "id" }}
+{{- $id = $.id -}}
+{{ end -}}
+
+{{- $idThumb := "slider-thumb" -}}
+{{- if isset $ "idThumb" }}
+{{- $idThumb = $.idThumb -}}
+{{ end -}}
+
+{{- $sliderThumbClass := "ps-1 ms-n3 me-n4" -}}
+{{- if isset $ "sliderThumbClass" }}
+    {{- $sliderThumbClass = $.sliderThumbClass -}}
+{{ end -}}
+
+{{- $itemThumbClass := "mx-3 px-0" -}}
+{{- if isset $ "itemThumbClass" }}
+    {{- $itemThumbClass = $.itemThumbClass -}}
+{{ end -}}
+
+{{- $iconThumbClass := "text-body-emphasis bg-body" -}}
+{{- if isset $ "iconThumbClass" }}
+    {{- $iconThumbClass = $.iconThumbClass -}}
+{{ end -}}
+
+{{- $iconClass := "btn btn-white" -}}
+{{- if isset $ "iconClass" }}
+    {{- $iconClass = $.iconClass -}}
+{{ end -}}
+
+<div class="position-relative">
+    {{ partial "elements/shop/product-gallery/action" (dict "wishlist" "true" "compare" "true") }}
+	<div id="{{$id}}" class="slick-slider slick-slider-arrow-inside slick-slider-dots-inside slick-slider-dots-light g-0" data-slick-options='{{ $.currentPage.Site.Data.product_gallery_2.config1 | jsonify }}'>
+        {{- range $item := $.currentPage.Site.Data.product_gallery_2.items }}
+			<a href="{{$item.img}}" data-gallery="gallery1" data-thumb-src="{{ $item.img }}"><img src="#" data-src="{{$item.img}}" class="h-auto lazy-image" width="{{ $.currentPage.Site.Data.product_gallery_2.imageSize.img.width }}" height="{{ $.currentPage.Site.Data.product_gallery_2.imageSize.img.height }}" alt=""></a>
+		{{- end}}
+	</div>
+</div>
+<div class="mt-6">
+	<div id="slider-thumb" class="slick-slider slick-slider-thumb {{- if $sliderThumbClass}} {{$sliderThumbClass}}{{- end}}" data-slick-options='{{ $.currentPage.Site.Data.product_gallery_2.config2 | jsonify }}'>
+        {{- range $item := $.currentPage.Site.Data.product_gallery_2.items }}
+			<img src="#" data-src="{{$item.thumb}}" class="{{- if $itemThumbClass}}{{$itemThumbClass}}{{- end}} h-auto cursor-pointer lazy-image" width="{{ $.currentPage.Site.Data.product_gallery_2.imageSize.thumb.width }}" height="{{ $.currentPage.Site.Data.product_gallery_2.imageSize.thumb.height }}" alt="">
+        {{- end}}
+	</div>
+</div>

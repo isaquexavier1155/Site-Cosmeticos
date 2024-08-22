@@ -1,0 +1,178 @@
+{{/***
+Element Parameters
+---------------------------------------------
+$.titleClass 				Title extra Class
+$.subtitleClass				Subtitle extra Class
+$.imgClass		 			Img extra Class
+$.contentClas	 			Content extra Class
+$.listHowToUseClass			List how to use extra Class
+$.howToUseItemClass			How to use extra Class
+$.ingredientsTitleClass		Ingredients title extra Class
+$.ingredientsDescriptClass	Ingredients descript extra Class
+*/}}
+
+{{- $titleClass := "fs-4" -}}
+{{- if isset $ "titleClass" }}
+    {{- $titleClass = $.titleClass -}}
+{{ end -}}
+
+{{- $subtitleClass := "fw-semibold text-body-emphasis mb-2 pb-4" -}}
+{{- if isset $ "subtitleClass" }}
+    {{- $subtitleClass = $.subtitleClass -}}
+{{ end -}}
+
+{{- $imgClass := "col-6 col-md-3 text-center mb-9 pb-2" -}}
+{{- if isset $ "imgClass" }}
+    {{- $imgClass = $.imgClass -}}
+{{ end -}}
+
+{{- $contentClass := "pt-8 pb-3" -}}
+{{- if isset $ "contentClass" }}
+    {{- $contentClass = $.contentClass -}}
+{{ end -}}
+
+{{- $listHowToUseClass := "ps-6 mb-8" -}}
+{{- if isset $ "listHowToUseClass" }}
+    {{- $listHowToUseClass = $.listHowToUseClass -}}
+{{ end -}}
+
+{{- $howToUseItemClass := "mb-3" -}}
+{{- if isset $ "howToUseItemClass" }}
+    {{- $howToUseItemClass = $.howToUseItemClass -}}
+{{ end -}}
+
+{{- $ingredientsTitleClass := "ps-0 py-5 pe-5 text-body-emphasis" -}}
+{{- if isset $ "ingredientsTitleClass" }}
+    {{- $ingredientsTitleClass = $.ingredientsTitleClass -}}
+{{ end -}}
+
+{{- $ingredientsDescriptClass := "text-end py-5 ps-5 pe-0" -}}
+{{- if isset $ "ingredientsDescriptClass" }}
+    {{- $ingredientsDescriptClass = $.ingredientsDescriptClass -}}
+{{ end -}}
+
+<div class="accordion accordion-flush" id="accordionFlushExample">
+	<div class="accordion-item pb-4">
+		<h2 class="accordion-header" id="flush-headingOne">
+			<a class="product-info-accordion text-decoration-none" href="#" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+				<span class="{{- if $titleClass}}{{$titleClass}}{{- end}}">Product Detail</span>
+			</a>
+		</h2>
+	</div>
+	<div id="flush-collapseOne" class="accordion-collapse collapse show" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+		<div class="{{- if $contentClass}}{{$contentClass}}{{- end}}">
+			<p class="{{- if $subtitleClass}}{{$subtitleClass}}{{- end}}">For Normal, Oily, Combination Skin Types</p>
+			<p class="mb-2 pb-4">Complexion-perfecting natural foundation enriched with
+				antioxidant-packed superfruits, vitamins, and other skin-nourishing
+				nutrients. Creamy liquid formula sets with a pristine matte finish
+				for soft, velvety smooth skin.</p>
+			<p class="mb-7">Say hello to flawless, long-lasting foundation that
+				comes in 7
+				melt-into-your-skin shades. This lightweight, innovative formula
+				creates a smooth, natural matte finish that won’t settle into lines.
+				It’s the perfect fit for your skin. 1 fl. oz.</p>
+			<p class="{{- if $subtitleClass}}{{$subtitleClass}}{{- end}}">Benefits</p>
+			<ul class="mb-5 ps-6">
+				<li class="mb-1">Buildable medium-to-full coverage</li>
+				<li class="mb-1">Weightless, airy feel—no caking!</li>
+				<li class="mb-1">Long-wearing</li>
+				<li class="mb-1">Evens skin tone</li>
+				<li>Available in 07 shades (all exclusive to Makeaholic!)</li>
+			</ul>
+			<div class="row">
+				<div class="{{- if $imgClass}}{{$imgClass}}{{- end}}">
+					{{  partial "the-image" (dict "currentPage" $.currentPage "img" "/assets/images/shop/product-info-3-1.png" "img_dark" "/assets/images/shop/product-info-white-3-1.png" "width" "66" "height" "77") }}
+				</div>
+				<div class="{{- if $imgClass}}{{$imgClass}}{{- end}}">
+					{{  partial "the-image" (dict "currentPage" $.currentPage "img" "/assets/images/shop/product-info-3-2.png" "img_dark" "/assets/images/shop/product-info-white-3-2.png" "width" "66" "height" "77") }}
+				</div>
+				<div class="{{- if $imgClass}}{{$imgClass}}{{- end}}">
+					{{  partial "the-image" (dict "currentPage" $.currentPage "img" "/assets/images/shop/product-info-3-3.png" "img_dark" "/assets/images/shop/product-info-white-3-3.png" "width" "66" "height" "77") }}
+				</div>
+				<div class="{{- if $imgClass}}{{$imgClass}}{{- end}}">
+					{{  partial "the-image" (dict "currentPage" $.currentPage "img" "/assets/images/shop/product-info-3-4.png" "img_dark" "/assets/images/shop/product-info-white-3-4.png" "width" "66" "height" "77") }}
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="accordion-item pb-4 mt-7">
+		<h2 class="accordion-header" id="flush-headingTwo">
+			<a class="product-info-accordion collapsed text-decoration-none" href="#" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+				<span class="{{- if $titleClass}}{{$titleClass}}{{- end}}">How To Use</span>
+			</a>
+		</h2>
+	</div>
+	<div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
+		<div class="{{- if $contentClass}}{{$contentClass}}{{- end}}">
+			<p class="{{- if $subtitleClass}}{{$subtitleClass}}{{- end}}">Follow these safety guidelines when
+				using cosmetics products of any type:</p>
+			<ul class="{{- if $listHowToUseClass}}{{$listHowToUseClass}}{{- end}}">
+				<li class="{{- if $howToUseItemClass}}{{$howToUseItemClass}}{{- end}}">Read the label. Follow all directions and heed all warnings.
+				</li>
+				<li class="{{- if $howToUseItemClass}}{{$howToUseItemClass}}{{- end}}">Wash your hands before you use the product.</li>
+				<li class="{{- if $howToUseItemClass}}{{$howToUseItemClass}}{{- end}}">Do not share makeup.</li>
+				<li class="{{- if $howToUseItemClass}}{{$howToUseItemClass}}{{- end}}">Keep the containers clean and tightly closed when not in use,
+					and protect them from temperature extremes.
+				</li>
+				<li class="{{- if $howToUseItemClass}}{{$howToUseItemClass}}{{- end}}">Throw away cosmetics if there are changes in color or smell.
+				</li>
+				<li>Use aerosols or sprays cans in well-ventilated areas. Do not use them while
+					you are smoking or near an open flame. It could start a fire.
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div class="accordion-item pb-4 mt-7">
+		<h2 class="accordion-header" id="flush-headingThree">
+			<a class="product-info-accordion collapsed text-decoration-none" href="#" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+				<span class="{{- if $titleClass}}{{$titleClass}}{{- end}}">Ingredients</span>
+			</a>
+		</h2>
+	</div>
+	<div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
+		<div class="{{- if $contentClass}}{{$contentClass}}{{- end}}">
+			<div class="table-responsive mb-5">
+				<table class="table table-borderless mb-0">
+					<tbody>
+					<tr>
+						<td class="{{- if $ingredientsTitleClass}}{{$ingredientsTitleClass}}{{- end}}">CAS</td>
+						<td class="{{- if $ingredientsDescriptClass}}{{$ingredientsDescriptClass}}{{- end}}">92128-82-0, 9057-02-7</td>
+					</tr>
+					<tr>
+						<td class="{{- if $ingredientsTitleClass}}{{$ingredientsTitleClass}}{{- end}}">INCI</td>
+						<td class="{{- if $ingredientsDescriptClass}}{{$ingredientsDescriptClass}}{{- end}}">Nannochloropsis Oculata (micro algae)
+							extract, pullulan
+						</td>
+					</tr>
+					<tr>
+						<td class="{{- if $ingredientsTitleClass}}{{$ingredientsTitleClass}}{{- end}}">Composition</td>
+						<td class="{{- if $ingredientsDescriptClass}}{{$ingredientsDescriptClass}}{{- end}}">Nannochloropsis Oculata (micro algae)
+							extract, pullulan, water, ethanol
+						</td>
+					</tr>
+					<tr>
+						<td class="{{- if $ingredientsTitleClass}}{{$ingredientsTitleClass}}{{- end}}">Appearance</td>
+						<td class="{{- if $ingredientsDescriptClass}}{{$ingredientsDescriptClass}}{{- end}}">Yellow to amber, viscous liquid</td>
+					</tr>
+					<tr>
+						<td class="{{- if $ingredientsTitleClass}}{{$ingredientsTitleClass}}{{- end}}">Solubility</td>
+						<td class="{{- if $ingredientsDescriptClass}}{{$ingredientsDescriptClass}}{{- end}}">Soluble in water &amp; ethanol</td>
+					</tr>
+					<tr>
+						<td class="{{- if $ingredientsTitleClass}}{{$ingredientsTitleClass}}{{- end}}">Storage</td>
+						<td class="{{- if $ingredientsDescriptClass}}{{$ingredientsDescriptClass}}{{- end}}">Store refrigerated (4-8oC / 39-46oF)</td>
+					</tr>
+					</tbody>
+				</table>
+			</div>
+			<p>
+				Perfect for Equestrian homes or every horse lover. Designer premium
+				signature aluminum alloy all Arthur Court is compliance with FDA
+				regulations. Aluminum Serveware can be chilled in the freezer or
+				refrigerator and warmed in the oven to 350. Wash by hand with mild dish
+				soap and dry immediately – do not put in the dishwasher. Comes in Gift
+				Box perfect for Equestrian home or Horse lover in your life.
+			</p>
+		</div>
+	</div>
+</div>

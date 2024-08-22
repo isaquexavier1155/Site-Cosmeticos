@@ -1,0 +1,47 @@
+<header id="header" class="header header-sticky header-sticky-smart disable-transition-all z-index-5">
+	<div class="topbar bg-section-10">
+		<div class="container-xxl container">
+			<p class="mb-0 text-body-emphasis text-center p-4 fs-15px fw-bold ls-1 text-uppercase">
+				Free shipping on all U.S orders $50+
+			</p>
+		</div>
+	</div>
+	<div class="header-above">
+		<div class="container-xxl container d-none d-xl-block">
+			<div class="pt-8 d-flex">
+				<div class="icons-actions d-flex justify-content-start w-xl-50 fs-28px text-body-emphasis">
+                    {{ partial "header/items/search-box-2" }}
+				</div>
+                {{ partial "header/items/logo" (dict "context" . ) }}
+
+				<div class="icons-actions d-flex justify-content-end w-xl-50 fs-28px text-body-emphasis">
+                    {{ partial "header/items/icon-account" }}
+                    {{ partial "header/items/icon-wishlist" }}
+                    {{ partial "header/items/icon-cart" (dict "total" false) }}
+					{{ partial "header/items/color-modes" (dict "currentPage" . )}}
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="sticky-area">
+		<div class="main-header nav navbar bg-body navbar-light navbar-expand-xl py-6 py-xl-0">
+			<div class="container-xxl container">
+				<div class="d-flex d-xl-none w-100">
+                    {{ partial "header/items/menu-mobile-toggle" }}
+					<div class="d-flex mx-auto">
+                        {{ partial "header/items/logo" (dict "context" . ) }}
+					</div>
+					<div class="icons-actions d-flex justify-content-end w-xl-50 fs-28px text-body-emphasis w-72px">
+                        {{ partial "header/items/icon-search" }}
+						{{ partial "header/items/color-modes" (dict "currentPage" . )}}
+					</div>
+				</div>
+				<div class="w-100 d-none d-xl-flex align-items-center justify-content-center">
+					<ul class="navbar-nav">
+						{{ partial "menu/menu-default" (dict "page" . "nav_item_class" "py-xl-7 py-0 me-xxl-12 me-xl-10" "nav_link_class" "py-xl-0 px-xl-0 fw-semibold ls-1 fs-6 fs-xl-15px text-body-emphasis" ) }}
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</header>

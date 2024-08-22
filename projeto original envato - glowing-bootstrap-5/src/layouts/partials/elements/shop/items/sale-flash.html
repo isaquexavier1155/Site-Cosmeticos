@@ -1,0 +1,21 @@
+{{/***
+Element Parameters
+---------------------------------------------
+$.class: 			Element extra class name
+$.price:            Price data: regular, sale
+$.is_new:           New
+*/}}
+{{- if (or (and (isset $ "is_new") (ne $.is_new "") (ne $.is_new nil)) (and (isset $.price "sale") (ne $.price.sale "") (ne $.price.sale nil)))}}
+    <div class="position-absolute product-flash z-index-2 ">
+        {{- if (and (isset $.price "sale") (ne $.price.sale "") (ne $.price.sale nil)) -}}
+            {{- $sale := float $.price.sale -}}
+            {{- $regular := float $.price.regular -}}
+            {{- $percent := math.Ceil (mul 100 (div (sub $regular $sale) $regular) ) -}}
+            <span class="badge badge-product-flash on-sale bg-primary">-{{- $percent -}}%</span>
+        {{- end -}}
+        {{- if (and (isset $ "is_new") (ne $.is_new "") (ne $.is_new nil)) -}}
+            <span class="badge badge-product-flash on-new">New</span>
+        {{- end -}}
+
+    </div>
+{{- end -}}

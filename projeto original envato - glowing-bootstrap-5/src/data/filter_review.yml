@@ -1,0 +1,44 @@
+items:
+  - item1:
+      - title: Foundation
+      - title: Coverage
+      - title: Skin
+      - title: Color
+      - title: Shade
+      - title: Make up
+      - title: Face
+      - title: Ingredients
+      - title: Moisturizer
+      - title: Pure
+      - title: Nature
+  - item2:
+      - title: ...
+  - item3:
+      - item:
+        - title: Good Value
+        - title: Lightweight
+        - title: Smells Great
+        - title: Easy To Use
+
+filter:
+  - title: Skin goal
+    id: skin_goal
+    values:
+      - value: Skin goal
+      - value: Looking Pores
+      - value: Clear Skin
+      - value: Chicagon
+      - value: Dewy-Looking Skin
+      - value: Radiant
+  - title: Image & Video
+    id: image_video
+    values:
+      - value: Image & Video
+      - value: Newest
+      - value: Oldest
+  - title: Sort by
+    id: sort_by
+    values:
+      - value: Sort by
+      - value: Newest
+      - value: Oldest

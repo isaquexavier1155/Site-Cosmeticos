@@ -1,0 +1,51 @@
+{{/***
+Element Parameters
+---------------------------------------------
+$.class: 			Element extra class name
+$.contentClass 		Instagram content class
+$.socialClass 		Instagram Social class
+$.title:            Team-member title
+$.subtitle:		    Team-member subtitle
+$.content	        Team-member Content
+$.altContent: 		Team-member Alt Content
+*/}}
+
+{{- $class := "hover-change-image" -}}
+{{- if isset $ "class" }}
+{{- $class = $.class -}}
+{{ end -}}
+
+{{- $socialClass := "text-center bg-body-tertiary w-100 hover-image hover-bottom-to-top m-0 px-7 py-5" -}}
+{{- if isset $ "socialClass" }}
+{{- $socialClass = $.socialClass -}}
+{{ end -}}
+
+{{- $contentClass := "border-0 d-flex flex-column p-0 justify-content-end align-items-center" -}}
+{{- if isset $ "contentClass" }}
+{{- $contentClass = $.contentClass -}}
+{{ end -}}
+
+
+<div class="card border-0 {{- if $class }} {{ $class }}{{ end }} {{ $.space }}">
+	<div class="position-relative overflow-hidden">
+		<img class="card-img img-fluid lazy-image" src="#" data-src="{{ $.image }}" width="{{ $.width }}" height="{{ $.height }}" alt="{{ $.altContent }}">
+		<div class="card-img-overlay {{- if $contentClass }} {{ $contentClass }}{{ end }}">
+			<ul class="list-inline {{- if $socialClass }} {{ $socialClass }}{{ end }}">
+				<li class="list-inline-item mx-6"><a href="#" class="fs-18px" tabindex="0"><i class="fab fa-twitter"></i></a></li>
+				<li class="list-inline-item mx-6"><a href="#" class="fs-18px" tabindex="0"><i class="fab fa-facebook"></i></a></li>
+				<li class="list-inline-item mx-6"><a href="#" class="fs-18px" tabindex="0"><i class="fab fa-instagram"></i></a></li>
+				<li class="list-inline-item mx-6"><a href="#" class="fs-18px" tabindex="0"><i class="fab fa-youtube"></i></a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="card-body px-0 py-7 {{- if $.content }} {{ $.content }}{{ end }}">
+		{{- if $.title -}}
+		<h4 class="">
+			<a href="#" class="text-decoration-none">{{ $.title}}</a>
+		</h4>
+		{{- end }}
+		{{- if $.subtitle -}}
+		<p class="card-text">{{ $.subtitle }}</p>
+		{{- end }}
+	</div>
+</div>

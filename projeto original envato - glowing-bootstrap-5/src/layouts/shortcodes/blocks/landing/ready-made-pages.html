@@ -1,0 +1,42 @@
+{{/*
+Block settings
+-------------------------------------------------
+id			Block ID
+class		Block class extral
+*/}}
+{{- $id := .Get "id" | default "" -}}
+{{- $class := .Get "class" | default "pt-15 pt-lg-20 pb-16 pb-lg-19 overflow-hidden landing-ready" -}}
+{{- $data := index $.Site.Data.landing_ready_made -}}
+{{- $currentPage := . -}}
+
+<section {{- if $id }} id="{{ $id }}" {{- end -}} {{- if $class }} class="{{ $class }}" {{- end}}>
+    {{ .Inner }}
+	<h2 data-animate="fadeInUp" class="fs-1 mb-7 text-center px-6">Ready-made Pages</h2>
+	<p data-animate="fadeInUp" class="fs-18px mx-auto text-center mb-12 mb-lg-14 px-6 landing-ready-desc">
+		Essential inner pages for an online store are equipped and ready to use.
+	</p>
+	<div class="landing-made-pages container-fluid mx-auto">
+		<div class="d-flex flex-column flex-sm-row mb-sm-11 landing-made-pages-1">
+            {{- if $data}}
+				{{ range $item := $data.items1 }}
+					<div data-animate="fadeInUp" class="px-6 px-sm-4 px-lg-8 mb-9 mb-sm-0 landing-ready-item flex-grow-1">
+						<a class="landing-ready-hover rounded overflow-hidden d-block" href="{{ $item.url }}" target="_blank" title="{{ $item.title }}">
+							{{  partial "the-image" (dict "currentPage" $currentPage "img" $item.img "img_dark" $item.img_dark "class" "w-100 img-fluid" "width" "430" "height" "274" "alt" "page") }}
+						</a>
+					</div>
+				{{ end }}
+			{{ end }}
+		</div>
+		<div class="d-flex flex-column flex-sm-row landing-made-pages-2">
+            {{- if $data}}
+                {{ range $item := $data.items2 }}
+					<div data-animate="fadeInUp" class="px-6 px-sm-4 px-lg-8 flex-grow-1 landing-ready-item {{- if $item }} {{ $item.class }}{{- end}}">
+						<a class="landing-ready-hover rounded overflow-hidden d-block" href="{{ $item.url }}" target="_blank" title="{{ $item.title }}">
+							{{  partial "the-image" (dict "currentPage" $currentPage "img" $item.img "img_dark" $item.img_dark "class" "w-100 h-auto" "width" "435" "height" "277" "alt" "page") }}
+						</a>
+					</div>
+                {{ end }}
+            {{ end }}
+		</div>
+	</div>
+</section>

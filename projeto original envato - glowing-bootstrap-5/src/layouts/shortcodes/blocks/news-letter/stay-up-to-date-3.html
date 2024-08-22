@@ -1,0 +1,21 @@
+{{/*
+Block settings
+-------------------------------------------------
+id			Block ID
+class		Block class extral
+*/}}
+{{- $id := .Get "id" | default "" -}}
+{{- $class := .Get "class" | default "bg-image pt-lg-17 pb-lg-17 pt-15 pb-15" -}}
+{{- $background := .Get "background" | default "/assets/images/others/news-letter-background.jpg" -}}
+{{- $backgroundDark := .Get "backgroundDark" | default "/assets/images/others/news-letter-background-white-02.jpg" -}}
+
+<section {{- if $id }} id="{{ $id }}" {{- end }} class="position-relative {{ if $class }} lazy-bg {{ $class }} {{- end}}">
+    {{ .Inner }}
+	<div class="container text-center position-relative z-index-2">
+		{{ partial  "elements/heading/style-1" (dict "currentPage" . "title" "Stay Up to Date with All News and Exclusive Offers" "animation" "fadeInUp" "isH3Tag" "true" "maxWidth" "509px" "class" "mx-auto mb-11") }}
+		<form class="mx-auto up-to-date-form" style="max-width: 546px" data-animate="fadeInUp">
+            {{ partial  "elements/news-letter/style-2" (dict "currentPage" . "desc" "I accept the <a href=\"#\" class=\"text-decoration-none border-bottom\">terms & conditions</a> and <a href=\"#\" class=\"text-decoration-none border-bottom\">the data protection</a>" "buttontitle" "Subscribe") }}
+		</form>
+	</div>
+	{{ partial "overlay" (dict "currentPage" . "img" $background "imgDark" $backgroundDark) }}
+</section>

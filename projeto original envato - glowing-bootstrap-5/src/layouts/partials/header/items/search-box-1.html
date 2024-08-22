@@ -1,0 +1,15 @@
+{{/***
+Element Parameters
+---------------------------------------------
+$				Element class extra
+*/}}
+{{- $class := $ -}}
+
+<form action="#" method="get" class="search-box-1 form-border-transparent {{- if $class }} {{ $class }}{{ end -}}">
+	<div class="position-relative">
+		<input type="text" name="s" class="form-control bg-body-secondary ps-12" placeholder="What are you looking for?">
+		<button class="position-absolute bg-transparent border-0 px-0 fs-4 ps-6 top-0 bottom-0 my-auto z-index-3 text-body-emphasis" type="submit">
+			{{ partial "svg-icon" (dict "icon" "search" "class" "fs-18px mt-n3") }}
+		</button>
+	</div>
+</form>

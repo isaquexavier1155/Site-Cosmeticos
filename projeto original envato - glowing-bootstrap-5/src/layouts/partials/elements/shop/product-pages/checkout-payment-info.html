@@ -1,0 +1,119 @@
+{{/***
+Element Parameters
+---------------------------------------------
+$.class:                Element extra class name
+$.currentPage:            $.currentPage.Page, $.currentPage.Site
+$.titleClass:            Title extra Class
+$.btnClass:            Button extra class
+$.btnContent:            Place Order Button Content
+$.title:                Checkout Payment Info title
+*/}}
+
+{{- $class := "mb-7" -}}
+{{- if isset $ "class" }}
+{{- $class = $.class -}}
+{{ end -}}
+
+{{- $titleClass := "fs-4 mb-8 mt-12 pt-lg-1" -}}
+{{- if isset $ "titleClass" }}
+{{- $titleClass = $.titleClass -}}
+{{ end -}}
+
+{{- $btnClass := "btn-dark btn-hover-bg-primary btn-hover-border-primary px-11 mt-md-7 mt-4" -}}
+{{- if isset $ "btnClass" }}
+{{- $btnClass = $.btnClass -}}
+{{ end -}}
+
+<div class="checkout {{- if $class }} {{ $class }}{{ end }}">
+	<div class="mb-7">
+		{{- if $.title -}}
+		<h4 class="{{ if $titleClass }} {{- $titleClass }}{{ end }}">{{ $.title }}</h4>
+		{{ end }}
+
+		<div class="nav nav-tabs border-0">
+			{{ range $item := $.currentPage.Site.Data.checkout_payment_info.items }}
+			<a class="btn btn-payment px-12 mx-2 py-6 me-7 my-3 nav-link {{- if $item.status }} {{ $item.status }}{{ end }}"
+			   data-bs-toggle="tab" data-bs-target="#{{ $item.target }}">
+				<svg class="icon icon-paylay fs-32px text-body-emphasis">
+					<use xlink:href="#{{ $item.icon }}"></use>
+				</svg>
+				<span class="ms-3 text-body-emphasis fw-semibold fs-6">{{ $item.title }}</span>
+			</a>
+			{{ end }}
+		</div>
+		<div class="tab-content mt-7">
+			<div class="tab-pane fade" id="paypal-tab">
+				<div class="">
+					<div class="row">
+						<div class="col-md-6 mb-7">
+							<label for="your-email"
+								   class="mb-5 fs-13px letter-spacing-01 fw-bold text-uppercase">Email</label>
+							<input name="paymentEmail" type="email" class="form-control" id="your-email"
+								   placeholder="Your email" required="">
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-6">
+							<label for="password" class="mb-5 fs-13px letter-spacing-01 fw-semibold text-uppercase">Password</label>
+							<input name="paymentPassword" type="password" class="form-control" id="password"
+								   placeholder="******" required="">
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="tab-pane active show fade" id="credit-card-tab">
+				<div class="">
+					<div class="mb-7">
+						<label class="mb-5 fs-13px letter-spacing-01 fw-semibold text-uppercase">CREDIT CARD
+							NUMBER</label>
+						<div class="row align-items-center">
+							<div class="col-md-6 mb-md-0 mb-7">
+								<input name="creditCardText" type="text" class="form-control"
+									   placeholder="**** **** **** ****">
+							</div>
+							<div class="col-md-6">
+								<img src="/assets/images/others/Paypal.jpg" alt="Paypal">
+							</div>
+						</div>
+					</div>
+					<div class="mb-7">
+						<div class="row align-items-end">
+							<div class="col-md-8">
+								<div class="row align-items-end">
+									<div class="col-md-6 mb-md-0 mb-7">
+										<label class="mb-5 fs-13px letter-spacing-01 fw-semibold text-uppercase">EXPIRATION
+											DATE</label>
+										<select name="inputMonth" id="inputMonth" class="form-select px-6 border-0">
+											{{ range $item := $.currentPage.Site.Data.checkout_payment_info.month }}
+											<option {{- if $item.status }} {{ $item.status }}{{ end }}>{{
+												$item.value }}
+											</option>
+											{{ end }}
+										</select>
+									</div>
+									<div class="col-md-6 mb-md-0 mb-7">
+										<label
+											class="mb-5 fs-13px letter-spacing-01 fw-semibold text-uppercase opacity-0 d-md-block d-none">Year</label>
+										<select name="inputYear" id="inputYear" class="form-select border-0 px-6">
+											{{ range $item := $.currentPage.Site.Data.checkout_payment_info.year }}
+											<option {{- if $item.status }} {{ $item.status }}{{ end }}>{{
+												$item.value }}
+											</option>
+											{{ end }}
+										</select>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-4 col-md-4 mb-md-0 mb-7">
+								<label class="mb-5 fs-13px letter-spacing-01 fw-semibold text-uppercase">SECURITY
+									CODE</label>
+								<input type="email" class="form-control bg-body-secondary">
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<button type="submit" class="btn {{- if $btnClass }} {{ $btnClass }}{{ end }}">Place Order</button>
+</div>

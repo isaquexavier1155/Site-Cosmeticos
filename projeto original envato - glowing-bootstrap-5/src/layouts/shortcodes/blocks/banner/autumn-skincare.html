@@ -1,0 +1,49 @@
+{{/*
+Block settings
+-------------------------------------------------
+id			Block ID
+class		Block class extral
+*/}}
+{{- $id := .Get "id" | default "" -}}
+{{- $class := .Get "class" | default "pt-lg-16 pt-14" -}}
+
+<section {{- if $id }} id="{{ $id }}" {{- end -}} {{- if $class }} class="{{ $class }}" {{- end}}>
+    {{ .Inner }}
+	<div class="container container-xxl">
+		<div class="row gy-30px gx-30px">
+			<div class="col-12 col-md-4">
+                {{ partial  "elements/banner/style-4" (dict
+				"title" "Autumn Skincare"
+				"currentPage" .
+                "image" "/assets/images/banner/banner-05.jpg" "width" "450" "height" "600"
+                "img_dark" "/assets/images/banner/banner-white-05.jpg" "width" "450" "height" "600"
+				"imageClass" "lazy-image"
+                "btnClass" "btn-link p-0 fw-semibold text-white text-decoration-none"
+				"btnContent" "Disvover Now "
+                "icon" "icon-arrow-right"
+				"altContent" "Autumn Skincare"
+				) }}
+			</div>
+			<div class="col-12 col-md-4">
+                {{ partial  "elements/banner/style-4" (dict "title" "Anti-aging Cream"
+                "image" "/assets/images/banner/banner-03.jpg" "width" "450" "height" "600"
+                "imageClass" "lazy-image"
+                "btnClass" "btn-link p-0 fw-semibold text-white text-decoration-none"
+				"btnContent" "Buy 1 get 1 "
+                "icon" "icon-arrow-right"
+				"altContent" "Anti-aging Cream") }}
+			</div>
+			<div class="col-12 col-md-4">
+                {{ partial  "elements/banner/style-4" (dict "title" "Sale Up To 40% Off"
+				"currentPage" .
+                "image" "/assets/images/banner/banner-04.jpg" "width" "450" "height" "600"
+                "img_dark" "/assets/images/banner/banner-white-04.jpg" "width" "450" "height" "600"
+                "imageClass" "lazy-image"
+                "btnClass" "btn-link p-0 fw-semibold text-white text-decoration-none"
+				"btnContent" "Shop Sale "
+                "icon" "icon-arrow-right"
+                "altContent" "Sale Up To 40% Off") }}
+			</div>
+		</div>
+	</div>
+</section>

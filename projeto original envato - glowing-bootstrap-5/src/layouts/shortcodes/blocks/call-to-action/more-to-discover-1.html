@@ -1,0 +1,39 @@
+{{/*
+Block settings
+-------------------------------------------------
+id			Block ID
+class		Block class extral
+*/}}
+{{- $id := .Get "id" | default "" -}}
+{{- $class := .Get "class" | default "pt-14 pb-md-12 pb-8 pb-lg-17 pt-lg-21" -}}
+
+<section {{- if $id }} id="{{ $id }}" {{- end -}} {{- if $class }} class="{{ $class }}" {{- end}} >
+    {{ .Inner }}
+	<div class="container container-xxl">
+        {{ partial "elements/heading/style-1" (dict "title" "More to Discover"
+        "desc" "Our bundles were designed to conveniently package your tanning essentials while saving you money."
+        "descClass" "fs-18px w-lg-60 w-xl-40 mx-md-16 mx-lg-auto mb-13"
+		"animation" "fadeInUp"
+        ) }}
+		<div class="row">
+			<div class="col-md-6 mb-8 mb-md-0" data-animate="fadeInUp">
+                {{ partial "elements/image-box/style-4" (dict
+				"currentPage" .
+				"title" "Summer Collection"
+                "img" "/assets/images/image-box/image-box-10-1.jpg"
+                "img_dark" "/assets/images/image-box/image-box-white-10-1.jpg"
+                "btnshop" "Shop now"
+                ) }}
+			</div>
+			<div class="col-md-6 mb-8 mb-md-0" data-animate="fadeInUp">
+                {{ partial "elements/image-box/style-4" (dict
+				"currentPage" .
+				"title" "Summer Collection"
+                "img" "/assets/images/image-box/image-box-12.jpg"
+                "img_dark" "/assets/images/image-box/image-box-white-12.jpg"
+                "btnshop" "Read more"
+                ) }}
+			</div>
+		</div>
+	</div>
+</section>

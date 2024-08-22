@@ -1,0 +1,18 @@
+{{- define "main" -}}
+	{{ partial "header" . }}
+	<main id="content" class="wrapper layout-page">
+		{{ .Content }}
+	</main>
+	{{ partial "footer" . }}
+{{- end -}}
+
+{{- define "footer" -}}
+	{{- partial "pieces/search-modal" . -}}
+	{{- partial "pieces/shopping-cart-modal" . -}}
+	{{- partial "pieces/sign-in-modal" . -}}
+	{{- partial "pieces/sign-up-modal" . -}}
+	{{- partial "pieces/quick-view-modal" . -}}
+	{{- partial "pieces/offcanvas-navbar" . -}}
+	{{- partial "pieces/back-to-top" . -}}
+
+{{- end -}}

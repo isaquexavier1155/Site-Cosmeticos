@@ -1,0 +1,22 @@
+{{- $id := .Get "id" | default "" -}}
+{{- $class := .Get "class" | default "container container-xxl pt-14 pt-lg-17 pb-15" -}}
+<section {{- if $id }} id="{{ $id }}" {{- end -}}{{- if $class }} class="{{ $class }}" {{- end}}>
+	{{ .Inner }}
+	{{ partial  "elements/heading/style-1" (dict "currentPage" .
+	"descExtraClass" "fs-18px mb-0 mw-xl-35 mw-lg-50 mw-md-75 ms-auto me-auto px-xl-5"
+	"title" "New Arrivals"
+	"titleClass" "mb-5"
+	"class" "mb-13"
+	"animation" "fadeInUp"
+	"desc" "Looking for something specific? Shop by category to find your perfect piece of jewellery!") }}
+	<div class="slick-slider" data-slick-options='{{ $.Site.Data.new_arrivals.options | jsonify }}'>
+		{{- range $item := $.Site.Data.new_arrivals.items -}}
+			<div>
+				{{ partial  "elements/shop/skins/grid-1" (dict
+				"data" $item
+				"animation" "fadeInUp"
+				) }}
+			</div>
+		{{- end -}}
+	</div>
+</section>

@@ -1,0 +1,15 @@
+{{/***
+Element Parameters
+---------------------------------------------
+$.class: 			Element extra class name
+$.currentPage: 		$.currentPage.Page, $.currentPage.Site
+*/}}
+
+{{- $wrapperClass := "mt-13 pt-3 text-center" -}}
+{{- if isset $ "class" }}
+    {{- $wrapperClass = $.class -}}
+{{ end -}}
+
+<div class="{{- if $wrapperClass }}{{ $wrapperClass }}{{ end }}" data-animate="fadeInUp">
+    <a href="#" class="btn btn-outline-dark">Read More</a>
+</div>

@@ -1,0 +1,90 @@
+- title: Home
+  url: /index.html
+  megamenu: menu/megamenu-home.html
+  size: fix
+  width: 320px
+
+- title: Shop
+  url: /store.html
+  megamenu: menu/megamenu-shop.html
+  size: full
+
+- title: Pages
+  url: "#"
+  submenu:
+    - title: Blog
+      url: "#"
+      submenu:
+        - title: Blog Grid
+          url: /blog/grid.html
+        - title: Blog Grid Sidebar
+          url: /blog/grid-sidebar.html
+        - title: Blog Masonry
+          url: /blog/masonry.html
+        - title: Blog List
+          url: /blog/list.html
+        - title: Blog Classic
+          url: /blog/classic.html
+        - title: ""
+          type: divider
+        - title: Blog Details 01
+          url: /blog/details-01.html
+        - title: Blog Details 02
+          url: /blog/details-02.html
+    - title: ""
+      type: divider
+    - title: About Us
+      url: "#"
+      submenu:
+        - title: About Us 01
+          url: /about-us-01.html
+        - title: About Us 02
+          url: /about-us-02.html
+    - title: Contact us
+      url: "#"
+      submenu:
+        - title: Contact Us 01
+          url: /contact-us-01.html
+        - title: Contact Us 02
+          url: /contact-us-02.html
+
+    - title: Dashboard
+      url: /dashboard/dashboard.html
+      submenu:
+        - title: Dashboard
+          url: /dashboard/dashboard.html
+        - title: Products
+          url: /dashboard/product-grid.html
+        - title: Orders
+          url: /dashboard/order-list.html
+        - title: Sellers
+          url: /dashboard/sellers-cards.html
+        - title: Add Product
+          url: /dashboard/add-product-1.html
+        - title: Transaction
+          url: /dashboard/transactions-1.html
+        - title: Reviews
+          url: /dashboard/reviews.html
+        - title: Brands
+          url: /dashboard/brands.html
+        - title: Settings
+          url: /dashboard/profile-settings.html
+
+    - title: FAQs
+      url: /faqs.html
+    - title: Store
+      url: /find-a-store.html
+    - title: 404
+      url: /404.html
+
+- title: Blocks
+  url: "#"
+  megamenu: menu/megamenu-blocks.html
+  size: fix
+  width: 800px
+
+- title: Docs
+  url: "#"
+  megamenu: menu/megamenu-docs.html
+
+

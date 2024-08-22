@@ -1,0 +1,44 @@
+{{ .Inner }}
+{{/*
+Block settings
+-------------------------------------------------
+id			Block ID
+class		Block class extral
+*/}}
+{{- $id := .Get "id" | default "" -}}
+{{- $class := .Get "class" | default "pt-14 pt-lg-18 mt-3" -}}
+
+<section {{- if $id }} id="{{ $id }}" {{- end -}} {{- if $class }} class="{{ $class }}" {{- end}}>
+	{{ .Inner }}
+	<div class="container container-xxl testimonial">
+		<div class="row">
+			<div class="col-lg-4 d-flex flex-column  justify-content-lg-between mb-12 mb-lg-0">
+				{{ partial  "elements/heading/style-1" (dict "align" "left"
+				"title" "Testimonials"
+				"desc" "Made using clean, non-toxic ingredients, our products are designed for everyone."
+				"class" "mt-lg-8"
+				"descClass" "fs-18px w-80"
+				"animation" "fadeInUp"
+				) }}
+				<div class="d-flex mt-2 custom-arrow" data-animate="fadeInUp">
+					<div class="custom-arrows-02-prev position-static slick-arrow" aria-label="Previous" style=""><i class="far fa-chevron-left"></i></div>
+					<div class="custom-arrows-02-next position-static ms-7 slick-arrow" aria-label="Next" style=""><i class="far fa-chevron-right"></i></div>
+				</div>
+			</div>
+			<div class="col-lg-8">
+				<div class="slick-slider custom-arrows-02 custom-slider-04" data-slick-options='{{ $.Site.Data.testimonials_1.options | jsonify }}'>
+                    {{- range $item := $.Site.Data.testimonials_1.items -}}
+						{{ partial "elements/testimonials/style-2" (dict "title" $item.title
+						"img" $item.img
+						"author" $item.author
+						"altContent" $item.altContent
+						"position" $item.position
+						"rate" $item.rate
+						"animation" "fadeInUp"
+					) }}
+					{{- end -}}
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

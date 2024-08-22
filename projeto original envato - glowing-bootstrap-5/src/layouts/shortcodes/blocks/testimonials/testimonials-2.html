@@ -1,0 +1,27 @@
+{{ .Inner }}
+{{/*
+Block settings
+-------------------------------------------------
+id			Block ID
+class		Block class extral
+*/}}
+{{- $id := .Get "id" | default "" -}}
+{{- $class := .Get "class" | default "pt-lg-18 pt-15 mt-3 pb-lg-17 pb-16" -}}
+
+<section {{- if $id }} id="{{ $id }}" {{- end -}} {{- if $class }} class="{{ $class }}" {{- end}} data-animate="fadeInUp">
+    {{ .Inner }}
+	<div class="container container-xxl">
+        <div class="col-lg-6 offset-lg-3">
+            <div class="slick-slider custom-arrow dot-lg-0" data-slick-options='{"slidesToShow": 1,"infinite":true,"autoplay":true,"dots":false,"arrows":true,"fade":false,"cssEase":"ease-in-out","speed":600, "responsive":[{"breakpoint": 992,"settings": {"slidesToShow":1,"dots":true, "arrows":false }}]}'>
+                {{ partial "elements/testimonials/style-3" (dict "title" "Amazing product. The results are so transformative in texture and my face feels plump and healthy." "img" "/assets/images/testimonial/testimonial-10.png" "author" "Kathleen C."
+                "altContent" "Amazing product. The results are so transformative in texture.") }}
+
+                {{ partial "elements/testimonials/style-3" (dict "title" "Amazing product. The results are so transformative in texture and my face feels plump and healthy." "img" "/assets/images/testimonial/testimonial-11.png" "author" "Kathleen C."
+                "altContent" "Amazing product. The results are so transformative in texture.") }}
+
+                {{ partial "elements/testimonials/style-3" (dict "title" "Amazing product. The results are so transformative in texture and my face feels plump and healthy." "img" "/assets/images/testimonial/testimonial-12.png" "author" "Kathleen C."
+                "altContent" "Amazing product. The results are so transformative in texture.") }}
+			</div>
+		</div>
+	</div>
+</section>

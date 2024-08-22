@@ -1,0 +1,83 @@
+{{/*
+Block settings
+-------------------------------------------------
+id			Block ID
+class		Block class extral
+*/}}
+{{- $id := .Get "id" | default "" -}}
+{{- $class := .Get "class" | default "bg-body-tertiary pt-lg-20 pt-15 pb-lg-13 pb-8" -}}
+{{- $data := index $.Site.Data.landing_ready_made -}}
+
+<section {{- if $id }} id="{{ $id }}" {{- end -}} {{- if $class }} class="{{ $class }}" {{- end}}>
+    {{ .Inner }}
+	<div class="container container-xxl">
+		<h2 data-animate="fadeInUp" class="fs-1 mb-7 text-center px-6">Modern Development Toolset</h2>
+		<p data-animate="fadeInUp" class="fs-18px mx-auto text-center mb-9 landing-ready-desc">Faster mobile development at lower costs for
+			our users, improving the online browsing experience, and
+			facilitate improved SEO, lower bounce rates, and lower maintenance needs.
+		</p>
+		<div class="row">
+			<div class="col-xl-4 col-md-6">
+				<div data-animate="fadeInUp" class="d-flex align-items-start p-9 pe-lg-12 landing-toolset-items">
+					<img class="me-9 w-auto lazy-image" src="#" data-src="/assets/images/landing/landing-toolset-02.png" alt="Responsive Design" width="39" height="39">
+					<div class="pt-3">
+						<h5 class="fs-4 mb-4">Responsive Design</h5>
+						<p class="fs-18px">Remain consistent in design &amp; brand and attract a wider audience for your
+							store</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-xl-4 col-md-6">
+				<div data-animate="fadeInUp" class="d-flex align-items-start p-9 pr-lg-7 landing-toolset-items">
+					<img class="me-9 w-auto lazy-image" src="#" data-src="/assets/images/landing/landing-toolset-09.png" alt="Flexible Customization" width="38" height="38">
+					<div>
+						<h5 class="fs-4 mb-4">Bootstrap 5</h5>
+						<p class="fs-18px">The most popular CSS Framework for developing responsive and mobile-first websites.
+						</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-xl-4 col-md-6">
+				<div data-animate="fadeInUp" class="d-flex align-items-start p-9 pr-lg-7 landing-toolset-items">
+					<img class="me-9 w-auto lazy-image" src="#" data-src="/assets/images/landing/landing-toolset-04.png" alt="Flexible Customization"  width="56" height="56">
+					<div>
+						<h5 class="fs-4 mb-4">Flexible Customization</h5>
+						<p class="fs-18px">Easily edit/customize to make Glowing fit your branding
+						</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-xl-4 col-md-6">
+				<div data-animate="fadeInUp" class="d-flex align-items-start p-9 pr-lg-7 landing-toolset-items">
+					<img class="me-9 w-auto lazy-image" src="#" data-src="/assets/images/landing/landing-toolset-03.png" alt="Node.js"  width="34" height="34">
+					<div class="pt-3">
+						<h5 class="fs-4 mb-4">Node.js</h5>
+						<p class="fs-18px">The largest ecosystem of open source libraries in the world​​ that allows you
+							to work more ​​efficient
+						</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-xl-4 col-md-6">
+				<div data-animate="fadeInUp" class="d-flex align-items-start p-9 pr-lg-7 landing-toolset-items">
+					<img class="me-9 w-auto lazy-image" src="#" data-src="/assets/images/landing/landing-toolset-07.png" alt="Flexible Customization" width="48" height="48">
+					<div>
+						<h5 class="fs-4 mb-4">SCSS</h5>
+						<p class="fs-18px">SASS/SCSS là một chương trình tiền xử lý CSS (CSS preprocessor).
+						</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-xl-4 col-md-6">
+				<div data-animate="fadeInUp" class="d-flex align-items-start p-9 pr-lg-7 landing-toolset-items">
+					<img class="me-9 w-auto lazy-image" src="#" data-src="/assets/images/landing/landing-toolset-08.png" alt="Flexible Customization" width="59" height="59">
+					<div>
+						<h5 class="fs-4 mb-4">Hugo</h5>
+						<p class="fs-18px">The world’s fastest framework for building websites
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

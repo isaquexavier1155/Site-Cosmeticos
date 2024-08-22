@@ -1,0 +1,39 @@
+items:
+  - title: Amazing product. The results are so transformative in texture and my face feels plump and healthy. Highly recommend!
+    img: /assets/images/testimonial/testimonials-05.png
+    author: JENNIFER C.
+    position: "/ Orlando, FL"
+    rate: 100
+    altContent: Amazing product. The results are so transformative in texture.
+  - title: Amazing product. The results are so transformative in texture and my face feels plump and healthy. Highly recommend!
+    img: /assets/images/testimonial/testimonials-06.png
+    author: JENNIFER C.
+    position: "/ Orlando, FL"
+    rate: 100
+    altContent: Amazing product. The results are so transformative in texture.
+  - title: Amazing product. The results are so transformative in texture and my face feels plump and healthy. Highly recommend!
+    img: /assets/images/testimonial/testimonials-04.png
+    author: JENNIFER C.
+    position: "/ Orlando, FL"
+    rate: 100
+    altContent: Amazing product. The results are so transformative in texture.
+options:
+  slidesToShow: 2
+  centerMode: false
+  infinite: true
+  autoplay: true
+  dots: false
+  arrows: true
+  fade: false
+  cssEase: ease-in-out
+  speed: 600
+  responsive:
+    - breakpoint: 1024
+      settings:
+        slidesToShow: 2
+    - breakpoint: 992
+      settings:
+        slidesToShow: 2
+    - breakpoint: 768
+      settings:
+        slidesToShow: 1

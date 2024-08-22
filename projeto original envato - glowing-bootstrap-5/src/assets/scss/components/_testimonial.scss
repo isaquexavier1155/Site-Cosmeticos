@@ -1,0 +1,13 @@
+@include media-breakpoint-up(xl) {
+	.custom-slider-04 {
+		width: 65vw
+	}
+	.custom-slider-04 .slick-list {
+		padding:0 24.3% 0 0!important
+	}
+}
+@include media-breakpoint-up(xxl) {
+	.custom-slider-04{
+		width:62vw
+	}
+}

@@ -1,0 +1,57 @@
+{{/***
+Element Parameters
+---------------------------------------------
+$.currentPage: 		$.currentPage.Page, $.currentPage.Site
+$.class: 			Element extra class name
+$.subtitleL         Subtitle of left element
+$.subtitleR         Subtitle of right element
+$.urlSubL			Link of Left Subtitle
+$.urlSubR			Link of Left Subtitle
+*/}}
+
+<div class="row no-gutters pt-11 justify-content-sm-between">
+	<div class="col-sm-6 mb-4 mb-sm-0">
+		<ul class="list-inline fw-semibold">
+			{{- range $item := $.currentPage.Site.Data.post_details_footer -}}
+			<li class="list-inline-item me-3">
+				<a href="{{ $item.url }}" class="text-body text-body-emphasis-hover text-decoration-none">#{{- $item.tag -}}</a>
+			</li>
+			{{- end -}}
+		</ul>
+	</div>
+	<div class="col-sm-6 d-flex justify-content-sm-end">
+		<label class="text-secondary fw-semibold me-7 mb-0">Share:</label>
+		<ul class="list-inline mb-0 lh-1">
+			{{- range $item := $.currentPage.Site.Data.post_details_footer -}}
+			<li class="list-inline-item me-7">
+				<a href="{{ $item.url }}" class="fs-18px lh-14 fw-normal">
+					<i class="{{ $item.icon }}"></i>
+				</a>
+			</li>
+			{{- end -}}
+		</ul>
+	</div>
+	<div class="col-12 mt-5 mb-7">
+		<div class="border-bottom"></div>
+	</div>
+	<div class="col-sm-6">
+		<div class ="ml-8">
+			<p class="fs-13px ls-1 text-uppercase mb-5 fw-semibold px-8">
+				Videos
+			</p>
+			<a href="#" class="fs-15px fw-semibold position-relative px-8">
+				<i class="far fa-chevron-left mt-2 position-absolute start-0 top-0"></i>{{ $.subtitleL }}
+			</a>
+		</div>
+	</div>
+	<div class="col-sm-6 d-flex justify-content-sm-end">
+		<div class ="mr-8 text-right">
+			<p class="fs-13px text-start text-sm-end ls-1 text-uppercase mb-5 fw-semibold px-8">
+				Life style
+			</p>
+			<a href="#" class="fs-15px text-start text-sm-end fw-semibold position-relative px-8">
+				<i class="far fa-chevron-right mt-2 position-absolute end-0 top-0"></i>{{ $.subtitleR }}
+			</a>
+		</div>
+	</div>
+</div>

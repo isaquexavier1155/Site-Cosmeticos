@@ -1,0 +1,85 @@
+////////////////////////////////////////////////////////////////////////////////////////
+// Theme custom variables
+////////////////////////////////////////////////////////////////////////////////////////
+
+// scss-docs-start theme-color-variables
+$primary:       #4e7661 !default;
+
+// Spacing
+//
+// Control the default styling of most Bootstrap elements by modifying these
+// variables. Mostly focused on spacing.
+// You can add more entries to the $spacers map, should you need more variation.
+
+// scss-docs-start spacer-variables-maps
+
+$spacer: 1rem !default;
+$spacers: (
+	0: 0,
+	1: $spacer * .25,
+	2: $spacer * .5,
+	3: $spacer,
+	4: $spacer * 1.5,
+	5: $spacer * 3,
+	6: $spacer * 3.5,
+	7: $spacer * 4,
+	8: $spacer * 4.5,
+	9: $spacer * 5,
+	10: $spacer * 5.5,
+) !default;
+
+// scss-docs-start display-headings
+$display-font-sizes: (
+	1: 4rem,
+	2: 3.5rem,
+	3: 3rem,
+	4: 2.5rem,
+	5: 2rem,
+	6: 1.5rem
+) !default;
+
+$utilities: (
+	"width": (
+		responsive: true,
+		property: width,
+		class: w,
+		values: (
+			25: 25%,
+			50: 50%,
+			75: 75%,
+			100: 100%,
+			auto: auto
+		)
+	),
+	"font": (
+		property: font-family,
+		class: "font",
+		values: (
+			'primary': 'OpenSand',
+			'body': '',
+		)
+	)
+);
+
+
+// scss-docs-start grid-breakpoints
+$grid-breakpoints: (
+	xs: 0,
+	sm: 576px,
+	md: 768px,
+	lg: 992px,
+	xl: 1200px,
+	xxl: 1500px
+) !default;
+// scss-docs-end grid-breakpoints
+
+// scss-docs-start container-max-widths
+$container-max-widths: (
+	sm: 540px,
+	md: 720px,
+	lg: 960px,
+	xl: 1140px,
+	xxl: 1440px
+) !default;
+// scss-docs-end container-max-widths
+

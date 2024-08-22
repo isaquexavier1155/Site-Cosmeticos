@@ -1,0 +1,221 @@
+{{/***
+Element Parameters
+---------------------------------------------
+$.class				Element class extra
+$.tableClass 		Table Class
+$.activeHeader 		Active Header
+
+*/}}
+
+{{- $class := "card-body px-0 pt-7 pb-0" -}}
+{{- if isset $ "class" }}
+	{{- $class = $.class -}}
+{{ end -}}
+
+{{- $tableClass := "table table-hover align-middle table-nowrap mb-0 table-borderless" -}}
+{{- if isset $ "tableClass" }}
+{{- $tableClass = $.tableClass -}}
+{{ end -}}
+
+{{- $activeHeader := true -}}
+{{- if isset $ "activeHeader" }}
+{{- $activeHeader = $.activeHeader -}}
+{{ end -}}
+
+<div class="{{ $class }}">
+	<div class="table-responsive">
+		<table class="{{ $tableClass }}">
+			{{- if eq $activeHeader true -}}
+				<thead class="table-light">
+					<tr>
+						{{ if eq $.data.checkbox true}}
+						<th scope="col" class="text-center">
+							<div class="form-check align-middle">
+								<input class="form-check-input rounded-0 ms-0" type="checkbox" id="transactionCheck01">
+								<label class="form-check-label" for="transactionCheck01"></label>
+							</div>
+						</th>
+						{{- end}}
+						{{- $rangeLen := len $.data.fields -}}
+						{{ range $index, $item := $.data.fields }}
+						{{- $itemIndex := add $index 1 -}}
+						<th class="align-middle {{- if eq $itemIndex $rangeLen }} text-center{{- end}}" scope="col">{{
+							$item.field }}
+						</th>
+						{{ end }}
+					</tr>
+				</thead>
+			{{- end -}}
+			<tbody>
+
+			{{ range $index, $item := $.data.values }}
+			<tr>
+				{{ if eq $.data.checkbox true}}
+				<td class="text-center">
+					<div class="form-check">
+						<input class="form-check-input rounded-0 ms-0" type="checkbox" id="transactionCheck-{{ $index }}">
+						<label class="form-check-label" for="transactionCheck-{{ $index }}"></label>
+					</div>
+				</td>
+				{{- end}}
+				{{- if $item.seller_img}}
+				<td>
+					<div class="d-flex align-items-center flex-nowrap">
+						<img src="#" data-src="{{$item.seller_img}}" alt="{{$item.seller_name}}" width="60" height="60" class="lazy-image rounded-pill">
+						<div class="ms-5">
+							<a href="./dashboard/sellers-profile.html" title="{{$item.seller_name}}">{{$item.seller_name}}</a>
+							<span class="d-block fs-13px text-muted">Seller ID#{{$item.seller_id}}</span>
+						</div>
+					</div>
+				</td>
+				{{- end}}
+				{{- if $item.product_img}}
+				<td>
+					<div class="d-flex align-items-center flex-nowrap">
+						<a href="../shop/product-details-v1.html"
+						   title="{{$item.product_name}}">
+							<img src="#" data-src="{{ $item.product_img }}"
+								 alt="{{$item.product_name}}" class="lazy-image" width="60" height="80">
+						</a>
+						<a href="../shop/product-details-v1.html"
+						   title="{{$item.product_name}}" class="ms-6">
+							<p class="fw-semibold text-body-emphasis mb-0">{{$item.product_name}}</p>
+						</a>
+					</div>
+				</td>
+				{{- end -}}
+				{{ if $item.id}}
+				<td><a href="#">#{{$item.id}}</a></td>
+				{{- end}}
+				{{ if $item.name}}
+				<td class="text-body-emphasis">{{$item.name}}</td>
+				{{- end}}
+
+				{{ if $item.des}}
+					<td class="text-body-emphasis">{{$item.des}}</td>
+				{{- end}}
+				{{ if $item.slug}}
+					<td class="text-body-emphasis">{{$item.slug}}</td>
+				{{- end}}
+				{{ if $item.order}}
+					<td>{{$item.order}}</td>
+				{{- end}}
+				{{ if $item.email}}
+					<td>{{$item.email}}</td>
+				{{- end}}
+				{{ if $item.rating}}
+					<td>
+						<div class="rating fs-12px">
+							<div class="empty-stars">
+								<span class="star"><i class="fas fa-star"></i></span>
+								<span class="star"><i class="fas fa-star"></i></span>
+								<span class="star"><i class="fas fa-star"></i></span>
+								<span class="star"><i class="fas fa-star"></i></span>
+								<span class="star"><i class="fas fa-star"></i></span>
+							</div>
+							<div class="filled-stars"
+								 style="width: {{$item.rating}}">
+								<span class="star"><i class="fas fa-star"></i></span>
+								<span class="star"><i class="fas fa-star"></i></span>
+								<span class="star"><i class="fas fa-star"></i></span>
+								<span class="star"><i class="fas fa-star"></i></span>
+								<span class="star"><i class="fas fa-star"></i></span>
+							</div>
+						</div>
+					</td>
+				{{- end}}
+
+				{{ if $item.date}}
+				<td>{{$item.date}}</td>
+				{{- end}}
+				{{ if $item.total}}
+				<td>{{$item.total}}</td>
+				{{- end}}
+				{{ if $item.method}}
+				<td>
+					<img src="#" data-src="{{$item.method_img}}" alt="{{$item.method}}" class="lazy-image" width="45" height="29" class="border me-6">
+					<span class="text-muted">{{$item.method}}</span>
+				</td>
+				{{- end}}
+				{{ if $item.transaction_date}}
+				<td>{{$item.transaction_date}}</td>
+				{{- end}}
+				{{ if $item.status}}
+				<td>
+					<span class="badge rounded-lg {{ if $item.badge}}{{$item.badge}}{{- end}} border-0 text-capitalize fs-12">{{$item.status}}</span>
+				</td>
+				{{- end}}
+
+				{{ if $item.order_date}}
+				<td>{{$item.order_date}}</td>
+				{{- end}}
+
+				{{ if $item.regitered}}
+				<td>{{$item.regitered}}</td>
+				{{- end}}
+				{{ if $item.payment}}
+				<td>
+					<svg class="icon me-4">
+						<use xlink:href="#credit-card"></use>
+					</svg>
+					{{$item.payment}}
+				</td>
+				{{- end}}
+				{{ if eq $.data.type_action "view_details"}}
+				<td class="text-center">
+					<a href="order-detail.html" class="btn btn-primary fs-13px btn-xs py-4"> View details</a>
+				</td>
+				{{- end}}
+				{{ if eq $.data.type_action "transaction_actions"}}
+				<td class="text-center">
+					<a href="#" class="btn btn-primary btn-xs fs-13px p-4">Details</a>
+				</td>
+				{{- end}}
+
+				{{ if eq $.data.type_action "order_list_actions"}}
+				<td class="text-center">
+					<div class="d-flex flex-nowrap justify-content-center">
+						<a href="order-detail.html" class="btn btn-primary py-4 fs-13px btn-xs me-4">Detail</a>
+						<div class="dropdown no-caret">
+							<a href="#" data-bs-toggle="dropdown"
+							   class="dropdown-toggle btn btn-outline-primary btn-xs hover-white btn-hover-bg-primary py-4 px-5">
+								<i class="far fa-ellipsis-h"></i> </a>
+							<div class="dropdown-menu dropdown-menu-end m-0">
+								<a class="dropdown-item" href="order-detail.html ">View detail</a>
+								<a class="dropdown-item" href="#">Edit info</a>
+								<a class="dropdown-item text-danger" href="#">Delete</a>
+							</div>
+						</div>
+					</div>
+				</td>
+				{{- end}}
+				{{ if eq $.data.type_action "products_actions"}}
+				<td class="text-center">
+					<div class="d-flex flex-nowrap justify-content-center">
+						<a href="add-product-1.html" class="btn btn-primary py-4 px-5 btn-xs fs-13px me-4"><i class="far fa-pen me-2"></i> Edit</a>
+						<a href="#" class="btn btn-outline-primary btn-hover-bg-danger btn-hover-border-danger btn-hover-text-light py-4 px-5 fs-13px btn-xs me-4"><i class="far fa-trash me-2"></i> Delete</a>
+					</div>
+				</td>
+				{{- end}}
+				{{ if eq $.data.type_action "product_categories_actions"}}
+				<td class="text-center">
+					<div class="d-flex flex-nowrap justify-content-center">
+						<div class="dropdown no-caret">
+							<a href="#" data-bs-toggle="dropdown"
+							   class="dropdown-toggle btn btn-outline-primary btn-xs hover-white btn-hover-bg-primary py-4 px-5">
+								<i class="far fa-ellipsis-h"></i> </a>
+							<div class="dropdown-menu dropdown-menu-end m-0">
+								<a class="dropdown-item" href="order-detail.html ">View detail</a>
+								<a class="dropdown-item" href="#">Edit info</a>
+								<a class="dropdown-item text-danger" href="#">Delete</a>
+							</div>
+						</div>
+					</div>
+				</td>
+				{{- end}}
+			</tr>
+			{{ end }}
+			</tbody>
+		</table>
+	</div>
+</div>

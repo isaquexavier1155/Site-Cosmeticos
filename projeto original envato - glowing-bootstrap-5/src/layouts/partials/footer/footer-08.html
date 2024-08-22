@@ -1,0 +1,30 @@
+<footer class="pt-14 pt-lg-17 pb-16 footer">
+	<div class="container container-xxl pt-4">
+		<div class="row">
+			<div class="col-lg-5 col-12 mb-13 mb-lg-0">
+                {{ partial "footer/widgets/find-a-store" (dict "title" "Care for Your Skin, <br> Care for Your Beauty"
+                "titleClass" "text-body-emphasis font-primary fw-normal"
+                "subtitle" "Give your inbox some love with new products, tips, & more.") }}
+                {{ partial "footer/widgets/form" (dict "class" "lh-1 py-7" "formClass" "pt-6 pe-xl-8 form-border-transparent")}}
+			</div>
+			<div class="col-md col-12 mb-12 mb-lg-0 offset-lg-2">
+                {{ partial "footer/widgets/widget-title" (dict "title" "About Us")}}
+                {{ partial "footer/widgets/menu" (dict
+                "subtitleClass" "text-body"
+                "data" $.Site.Data.footer_menu_company ) }}
+			</div>
+			<div class="col-md col-12 mb-12 mb-lg-0">
+                {{ partial "footer/widgets/widget-title" (dict "title" "Information")}}
+                {{ partial "footer/widgets/menu" (dict
+                "subtitleClass" "text-body"
+                "data" $.Site.Data.footer_menu_information ) }}
+			</div>
+		</div>
+
+        {{ partial "footer/widgets/bottom-bar" (dict
+        	"context" .
+                "logo" "/assets/images/others/logo-black-02.png" "logo_dark" "/assets/images/others/logo-white-02.png" "width" "179" "height" "48"
+                "socialClass" "col-sm-12 col-md-6 col-lg-4 d-flex align-items-center order-2 order-lg-1 fs-6 mt-7 mt-md-11 mt-lg-0"
+                "paypalClass" "col-sm-12 col-md-6 col-lg-4 order-3 text-sm-start text-lg-end mt-7 mt-md-11 mt-lg-0")}}
+	</div>
+</footer>

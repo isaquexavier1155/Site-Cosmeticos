@@ -1,0 +1,35 @@
+{{/***
+Element Parameters
+---------------------------------------------
+$.currentPage		Element content
+$.class: 			Element extra class name
+$.position			Sidebar position left | right
+*/}}
+
+{{- $position := "left" -}}
+{{ if isset $ "position" }}
+	{{ $position = $.position }}
+{{ end }}
+
+{{- $class := "pe-xl-9 me-xl-2" -}}
+{{- if eq $position "right" -}}
+	{{- $class = "ps-xl-9 ms-xl-2" -}}
+{{- end -}}
+
+{{- $class = printf "%s %s" $class "mt-12 pt-2 mt-lg-0 pt-lg-0" -}}
+
+
+{{ if isset $ "class" }}
+	{{ $class = $.class }}
+{{ end }}
+
+
+<aside class="primary-sidebar {{ $class -}}">
+	{{ partial  "widgets/category" (dict "currentPage" $.currentPage "parentCateClass" "text-uppercase fs-14px fw-semibold letter-spacing-5" "data" $.currentPage.Site.Data.widget_product_category "name" "product-category" "id" "widget_product_category" ) }}
+	{{ partial  "widgets/category" (dict "currentPage" $.currentPage "title" "Hightlight"  "data" $.currentPage.Site.Data.widget_product_hightlight "name" "product-hightlight" "id" "widget_product_hightlight" ) }}
+	{{ partial  "widgets/category" (dict "currentPage" $.currentPage "title" "Price"  "data" $.currentPage.Site.Data.widget_product_price "name" "product-price" "id" "widget_product_price" ) }}
+	{{ partial  "widgets/category" (dict "currentPage" $.currentPage "title" "Size"  "data" $.currentPage.Site.Data.widget_product_size "name" "product-size" "id" "widget_product_size" ) }}
+	{{ partial  "widgets/colors" (dict "currentPage" $.currentPage ) }}
+	{{ partial  "widgets/tags" (dict "currentPage" $.currentPage ) }}
+</aside>
+

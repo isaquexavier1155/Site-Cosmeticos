@@ -1,0 +1,45 @@
+{{/*
+Block settings
+-------------------------------------------------
+id			Block ID
+class		Block class extral
+*/}}
+{{- $id := .Get "id" | default "" -}}
+{{- $class := .Get "class" | default "" -}}
+
+<section {{- if $id }} id="{{ $id }}" {{- end -}} {{- if $class }} class="{{ $class }}" {{- end}}>
+    {{ .Inner }}
+	<div class="container">
+		<div class="row gy-30px">
+			<div class="col-12 col-md-6 " data-animate="fadeInUp">
+				{{ partial  "elements/banner/style-2" (dict
+				"currentPage" .
+				"title" "Empower Yourself"
+				"desc" "Get the skin you want to feel"
+				"image" "/assets/images/banner/banner-36.jpg"
+				"imageDark" "/assets/images/banner/banner-white-36.jpg"
+				"width" "570"
+				"height" "750"
+				"btnContent" "Explore More"
+				"titleClass" "font-primary fw-normal"
+				"descClass" "text-body-emphasis"
+				"contentClass" "justify-content-start"
+				"descSpacing" "mt-3"
+				"btnWrapClass" "mt-8"
+				"altContent" "Empower Yourself") }}
+			</div>
+			<div class="col-12 col-md-6 ps-lg-12 ps-xl-15" data-animate="fadeInUp">
+				<div class="card border-0 bg-transparent">
+					<div class="card-img overflow-hidden hover-zoom-in hover-shine bg-transparent">
+						<img src="#" data-src="/assets/images/banner/banner-37.jpg" width="510" height="511" class="w-100 lazy-image" alt="">
+					</div>
+					<div class="card-body pt-7 pb-0 px-0">
+						<h3 class="fs-3 mb-4 font-primary fw-normal">Mountain Pine Bath Oil</h3>
+						<p class="text-body-emphasis">The Outset is where you begin again.</p>
+						<a href="#" class="btn btn-link text-body-emphasis text-decoration-none fw-semibold p-0">Shop Now <svg class="icon"><use xlink:href="#icon-arrow-right"></use></svg></a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

@@ -1,0 +1,6 @@
+[data-animate] {
+	opacity: 0;
+	&.animate__animated {
+		opacity: 1;
+	}
+}

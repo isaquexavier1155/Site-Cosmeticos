@@ -1,0 +1,20 @@
+{{/***
+Element Parameters
+---------------------------------------------
+$.img1: 				Shop image 1
+$.img2: 				Shop image 2
+$.img3: 				Shop image 3
+$.img4: 				Shop image 4
+*/}}
+{{- $class := "" -}}
+{{- if isset $ "class" }}
+    {{- $class = $.class -}}
+{{ end -}}
+<div class="position-relative ">
+    {{ partial "elements/shop/product-gallery/action" (dict "wishlist" "true" "video" "true") }}
+	<div class="slick-slider g-5" data-slick-options='{{ $.Site.Data.product_gallery_6 | jsonify }}'>
+        {{- range $item := $.Site.Data.product_gallery_6.items }}
+			<a href="{{$item.img}}" class="mt-0" data-gallery="gallery6" data-thumb-src="{{ $item.img }}"><img src="#" data-src="{{$item.img}}" class="h-auto lazy-image" width="{{ $.Site.Data.product_gallery_6.imageSize.img.width }}" height="{{ $.Site.Data.product_gallery_6.imageSize.img.height }}" alt=""></a>
+		{{- end}}
+	</div>
+</div>

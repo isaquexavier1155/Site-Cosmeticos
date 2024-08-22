@@ -1,0 +1,22 @@
+{
+	"name": "glowing",
+	"description": "Glowing - Boostrap 5 HTML Template",
+	"version": "1.0.0",
+	"config": {
+		"version_short": "1.0"
+	},
+	"dependencies": {
+		"hugo-bin": "^0.86.0",
+		"@babel/cli": "^7.17.10",
+		"@babel/core": "^7.18.2",
+		"@babel/preset-env": "^7.18.2",
+		"@babel/register": "^7.17.7"
+	},
+	"hugo-bin": {
+		"buildTags": "extended"
+	},
+	"scripts": {
+		"build-site": "hugo --cleanDestinationDir",
+		"site-serve": "hugo server --port 9004 --disableFastRender"
+	}
+}

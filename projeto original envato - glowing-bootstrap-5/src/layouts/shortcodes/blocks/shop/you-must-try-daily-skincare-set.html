@@ -1,0 +1,27 @@
+{{- $id := .Get "id" | default "you_must_try_daily_skincare_set" -}}
+{{- $class := .Get "class" | default "container pt-lg-20 pb-lg-19 pt-15 pb-16" -}}
+
+<section {{- if $id }} id="{{ $id }}" {{- end }} class="bg-body-tertiary">
+    {{ .Inner }}
+    <div {{- if $class }} class="{{ $class }}" {{- end}}>
+        {{ partial "elements/heading/style-1" (dict "currentPage" .
+        "subtitle" "You must try"
+        "title" "daily skincare set"
+        "subtitleClass" "text-primary font-primary fs-60px lh-1 mb-4"
+        "titleClass" "text-uppercase mb-0"
+        "class" "mb-7 mt-4"
+		"animation" "fadeInUp"
+        )}}
+        <div class="slick-slider" data-slick-options='{{ $.Site.Data.you_must_try_daily_skincare_set.options | jsonify }}'
+             data-animate="fadeInUp">
+            {{- range $item := $.Site.Data.you_must_try_daily_skincare_set.items -}}
+                <div>
+                    {{ partial  "elements/shop/skins/grid-3" (dict
+                    "data" $item
+					"animation" "fadeInUp"
+                    ) }}
+                </div>
+            {{- end -}}
+        </div>
+    </div>
+</section>

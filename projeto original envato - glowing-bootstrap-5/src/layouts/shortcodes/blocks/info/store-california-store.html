@@ -1,0 +1,52 @@
+{{/*
+Block settings
+-------------------------------------------------
+id			Block ID
+class		Block class extral
+*/}}
+{{- $id := .Get "id" | default "" -}}
+{{- $class := .Get "class" | default "mb-lg-17" -}}
+
+<section {{- if $id }} id="{{ $id }}" {{- end -}} {{- if $class }} class="{{ $class }}" {{- end}}>
+    {{ .Inner }}
+	<div class="container container-xxl">
+		<div class="row d-flex align-items-center">
+			<div class="col-lg-5 order-2 order-lg-1 mb-15 mb-lg-0">
+				<div class="row">
+					<h2 class="fs-3 mb-10">California Store</h2>
+					<div class="col-md-6 mb-12 mb-13">
+                        {{ partial "elements/icon-box/style-2" (dict "title" "Address"
+                        "iconClass" "d-none"
+                        "desc" "<p class=\"mb-2 pb-4 fs-6\">3245 Abbot Kinney BLVD – <br> PH Venice, CA 124</p>"
+                        "btnContent" "Get Direction") }}
+					</div>
+					<div class="col-md-6 mb-12 mb-13">
+                        {{ partial "elements/icon-box/style-2" (dict "title" "Store Hours"
+                        "iconClass" "d-none"
+                        "desc" "<dl class=\"d-flex mb-0\"><dt class=\"pe-3 fs-6 text-body-emphasis fw-500\" style=\"width: 110px\">Mon – Fri:</dt><dd class=\"mb-0\"> 08:30 – 20:00</dd></dl><dl class=\"d-flex mb-0\"><dt class=\"pe-3 fs-6 text-body-emphasis fw-500\" style=\"width: 110px\">Sat & Sun:</dt><dd class=\"mb-0\"> 09:30 – 21:30</dd></dl>") }}
+					</div>
+					<div class="col-md-6 mb-12 mb-md-0">
+                        {{ partial "elements/icon-box/style-2" (dict "title" "Contact"
+                        "iconClass" "d-none"
+                        "desc" "<p class=\"mb-3 fs-6\">Mobile:<span class=\"text-body-emphasis\"> 068 26589 996</span></p><p class=\"mb-3 fs-6\">Hotline:<span class=\"text-body-emphasis\"> 1900 26886</span></p><p class=\"mb-0 fs-6\">E-mail: hello@grace.com</p>") }}
+					</div>
+					<div class="col-md-6">
+                        {{ partial "elements/icon-box/style-2" (dict "title" "Social media"
+                        "iconClass" "d-none"
+                        ) }}
+                        {{ partial  "elements/socical-icons/style-2" (dict "currentPage" . ) }}
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-7 order-1 order-lg-2 mb-12 mb-lg-0 d-flex">
+                {{ partial "elements/image-box/style-4" (dict
+				"currentPage" .
+				"img" "/assets/images/others/store-02.jpg"
+                "imgClass" "img-fluid lazy-image rounded-0"
+                "class" "hover-zoom-in"
+                "contentClass" ""
+                ) }}
+			</div>
+		</div>
+	</div>
+</section>

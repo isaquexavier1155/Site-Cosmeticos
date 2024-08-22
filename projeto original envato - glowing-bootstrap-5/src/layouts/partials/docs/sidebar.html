@@ -1,0 +1,62 @@
+{{- $current_url := $.Page.Permalink | relURL -}}
+<div class="doc-sidebar">
+	<div class="offcanvas-lg offcanvas-start py-lg-8 py-0" id="bdSidebar" aria-labelledby="bdSidebarOffcanvasLabel">
+		<div class="offcanvas-header border-bottom">
+			<h5 class="offcanvas-title" id="bdSidebarOffcanvasLabel">Browse docs</h5>
+			<button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close" data-bs-target="#bdSidebar"></button>
+		</div>
+
+		<div class="offcanvas-body">
+			<nav class="bd-links w-100" id="doc-sidebar" aria-label="Docs navigation">
+				{{- $url := split .Permalink "/" -}}
+				{{- $page_slug := index $url (sub (len $url) 2) -}}
+
+				<ul class="bd-links-nav list-unstyled mb-0 pb-6 pb-md-4 pe-lg-4">
+					{{- range $group := .Site.Data.doc_sidebar -}}
+					{{- $link := $group.title -}}
+					{{- $link_slug := $link | urlize -}}
+
+					{{- if $group.pages -}}
+					{{- $link = index $group.pages 0 -}}
+					{{- $link_slug = $link.title | urlize -}}
+					{{- end -}}
+
+					{{- $group_slug := $group.title | urlize -}}
+
+					{{- if $group.pages }}
+					<li class="bd-links-group py-4">
+						<strong class="bd-links-heading d-flex w-100 align-items-center fw-semibold py-4">
+							{{- if $group.icon }}
+							<svg class="bi me-4"{{- if $group.icon_color }} style="color: var(--bs-{{ $group.icon_color }});"{{- end }} aria-hidden="true"><use xlink:href="#{{ $group.icon }}"></use></svg>
+							{{- end }}
+							{{ $group.title }}
+						</strong>
+
+						<ul class="list-unstyled fw-normal pb-4 small">
+							{{- range $doc := $group.pages -}}
+							{{- $doc_slug := $doc.title | urlize -}}
+							{{- if $doc.slug -}}
+								{{- $doc_slug = $doc.slug -}}
+							{{- end -}}
+							{{- $href := printf "/%s/%s.html" $group_slug $doc_slug }}
+							{{- $href = path.Join "/docs/" $href -}}
+							{{- $is_active := eq $href $current_url  -}}
+							<li><a href="{{ $href }}" class="bd-links-link d-inline-block rounded{{ if $is_active }} active{{ end }}"{{ if $is_active }} aria-current="page"{{ end }}>{{ $doc.title }}</a></li>
+							{{- end }}
+						</ul>
+					</li>
+					{{- else }}
+					<li class="bd-links-span-all mt-3 mb-6 mx-8 border-top"></li>
+					<li class="bd-links-span-all">
+						<a href="/{{ $group_slug }}.html" class="bd-links-link d-inline-block rounded small">
+							{{ $group.title }}
+						</a>
+					</li>
+					{{- end }}
+					{{- end }}
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+

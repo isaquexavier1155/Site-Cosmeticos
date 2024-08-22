@@ -1,0 +1,19 @@
+{{ .Inner }}
+<section id="section-01" data-bg-src="/assets/images/hero-slider/hero-slider-21.jpg"
+		 data-full-page="Made for You!"
+		 class="bg-image lazy-bg bg-fixed vh-100 d-flex align-items-center">
+	<div class="container container-xxl hero">
+		<div class="row">
+			<div class="col-xl-5 offset-xl-7 col-lg-6 offset-lg-6 text-center">
+                {{ partial "elements/hero/hero-element/content.html" (dict "currentPage" .
+                "subtitle" "Made for You!"
+                "title" "Love Your Skin Naturally"
+                "button2" "Discover now"
+                "subtitleClass" "hero-title text-white pb-7 font-primary"
+                "titleClass" "hero-title-2 text-white fw-500 mt-n4 mb-9"
+                "button2Class" "p-0 pb-3 mt-7 text-white"
+                ) }}
+			</div>
+		</div>
+	</div>
+</section>

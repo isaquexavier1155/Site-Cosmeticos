@@ -1,0 +1,7 @@
+{{ .Inner }}
+<div class="card mb-4 rounded-4 p-7">
+	<div class="card-header bg-transparent px-0 pt-0 pb-7">
+		{{ partial "dashboard/filter/style-03" }}
+	</div>
+	{{ partial "dashboard/list-order" (dict "data" $.Site.Data.dashboard.sellers_list_field) }}
+</div>

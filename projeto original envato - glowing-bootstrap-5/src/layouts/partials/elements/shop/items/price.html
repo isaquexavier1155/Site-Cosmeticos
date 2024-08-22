@@ -1,0 +1,58 @@
+{{/***
+Element Parameters
+---------------------------------------------
+$.class: 			Element extra class name
+$.align             Align default center
+$.spacing           Spacing
+$.price:            Price data: regular, sale
+$.size              Size - Accept lg
+*/}}
+{{- $class := "d-flex align-items-center price text-body-emphasis fw-bold" -}}
+
+{{- $align := "center" -}}
+{{- if isset $ "align" -}}
+    {{- $align = $.align -}}
+{{- end -}}
+
+{{- if eq $align "center" -}}
+    {{- $class = printf "%s %s"  $class "justify-content-center" -}}
+{{- end -}}
+
+{{- $spacing := "mb-3" -}}
+{{- if isset $ "spacing" -}}
+    {{- $spacing = $.spacing -}}
+{{- end -}}
+
+{{- $class = printf "%s %s" $class $spacing -}}
+
+{{- if isset $ "class" -}}
+    {{- $class = printf "%s %s" $class $.class -}}
+{{- end -}}
+
+{{- $size := "md" -}}
+{{- if isset $ "size" -}}
+    {{- $size = $.size -}}
+{{- end -}}
+
+{{- $font_size := "fs-6" -}}
+{{- $sale_class := "fs-13px"  -}}
+
+{{- if eq $size "lg" -}}
+    {{- $font_size = "fs-18px" -}}
+    {{- $sale_class =  "fs-15px" -}}
+{{- end -}}
+
+{{ $class = printf "%s %s" $class $font_size }}
+
+
+
+
+
+<span class="{{- $class -}}">
+{{- if (and (isset $.price "sale") (ne $.price.sale "") (ne $.price.sale nil))}}
+        <del class=" text-body fw-500 me-4 {{ $sale_class -}}">$ {{- $.price.regular | safeHTML -}}</del>
+        <ins class="text-decoration-none">$ {{- $.price.sale -}}</ins>
+{{- else -}}
+    $ {{- $.price.regular -}}
+{{- end -}}
+</span>

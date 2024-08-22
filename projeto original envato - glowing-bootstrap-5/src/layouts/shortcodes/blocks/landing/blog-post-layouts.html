@@ -1,0 +1,45 @@
+{{/*
+Block settings
+-------------------------------------------------
+id			Block ID
+class		Block class extral
+*/}}
+{{- $id := .Get "id" | default "" -}}
+{{- $class := .Get "class" | default "pb-lg-21 pb-16 pt-lg-11" -}}
+
+<section {{- if $id }} id="{{ $id }}" {{- end -}} {{- if $class }} class="{{ $class }}" {{- end}}>
+    {{ .Inner }}
+	<div class="container container-xxl">
+		<div class="row align-items-center">
+			<div class="col-lg-4 mb-lg-0 mb-11">
+				<span data-animate="fadeInUp" class="d-block landing-count-layout-1 fw-bold text-primary mb-6">02<sup class="landing-count-layout-1-sup ps-6">+</sup></span>
+				<h2 data-animate="fadeInUp" class="fs-2 mb-7">Blog Post Layouts</h2>
+				<p data-animate="fadeInUp" class="fs-18px landing-post-desc">Various attractive blog post layouts allow users to create detailed read and comment on those articles.</p>
+			</div>
+			<div class="col-lg-8">
+				<div class="row">
+					<div class="col-sm-6 mb-sm-0 mb-12">
+						<div class="card border-0 bg-transparent" data-animate="fadeInUp">
+							<a href="../blog/details-01.html" target="_blank" class="card-img rounded landing-blog-post-background ps-sm-12 pt-sm-12 ps-10 pt-10" title="Blog detail 01">
+								{{  partial "the-image" (dict "currentPage" . "img" "/assets/images/landing/landing-post-01.jpg" "img_dark" "/assets/images/landing/landing-post-white-01.jpg" "class" "ps-xl-3 img-fluid landing-blog-image" "width" "402" "height" "272" "alt" "Blog detail 01") }}
+							</a>
+							<div class="card-body p-0">
+								<h4 class="card-text fs-5 fw-bold text-secondary mt-10"><a href="../blog/details-01.html" target="_blank" title="Blog detail 01">Blog detail 01</a></h4>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-6 mb-sm-0 mb-12">
+						<div class="card border-0 bg-transparent" data-animate="fadeInUp">
+							<a href="../blog/details-02.html" target="_blank" class="landing-blog-post-background card-img rounded ps-sm-12 pt-sm-12 ps-10 pt-10" title="Blog detail 02">
+								{{  partial "the-image" (dict "currentPage" . "img" "/assets/images/landing/landing-post-02.jpg" "img_dark" "/assets/images/landing/landing-post-white-02.jpg" "class" "ps-xl-3 img-fluid landing-blog-image" "width" "402" "height" "272" "alt" "Blog detail 01") }}
+							</a>
+							<div class="card-body p-0">
+								<h4 class="card-text fs-5 fw-bold text-secondary mt-10"><a href="../blog/details-02.html" target="_blank" title="Blog detail 02">Blog detail 02</a></h4>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

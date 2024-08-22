@@ -1,0 +1,32 @@
+- title: Shield Conditioner
+  reviews: 2947
+  rate: 100
+  price:
+    regular: "40.00"
+    sale: "30.00"
+  image:
+    src: '/assets/images/products/product-01-330x440.jpg'
+    width: 330
+    height: 440
+
+- title: Enriched Duo
+  reviews: 2947
+  rate: 100
+  price:
+    regular: "29.00"
+  image:
+    src: '/assets/images/products/product-01-450x600.jpg'
+    width: 450
+    height: 600
+
+- title: Shield Conditioner
+  reviews: 2947
+  rate: 100
+  desc: At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident.
+  price:
+    regular: "40.00"
+    sale: "30.00"
+  image:
+    src: '/assets/images/products/product-01-330x440.jpg'
+    width: 330
+    height: 440

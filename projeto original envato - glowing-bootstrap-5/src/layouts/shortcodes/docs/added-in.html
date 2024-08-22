@@ -1,0 +1,5 @@
+{{- /* Outputs badge to identify the first version something was added */ -}}
+
+{{- $version := .Get 0 -}}
+
+<small class="d-inline-flex mb-5 px-4 py-3 fw-semibold text-white bg-success border border-success-subtle rounded-2 lh-1 fs-12px">Added in v{{ $version }}</small>

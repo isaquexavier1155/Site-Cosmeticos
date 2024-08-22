@@ -1,0 +1,39 @@
+items:
+  - img: "/assets/images/landing/landing-shop-02.jpg"
+    img_dark: "/assets/images/landing/landing-shop-white-02.jpg"
+    title: Shop Layout 02
+    url: "/shop/shop-layout-v2.html"
+  - img: "/assets/images/landing/landing-shop-03.jpg"
+    img_dark: "/assets/images/landing/landing-shop-white-03.jpg"
+    title: Shop Layout 03
+    url: "/shop/shop-layout-v3.html"
+  - img: "/assets/images/landing/landing-shop-04.jpg"
+    img_dark: "/assets/images/landing/landing-shop-white-04.jpg"
+    title: Shop Layout 04
+    url: "/shop/shop-layout-v4.html"
+  - img: "/assets/images/landing/landing-shop-05.jpg"
+    img_dark: "/assets/images/landing/landing-shop-white-05.jpg"
+    title: Shop Layout 05
+    url: "/shop/shop-layout-v5.html"
+  - img: "/assets/images/landing/landing-shop-01.jpg"
+    img_dark: "/assets/images/landing/landing-shop-white-01.jpg"
+    title: Shop Layout 01
+    url: "/shop/shop-layout-v1.html"
+config:
+  appendDots: ".landing-shop-arrow .container"
+  appendArrows: ".landing-shop-arrow .container"
+  centerMode: true
+  centerPadding: "calc((100% - 1200px) / 2)"
+  infinite: true
+  slidesToShow: 2
+  dots: true
+  arrows: true
+  responsive:
+    - breakpoint: 1200
+    - settings:
+        slidesToShow: 2
+        arrows: false
+    - breakpoint: 768
+      settings:
+        slidesToShow: 1
+        arrows: false

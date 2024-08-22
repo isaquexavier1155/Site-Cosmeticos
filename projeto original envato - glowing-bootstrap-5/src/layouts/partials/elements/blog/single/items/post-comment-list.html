@@ -1,0 +1,80 @@
+{{/***
+Element Parameters
+---------------------------------------------
+$.class:            Element extra class name
+$.nameClass:        name extra Class
+$.textCmtClass:     Content comment class
+$.timeClass			time comment Class
+$.commentClass		Title Number comments Class
+$.name:            	Name of commenting person
+$.textCmt:          Content Comment
+$.time				Time of commenting
+$.comment			Title Number comments
+$.img:              Avatar of commenting person
+$.imgWidth          image width
+$.imgHeight        	image height
+$.shortName			initial of commenting person
+$.currentPage		$.currentPage.Page, $.currentPage.Site
+*/}}
+{{- $class := "pt-lg-12 pt-10" -}}
+{{- if isset $ "class" }}
+    {{- $class = $.class -}}
+{{ end -}}
+
+{{- $commentClass := "fw-semibold fs-3 text-center mb-10" -}}
+{{- if isset $ "commentClass" }}
+{{- $commentClass = $.commentClass -}}
+{{ end -}}
+
+{{- $nameClass := "fw-semibold text-uppercase fs-14px mb-3" -}}
+{{- if isset $ "nameClass" }}
+{{- $nameClass = $.nameClass -}}
+{{ end -}}
+
+{{- $timeClass := "text-muted fs-15px pe-4 border-end" -}}
+{{- if isset $ "timeClass" }}
+{{- $timeClass = $.timeClass -}}
+{{ end -}}
+
+{{- $textCmtClass := "body-color fs-15px mb-6" -}}
+{{- if isset $ "textCmtClass" }}
+{{- $textCmtClass = $.textCmtClass -}}
+{{ end -}}
+
+<div {{- if $class }} class="{{ $class }}"{{ end }}>
+	{{- if $.comment }}
+	<h2 class="{{- if $commentClass }} {{ $commentClass }}{{ end }}">{{ $.comment }}</h2>
+	{{- end }}
+	{{- range $item := $.currentPage.Site.Data.blog_cmt_list -}}
+		<div class="pb-9 mb-9 border-bottom">
+			<div class="d-flex">
+					<div class="avatar-cmt me-9 bg-image" data-bg-src="{{ $item.img }}">
+					</div>
+				<div class="Cmt-content">
+					<h2 class="{{- if $nameClass }} {{ $nameClass }}{{ end }}">{{ $item.name }}</h2>
+					<p class="{{- if $textCmtClass }} {{ $textCmtClass  }}{{ end }}">{{ $item.textCmt }}</p>
+					<div class="d-flex">
+						<p class="mb-0 {{- if $timeClass }} {{ $timeClass }}{{ end }}">{{ $item.time }}</p>
+						<a href="#" title="reply" class="ps-4 fw-semibold text-body-emphasis">Reply</a>
+					</div>
+				</div>
+			</div>
+            {{- if $item.reply }}
+                {{- range $rep := $item.reply -}}
+                   <div class="d-flex mt-10 ms-17 ps-7 border-start reply-comment">
+						   <div class="avatar-cmt me-9 bg-image" data-bg-src="{{ $rep.img }}">
+						   </div>
+					   <div class="cmt-content">
+						   <h2 class="{{- if $nameClass }} {{ $nameClass }}{{ end }}">{{ $rep.name }}</h2>
+						   <p class="{{- if $textCmtClass }} {{ $textCmtClass  }}{{ end }}">{{ $rep.textCmt }}</p>
+						   <div class="d-flex">
+							   <p class="mb-0 {{- if $timeClass }} {{ $timeClass }}{{ end }}">{{ $rep.time }}</p>
+							   <a href="#" title="reply" class="ps-4 fw-semibold text-body-emphasis">Reply</a>
+						   </div>
+					   </div>
+				   </div>
+                {{- end -}}
+            {{- end }}
+		</div>
+	{{- end -}}
+</div>

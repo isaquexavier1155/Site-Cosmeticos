@@ -1,0 +1,24 @@
+{{- $id := .Get "id" | default "featured_products_get_the_skin_you_want_to_feel" -}}
+{{- $class := .Get "class" | default "container container-xxl py-lg-18 pt-md-15 pt-11 pb-16" -}}
+
+<section {{- if $id }} id="{{ $id }}" {{- end -}}>
+	{{ .Inner }}
+	<div  {{- if $class }} class="{{ $class }}" {{- end}}>
+		{{ partial  "elements/heading/style-1" (dict "currentPage" .
+		"class" "mb-13 pb-3"
+		"titleClass" "mb-5"
+		"title" "FEATURED PRODUCTS"
+		"desc" "Get the skin you want to feel"
+		"animation" "fadeInUp") }}
+		<div class="row gy-11">
+			{{- range $item := $.Site.Data.featured_products_our_featured_products -}}
+				<div class="col-lg-3 col-sm-6 col-12">
+					{{ partial  "elements/shop/skins/grid-1" (dict
+					"data" $item
+					"animation" "fadeInUp"
+					) }}
+				</div>
+			{{- end -}}
+		</div>
+	</div>
+</section>

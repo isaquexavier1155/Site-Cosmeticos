@@ -1,0 +1,25 @@
+{{/***
+Element Parameters
+---------------------------------------------
+$.index: 		Item Index
+$.data: 		Data
+*/}}
+
+{{- $class := "fs-5 fw-semibold text-white px-5" -}}
+{{- $len :=  len $.data.creativeDots -}}
+{{- $index1 :=  add $.index 1 -}}
+<div data-animate="fadeInDown" class="hero-creative-dots position-absolute bottom-0 mb-7 start-50 translate-middle-x">
+	{{- range $i, $item := $.data.creativeDots -}}
+		{{- $classActive := "" -}}
+		{{- if eq $.index $i -}}
+			{{- $classActive = "active" -}}
+			{{- if eq $index1 $len -}}
+				{{- $classActive = printf "%s %s" $classActive "active-last" -}}
+			{{- end -}}
+			{{- if eq $i 0 -}}
+				{{- $classActive = printf "%s %s" $classActive "active-first" -}}
+			{{- end -}}
+		{{- end -}}
+		<span class="{{$class}} {{$classActive}}">{{$item.title}}</span>
+	{{- end -}}
+</div>

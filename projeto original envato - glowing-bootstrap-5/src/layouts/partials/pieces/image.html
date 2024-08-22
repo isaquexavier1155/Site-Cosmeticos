@@ -1,0 +1,32 @@
+{{/***
+Element Parameters
+---------------------------------------------
+$.class: 			Element extra class name
+$.currentPage: 		$.currentPage.Page, $.currentPage.Site
+$.src: 		        Image Src
+$.width: 		    Image Width
+$.height: 	        Image Height
+$.inline: 		    Image Inline
+$.title: 			Icon box title
+*/}}
+
+{{- $wrapperClass := "" -}}
+{{- $ratio := math.Floor (mul (div (float $.height) (float $.width)) 100)   -}}
+{{- $wrapperStyles := printf "--bs-aspect-ratio:%s%s;" (string $ratio) "%" -}}
+
+{{- if isset $ "inline" }}
+{{- $wrapperClass = "d-inline-block" -}}
+{{- $wrapperStyles = printf "%s--lazy-image-width:%spx;" $wrapperStyles  (string $.width) -}}
+{{ end -}}
+
+
+{{- $imgClass := "placeholder img-fluid" -}}
+{{- if isset $ "class" }}
+{{- $wrapperClass = printf "%s %s" $wrapperClass $.class -}}
+{{- $imgClass = printf "%s %s" $imgClass $.class -}}
+{{ end -}}
+
+
+<span class="lazy-image placeholder-glow ratio ratio-16x9 {{- if $wrapperClass }} {{ $wrapperClass }}{{ end }}" style="{{$wrapperStyles | safeCSS}}">
+	<img width="{{- $.width -}}" height="{{- $.height -}}" class="{{- $imgClass -}}" data-src="{{- $.src -}}" alt="{{- $.title -}}">
+</span>

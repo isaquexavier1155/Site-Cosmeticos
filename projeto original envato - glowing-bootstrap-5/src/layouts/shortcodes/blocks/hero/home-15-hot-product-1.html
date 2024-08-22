@@ -1,0 +1,23 @@
+{{ .Inner }}
+{{/*
+Block settings
+-------------------------------------------------
+id			Block ID
+class		Block class extral
+*/}}
+{{- $id := .Get "id" | default "" -}}
+{{- $class := .Get "class" | default "container-fluid" -}}
+
+<section {{- if $id }} id="{{ $id }}" {{- end -}} {{- if $class }} class="{{ $class }}" {{- end}}>
+	<div class="row hero">
+		<div data-animate="zoomIn" class="col-lg-6 bg-image hero-hot-product lazy-bg" data-bg-src="/assets/images/hero-slider/hero-slider-37.jpg"></div>
+		<div data-animate="zoomIn" class="col-lg-6 d-flex align-items-center py-16 mh-600 hero-hot-product bg-section-7">
+            {{ partial "elements/image-box/style-5" (dict "title" "shroom serum"
+			"subtitle" "Lorem ipsum dolor sit amet, consectetur adipi, scing seddo eiusmod temporincididunt ut labore et dolore magna aliqua."
+			"hotproduct" "Hot Product" "img" "/assets/images/image-box/image-box-22.png"
+			"shopClass" "fw-semibold text-body-emphasis text-decoration-none hero-link pb-3"
+			"subtitleClass" "mb-7 fs-18px text-body"
+			) }}
+		</div>
+	</div>
+</section>

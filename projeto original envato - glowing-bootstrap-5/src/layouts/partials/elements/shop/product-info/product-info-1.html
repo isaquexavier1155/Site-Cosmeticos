@@ -1,0 +1,117 @@
+{{/***
+Element Parameters
+---------------------------------------------
+
+$.quantityItemClass	Quantity extra Class
+$.oldPriceClass: 	Old price extra Class
+$.badgeClass: 		Badge extra Class
+$.listBottomClass 	List bottom extra Class
+$.bottomTitleClass	Bottom title extra Class
+$.listIconClass 	List icon extra Class
+$.iconShareClass	Icon share extra Class
+$.title: 			Shop title
+$.oldprice: 		Shop old price
+$.price: 			Shop price
+$.point: 			Shop point
+$.rate 				Rating
+$.readreview: 		Shop read reviews
+$.size1: 			Shop size 1
+$.size2: 			Shop size 2
+$.oldprice1: 		Shop old price 1
+$.price1: 			Shop price 1
+$.oldprice2: 		Shop old price 2
+$.price2: 			Shop price 2
+$.oldprice3: 		Shop old price 3
+$.price3: 			Shop price 3
+$.subtitle: 		Shop subtitle
+$.sku: 				Shop sku
+$.category: 		Shop category
+*/}}
+{{- $quantityItemClass := "mb-2 pb-4" -}}
+{{- if isset $ "quantityItemClass" }}
+    {{- $quantityItemClass = $.quantityItemClass -}}
+{{ end -}}
+
+{{- $oldPriceClass := "text-decoration-line-through mx-3 text-body" -}}
+{{- if isset $ "oldPriceClass" }}
+    {{- $oldPriceClass = $.oldPriceClass -}}
+{{ end -}}
+
+{{- $badgeClass := "badge badge-primary fs-12px border text-primary fw-bold ms-4" -}}
+{{- if isset $ "badgeClass" }}
+    {{- $badgeClass = $.badgeClass -}}
+{{ end -}}
+
+{{- $listBottomClass := "row mb-4 pb-2" -}}
+{{- if isset $ "listBottomClass" }}
+    {{- $listBottomClass = $.listBottomClass -}}
+{{ end -}}
+
+{{- $bottomTitleClass := "d-block col-4 col-lg-2 text-body-emphasis fw-semibold fs-14px" -}}
+{{- if isset $ "bottomTitleClass" }}
+    {{- $bottomTitleClass = $.bottomTitleClass -}}
+{{ end -}}
+
+{{- $listIconClass := "list-inline-item me-7" -}}
+{{- if isset $ "listIconClass" }}
+    {{- $listIconClass = $.listIconClass -}}
+{{ end -}}
+
+{{- $iconShareClass := "fs-14px text-body" -}}
+{{- if isset $ "iconShareClass" }}
+    {{- $iconShareClass = $.iconShareClass -}}
+{{ end -}}
+
+{{ partial "elements/shop/product-info/items/header" (dict "title" $.title
+"oldprice" $.oldprice "price" $.price
+"subtitle" $.subtitle
+"rate" $.rate
+"point" $.point "readreview" $.readreview
+) }}
+
+<form class="product-info-custom">
+    {{ partial "elements/shop/product-info/items/size" (dict "size1" $.size1 "size2" $.size2) }}
+	<p class="text-body-emphasis fw-semibold mb-6">Quantity: </p>
+		<div class="form-check {{- if $quantityItemClass}}{{$quantityItemClass}}{{- end}}">
+			<input type="radio" id="buy1" name="quality" class="me-4 form-check-input product-info-input" checked>
+			<label for="buy1" class="text-body-emphasis form-check-label">
+				Buy 1 -
+				<span class="{{- if $oldPriceClass}}{{$oldPriceClass}}{{- end}}">$39.00</span>
+				<span class="fw-bold">$29.00</span>
+			</label>
+			<span class="{{- if $badgeClass}}{{$badgeClass}}{{- end}}">Saved 10%</span>
+		</div>
+		<div class="form-check {{- if $quantityItemClass}}{{$quantityItemClass}}{{- end}}">
+			<input type="radio" id="buy2" name="quality" class="me-4 form-check-input product-info-input">
+			<label for="buy2" class="text-body-emphasis form-check-label">
+				Buy 2 -
+				<span class="{{- if $oldPriceClass}}{{$oldPriceClass}}{{- end}}">$78.00</span>
+				<span class="fw-bold">$56.00</span>
+			</label>
+			<span class="{{- if $badgeClass}}{{$badgeClass}}{{- end}}">Saved 15%</span>
+		</div>
+		<div class="form-check {{- if $quantityItemClass}}{{$quantityItemClass}}{{- end}}">
+			<input type="radio" id="buy3" name="quality" class="me-4 form-check-input product-info-input">
+			<label for="buy3" class="text-body-emphasis form-check-label">
+				Buy 3 -
+				<span class="{{- if $oldPriceClass}}{{$oldPriceClass}}{{- end}}">$117.00</span>
+				<span class="fw-bold">$72.00</span>
+			</label>
+			<span class="{{- if $badgeClass}}{{$badgeClass}}{{- end}}">Saved 20%</span>
+		</div>
+		<div class="form-check {{- if $quantityItemClass}}{{$quantityItemClass}}{{- end}}">
+			<input type="radio" id="buy4" name="quality" class="me-4 form-check-input product-info-input">
+			<label for="buy4" class="text-body-emphasis form-check-label">
+				Buy 4 -
+				<span class="{{- if $oldPriceClass}}{{$oldPriceClass}}{{- end}}">$195.00</span>
+				<span class="fw-bold">$99.00</span>
+			</label>
+			<span class="{{- if $badgeClass}}{{$badgeClass}}{{- end}}">Saved 30%</span>
+		</div>
+
+	<button type="submit" class="btn btn-lg btn-dark mb-7 mt-7 w-100 btn-hover-bg-primary btn-hover-border-primary">Add To Bag
+	</button>
+</form>
+{{ partial "elements/shop/product-info/items/action" (dict "compare" "true" "wishlist" "true")}}
+{{ partial "elements/shop/product-info/items/list-more-info" (dict "sku" $.sku "category" $.category "share" "true")}}
+

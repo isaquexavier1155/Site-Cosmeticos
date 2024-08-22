@@ -1,0 +1,88 @@
+{{/***
+Element Parameters
+---------------------------------------------
+$.class: 			Element extra class name
+$.align: 			Element extra class name
+$.titleClass: 		Title extra Class
+$.subtitleClass: 	Sub title extra class
+$.descClass: 		Description extra class
+$.descExtraClass: 		Description extra class
+$.title: 			Heading title
+$.isH3Tag 			Check h3 tag
+$.subtitle: 		Heading subtitle
+$.desc: 			Heding description
+$.animation         Animation
+$.maxWidth         Max Width
+*/}}
+
+{{- $align := "center" -}}
+{{- if isset $ "align" }}
+    {{- $align = $.align -}}
+{{ end -}}
+
+{{- $class:= "" -}}
+
+{{- if ne $align "" -}}
+	{{- $class = printf "text-%s" $align -}}
+{{- end -}}
+
+
+{{- if isset $ "class" }}
+    {{- if eq $class "" -}}
+        {{- $class = $.class -}}
+    {{- else -}}
+        {{- $class = printf "%s %s" $.class $class -}}
+    {{- end -}}
+
+{{ end -}}
+
+
+{{- $subtitleClass := "fs-15px mb-6 ls-1 text-body-emphasis fw-semibold" -}}
+{{- if isset $ "subtitleClass" }}
+    {{- $subtitleClass = $.subtitleClass -}}
+{{ end -}}
+
+
+{{- $titleClass := "mb-6" -}}
+{{- if isset $ "titleClass" }}
+    {{- $titleClass = $.titleClass -}}
+{{ end -}}
+
+{{- $isH3Tag := false -}}
+{{- if isset $ "isH3Tag" }}
+	{{- $isH3Tag = $.isH3Tag -}}
+{{ end -}}
+
+{{- if isset $ "titleExtraClass" -}}
+    {{- $titleClass = printf "%s %s" $titleClass $.titleExtraClass  -}}
+{{- end -}}
+
+
+{{- $descClass := "fs-18px mb-0" -}}
+{{- if isset $ "descClass" }}
+    {{- $descClass = $.descClass -}}
+{{ end -}}
+
+{{- if isset $ "descExtraClass" -}}
+    {{- $descClass = printf "%s %s" $descClass $.descExtraClass  -}}
+{{- end -}}
+
+{{- if or ($class) (isset $ "animation") -}}
+<div {{- if $class }} class="{{ $class }}" {{ end }} {{- if isset $ "maxWidth" }} style="max-width:{{- $.maxWidth -}}" {{- end -}} {{- if isset $ "animation" }} data-animate="{{- $.animation -}}" {{- end -}}>
+{{- end -}}
+    {{- if $.subtitle }}
+		<p {{- if $subtitleClass }} class="{{ $subtitleClass }}" {{- end}}>{{ $.subtitle | safeHTML}}</p>
+    {{- end }}
+    {{- if $.title }}
+		{{- if eq $isH3Tag false -}}
+			<h2 {{- if $titleClass }} class="{{ $titleClass }}" {{- end}}>{{ $.title | safeHTML }}</h2>
+		{{- else -}}
+			<h3 {{- if $titleClass }} class="{{ $titleClass }}" {{- end}}>{{ $.title | safeHTML }}</h3>
+		{{- end -}}
+    {{- end }}
+    {{- if $.desc }}
+		<p {{- if $descClass }} class="{{ $descClass }}" {{- end}}>{{ $.desc | safeHTML }}</p>
+    {{- end }}
+    {{- if or ($class) (isset $ "animation") -}}
+</div>
+{{- end }}

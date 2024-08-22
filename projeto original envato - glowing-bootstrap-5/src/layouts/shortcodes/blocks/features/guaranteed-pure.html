@@ -1,0 +1,28 @@
+{{/*
+Block settings
+-------------------------------------------------
+id			Block ID
+class		Block class extral
+*/}}
+{{- $id := .Get "id" | default "" -}}
+{{- $class := .Get "class" | default "py-lg-20 py-15" -}}
+
+<section {{- if $id }} id="{{ $id }}" {{- end -}} {{- if $class }} class="{{ $class }}" {{- end}}>
+    {{ .Inner }}
+	<div class="container container-xxl">
+		<div class="row gx-30px gy-30px">
+			<div class="col-lg-4" data-animate="fadeInUp">
+                {{ partial  "elements/image-box/style-3" (dict "title" "Guaranteed PURE" "subtitle" "All Grace formulations adhere to strict purity standards and will never contain harsh or toxic ingredients" "img" "/assets/images/image-box/image-box-18.png"
+				"altContent" "Guaranteed PURE") }}
+			</div>
+			<div class="col-lg-4" data-animate="fadeInUp">
+                {{ partial  "elements/image-box/style-3" (dict "title" "Completely Cruelty-Free" "subtitle" "All Grace formulations adhere to strict purity standards and will never contain harsh or toxic ingredients" "img" "/assets/images/image-box/image-box-19.png"
+				"altContent" "Completely Cruelty-Free") }}
+			</div>
+			<div class="col-lg-4" data-animate="fadeInUp">
+                {{ partial  "elements/image-box/style-3" (dict "title" "Ingredient Sourcing" "subtitle" "All Grace formulations adhere to strict purity standards and will never contain harsh or toxic ingredients" "img" "/assets/images/image-box/image-box-20.png"
+				"altContent" "Ingredient Sourcing") }}
+			</div>
+		</div>
+	</div>
+</section>

@@ -1,0 +1,60 @@
+.full-page-dots {
+	position: fixed;
+	right: 0;
+	top: 50%;
+	transform: translateY(-50%);
+	display: flex;
+	flex-flow: column;
+	color: #fff;
+	transition: all 0.5s;
+	opacity: 0.7;
+
+	&.light {
+		color: #fff;
+	}
+	&.dark {
+		color: #323333;
+	}
+
+	.tooltip {
+		white-space: nowrap;
+	}
+}
+
+.full-page-dots-nav {
+	display: flex;
+
+	margin: 5px 20px;
+	padding: 8px;
+	border-radius: 50%;
+	cursor: pointer;
+	transition: color 0.3s;
+	position: relative;
+
+	&:before {
+		content: '';
+		width: 10px;
+		height: 10px;
+		display: block;
+		border-radius: 50%;
+		background-color: currentColor;
+	}
+	&:after {
+		content: '';
+		position: absolute;
+		border: solid 1px transparent;
+		transition: transform 0.5s;
+		border-radius: 50%;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		transform: scale(0);
+	}
+	&.active {
+		&:after {
+			border-color: currentColor;
+			transform: scale(1);
+		}
+	}
+}

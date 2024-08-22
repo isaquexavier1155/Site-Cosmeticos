@@ -1,0 +1,33 @@
+{{- $id := .Get "id" | default "feature_products_1" -}}
+{{- $class := .Get "class" | default "container container-xxl pt-lg-18 pt-14 pb-lg-21 pb-15" -}}
+
+<section {{- if $id }} id="{{ $id }}" {{- end -}}{{- if $class }} class="{{ $class }}" {{- end}}>
+	{{ .Inner }}
+	<h2 class="text-center mb-10 pb-3" data-animate="fadeInUp">Feature Products</h2>
+	<ul class="nav nav-tabs border-0 d-flex justify-content-center mb-14" role="tablist">
+		{{- range $index, $item := $.Site.Data.feature_products_1 -}}
+			<li class="nav-item" role="presentation" data-animate="fadeInUp">
+				<h5 class="mb-0 px-sm-7 px-5 py-2">
+					<button class="nav-link text-hover-underline p-0 border-0 text-body-emphasis opacity-50 {{- if eq $index 0 }} active {{- end -}}"  data-bs-toggle="tab" data-bs-target="#{{ $item.title | urlize }}-tab-pane" type="button" role="tab" aria-controls="{{ $item.title | urlize }}-tab-pane" aria-selected="{{- if eq $index 0 -}}true{{- else -}}false{{- end -}}">{{- $item.title -}}</button>
+				</h5>
+			</li>
+		{{- end -}}
+	</ul>
+	<div class="tab-content">
+		{{- range $index, $item := $.Site.Data.feature_products_1 -}}
+			<div class="tab-pane fade {{- if eq $index 0 }} show active {{- end -}}" id="{{ $item.title | urlize }}-tab-pane" role="tabpanel"  tabindex="0">
+				<div class="row gy-50px">
+					{{- range $product := $item.items -}}
+						<div class="col-lg-4 col-xl-3 col-sm-6">
+							{{ partial  "elements/shop/skins/grid-1" (dict
+							"data" $product
+							"animation" "fadeInUp"
+							) }}
+						</div>
+					{{- end -}}
+				</div>
+			</div>
+		{{- end -}}
+	</div>
+</section>
+

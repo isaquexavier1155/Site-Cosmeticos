@@ -1,0 +1,50 @@
+<header id="header" class="header header-sticky header-transparent z-index-5 header-sticky-smart disable-transition-all position-absolute start-0 end-0">
+	<div class=" bg-opacity-15">
+		<div class="topbar" style="background-color: #dafaf4">
+			<div class="container">
+				<p class="mb-0 fs-14px py-4 font-weight-500 text-dark text-center text-uppercase">WORLDWIDE SHIPPING • FREE SHIPPING ON ORDERS OVER $100</p>
+			</div>
+		</div>
+	</div>
+	<div class="sticky-area">
+		<div class="main-header nav navbar navbar-dark navbar-expand-xl transition-all-1 py-6 py-xl-0">
+			<div class="container-wide container">
+				<div class="d-flex d-xl-none w-100">
+                    {{ partial "header/items/menu-mobile-toggle" }}
+					<div class="d-flex mx-auto">
+                        {{ partial "header/items/logo" (dict "context" . "logo" "/assets/images/others/logo-white.png" "stickyLogo" "" ) }}
+					</div>
+					<div class="icons-actions d-flex d-xl-none justify-content-start fs-28px text-light w-72px">
+                        {{ partial "header/items/icon-search" }}
+						{{ partial "header/items/color-modes" (dict "currentPage" . "classToggle" "btn btn-link nav-link dropdown-toggle d-inline-flex align-items-center justify-content-center color-inherit p-0 position-relative rounded-circle")}}
+					</div>
+				</div>
+				<div class="d-none d-xl-flex flex-column flex-xl-row w-100">
+					<div class="w-auto w-xl-50 d-flex align-items-center">
+						<div class="icons-actions d-none d-xl-flex justify-content-start me-auto fs-28px text-light">
+							{{ partial "header/items/icon-search-text" "pe-10" }}
+						</div>
+
+						<ul class="navbar-nav w-100 w-xl-auto">
+							{{ partial "menu/menu-default" (dict "page" . "menu" "menu_left" "nav_item_class" "py-xl-11 py-0 px-xxl-8 px-xl-6" "nav_link_class" "py-xl-0 px-xl-0 text-uppercase fw-semibold ls-1 fs-15px fs-xl-14px") }}
+						</ul>
+					</div>
+					<div class="px-10 d-none d-xl-flex align-items-center ">
+						{{ partial "header/items/logo" (dict "context" . "logo" "/assets/images/others/logo-white.png" "stickyLogo" "" ) }}
+					</div>
+					<div class="w-auto w-xl-50 d-flex align-items-center">
+						<ul class="navbar-nav w-100 w-xl-auto">
+							{{ partial "menu/menu-default" (dict "page" . "menu" "menu_right" "nav_item_class" "py-xl-11 py-0 px-xxl-8 px-xl-6" "nav_link_class" "py-xl-0 px-xl-0 text-uppercase fw-semibold ls-1 fs-15px fs-xl-14px") }}
+						</ul>
+						<div class="icons-actions d-flex justify-content-end ms-auto fs-28px text-light">
+							{{ partial "header/items/icon-account" }}
+							{{ partial "header/items/icon-wishlist" (dict "badgeSkin" "light") }}
+							{{ partial "header/items/icon-cart" (dict "badgeSkin" "light") }}
+							{{ partial "header/items/color-modes" (dict "currentPage" . "classToggle" "btn btn-link nav-link dropdown-toggle d-inline-flex align-items-center justify-content-center color-inherit p-0 position-relative rounded-circle")}}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</header>

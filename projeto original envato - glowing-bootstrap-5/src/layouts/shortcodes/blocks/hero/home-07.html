@@ -1,0 +1,16 @@
+{{/*
+Block settings
+-------------------------------------------------
+id			Block ID
+class		Block class extral
+*/}}
+{{- $id := .Get "id" | default "" -}}
+{{- $class := .Get "class" | default "" -}}
+
+<section {{- if $id }} id="{{ $id }}" {{- end -}} {{- if $class }} class="{{ $class }}" {{- end}}>
+    {{ .Inner }}
+    {{ partial "elements/hero/style-04" (dict "currentPage" . "data" "hero-home-7"
+		"titleClass" "mb-7 hero-title-5 pe-lg-12"
+		"slickSliderClass" "slick-slider-dots-inside"
+	) }}
+</section>

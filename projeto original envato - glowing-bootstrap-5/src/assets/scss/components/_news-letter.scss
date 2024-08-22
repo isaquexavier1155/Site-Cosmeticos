@@ -1,0 +1,40 @@
+.input-focus{
+	&:focus{
+		color: #000;
+		background-color: #f5f5f5;
+		border-color: #000;
+		outline: 0;
+		box-shadow: 0 0 10px rgba(0,0,0,.1);
+	}
+}
+
+.checkbox-blue {
+	&:checked {
+		background-color: $blue;
+		border-color: $blue;
+	}
+	&:focus {
+		box-shadow: none;
+	}
+}
+
+.newletter-follow-form{
+	max-width: 470px;
+}
+.newletter-follow-desc{
+	max-width: 450px;
+}
+/*.up-to-date-title{
+	max-width: 500px;
+}
+.up-to-date-form{
+	max-width: 546px;
+}*/
+.btn-custom {
+	height: 58px;
+	top:50%;
+	transform:translateY(-50%);
+	right: 0;
+	border: none;
+	line-height: 28px;
+}

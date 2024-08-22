@@ -1,0 +1,51 @@
+{{/*
+Block settings
+-------------------------------------------------
+id			Block ID
+class		Block class extral
+*/}}
+{{- $id := .Get "id" | default "shop-category-overlay" -}}
+{{- $class := .Get "class" | default "pt-lg-16 pt-15" -}}
+
+<section {{- if $id }} id="{{ $id }}" {{- end -}} {{- if $class }} class="{{ $class }}" {{- end}}>
+    {{ .Inner }}
+	<div class="container container-xxl">
+		<div class="row align-items-end">
+			<div class="col-md-6 mb-5 mb-md-11" data-animate="fadeInUp">
+				<h3 class="fs-3 mb-0 fw-normal font-primary">Shop Categories</h3>
+			</div>
+			<div class="col-md-6 mb-11 text-md-end" data-animate="fadeInUp">
+				<a href="#" class="btn btn-link p-0 mt-2 fw-semibold text-decoration-none">Shop All Categories<i class="far fa-arrow-right ps-2 fs-13px"></i></a>
+			</div>
+		</div>
+		<div class="row gx-30px gy-30px">
+			<div class="col-md-6 col-xl-3" data-animate="fadeInUp">
+                {{ partial  "elements/banner/style-4" (dict "title" "Hand Cream"
+                "image" "/assets/images/banner/banner-52.jpg" "width" "330" "height" "450"
+                "btnClass" "btn btn-link p-0 fw-semibold text-white border-bottom border-0 rounded-0 border-currentColor text-decoration-none"
+				"contentClass" "d-inline-flex flex-column p-8 justify-content-end text-center bg-dark bg-opacity-25"
+                "btnContent" "Shop Now"
+                "titleClass" "font-primary fw-normal fs-3"
+				"altContent" "Hand Cream") }}
+			</div>
+			<div class="col-md-6 col-xl-3" data-animate="fadeInUp">
+                {{ partial  "elements/banner/style-4" (dict "title" "Skincare"
+                "image" "/assets/images/banner/banner-54.jpg" "width" "330" "height" "450"
+                "btnClass" "btn btn-link p-0 fw-semibold text-white border-bottom border-0 rounded-0 border-currentColor text-decoration-none"
+				"contentClass" "d-inline-flex flex-column p-8 justify-content-end text-center bg-dark bg-opacity-25"
+                "btnContent" "Shop Now"
+                "titleClass" "font-primary fw-normal fs-3"
+                "altContent" "Skincare") }}
+			</div>
+			<div class="col-xl-6" data-animate="fadeInUp">
+                {{ partial  "elements/banner/style-4" (dict "title" "Bodycare"
+                "image" "/assets/images/banner/banner-53.jpg" "width" "690" "height" "450"
+                "btnClass" "btn btn-link p-0 fw-semibold text-white border-bottom border-0 rounded-0 border-currentColor text-decoration-none"
+				"contentClass" "d-inline-flex flex-column p-8 justify-content-end text-center bg-dark bg-opacity-25"
+                "btnContent" "Shop Now"
+                "titleClass" "font-primary fw-normal fs-3"
+                "altContent" "Bodycare") }}
+			</div>
+		</div>
+	</div>
+</section>

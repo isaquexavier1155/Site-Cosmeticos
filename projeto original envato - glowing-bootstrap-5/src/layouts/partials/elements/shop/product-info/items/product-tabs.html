@@ -1,0 +1,265 @@
+{{/***
+Element Parameters
+---------------------------------------------
+$.titleClass                Title extra Class
+$.subtitleClass                Subtitle extra Class
+$.imgClass                    Img extra Class
+$.wrapClass                    Wrapper extra Class
+$.contentClas                Content extra Class
+$.listHowToUseClass            List how to use extra Class
+$.howToUseItemClass            How to use extra Class
+$.ingredientsTitleClass        Ingredients title extra Class
+$.ingredientsDescriptClass    Ingredients descript extra Class
+*/}}
+
+{{- $titleClass := "fs-4" -}}
+{{- if isset $ "titleClass" }}
+{{- $titleClass = $.titleClass -}}
+{{ end -}}
+
+{{- $subtitleClass := "fw-semibold text-body-emphasis mb-2 pb-4" -}}
+{{- if isset $ "subtitleClass" }}
+{{- $subtitleClass = $.subtitleClass -}}
+{{ end -}}
+
+{{- $imgClass := "col-6 col-md-3 text-center mb-9 pb-2" -}}
+{{- if isset $ "imgClass" }}
+{{- $imgClass = $.imgClass -}}
+{{ end -}}
+
+{{- $wrapClass := "container" -}}
+{{- if isset $ "wrapClass" }}
+{{- $wrapClass = $.wrapClass -}}
+{{ end -}}
+
+{{- $contentClass := "pb-3" -}}
+{{- if isset $ "contentClass" }}
+{{- $contentClass = $.contentClass -}}
+{{ end -}}
+
+{{- $listHowToUseClass := "ps-6 mb-8" -}}
+{{- if isset $ "listHowToUseClass" }}
+{{- $listHowToUseClass = $.listHowToUseClass -}}
+{{ end -}}
+
+{{- $howToUseItemClass := "mb-3" -}}
+{{- if isset $ "howToUseItemClass" }}
+{{- $howToUseItemClass = $.howToUseItemClass -}}
+{{ end -}}
+
+{{- $ingredientsTitleClass := "ps-0 py-5 pe-5 text-body-emphasis" -}}
+{{- if isset $ "ingredientsTitleClass" }}
+{{- $ingredientsTitleClass = $.ingredientsTitleClass -}}
+{{ end -}}
+
+{{- $ingredientsDescriptClass := "text-end py-5 ps-5 pe-0" -}}
+{{- if isset $ "ingredientsDescriptClass" }}
+{{- $ingredientsDescriptClass = $.ingredientsDescriptClass -}}
+{{ end -}}
+
+<section class="{{$wrapClass}}">
+	<div class="collapse-tabs">
+		<ul class="nav nav-tabs border-0 justify-content-center pb-12 d-none d-md-flex" id="productTabs" role="tablist">
+			<li class="nav-item" role="presentation">
+				<button class="nav-link m-auto fw-semibold py-0 px-8 fs-4 fs-lg-3 border-0 text-body-emphasis active"
+						id="product-details-tab" data-bs-toggle="tab" data-bs-target="#product-details" type="button"
+						role="tab" aria-controls="product-details" aria-selected="true">Product Details
+				</button>
+			</li>
+			<li class="nav-item" role="presentation">
+				<button class="nav-link m-auto fw-semibold py-0 px-8 fs-4 fs-lg-3 border-0 text-body-emphasis"
+						id="how-to-use-tab"
+						data-bs-toggle="tab" data-bs-target="#how-to-use" type="button" role="tab"
+						aria-controls="how-to-use" aria-selected="false">How To Use
+				</button>
+			</li>
+			<li class="nav-item" role="presentation">
+				<button class="nav-link m-auto fw-semibold py-0 px-8 fs-4 fs-lg-3 border-0 text-body-emphasis"
+						id="ingredients-tab"
+						data-bs-toggle="tab" data-bs-target="#ingredients" type="button" role="tab"
+						aria-controls="ingredients" aria-selected="false">Ingredients
+				</button>
+			</li>
+		</ul>
+		<div class="tab-content">
+			<div class="tab-inner">
+				<div class="tab-pane fade active show" id="product-details" role="tabpanel"
+					 aria-labelledby="product-details-tab" tabindex="0">
+					<div class="card border-0 bg-transparent">
+						<div class="card-header border-0 bg-transparent px-0 py-4 product-tabs-mobile d-block d-md-none">
+							<h5 class="mb-0">
+								<button class="btn lh-2 fs-5 py-3 px-6 shadow-none w-100 border text-primary" type="button"
+										data-bs-toggle="collapse" data-bs-target="#collapse-product-detail"
+										aria-expanded="false" aria-controls="collapse-product-detail">
+									Product Detail
+								</button>
+							</h5>
+						</div>
+						<div class="collapse show border-md-0 border p-md-0 p-6" id="collapse-product-detail">
+							<div class="row">
+								<div class="col-12 col-lg-6 pe-lg-10 pe-xl-20">
+									<img src="#" data-src="/assets/images/shop/product-details-img.jpg" class="w-100 lazy-image" alt="" width="470" height="540">
+								</div>
+								<div class="{{- if $contentClass}}{{$contentClass}}{{- end}} col-12 col-lg-6 pt-12 pt-lg-0">
+									<p class="{{- if $subtitleClass}}{{$subtitleClass}}{{- end}}">For Normal, Oily,
+										Combination Skin
+										Types</p>
+									<p class="mb-2 pb-4">Complexion-perfecting natural foundation enriched with
+										antioxidant-packed superfruits, vitamins, and other skin-nourishing
+										nutrients. Creamy liquid formula sets with a pristine matte finish
+										for soft, velvety smooth skin.</p>
+									<p class="mb-9">Say hello to flawless, long-lasting foundation that
+										comes in 7
+										melt-into-your-skin shades. This lightweight, innovative formula
+										creates a smooth, natural matte finish that won’t settle into lines.
+										It’s the perfect fit for your skin. 1 fl. oz.</p>
+									<p class="{{- if $subtitleClass}}{{$subtitleClass}}{{- end}}">Benefits</p>
+									<ul class="mb-7 ps-6">
+										<li class="mb-1">Buildable medium-to-full coverage</li>
+										<li class="mb-1">Weightless, airy feel—no caking!</li>
+										<li class="mb-1">Long-wearing</li>
+										<li class="mb-1">Evens skin tone</li>
+										<li>Available in 07 shades (all exclusive to Makeaholic!)</li>
+									</ul>
+									<div class="row">
+										<div class="{{- if $imgClass}}{{$imgClass}}{{- end}}">
+											{{  partial "the-image" (dict "currentPage" $.currentPage "img" "/assets/images/shop/product-info-3-1.png" "img_dark" "/assets/images/shop/product-info-white-3-1.png" "width" "66" "height" "77") }}
+										</div>
+										<div class="{{- if $imgClass}}{{$imgClass}}{{- end}}">
+											{{  partial "the-image" (dict "currentPage" $.currentPage "img" "/assets/images/shop/product-info-3-2.png" "img_dark" "/assets/images/shop/product-info-white-3-2.png" "width" "66" "height" "77") }}
+										</div>
+										<div class="{{- if $imgClass}}{{$imgClass}}{{- end}}">
+											{{  partial "the-image" (dict "currentPage" $.currentPage "img" "/assets/images/shop/product-info-3-3.png" "img_dark" "/assets/images/shop/product-info-white-3-3.png" "width" "66" "height" "77") }}
+										</div>
+										<div class="{{- if $imgClass}}{{$imgClass}}{{- end}}">
+											{{  partial "the-image" (dict "currentPage" $.currentPage "img" "/assets/images/shop/product-info-3-4.png" "img_dark" "/assets/images/shop/product-info-white-3-4.png" "width" "66" "height" "77") }}
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="tab-pane fade" id="how-to-use" role="tabpanel" aria-labelledby="how-to-use-tab" tabindex="0">
+					<div class="card border-0 bg-transparent">
+						<div class="card-header border-0 bg-transparent px-0 py-4 product-tabs-mobile d-block d-md-none">
+							<h5 class="mb-0">
+								<button class="btn lh-2 fs-5 py-3 px-6 shadow-none w-100 border text-primary" type="button"
+										data-bs-toggle="collapse"
+										data-bs-target="#collapse-to-use"
+										aria-expanded="false" aria-controls="collapse-to-use">How To Use
+								</button>
+							</h5>
+						</div>
+						<div class="collapse border-md-0 border p-md-0 p-6" id="collapse-to-use">
+							<div class="{{- if $contentClass}}{{$contentClass}}{{- end}}">
+								<p class="{{- if $subtitleClass}}{{$subtitleClass}}{{- end}}">Follow these safety guidelines
+									when
+									using cosmetics products of any type:</p>
+								<ul class="{{- if $listHowToUseClass}}{{$listHowToUseClass}}{{- end}}">
+									<li class="{{- if $howToUseItemClass}}{{$howToUseItemClass}}{{- end}}">Read the label.
+										Follow all directions and heed all warnings.
+									</li>
+									<li class="{{- if $howToUseItemClass}}{{$howToUseItemClass}}{{- end}}">Wash your hands
+										before you use the product.
+									</li>
+									<li class="{{- if $howToUseItemClass}}{{$howToUseItemClass}}{{- end}}">Do not share
+										makeup.
+									</li>
+									<li class="{{- if $howToUseItemClass}}{{$howToUseItemClass}}{{- end}}">Keep the
+										containers clean and tightly closed when not in use,
+										and protect them from temperature extremes.
+									</li>
+									<li class="{{- if $howToUseItemClass}}{{$howToUseItemClass}}{{- end}}">Throw away
+										cosmetics if there are changes in color or smell.
+									</li>
+									<li>Use aerosols or sprays cans in well-ventilated areas. Do not use them while
+										you are smoking or near an open flame. It could start a fire.
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="tab-pane fade" id="ingredients" role="tabpanel" aria-labelledby="ingredients-tab" tabindex="0">
+					<div class="card-header border-0 bg-transparent px-0 py-4 product-tabs-mobile d-block d-md-none">
+						<h5 class="mb-0">
+							<button class="btn lh-2 fs-5 py-3 px-6 shadow-none w-100 border text-primary" type="button"
+									data-bs-toggle="collapse"
+									data-bs-target="#collapse-ingredients"
+									aria-expanded="false" aria-controls="collapse-ingredients">How To Use
+							</button>
+						</h5>
+					</div>
+					<div class="collapse border-md-0 border p-md-0 p-6" id="collapse-ingredients">
+						<div class="{{- if $contentClass}}{{$contentClass}}{{- end}}">
+							<div class="table-responsive mb-5">
+								<table class="table table-borderless mb-0">
+									<tbody>
+									<tr>
+										<td class="{{- if $ingredientsTitleClass}}{{$ingredientsTitleClass}}{{- end}}">CAS
+										</td>
+										<td class="{{- if $ingredientsDescriptClass}}{{$ingredientsDescriptClass}}{{- end}}">
+											92128-82-0, 9057-02-7
+										</td>
+									</tr>
+									<tr>
+										<td class="{{- if $ingredientsTitleClass}}{{$ingredientsTitleClass}}{{- end}}">
+											INCI
+										</td>
+										<td class="{{- if $ingredientsDescriptClass}}{{$ingredientsDescriptClass}}{{- end}}">
+											Nannochloropsis Oculata (micro algae)
+											extract, pullulan
+										</td>
+									</tr>
+									<tr>
+										<td class="{{- if $ingredientsTitleClass}}{{$ingredientsTitleClass}}{{- end}}">
+											Composition
+										</td>
+										<td class="{{- if $ingredientsDescriptClass}}{{$ingredientsDescriptClass}}{{- end}}">
+											Nannochloropsis Oculata (micro algae)
+											extract, pullulan, water, ethanol
+										</td>
+									</tr>
+									<tr>
+										<td class="{{- if $ingredientsTitleClass}}{{$ingredientsTitleClass}}{{- end}}">
+											Appearance
+										</td>
+										<td class="{{- if $ingredientsDescriptClass}}{{$ingredientsDescriptClass}}{{- end}}">
+											Yellow to amber, viscous liquid
+										</td>
+									</tr>
+									<tr>
+										<td class="{{- if $ingredientsTitleClass}}{{$ingredientsTitleClass}}{{- end}}">
+											Solubility
+										</td>
+										<td class="{{- if $ingredientsDescriptClass}}{{$ingredientsDescriptClass}}{{- end}}">
+											Soluble in water &amp; ethanol
+										</td>
+									</tr>
+									<tr>
+										<td class="{{- if $ingredientsTitleClass}}{{$ingredientsTitleClass}}{{- end}}">
+											Storage
+										</td>
+										<td class="{{- if $ingredientsDescriptClass}}{{$ingredientsDescriptClass}}{{- end}}">
+											Store refrigerated (4-8oC / 39-46oF)
+										</td>
+									</tr>
+									</tbody>
+								</table>
+							</div>
+							<p class="mb-0">
+								Perfect for Equestrian homes or every horse lover. Designer premium
+								signature aluminum alloy all Arthur Court is compliance with FDA
+								regulations. Aluminum Serveware can be chilled in the freezer or
+								refrigerator and warmed in the oven to 350. Wash by hand with mild dish
+								soap and dry immediately – do not put in the dishwasher. Comes in Gift
+								Box perfect for Equestrian home or Horse lover in your life.
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

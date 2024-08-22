@@ -1,0 +1,55 @@
+{{/***
+Element Parameters
+---------------------------------------------
+
+$.quantityItemClass	Quantity extra Class
+
+$.contentClass:		Content extra Class
+$.colorClass:		Color Class
+$.colorTitleClass:	Color title Class
+$.listColorClass:	List color extra Class
+*/}}
+
+{{- $contentClass := "mb-7 mt-3" -}}
+{{- if isset $ "contentClass" }}
+    {{- $contentClass = $.contentClass -}}
+{{ end -}}
+
+{{- $colorClass := "mb-2 pb-4" -}}
+{{- if isset $ "colorClass" }}
+    {{- $colorClass = $.colorClass -}}
+{{ end -}}
+
+{{- $colorTitleClass := "fw-semibold text-body-emphasis me-2 pe-4" -}}
+{{- if isset $ "colorTitleClass" }}
+    {{- $colorTitleClass = $.colorTitleClass -}}
+{{ end -}}
+
+{{- $listColorClass := "p-3" -}}
+{{- if isset $ "listColorClass" }}
+    {{- $listColorClass = $.listColorClass -}}
+{{ end -}}
+
+<div class="form-group product-color {{- if $contentClass}} {{$contentClass}}{{- end}}">
+	<label class="{{- if $colorClass}}{{$colorClass}}{{- end}}"><span class="{{- if $colorTitleClass}}{{$colorTitleClass}}{{- end}}">Color:</span> <span>Green - Revitalizing</span></label>
+	<ul class="list-inline d-flex justify-content-start mb-0">
+		<li class="list-inline-item list-color-product selected {{- if $listColorClass}} {{$listColorClass}}{{- end}}">
+			<a href="#" class="d-block color-item green-revitalizing"></a>
+		</li>
+		<li class="list-inline-item list-color-product {{- if $listColorClass}} {{$listColorClass}}{{- end}}">
+			<a href="#" class="d-block color-item pink"></a>
+		</li>
+		<li class="list-inline-item list-color-product {{- if $listColorClass}} {{$listColorClass}}{{- end}}">
+			<a href="#" class="d-block color-item green"></a>
+		</li>
+		<li class="list-inline-item list-color-product {{- if $listColorClass}} {{$listColorClass}}{{- end}}">
+			<a href="#" class="d-block color-item purple"></a>
+		</li>
+	</ul>
+	<select name="swatches" class="form-select d-none">
+		<option selected="" value="Green - Revitalizing">Green - Revitalizing</option>
+		<option value="Pink">Pink</option>
+		<option value="Green">Green</option>
+		<option value="Purple">Purple</option>
+	</select>
+</div>

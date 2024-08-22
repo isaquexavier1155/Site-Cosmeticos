@@ -1,0 +1,13 @@
+{{/***
+Element Parameters
+---------------------------------------------
+$.class: 			Element extra class name
+$.desc:
+*/}}
+{{- $class := "" -}}
+
+{{- if isset $ "class" -}}
+    {{- $class = $.class -}}
+{{- end -}}
+
+<p class="product-desc {{ $class -}}">{{- $.desc -}}</p>

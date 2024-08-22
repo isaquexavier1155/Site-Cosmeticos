@@ -1,0 +1,42 @@
+{{/***
+Element Parameters
+---------------------------------------------
+$.class: 			Element extra class name
+$.animate: 			Element Animate
+$.currentPage: 		$.currentPage.Page, $.currentPage.Site
+*/}}
+
+{{- $animate := "true" -}}
+{{- if isset $ "animate" }}
+{{- $animate = $.animate -}}
+{{ end -}}
+
+
+{{- $wrapperClass := "mt-13 pt-3 justify-content-center" -}}
+{{- if isset $ "class" }}
+    {{- $wrapperClass = $.class -}}
+{{ end -}}
+
+<nav class="d-flex {{- if $wrapperClass }} {{ $wrapperClass }}{{ end }}" aria-label="pagination" {{ if eq $animate "true" -}} data-animate="fadeInUp" {{ end }}>
+    <ul class="pagination m-0">
+        <li class="page-item">
+            <a class="page-link rounded-circle d-flex align-items-center justify-content-center" href="#" aria-label="Previous">
+                <svg class="icon">
+                    <use xlink:href="#icon-angle-double-left"></use>
+                </svg>
+            </a>
+        </li>
+        <li class="page-item"><a class="page-link" href="#">1</a></li>
+        <li class="page-item active"><a class="page-link" href="#">2</a></li>
+        <li class="page-item"><a class="page-link" href="#">3</a></li>
+        <li class="page-item"><a class="page-link" href="#">...</a></li>
+        <li class="page-item"><a class="page-link" href="#">6</a></li>
+        <li class="page-item">
+            <a class="page-link rounded-circle d-flex align-items-center justify-content-center" href="#" aria-label="Next">
+                <svg class="icon">
+                    <use xlink:href="#icon-angle-double-right"></use>
+                </svg>
+            </a>
+        </li>
+    </ul>
+</nav>

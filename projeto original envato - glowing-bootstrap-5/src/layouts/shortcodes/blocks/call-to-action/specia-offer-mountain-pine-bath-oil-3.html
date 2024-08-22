@@ -1,0 +1,33 @@
+{{/*
+Block settings
+-------------------------------------------------
+id			Block ID
+class		Block class extral
+*/}}
+{{- $id := .Get "id" | default "" -}}
+{{- $class := .Get "class" | default "container container-xxl" -}}
+
+<section {{- if $id }} id="{{ $id }}" {{- end -}}>
+    {{ .Inner }}
+	<div  {{- if $class }} class="{{ $class }}" {{- end}}>
+		<div class="row align-items-center">
+			<div class="col-lg-6 col-xl-5" data-animate="fadeInUp">
+				<img src="#" data-src="/assets/images/Countdown/countdown-07.jpg" alt="Countdown" class="img-fluid lazy-image" width="570" height="570">
+			</div>
+			<div class="col-lg-6 col-xl-7 pt-13 pt-lg-0 ps-lg-16" data-animate="fadeInUp">
+				{{ partial  "elements/heading/style-1" (dict "align" "left" "subtitle" "SPECIAL OFFER <span class=\"badge bg-primary fs-15px py-3 px-4 ms-4\">-20%</span>"
+				"subtitleClass" "fs-14px mb-6 ls-1 text-muted fw-bolder"
+				"title" "Mountain Pain Bath Oil"
+				"titleClass" "mb-8 fs-1 fw-normal font-primary"
+				"desc" "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur"
+				"descClass" "fs-18px me-md-25 me-lg-0 me-xl-25 mb-10"
+				) }}
+				{{ partial  "elements/countdown/style-1" (dict "time" "Jan 27, 2024 18:24:25"
+					"timeClass" "fw-normal text-primary font-primary"
+					"separateClass" "fw-normal fs-1 text-primary"
+				)}}
+				<a href="#" class="mt-11 btn btn-dark btn-hover-bg-primary btn-hover-border-primary transition-all-1 shadow px-lg-13">Add to cart <span class="px-3 fw-normal">|</span> $58.00</a>
+			</div>
+		</div>
+	</div>
+</section>

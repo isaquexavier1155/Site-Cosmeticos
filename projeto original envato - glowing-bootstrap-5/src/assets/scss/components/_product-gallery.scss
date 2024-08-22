@@ -1,0 +1,21 @@
+.product-gallery-video-thumb{
+	font-size: 8px;
+	width: 24px;
+	height: 24px
+}
+.product-gallery-video{
+	font-size: 30px;
+	width: 90px;
+	height: 90px
+}
+.product-gallery-action{
+	transition: all 0.2s;
+	background-color: $white;
+	color: $black;
+	width: 48px;
+	height: 48px;
+}
+.product-gallery-action:hover{
+	background-color: $black;
+	color: $white;
+}

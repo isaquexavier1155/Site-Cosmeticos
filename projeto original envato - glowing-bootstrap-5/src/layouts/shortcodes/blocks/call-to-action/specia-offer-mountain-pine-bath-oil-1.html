@@ -1,0 +1,32 @@
+{{/*
+Block settings
+-------------------------------------------------
+id			Block ID
+class		Block class extral
+*/}}
+{{- $id := .Get "id" | default "" -}}
+{{- $class := .Get "class" | default "" -}}
+
+<section {{- if $id }} id="{{ $id }}" {{ end }} class="bg-section-3 {{- if $class }} {{ $class }} {{- end}}">
+    {{ .Inner }}
+	<div class="container container-xxl">
+		<div class="row align-items-center">
+			<div class="col-lg-7 position-relative" data-animate="fadeIn">
+				{{  partial "the-image" (dict "currentPage" . "img" "/assets/images/Countdown/Countdown-01.png" "img_dark" "/assets/images/Countdown/Countdown-white-01.png" "class" "img-fluid" "width" "774" "height" "640" "alt" "Countdown") }}
+				<div class="lable-sale-countdown fw-nomal py-9 px-9 d-none fs-5 bg-primary rounded-circle d-xl-flex align-items-center justify-content-center flex-column text-white position-absolute">
+					Save<span class="fs-23px fw-semibold">$19.00</span></div>
+			</div>
+			<div class="col-lg-5 py-lg-0 py-13" data-animate="fadeInUp">
+                {{ partial "elements/heading/style-1" (dict "subtitle" "SPECIAL OFFER <span class=\"badge bg-primary fs-15px fw-500 ms-4\">-20%</span>"
+				"align" "left"
+				"title" "Mountain Pine Bath Oil"
+                "desc" "Made using clean, non-toxic ingredients, our products are designed for everyone."
+				"descClass" "fs-18px mb-4 me-md-25 me-lg-0 me-xl-20 text-body-calculate"
+                ) }}
+				{{ partial "elements/countdown/style-1" (dict "time" "Jan 27, 2024 18:24:25"
+				)}}
+				<a href="#" class="mt-11 btn btn-white shadow-sm">Get Only $39,00</a>
+			</div>
+		</div>
+	</div>
+</section>

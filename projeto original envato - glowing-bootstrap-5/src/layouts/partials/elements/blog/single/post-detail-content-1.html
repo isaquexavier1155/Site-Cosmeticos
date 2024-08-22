@@ -1,0 +1,63 @@
+{{/***
+Element Parameters
+---------------------------------------------
+$.class: 			Element extra class name
+$descClass			Text of content Class
+$subTitleClass		sub title Class
+$.subTitle			sub Title
+$.desc				Text of content
+$.img1				image 1
+$.img2				image 2
+$.imgWidth 			image width
+$.imgHeight 		image height
+*/}}
+
+{{- $class := "post-content" -}}
+{{- if isset $ "class" }}
+    {{- $class = $.class -}}
+{{ end -}}
+
+{{- $descClass := "mb-6" -}}
+{{- if isset $ "descClass" }}
+    {{- $descClass = $.descClass -}}
+{{ end -}}
+
+{{- $subtitleClass := "fs-18px text-body-emphasis mt-5 mb-4 fw-500" -}}
+{{- if isset $ "subtitleClass" }}
+    {{- $subtitleClass = $.subtitleClass -}}
+{{ end -}}
+
+{{- $imgWidth := "770" -}}
+{{- if isset $ "imgWidth" }}
+    {{- $imgWidth = $.imgWidth -}}
+{{- end -}}
+
+{{- $imgHeight := "470" -}}
+{{- if isset $ "imgHeight" }}
+    {{- $imgHeight = $.imgHeight -}}
+{{- end -}}
+
+<div {{- if $class }} class="{{ $class }}"{{ end }}>
+	<img  data-src="/assets/images/blog/post-style-4-img-1.jpg" width="{{ $imgWidth }}" height="{{ $imgHeight }}" alt="" class="lazy-image mb-12 img-fluid" src="#">
+	<p class="{{- if $descClass }} {{ $descClass }}{{ end }}">
+		Awkwardness gives me great comfort. I’ve never been cool, but I’ve felt cool. I’ve been in the cool place, but I wasn’t really cool – I was trying to pass for hip or cool. It’s the awkwardness that’s nice. We look our best in subdued colors, sophisticated cuts, and a general air of sleek understatement. I like the body. I like to design everything to do with the body.
+	</p>
+	<h4 class="text-center pb-11 ps-lg-10 pe-lg-13 px-0 pt-9">
+		"I try as much as possible to give you a great basic product and what comes out, I feel, is really amazing."
+	</h4>
+	<p>If I fell in love with a woman for an artistic reason, or from the point of view of my work, I think it would rob her of something. We live in an era of globalization and the era of the woman. Never in the history of the world have women <span class="text-body-emphasis">been more in control of their destiny.</span></p>
+	<p class="{{- if $subtitleClass }} {{ $subtitleClass }}{{ end }}">
+		Your imagination, our creation</p>
+	<p class="mb-12{{- if $descClass }} {{ $descClass }}{{ end }}">
+		Complexion-perfecting natural foundation enriched with antioxidant-packed superfruits, vitamins, and other skin-nourishing nutrients. Creamy liquid formula sets with a pristine matte finish for soft, velvety smooth skin. Made using clean, non-toxic ingredients, our products are designed for everyone...
+	</p>
+	<div class="text-center">
+		<img class="img-fluid mx-auto lazy-image" src="#" data-src="/assets/images/blog/post-content-img-2.jpg" alt="" width="570" height="350">
+	</div>
+	<p class="fs-14px text-center mt-7">
+		Producing the highest quality products
+	</p>
+	<p class="mt-lg-12 mt-8">
+		Awkwardness gives me great comfort. I’ve never been cool, but I’ve felt cool. I’ve been in the cool place, but I wasn’t really cool – I was trying to pass for hip or cool. It’s the awkwardness that’s nice. We look our best in subdued colors, sophisticated cuts, and a general air of sleek understatement. I like the body. I like to design everything to do with the body.
+	</p>
+</div>

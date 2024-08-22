@@ -1,0 +1,15 @@
+.hover-change-image {
+	.hover-image {
+		transition:all .3s;
+		opacity:0
+	}
+	.hover-bottom-to-top {
+		transform: translateY(100%);
+	}
+	&:hover .hover-image {
+		opacity: 1;
+	}
+	&:hover .hover-bottom-to-top {
+		transform: translateY(0%);
+	}
+}

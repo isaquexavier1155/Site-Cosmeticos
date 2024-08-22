@@ -1,0 +1,27 @@
+{{/*
+Block settings
+-------------------------------------------------
+id			Block ID
+class		Block class extral
+*/}}
+{{- $id := .Get "id" | default "" -}}
+{{- $class := .Get "class" | default "" -}}
+
+<section {{- if $id }} id="{{ $id }}" {{- end -}} {{- if $class }} class="{{ $class }}" {{- end}} data-animate="fadeInUp">
+    {{ .Inner }}
+	<div class="container">
+        {{ partial  "elements/banner/style-10" (dict
+		"currentPage" .
+		"subtitle" "NEW COLLECTION"
+		"subtitleClass" "fs-15px text-body-emphasis"
+        "title" "Get The Skin You Want To Feel"
+        "image" "/assets/images/background/bg-other-01.jpg"
+        "img_dark" "/assets/images/background/bg-other-white-01.jpg"
+		"width" "1170" "height" "424"
+        "btnContent" "Explore More"
+		"btnClass" "btn-white"
+        "titleClass" "w-md-60"
+		"altContent" "Get The Skin You Want To Feel"
+		) }}
+	</div>
+</section>

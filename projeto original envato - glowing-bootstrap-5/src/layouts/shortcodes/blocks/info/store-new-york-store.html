@@ -1,0 +1,68 @@
+{{/*
+Block settings
+-------------------------------------------------
+id			Block ID
+class		Block class extral
+*/}}
+{{- $id := .Get "id" | default "" -}}
+{{- $class := .Get "class" | default "mb-13 mb-lg-15 mb-xl-19" -}}
+
+<section {{- if $id }} id="{{ $id }}" {{- end -}} {{- if $class }} class="{{ $class }}" {{- end}}>
+    {{ .Inner }}
+	<div class="bg-body-secondary py-5 mb-13">
+		<nav aria-label="breadcrumb">
+			<ol class="breadcrumb breadcrumb-site py-0 d-flex justify-content-center">
+				<li class="breadcrumb-item"><a class="text-decoration-none text-body" href="#">Home</a>
+				</li>
+				<li class="breadcrumb-item active pl-0 d-flex align-items-center" aria-current="page">Find a Store</li>
+			</ol>
+		</nav>
+	</div>
+	<div class="container container-xxl">
+		<div class="text-center">
+            {{ partial  "elements/heading/style-1" (dict "title" "Find a Store"
+            "titleClass" "fs-36px mb-7"
+            "desc" "We’re talking about clean beauty gift sets, of course – and we’ve got a bouquet of beauties for yourself or someone you love."
+            "descClass" "fs-18px mb-6 w-lg-60 w-xl-40 mx-md-13 mx-lg-auto"
+            ) }}
+		</div>
+		<div class="row mt-15 d-flex align-items-center">
+			<div class="col-lg-7 col-xl-6 mb-12 mb-lg-0 ">
+                {{ partial "elements/image-box/style-4" (dict
+				"currentPage" .
+				"img" "/assets/images/others/store-01.jpg"
+				"imgClass" "img-fluid lazy-image rounded-0"
+                "class" "hover-zoom-in"
+                "contentClass" ""
+                ) }}
+			</div>
+			<div class="col-lg-5 col-xl-6 ps-lg-10 ps-xl-16">
+				<div class="row">
+                    <h2 class="fs-3 mb-10 mb-md-11">New York Store</h2>
+					<div class="col-md-6 mb-11">
+                        {{ partial "elements/icon-box/style-2" (dict "title" "Address"
+                        "iconClass" "d-none"
+                        "desc" "<p class=\"mb-2 pb-4 fs-6\">3245 Abbot Kinney BLVD – <br> PH Venice, CA 124</p>"
+                        "btnContent" "Get Direction") }}
+					</div>
+					<div class="col-md-6 mb-7">
+                        {{ partial "elements/icon-box/style-2" (dict "title" "Store Hours"
+                        "iconClass" "d-none"
+                        "desc" "<dl class=\"d-flex mb-0\"><dt class=\"pe-3 fs-6 text-body-emphasis fw-500\" style=\"width: 110px\">Mon – Fri:</dt><dd class=\"mb-0\"> 08:30 – 20:00</dd></dl><dl class=\"d-flex mb-0\"><dt class=\"pe-3 fs-6 text-body-emphasis fw-500\" style=\"width: 110px\">Sat & Sun:</dt><dd class=\"mb-0\"> 09:30 – 21:30</dd></dl>") }}
+					</div>
+					<div class="col-md-6 mb-7">
+                        {{ partial "elements/icon-box/style-2" (dict "title" "Contact"
+                        "iconClass" "d-none"
+                        "desc" "<p class=\"mb-3 fs-6\">Mobile:<span class=\"text-body-emphasis\"> 068 26589 996</span></p><p class=\"mb-3 fs-6\">Hotline:<span class=\"text-body-emphasis\"> 1900 26886</span></p><p class=\"mb-0 fs-6\">E-mail: hello@grace.com</p>") }}
+					</div>
+					<div class="col-md-6">
+                        {{ partial "elements/icon-box/style-2" (dict "title" "Social media"
+                        "iconClass" "d-none"
+                        ) }}
+                        {{ partial  "elements/socical-icons/style-2" (dict "currentPage" . ) }}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

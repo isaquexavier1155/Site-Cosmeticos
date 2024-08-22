@@ -1,0 +1,23 @@
+{{ .Inner }}
+{{- $id := .Get "id" | default "" -}}
+{{- $class := .Get "class" | default "container container-xxl pt-14 pt-lg-17" -}}
+{{ $currentPage := . }}
+<section {{- if $id }} id="{{ $id }}" {{- end -}} {{- if $class }} class="{{ $class }}" {{- end}}>
+	<div class="mb-lg-13 mb-7">
+		{{  partial "elements/heading/style-1" (dict "currentPage" . "title" "Our Picks for You" "desc" "Our products are designed for everyone." ) }}
+	</div>
+	<div class="row">
+		{{- range $item := $.Site.Data.shop_categories_our_picks_for_you }}
+			<div class="col-lg-2 col-md-4 col-sm-6 mt-lg-0 mt-10">
+				{{ partial  "elements/image-box/style-1" (dict
+					"currentPage" $currentPage
+					"title" $item.title
+					"subtitle" $item.subtitle
+					"img" $item.img
+					"img_dark" $item.img_dark
+				) }}
+			</div>
+		{{- end -}}
+	</div>
+</section>
+

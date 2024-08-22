@@ -1,0 +1,10 @@
+{{/***
+Element Parameters
+---------------------------------------------
+$.class: 			Element extra class name
+$.image:            Image data: src, width, height
+$.title             Title
+$.video_src         Video Src
+*/}}
+{{ partial "elements/blog/post-format/image" (dict "image" $.image "title" $.title ) }}
+<a href="{{- $.video_src -}}" style="--square-size: 90px" class="view-video bg-dark-hover text-light-hover transition-all-2 z-index-3 fs-2 square rounded-circle bg-body text-body-emphasis  position-absolute top-50 start-50 translate-middle"><svg class="icon"><use xlink:href="#icon-play-fill"></use></svg></a>

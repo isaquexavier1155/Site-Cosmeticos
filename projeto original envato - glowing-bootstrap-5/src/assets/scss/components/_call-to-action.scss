@@ -1,0 +1,54 @@
+.img-by-real-life {
+	top: 22%;
+	left: -50px;
+}
+
+.img-rotating {
+	animation: mymove 7s linear infinite;
+}
+
+@keyframes mymove {
+	100% {
+		-moz-transform: rotate(359deg);
+		-o-transform: rotate(359deg);
+		-webkit-transform: rotate(359deg);
+		transform: rotate(359deg);
+	}
+}
+
+.img-need-time {
+	top: -30px;
+}
+
+.lable-sale-countdown {
+	top: 20%;
+	left: 26%;
+}
+
+.lable-sale-countdown-glow {
+	top: 23%;
+	left: 17%;
+}
+
+.blend-beauty-top {
+	max-width: 1600px;
+	top: -80px;
+}
+
+.blend-beauty-bottom {
+	bottom: -110px;
+	max-width: 1164px;
+}
+
+.img-blend-beauty {
+	bottom: -65px;
+	right: 220px;
+}
+
+.button-hv-special {
+	&:hover {
+		background-color: #ececec;
+		border-color: #e6e6e6;
+	}
+}
+

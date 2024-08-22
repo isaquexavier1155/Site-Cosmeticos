@@ -1,0 +1,83 @@
+items:
+  - title: Shield Spray
+    reviews: 2947
+    rate: 100
+    price:
+      regular: "29.00"
+    image:
+      src: '/assets/images/products/product-07-270x360.jpg'
+      width: 330
+      height: 440
+  - title: Vital Eye Cream
+    reviews: 2947
+    rate: 80
+    price:
+      regular: "39.00"
+      sale: "29.00"
+    image:
+      src: '/assets/images/products/product-11-270x360.jpg'
+      width: 330
+      height: 440
+  - title: Supreme Moisture Mask
+    reviews: 2947
+    rate: 80
+    price:
+      regular: "39.00"
+      sale: "29.00"
+    image:
+      src: '/assets/images/products/product-08-270x360.jpg'
+      width: 330
+      height: 440
+  - title: Supreme Polishing Treatment
+    reviews: 2947
+    rate: 100
+    price:
+      regular: "29.00"
+    image:
+      src: '/assets/images/products/product-06-270x360.jpg'
+      width: 330
+      height: 440
+  - title: Scalp Moisturizing Cream
+    reviews: 2947
+    rate: 100
+    price:
+      regular: "29.00"
+    image:
+      src: '/assets/images/products/product-09-270x360.jpg'
+      width: 330
+      height: 440
+  - title: Natural Coconut Cleansing Oil
+    reviews: 2947
+    rate: 80
+    price:
+      regular: "39.00"
+      sale: "29.00"
+    image:
+      src: '/assets/images/products/product-12-270x360.jpg'
+      width: 330
+      height: 440
+options:
+  dots: false
+  arrows: true
+  slidesToShow: 5
+  responsive:
+    - breakpoint: 1560
+      settings:
+        dots: true
+        arrows: false
+        slidesToShow: 5
+    - breakpoint: 1200
+      settings:
+        dots: true
+        arrows: false
+        slidesToShow: 3
+    - breakpoint: 992
+      settings:
+        dots: true
+        arrows: false
+        slidesToShow: 2
+    - breakpoint: 576
+      settings:
+        dots: true
+        arrows: false
+        slidesToShow: 1

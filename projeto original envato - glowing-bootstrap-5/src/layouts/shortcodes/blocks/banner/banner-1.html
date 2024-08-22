@@ -1,0 +1,22 @@
+{{ .Inner }}
+{{/*
+Block settings
+-------------------------------------------------
+id			Block ID
+class		Block class extral
+*/}}
+{{- $id := .Get "id" | default "" -}}
+{{- $class := .Get "class" | default "" -}}
+
+<section {{- if $id }} id="{{ $id }}" {{- end -}} {{- if $class }} class="{{ $class }}" {{- end}} data-animate="fadeInUp">
+	<div>
+        {{ partial  "elements/banner/style-10" (dict "subtitle" ""
+		"currentPage" .
+        "title" ""
+        "image" "/assets/images/banner/banner-42.jpg"
+        "img_dark" "/assets/images/banner/banner-white-42.jpg"
+		"imageClass" "custom-img object-fit-cover"
+        "btnContent" ""
+        "titleClass" "w-md-60") }}
+	</div>
+</section>

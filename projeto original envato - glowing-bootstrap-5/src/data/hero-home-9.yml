@@ -1,0 +1,28 @@
+items:
+  - subtitle: "Made for you!"
+    img: "/assets/images/hero-slider/hero-slider-18.jpg"
+    imgDark: "/assets/images/hero-slider/hero-slider-white-18.jpg"
+    title: "Beauty Inspired by Real Life"
+    desc: "Made using clean, non-toxic ingredients, our products are designed for everyone."
+    button1: "Shop Now"
+  - subtitle: "Made for you!"
+    img: "/assets/images/hero-slider/hero-slider-19.jpg"
+    imgDark: "/assets/images/hero-slider/hero-slider-white-19.jpg"
+    title: "Beauty Inspired by Real Life"
+    desc: "Made using clean, non-toxic ingredients, our products are designed for everyone."
+    button1: "Shop Now"
+  - subtitle: "Made for you!"
+    img: "/assets/images/hero-slider/hero-slider-20.jpg"
+    imgDark: "/assets/images/hero-slider/hero-slider-white-20.jpg"
+    title: "Beauty Inspired by Real Life"
+    desc: "Made using clean, non-toxic ingredients, our products are designed for everyone."
+    button1: "Shop Now"
+config:
+  slidesToShow: 1
+  infinite: true
+  dots: false
+  arrows: false
+  fade: true
+  autoplay: true
+  cssEase: ease-in-out
+  speed: 600

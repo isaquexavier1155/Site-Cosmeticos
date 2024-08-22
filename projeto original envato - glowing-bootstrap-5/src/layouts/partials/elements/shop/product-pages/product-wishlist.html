@@ -1,0 +1,111 @@
+{{/***
+Element Parameters
+---------------------------------------------
+$.class: 				Element extra class name
+$.currentPage: 			$.currentPage.Page, $.currentPage.Site
+$.titleClass: 			Title extra Class
+$.cardWishlistClass: 	card product class
+$.iconWishlistClass: 	icon delete product
+$.priceWishlistClass: 	product price class
+$.dateWishlistClass: 	date class
+$.cardbuttonClass:		box button class
+$.buttonClass: 			button extra class
+$.imgwishlist: 			image product wishlist
+$.titleproduc: 			title product wishlist
+$.price:				product price
+$.pricedetail: 			product price detail
+$.date:
+$.buttoncart: 			button add product to cart
+$.buttoncontinue:		continue shopping
+$.buttonupdate: 		update cart
+*/}}
+
+{{- $class := "" -}}
+{{- if isset $ "class" }}
+    {{- $class = $.class -}}
+{{ end -}}
+
+{{- $cardWishlistClass := "ps-xl-10 py-6 d-flex align-items-center border-0" -}}
+{{- if isset $ "cardWishlistClass" }}
+    {{- $cardWishlistClass = $.cardWishlistClass -}}
+{{ end -}}
+
+{{- $iconWishlistClass := "d-block text-muted fw-lighter" -}}
+{{- if isset $ "iconWishlistClass" }}
+    {{- $iconWishlistClass = $.iconWishlistClass -}}
+{{ end -}}
+
+{{- $titleClass := "text-body-emphasis fw-semibold mb-5" -}}
+{{- if isset $ "titleClass" }}
+    {{- $titleClass = $.titleClass -}}
+{{ end -}}
+
+{{- $priceWishlistClass := "fw-normal fs-13px text-decoration-line-through text-secondary pe-3" -}}
+{{- if isset $ "priceWishlistClass" }}
+    {{- $priceWishlistClass = $.priceWishlistClass -}}
+{{ end -}}
+
+{{- $dateWishlistClass := "mb-0 text-secondary fw-normal" -}}
+{{- if isset $ "priceWishlistClass" }}
+    {{- $priceWishlistClass = $.priceWishlistClass -}}
+{{ end -}}
+
+{{- $cardbuttonClass := "align-middle text-end pe-10" -}}
+{{- if isset $ "cardbuttonClass" }}
+    {{- $cardbuttonClass = $.cardbuttonClass -}}
+{{ end -}}
+
+{{- $buttonClass := "btn fs-15px px-9 lh-sm btn-outline-dark" -}}
+{{- if isset $ "buttonClass" }}
+    {{- $buttonClass = $.buttonClass -}}
+{{ end -}}
+
+
+<form class="table-responsive-md">
+	<table class="table" style="min-width: 710px">
+		<tbody>
+        {{ range $item := $.currentPage.Site.Data.product_wishlist }}
+			<tr class="border">
+				<th scope="row" class="{{- if $cardWishlistClass }} {{ $cardWishlistClass }}{{ end }}">
+					<a href="#" class="{{- if $iconWishlistClass }} {{ $iconWishlistClass }}{{ end }}"><i
+							class="fas fa-times"></i></a>
+					<div class="d-flex align-items-center">
+						<div class="ms-6 me-7">
+							<img src="#" data-src="{{ $item.image }}" class="img-fluid lazy-image" height="100" width="75" alt="">
+						</div>
+						<div>
+							<p class="{{- if $titleClass }} {{ $titleClass }}{{ end }}">{{ $item.title }}</p>
+							<p class="fw-bold fs-14px mb-4 text-body-emphasis">
+								<span
+									class="{{- if $priceWishlistClass }} {{ $priceWishlistClass }}{{ end }}">{{ $item.price }}</span>
+								<span>{{ $item.pricedetail }}</span>
+							</p>
+							<p class="{{- if $dateWishlistClass }} {{ $dateWishlistClass }}{{ end }}">{{ $item.date }}</p>
+						</div>
+					</div>
+				</th>
+				<td class="{{- if $cardbuttonClass }} {{ $cardbuttonClass }}{{ end }}">
+					<span class="me-6">In stock</span>
+					<a href="#" class="{{- if $buttonClass }}{{ $buttonClass }}{{ end }}">{{ $item.button }}</a>
+				</td>
+			</tr>
+        {{ end }}
+		<tr>
+			<td class="border-0 py-8 px-0">
+                {{- if $.buttoncontinue }}
+					<button type="submit" class="btn px-9 btn-outline-dark">
+                        {{ $.buttoncontinue }}
+					</button>
+                {{- end }}
+			</td>
+			<td class="border-0 text-end py-8 px-0">
+                {{- if $.buttonupdate }}
+					<button type="submit" class="btn btn-dark btn-hover-bg-primary btn-hover-border-primary text-light">
+                        {{ $.buttonupdate }}
+					</button>
+                {{- end }}
+			</td>
+		</tr>
+		</tbody>
+	</table>
+</form>

@@ -1,0 +1,27 @@
+- title: Body Care
+  url: "#"
+- title: Skin care
+  url: "#"
+  is_active: true
+  submenu:
+    - title: Cleanser
+      url: "#"
+    - title: Toner
+      url: "#"
+    - title: Scrubs & Masks
+      url: "#"
+    - title: Serum
+      url: "#"
+    - title: Face Oils
+      url: "#"
+    - title: Moisturizer
+      url: "#"
+    - title: Eye Cream
+      url: "#"
+- title: Hair Care
+  url: "#"
+- title: Accessories
+  url: "#"
+
+
+

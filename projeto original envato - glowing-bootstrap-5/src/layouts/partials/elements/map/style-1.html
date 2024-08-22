@@ -1,0 +1,40 @@
+{{/***
+Element Parameters
+---------------------------------------------
+$.id:					Element id name
+$.class:				Element extra class name
+$.currentPage:			$.currentPage.Page, $.currentPage.Site
+$.height:				Height Map
+$.mapbox_options:		Map Option
+$.mapbox_marker:		Mapbox Marker
+$.effect:				Effect Marker
+$.access_token:			Access Token
+*/}}
+
+{{- $id := "map" -}}
+{{- if isset $ "id" }}
+{{- $id = $.id -}}
+{{ end -}}
+
+{{- $class := "mapbox-gl map-point-animate" -}}
+{{- if isset $ "class" }}
+{{- $class = $.class -}}
+{{ end -}}
+
+{{- $height := "500px" -}}
+{{- if isset $ "height" }}
+{{- $height = $.height -}}
+{{ end -}}
+
+{{- $effect := "false" -}}
+{{- if isset $ "effect" }}
+{{- $effect = $.effect -}}
+{{ end -}}
+
+
+<div id="{{ $id}}" class="{{ $class}} {{ if eq $effect "true" -}} map-box-has-effect {{ end }}"
+	 style="height:{{ $height}}"
+	 data-mapbox-access-token="{{ $.access_token }}"
+	 data-mapbox-options='{{ $.mapbox_options | jsonify }}'
+	 data-mapbox-marker='{{ $.mapbox_marker | jsonify }}'>
+</div>

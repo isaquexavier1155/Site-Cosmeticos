@@ -1,0 +1,11 @@
+items:
+  - img: /assets/images/shop/product-gallery-05.jpg
+  - img: /assets/images/shop/product-gallery-06.jpg
+  - img: /assets/images/shop/product-gallery-07.jpg
+  - img: /assets/images/shop/product-gallery-08.jpg
+imageSize:
+  img:
+    width: 540
+    height: 720
+slidesToShow: 1
+arrows: false

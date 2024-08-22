@@ -1,0 +1,117 @@
+.product-info-size:checked + label {
+	border-color: var(--#{$prefix}emphasis-color) !important;
+	color: var(--#{$prefix}emphasis-color) !important;
+}
+
+.product-info-size + label {
+	cursor: pointer;
+	transition: 0.3s;
+}
+
+.product-info-share {
+	transition: 0.5s;
+}
+
+.product-info-share:hover {
+	color: var(--#{$prefix}emphasis-color) !important;
+}
+
+.product-info-custom {
+	.product-info-input:checked {
+		background-color: var(--#{$prefix}emphasis-color) !important;
+		border-color: var(--#{$prefix}emphasis-color) !important;
+	}
+}
+
+.product-info-2-minus, .product-info-2-plus {
+	z-index: 1;
+}
+
+.product-info-2-quantity {
+	--#{$prefix}bg-opacity: 1;
+	z-index: 0;
+	background-color: rgba(var(--#{$prefix}secondary-bg-rgb), var(--#{$prefix}bg-opacity)) !important;
+	transition: 0.5s;
+}
+
+.product-info-2-quantity::-webkit-outer-spin-button,
+::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}
+
+.product-info-2-quantity[type=number] {
+	-moz-appearance: textfield;
+}
+
+.product-info-2-quantity:focus {
+	box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+}
+
+.product-info-accordion {
+	position: relative;
+	display: flex;
+	align-items: center;
+	width: 100%;
+	font-size: 1rem;
+	text-align: left;
+	border: 0;
+	border-radius: 0;
+	overflow-anchor: none;
+}
+
+.product-info-accordion:after {
+	content: "\f067";
+	font-family: "Font Awesome 5 Free";
+	position: absolute;
+	right: 0px;
+}
+
+.product-info-accordion:not(.collapsed)::after {
+	content: "\f068";
+	font-family: "Font Awesome 5 Free";
+}
+
+.product-color {
+	.color-item {
+		width: 28px;
+		height: 28px;
+		border-radius: 50%;
+	}
+
+	.list-color-product {
+		border-radius: 50%;
+		border: 1px solid transparent;
+		transition: all .2s;
+	}
+
+	.list-color-product:hover, .list-color-product.selected {
+		border-radius: 50%;
+		border-color: #cccccc;
+	}
+
+	.list-color-product {
+		.green-revitalizing {
+			background-color: #80A288;
+		}
+
+		.pink {
+			background-color: #EAC8D9;
+		}
+
+		.green {
+			background-color: #D9CCA1;
+		}
+
+		.purple {
+			background-color: #A5AFCF;
+		}
+	}
+}
+
+.product-info {
+	.list-product {
+		max-width: 128px;
+	}
+}
+

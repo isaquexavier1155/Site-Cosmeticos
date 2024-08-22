@@ -1,0 +1,35 @@
+<div class="megamenu-shop container-wide py-8 px-12">
+	<div class="row">
+		{{- range $col := $.Site.Data.menumega_shop -}}
+		<div class="col">
+			{{- if $col.title -}}
+			<h6 class="fs-18px">{{ $col.title }}</h6>
+			{{- end -}}
+			<ul class="list-unstyled mb-0">
+				{{- range $item := $col.items -}}
+				<li>
+					<a href="{{ .url }}" class="border-hover text-decoration-none py-3 d-block"><span class="border-hover-target">{{ .title | safeHTML }}</span></a>
+				</li>
+				{{- end -}}
+			</ul>
+		</div>
+		{{- end -}}
+		<div class="col d-xxl-block d-none megamenu-shop-banner" data-bs-theme="light">
+			<div class="card border-0 mt-4">
+				<img src="/assets/images/background/bg-mega-menu-shop.jpg" alt="bg mega menu" class="card-img">
+				<div class="card-img-overlay d-flex flex-column mx-2 px-9 py-6">
+					<p class="text-body-emphasis ls-1 fw-semibold mb-4 mt-6 text-uppercase">
+						new collection
+					</p>
+					<h3 class="fs-3">
+						Special <br>
+						Offer
+					</h3>
+					<div class="mt-auto">
+						<a href="#" class="btn btn-white">Shop Sale</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

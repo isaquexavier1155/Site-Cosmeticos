@@ -1,0 +1,42 @@
+{{- $id := .Get "id" | default "shop_our_feature_products" -}}
+{{- $class := .Get "class" | default "container-xxl py-lg-18 pt-14 pb-15 mb-3 mt-1" -}}
+
+<section {{- if $id }} id="{{ $id }}" {{- end -}}>
+	{{ .Inner }}
+	<div  {{- if $class }} class="{{ $class }}" {{- end}}>
+		{{ partial  "elements/heading/style-1" (dict "currentPage" .
+		"descExtraClass" "mw-xl-30 mw-lg-50 mw-md-75 ms-auto me-auto"
+		"title" "Shop our Feature products"
+		"titleClass" "mb-5"
+		"class" "mb-12 pb-3"
+		"desc" "Made using clean, non-toxic ingredients, our products are designed for everyone."
+		"animation" "fadeInUp") }}
+		<div class="row">
+			<div class="col-lg-5 mb-10 mb-lg-0" data-animate="fadeInUp">
+				{{ partial  "elements/banner/style-2" (dict
+				"currentPage" .
+				"subtitle" "Essenstial Items"
+				"title" "Empower Yourself"
+				"image" "/assets/images/banner/banner-32.jpg"
+				"width" 570
+				"height" 913
+				"btnContent" "Explore More"
+				) }}
+
+			</div>
+			<div class="col-lg-7">
+				<div class="row gy-11">
+					{{- range $item := $.Site.Data.customer_favorite_beauty_essentials -}}
+						<div class="col-md-4 col-sm-6 col-12">
+							{{ partial  "elements/shop/skins/grid-1" (dict
+							"data" $item
+							"animation" "fadeInUp"
+							) }}
+						</div>
+					{{- end -}}
+				</div>
+			</div>
+		</div>
+
+	</div>
+</section>

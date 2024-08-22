@@ -1,0 +1,51 @@
+{{/***
+Element Parameters
+---------------------------------------------
+$.class				Image class extra
+$.class_light		Image Light class extra
+$.class_img_dark	Image Dark class extra
+$.currentPage		currentPage object
+$.img				Image Url
+$.alt				Image Alt
+$.img_dark			Image Dark Url
+$.width				Image Width
+$.height			Image Height
+*/}}
+
+
+{{- $colorMode := "false" -}}
+{{- if (and (isset $ "currentPage") (ne $.currentPage ""))}}
+{{- $colorMode = $.currentPage.Site.Params.enableDarkMode -}}
+{{ end -}}
+
+{{ $alt := "" }}
+{{- if isset $ "alt" -}}
+{{- $alt = $.alt -}}
+{{- end -}}
+
+{{ $class_light := "lazy-image" }}
+{{ $class_img_dark := "lazy-image dark-mode-img" }}
+
+{{- if isset $ "class" -}}
+{{- $class_light = printf "%s %s" $class_light $.class -}}
+{{- $class_img_dark = printf "%s %s" $class_img_dark $.class -}}
+{{- end -}}
+
+{{- if isset $ "class_light" -}}
+{{- $class_light = printf "%s %s" $class_light $.class_light -}}
+{{- end -}}
+
+{{- if isset $ "class_img_dark" -}}
+{{- $class_img_dark = printf "%s %s" $class_img_dark $.class_img_dark -}}
+{{- end -}}
+
+{{- if (and (eq $colorMode true) ( isset $ "img_dark") (ne $.img_dark "")) }}
+{{- $class_light = printf "%s %s" $class_light "light-mode-img" -}}
+{{- end -}}
+
+{{- if $.img}}
+<img class="{{ $class_light }}" src="#" data-src="{{$.img}}" {{- if isset $ "width"}} width="{{ $.width }}" {{- end -}} {{- if isset $ "height"}} height="{{ $.height }}" {{- end }} alt="{{ $alt }}">
+{{- end}}
+{{- if (and (eq $colorMode true) ( isset $ "img_dark")  (ne $.img_dark ""))}}
+<img class="{{ $class_img_dark }}" src="#" data-src="{{$.img_dark}}" {{- if isset $ "width"}} width="{{ $.width }}" {{- end -}} {{- if isset $ "height"}} height="{{ $.height }}" {{- end }} alt="{{ $alt }}">
+{{- end -}}

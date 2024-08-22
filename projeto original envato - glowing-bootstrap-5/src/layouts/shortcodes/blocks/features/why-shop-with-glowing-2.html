@@ -1,0 +1,31 @@
+{{/*
+Block settings
+-------------------------------------------------
+id			Block ID
+class		Block class extral
+*/}}
+{{- $id := .Get "id" | default "" -}}
+{{- $class := .Get "class" | default "pt-lg-19 pt-14 pb-lg-18 pb-15" -}}
+
+<section {{- if $id }} id="{{ $id }}" {{- end -}} {{- if $class }} class="{{ $class }}" {{- end}}>
+    {{ .Inner }}
+	<div class="container container-xxl">
+		<div class="mb-md-13 mb-11">
+            {{  partial "elements/heading/style-1" (dict "currentPage" . "title" "Why Shop with Glowing?" "animation" "fadeInUp") }}
+		</div>
+		<div class="row gx-30px gy-30px">
+			<div class="col-lg-4" data-animate="fadeInUp">
+                {{ partial  "elements/image-box/style-2" (dict "currentPage" . "title" "Guaranteed PURE" "subtitle" "All Grace formulations adhere to strict purity standards and will never contain harsh or toxic ingredients" "img" "/assets/images/image-box/image-box-16.png"
+				"altContent" "Guaranteed PURE") }}
+			</div>
+			<div class="col-lg-4" data-animate="fadeInUp">
+                {{ partial  "elements/image-box/style-2" (dict "currentPage" . "title" "Completely Cruelty-Free" "subtitle" "All Grace formulations adhere to strict purity standards and will never contain harsh or toxic ingredients" "img" "/assets/images/image-box/image-box-19.png"
+				"altContent" "Completely Cruelty-Free") }}
+			</div>
+			<div class="col-lg-4" data-animate="fadeInUp">
+                {{ partial  "elements/image-box/style-2" (dict "currentPage" . "title" "Ingredient Sourcing" "subtitle" "All Grace formulations adhere to strict purity standards and will never contain harsh or toxic ingredients" "img" "/assets/images/image-box/image-box-20.png"
+				"altContent" "Ingredient Sourcing") }}
+			</div>
+		</div>
+	</div>
+</section>

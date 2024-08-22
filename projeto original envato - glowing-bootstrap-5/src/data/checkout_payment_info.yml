@@ -1,0 +1,40 @@
+items:
+  - title: "Paypal"
+    icon: "icon-paylay"
+    target: "paypal-tab"
+  - title:  "Credit Card"
+    icon: "icon-card"
+    target: "credit-card-tab"
+    status: "active"
+
+month:
+  - value: Month
+    status: "selected"
+  - value: January
+  - value: February
+  - value: March
+  - value: April
+  - value: May
+  - value: June
+  - value: July
+  - value: August
+  - value: September
+  - value: October
+  - value: November
+  - value: December
+year:
+  - value: "Year"
+    status: "selected"
+  - value: 2010
+  - value: 2011
+  - value: 2012
+  - value: 2013
+  - value: 2014
+  - value: 2015
+  - value: 2016
+  - value: 2017
+  - value: 2018
+  - value: 2019
+  - value: 2020
+  - value: 2021
+  - value: 2022

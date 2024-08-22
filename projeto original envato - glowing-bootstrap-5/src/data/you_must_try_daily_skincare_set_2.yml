@@ -1,0 +1,54 @@
+- title: Enriched Duo
+  reviews: 2947
+  rate: 100
+  price:
+    regular: "29.00"
+  image:
+    src: '/assets/images/products/product-01-450x600.jpg'
+    width: 450
+    height: 600
+- title: Shield Spray
+  reviews: 2947
+  rate: 100
+  price:
+    regular: "29.00"
+  image:
+    src: '/assets/images/products/product-02-450x600.jpg'
+    width: 450
+    height: 600
+- title: Vital Eye Cream
+  reviews: 2947
+  rate: 80
+  price:
+    regular: "29.00"
+  image:
+    src: '/assets/images/products/product-06-450x600.jpg'
+    width: 450
+    height: 600
+- title: Supreme Moisture Mask
+  reviews: 2947
+  rate: 80
+  price:
+    regular: "29.00"
+  image:
+    src: '/assets/images/products/product-09-450x600.jpg'
+    width: 450
+    height: 600
+- title: Scalp Moisturizing Cream
+  reviews: 2947
+  rate: 100
+  price:
+    regular: "29.00"
+  image:
+    src: '/assets/images/products/product-08-450x600.jpg'
+    width: 450
+    height: 600
+- title: Natural Coconut Cleansing Oil
+  reviews: 2947
+  rate: 80
+  price:
+    regular: "29.00"
+  image:
+    src: '/assets/images/products/product-07-450x600.jpg'
+    width: 450
+    height: 600

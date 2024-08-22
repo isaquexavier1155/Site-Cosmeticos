@@ -1,0 +1,41 @@
+{{/***
+Element Parameters
+---------------------------------------------
+$.class: 			Element extra class name
+$.imgClass: 		Image Class
+$.titleClass: 		Title extra Class
+$.title: 			Testimonials title
+$.img: 				Testimonials image
+$.atContent	 		Testimonials Alt Content
+*/}}
+{{- $class := "" -}}
+{{- if isset $ "class" }}
+{{- $class = $.class -}}
+{{ end -}}
+
+{{- $imgClass := "w-auto mx-auto mb-6" -}}
+{{- if isset $ "imgClass" }}
+{{- $imgClass = $.imgClass -}}
+{{ end -}}
+
+{{- $titleClass := "fs-5 fw-semibold mx-xl-9 px-xl-2 mb-0 text-body-emphasis" -}}
+{{- if isset $ "titleClass" }}
+{{- $titleClass = $.titleClass -}}
+{{ end -}}
+
+{{- $img := "" -}}
+{{- if isset $ "img" }}
+{{- $img = $.img -}}
+{{ end -}}
+
+{{- $img_dark := "" -}}
+{{- if isset $ "img_dark" }}
+{{- $img_dark = $.img_dark -}}
+{{ end -}}
+
+<div class="bg-transparent text-center">
+	{{  partial "the-image" (dict "currentPage" $.currentPage "img" $img "img_dark" $img_dark "class" $imgClass "alt" $.altContent "width" "150" "height" "82") }}
+	{{- if $.title}}
+	<p class="{{- if $titleClass}}{{$titleClass}}{{- end}}">“{{$.title}}“</p>
+	{{- end}}
+</div>

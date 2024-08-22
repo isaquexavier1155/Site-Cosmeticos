@@ -1,0 +1,27 @@
+{{/*
+Block settings
+-------------------------------------------------
+id			Block ID
+class		Block class extral
+*/}}
+{{- $id := .Get "id" | default "" -}}
+{{- $class := .Get "class" | default "" -}}
+
+<section {{- if $id }} id="{{ $id }}" {{- end -}} {{- if $class }} class="{{ $class }}" {{- end}}>
+    {{ .Inner }}
+    {{ partial "elements/hero/style-03" (dict "currentPage" .
+    "img1" "/assets/images/hero-slider/hero-slider-32.jpg"
+    "img_dark1" "/assets/images/hero-slider/hero-slider-white-32.jpg"
+    "img2" "/assets/images/hero-slider/hero-slider-33.jpg"
+    "title1" "BODYCARE"
+    "title2" "SKINCARE"
+    "subtitle" "Find Inspration"
+    "columnClass" "col-6 mb-md-0 px-0"
+    "class" "container-fluid"
+    "contentClass" "p-8 justify-content-center hero-overlay-2"
+    "titleClass" "text-white mb-5 hero-title-4 font-primary fw-normal"
+    "buttonClass" "text-white p-0 fw-semibold text-decoration-none hero-link"
+    "imgClass" "object-fit-cover img-fluid"
+    "containerClass" "hero-height"
+    ) }}
+</section>

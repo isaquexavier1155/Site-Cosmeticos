@@ -1,0 +1,35 @@
+<footer class="pt-16 pt-lg-20 pb-16 footer">
+	<div class="border-bottom pb-7 pb-lg-8">
+		<div class="container">
+			<div class="row align-items-center">
+				<div class="col-lg-4 col-12 mb-lg-0 mb-11">
+					<ul class="list-inline fs-15px text-center text-lg-start mb-0">
+						<li class="list-inline-item me-9 pe-2"><a href="#" class="text-body-emphasis">About Us</a></li>
+						<li class="list-inline-item me-9 pe-2"><a href="#" class="text-body-emphasis">FAQs</a></li>
+						<li class="list-inline-item"><a href="#" class="text-body-emphasis">Shipping &amp; Return Policy</a>
+						</li>
+					</ul>
+				</div>
+				<div class="col-lg-4 col-12 mb-lg-0 mb-11">
+					<div class="mx-auto text-center">
+						{{  partial "the-image" (dict "currentPage" . "img" "/assets/images/others/logo-black-02.png" "img_dark" "/assets/images/others/logo-white-02.png" "width" "184" "height" "49" "class" "img-fluid" "alt" $.Site.Title) }}
+					</div>
+				</div>
+				<div class="col-lg-4 col-12">
+					<ul class="list-inline fs-15px text-center text-lg-end mb-0">
+						<li class="list-inline-item me-9 pe-2"><a href="#" class="text-body-emphasis">Accessibility</a>
+						</li>
+						<li class="list-inline-item me-9 pe-2"><a href="#" class="text-body-emphasis">Contact Us</a></li>
+						<li class="list-inline-item"><a href="#" class="text-body-emphasis">Blog</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="pt-9 pt-lg-8">
+		<div class="container">
+			{{ partial "footer/widgets/bottom-bar-1" (dict "class" "" "socialClass" "col-12 col-md-6 d-flex align-items-center justify-content-center justify-content-md-start"
+			"paypalClass" "col-12 col-md-6 text-center text-md-end mt-8 mt-md-0") }}
+		</div>
+	</div>
+</footer>

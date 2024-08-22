@@ -1,0 +1,25 @@
+{{- $id := .Get "id" | default "because_you_need_time_for_yourself_1" -}}
+{{- $class := .Get "class" | default "container mt-4 mt-lg-12 py-4 mb-15 mb-lg-18" -}}
+
+<section {{- if $id }} id="{{ $id }}" {{- end -}}{{- if $class }} class="{{ $class }}" {{- end}} >
+	{{ .Inner }}
+	<div class="mb-13 text-center pb-3" data-animate="fadeInUp">
+		<img data-src="/assets/images/shop/image-box-01.png" width="150" height="158" class="mb-4 img-fluid lazy-image d-inline-block" alt="..." src="#">
+		<h2 class="h3 mb-0 mx-auto" style="max-width: 610px">Because You Need Time for Yourself. Blend Beauty in You</h2>
+	</div>
+	<div class="row gy-50px">
+		{{- range $item := $.Site.Data.because_you_need_time_for_yourself_1 -}}
+			<div class="col-lg-3 col-md-4 col-sm-6 col-12">
+				{{ partial  "elements/shop/skins/grid-1" (dict
+				"data" $item
+				"animation" "fadeInUp"
+				) }}
+			</div>
+		{{- end -}}
+	</div>
+	<div class="text-center mt-12" data-animate="fadeInUp">
+		<a href="#" class="btn btn-outline-dark">
+			Shop All Product
+		</a>
+	</div>
+</section>

@@ -1,0 +1,47 @@
+{{/***
+Element Parameters
+---------------------------------------------
+$.class: 			Element extra class name
+$.contentClass:		Banner content class
+$.imageClass:   	Image extra Class
+$.btnClass: 		Banner button
+$.image: 			Banner image
+$.width: 			Width Image
+$.height: 			Height Image
+$.btnContent:       Banner Content Button
+$.altContent: 		Banner alt content
+*/}}
+
+{{- $class := "hover-zoom-in hover-shine" -}}
+{{- if isset $ "class" }}
+{{- $class = $.class -}}
+{{ end -}}
+
+{{- $imageClass := "lazy-image object-fit-cover" -}}
+{{- if isset $ "imageClass" }}
+{{- $imageClass = $.imageClass -}}
+{{ end -}}
+
+{{- $contentClass := "d-inline-flex flex-column p-8 justify-content-center text-center" -}}
+{{- if isset $ "contentClass" }}
+{{- $contentClass = $.contentClass -}}
+{{ end -}}
+
+{{- $btnClass := "btn-white fs-6 fw-semibold px-10 py-5" -}}
+{{- if isset $ "btnClass" }}
+{{- $btnClass = $.btnClass -}}
+{{ end -}}
+{{- $ignore_dark_mode := $.ignore_dark_mode | default "false" -}}
+
+<div class="card border-0 rounded-0 {{- if $class }} {{ $class }}{{ end }}" {{- if eq $ignore_dark_mode "true" }} data-bs-theme="light" {{- end -}}>
+	{{- if $.image -}}
+	<img class="img-fluid card-img {{- if $imageClass }} {{ $imageClass }}{{ end }}" width="{{- $.width }}" height="{{- $.height }}" src="{{ $.image }}" alt="{{ $.altContent }}">
+	{{- end -}}
+	<div class="card-img-overlay {{- if $contentClass }} {{ $contentClass }}{{ end }}">
+		<div>
+			{{- if $.btnContent -}}
+			<a href="#" class="btn {{- if $btnClass }} {{ $btnClass }}{{ end }}">{{ $.btnContent }}</a>
+			{{- end -}}
+		</div>
+	</div>
+</div>

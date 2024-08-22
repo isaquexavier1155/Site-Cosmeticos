@@ -1,0 +1,50 @@
+{{/*
+Block settings
+-------------------------------------------------
+id			Block ID
+class		Block class extral
+*/}}
+{{- $id := .Get "id" | default "" -}}
+{{- $class := .Get "class" | default "pt-10" -}}
+
+<section {{- if $id }} id="{{ $id }}" {{- end -}} {{- if $class }} class="{{ $class }}" {{- end}}>
+    {{ .Inner }}
+	<div class="container container-xxl">
+		<div class="row gx-30px gy-30px">
+			<div class="col-12 col-lg-4" data-animate="fadeInUp">
+                {{ partial  "elements/banner/style-3" (dict
+				"title" "Summer Collection"
+				"currentPage" .
+                "desc" "Starting at $17.99"
+                "image" "/assets/images/banner/banner-08.jpg" "width" "450" "height" "450"
+                "img_dark" "/assets/images/banner/banner-white-08.jpg" "width" "450" "height" "450"
+                "btnContent" "Shop Now"
+                "icon" "icon-arrow-right"
+				"altContent" "Summer Collection"
+				) }}
+			</div>
+			<div class="col-12 col-lg-4" data-animate="fadeInUp">
+                {{ partial  "elements/banner/style-3" (dict "title" "What’s New?"
+				"currentPage" .
+                "desc" "Get the glow"
+                "image" "/assets/images/banner/banner-06.jpg" "width" "450" "height" "450"
+                "img_dark" "/assets/images/banner/banner-white-06.jpg" "width" "450" "height" "450"
+                "btnContent" "Discover Now"
+                "icon" "icon-arrow-right"
+				"altContent" "What’s New?"
+				) }}
+			</div>
+			<div class="col-12 col-lg-4" data-animate="fadeInUp">
+                {{ partial  "elements/banner/style-3" (dict "title" "Buy 1 Get 1"
+				"currentPage" .
+                "desc" "Starting at $7.99"
+                "image" "/assets/images/banner/banner-07.jpg" "width" "450" "height" "450"
+                "img_dark" "/assets/images/banner/banner-white-07.jpg" "width" "450" "height" "450"
+                "btnContent" "Discover Now"
+                "icon" "icon-arrow-right"
+				"altContent" "Buy 1 Get 1"
+				) }}
+			</div>
+		</div>
+	</div>
+</section>

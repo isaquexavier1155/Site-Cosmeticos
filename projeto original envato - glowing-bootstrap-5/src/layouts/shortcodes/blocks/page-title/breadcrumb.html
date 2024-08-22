@@ -1,0 +1,32 @@
+{{/*
+Block settings
+-------------------------------------------------
+id			Block ID
+class		Block class extral
+*/}}
+{{- $id := .Get "id" | default "" -}}
+{{- $class := .Get "class" | default "mb-12" -}}
+
+{{- $title := $.Page.Params.Title -}}
+{{- if (.Get "title") -}}
+    {{- $title = .Get "title" -}}
+{{- end -}}
+
+<section {{- if $id }} id="{{ $id }}" {{- end }} class="z-index-2 position-relative pb-2 {{- if $class }} {{ $class }} {{- end}}">
+    {{ .Inner }}
+    <div class="bg-body-secondary mb-3">
+        <div class="container">
+            <nav class="py-4 lh-30px" aria-label="breadcrumb">
+                <ol class="breadcrumb justify-content-center py-1 mb-0">
+                    <li class="breadcrumb-item"><a title="Home" href="/index.html">Home</a></li>
+                    {{- if ($.Page.Params.breadcrumb) -}}
+                        {{ range $item := $.Page.Params.breadcrumb }}
+                            <li class="breadcrumb-item"><a title="{{- $item.title -}}" href="{{- $item.url -}}">{{- $item.title -}}</a></li>
+                        {{ end }}
+                    {{- end -}}
+                    <li class="breadcrumb-item active" aria-current="page">{{- $title -}}</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,47 @@
+{{/*
+Block settings
+-------------------------------------------------
+id			Block ID
+class		Block class extral
+*/}}
+{{- $id := .Get "id" | default "" -}}
+{{- $class := .Get "class" | default "container container-xxl py-lg-18 pt-15 pb-16" -}}
+
+<section {{- if $id }} id="{{ $id }}" {{- end -}} >
+    {{ .Inner }}
+	<div {{- if $class }} class="{{ $class }}" {{- end}}>
+		<div class="row align-items-center mb-lg-18 mb-15 pb-3">
+			<div class="col-xl-4 col-lg-6 offset-xl-1 mb-13 mb-lg-0 order-lg-1" data-animate="fadeInUp">
+				{{ partial "elements/heading/style-1" (dict
+				"subtitle" "Because you need time for yourself"
+				"subtitleClass" "font-primary fs-5 text-body-emphasis mb-5"
+				"title"	"Get The Skin You Want To Feel"
+				"titleClass" "text-uppercase fs-1 fw-bold mb-6"
+				"desc"	"Lorem ipsum dolor sit amet, consectetur adipi, scing seddo eiusmod temporincididunt ut labore et dolore magna aliqua."
+				"align" "left"
+				)}}
+				<a href="#" class="mt-8 d-inline-block btn-link btn-border-2 border-bottom border-currentColor pb-2 text-decoration-none">Shop Now <svg class="icon icon-arrow-right"><use xlink:href="#icon-arrow-right"></use></svg></a>
+			</div>
+			<div class="col-lg-6" data-animate="fadeInUp">
+				<img data-src="/assets/images/others/other-image-09.png" alt="other-02" class="img-fluid lazy-image" width="628" height="650" src="#">
+			</div>
+		</div>
+
+		<div class="row align-items-center">
+			<div class="col-xl-4 col-lg-6 offset-xl-1 mb-13 mb-lg-0" data-animate="fadeInUp">
+				{{ partial "elements/heading/style-1" (dict
+				"subtitle" "Because you need time for yourself"
+				"subtitleClass" "font-primary fs-5 text-body-emphasis mb-5"
+				"title"	"Discover Our Autumn Skincare"
+				"titleClass" "text-uppercase fs-1 fw-bold mb-6"
+				"desc"	"Lorem ipsum dolor sit amet, consectetur adipi, scing seddo eiusmod temporincididunt ut labore et dolore magna aliqua."
+				"align" "left"
+				)}}
+				<a href="#" class="mt-8 d-inline-block btn-link btn-border-2 border-bottom border-currentColor pb-2 text-decoration-none">Shop Now <svg class="icon icon-arrow-right"><use xlink:href="#icon-arrow-right"></use></svg></a>
+			</div>
+			<div class="col-lg-6 offset-xl-1" data-animate="fadeInUp">
+				<img data-src="/assets/images/others/other-image-10.png" alt="other-02" class="img-fluid lazy-image" width="690" height="631" src="#">
+			</div>
+		</div>
+	</div>
+</section>

@@ -1,0 +1,20 @@
+{{/***
+Element Parameters
+---------------------------------------------
+$.class: 			Element extra class name
+$.socialitemClass: 	Social icons class
+*/}}
+
+{{- $socialitemClass := "fs-18px mb-0" -}}
+{{- if isset $ "socialitemClass" }}
+    {{- $socialitemClass = $.socialitemClass -}}
+{{ end -}}
+
+<div class="socical-icon social-icon-style-1 ">
+	<ul class="list-inline {{- if $socialitemClass }} {{ $socialitemClass }}{{ end }}">
+		<li class="list-inline-item me-7"><a href="#"><i class="fab fa-twitter"></i></a></li>
+		<li class="list-inline-item me-7"><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+		<li class="list-inline-item me-7"><a href="#"><i class="fab fa-instagram"></i></a></li>
+		<li class="list-inline-item"><a href="#"><i class="fab fa-youtube"></i></a></li>
+	</ul>
+</div>

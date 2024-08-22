@@ -1,0 +1,11 @@
+{{/***
+Element Parameters
+---------------------------------------------
+$.class: 			Element extra class name
+$.quote:            Quote data: content, cite, author
+*/}}
+<blockquote class="bg-section-2 text-center px-5 px-md-10 px-xl-16 py-14 m-0">
+    <i class="fa fa-quote-right-alt text-primary fs-2"></i>
+    <p class="fs-4 fw-semibold text-body-emphasis mt-5 mb-10 pb-3">{{- $.quote.content -}}</p>
+    <cite class="fs-14px text-body-emphasis fs-14px text-uppercase fw-semibold">{{- $.quote.cite -}}</cite> - {{ $.quote.author -}}
+</blockquote>

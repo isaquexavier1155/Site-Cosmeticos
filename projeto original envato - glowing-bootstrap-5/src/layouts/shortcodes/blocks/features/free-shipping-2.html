@@ -1,0 +1,28 @@
+{{/*
+Block settings
+-------------------------------------------------
+id			Block ID
+class		Block class extral
+*/}}
+{{- $id := .Get "id" | default "" -}}
+{{- $class := .Get "class" | default "bg-body-tertiary pt-12 pb-lg-13 pb-13" -}}
+
+<section {{- if $id }} id="{{ $id }}" {{- end -}} {{- if $class }} class="{{ $class }}" {{- end}}>
+    {{ .Inner }}
+	<div class="container container-xxl">
+		<div class="row gx-30px gy-30px">
+			<div class="col-xl-3 col-md-6" data-animate="fadeInUp">
+                {{ partial  "elements/icon-box/style-1" (dict "currentPage" . "title" "Free Shipping" "class" "bg-transparent" "desc" "Free Shipping for orders over $130" "icon" "icon-box-01" "contentClass" "pt-4" ) }}
+			</div>
+			<div class="col-xl-3 col-md-6" data-animate="fadeInUp">
+                {{ partial  "elements/icon-box/style-1" (dict "currentPage" . "title" "Returns" "class" "bg-transparent" "desc" "Within 30 days for an exchange." "icon" "icon-box-02" "contentClass" "pt-4" ) }}
+			</div>
+			<div class="col-xl-3 col-md-6" data-animate="fadeInUp">
+                {{ partial  "elements/icon-box/style-1" (dict "currentPage" . "title" "Online Support" "class" "bg-transparent" "desc" "24 hours a day, 7 days a week" "icon" "icon-box-03" "contentClass" "pt-4" ) }}
+			</div>
+			<div class="col-xl-3 col-md-6" data-animate="fadeInUp">
+                {{ partial  "elements/icon-box/style-1" (dict "currentPage" . "title" "Flexible Payment" "class" "bg-transparent" "desc" "Pay with Multiple Credit Cards" "icon" "icon-box-04" "contentClass" "pt-4" ) }}
+			</div>
+		</div>
+	</div>
+</section>

@@ -1,0 +1,106 @@
+{{/***
+Element Parameters
+---------------------------------------------
+$.class: 			Element extra class name
+$.titleClass: 		Title extra Class
+$.imageClass:   	Image extra Class
+$.subtitleClass: 	Sub title extra class
+$.descClass: 		Description extra class
+$.descSpacing: 		Description spacing
+$.contentClass:		Banner content class
+$.btnClass: 		Banner button
+$.image: 			Banner image
+$.width: 			Width Image
+$.height: 			Height Image
+$.subtitle: 		Banner subtitle
+$.title: 			Banner title
+$.desc: 			Banner desc
+$.btnContent:       Banner Content Button
+$.altContent: 		Banner alt content
+*/}}
+
+{{- $class := "hover-zoom-in hover-shine" -}}
+{{- if isset $ "class" }}
+{{- $class = $.class -}}
+{{ end -}}
+
+{{- $imageClass := "banner-02" -}}
+{{- if isset $ "imageClass" }}
+{{- $imageClass = $.imageClass -}}
+{{ end -}}
+{{- $imageClasses := printf "w-100 img-fluid card-img object-fit-cover %s" $imageClass -}}
+
+{{- $titleClass := "fs-2 text-white" -}}
+{{- if isset $ "titleClass" }}
+{{- $titleClass = $.titleClass -}}
+{{ end -}}
+
+
+{{- $subTitleClass := "fw-normal font-primary text-white fs-1 mb-5" -}}
+{{- if isset $ "subtitleClass" }}
+	{{- $subTitleClass = $.subtitleClass -}}
+{{ end -}}
+
+
+{{- $contentClass := "justify-content-end" -}}
+{{- if isset $ "contentClass" }}
+	{{- $contentClass = $.contentClass -}}
+{{ end -}}
+
+{{- $descClass := "fs-18px text-white" -}}
+{{- if isset $ "descClass" }}
+	{{- $descClass = $.descClass -}}
+{{ end -}}
+
+{{- $descSpacing := "mt-5" -}}
+{{- if isset $ "descSpacing" }}
+	{{- $descSpacing = $.descSpacing -}}
+{{ end -}}
+
+{{- if $descSpacing -}}
+	{{- $descClass = printf "%s %s" $descClass $descSpacing -}}
+{{- end -}}
+
+{{- $btnClass := "btn-white" -}}
+{{- if isset $ "btnClass" }}
+{{- $btnClass = $.btnClass -}}
+{{ end -}}
+
+{{- $btnWrapClass := "mt-10 pt-2" -}}
+{{- if isset $ "btnWrapClass" }}
+	{{- $btnWrapClass = $.btnWrapClass -}}
+{{ end -}}
+
+{{- $imageDark := "" -}}
+{{- if isset $ "imageDark" }}
+{{- $imageDark = $.imageDark -}}
+{{ end -}}
+
+{{- $currentPage := "" -}}
+{{- if isset $ "currentPage" }}
+{{- $currentPage = $.currentPage -}}
+{{ end -}}
+
+{{- $ignore_dark_mode := $.ignore_dark_mode | default "false" -}}
+
+<div class="card border-0 rounded-0 {{- if $class }} {{ $class }}{{ end }}" {{- if eq $ignore_dark_mode "true" }} data-bs-theme="light" {{- end -}}>
+	{{- if $.image -}}
+	{{  partial "the-image" (dict "currentPage" $currentPage "img" $.image "img_dark" $imageDark "class" $imageClasses "alt" $.title "width" $.width  "height" $.height) }}
+	{{- end -}}
+	<div class="card-img-overlay p-12 m-2 d-inline-flex flex-column {{- if $contentClass }} {{ $contentClass }}{{ end }}">
+		{{- if $.subtitle -}}
+		<h5 class="card-subtitle {{- if $subTitleClass }} {{ $subTitleClass }}{{ end }}">{{ $.subtitle }}</h5>
+		{{- end -}}
+		{{- if $.title -}}
+		<h3 class="card-title mb-0 {{- if $titleClass }} {{ $titleClass }}{{ end }}">{{ $.title}}</h3>
+		{{- end -}}
+		{{- if $.desc -}}
+		<p class="card-text mb-0  {{- if $descClass }} {{ $descClass }}{{ end }}">{{ $.desc}}</p>
+		{{- end -}}
+		{{- if $.btnContent -}}
+		<div class="{{- $btnWrapClass -}}">
+			<a href="#" class="btn {{- if $btnClass }} {{ $btnClass }}{{ end }}">{{ $.btnContent }}</a>
+		</div>
+		{{- end -}}
+	</div>
+</div>

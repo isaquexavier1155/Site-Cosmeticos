@@ -1,0 +1,30 @@
+{{/*
+Block settings
+-------------------------------------------------
+id			Block ID
+class		Block class extral
+*/}}
+{{- $id := .Get "id" | default "" -}}
+{{- $class := .Get "class" | default "" -}}
+
+<section {{- if $id }} id="{{ $id }}" {{- end -}} {{- if $class }} class="{{ $class }}" {{- end}} >
+    {{ .Inner }}
+	<div class="container container-xxl">
+		<div class="row">
+			<div class="col-lg-5 order-2 order-lg-1 py-lg-23 mt-12 mt-lg-0" data-animate="fadeInLeft">
+				{{ partial  "elements/heading/style-1" (dict "align" "left" "subtitle" "NEW COLLECTION"
+				"title" "Anti-aging Cream"
+				"desc" "Made using clean, non-toxic ingredients, our products <br /> are designed for everyone."
+				) }}
+				<a href="#" class="mt-10 btn btn-dark btn-hover-bg-primary btn-hover-border-primary">Explore More</a>
+			</div>
+			<div class="col-lg-7 order-1 order-lg-2" data-animate="fadeInRight">
+				<div class="bg-image video-01 d-flex justify-content-center align-items-center h-lg-100 position-relative py-18 py-lg-0 py-md-23 lazy-bg"
+					 data-bg-src="/assets/images/others/video-bg.jpg">
+					<div class="position-absolute start-0 d-none d-xl-block m-n14 ps-14 h-75 bg-section-2"></div>
+                    {{ partial "elements/video/style-2" (dict "link" "https://www.youtube.com/watch?v=6v2L2UGZJAM" "icon" "icon-play-fill" )}}
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

@@ -1,0 +1,21 @@
+---
+layout: blocks
+header: none
+footer: footer-01
+title: "Blocks - Header"
+---
+{{< header.inline >}}
+{{ partial "header/header-15" .}}
+{{</ header.inline >}}
+<section class="page-header-cover bg-image lazy-bg" data-bg-src="/assets/images/hero-slider/hero-slider-28.jpg">
+</section>
+{{< blocks/page-title/default title="Blocks - Header 15" desc="Copy custom block snippet below and paste it on your page to build your website easily." />}}
+<section class="pb-lg-21 pb-16">
+	<div class="container">
+		{{< docs/example lang="html" show_preview="false" code_preview="true" no_margin="true">}}
+		{{< header.inline >}}
+		{{ partial "header/header-15" .}}
+		{{</ header.inline >}}
+	{{</ docs/example >}}
+</div>
+</section>

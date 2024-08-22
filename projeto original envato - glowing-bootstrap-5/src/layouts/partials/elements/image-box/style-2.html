@@ -1,0 +1,75 @@
+{{/***
+Element Parameters
+---------------------------------------------
+$.class: 			Element extra class name
+$.imgClass: 		Image Class
+$.titleClass: 		Title extra Class
+$.subtitleClass: 	Sub title extra class
+$.contentClass 		Icon box content class
+$.img: 				Image box image
+$.imgWidth: 		Image width
+$.imgHeight: 		Image height
+$.title: 			Image box title
+$.subtitle: 		Image box subtitle
+$.altContent: 		Image box alt content
+*/}}
+{{- $class := "" -}}
+{{- if isset $ "class" }}
+{{- $class = $.class -}}
+{{ end -}}
+
+{{- $imgClass := "d-flex justify-content-center" -}}
+{{- if isset $ "imgClass" }}
+{{- $imgClass = $.imgClass -}}
+{{ end -}}
+
+{{- $titleClass := "fs-4 mb-6" -}}
+{{- if isset $ "titleClass" }}
+{{- $titleClass = $.titleClass -}}
+{{ end -}}
+
+{{- $subtitleClass := "mb-0 px-lg-6" -}}
+{{- if isset $ "subtitleClass" }}
+{{- $subtitleClass = $.subtitleClass -}}
+{{ end -}}
+
+{{- $contentClass := "card-body text-center pt-7 mt-3" -}}
+{{- if isset $ "contentClass" }}
+{{- $contentClass = $.contentClass -}}
+{{ end -}}
+
+{{- $imgWidth := "140" -}}
+{{- if isset $ "imgWidth" }}
+{{- $imgWidth = $.imgWidth -}}
+{{ end -}}
+
+{{- $imgHeight := "140" -}}
+{{- if isset $ "imgHeight" }}
+{{- $imgHeight = $.imgHeight -}}
+{{ end -}}
+
+{{- $img := "" -}}
+{{- if isset $ "img" }}
+{{- $img = $.img -}}
+{{ end -}}
+
+{{- $img_dark := "" -}}
+{{- if isset $ "img_dark" }}
+{{- $img_dark = $.img_dark -}}
+{{ end -}}
+
+<div class="{{- if $class}}{{ $class }}{{ end }}">
+	{{- if $.img}}
+	<div class="{{- if $imgClass}}{{ $imgClass }}{{ end }}">
+		{{  partial "the-image" (dict "currentPage" $.currentPage "img" $img "img_dark" $img_dark "class" "img-fluid" "width" $imgWidth "height" $imgHeight "alt" $.altContent) }}
+	</div>
+	{{- end}}
+	<div class="{{- if $contentClass}}{{ $contentClass }}{{ end }}">
+		{{- if $.title}}
+		<h3 class="{{- if $titleClass}}{{$titleClass}}{{end}}">{{ $.title}}</h3>
+		{{- end}}
+		{{- if $.subtitle}}
+		<p class="{{- if $subtitleClass}}{{$subtitleClass}}{{end}}">{{$.subtitle}}</p>
+		{{- end}}
+	</div>
+</div>

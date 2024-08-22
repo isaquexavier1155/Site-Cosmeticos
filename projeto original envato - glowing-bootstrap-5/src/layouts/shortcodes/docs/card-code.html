@@ -1,0 +1,33 @@
+{{- $id := .Get "id" -}}
+{{- $class := .Get "class" -}}
+{{- $lang := .Get "lang" | default "html" -}}
+{{- $title := .Get "title" | default "View example's code" -}}
+{{- $input := .Inner -}}
+{{- $container := .Get "container" | default "" -}}
+
+{{ $seed := "card-code" }}
+{{ $random_id := delimit (shuffle (split (md5 $seed) "" )) "" }}
+
+{{ with $id }}
+{{ $random_id = $id }}
+{{ end }}
+<div class="doc-example-markup-container {{- if $container }} {{ $container }}{{ end -}}">
+	<div class="doc-example-markup-content">
+		<div class="card-footer position-relative doc-example-markup-header py-5">
+			<a class="collapse-link collapsed" data-bs-toggle="collapse" href="#example-{{ $random_id }}" aria-expanded="true">
+				<span>{{ $title }}</span>
+			</a>
+		</div>
+		<div id="example-{{ $random_id }}" class="card-footer {{- if eq $lang "html" }} hljs-markup {{ end -}} p-0 accordion-collapse collapse">
+			<div class="doc-example-markup">
+				{{- $content := replaceRE `<svg class="bd-placeholder-img(?:-lg)?(?: *?bd-placeholder-img-lg)? ?(.*?)".*?<\/svg>\n` `<img src="..." class="$1" alt="...">` $input -}}
+				{{- $content = replaceRE ` (class=" *?")` "" $content -}}
+				{{- if eq $lang "html" }}
+					<pre><code class="hljs language-html" data-content="{{ $content | jsonify }}"></code></pre>
+				{{- else -}}
+					{{- highlight (trim $content "\n") $lang "" -}}
+				{{ end -}}
+			</div>
+		</div>
+	</div>
+</div>

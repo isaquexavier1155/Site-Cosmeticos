@@ -1,0 +1,48 @@
+<!-- Vendors scripts -->
+<script src="/assets/vendors/bootstrap/js/bootstrap.bundle.js"></script>
+<script src="/assets/vendors/clipboard/clipboard.min.js"></script>
+<script src="/assets/vendors/vanilla-lazyload/lazyload.min.js"></script>
+<script src="/assets/vendors/waypoints/jquery.waypoints.min.js"></script>
+<script src="/assets/vendors/lightgallery/lightgallery.min.js"></script>
+<script src="/assets/vendors/lightgallery/plugins/zoom/lg-zoom.min.js"></script>
+<script src="/assets/vendors/lightgallery/plugins/thumbnail/lg-thumbnail.min.js"></script>
+<script src="/assets/vendors/lightgallery/plugins/video/lg-video.min.js"></script>
+<script src="/assets/vendors/lightgallery/plugins/vimeoThumbnail/lg-vimeo-thumbnail.min.js"></script>
+<script src="/assets/vendors/isotope/isotope.pkgd.min.js"></script>
+<script src="/assets/vendors/slick/slick.min.js"></script>
+<script src="/assets/vendors/gsap/gsap.min.js"></script>
+<script src="/assets/vendors/gsap/ScrollToPlugin.min.js"></script>
+<script src="/assets/vendors/gsap/ScrollTrigger.min.js"></script>
+<script src="/assets/vendors/mapbox-gl/mapbox-gl.js"></script>
+<!-- Extra Js -->
+{{- range $.Page.Params.extra_js -}}
+	<script src="{{ . }}"></script>
+{{ end -}}
+
+<!-- Themes scripts -->
+{{- $js := resources.Match "js/*.js" -}}
+{{- $targetDocsJSPath := "assets/js/theme.js" -}}
+
+{{- if (eq "docs" $.Page.Params.layout) -}}
+	{{- $docJs := resources.Match "js/docs/*.js" -}}
+	{{- $js = append $docJs $js -}}
+
+	{{- $targetDocsJSPath = "assets/js/doc.js" -}}
+{{- end -}}
+
+{{- if (eq "dashboard" $.Page.Params.layout) -}}
+{{- $docJs := resources.Match "js/dashboard/*.js" -}}
+{{- $js = append $docJs $js -}}
+
+{{- $targetDocsJSPath = "assets/js/dashboard.js" -}}
+{{- end -}}
+
+{{- $themeJs := $js | resources.Concat $targetDocsJSPath -}}
+
+{{- if eq hugo.Environment "production" -}}
+	{{- $themeJs = $themeJs | resources.Minify -}}
+{{- end }}
+
+{{- $themeJs = $themeJs | babel  -}}
+
+<script src="{{ $themeJs.Permalink | relURL }}"></script>

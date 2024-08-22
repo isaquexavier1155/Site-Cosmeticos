@@ -1,0 +1,38 @@
+{{/*
+Block settings
+-------------------------------------------------
+id			Block ID
+class		Block class extral
+*/}}
+{{- $id := .Get "id" | default "" -}}
+{{- $class := .Get "class" | default "" -}}
+
+<section {{- if $id }} id="{{ $id }}" {{- end -}} {{- if $class }} class="{{ $class }}" {{- end}}>
+	<div class="container container-xxl">
+        {{ .Inner }}
+		<div class="text-center pb-11 pb-lg-14">
+			<h2 class="fs-3 w-lg-40 w-auto mx-auto pb-7">We strive to live with compassion, kindness and empathy</h2>
+			<p class="mw-lg-50 mx-auto">A lot of so-called stretch denim pants out there are just glorified sweatpants – they get baggy and lose their shape. Not cool. Our tightly knitted fabric holds its form after repeated wear. Plus, Aldays dress up or down, no prob. So you can wear them all day. Get it?</p>
+		</div>
+		<div class="row gy-30px">
+			<div class="col-md-4">
+                {{ partial  "elements/image-box/style-2" (dict "currentPage" . "title" "Guaranteed PURE" "subtitle" "All Grace formulations adhere to strict purity standards and will never contain harsh or toxic ingredients" "img_dark" "/assets/images/image-box/image-box-white-11.png" "img" "/assets/images/image-box/image-box-11.png"
+				"altContent" "Guaranteed PURE"
+				"imgWidth" "102"
+				"imgHeight" "118") }}
+			</div>
+			<div class="col-md-4">
+                {{ partial  "elements/image-box/style-2" (dict "currentPage" . "title" "Completely Cruelty-Free" "subtitle" "All Grace formulations adhere to strict purity standards and will never contain harsh or toxic ingredients" "img_dark" "/assets/images/image-box/image-box-white-02.png" "img" "/assets/images/image-box/image-box-02.png"
+				"altContent" "Completely Cruelty-Free"
+				"imgWidth" "102"
+				"imgHeight" "118") }}
+			</div>
+			<div class="col-md-4">
+                {{ partial  "elements/image-box/style-2" (dict "currentPage" . "title" "Ingredient Sourcing" "subtitle" "All Grace formulations adhere to strict purity standards and will never contain harsh or toxic ingredients" "img_dark" "/assets/images/image-box/image-box-white-03.png" "img" "/assets/images/image-box/image-box-03.png"
+				"altContent" "Ingredient Sourcing"
+				"imgWidth" "102"
+				"imgHeight" "118") }}
+			</div>
+		</div>
+	</div>
+</section>

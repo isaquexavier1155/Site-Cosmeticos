@@ -1,0 +1,38 @@
+{{/*
+Block settings
+-------------------------------------------------
+id            Block ID
+class        Block class extral
+*/}}
+{{- $id := .Get "id" | default "specia_offer_beauty_inspired_by_real_life_1" -}}
+{{- $class := .Get "class" | default "" -}}
+
+<section class="bg-section-2 overflow-hidden" {{- if $id }} id="{{ $id }}" {{- end -}}>
+	{{ .Inner }}
+	<div class="container container-xxl">
+		<div class="row">
+			<div class="col-lg-6 ps-6">
+				<div class="py-lg-23 py-16 mt-lg-3 mb-lg-5 ms-lg-auto content-wrap">
+					{{ partial "elements/heading/style-1" (dict
+					"subtitle" "Special offer"
+					"subtitleClass" "fs-15px mb-7 ls-1 text-body-emphasis fw-semibold text-uppercase"
+					"title" "Beauty Inspired by Real Life"
+					"titleExtraClass" "mw-xl-50 mw-lg-60 pt-1"
+					"desc" "Made using clean, non-toxic ingredients, our products are designed for everyone."
+					"descExtraClass" "mw-xl-60 mw-lg-75"
+					"align" "left"
+					) }}
+					<a href="#" class="btn btn-white mt-10 mb-2">Discover Now</a>
+				</div>
+			</div>
+			<div class="col-lg-6 py-25 py-lg-0 position-relative">
+				<div class="card-img-overlay d-flex align-items-center justify-content-center w-lg-half-screen">
+					{{ partial "overlay" (dict "currentPage" . "img" "/assets/images/others/video-01.jpg" "imgDark" "/assets/images/others/video-white-01.jpg"  "class" "position-absolute z-index-0 w-100 h-100 bg-col-lg-half-screen-right") }}
+					{{ partial "elements/video/style-1" (dict "link" "https://www.youtube.com/watch?v=6v2L2UGZJAM")}}
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+

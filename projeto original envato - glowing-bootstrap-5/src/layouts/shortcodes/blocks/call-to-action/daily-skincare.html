@@ -1,0 +1,18 @@
+{{/*
+Block settings
+-------------------------------------------------
+id			Block ID
+class		Block class extral
+*/}}
+{{- $id := .Get "id" | default "section-03" -}}
+{{- $class := .Get "class" | default "container text-center py-lg-24 py-16" -}}
+
+<section {{- if $id }} id="{{ $id }}" {{- end }} data-animate="fadeInUp">
+    {{ .Inner }}
+	{{ partial "overlay" (dict "currentPage" . "img" "/assets/images/others/daily-skincare-bg.jpg" "imgDark" "/assets/images/others/daily-skincare-bg-white.jpg") }}
+	<div class="z-index-2 position-relative {{- if $class }} {{ $class }}{{- end}}">
+		<p class="font-primary fs-4 text-body-emphasis my-4">Because you need time for yourself</p>
+		<h2 class="text-uppercase fw-bold fs-68px text-uppercase mb-6 pb-2">Daily Skincare</h2>
+		<a href="#" class="mb-4 d-inline-block btn-link text-body-emphasis btn-border-2 border-bottom border-currentColor text-decoration-none pb-2">Discover Now <svg class="icon icon-arrow-right"><use xlink:href="#icon-arrow-right"></use></svg></a>
+	</div>
+</section>

@@ -1,0 +1,89 @@
+{{/***
+Partial Parameters
+---------------------------------------------
+$.classes: 			Partial extra class name
+$.badgeSkine		Badge skine: dark, light - default: dark
+$.icons				Icon list: search, account, wishlist, cart
+$.iconClass			Icon extra class
+$.searchBoxTextClass	Search box text class extra
+*/}}
+{{- $badgeSkin := $.badgeSkine | default "dark" -}}
+{{- $badge_classes := "bg-dark text-white" -}}
+{{- if ne $badgeSkin "dark" -}}
+	{{- $badge_classes = "bg-white text-body-emphasis" -}}
+{{- end -}}
+
+{{- $iconClass := "px-6" -}}
+{{- if isset $ "iconClass" -}}
+	{{- $iconClass = $.iconClass -}}
+{{- end -}}
+
+{{- $icons := split $.icons " " -}}
+
+{{- $searchBoxTextClass := "text-body" -}}
+{{- if isset $ "searchBoxTextClass" -}}
+	{{- $searchBoxTextClass = $.searchBoxTextClass -}}
+{{- end -}}#header .nav-item
+
+<ul class="icons-actions navbar-nav {{ $.classes }}">
+	{{- range $icon := $icons -}}
+	{{- if eq $icon "search" }}
+	<li class="nav-item {{- if $iconClass }} {{ $iconClass }}{{ end -}}">
+		<a class="nav-link p-0 lh-1 color-inherit" href="#" data-bs-toggle="offcanvas"
+		   data-bs-target="#searchModal"
+		   aria-controls="searchModal"
+		   aria-expanded="false">
+			<svg class="icon icon-magnifying-glass-light">
+				<use xlink:href="#icon-magnifying-glass-light"></use>
+			</svg>
+		</a>
+	</li>
+	{{- end }}
+	{{- if eq $icon "search-box" }}
+		<li class="nav-item {{- if $iconClass }} {{ $iconClass }}{{ end -}}">
+			<a class="nav-link p-0 lh-1 color-inherit" href="#" data-bs-toggle="offcanvas"
+			   data-bs-target="#searchModal"
+			   aria-controls="searchModal"
+			   aria-expanded="false">
+				<svg class="icon icon-magnifying-glass-light">
+					<use xlink:href="#icon-magnifying-glass-light"></use>
+				</svg>
+				<span class="fs-15px {{- if $searchBoxTextClass }} {{ $searchBoxTextClass }}{{ end -}}">Search</span>
+			</a>
+		</li>
+	{{- end }}
+	{{- if eq $icon "account" }}
+	<li class="nav-item px-6 d-none d-xl-inline-block">
+		<a class="nav-link p-0 lh-1 color-inherit" href="#" data-bs-toggle="modal" data-bs-target="#signInModal">
+			<svg class="icon icon-user-light">
+				<use xlink:href="#icon-user-light"></use>
+			</svg>
+		</a>
+	</li>
+	{{- end }}
+	{{- if eq $icon "wishlist" }}
+	<li class="nav-item px-6 me-4 d-none d-xl-inline-block">
+		<a class="nav-link p-0 position-relative lh-1 color-inherit" href="/shop/wishlist.html">
+			<svg class="icon icon-star-light">
+				<use xlink:href="#icon-star-light"></use>
+			</svg>
+			<span class="badge {{ $badge_classes }} position-absolute top-0 start-100 translate-middle mt-4 rounded-circle fs-13px p-0 square" style="--square-size: 18px">0</span>
+		</a>
+	</li>
+	{{- end }}
+	{{- if eq $icon "cart" }}
+	<li class="nav-item px-6 me-n4 d-none d-xl-inline-block">
+		<a class="nav-link p-0 position-relative lh-1 color-inherit" href="#" data-bs-toggle="offcanvas"
+		   data-bs-target="#shoppingCart"
+		   aria-controls="shoppingCart"
+		   aria-expanded="false">
+			<span class="fw-bold fs-15px">$0.00</span>
+			<svg class="icon icon-star-light">
+				<use xlink:href="#icon-shopping-bag-open-light"></use>
+			</svg>
+			<span class="badge {{ $badge_classes }} position-absolute top-0 start-100 translate-middle mt-4 rounded-circle fs-13px p-0 square" style="--square-size: 18px">0</span>
+		</a>
+	</li>
+	{{- end }}
+	{{- end -}}
+</ul>
