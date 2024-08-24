@@ -72,7 +72,7 @@ class ProdutoController extends Controller
         'ativo' => 'nullable|boolean',
         'tags' => 'nullable|string',
         'imagem' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-        'imagens_adicionais.*' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+        //'imagens_adicionais.*' => 'nullable|image|mimes:jpeg,png,jpg,gif',
     ]);
 
     // Criação do produto

@@ -1050,7 +1050,7 @@
 				</div>
 
 
-				<!-- Início Listagem Produtos -->
+<!-- Início Listagem Produtos -->
 <div class="row gy-50px">
     @foreach ($produtos as $produto)
         <div class="col-lg-3 col-md-4 col-sm-6 col-12">
@@ -1070,26 +1070,23 @@
                                 <use xlink:href="#icon-shopping-bag-open-light"></use>
                             </svg>
                         </a>
-                        <!-- link ao clicar em Ver -->
-						<a class="text-body-emphasis bg-body bg-dark-hover text-light-hover rounded-circle square product-action shadow-sm quick-view"
-   href="###"
-   data-bs-toggle="modal"
-   data-bs-target="#quickViewModal"
-   data-id="{{ $produto->id }}"
-   data-nome="{{ $produto->nome }}"
-   data-bs-toggle="tooltip"
-   data-bs-placement="top"
-   data-bs-title="Ver"
-   onclick="saveProductInfo({{ $produto->id }}, '{{ $produto->nome }}', '{{ $produto->imagem }}')">
-   <span class="d-flex align-items-center justify-content-center">
-      <svg class="icon icon-eye-light">
-         <use xlink:href="#icon-eye-light"></use>
-      </svg>
-   </span>
-</a>
-
-
-
+                        <a class="text-body-emphasis bg-body bg-dark-hover text-light-hover rounded-circle square product-action shadow-sm quick-view"
+                           href="###"
+                           data-bs-toggle="modal"
+                           data-bs-target="#quickViewModal"
+                           data-id="{{ $produto->id }}"
+                           data-nome="{{ $produto->nome }}"
+                           data-imagem="{{ $produto->imagem }}"
+                           data-bs-toggle="tooltip"
+                           data-bs-placement="top"
+                           data-bs-title="Ver"
+                           onclick="saveProductInfo({{ $produto->id }}, '{{ $produto->nome }}', '{{ $produto->imagem }}', '{{ $produto->descricao }}', '{{ $produto->preco }}', '{{ $produto->preco_promocional }}')">
+                            <span class="d-flex align-items-center justify-content-center">
+                                <svg class="icon icon-eye-light">
+                                    <use xlink:href="#icon-eye-light"></use>
+                                </svg>
+                            </span>
+                        </a>
                         <a class="text-body-emphasis bg-body bg-dark-hover text-light-hover rounded-circle square product-action shadow-sm wishlist" href="#" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Add To Wishlist">
                             <svg class="icon icon-star-light">
                                 <use xlink:href="#icon-star-light"></use>
@@ -1140,10 +1137,8 @@
 </div>
 <!-- Fim Listagem Produtos -->
 
-
-
-				<!-- Início do Modal exibido ao clicar em ver em cada produto-->
-				<div class="modal fade" id="quickViewModal" tabindex="-1" aria-labelledby="quickViewModal" aria-hidden="true">
+<!-- Início do Modal exibido ao clicar em ver em cada produto-->
+<div class="modal fade" id="quickViewModal" tabindex="-1" aria-labelledby="quickViewModal" aria-hidden="true">
     <div class="modal-dialog modal-xl">
         <div class="modal-content">
             <div class="modal-header border-0 py-5">
@@ -1151,141 +1146,123 @@
             </div>
             <div class="modal-body pt-0">
                 <div class="row">
-								<div class="col-md-6 pe-13">
-					<div class="position-relative">
-						<div class="position-absolute z-index-2 w-100 d-flex justify-content-end">
-							<div class="p-6">
-								<a href="#" class="d-flex align-items-center justify-content-center product-gallery-action rounded-circle" data-bs-toggle="tooltip" data-bs-placement="left" data-bs-title="Add to wishlist">
-									<svg class="icon fs-4">
-										<use xlink:href="#icon-star-light"></use>
-									</svg>
-								</a>
-								<a href="./shop/compare.html" class="d-flex align-items-center justify-content-center mt-5 product-gallery-action rounded-circle" data-bs-toggle="tooltip" data-bs-placement="left" data-bs-title="Compare">
-									<svg class="icon fs-4">
-										<use xlink:href="#icon-arrows-left-right-light"></use>
-									</svg>
-								</a>
+                    <div class="col-md-6 pe-13">
+                        <div class="position-relative">
+                            <div class="position-absolute z-index-2 w-100 d-flex justify-content-end">
+                                <div class="p-6">
+                                    <a href="#" class="d-flex align-items-center justify-content-center product-gallery-action rounded-circle" data-bs-toggle="tooltip" data-bs-placement="left" data-bs-title="Add to wishlist">
+                                        <svg class="icon fs-4">
+                                            <use xlink:href="#icon-star-light"></use>
+                                        </svg>
+                                    </a>
+                                    <a href="./shop/compare.html" class="d-flex align-items-center justify-content-center mt-5 product-gallery-action rounded-circle" data-bs-toggle="tooltip" data-bs-placement="left" data-bs-title="Compare">
+                                        <svg class="icon fs-4">
+                                            <use xlink:href="#icon-arrows-left-right-light"></use>
+                                        </svg>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <!-- Imagem Principal -->
+                            <div id="slider" class="slick-slider slick-slider-arrow-inside slick-slider-dots-inside slick-slider-dots-light g-0" data-slick-options='{"arrows":false,"asNavFor":"#slider-thumb","dots":false,"slidesToShow":1}'>
+                                <!-- Exibir Imagem Principal Primeiro -->
+                                <div class="position-relative">
+									<!--passa imagem principal dinâmicamente pelo js-->                                    
+									<img id="modalProductImage" src="" alt="imagem principal" class="d-block w-100 img-main">
+                                </div>                    
+                            </div>
+                        </div>
+
+                        <div class="mt-6">
+
+						<div id="slider-thumb" class="slick-slider-thumb ps-1 ms-n3 me-n4 slick-initialized slick-slider" data-slick-options='{"arrows":false,"asNavFor":"#slider","dots":false,"focusOnSelect":true,"slidesToShow":5,"vertical":false}'>
+						<div class="slick-list draggable" style="height: 124.6px;">
+						<div class="slick-track" style="opacity: 1; width: 2500px; transform: translate3d(0px, 0px, 0px);">
+						<!-- <img src="{{ asset('images/products/' . $produto->imagem) }}" data-src="{{ asset('images/products/' . $produto->imagem) }}" class="mx-3 px-0 h-auto cursor-pointer loaded slick-slide slick-active" width="75" height="100" alt="" loading="lazy" data-ll-status="loaded" tabindex="0" style="width: 92.4px;" data-slick-index="1" aria-hidden="false">
+									<img src="{{ asset('images/products/' . $produto->imagem) }}" data-src="{{ asset('images/products/' . $produto->imagem) }}" class="mx-3 px-0 h-auto cursor-pointer loaded slick-slide slick-active" width="75" height="100" alt="" loading="lazy" data-ll-status="loaded" tabindex="0" style="width: 92.4px;" data-slick-index="1" aria-hidden="false">
+									<img src="{{ asset('images/products/' . $produto->imagem) }}" data-src="{{ asset('images/products/' . $produto->imagem) }}" class="mx-3 px-0 h-auto cursor-pointer loaded slick-slide slick-active" width="75" height="100" alt="" loading="lazy" data-ll-status="loaded" tabindex="0" style="width: 92.4px;" data-slick-index="1" aria-hidden="false">
+									<img src="{{ asset('images/products/' . $produto->imagem) }}" data-src="{{ asset('images/products/' . $produto->imagem) }}" class="mx-3 px-0 h-auto cursor-pointer loaded slick-slide slick-active" width="75" height="100" alt="" loading="lazy" data-ll-status="loaded" tabindex="0" style="width: 92.4px;" data-slick-index="1" aria-hidden="false">	 -->
+										@php
+											$imagens = json_decode($produto->imagens_adicionais);
+										@endphp
+										
+									<!-- @dump($imagens) -->
+										@foreach(array_slice($imagens, 0) as $imagem)
+											<img src="images/products/{{ $imagem }}" alt="{{ $produto->nome }}" title="{{ $imagem }}" class="mx-3 px-0 h-auto cursor-pointer loaded slick-slide slick-active" width="75" height="100" style="width: 92.4px;">
+										@endforeach				
+								</div>
 							</div>
 						</div>
-
-						<!-- Slider de Imagens Principais -->
-						<div id="slider" class="slick-slider slick-slider-arrow-inside slick-slider-dots-inside slick-slider-dots-light g-0" data-slick-options='{"arrows":false,"asNavFor":"#slider-thumb","dots":false,"slidesToShow":1}'>
-							<!-- Exibir Imagem Principal Primeiro -->
-							 
-							@if($produto->imagem)
-								<div class="position-relative">
-									<img src="{{ asset('images/products/' . $produto->imagem) }}" alt="{{ $produto->nome }}" class="d-block w-100 img-main">
-								</div>
-							@endif
-							
-
-							<!-- Imagens Adicionais -->
-							@php							
-								$imagensAdicionais = $produto->imagens_adicionais ? json_decode($produto->imagens_adicionais) : [];
-							@endphp
-
-							@if (!empty($imagensAdicionais) && is_array($imagensAdicionais))
-								@foreach($imagensAdicionais as $imagem)
-									<div class="position-relative">
-										<img src="{{ asset('images/products/' . $imagem) }}" alt="{{ $produto->nome }}" class="d-block w-100 img-main">
-									</div>
-								@endforeach
-								
-							@endif
-
-						</div>
-					</div>
-
-
-					<div class="mt-6">
-						<!-- Slider Thumb - Miniaturas -->
-						<div id="slider-thumb" class="slick-slider slick-slider-thumb ps-1 ms-n3 me-n4" data-slick-options='{"arrows":false,"asNavFor":"#slider","dots":false,"focusOnSelect":true,"slidesToShow":5,"vertical":false}'>
-							<!-- Exibir Imagem Principal nas Miniaturas -->
-							@if($produto->imagem)
-								<div>
-									<img src="{{ asset('images/products/' . $produto->imagem) }}" alt="{{ $produto->nome }}" class="d-block img-thumbnail" style="height: 100px; object-fit: cover;">
-								</div>
-							@endif
-
-							<!-- Miniaturas das Imagens Adicionais -->
-							@if (!empty($imagensAdicionais) && is_array($imagensAdicionais))
-								@foreach($imagensAdicionais as $imagem)
-									<div>
-										<img src="{{ asset('images/products/' . $imagem) }}" alt="{{ $produto->nome }}" class="d-block img-thumbnail" style="height: 100px; object-fit: cover;">
-									</div>
-								@endforeach
-							@endif
-						</div>
-					</div>
-				</div>
-
-
-				<!-- Ajuste para imagens do modal ao clicar no ver de cada produto aparecem com respectivos tamanhos padroes-->
-				<!--  Falta ajustar responsividade-->
-				<style>
-					.img-main {
-					max-height: 500px; /* Ajuste a altura máxima conforme necessário */
-					object-fit: cover; /* Faz com que a imagem se ajuste ao contêiner sem distorcer */
-				}
-
-				</style>
-
-
-									<div class="col-md-6 pt-md-0 pt-10">
-										<!-- Detalhes do produto -->
-										<p class="d-flex align-items-center mb-6">
-											<span class="text-decoration-line-through">{{ $produto->preco_antigo }}</span>
-											<span class="fs-18px text-body-emphasis ps-6 fw-bold">{{ $produto->preco_atual }}</span>
-											<span class="badge text-bg-primary fs-6 fw-semibold ms-7 px-6 py-3">{{ $produto->desconto }}%</span>
-										</p>
-										<h1 class="mb-4 pb-2 fs-4">
-											<a href="./shop/product-details-v1.html" title="{{ $produto->nome }}">
-												{{ $produto->nome }}
+                            <!-- Imagens Adicionais  -->
+                            <!-- <div id="slider-thumb" class="slick-slider slick-slider-thumb ps-1 ms-n3 me-n4" data-slick-options='{"arrows":false,"asNavFor":"#slider","dots":false,"focusOnSelect":true,"slidesToShow":5,"vertical":false}'>
+								<div class="slick-list draggable" style="height: 124.6px;">
+									<div class="slick-track" style="opacity: 1; width: 408px; transform: translate3d(0px, 0px, 0px);">
+										<img id="modalProductImageAd" src=""  class="mx-3 px-0 h-auto cursor-pointer loaded slick-slide slick-current slick-active" width="75" height="100" alt="imagem adicional" loading="lazy" data-ll-status="loaded" tabindex="0" style="width: 94px;" data-slick-index="0" aria-hidden="false">
+ 										<img src="{{ asset('images/products/' . $produto->imagem) }}" data-src="{{ asset('images/products/' . $produto->imagem) }}" class="mx-3 px-0 h-auto cursor-pointer loaded slick-slide slick-active" width="75" height="100" alt="" loading="lazy" data-ll-status="loaded" tabindex="0" style="width: 92.4px;" data-slick-index="1" aria-hidden="false">
+										<img src="{{ asset('images/products/' . $produto->imagem) }}" data-src="{{ asset('images/products/' . $produto->imagem) }}" class="mx-3 px-0 h-auto cursor-pointer loaded slick-slide slick-active" width="75" height="100" alt="" loading="lazy" data-ll-status="loaded" tabindex="0" style="width: 92.4px;" data-slick-index="2" aria-hidden="false">
+										<img src="{{ asset('images/products/' . $produto->imagem) }}" data-src="{{ asset('images/products/' . $produto->imagem) }}" class="mx-3 px-0 h-auto cursor-pointer loaded slick-slide slick-active" width="75" height="100" alt="" loading="lazy" data-ll-status="loaded" tabindex="0" style="width: 92.4px;" data-slick-index="3" aria-hidden="false">
+									 	
+										@php
+											$imagens = json_decode($produto->imagens_adicionais);
+										@endphp
+											<a href="images/products/{{ $imagens[0] }}" class="overlap-btn" data-sub-html="<h4>{{ $produto->nome }}</h4>">
+												<img class="hidden" src="images/products/{{ $imagens[0] }}" alt="{{ $produto->nome }}">
 											</a>
-											
-											<h1 id="modalProductName" class="mb-4 pb-2 fs-4">
-                            				<!-- O nome do produto será exibido aqui -->
-                        					</h1>
-											<h1 id="modalProductId" class="mb-4 pb-2 fs-4">
-                            				<!-- O Id do produto será exibido aqui -->
-                        					</h1>
-											<h1 id="modalProductImage" class="mb-4 pb-2 fs-4">
-                            				<!-- Aimagem do produto será exibida aqui -->
-                        					</h1>
-										</h1>
-										<div class="d-flex align-items-center fs-15px mb-6">
-											<p class="mb-0 fw-semibold text-body-emphasis">{{ $produto->avaliacao }}</p>
-											<div class="d-flex align-items-center fs-12px justify-content-center mb-0 px-6 rating-result">
-												<div class="rating">
-													<div class="empty-stars">
-														<span class="star"><svg class="icon star-o"><use xlink:href="#star-o"></use></svg></span>
-														<span class="star"><svg class="icon star-o"><use xlink:href="#star-o"></use></svg></span>
-														<span class="star"><svg class="icon star-o"><use xlink:href="#star-o"></use></svg></span>
-														<span class="star"><svg class="icon star-o"><use xlink:href="#star-o"></use></svg></span>
-														<span class="star"><svg class="icon star-o"><use xlink:href="#star-o"></use></svg></span>
-													</div>
-													<div class="filled-stars" style="width: {{ $produto->avaliacao }}%">
-														<span class="star"><svg class="icon star text-primary"><use xlink:href="#star"></use></svg></span>
-														<span class="star"><svg class="icon star text-primary"><use xlink:href="#star"></use></svg></span>
-														<span class="star"><svg class="icon star text-primary"><use xlink:href="#star"></use></svg></span>
-														<span class="star"><svg class="icon star text-primary"><use xlink:href="#star"></use></svg></span>
-														<span class="star"><svg class="icon star text-primary"><use xlink:href="#star"></use></svg></span>
-													</div>
-												</div>
-											</div>
-											<a href="#" class="border-start ps-6 text-body">Read {{ $produto->avaliacoes_count }} reviews</a>
-										</div>
-										<p class="fs-15px">{{ $produto->descricao }}</p>
-										<p class="mb-4 pb-2">
-											<span class="text-body-emphasis"><svg class="icon fs-5 me-4 pe-2 align-text-bottom"><use xlink:href="#icon-eye-light"></use></svg>{{ $produto->visualizacoes }} 10 Pessoas estão visualizando isso agora</span>
-										</p>
-										<p class="mb-4 pb-2 text-body-emphasis">
-											<svg class="icon fs-5 me-4 pe-2 align-text-bottom"><use xlink:href="#icon-Timer"></use></svg>{{ $produto->estoque }} left in stock
-										</p>
-										<div class="progress mb-7" style="height: 4px;">
-											<div class="progress-bar w-{{ $produto->estoque_percent }}%" role="progressbar" aria-valuenow="{{ $produto->estoque_percent }}" aria-valuemin="0" aria-valuemax="100"></div>
-										</div>
-										<form class="mb-9 pb-2">
+										@foreach(array_slice($imagens, 1) as $imagem)
+											<a href="images/products/{{ $imagem }}" class="hidden" data-sub-html="<h4>{{ $produto->nome }}</h4>">
+												<img class="hidden" src="images/products/{{ $imagem }}" alt="{{ $produto->nome }}">
+											</a>
+										@endforeach 
+									
+									</div>
+								</div>
+                            </div> -->
+                        </div>
+                    </div>
+
+
+                    <div class="col-md-6 pt-md-0 pt-10">
+                        <!-- Detalhes do produto -->
+                        <p class="d-flex align-items-center mb-6">
+                            <span class="text-decoration-line-through" id="modalProductPrecoAntigo"></span>
+                            <span class="fs-18px text-body-emphasis ps-6 fw-bold" id="modalProductPrecoAtual"></span>
+                            <span class="badge text-bg-primary fs-6 fw-semibold ms-7 px-6 py-3" id="modalProductDesconto"></span>
+                        </p>
+                        <h1 class="mb-4 pb-2 fs-4" id="modalProductNome">
+                            <!-- O nome do produto será exibido aqui -->
+                        </h1>
+                        <div class="d-flex align-items-center fs-15px mb-6">
+                            <p class="mb-0 fw-semibold text-body-emphasis me-4">Avaliação:</p>
+                            <div class="rating">
+                                <div class="empty-stars">
+                                    <span class="star">
+                                        <svg class="icon star-o">
+                                            <use xlink:href="#star-o"></use>
+                                        </svg>
+                                    </span>
+                                    <!-- Repita para mais estrelas -->
+                                </div>
+                                <div class="filled-stars" style="width: 80%">
+                                    <span class="star">
+                                        <svg class="icon star text-primary">
+                                            <use xlink:href="#star"></use>
+                                        </svg>
+                                    </span>
+                                    <!-- Repita para mais estrelas -->
+                                </div>
+                            </div>
+                            <span class="reviews ms-4 pt-3 fs-14px">100 avaliações</span>
+                        </div>
+                        <p class="fs-15px text-body mb-6" id="modalProductDescricao"></p>
+
+<!--                         <form method="post" action="###" class="d-flex align-items-center mb-5">
+                            <div class="me-5">
+                                <label for="modalProductQuantidade" class="form-label">Quantidade</label>
+                                <input type="number" id="modalProductQuantidade" class="form-control" value="1" min="1">
+                            </div>
+                            <button type="submit" class="btn btn-primary">Adicionar ao Carrinho</button>
+                        </form> -->
+						<form class="mb-9 pb-2">
 											<div class="row align-items-end">
 												<div class="form-group col-sm-4">
 													<label class="text-body-emphasis fw-semibold fs-15px pb-6" for="QuickViewNumber">Quantidade: </label>
@@ -1300,15 +1277,24 @@
 												</div>
 											</div>
 										</form>
+
 										<p class="mb-4 pb-2">
 											<span class="text-body-emphasis"><svg class="icon fs-28px me-2 pe-4"><use xlink:href="#icon-delivery-1"></use></svg>Previsão de Entrega</span> {{ $produto->data_entrega }}
 										</p>
 										<p class="mb-4 pb-2">
-											<span class="text-body-emphasis"><svg class="icon fs-28px me-2 pe-4"><use xlink:href="#icon-union"></use></svg>Devolução gratuita </span> dentro de 10 dias
+											<span class="text-body-emphasis"><svg class="icon fs-28px me-2 pe-4"><use xlink:href="#icon-Package"></use></svg>Devolução gratuita </span> dentro de 10 dias
 										</p>
-										<p class="mb-4 pb-2">
-											<span class="text-body-emphasis"><svg class="icon fs-28px me-2 pe-4"><use xlink:href="#icon-card-1"></use></svg> Pagamento seguro
-										</p>
+							
+										<div class="card border-0 bg-body-tertiary rounded text-center mt-7">
+											<div class="pt-8 px-5">
+											<img class="img-fluid" src="{{ asset('images/shop/product-info-2.png') }}" alt="pay" width="357" height="28">
+											</div>
+											<div class="card-body pt-6 pb-7">
+											<p class="fs-14px fw-normal mb-0">Pagamento  &amp; Checkout Seguros</p>
+											</div>
+										</div>
+										
+
 										<div class="d-flex justify-content-start">
 											<p class="me-5"><a class="link-cover text-decoration-underline" href="./shop/product-details-v1.html">Guia de tamanho</a></p>
 											<p><a class="link-cover text-decoration-underline" href="#">Faça uma pergunta</a></p>
@@ -1356,27 +1342,58 @@
 				</div>
 				<!-- Fim do Modal exibido ao clicar em ver em cada produto-->
 
-				<script>
-    // Variáveis para armazenar o ID e o nome do produto
-    let produtoId = null;
-    let produtoNome = null;
-	let produtoImage = null;
+<script>
+       
+    function saveProductInfo(id, nome, imagem, descricao, preco, preco_promocional) {
+  
+    document.getElementById('modalProductNome').textContent = nome;
 
-    // Função para salvar o ID e o nome do produto
-    function saveProductInfo(id, nome, imagem) {
-        produtoId = id;
-        produtoNome = nome;
-		produtoImage = imagem;
-        console.log('Produto ID salvo:', produtoId);
-        console.log('Produto Nome salvo:', produtoNome);
-		console.log('Hash da Imagem:', produtoImage);
+    const formatPrice = (price) => {
+        return `R$${parseFloat(price).toFixed(2).replace('.', ',')}`;
+    };
 
-        // Exibir o nome do produto no modal
-        document.getElementById('modalProductName').textContent = produtoNome;
-		document.getElementById('modalProductId').textContent = produtoId;
-		document.getElementById('modalProductImage').textContent = produtoImage;
+    if (preco_promocional && preco_promocional !== 'null') {
+        document.getElementById('modalProductPrecoAtual').textContent = formatPrice(preco_promocional);
+        document.getElementById('modalProductPrecoAntigo').textContent = formatPrice(preco);
+        document.getElementById('modalProductPrecoAntigo').style.display = 'inline';
+    } else {
+        document.getElementById('modalProductPrecoAtual').textContent = formatPrice(preco);
+        document.getElementById('modalProductPrecoAntigo').style.display = 'none';
     }
+
+    document.getElementById('modalProductDescricao').textContent = descricao;
+    document.getElementById('modalProductImage').src = `{{ asset('images/products/') }}/${imagem}`;
+    /* 
+	document.getElementById('modalProductImageAd').src = `{{ asset('images/products/') }}/${imagem}`; */
+
+    /* const additionalImages = @json($produto->imagens_adicionais);  */
+
+    console.log('Imagens Adicionais:', additionalImages);
+   /*  const slider = document.getElementById('slider');
+    const sliderThumb = document.getElementById('slider-thumb'); */
+    
+   
+    slider.innerHTML = '';
+    sliderThumb.innerHTML = '';
+
+/*     if (Array.isArray(additionalImages)) {
+        additionalImages.forEach((img) => {
+            const mainImage = document.createElement('div');
+            mainImage.className = 'position-relative';
+            mainImage.innerHTML = `<img src="{{ asset('images/products/') }}/${img}" alt="" class="d-block w-100 img-main">`;
+            slider.appendChild(mainImage);
+            
+            const thumbImage = document.createElement('div');
+            thumbImage.className = 'position-relative';
+            thumbImage.innerHTML = `<img src="{{ asset('images/products/') }}/${img}" alt="" class="d-block w-100 img-thumb">`;
+            sliderThumb.appendChild(thumbImage);
+        });
+    } */
+}
+
 </script>
+
+
 	
 				<div class="text-center mt-12" data-animate="fadeInUp">
 					<a href="#" class="btn btn-outline-dark">
