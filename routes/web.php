@@ -16,14 +16,10 @@ Route::post('/produtos', [ProdutoController::class, 'store'])->name('produtos.st
 //inverti a ordem para resolver o conflito
 Route::get('/produtos/{id}', [ProdutoController::class, 'show'])->name('produtos.show');
 
- 
-Route::get('/produto/{id}', [ProdutoController::class, 'show']);
-
-
-Route::get('/produtos/get/{id}', [ProdutoController::class, 'getProdutoById'])->name('produtos.get');
-
-
-
+/*  
+Route::get('/produto/{id}', [ProdutoController::class, 'show']); */
+/* 
+Route::get('/produtos/get/{id}', [ProdutoController::class, 'getProdutoById'])->name('produtos.get'); */
 // Exemplo de rota em `web.php`
 //Route::post('/save-product-info', [ProdutoController::class, 'saveProductInfo']);
 

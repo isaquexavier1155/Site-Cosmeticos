@@ -44,12 +44,6 @@
 				<div class="container-wide container">
 					<div class="d-flex d-xl-none w-100">
 
-
-
-
-
-
-
 						<div class="w-72px d-flex d-xl-none">
 							<button
 								class="navbar-toggler align-self-center  border-0 shadow-none px-0 canvas-toggle p-4"
@@ -60,8 +54,6 @@
 						</div>
 
 						<div class="d-flex mx-auto">
-
-
 
 							<a href="./" class="navbar-brand has-sticky-logo px-8 py-4 mx-auto">
 								<img class="light-mode-img" src="{{ asset('images/others/logo-oficial-02.png') }}"

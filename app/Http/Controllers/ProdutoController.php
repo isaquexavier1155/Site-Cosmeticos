@@ -13,21 +13,21 @@ class ProdutoController extends Controller
         return view('index', compact('produtos')); // Passa a variável $produtos para a view
     }
 
-    public function getProdutoById($id)
+    /* public function getProdutoById($id)
     {
-        // Busca o produto pelo ID, retornando erro 404 caso não seja encontrado
         $produto = Produto::findOrFail($id);
 
-        // Retorna o produto em formato JSON
         return response()->json($produto);
-    }
+    } */
+
+
 
     public function show($id)
     {
         $produto = Produto::find($id);
     
         if ($produto) {
-            return response()->json([
+            /* return response()->json([
                 'imagem' => $produto->imagem,
                 'nome' => $produto->nome,
                 'preco_antigo' => $produto->preco_antigo,
@@ -44,7 +44,9 @@ class ProdutoController extends Controller
                 'categoria' => $produto->categoria,
                 'tags' => $produto->tags,
                 'imagens_adicionais' => $produto->imagens_adicionais, // Assumindo que isso seja um array de strings (caminhos das imagens)
-            ]);
+            ]); */
+
+            return view('product-details-v1', compact('produto'));
         }
     
         return response()->json(['error' => 'Produto não encontrado'], 404);
