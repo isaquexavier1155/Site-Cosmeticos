@@ -116,20 +116,31 @@ class ProdutoController extends Controller
 /*         return redirect()->route('produtos.index')->with('success', 'Produto criado com sucesso!');
  */    }
 
- public function saveProductId(Request $request)
+
+/* public function saveProductInfo(Request $request)
  {
-     // Validar e capturar os dados enviados
-     $productId = $request->input('product_id');
-     $productName = $request->input('product_name');
-     $productImage = $request->input('product_image');
+     $id = $request->input('id');
+    
+     $produto = Produto::find($id);
+        
+     if ($produto) {
+        $productData = [
+            'id' => $produto->id,
+            'nome' => $produto->nome,
+            'descricao' => $produto->descricao,
+            'preco' => $produto->preco,
+            'preco_promocional' => $produto->preco_promocional,
+            'imagem' => $produto->imagem,
+        ];
 
-     // Salvar o ID do produto, nome e imagem na sessão ou em outro armazenamento
-     $request->session()->put('selected_product_id', $productId);
-     $request->session()->put('selected_product_name', $productName);
-     $request->session()->put('selected_product_image', $productImage);
+         return response()->json(['success' => true, 'produto' => $productData]);
+     } else {
+         return response()->json(['success' => false, 'message' => 'Produto não encontrado.']);
+     }
+ } */
+ 
+ 
 
-     return response()->json(['success' => true, 'product_id' => $productId]);
- }
     
     
 }

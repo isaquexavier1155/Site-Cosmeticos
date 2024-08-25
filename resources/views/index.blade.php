@@ -1080,7 +1080,7 @@
                            data-bs-toggle="tooltip"
                            data-bs-placement="top"
                            data-bs-title="Ver"
-                           onclick="saveProductInfo({{ $produto->id }}, '{{ $produto->nome }}', '{{ $produto->imagem }}', '{{ $produto->descricao }}', '{{ $produto->preco }}', '{{ $produto->preco_promocional }}')">
+                           onclick="saveProductInfo({{ $produto->id }}, '{{ $produto->nome }}', '{{ $produto->imagem }}', '{{ $produto->descricao }}', '{{ $produto->preco }}', '{{ $produto->preco_promocional }}', '{{ $produto->imagens_adicionais }}')">
                             <span class="d-flex align-items-center justify-content-center">
                                 <svg class="icon icon-eye-light">
                                     <use xlink:href="#icon-eye-light"></use>
@@ -1104,6 +1104,10 @@
                         @if($produto->preco_promocional)
                         <del class="text-body fw-500 me-4 fs-13px">R${{ number_format($produto->preco, 2, ',', '.') }}</del>
                         @endif
+						
+						@php
+						$idproduto = $produto->id;
+						@endphp
                         <ins class="text-decoration-none">R${{ number_format($produto->preco_promocional ?? $produto->preco, 2, ',', '.') }}</ins>
                     </span>
                     <h4 class="product-title card-title text-primary-hover text-body-emphasis fs-15px fw-500 mb-3">
@@ -1133,6 +1137,7 @@
                 </div>
             </div>
         </div>
+		
     @endforeach
 </div>
 <!-- Fim Listagem Produtos -->
@@ -1146,79 +1151,65 @@
             </div>
             <div class="modal-body pt-0">
                 <div class="row">
-                    <div class="col-md-6 pe-13">
-                        <div class="position-relative">
-                            <div class="position-absolute z-index-2 w-100 d-flex justify-content-end">
-                                <div class="p-6">
-                                    <a href="#" class="d-flex align-items-center justify-content-center product-gallery-action rounded-circle" data-bs-toggle="tooltip" data-bs-placement="left" data-bs-title="Add to wishlist">
-                                        <svg class="icon fs-4">
-                                            <use xlink:href="#icon-star-light"></use>
-                                        </svg>
-                                    </a>
-                                    <a href="./shop/compare.html" class="d-flex align-items-center justify-content-center mt-5 product-gallery-action rounded-circle" data-bs-toggle="tooltip" data-bs-placement="left" data-bs-title="Compare">
-                                        <svg class="icon fs-4">
-                                            <use xlink:href="#icon-arrows-left-right-light"></use>
-                                        </svg>
-                                    </a>
-                                </div>
-                            </div>
 
-                            <!-- Imagem Principal -->
-                            <div id="slider" class="slick-slider slick-slider-arrow-inside slick-slider-dots-inside slick-slider-dots-light g-0" data-slick-options='{"arrows":false,"asNavFor":"#slider-thumb","dots":false,"slidesToShow":1}'>
-                                <!-- Exibir Imagem Principal Primeiro -->
-                                <div class="position-relative">
-									<!--passa imagem principal dinâmicamente pelo js-->                                    
-									<img id="modalProductImage" src="" alt="imagem principal" class="d-block w-100 img-main">
-                                </div>                    
-                            </div>
-                        </div>
+					                    
+<div class="col-md-6 pe-13">
+    <div class="position-relative">
+        <div class="position-absolute z-index-2 w-100 d-flex justify-content-end">
+            <div class="p-6">
+                <a href="#" class="d-flex align-items-center justify-content-center product-gallery-action rounded-circle" data-bs-toggle="tooltip" data-bs-placement="left" data-bs-title="Add to wishlist">
+                    <svg class="icon fs-4">
+                        <use xlink:href="#icon-star-light"></use>
+                    </svg>
+                </a>
+                <a href="./shop/compare.html" class="d-flex align-items-center justify-content-center mt-5 product-gallery-action rounded-circle" data-bs-toggle="tooltip" data-bs-placement="left" data-bs-title="Compare">
+                    <svg class="icon fs-4">
+                        <use xlink:href="#icon-arrows-left-right-light"></use>
+                    </svg>
+                </a>
+            </div>
+        </div>
 
-                        <div class="mt-6">
+        <!-- Imagem Principal -->
+        <div id="slider" class="slick-slider slick-slider-arrow-inside slick-slider-dots-inside slick-slider-dots-light g-0" data-slick-options='{"arrows":false,"asNavFor":"#slider-thumb","dots":false,"slidesToShow":1}'>
+            <!-- Exibir Imagem Principal Primeiro -->
+            <div class="position-relative">
+                <!--passa imagem principal dinâmicamente pelo js-->
+				@php
+                    $imagens = json_decode($produto->imagens_adicionais);
+                @endphp  
+				                                  
+                <img id="modalProductImage"  alt="imagem principal" class="d-block w-100 img-main">
+            </div>                    
+        </div>
+    </div>
 
-						<div id="slider-thumb" class="slick-slider-thumb ps-1 ms-n3 me-n4 slick-initialized slick-slider" data-slick-options='{"arrows":false,"asNavFor":"#slider","dots":false,"focusOnSelect":true,"slidesToShow":5,"vertical":false}'>
-						<div class="slick-list draggable" style="height: 124.6px;">
-						<div class="slick-track" style="opacity: 1; width: 2500px; transform: translate3d(0px, 0px, 0px);">
-						<!-- <img src="{{ asset('images/products/' . $produto->imagem) }}" data-src="{{ asset('images/products/' . $produto->imagem) }}" class="mx-3 px-0 h-auto cursor-pointer loaded slick-slide slick-active" width="75" height="100" alt="" loading="lazy" data-ll-status="loaded" tabindex="0" style="width: 92.4px;" data-slick-index="1" aria-hidden="false">
-									<img src="{{ asset('images/products/' . $produto->imagem) }}" data-src="{{ asset('images/products/' . $produto->imagem) }}" class="mx-3 px-0 h-auto cursor-pointer loaded slick-slide slick-active" width="75" height="100" alt="" loading="lazy" data-ll-status="loaded" tabindex="0" style="width: 92.4px;" data-slick-index="1" aria-hidden="false">
-									<img src="{{ asset('images/products/' . $produto->imagem) }}" data-src="{{ asset('images/products/' . $produto->imagem) }}" class="mx-3 px-0 h-auto cursor-pointer loaded slick-slide slick-active" width="75" height="100" alt="" loading="lazy" data-ll-status="loaded" tabindex="0" style="width: 92.4px;" data-slick-index="1" aria-hidden="false">
-									<img src="{{ asset('images/products/' . $produto->imagem) }}" data-src="{{ asset('images/products/' . $produto->imagem) }}" class="mx-3 px-0 h-auto cursor-pointer loaded slick-slide slick-active" width="75" height="100" alt="" loading="lazy" data-ll-status="loaded" tabindex="0" style="width: 92.4px;" data-slick-index="1" aria-hidden="false">	 -->
-										@php
-											$imagens = json_decode($produto->imagens_adicionais);
-										@endphp
-										
-									<!-- @dump($imagens) -->
-										@foreach(array_slice($imagens, 0) as $imagem)
-											<img src="images/products/{{ $imagem }}" alt="{{ $produto->nome }}" title="{{ $imagem }}" class="mx-3 px-0 h-auto cursor-pointer loaded slick-slide slick-active" width="75" height="100" style="width: 92.4px;">
-										@endforeach				
-								</div>
-							</div>
-						</div>
-                            <!-- Imagens Adicionais  -->
-                            <!-- <div id="slider-thumb" class="slick-slider slick-slider-thumb ps-1 ms-n3 me-n4" data-slick-options='{"arrows":false,"asNavFor":"#slider","dots":false,"focusOnSelect":true,"slidesToShow":5,"vertical":false}'>
-								<div class="slick-list draggable" style="height: 124.6px;">
-									<div class="slick-track" style="opacity: 1; width: 408px; transform: translate3d(0px, 0px, 0px);">
-										<img id="modalProductImageAd" src=""  class="mx-3 px-0 h-auto cursor-pointer loaded slick-slide slick-current slick-active" width="75" height="100" alt="imagem adicional" loading="lazy" data-ll-status="loaded" tabindex="0" style="width: 94px;" data-slick-index="0" aria-hidden="false">
- 										<img src="{{ asset('images/products/' . $produto->imagem) }}" data-src="{{ asset('images/products/' . $produto->imagem) }}" class="mx-3 px-0 h-auto cursor-pointer loaded slick-slide slick-active" width="75" height="100" alt="" loading="lazy" data-ll-status="loaded" tabindex="0" style="width: 92.4px;" data-slick-index="1" aria-hidden="false">
-										<img src="{{ asset('images/products/' . $produto->imagem) }}" data-src="{{ asset('images/products/' . $produto->imagem) }}" class="mx-3 px-0 h-auto cursor-pointer loaded slick-slide slick-active" width="75" height="100" alt="" loading="lazy" data-ll-status="loaded" tabindex="0" style="width: 92.4px;" data-slick-index="2" aria-hidden="false">
-										<img src="{{ asset('images/products/' . $produto->imagem) }}" data-src="{{ asset('images/products/' . $produto->imagem) }}" class="mx-3 px-0 h-auto cursor-pointer loaded slick-slide slick-active" width="75" height="100" alt="" loading="lazy" data-ll-status="loaded" tabindex="0" style="width: 92.4px;" data-slick-index="3" aria-hidden="false">
-									 	
-										@php
-											$imagens = json_decode($produto->imagens_adicionais);
-										@endphp
-											<a href="images/products/{{ $imagens[0] }}" class="overlap-btn" data-sub-html="<h4>{{ $produto->nome }}</h4>">
-												<img class="hidden" src="images/products/{{ $imagens[0] }}" alt="{{ $produto->nome }}">
-											</a>
-										@foreach(array_slice($imagens, 1) as $imagem)
-											<a href="images/products/{{ $imagem }}" class="hidden" data-sub-html="<h4>{{ $produto->nome }}</h4>">
-												<img class="hidden" src="images/products/{{ $imagem }}" alt="{{ $produto->nome }}">
-											</a>
-										@endforeach 
-									
-									</div>
-								</div>
-                            </div> -->
-                        </div>
-                    </div>
+    <!-- Imagens Adicionais -->
+    <div class="mt-6">
+        <div id="slider-thumb" class="slick-slider-thumb ps-1 ms-n3 me-n4 slick-initialized slick-slider" data-slick-options='{"arrows":false,"asNavFor":"#slider","dots":false,"focusOnSelect":true,"slidesToShow":5,"vertical":false}'>
+            <div class="slick-list draggable" style="height: 1204.6px;">
+                <div class="slick-track" style="opacity: 1; width: 2500px; transform: translate3d(0px, 0px, 0px);">
+                   <!--  @php
+                        $imagens = json_decode($produto->imagens_adicionais);
+                    @endphp
+                     
+                    @foreach(array_slice($imagens, 0) as $imagem)
+                        <img src="images/products/{{ $imagem }}" alt="{{ $produto->nome }}" title="{{ $produto->nome }}" class="thumbnail mx-3 px-0 h-auto cursor-pointer loaded slick-slide slick-active" width="75" height="100" style="width: 92.4px;">
+                    @endforeach -->
+					                
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<!-- 					<img src="{{ asset('images/products/' . $produto->imagem) }}" data-src="{{ asset('images/products/' . $produto->imagem) }}" class="mx-3 px-0 h-auto cursor-pointer loaded slick-slide slick-active" width="75" height="100" alt="" loading="lazy" data-ll-status="loaded" tabindex="0" style="width: 92.4px;" data-slick-index="1" aria-hidden="false">
+						<img src="{{ asset('images/products/' . $produto->imagem) }}" data-src="{{ asset('images/products/' . $produto->imagem) }}" class="mx-3 px-0 h-auto cursor-pointer loaded slick-slide slick-active" width="75" height="100" alt="" loading="lazy" data-ll-status="loaded" tabindex="0" style="width: 92.4px;" data-slick-index="1" aria-hidden="false">
+				 -->
 
 
                     <div class="col-md-6 pt-md-0 pt-10">
@@ -1344,10 +1335,10 @@
 
 <script>
        
-    function saveProductInfo(id, nome, imagem, descricao, preco, preco_promocional) {
+    function saveProductInfo(id, nome, imagem, descricao, preco, preco_promocional, imagens_adicionais) {
   
     document.getElementById('modalProductNome').textContent = nome;
-
+	document.getElementById('modalProductNome').textContent = id;
     const formatPrice = (price) => {
         return `R$${parseFloat(price).toFixed(2).replace('.', ',')}`;
     };
@@ -1363,33 +1354,60 @@
 
     document.getElementById('modalProductDescricao').textContent = descricao;
     document.getElementById('modalProductImage').src = `{{ asset('images/products/') }}/${imagem}`;
-    /* 
-	document.getElementById('modalProductImageAd').src = `{{ asset('images/products/') }}/${imagem}`; */
 
-    /* const additionalImages = @json($produto->imagens_adicionais);  */
-
-    console.log('Imagens Adicionais:', additionalImages);
-   /*  const slider = document.getElementById('slider');
-    const sliderThumb = document.getElementById('slider-thumb'); */
+	 // Atualiza as imagens adicionais
+	 const slider = document.getElementById('slider');
+    const sliderThumb = document.getElementById('slider-thumb');
     
-   
     slider.innerHTML = '';
     sliderThumb.innerHTML = '';
 
-/*     if (Array.isArray(additionalImages)) {
-        additionalImages.forEach((img) => {
-            const mainImage = document.createElement('div');
-            mainImage.className = 'position-relative';
-            mainImage.innerHTML = `<img src="{{ asset('images/products/') }}/${img}" alt="" class="d-block w-100 img-main">`;
-            slider.appendChild(mainImage);
-            
-            const thumbImage = document.createElement('div');
-            thumbImage.className = 'position-relative';
-            thumbImage.innerHTML = `<img src="{{ asset('images/products/') }}/${img}" alt="" class="d-block w-100 img-thumb">`;
-            sliderThumb.appendChild(thumbImage);
-        });
-    } */
+console.log('Imagens Adicionais', imagens_adicionais);
+const imagensArray = JSON.parse(imagens_adicionais);
+console.log('Imagens Convertidas em Array', imagensArray);
+
+if (Array.isArray(imagensArray)) {
+    imagensArray.forEach((img) => {
+        const mainImage = document.createElement('div');
+        mainImage.className = 'position-relative';
+        mainImage.innerHTML = `<img src="{{ asset('images/products/') }}/${img}" alt="" class="d-block w-100 img-main">`;
+        slider.appendChild(mainImage);
+        
+        const thumbImage = document.createElement('div');
+        thumbImage.className = 'position-relative';
+        thumbImage.innerHTML = `<img src="{{ asset('images/products/') }}/${img}" alt="" class="d-block w-100 img-thumb">`;
+        sliderThumb.appendChild(thumbImage);
+    });
+} else {
+    console.error('Imagens Adicionais não é um array válido');
 }
+
+
+}
+
+</script>
+
+<!-- ate aqui -->
+<script>
+
+	// JavaScript para efeito de clique em miniaturas
+    // Aguarde até que o DOM esteja completamente carregado
+    document.addEventListener('DOMContentLoaded', function() {
+        // Selecione todas as miniaturas
+        const thumbnails = document.querySelectorAll('.thumbnail');
+        // Selecione a imagem principal
+        const mainImage = document.getElementById('modalProductImage');
+
+        // Adicione um evento de clique para cada miniatura
+        thumbnails.forEach(thumbnail => {
+            thumbnail.addEventListener('click', function() {
+                // Altere o src da imagem principal para o src da miniatura clicada
+                mainImage.src = this.src;
+            });
+        });
+    });
+
+	
 
 </script>
 

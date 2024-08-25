@@ -22,4 +22,8 @@ Route::get('/produto/{id}', [ProdutoController::class, 'show']);
 
 Route::get('/produtos/get/{id}', [ProdutoController::class, 'getProdutoById'])->name('produtos.get');
 
-Route::post('/save-product-id', [ProdutoController::class, 'saveProductId']);
+
+
+// Exemplo de rota em `web.php`
+//Route::post('/save-product-info', [ProdutoController::class, 'saveProductInfo']);
+
