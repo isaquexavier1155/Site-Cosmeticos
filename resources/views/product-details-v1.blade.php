@@ -895,7 +895,7 @@
                                      AJUSTEI A IMAGEM PRICIPAL
                                     FALTA AJUSTAR AS IMAGENS EM MINIATURA e traduções
  -->                                    <img src="#" data-src="{{ asset('images/products/' . $produto->imagem) }}"
-                                        width="540" height="720" title="" class="h-auto lazy-image" alt="" title="555">
+                                        width="540" height="720" title="" class="h-auto lazy-image" alt="">
                                 </a>
 
                                 <a href="{{ asset('images/shop/product-gallery-06.jpg') }}"
@@ -999,8 +999,7 @@
                         </div>
                         <a href="#" class="border-start ps-6 text-body">Read 2947 reviews</a>
                     </div>
-                    <p class="fs-15px">Niacinamide and Vitamin C are two anti-aging superstars but not usually
-                        formulated together because of their different pH levels.</p>
+                    <p class="fs-15px">{{ $produto->descricao }}</p>
 
 
                     <form class="product-info-custom">
@@ -1027,17 +1026,17 @@
                             <input type="radio" id="buy1" name="quality"
                                 class="me-4 form-check-input product-info-input" checked>
                             <label for="buy1" class="text-body-emphasis form-check-label">
-                                Buy 1 -
+                                Comprar 1 -
                                 <span class="text-decoration-line-through mx-3 text-body">$39.00</span>
                                 <span class="fw-bold">$29.00</span>
                             </label>
-                            <span class="badge badge-primary fs-12px border text-primary fw-bold ms-4">Saved 10%</span>
+                            <span class="badge badge-primary fs-12px border text-primary fw-bold ms-4">Economize  10%</span>
                         </div>
                         <div class="form-checkmb-2 pb-4">
                             <input type="radio" id="buy2" name="quality"
                                 class="me-4 form-check-input product-info-input">
                             <label for="buy2" class="text-body-emphasis form-check-label">
-                                Buy 2 -
+                            Comprar 2 -
                                 <span class="text-decoration-line-through mx-3 text-body">$78.00</span>
                                 <span class="fw-bold">$56.00</span>
                             </label>
@@ -1047,7 +1046,7 @@
                             <input type="radio" id="buy3" name="quality"
                                 class="me-4 form-check-input product-info-input">
                             <label for="buy3" class="text-body-emphasis form-check-label">
-                                Buy 3 -
+                            Comprar 3 -
                                 <span class="text-decoration-line-through mx-3 text-body">$117.00</span>
                                 <span class="fw-bold">$72.00</span>
                             </label>
@@ -1057,7 +1056,7 @@
                             <input type="radio" id="buy4" name="quality"
                                 class="me-4 form-check-input product-info-input">
                             <label for="buy4" class="text-body-emphasis form-check-label">
-                                Buy 4 -
+                            Comprar 4 -
                                 <span class="text-decoration-line-through mx-3 text-body">$195.00</span>
                                 <span class="fw-bold">$99.00</span>
                             </label>
@@ -1065,8 +1064,7 @@
                         </div>
 
                         <button type="submit"
-                            class="btn btn-lg btn-dark mb-7 mt-7 w-100 btn-hover-bg-primary btn-hover-border-primary">Add
-                            To Bag
+                            class="btn btn-lg btn-dark mb-7 mt-7 w-100 btn-hover-bg-primary btn-hover-border-primary">Adicionar ao Carrinho
                         </button>
                     </form>
                     <div class="d-flex align-items-center flex-wrap">
