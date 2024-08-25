@@ -1405,7 +1405,11 @@
         imagensArray.forEach((img) => {
             const thumbImage = document.createElement('div');
             thumbImage.className = 'slick-slide';
-            thumbImage.innerHTML = `<img src="{{ asset('images/products/') }}/${img}" alt="imagem adicional" class="d-block w-100 img-thumb">`;
+            thumbImage.innerHTML = `<img src="{{ asset('images/products/') }}/${img}" alt="imagem adicional" class="d-block w-100 img-thumb" data-main-img="${img}">`;
+            thumbImage.addEventListener('click', (event) => {
+                const mainImageSrc = event.target.getAttribute('data-main-img');
+                document.getElementById('modalProductImage').src = `{{ asset('images/products/') }}/${mainImageSrc}`;
+            });
             slickTrack.appendChild(thumbImage);
         });
     } else {
@@ -1413,32 +1417,12 @@
     }
 }
 
+
    
    </script>
 
 <!-- ate aqui -->
-<script>
 
-	// JavaScript para efeito de clique em miniaturas
-    // Aguarde até que o DOM esteja completamente carregado
-    document.addEventListener('DOMContentLoaded', function() {
-        // Selecione todas as miniaturas
-        const thumbnails = document.querySelectorAll('.thumbnail');
-        // Selecione a imagem principal
-        const mainImage = document.getElementById('modalProductImage');
-
-        // Adicione um evento de clique para cada miniatura
-        thumbnails.forEach(thumbnail => {
-            thumbnail.addEventListener('click', function() {
-                // Altere o src da imagem principal para o src da miniatura clicada
-                mainImage.src = this.src;
-            });
-        });
-    });
-
-	
-
-</script>
 
 
 	
