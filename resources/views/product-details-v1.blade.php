@@ -857,24 +857,22 @@
                                 class="slick-slider slick-slider-thumb ps-1 ms-n3 me-n4 mx-xl-0"
                                 data-slick-options='{&#34;arrows&#34;:false,&#34;asNavFor&#34;:&#34;#vertical-slider-slides&#34;,&#34;dots&#34;:false,&#34;focusOnSelect&#34;:true,&#34;responsive&#34;:[{&#34;breakpoint&#34;:1260,&#34;settings&#34;:{&#34;vertical&#34;:false}}],&#34;slidesToShow&#34;:4,&#34;vertical&#34;:true}'>
                                 <img src="#" data-src="{{ asset('images/shop/product-gallery-05-154x205.jpg') }}"
-                                class="cursor-pointer lazy-image mx-3 mx-xl-0 px-0 mb-xl-7" width="75" height="100"
-                                title="" alt="">
+                                    class="cursor-pointer lazy-image mx-3 mx-xl-0 px-0 mb-xl-7" width="75" height="100"
+                                    title="" alt="">
 
-                                <img src="#"
-                                data-src="{{ asset('images/shop/product-gallery-06-154x205.jpg') }}"
-                                class="cursor-pointer lazy-image mx-3 mx-xl-0 px-0 mb-xl-7" width="75" height="100"
-                                title="" alt="">
+                                <img src="#" data-src="{{ asset('images/shop/product-gallery-06-154x205.jpg') }}"
+                                    class="cursor-pointer lazy-image mx-3 mx-xl-0 px-0 mb-xl-7" width="75" height="100"
+                                    title="" alt="">
 
-                                    
-                                <img src="#"
-                                data-src="{{ asset('images/shop/product-gallery-07-154x205.jpg') }}"
-                                class="cursor-pointer lazy-image mx-3 mx-xl-0 px-0 mb-xl-7" width="75" height="100"
-                                title="" alt="">
+
+                                <img src="#" data-src="{{ asset('images/shop/product-gallery-07-154x205.jpg') }}"
+                                    class="cursor-pointer lazy-image mx-3 mx-xl-0 px-0 mb-xl-7" width="75" height="100"
+                                    title="" alt="">
 
 
                                 <div class="position-relative cursor-pointer mx-3 mx-xl-0 px-0 mb-xl-7">
-                                <img src="#" data-src="{{ asset('images/shop/product-gallery-08-154x205.jpg') }}"
-                                    class="w-100 lazy-image" alt="product gallery" width="75" height="100">
+                                    <img src="#" data-src="{{ asset('images/shop/product-gallery-08-154x205.jpg') }}"
+                                        class="w-100 lazy-image" alt="product gallery" width="75" height="100">
 
                                     <div
                                         class="card-img-overlay d-inline-flex flex-column align-items-center justify-content-center">
@@ -890,31 +888,35 @@
                             <div id="vertical-slider-slides"
                                 class="slick-slider slick-slider-arrow-inside slick-slider-dots-inside slick-slider-dots-light g-0"
                                 data-slick-options='{&#34;arrows&#34;:false,&#34;asNavFor&#34;:&#34;#vertical-slider-thumb&#34;,&#34;dots&#34;:false,&#34;slidesToShow&#34;:1,&#34;vertical&#34;:true}'>
-                                <a href="{{ asset('images/shop/product-gallery-05.jpg') }}" data-gallery="product-gallery"
+                                <a href="{{ asset('images/shop/product-gallery-05.jpg') }}"
+                                    data-gallery="product-gallery"
                                     data-thumb-src="{{ asset('images/shop/product-gallery-05.jpg') }}">
-                                    <img src="#" data-src="{{ asset('images/shop/product-gallery-05.jpg') }}" width="540" height="720"
-                                        title="" class="h-auto lazy-image" alt="">
-                                </a>
-                                      
-                                <a href="{{ asset('images/shop/product-gallery-06.jpg') }}" data-gallery="product-gallery"
-                                    data-thumb-src="{{ asset('images/shop/product-gallery-06.jpg') }}">
-                                    <img src="#"
-                                        data-src="{{ asset('images/shop/product-gallery-06.jpg') }}" width="540" height="720"
-                                        title="" class="h-auto lazy-image" alt="">
+<!--                                     Imagem Principal
+                                     AJUSTEI A IMAGEM PRICIPAL
+                                    FALTA AJUSTAR AS IMAGENS EM MINIATURA e traduções
+ -->                                    <img src="#" data-src="{{ asset('images/products/' . $produto->imagem) }}"
+                                        width="540" height="720" title="" class="h-auto lazy-image" alt="" title="555">
                                 </a>
 
-                              
-                                <a href="{{ asset('images/shop/product-gallery-07.jpg') }}" data-gallery="product-gallery"
+                                <a href="{{ asset('images/shop/product-gallery-06.jpg') }}"
+                                    data-gallery="product-gallery"
+                                    data-thumb-src="{{ asset('images/shop/product-gallery-06.jpg') }}">
+                                    <img src="#" data-src="{{ asset('images/shop/product-gallery-06.jpg') }}"
+                                        width="540" height="720" title="" class="h-auto lazy-image" alt="">
+                                </a>
+
+
+                                <a href="{{ asset('images/shop/product-gallery-07.jpg') }}"
+                                    data-gallery="product-gallery"
                                     data-thumb-src="{{ asset('images/shop/product-gallery-07.jpg') }}">
-                                        <img src="#"
-                                            data-src="{{ asset('images/shop/product-gallery-07.jpg') }}" width="540" height="720"
-                                            title="" class="h-auto lazy-image" alt="">
+                                    <img src="#" data-src="{{ asset('images/shop/product-gallery-07.jpg') }}"
+                                        width="540" height="720" title="" class="h-auto lazy-image" alt="">
                                 </a>
 
 
                                 <div class="position-relative">
-                                    <img src="#" data-src="{{ asset('images/shop/product-gallery-08.jpg') }}" width="540"
-                                    height="720" title="" class="h-auto lazy-image" alt="">
+                                    <img src="#" data-src="{{ asset('images/shop/product-gallery-08.jpg') }}"
+                                        width="540" height="720" title="" class="h-auto lazy-image" alt="">
 
                                     <div
                                         class="card-img-overlay d-inline-flex flex-column align-items-center justify-content-center">
@@ -934,7 +936,7 @@
                         <span class="fs-18px text-body-emphasis ps-6 fw-bold">29.00</span>
                         <span class="badge text-bg-primary fs-6 fw-semibold ms-7 px-6 py-3">20%</span>
                     </p>
-                    <h1 class="mb-4 pb-2 fs-4">Natural Coconut Cleansing Oil</h1>
+                    <h1 class="mb-4 pb-2 fs-4">{{ $produto->nome }}</h1>
                     <div class="d-flex align-items-center fs-15px mb-6">
                         <p class="mb-0 fw-semibold text-body-emphasis">4.86</p>
                         <div class="d-flex align-items-center fs-12px justify-content-center mb-0 px-6 rating-result">
@@ -1174,7 +1176,7 @@
                                     <div class="row">
                                         <div class="col-12 col-lg-6 pe-lg-10 pe-xl-20">
                                             <img src="#" data-src="{{ asset('images/shop/product-details-img.jpg') }}"
-                                            class="w-100 lazy-image" alt="" width="470" height="540">
+                                                class="w-100 lazy-image" alt="" width="470" height="540">
 
                                         </div>
                                         <div class="pb-3 col-12 col-lg-6 pt-12 pt-lg-0">
@@ -1202,8 +1204,8 @@
                                                 <div class="col-6 col-md-3 text-center mb-9 pb-2">
 
                                                     <img class="lazy-image light-mode-img" src="#"
-                                                        data-src="{{ asset('images/shop/product-info-3-1.png') }}" width="66"
-                                                        height="77" alt="">
+                                                        data-src="{{ asset('images/shop/product-info-3-1.png') }}"
+                                                        width="66" height="77" alt="">
                                                     <img class="lazy-image dark-mode-img" src="#"
                                                         data-src="{{ asset('images/shop/product-info-white-3-1.png') }}"
                                                         width="66" height="77" alt="">
@@ -1212,34 +1214,34 @@
                                                 <div class="col-6 col-md-3 text-center mb-9 pb-2">
 
 
-                                                <img class="lazy-image light-mode-img" src="#"
-                                                    data-src="{{ asset('images/shop/product-info-3-2.png') }}" width="66"
-                                                    height="77" alt="">
-                                                <img class="lazy-image dark-mode-img" src="#"
-                                                    data-src="{{ asset('images/shop/product-info-white-3-2.png') }}"
-                                                    width="66" height="77" alt="">
+                                                    <img class="lazy-image light-mode-img" src="#"
+                                                        data-src="{{ asset('images/shop/product-info-3-2.png') }}"
+                                                        width="66" height="77" alt="">
+                                                    <img class="lazy-image dark-mode-img" src="#"
+                                                        data-src="{{ asset('images/shop/product-info-white-3-2.png') }}"
+                                                        width="66" height="77" alt="">
 
                                                 </div>
                                                 <div class="col-6 col-md-3 text-center mb-9 pb-2">
 
 
-                                                <img class="lazy-image light-mode-img" src="#"
-                                                    data-src="{{ asset('images/shop/product-info-3-3.png') }}" width="66"
-                                                    height="77" alt="">
-                                                <img class="lazy-image dark-mode-img" src="#"
-                                                    data-src="{{ asset('images/shop/product-info-white-3-3.png') }}"
-                                                    width="66" height="77" alt="">
+                                                    <img class="lazy-image light-mode-img" src="#"
+                                                        data-src="{{ asset('images/shop/product-info-3-3.png') }}"
+                                                        width="66" height="77" alt="">
+                                                    <img class="lazy-image dark-mode-img" src="#"
+                                                        data-src="{{ asset('images/shop/product-info-white-3-3.png') }}"
+                                                        width="66" height="77" alt="">
 
                                                 </div>
                                                 <div class="col-6 col-md-3 text-center mb-9 pb-2">
 
 
-                                                <img class="lazy-image light-mode-img" src="#"
-                                                    data-src="{{ asset('images/shop/product-info-3-4.png') }}" width="66"
-                                                    height="77" alt="">
-                                                <img class="lazy-image dark-mode-img" src="#"
-                                                    data-src="{{ asset('images/shop/product-info-white-3-4.png') }}"
-                                                    width="66" height="77" alt="">
+                                                    <img class="lazy-image light-mode-img" src="#"
+                                                        data-src="{{ asset('images/shop/product-info-3-4.png') }}"
+                                                        width="66" height="77" alt="">
+                                                    <img class="lazy-image dark-mode-img" src="#"
+                                                        data-src="{{ asset('images/shop/product-info-white-3-4.png') }}"
+                                                        width="66" height="77" alt="">
 
                                                 </div>
                                             </div>
@@ -1389,8 +1391,8 @@
                             <a href="../shop/product-details-v1.html" class="hover-zoom-in d-block"
                                 title="Shield Conditioner">
                                 <img src="#" data-src="{{ asset('images/products/product-01-330x440.jpg') }}"
-                                class="img-fluid lazy-image w-100" alt="Shield Conditioner" width="330"
-                                height="440">
+                                    class="img-fluid lazy-image w-100" alt="Shield Conditioner" width="330"
+                                    height="440">
 
                             </a>
 
@@ -1440,7 +1442,8 @@
                             <h4
                                 class="product-title card-title text-primary-hover text-body-emphasis fs-15px fw-500 mb-3">
                                 <a class="text-decoration-none text-reset" href="../shop/product-details-v1.html">Shield
-                                    Conditioner</a></h4>
+                                    Conditioner</a>
+                            </h4>
                             <div class="d-flex align-items-center fs-12px justify-content-center">
                                 <div class="rating">
                                     <div class="empty-stars">
@@ -1509,8 +1512,8 @@
                             <a href="../shop/product-details-v1.html" class="hover-zoom-in d-block"
                                 title="Perfecting Facial Oil">
                                 <img src="#" data-src="{{ asset('images/products/product-02-330x440.jpg') }}"
-                                class="img-fluid lazy-image w-100" alt="Perfecting Facial Oil" width="330"
-                                height="440">
+                                    class="img-fluid lazy-image w-100" alt="Perfecting Facial Oil" width="330"
+                                    height="440">
 
                             </a>
 
@@ -1556,7 +1559,8 @@
                             <h4
                                 class="product-title card-title text-primary-hover text-body-emphasis fs-15px fw-500 mb-3">
                                 <a class="text-decoration-none text-reset"
-                                    href="../shop/product-details-v1.html">Perfecting Facial Oil</a></h4>
+                                    href="../shop/product-details-v1.html">Perfecting Facial Oil</a>
+                            </h4>
                             <div class="d-flex align-items-center fs-12px justify-content-center">
                                 <div class="rating">
                                     <div class="empty-stars">
@@ -1625,8 +1629,7 @@
                             <a href="../shop/product-details-v1.html" class="hover-zoom-in d-block"
                                 title="Enriched Hand &amp; Body Wash">
                                 <img src="#" data-src="{{ asset('images/products/product-03-330x440.jpg') }}"
-                                class="img-fluid lazy-image w-100" alt="Enriched Hand & Body Wash" width="330"
-                                height="440">
+                                    class="img-fluid lazy-image w-100" alt="Enriched Hand & Body Wash" width="330"                                  height="440">
 
                             </a>
 
@@ -1674,7 +1677,8 @@
                             <h4
                                 class="product-title card-title text-primary-hover text-body-emphasis fs-15px fw-500 mb-3">
                                 <a class="text-decoration-none text-reset"
-                                    href="../shop/product-details-v1.html">Enriched Hand &amp; Body Wash</a></h4>
+                                    href="../shop/product-details-v1.html">Enriched Hand &amp; Body Wash</a>
+                            </h4>
                             <div class="d-flex align-items-center fs-12px justify-content-center">
                                 <div class="rating">
                                     <div class="empty-stars">
@@ -1743,8 +1747,7 @@
                             <a href="../shop/product-details-v1.html" class="hover-zoom-in d-block"
                                 title="Shield Shampoo">
                                 <img src="#" data-src="{{ asset('images/products/product-04-330x440.jpg') }}"
-                                class="img-fluid lazy-image w-100" alt="Shield Shampoo" width="330"
-                                height="440">
+                                    class="img-fluid lazy-image w-100" alt="Shield Shampoo" width="330" height="440">
 
                             </a>
 
@@ -1794,7 +1797,8 @@
                             <h4
                                 class="product-title card-title text-primary-hover text-body-emphasis fs-15px fw-500 mb-3">
                                 <a class="text-decoration-none text-reset" href="../shop/product-details-v1.html">Shield
-                                    Shampoo</a></h4>
+                                    Shampoo</a>
+                            </h4>
                             <div class="d-flex align-items-center fs-12px justify-content-center">
                                 <div class="rating">
                                     <div class="empty-stars">
@@ -1863,8 +1867,7 @@
                             <a href="../shop/product-details-v1.html" class="hover-zoom-in d-block"
                                 title="Enriched Hand Wash">
                                 <img src="#" data-src="{{ asset('images/products/product-05-330x440.jpg') }}"
-                                    class="img-fluid lazy-image w-100" alt="Enriched Hand Wash" width="330"
-                                    height="440">
+                                    class="img-fluid lazy-image w-100" alt="Enriched Hand Wash" width="330" height="440">
 
                             </a>
 
@@ -1914,7 +1917,8 @@
                             <h4
                                 class="product-title card-title text-primary-hover text-body-emphasis fs-15px fw-500 mb-3">
                                 <a class="text-decoration-none text-reset"
-                                    href="../shop/product-details-v1.html">Enriched Hand Wash</a></h4>
+                                    href="../shop/product-details-v1.html">Enriched Hand Wash</a>
+                            </h4>
                             <div class="d-flex align-items-center fs-12px justify-content-center">
                                 <div class="rating">
                                     <div class="empty-stars">
@@ -1983,8 +1987,7 @@
                             <a href="../shop/product-details-v1.html" class="hover-zoom-in d-block"
                                 title="Enriched Duo">
                                 <img src="#" data-src="{{ asset('images/products/product-06-330x440.jpg') }}"
-                                class="img-fluid lazy-image w-100" alt="Enriched Duo" width="330"
-                                height="440">
+                                    class="img-fluid lazy-image w-100" alt="Enriched Duo" width="330" height="440">
 
                             </a>
 
@@ -2030,7 +2033,8 @@
                             <h4
                                 class="product-title card-title text-primary-hover text-body-emphasis fs-15px fw-500 mb-3">
                                 <a class="text-decoration-none text-reset"
-                                    href="../shop/product-details-v1.html">Enriched Duo</a></h4>
+                                    href="../shop/product-details-v1.html">Enriched Duo</a>
+                            </h4>
                             <div class="d-flex align-items-center fs-12px justify-content-center">
                                 <div class="rating">
                                     <div class="empty-stars">
@@ -2099,8 +2103,7 @@
                             <a href="../shop/product-details-v1.html" class="hover-zoom-in d-block"
                                 title="Shield Spray">
                                 <img src="#" data-src="{{ asset('images/products/product-07-330x440.jpg') }}"
-                                class="img-fluid lazy-image w-100" alt="Shield Spray" width="330"
-                                height="440">
+                                    class="img-fluid lazy-image w-100" alt="Shield Spray" width="330" height="440">
 
                             </a>
 
@@ -2146,7 +2149,8 @@
                             <h4
                                 class="product-title card-title text-primary-hover text-body-emphasis fs-15px fw-500 mb-3">
                                 <a class="text-decoration-none text-reset" href="../shop/product-details-v1.html">Shield
-                                    Spray</a></h4>
+                                    Spray</a>
+                            </h4>
                             <div class="d-flex align-items-center fs-12px justify-content-center">
                                 <div class="rating">
                                     <div class="empty-stars">
@@ -2215,7 +2219,7 @@
                             <a href="../shop/product-details-v1.html" class="hover-zoom-in d-block"
                                 title="Shield Spray">
                                 <img src="#" data-src="{{ asset('images/products/product-08-330x440.jpg') }}"
-                                class="img-fluid lazy-image w-100" alt="Shield Spray" width="330" height="440">
+                                    class="img-fluid lazy-image w-100" alt="Shield Spray" width="330" height="440">
 
                             </a>
 
@@ -2265,7 +2269,8 @@
                             <h4
                                 class="product-title card-title text-primary-hover text-body-emphasis fs-15px fw-500 mb-3">
                                 <a class="text-decoration-none text-reset" href="../shop/product-details-v1.html">Shield
-                                    Spray</a></h4>
+                                    Spray</a>
+                            </h4>
                             <div class="d-flex align-items-center fs-12px justify-content-center">
                                 <div class="rating">
                                     <div class="empty-stars">
@@ -2708,7 +2713,7 @@
 
                     <div class="d-flex justify-content-start align-items-center mb-5">
                         <img src="#" data-src="{{ asset('images/others/single-product-01.png') }}"
-                        class="me-6 lazy-image rounded-circle" width="60" height="60" alt="Avatar">
+                            class="me-6 lazy-image rounded-circle" width="60" height="60" alt="Avatar">
 
                         <div class="">
                             <h5 class="mt-0 mb-4 fs-14px text-uppercase ls-1">JENNIFER C.</h5>
@@ -2805,8 +2810,8 @@
                     </div>
 
                     <div class="d-flex justify-content-start align-items-center mb-5">
-                    <img src="#" data-src="{{ asset('images/others/product-review-avatar-01.jpg') }}"
-     class="me-6 lazy-image rounded-circle" width="60" height="60" alt="Avatar">
+                        <img src="#" data-src="{{ asset('images/others/product-review-avatar-01.jpg') }}"
+                            class="me-6 lazy-image rounded-circle" width="60" height="60" alt="Avatar">
 
                         <div class="">
                             <h5 class="mt-0 mb-4 fs-14px text-uppercase ls-1">JENNIFER C.</h5>
@@ -2819,10 +2824,10 @@
 
 
                     <div class="mb-10">
-                    <img src="#" data-src="{{ asset('images/others/single-product-03.jpg') }}"
-     class="mx-3 w-auto lazy-image" alt="">
-<img src="#" data-src="{{ asset('images/others/single-product-02.jpg') }}"
-     class="mx-3 w-auto lazy-image" alt="">
+                        <img src="#" data-src="{{ asset('images/others/single-product-03.jpg') }}"
+                            class="mx-3 w-auto lazy-image" alt="">
+                        <img src="#" data-src="{{ asset('images/others/single-product-02.jpg') }}"
+                            class="mx-3 w-auto lazy-image" alt="">
 
 
                     </div>
@@ -2909,8 +2914,8 @@
                     </div>
 
                     <div class="d-flex justify-content-start align-items-center mb-5">
-                    <img src="#" data-src="{{ asset('images/others/product-review-avatar-03.jpg') }}"
-     class="me-6 lazy-image rounded-circle" width="60" height="60" alt="Avatar">
+                        <img src="#" data-src="{{ asset('images/others/product-review-avatar-03.jpg') }}"
+                            class="me-6 lazy-image rounded-circle" width="60" height="60" alt="Avatar">
 
                         <div class="">
                             <h5 class="mt-0 mb-4 fs-14px text-uppercase ls-1">JENNIFER C.</h5>
@@ -2923,10 +2928,10 @@
 
 
                     <div class="mb-10">
-                    <img src="#" data-src="{{ asset('images/others/single-product-03.jpg') }}"
-     class="mx-3 w-auto lazy-image" alt="">
-<img src="#" data-src="{{ asset('images/others/single-product-02.jpg') }}"
-     class="mx-3 w-auto lazy-image" alt="">
+                        <img src="#" data-src="{{ asset('images/others/single-product-03.jpg') }}"
+                            class="mx-3 w-auto lazy-image" alt="">
+                        <img src="#" data-src="{{ asset('images/others/single-product-02.jpg') }}"
+                            class="mx-3 w-auto lazy-image" alt="">
 
 
                     </div>
@@ -3013,8 +3018,8 @@
                     </div>
 
                     <div class="d-flex justify-content-start align-items-center mb-5">
-                    <img src="#" data-src="{{ asset('images/others/product-review-avatar-02.jpg') }}"
-     class="me-6 lazy-image rounded-circle" width="60" height="60" alt="Avatar">
+                        <img src="#" data-src="{{ asset('images/others/product-review-avatar-02.jpg') }}"
+                            class="me-6 lazy-image rounded-circle" width="60" height="60" alt="Avatar">
 
                         <div class="">
                             <h5 class="mt-0 mb-4 fs-14px text-uppercase ls-1">JENNIFER C.</h5>
@@ -3111,8 +3116,8 @@
                     </div>
 
                     <div class="d-flex justify-content-start align-items-center mb-5">
-                    <img src="#" data-src="{{ asset('images/others/product-review-avatar-03.jpg') }}"
-     class="me-6 lazy-image rounded-circle" width="60" height="60" alt="Avatar">
+                        <img src="#" data-src="{{ asset('images/others/product-review-avatar-03.jpg') }}"
+                            class="me-6 lazy-image rounded-circle" width="60" height="60" alt="Avatar">
 
                         <div class="">
                             <h5 class="mt-0 mb-4 fs-14px text-uppercase ls-1">Lucille D</h5>
@@ -3125,10 +3130,10 @@
 
 
                     <div class="mb-10">
-                    <img src="#" data-src="{{ asset('images/others/single-product-03.jpg') }}"
-     class="mx-3 w-auto lazy-image" alt="">
-<img src="#" data-src="{{ asset('images/others/single-product-02.jpg') }}"
-     class="mx-3 w-auto lazy-image" alt="">
+                        <img src="#" data-src="{{ asset('images/others/single-product-03.jpg') }}"
+                            class="mx-3 w-auto lazy-image" alt="">
+                        <img src="#" data-src="{{ asset('images/others/single-product-02.jpg') }}"
+                            class="mx-3 w-auto lazy-image" alt="">
 
 
                     </div>
@@ -3286,18 +3291,18 @@
                     <a class="d-inline-block" href="../">
 
 
-                    <img class="lazy-image img-fluid light-mode-img" src="#"
-     data-src="{{ asset('images/others/logo.png') }}" width="179" height="26"
-     alt="Glowing - Bootstrap 5 HTML Templates">
-<img class="lazy-image dark-mode-img img-fluid" src="#"
-     data-src="{{ asset('images/others/logo-white.png') }}" width="179" height="26"
-     alt="Glowing - Bootstrap 5 HTML Templates">
+                        <img class="lazy-image img-fluid light-mode-img" src="#"
+                            data-src="{{ asset('images/others/logo.png') }}" width="179" height="26"
+                            alt="Glowing - Bootstrap 5 HTML Templates">
+                        <img class="lazy-image dark-mode-img img-fluid" src="#"
+                            data-src="{{ asset('images/others/logo-white.png') }}" width="179" height="26"
+                            alt="Glowing - Bootstrap 5 HTML Templates">
 
                     </a>
                 </div>
                 <div class="col-sm-12 col-md-6 col-lg-4 order-3 text-sm-start text-lg-end mt-8 mt-lg-0">
-                <img src="#" data-src="{{ asset('images/footer/img_1.png') }}" width="313" height="28" alt="Paypal"
-     class="img-fluid lazy-image">
+                    <img src="#" data-src="{{ asset('images/footer/img_1.png') }}" width="313" height="28" alt="Paypal"
+                        class="img-fluid lazy-image">
 
                 </div>
             </div>
@@ -3305,8 +3310,10 @@
         </div>
     </footer>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <!-- ate aqui editei   
+ -->
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="{{ asset('vendors/bootstrap/js/bootstrap.bundle.js') }}"></script>
     <script src="{{ asset('vendors/clipboard/clipboard.min.js') }}"></script>
     <script src="{{ asset('vendors/vanilla-lazyload/lazyload.min.js') }}"></script>
@@ -4230,8 +4237,8 @@
             <nav class="navbar navbar-expand-xl px-0 py-6 py-xl-12 row align-items-start">
                 <div class="col-xl-3 d-flex justify-content-center justify-content-xl-start">
                     <a href="../" class="navbar-brand py-4 d-lg-inline-block">
-                    <img src="{{ asset('images/others/logo.png') }}" height="26"
-     alt="Glowingg - Bootstrap 5 HTML Templates">
+                        <img src="{{ asset('images/others/logo.png') }}" height="26"
+                            alt="Glowingg - Bootstrap 5 HTML Templates">
 
                     </a>
                 </div>
@@ -4320,8 +4327,8 @@
                             <td class="shop-product">
                                 <div class="d-flex align-items-center">
                                     <div class="me-6">
-                                    <img src="{{ asset('images/products/product-03-75x100.jpg') }}" width="60"
-                                    height="80" alt="natural coconut cleansing oil">
+                                        <img src="{{ asset('images/products/product-03-75x100.jpg') }}" width="60"
+                                            height="80" alt="natural coconut cleansing oil">
 
                                     </div>
                                     <div class="">
@@ -4355,8 +4362,8 @@
                             <td class="shop-product">
                                 <div class="d-flex align-items-center">
                                     <div class="me-6">
-                                    <img src="{{ asset('images/products/product-06-75x100.jpg') }}" width="60"
-     height="80" alt="natural coconut cleansing oil">
+                                        <img src="{{ asset('images/products/product-06-75x100.jpg') }}" width="60"
+                                            height="80" alt="natural coconut cleansing oil">
 
                                     </div>
                                     <div class="">
@@ -4390,8 +4397,8 @@
                             <td class="shop-product">
                                 <div class="d-flex align-items-center">
                                     <div class="me-6">
-                                    <img src="{{ asset('images/products/product-09-75x100.jpg') }}" width="60"
-     height="80" alt="natural coconut cleansing oil">
+                                        <img src="{{ asset('images/products/product-09-75x100.jpg') }}" width="60"
+                                            height="80" alt="natural coconut cleansing oil">
 
                                     </div>
                                     <div class="">
@@ -4561,30 +4568,30 @@
                                     <a href="{{ asset('images/shop/product-gallery-05.jpg') }}" data-gallery="gallery1"
                                         data-thumb-src="{{ asset('images/shop/product-gallery-05.jpg') }}">
                                         <img src="#" data-src="{{ asset('images/shop/product-gallery-05.jpg') }}"
-                                                class="h-auto lazy-image" width="540" height="720" alt="">
-                                        </a>
-                                        <a href="{{ asset('images/shop/product-gallery-06.jpg') }}" data-gallery="gallery1"
+                                            class="h-auto lazy-image" width="540" height="720" alt="" title="555">
+                                    </a>
+                                    <a href="{{ asset('images/shop/product-gallery-06.jpg') }}" data-gallery="gallery1"
                                         data-thumb-src="{{ asset('images/shop/product-gallery-06.jpg') }}">
                                         <img src="#" data-src="{{ asset('images/shop/product-gallery-06.jpg') }}"
-                                                class="h-auto lazy-image" width="540" height="720" alt="">
-                                        </a>
-                                        <a href="{{ asset('images/shop/product-gallery-07.jpg') }}" data-gallery="gallery1"
+                                            class="h-auto lazy-image" width="540" height="720" alt="">
+                                    </a>
+                                    <a href="{{ asset('images/shop/product-gallery-07.jpg') }}" data-gallery="gallery1"
                                         data-thumb-src="{{ asset('images/shop/product-gallery-07.jpg') }}">
                                         <img src="#" data-src="{{ asset('images/shop/product-gallery-07.jpg') }}"
-                                                class="h-auto lazy-image" width="540" height="720" alt="">
-                                        </a>
-                                        <a href="{{ asset('images/shop/product-gallery-08.jpg') }}" data-gallery="gallery1"
+                                            class="h-auto lazy-image" width="540" height="720" alt="">
+                                    </a>
+                                    <a href="{{ asset('images/shop/product-gallery-08.jpg') }}" data-gallery="gallery1"
                                         data-thumb-src="{{ asset('images/shop/product-gallery-08.jpg') }}">
                                         <img src="#" data-src="{{ asset('images/shop/product-gallery-08.jpg') }}"
-                                                class="h-auto lazy-image" width="540" height="720" alt="">
-                                        </a>
+                                            class="h-auto lazy-image" width="540" height="720" alt="">
+                                    </a>
 
                                 </div>
                             </div>
                             <div class="mt-6">
                                 <div id="slider-thumb" class="slick-slider slick-slider-thumb ps-1 ms-n3 me-n4"
                                     data-slick-options='{&#34;arrows&#34;:false,&#34;asNavFor&#34;:&#34;#slider&#34;,&#34;dots&#34;:false,&#34;focusOnSelect&#34;:true,&#34;slidesToShow&#34;:5,&#34;vertical&#34;:false}'>
-                                    
+
                                     <img src="#" data-src="{{ asset('images/shop/product-gallery-05-154x205.jpg') }}"
                                         class="mx-3 px-0 h-auto cursor-pointer lazy-image" width="75" height="100"
                                         alt="">
@@ -4741,8 +4748,8 @@
                             </p>
                             <div class="card border-0 bg-body-tertiary rounded text-center mt-7">
                                 <div class="pt-8 px-5">
-                                <img class="img-fluid" src="{{ asset('images/shop/product-info-2.png') }}" alt="pay"
-     width="357" height="28">
+                                    <img class="img-fluid" src="{{ asset('images/shop/product-info-2.png') }}" alt="pay"
+                                        width="357" height="28">
 
                                 </div>
                                 <div class="card-body pt-6 pb-7">
@@ -5066,8 +5073,8 @@
                                     </div>
                                     <div class="col d-xxl-block d-none megamenu-shop-banner" data-bs-theme="light">
                                         <div class="card border-0 mt-4">
-                                        <img src="{{ asset('images/background/bg-mega-menu-shop.jpg') }}"
-     alt="bg mega menu" class="card-img">
+                                            <img src="{{ asset('images/background/bg-mega-menu-shop.jpg') }}"
+                                                alt="bg mega menu" class="card-img">
 
                                             <div class="card-img-overlay d-flex flex-column mx-2 px-9 py-6">
                                                 <p class="text-body-emphasis ls-1 fw-semibold mb-4 mt-6 text-uppercase">
