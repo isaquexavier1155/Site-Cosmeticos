@@ -1185,22 +1185,57 @@
     </div>
 
     <!-- Imagens Adicionais -->
-    <div class="mt-6">
+    <!-- <div class="mt-6">
         <div id="slider-thumb" class="slick-slider-thumb ps-1 ms-n3 me-n4 slick-initialized slick-slider" data-slick-options='{"arrows":false,"asNavFor":"#slider","dots":false,"focusOnSelect":true,"slidesToShow":5,"vertical":false}'>
             <div class="slick-list draggable" style="height: 1204.6px;">
                 <div class="slick-track" style="opacity: 1; width: 2500px; transform: translate3d(0px, 0px, 0px);">
-                   <!--  @php
+                     @php
                         $imagens = json_decode($produto->imagens_adicionais);
                     @endphp
                      
                     @foreach(array_slice($imagens, 0) as $imagem)
                         <img src="images/products/{{ $imagem }}" alt="{{ $produto->nome }}" title="{{ $produto->nome }}" class="thumbnail mx-3 px-0 h-auto cursor-pointer loaded slick-slide slick-active" width="75" height="100" style="width: 92.4px;">
-                    @endforeach -->
+                    @endforeach 
 					                
                 </div>
             </div>
         </div>
+    </div> -->
+	<!-- Imagens Adicionais -->
+<div class="mt-6">
+    <div id="slider-thumb" class="slick-slider-thumb ps-1 ms-n3 me-n4 slick-initialized slick-slider" data-slick-options='{"arrows":false,"asNavFor":"#slider","dots":false,"focusOnSelect":true,"slidesToShow":5,"vertical":false}'>
+        <div class="slick-list draggable">
+            <div class="slick-track">
+                <!-- As imagens serão inseridas aqui pelo JS -->
+            </div>
+        </div>
     </div>
+</div>
+
+	<style>
+		/* Certificar que o contêiner do slider esteja em modo flex */
+.slick-slider-thumb .slick-track {
+    display: flex !important; /* Alinha as imagens em linha */
+    flex-wrap: nowrap !important; /* Impede que as imagens se movam para baixo */
+    gap: 10px !important; /* Espaço entre as imagens */
+}
+
+.slick-slider-thumb .slick-slide {
+    display: flex !important; /* Garantir que cada slide use flexbox */
+    justify-content: center !important; /* Centraliza a imagem */
+    align-items: center !important; /* Centraliza a imagem verticalmente */
+    flex: 0 0 auto !important; /* Impede que os slides se redimensionem automaticamente */
+}
+
+.slick-slider-thumb .slick-slide .img-thumb {
+    width: 80px !important; /* Ajuste o tamanho das imagens conforme necessário */
+    height: auto !important; /* Mantém a proporção das imagens */
+    object-fit: cover !important; /* Faz com que a imagem se ajuste ao contêiner sem distorção */
+}
+
+
+	</style>
+   
 </div>
 
 
@@ -1333,12 +1368,13 @@
 				</div>
 				<!-- Fim do Modal exibido ao clicar em ver em cada produto-->
 
-<script>
+				<script>
        
-    function saveProductInfo(id, nome, imagem, descricao, preco, preco_promocional, imagens_adicionais) {
-  
+	   function saveProductInfo(id, nome, imagem, descricao, preco, preco_promocional, imagens_adicionais) {
+    // Atualizar informações do produto
     document.getElementById('modalProductNome').textContent = nome;
-	document.getElementById('modalProductNome').textContent = id;
+    document.getElementById('modalProductNome').textContent = id;
+
     const formatPrice = (price) => {
         return `R$${parseFloat(price).toFixed(2).replace('.', ',')}`;
     };
@@ -1355,37 +1391,30 @@
     document.getElementById('modalProductDescricao').textContent = descricao;
     document.getElementById('modalProductImage').src = `{{ asset('images/products/') }}/${imagem}`;
 
-	 // Atualiza as imagens adicionais
-	 const slider = document.getElementById('slider');
+    // Atualizar imagens adicionais
     const sliderThumb = document.getElementById('slider-thumb');
-    
-    slider.innerHTML = '';
-    sliderThumb.innerHTML = '';
+    const slickTrack = sliderThumb.querySelector('.slick-track');
 
-console.log('Imagens Adicionais', imagens_adicionais);
-const imagensArray = JSON.parse(imagens_adicionais);
-console.log('Imagens Convertidas em Array', imagensArray);
+    slickTrack.innerHTML = ''; // Limpar imagens anteriores
 
-if (Array.isArray(imagensArray)) {
-    imagensArray.forEach((img) => {
-        const mainImage = document.createElement('div');
-        mainImage.className = 'position-relative';
-        mainImage.innerHTML = `<img src="{{ asset('images/products/') }}/${img}" alt="" class="d-block w-100 img-main">`;
-        slider.appendChild(mainImage);
-        
-        const thumbImage = document.createElement('div');
-        thumbImage.className = 'position-relative';
-        thumbImage.innerHTML = `<img src="{{ asset('images/products/') }}/${img}" alt="" class="d-block w-100 img-thumb">`;
-        sliderThumb.appendChild(thumbImage);
-    });
-} else {
-    console.error('Imagens Adicionais não é um array válido');
+    console.log('Imagens Adicionais', imagens_adicionais);
+    const imagensArray = JSON.parse(imagens_adicionais);
+    console.log('Imagens Convertidas em Array', imagensArray);
+
+    if (Array.isArray(imagensArray)) {
+        imagensArray.forEach((img) => {
+            const thumbImage = document.createElement('div');
+            thumbImage.className = 'slick-slide';
+            thumbImage.innerHTML = `<img src="{{ asset('images/products/') }}/${img}" alt="imagem adicional" class="d-block w-100 img-thumb">`;
+            slickTrack.appendChild(thumbImage);
+        });
+    } else {
+        console.error('Imagens Adicionais não é um array válido');
+    }
 }
 
-
-}
-
-</script>
+   
+   </script>
 
 <!-- ate aqui -->
 <script>
