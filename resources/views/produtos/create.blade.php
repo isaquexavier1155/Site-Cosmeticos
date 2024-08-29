@@ -92,9 +92,19 @@
             </div>
 
             <div class="mb-3">
-                <label for="imagens_adicionais" class="form-label">Imagens Adicionais</label>
-                <input type="file" id="imagens_adicionais" name="imagens_adicionais[]" class="form-control" multiple>
-            </div>
+    <label for="imagens_adicionais" class="form-label">Imagens Adicionais - Max 3</label>
+    <input type="file" id="imagens_adicionais" name="imagens_adicionais[]" class="form-control" multiple accept="image/*" onchange="validateFileCount(this)">
+</div>
+
+<script>
+    function validateFileCount(input) {
+        if (input.files.length > 3) {
+            alert('Você só pode enviar no máximo 3 imagens adicionais.');
+            input.value = ''; // Limpa o campo de input
+        }
+    }
+</script>
+
 
             <div class="mb-3">
                 <div class="form-check">

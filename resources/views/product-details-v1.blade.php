@@ -852,36 +852,56 @@
             <div class="row ">
                 <div class="col-md-6 pe-lg-13">
                     <div class="row">
-                        <div class="col-xl-2 pe-xl-0 order-1 order-xl-0 mt-5 mt-xl-0">
-                            <div id="vertical-slider-thumb"
-                                class="slick-slider slick-slider-thumb ps-1 ms-n3 me-n4 mx-xl-0"
-                                data-slick-options='{&#34;arrows&#34;:false,&#34;asNavFor&#34;:&#34;#vertical-slider-slides&#34;,&#34;dots&#34;:false,&#34;focusOnSelect&#34;:true,&#34;responsive&#34;:[{&#34;breakpoint&#34;:1260,&#34;settings&#34;:{&#34;vertical&#34;:false}}],&#34;slidesToShow&#34;:4,&#34;vertical&#34;:true}'>
-                                <img src="#" data-src="{{ asset('images/shop/product-gallery-05-154x205.jpg') }}"
+                            <!-- Imagens adicionais slider vertical-->
+                            <div class="col-xl-2 pe-xl-0 order-1 order-xl-0 mt-5 mt-xl-0">
+                                <div id="vertical-slider-thumb"
+                                    class="slick-slider slick-slider-thumb ps-1 ms-n3 me-n4 mx-xl-0"
+                                    data-slick-options='{&#34;arrows&#34;:false,&#34;asNavFor&#34;:&#34;#vertical-slider-slides&#34;,&#34;dots&#34;:false,&#34;focusOnSelect&#34;:true,&#34;responsive&#34;:[{&#34;breakpoint&#34;:1260,&#34;settings&#34;:{&#34;vertical&#34;:false}}],&#34;slidesToShow&#34;:4,&#34;vertical&#34;:true}'>
+                                    
+                                    <!-- Imagem 1 --> 
+                                    <!-- <img src="#" data-src="{{ asset('images/shop/product-gallery-05-154x205.jpg') }}"
                                     class="cursor-pointer lazy-image mx-3 mx-xl-0 px-0 mb-xl-7" width="75" height="100"
-                                    title="" alt="">
+                                    title="" alt=""> -->
+                                    <!-- Imagem Principal em miniatura 1 -->
+                                    <img src="#" data-src="{{ asset('images/products/' . $produto->imagem) }}" 
+                                        alt="{{ $produto->nome }}" 
+                                        title="pricipal em miniatura" 
+                                        class="cursor-pointer lazy-image mx-3 mx-xl-0 px-0 mb-xl-7" 
+                                        width="75" 
+                                        height="100">
 
-                                <img src="#" data-src="{{ asset('images/shop/product-gallery-06-154x205.jpg') }}"
+
+   <!--                             <img src="#" data-src="{{ asset('images/shop/product-gallery-06-154x205.jpg') }}"
                                     class="cursor-pointer lazy-image mx-3 mx-xl-0 px-0 mb-xl-7" width="75" height="100"
-                                    title="" alt="">
+                                    title="01" alt="">
 
 
-                                <img src="#" data-src="{{ asset('images/shop/product-gallery-07-154x205.jpg') }}"
+                                    <img src="#" data-src="{{ asset('images/shop/product-gallery-07-154x205.jpg') }}"
                                     class="cursor-pointer lazy-image mx-3 mx-xl-0 px-0 mb-xl-7" width="75" height="100"
-                                    title="" alt="">
+                                    title="02" alt="">  --> 
 
+                                     @php
+                                        $imagens = json_decode($produto->imagens_adicionais);
+                                    @endphp
+                                    
+                                    @foreach($imagens as $imagem)
+                                        <img src="#" data-src="{{ asset('images/products/' . $imagem) }}" 
+                                            class="cursor-pointer lazy-image mx-3 mx-xl-0 px-0 mb-xl-7" width="75" height="100"
+                                            title="02" alt=""> 
+                                    @endforeach 
 
-                                <div class="position-relative cursor-pointer mx-3 mx-xl-0 px-0 mb-xl-7">
-                                    <img src="#" data-src="{{ asset('images/shop/product-gallery-08-154x205.jpg') }}"
-                                        class="w-100 lazy-image" alt="product gallery" width="75" height="100">
+                                   <!--  Com 3 imagens diconais funcionou perfeitamente. -->
+                                   <!--  <div class="position-relative cursor-pointer mx-3 mx-xl-0 px-0 mb-xl-7">
+                                         <img src="#" data-src="{{ asset('images/shop/product-gallery-08-154x205.jpg') }}"
+                                        class="w-100 lazy-image" alt="product gallery" width="75" height="100"> 
 
-                                    <div
-                                        class="card-img-overlay d-inline-flex flex-column align-items-center justify-content-center">
-                                        <div
-                                            class="d-flex justify-content-center align-items-center rounded-circle product-gallery-video-thumb text-body-emphasis bg-body">
-                                            <i class="fas fa-play"></i>
+                                        <div class="card-img-overlay d-inline-flex flex-column align-items-center justify-content-center">
+                                            <div
+                                                class="d-flex justify-content-center align-items-center rounded-circle product-gallery-video-thumb text-body-emphasis bg-body">
+                                                <i class="fas fa-play"></i>
+                                            </div>
                                         </div>
-                                    </div>
-                                </div>
+                                    </div> -->
                             </div>
                         </div>
                         <div class="col-xl-10 ps-xl-8 pe-xl-0 order-0 order-xl-1">
@@ -891,14 +911,32 @@
                                 <a href="{{ asset('images/shop/product-gallery-05.jpg') }}"
                                     data-gallery="product-gallery"
                                     data-thumb-src="{{ asset('images/shop/product-gallery-05.jpg') }}">
-<!--                                     Imagem Principal
+                                    <!--Imagem Principal grande
                                      AJUSTEI A IMAGEM PRICIPAL
-                                    FALTA AJUSTAR AS IMAGENS EM MINIATURA e traduções
- -->                                    <img src="#" data-src="{{ asset('images/products/' . $produto->imagem) }}"
-                                        width="540" height="720" title="" class="h-auto lazy-image" alt="">
+                                    FALTA AJUSTAR AS IMAGENS EM MINIATURA e traduções-->
+                                    <img src="#" data-src="{{ asset('images/products/' . $produto->imagem) }}"
+                                        width="540" height="720" title="imagem pricipal" class="h-auto lazy-image" alt="">
                                 </a>
+                                @php
+                                    $imagens = json_decode($produto->imagens_adicionais);
+                                    
+                                @endphp
+                                
+                                @foreach($imagens as $imagem)
+                                    <a href="{{ asset('images/products/' . $imagem) }}"
+                                        data-gallery="product-gallery"
+                                        data-thumb-src="{{ asset('images/products/' . $imagem) }}" >
+                                    
+                                        <img src="{{ asset('images/products/' . $imagem) }}" 
+                                        alt="{{ $produto->nome }}" 
+                                        title="{{ $produto->nome }}" 
+                                        class="h-auto lazy-image"
+                                        width="540" 
+                                        height="720">
+                                    </a>
+                                @endforeach
 
-                                <a href="{{ asset('images/shop/product-gallery-06.jpg') }}"
+                            <!-- <a href="{{ asset('images/shop/product-gallery-06.jpg') }}"
                                     data-gallery="product-gallery"
                                     data-thumb-src="{{ asset('images/shop/product-gallery-06.jpg') }}">
                                     <img src="#" data-src="{{ asset('images/shop/product-gallery-06.jpg') }}"
@@ -911,19 +949,19 @@
                                     data-thumb-src="{{ asset('images/shop/product-gallery-07.jpg') }}">
                                     <img src="#" data-src="{{ asset('images/shop/product-gallery-07.jpg') }}"
                                         width="540" height="720" title="" class="h-auto lazy-image" alt="">
-                                </a>
+                                </a> -->
 
 
                                 <div class="position-relative">
-                                    <img src="#" data-src="{{ asset('images/shop/product-gallery-08.jpg') }}"
-                                        width="540" height="720" title="" class="h-auto lazy-image" alt="">
+                                    <!-- <img src="#" data-src="{{ asset('images/shop/product-gallery-08.jpg') }}"
+                                        width="540" height="720" title="" class="h-auto lazy-image" alt=""> -->
 
                                     <div
                                         class="card-img-overlay d-inline-flex flex-column align-items-center justify-content-center">
-                                        <a href="https://www.youtube.com/watch?v=6v2L2UGZJAM"
+                                        <!-- <a href="https://www.youtube.com/watch?v=6v2L2UGZJAM"
                                             class="view-video d-flex justify-content-center align-items-center rounded-circle product-gallery-video btn btn-white">
                                             <i class="fas fa-play"></i>
-                                        </a>
+                                        </a> -->
                                     </div>
                                 </div>
                             </div>
