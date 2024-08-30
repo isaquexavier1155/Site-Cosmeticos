@@ -915,7 +915,7 @@
                                      AJUSTEI A IMAGEM PRICIPAL
                                     FALTA AJUSTAR AS IMAGENS EM MINIATURA e traduções-->
                                     <img src="#" data-src="{{ asset('images/products/' . $produto->imagem) }}"
-                                        width="540" height="720" title="imagem pricipal" class="h-auto lazy-image" alt="">
+                                        width="540" height="720" title="imagem pricipal {{ $produto->imagem }}" class="h-auto lazy-image" alt="">
                                 </a>
                                 @php
                                     $imagens = json_decode($produto->imagens_adicionais);

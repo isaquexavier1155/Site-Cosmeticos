@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Produto;
-
+use Intervention\Image\Facades\Image;
 class ProdutoController extends Controller
 {
     public function index()
@@ -63,60 +63,68 @@ class ProdutoController extends Controller
     //função de cadastro de produto ao clicar em cadastrar
     public function store(Request $request)
     {
-    // Validação dos dados
-    $validatedData = $request->validate([
-        'nome' => 'required|string|max:255',
-        'descricao' => 'required|string',
-        'preco' => 'required|numeric',
-        'preco_promocional' => 'nullable|numeric',
-        'quantidade_estoque' => 'required|integer',
-        'categoria' => 'required|string',
-        'ativo' => 'nullable|boolean',
-        'tags' => 'nullable|string',
-        'imagem' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-        //'imagens_adicionais.*' => 'nullable|image|mimes:jpeg,png,jpg,gif',
-    ]);
-
-    // Criação do produto
-    $produto = new Produto();
-    $produto->nome = $validatedData['nome'];
-    $produto->descricao = $validatedData['descricao'];
-    $produto->preco = $validatedData['preco'];
-    $produto->preco_promocional = $validatedData['preco_promocional'];
-    $produto->quantidade_estoque = $validatedData['quantidade_estoque'];
-    $produto->categoria = $validatedData['categoria'];
-    $produto->ativo = $validatedData['ativo'];
-    $produto->tags = $validatedData['tags'];
-
-    // Upload da imagem principal
-    if ($request->hasFile('imagem') && $request->file('imagem')->isValid()) {
-        $requestImage = $request->imagem;
-        $extension = $requestImage->extension();
-        $imageName = md5($requestImage->getClientOriginalName() . strtotime("now")) . "." . $extension;
-        $requestImage->move(public_path('images/products'), $imageName);
-        $produto->imagem = $imageName;
-    }
-
-    // Upload das imagens adicionais
-    if ($request->hasFile('imagens_adicionais')) {
-        $imageNames = [];
-        foreach ($request->file('imagens_adicionais') as $image) {
-            if ($image->isValid()) {
-                $extension = $image->extension();
-                $imageName = md5($image->getClientOriginalName() . strtotime("now")) . "." . $extension;
-                $image->move(public_path('images/products'), $imageName);
-                $imageNames[] = $imageName;
-            }
-        }
-        $produto->imagens_adicionais = json_encode($imageNames); // Salvar como JSON se precisar
-    }
-
-    // Salvamento do produto
-    $produto->save();
-        return back()->with('success', 'Produto cadastrado com sucesso!');
+        // Validação dos dados
+        $validatedData = $request->validate([
+            'nome' => 'required|string|max:255',
+            'descricao' => 'required|string',
+            'preco' => 'required|numeric',
+            'preco_promocional' => 'nullable|numeric',
+            'quantidade_estoque' => 'required|integer',
+            'categoria' => 'required|string',
+            'ativo' => 'nullable|boolean',
+            'tags' => 'nullable|string',
+            'imagem' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'imagens_adicionais.*' => 'nullable|image|mimes:jpeg,png,jpg,gif',
+        ]);
     
-/*         return redirect()->route('produtos.index')->with('success', 'Produto criado com sucesso!');
- */    }
+        // Criação do produto
+        $produto = new Produto();
+        $produto->nome = $validatedData['nome'];
+        $produto->descricao = $validatedData['descricao'];
+        $produto->preco = $validatedData['preco'];
+        $produto->preco_promocional = $validatedData['preco_promocional'];
+        $produto->quantidade_estoque = $validatedData['quantidade_estoque'];
+        $produto->categoria = $validatedData['categoria'];
+        $produto->ativo = $validatedData['ativo'];
+        $produto->tags = $validatedData['tags'];
+    
+        // Upload da imagem principal
+        if ($request->hasFile('imagem') && $request->file('imagem')->isValid()) {
+            $requestImage = $request->imagem;
+            $extension = $requestImage->extension();
+            $imageName = md5($requestImage->getClientOriginalName() . strtotime("now")) . "." . $extension;
+    
+            // Redimensionar a imagem principal
+            $image = Image::make($requestImage->getRealPath());
+            $image->resize(540, 720)->save(public_path('images/products/' . $imageName));
+    
+            $produto->imagem = $imageName;
+        }
+    
+        // Upload das imagens adicionais
+        if ($request->hasFile('imagens_adicionais')) {
+            $imageNames = [];
+            foreach ($request->file('imagens_adicionais') as $image) {
+                if ($image->isValid()) {
+                    $extension = $image->extension();
+                    $imageName = md5($image->getClientOriginalName() . strtotime("now")) . "." . $extension;
+    
+                    // Redimensionar as imagens adicionais
+                    $imageResized = Image::make($image->getRealPath());
+                    $imageResized->resize(540, 720)->save(public_path('images/products/' . $imageName));
+    
+                    $imageNames[] = $imageName;
+                }
+            }
+            $produto->imagens_adicionais = json_encode($imageNames);
+        }
+    
+        // Salvamento do produto
+        $produto->save();
+        
+        return back()->with('success', 'Produto cadastrado com sucesso!');
+    }
+    
 
 
 /* public function saveProductInfo(Request $request)
