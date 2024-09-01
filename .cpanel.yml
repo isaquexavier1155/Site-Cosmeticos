@@ -1,10 +1,5 @@
 deployment:
   tasks:
     - export DEPLOYPATH=/home1/rifad375/cintrabeauty.com.br/Site-Cosmeticos/
-    - /bin/cp -R ./* $DEPLOYPATH
-    - /bin/chmod -R 775 $DEPLOYPATH/storage
-    - /bin/chmod -R 775 $DEPLOYPATH/bootstrap/cache
-    - cd $DEPLOYPATH && /opt/cpanel/composer/bin/composer install --optimize-autoloader --no-dev
-    - ln -s $DEPLOYPATH/public /home1/rifad375/public_html/cintrabeauty.com.br
+    - /bin/cp -R * $DEPLOYPATH
 
-    
