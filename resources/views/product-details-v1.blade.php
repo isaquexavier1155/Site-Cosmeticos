@@ -60,13 +60,13 @@
                         <ul class="navbar-nav">
 
 
-
+                            <!-- Para funcionar o link tive que remover o atributo data-bs-toggle="dropdown" do link -->
                             <li
                                 class="nav-item transition-all-xl-1 py-11 me-xxl-12 me-xl-10 dropdown dropdown-hover dropdown-fullwidth">
                                 <a class="nav-link d-flex justify-content-between position-relative py-0 px-0 text-uppercase fw-semibold ls-1 fs-14px dropdown-toggle"
-                                    href="../index.html" data-bs-toggle="dropdown" id="menu-item-home"
-                                    aria-haspopup="true" aria-expanded="false">Home</a>
-                                <div class="dropdown-menu mega-menu start-0 py-6 " aria-labelledby="menu-item-home"
+                                    href="/" id="menu-item-home" aria-haspopup="true" aria-expanded="false">Início</a>
+
+                                <!-- <div class="dropdown-menu mega-menu start-0 py-6 " aria-labelledby="menu-item-home"
                                     style="width:320px">
                                     <div class="megamenu-home container py-8 px-12">
                                         <div class="row">
@@ -173,196 +173,199 @@
                                         </div>
                                     </div>
 
-                                </div>
+                                </div> -->
                             </li>
                             <li
-                                class="nav-item transition-all-xl-1 py-11 me-xxl-12 me-xl-10 dropdown dropdown-hover dropdown-fullwidth position-static">
-                                <a class="nav-link d-flex justify-content-between position-relative py-0 px-0 text-uppercase fw-semibold ls-1 fs-14px dropdown-toggle"
-                                    href="../store.html" data-bs-toggle="dropdown" id="menu-item-shop"
-                                    aria-haspopup="true" aria-expanded="false">Shop</a>
+                                class="nav-item transition-all-xl-1 py-xl-11 py-0 px-xxl-8 px-xl-6 dropdown dropdown-hover dropdown-fullwidth position-static">
+                                <a class="nav-link d-flex justify-content-between position-relative py-xl-0 px-xl-0 text-uppercase fw-semibold ls-1 fs-15px fs-xl-14px dropdown-toggle"
+                                    href="./shop/shop-layout-v1.html" data-bs-toggle="dropdown" id="menu-item-shop"
+                                    aria-haspopup="true" aria-expanded="false">Loja</a>
                                 <div class="dropdown-menu mega-menu start-0 py-6  w-100"
                                     aria-labelledby="menu-item-shop">
                                     <div class="megamenu-shop container-wide py-8 px-12">
                                         <div class="row">
                                             <div class="col">
-                                                <h6 class="fs-18px">Shop Pages</h6>
+                                                <h6 class="fs-18px">Cuidados com a pele</h6>
                                                 <ul class="list-unstyled mb-0">
                                                     <li>
-                                                        <a href="../shop/shop-layout-v1.html"
-                                                            class="border-hover text-decoration-none py-3 d-block"><span
-                                                                class="border-hover-target">Shop Layout
-                                                                <sup>v1</sup></span></a>
+                                                        <a href="{{ route('buscarPorCategoria', ['categoria' => 'hidratantes', 'scroll_to' => 'listagemprod']) }}"
+                                                            class="border-hover text-decoration-none py-3 d-block">
+                                                            <span class="border-hover-target">Hidratantes</span>
+                                                        </a>
                                                     </li>
                                                     <li>
-                                                        <a href="../shop/shop-layout-v2.html"
-                                                            class="border-hover text-decoration-none py-3 d-block"><span
-                                                                class="border-hover-target">Shop Layout
-                                                                <sup>v2</sup></span></a>
+                                                        <a href="{{ route('buscarPorCategoria', ['categoria' => 'Protetores solares', 'scroll_to' => 'listagemprod']) }}"
+                                                            class="border-hover text-decoration-none py-3 d-block">
+                                                            <span class="border-hover-target">Protetores solares</span>
+                                                        </a>
                                                     </li>
                                                     <li>
-                                                        <a href="../shop/shop-layout-v3.html"
-                                                            class="border-hover text-decoration-none py-3 d-block"><span
-                                                                class="border-hover-target">Shop Layout
-                                                                <sup>v3</sup></span></a>
+                                                        <a href="{{ route('buscarPorCategoria', ['categoria' => 'Limpeza facial', 'scroll_to' => 'listagemprod']) }}"
+                                                            class="border-hover text-decoration-none py-3 d-block">
+                                                            <span class="border-hover-target">Limpeza facial</span>
+                                                        </a>
                                                     </li>
                                                     <li>
-                                                        <a href="../shop/shop-layout-v4.html"
-                                                            class="border-hover text-decoration-none py-3 d-block"><span
-                                                                class="border-hover-target">Shop Layout
-                                                                <sup>v4</sup></span></a>
+                                                        <a href="{{ route('buscarPorCategoria', ['categoria' => 'Esfoliantes', 'scroll_to' => 'listagemprod']) }}"
+                                                            class="border-hover text-decoration-none py-3 d-block">
+                                                            <span class="border-hover-target">Esfoliantes</span>
+                                                        </a>
                                                     </li>
                                                     <li>
-                                                        <a href="../shop/shop-layout-v5.html"
-                                                            class="border-hover text-decoration-none py-3 d-block"><span
-                                                                class="border-hover-target">Shop Layout
-                                                                <sup>v5</sup></span></a>
+                                                        <a href="{{ route('buscarPorCategoria', ['categoria' => 'Tônicos', 'scroll_to' => 'listagemprod']) }}"
+                                                            class="border-hover text-decoration-none py-3 d-block">
+                                                            <span class="border-hover-target">Tônicos</span>
+                                                        </a>
                                                     </li>
                                                 </ul>
                                             </div>
                                             <div class="col">
-                                                <h6 class="fs-18px">Product Pages</h6>
+                                                <h6 class="fs-18px">Maquiagem</h6>
                                                 <ul class="list-unstyled mb-0">
                                                     <li>
-                                                        <a href="../shop/product-details-v1.html"
-                                                            class="border-hover text-decoration-none py-3 d-block"><span
-                                                                class="border-hover-target">Product Detail
-                                                                <sup>v1</sup></span></a>
+                                                        <a href="{{ route('buscarPorCategoria', ['categoria' => 'Corretivos', 'scroll_to' => 'listagemprod']) }}"
+                                                            class="border-hover text-decoration-none py-3 d-block">
+                                                            <span class="border-hover-target">Corretivos</span>
+                                                        </a>
                                                     </li>
                                                     <li>
-                                                        <a href="../shop/product-details-v2.html"
-                                                            class="border-hover text-decoration-none py-3 d-block"><span
-                                                                class="border-hover-target">Product Detail
-                                                                <sup>v2</sup></span></a>
+                                                        <a href="{{ route('buscarPorCategoria', ['categoria' => 'Pó facial', 'scroll_to' => 'listagemprod']) }}"
+                                                            class="border-hover text-decoration-none py-3 d-block">
+                                                            <span class="border-hover-target">Pó facial</span>
+                                                        </a>
                                                     </li>
                                                     <li>
-                                                        <a href="../shop/product-details-v3.html"
-                                                            class="border-hover text-decoration-none py-3 d-block"><span
-                                                                class="border-hover-target">Product Detail
-                                                                <sup>v3</sup></span></a>
+                                                        <a href="{{ route('buscarPorCategoria', ['categoria' => 'Sombras', 'scroll_to' => 'listagemprod']) }}"
+                                                            class="border-hover text-decoration-none py-3 d-block">
+                                                            <span class="border-hover-target">Sombras</span>
+                                                        </a>
                                                     </li>
                                                     <li>
-                                                        <a href="../shop/product-details-v4.html"
-                                                            class="border-hover text-decoration-none py-3 d-block"><span
-                                                                class="border-hover-target">Product Detail
-                                                                <sup>v4</sup></span></a>
+                                                        <a href="{{ route('buscarPorCategoria', ['categoria' => 'Máscara para cílios (rímel)', 'scroll_to' => 'listagemprod']) }}"
+                                                            class="border-hover text-decoration-none py-3 d-block">
+                                                            <span class="border-hover-target">Máscara para cílios
+                                                                (rímel)</span>
+                                                        </a>
                                                     </li>
                                                     <li>
-                                                        <a href="../shop/product-details-v5.html"
-                                                            class="border-hover text-decoration-none py-3 d-block"><span
-                                                                class="border-hover-target">Product Detail
-                                                                <sup>v5</sup></span></a>
+                                                        <a href="{{ route('buscarPorCategoria', ['categoria' => 'Delineadores', 'scroll_to' => 'listagemprod']) }}"
+                                                            class="border-hover text-decoration-none py-3 d-block">
+                                                            <span class="border-hover-target">Delineadores</span>
+                                                        </a>
                                                     </li>
                                                     <li>
-                                                        <a href="../shop/product-details-v6.html"
-                                                            class="border-hover text-decoration-none py-3 d-block"><span
-                                                                class="border-hover-target">Product Detail
-                                                                <sup>v6</sup></span></a>
+                                                        <a href="{{ route('buscarPorCategoria', ['categoria' => 'Batons e gloss', 'scroll_to' => 'listagemprod']) }}"
+                                                            class="border-hover text-decoration-none py-3 d-block">
+                                                            <span class="border-hover-target">Batons e gloss</span>
+                                                        </a>
                                                     </li>
                                                     <li>
-                                                        <a href="../shop/product-details-v7.html"
-                                                            class="border-hover text-decoration-none py-3 d-block"><span
-                                                                class="border-hover-target">Product Detail
-                                                                <sup>v7</sup></span></a>
+                                                        <a href="{{ route('buscarPorCategoria', ['categoria' => 'Blush e bronzer', 'scroll_to' => 'listagemprod']) }}"
+                                                            class="border-hover text-decoration-none py-3 d-block">
+                                                            <span class="border-hover-target">Blush e bronzer</span>
+                                                        </a>
                                                     </li>
                                                     <li>
-                                                        <a href="../shop/product-details-v8.html"
-                                                            class="border-hover text-decoration-none py-3 d-block"><span
-                                                                class="border-hover-target">Product Detail
-                                                                <sup>v8</sup></span></a>
+                                                        <a href="{{ route('buscarPorCategoria', ['categoria' => 'Iluminadores', 'scroll_to' => 'listagemprod']) }}"
+                                                            class="border-hover text-decoration-none py-3 d-block">
+                                                            <span class="border-hover-target">Iluminadores</span>
+                                                        </a>
                                                     </li>
                                                 </ul>
                                             </div>
                                             <div class="col">
-                                                <h6 class="fs-18px">Product Types</h6>
+                                                <h6 class="fs-18px">Cabelos</h6>
                                                 <ul class="list-unstyled mb-0">
                                                     <li>
-                                                        <a href="../shop/product-simple.html"
-                                                            class="border-hover text-decoration-none py-3 d-block"><span
-                                                                class="border-hover-target">Product Simple</span></a>
+                                                        <a href="{{ route('buscarPorCategoria', ['categoria' => 'Shampoos', 'scroll_to' => 'listagemprod']) }}"
+                                                            class="border-hover text-decoration-none py-3 d-block">
+                                                            <span class="border-hover-target">Shampoos</span>
+                                                        </a>
                                                     </li>
                                                     <li>
-                                                        <a href="../shop/product-variable.html"
-                                                            class="border-hover text-decoration-none py-3 d-block"><span
-                                                                class="border-hover-target">Product Variable</span></a>
+                                                        <a href="{{ route('buscarPorCategoria', ['categoria' => 'Óleos capilares', 'scroll_to' => 'listagemprod']) }}"
+                                                            class="border-hover text-decoration-none py-3 d-block">
+                                                            <span class="border-hover-target">Óleos capilares</span>
+                                                        </a>
                                                     </li>
                                                     <li>
-                                                        <a href="../shop/product-time-limit.html"
-                                                            class="border-hover text-decoration-none py-3 d-block"><span
-                                                                class="border-hover-target">Product Time
-                                                                Limit</span></a>
+                                                        <a href="{{ route('buscarPorCategoria', ['categoria' => 'Tinturas e colorações', 'scroll_to' => 'listagemprod']) }}"
+                                                            class="border-hover text-decoration-none py-3 d-block">
+                                                            <span class="border-hover-target">Tinturas e
+                                                                colorações</span>
+                                                        </a>
                                                     </li>
                                                     <li>
-                                                        <a href="../shop/product-grouped.html"
-                                                            class="border-hover text-decoration-none py-3 d-block"><span
-                                                                class="border-hover-target">Product Grouped</span></a>
+                                                        <a href="{{ route('buscarPorCategoria', ['categoria' => 'Produtos para alisamento ou cachos', 'scroll_to' => 'listagemprod']) }}"
+                                                            class="border-hover text-decoration-none py-3 d-block">
+                                                            <span class="border-hover-target">Produtos para alisamento
+                                                                ou cachos</span>
+                                                        </a>
                                                     </li>
                                                 </ul>
                                             </div>
                                             <div class="col">
-                                                <h6 class="fs-18px">Other Pages</h6>
+                                                <h6 class="fs-18px">Cuidados com o Corpo</h6>
                                                 <ul class="list-unstyled mb-0">
                                                     <li>
-                                                        <a href="../shop/shopping-cart.html"
-                                                            class="border-hover text-decoration-none py-3 d-block"><span
-                                                                class="border-hover-target">Shopping Cart</span></a>
+                                                        <a href="{{ route('buscarPorCategoria', ['categoria' => 'Hidratantes Corporais', 'scroll_to' => 'listagemprod']) }}"
+                                                            class="border-hover text-decoration-none py-3 d-block">
+                                                            <span class="border-hover-target">Hidratantes
+                                                                Corporais</span>
+                                                        </a>
                                                     </li>
                                                     <li>
-                                                        <a href="../shop/compare.html"
-                                                            class="border-hover text-decoration-none py-3 d-block"><span
-                                                                class="border-hover-target">Compare</span></a>
+                                                        <a href="{{ route('buscarPorCategoria', ['categoria' => 'Esfoliantes Corporais', 'scroll_to' => 'listagemprod']) }}"
+                                                            class="border-hover text-decoration-none py-3 d-block">
+                                                            <span class="border-hover-target">Esfoliantes
+                                                                Corporais</span>
+                                                        </a>
                                                     </li>
                                                     <li>
-                                                        <a href="../shop/wishlist.html"
-                                                            class="border-hover text-decoration-none py-3 d-block"><span
-                                                                class="border-hover-target">Wishlist</span></a>
+                                                        <a href="{{ route('buscarPorCategoria', ['categoria' => 'Óleos Corporais', 'scroll_to' => 'listagemprod']) }}"
+                                                            class="border-hover text-decoration-none py-3 d-block">
+                                                            <span class="border-hover-target">Óleos Corporais</span>
+                                                        </a>
                                                     </li>
                                                     <li>
-                                                        <a href="../shop/checkout.html"
-                                                            class="border-hover text-decoration-none py-3 d-block"><span
-                                                                class="border-hover-target">Checkout</span></a>
+                                                        <a href="{{ route('buscarPorCategoria', ['categoria' => 'Produtos para Banho', 'scroll_to' => 'listagemprod']) }}"
+                                                            class="border-hover text-decoration-none py-3 d-block">
+                                                            <span class="border-hover-target">Produtos para Banho</span>
+                                                        </a>
                                                     </li>
                                                     <li>
-                                                        <a href="../user-registration.html"
-                                                            class="border-hover text-decoration-none py-3 d-block"><span
-                                                                class="border-hover-target">Register</span></a>
+                                                        <a href="{{ route('buscarPorCategoria', ['categoria' => 'Protetores e Autobronzeadores', 'scroll_to' => 'listagemprod']) }}"
+                                                            class="border-hover text-decoration-none py-3 d-block">
+                                                            <span class="border-hover-target">Protetores e
+                                                                Autobronzeadores</span>
+                                                        </a>
                                                     </li>
                                                     <li>
-                                                        <a href="../user-login.html"
-                                                            class="border-hover text-decoration-none py-3 d-block"><span
-                                                                class="border-hover-target">Login</span></a>
+                                                        <a href="{{ route('buscarPorCategoria', ['categoria' => 'Cuidados com a Celulite', 'scroll_to' => 'listagemprod']) }}"
+                                                            class="border-hover text-decoration-none py-3 d-block">
+                                                            <span class="border-hover-target">Cuidados com a
+                                                                Celulite</span>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="{{ route('buscarPorCategoria', ['categoria' => 'Cuidados com a Estria', 'scroll_to' => 'listagemprod']) }}"
+                                                            class="border-hover text-decoration-none py-3 d-block">
+                                                            <span class="border-hover-target">Cuidados com a
+                                                                Estria</span>
+                                                        </a>
                                                     </li>
                                                 </ul>
-                                            </div>
-                                            <div class="col d-xxl-block d-none megamenu-shop-banner"
-                                                data-bs-theme="light">
-                                                <div class="card border-0 mt-4">
-
-                                                    <img src="{{ asset('images/background/bg-mega-menu-shop.jpg') }}"
-                                                        alt="bg mega menu" class="card-img">
-                                                    <div class="card-img-overlay d-flex flex-column mx-2 px-9 py-6">
-                                                        <p
-                                                            class="text-body-emphasis ls-1 fw-semibold mb-4 mt-6 text-uppercase">
-                                                            new collection
-                                                        </p>
-                                                        <h3 class="fs-3">
-                                                            Special <br>
-                                                            Offer
-                                                        </h3>
-                                                        <div class="mt-auto">
-                                                            <a href="#" class="btn btn-white">Shop Sale</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
                                             </div>
                                         </div>
+
                                     </div>
 
                                 </div>
                             </li>
-                            <li class="nav-item transition-all-xl-1 py-11 me-xxl-12 me-xl-10 dropdown dropdown-hover">
+                            <!-- <li class="nav-item transition-all-xl-1 py-11 me-xxl-12 me-xl-10 dropdown dropdown-hover">
                                 <a class="nav-link d-flex justify-content-between position-relative py-0 px-0 text-uppercase fw-semibold ls-1 fs-14px dropdown-toggle"
                                     href="#" data-bs-toggle="dropdown" id="menu-item-pages" aria-haspopup="true"
-                                    aria-expanded="false">Pages</a>
+                                    aria-expanded="false">Páginas</a>
                                 <ul class="dropdown-menu py-6" aria-labelledby="menu-item-pages">
                                     <li class="dropend dropdown-hover" aria-haspopup="true" aria-expanded="false">
                                         <a class="dropdown-item pe-6 dropdown-toggle d-flex justify-content-between border-hover"
@@ -729,25 +732,25 @@
 
                                     </div>
                                 </div>
-                            </li>
+                            </li> -->
                         </ul>
                     </div>
 
                     <a href="../" class="navbar-brand px-8 py-4 mx-auto">
-                        <img class="light-mode-img" src="{{ asset('images/others/logo.png') }}" width="179" height="26"
-                            alt="Glowing - Bootstrap 5 HTML Templates">
-                        <img class="dark-mode-img" src="{{ asset('images/others/logo-white.png') }}" width="179"
-                            height="26" alt="Glowing - Bootstrap 5 HTML Templates">
+                        <img class="light-mode-img" src="{{ asset('images/others/logo-oficial-02.png') }}" width="179"
+                            height="76" alt="Glowing - Bootstrap 5 HTML Templates">
+                        <img class="dark-mode-img" src="{{ asset('images/others/logo-oficial-02.png') }}" width="179"
+                            height="76" alt="Glowing - Bootstrap 5 HTML Templates">
 
                         <div class="icons-actions d-flex justify-content-end w-xl-50 fs-28px text-body-emphasis">
-                            <div class="px-xl-5 d-inline-block">
+                            <!-- <div class="px-xl-5 d-inline-block">
                                 <a class="lh-1 color-inherit text-decoration-none" href="#" data-bs-toggle="offcanvas"
                                     data-bs-target="#searchModal" aria-controls="searchModal" aria-expanded="false">
                                     <svg class="icon icon-magnifying-glass-light">
                                         <use xlink:href="#icon-magnifying-glass-light"></use>
                                     </svg>
                                 </a>
-                            </div>
+                            </div> -->
                             <div class="px-5 d-none d-xl-inline-block">
                                 <a class="lh-1 color-inherit text-decoration-none" href="#" data-bs-toggle="modal"
                                     data-bs-target="#signInModal">
@@ -840,9 +843,9 @@
                 <div class="container">
                     <nav class="py-4 lh-30px" aria-label="breadcrumb">
                         <ol class="breadcrumb justify-content-center py-1 mb-0">
-                            <li class="breadcrumb-item"><a title="Home" href="../index.html">Home</a></li>
-                            <li class="breadcrumb-item"><a title="Shop" href="../shop/shop-layout-v2.html">Shop</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Natural Coconut Cleansing Oil</li>
+                            <li class="breadcrumb-item"><a title="Início" href="../index.html">Início</a></li>
+                            <li class="breadcrumb-item"><a title="Shop" href="../shop/shop-layout-v2.html">Loja</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">{{ $produto->nome }}</li>
                         </ol>
                     </nav>
                 </div>
@@ -852,46 +855,43 @@
             <div class="row ">
                 <div class="col-md-6 pe-lg-13">
                     <div class="row">
-                            <!-- Imagens adicionais slider vertical-->
-                            <div class="col-xl-2 pe-xl-0 order-1 order-xl-0 mt-5 mt-xl-0">
-                                <div id="vertical-slider-thumb"
-                                    class="slick-slider slick-slider-thumb ps-1 ms-n3 me-n4 mx-xl-0"
-                                    data-slick-options='{&#34;arrows&#34;:false,&#34;asNavFor&#34;:&#34;#vertical-slider-slides&#34;,&#34;dots&#34;:false,&#34;focusOnSelect&#34;:true,&#34;responsive&#34;:[{&#34;breakpoint&#34;:1260,&#34;settings&#34;:{&#34;vertical&#34;:false}}],&#34;slidesToShow&#34;:4,&#34;vertical&#34;:true}'>
-                                    
-                                    <!-- Imagem 1 --> 
-                                    <!-- <img src="#" data-src="{{ asset('images/shop/product-gallery-05-154x205.jpg') }}"
+                        <!-- Imagens adicionais slider vertical-->
+                        <div class="col-xl-2 pe-xl-0 order-1 order-xl-0 mt-5 mt-xl-0">
+                            <div id="vertical-slider-thumb"
+                                class="slick-slider slick-slider-thumb ps-1 ms-n3 me-n4 mx-xl-0"
+                                data-slick-options='{&#34;arrows&#34;:false,&#34;asNavFor&#34;:&#34;#vertical-slider-slides&#34;,&#34;dots&#34;:false,&#34;focusOnSelect&#34;:true,&#34;responsive&#34;:[{&#34;breakpoint&#34;:1260,&#34;settings&#34;:{&#34;vertical&#34;:false}}],&#34;slidesToShow&#34;:4,&#34;vertical&#34;:true}'>
+
+                                <!-- Imagem 1 -->
+                                <!-- <img src="#" data-src="{{ asset('images/shop/product-gallery-05-154x205.jpg') }}"
                                     class="cursor-pointer lazy-image mx-3 mx-xl-0 px-0 mb-xl-7" width="75" height="100"
                                     title="" alt=""> -->
-                                    <!-- Imagem Principal em miniatura 1 -->
-                                    <img src="#" data-src="{{ asset('images/products/' . $produto->imagem) }}" 
-                                        alt="{{ $produto->nome }}" 
-                                        title="pricipal em miniatura" 
-                                        class="cursor-pointer lazy-image mx-3 mx-xl-0 px-0 mb-xl-7" 
-                                        width="75" 
-                                        height="100">
+                                <!-- Imagem Principal em miniatura 1 -->
+                                <img src="#" data-src="{{ asset('images/products/' . $produto->imagem) }}"
+                                    alt="{{ $produto->nome }}" title="pricipal em miniatura"
+                                    class="cursor-pointer lazy-image mx-3 mx-xl-0 px-0 mb-xl-7" width="75" height="100">
 
 
-   <!--                             <img src="#" data-src="{{ asset('images/shop/product-gallery-06-154x205.jpg') }}"
+                                <!--                             <img src="#" data-src="{{ asset('images/shop/product-gallery-06-154x205.jpg') }}"
                                     class="cursor-pointer lazy-image mx-3 mx-xl-0 px-0 mb-xl-7" width="75" height="100"
                                     title="01" alt="">
 
 
                                     <img src="#" data-src="{{ asset('images/shop/product-gallery-07-154x205.jpg') }}"
                                     class="cursor-pointer lazy-image mx-3 mx-xl-0 px-0 mb-xl-7" width="75" height="100"
-                                    title="02" alt="">  --> 
+                                    title="02" alt="">  -->
 
-                                     @php
-                                        $imagens = json_decode($produto->imagens_adicionais);
-                                    @endphp
-                                    
-                                    @foreach($imagens as $imagem)
-                                        <img src="#" data-src="{{ asset('images/products/' . $imagem) }}" 
-                                            class="cursor-pointer lazy-image mx-3 mx-xl-0 px-0 mb-xl-7" width="75" height="100"
-                                            title="02" alt=""> 
-                                    @endforeach 
+                                @php
+                                    $imagens = json_decode($produto->imagens_adicionais);
+                                @endphp
+
+                                @foreach($imagens as $imagem)
+                                    <img src="#" data-src="{{ asset('images/products/' . $imagem) }}"
+                                        class="cursor-pointer lazy-image mx-3 mx-xl-0 px-0 mb-xl-7" width="75" height="100"
+                                        title="02" alt="">
+                                @endforeach 
 
                                    <!--  Com 3 imagens diconais funcionou perfeitamente. -->
-                                   <!--  <div class="position-relative cursor-pointer mx-3 mx-xl-0 px-0 mb-xl-7">
+                                <!--  <div class="position-relative cursor-pointer mx-3 mx-xl-0 px-0 mb-xl-7">
                                          <img src="#" data-src="{{ asset('images/shop/product-gallery-08-154x205.jpg') }}"
                                         class="w-100 lazy-image" alt="product gallery" width="75" height="100"> 
 
@@ -915,28 +915,24 @@
                                      AJUSTEI A IMAGEM PRICIPAL
                                     FALTA AJUSTAR AS IMAGENS EM MINIATURA e traduções-->
                                     <img src="#" data-src="{{ asset('images/products/' . $produto->imagem) }}"
-                                        width="540" height="720" title="imagem pricipal {{ $produto->imagem }}" class="h-auto lazy-image" alt="">
+                                        width="540" height="720" title="imagem pricipal {{ $produto->imagem }}"
+                                        class="h-auto lazy-image" alt="">
                                 </a>
                                 @php
                                     $imagens = json_decode($produto->imagens_adicionais);
-                                    
+
                                 @endphp
-                                
+
                                 @foreach($imagens as $imagem)
-                                    <a href="{{ asset('images/products/' . $imagem) }}"
-                                        data-gallery="product-gallery"
-                                        data-thumb-src="{{ asset('images/products/' . $imagem) }}" >
-                                    
-                                        <img src="{{ asset('images/products/' . $imagem) }}" 
-                                        alt="{{ $produto->nome }}" 
-                                        title="{{ $produto->nome }}" 
-                                        class="h-auto lazy-image"
-                                        width="540" 
-                                        height="720">
+                                    <a href="{{ asset('images/products/' . $imagem) }}" data-gallery="product-gallery"
+                                        data-thumb-src="{{ asset('images/products/' . $imagem) }}">
+
+                                        <img src="{{ asset('images/products/' . $imagem) }}" alt="{{ $produto->nome }}"
+                                            title="{{ $produto->nome }}" class="h-auto lazy-image" width="540" height="720">
                                     </a>
                                 @endforeach
 
-                            <!-- <a href="{{ asset('images/shop/product-gallery-06.jpg') }}"
+                                <!-- <a href="{{ asset('images/shop/product-gallery-06.jpg') }}"
                                     data-gallery="product-gallery"
                                     data-thumb-src="{{ asset('images/shop/product-gallery-06.jpg') }}">
                                     <img src="#" data-src="{{ asset('images/shop/product-gallery-06.jpg') }}"
@@ -970,9 +966,10 @@
                 </div>
                 <div class="col-md-6 pt-md-0 pt-10">
                     <p class="d-flex align-items-center mb-6">
-                        <span class="text-decoration-line-through">39.00</span>
-                        <span class="fs-18px text-body-emphasis ps-6 fw-bold">29.00</span>
-                        <span class="badge text-bg-primary fs-6 fw-semibold ms-7 px-6 py-3">20%</span>
+                        <span class="text-decoration-line-through">R${{ $produto->preco }}</span>
+                        <span class="fs-18px text-body-emphasis ps-6 fw-bold">R${{ $produto->preco_promocional }}</span>
+                        <span
+                            class="badge text-bg-primary fs-6 fw-semibold ms-7 px-6 py-3">-{{ round((($produto->preco - $produto->preco_promocional) / $produto->preco) * 100) }}%</span>
                     </p>
                     <h1 class="mb-4 pb-2 fs-4">{{ $produto->nome }}</h1>
                     <div class="d-flex align-items-center fs-15px mb-6">
@@ -1035,13 +1032,13 @@
                                 </div>
                             </div>
                         </div>
-                        <a href="#" class="border-start ps-6 text-body">Read 2947 reviews</a>
+                        <!-- <a href="#" class="border-start ps-6 text-body">Read 2947 reviews</a> -->
                     </div>
                     <p class="fs-15px">{{ $produto->descricao }}</p>
 
 
                     <form class="product-info-custom">
-                        <div class="form-group shop-swatch mb-7 d-flex align-items-center">
+                        <!-- <div class="form-group shop-swatch mb-7 d-flex align-items-center">
                             <span class="fw-semibold text-body-emphasis me-7">Size: </span>
                             <ul class="list-inline d-flex justify-content-start mb-0">
                                 <li class="list-inline-item me-4 fw-semibold">
@@ -1057,55 +1054,86 @@
                                 </li>
 
                             </ul>
-                        </div>
+                        </div> -->
 
-                        <p class="text-body-emphasis fw-semibold mb-6">Quantity: </p>
-                        <div class="form-checkmb-2 pb-4">
-                            <input type="radio" id="buy1" name="quality"
-                                class="me-4 form-check-input product-info-input" checked>
+                        <p class="text-body-emphasis fw-semibold mb-6">Quantidade: </p>
+                        @php
+                            $precoOriginal = $produto->preco_promocional; // Preço original por unidade
+
+                            // Descontos por quantidade
+                            $descontos = [
+                                1 => 0.00, // Sem desconto para 1 unidade
+                                2 => 0.05, // 5% de desconto para 2 unidades
+                                3 => 0.08, // 8% de desconto para 3 unidades
+                                4 => 0.10  // 10% de desconto para 4 unidades
+                            ];
+
+                            // Cálculo dos preços com desconto
+                            $precosComDesconto = [];
+                            foreach ($descontos as $quantidade => $desconto) {
+                                $precosComDesconto[$quantidade] = $precoOriginal * (1 - $desconto) * $quantidade;
+                            }
+                        @endphp
+
+                        <!-- Compra de 1 unidade -->
+                        <div class="form-check mb-2 pb-4">
+                            <input type="radio" id="buy1" name="quality" value="1"
+                                class="me-4 form-check-input product-info-input">
                             <label for="buy1" class="text-body-emphasis form-check-label">
                                 Comprar 1 -
-                                <span class="text-decoration-line-through mx-3 text-body">$39.00</span>
-                                <span class="fw-bold">$29.00</span>
+                                <span class="text-body">R${{ number_format($precoOriginal, 2, ',', '.') }}</span>
                             </label>
-                            <span class="badge badge-primary fs-12px border text-primary fw-bold ms-4">Economize  10%</span>
-                        </div>
-                        <div class="form-checkmb-2 pb-4">
-                            <input type="radio" id="buy2" name="quality"
-                                class="me-4 form-check-input product-info-input">
-                            <label for="buy2" class="text-body-emphasis form-check-label">
-                            Comprar 2 -
-                                <span class="text-decoration-line-through mx-3 text-body">$78.00</span>
-                                <span class="fw-bold">$56.00</span>
-                            </label>
-                            <span class="badge badge-primary fs-12px border text-primary fw-bold ms-4">Saved 15%</span>
-                        </div>
-                        <div class="form-checkmb-2 pb-4">
-                            <input type="radio" id="buy3" name="quality"
-                                class="me-4 form-check-input product-info-input">
-                            <label for="buy3" class="text-body-emphasis form-check-label">
-                            Comprar 3 -
-                                <span class="text-decoration-line-through mx-3 text-body">$117.00</span>
-                                <span class="fw-bold">$72.00</span>
-                            </label>
-                            <span class="badge badge-primary fs-12px border text-primary fw-bold ms-4">Saved 20%</span>
-                        </div>
-                        <div class="form-checkmb-2 pb-4">
-                            <input type="radio" id="buy4" name="quality"
-                                class="me-4 form-check-input product-info-input">
-                            <label for="buy4" class="text-body-emphasis form-check-label">
-                            Comprar 4 -
-                                <span class="text-decoration-line-through mx-3 text-body">$195.00</span>
-                                <span class="fw-bold">$99.00</span>
-                            </label>
-                            <span class="badge badge-primary fs-12px border text-primary fw-bold ms-4">Saved 30%</span>
                         </div>
 
+                        <!-- Compra de 2 unidades com 5% de desconto -->
+                        <div class="form-check mb-2 pb-4">
+                            <input type="radio" id="buy2" name="quality" value="2"
+                                class="me-4 form-check-input product-info-input">
+                            <label for="buy2" class="text-body-emphasis form-check-label">
+                                Comprar 2 -
+                                <span
+                                    class="text-decoration-line-through mx-3 text-body">R${{ number_format($precoOriginal * 2, 2, ',', '.') }}</span>
+                                <span class="fw-bold">R${{ number_format($precosComDesconto[2], 2, ',', '.') }}</span>
+                            </label>
+                            <span class="badge badge-primary fs-12px border text-primary fw-bold ms-4">Economize
+                                +5%</span>
+                        </div>
+
+                        <!-- Compra de 3 unidades com 8% de desconto -->
+                        <div class="form-check mb-2 pb-4">
+                            <input type="radio" id="buy3" name="quality" value="3"
+                                class="me-4 form-check-input product-info-input">
+                            <label for="buy3" class="text-body-emphasis form-check-label">
+                                Comprar 3 -
+                                <span
+                                    class="text-decoration-line-through mx-3 text-body">R${{ number_format($precoOriginal * 3, 2, ',', '.') }}</span>
+                                <span class="fw-bold">R${{ number_format($precosComDesconto[3], 2, ',', '.') }}</span>
+                            </label>
+                            <span class="badge badge-primary fs-12px border text-primary fw-bold ms-4">Economize
+                                +8%</span>
+                        </div>
+
+                        <!-- Compra de 4 unidades com 10% de desconto -->
+                        <div class="form-check mb-2 pb-4">
+                            <input type="radio" id="buy4" name="quality" value="4"
+                                class="me-4 form-check-input product-info-input">
+                            <label for="buy4" class="text-body-emphasis form-check-label">
+                                Comprar 4 -
+                                <span
+                                    class="text-decoration-line-through mx-3 text-body">R${{ number_format($precoOriginal * 4, 2, ',', '.') }}</span>
+                                <span class="fw-bold">R${{ number_format($precosComDesconto[4], 2, ',', '.') }}</span>
+                            </label>
+                            <span class="badge badge-primary fs-12px border text-primary fw-bold ms-4">Economize
+                                +10%</span>
+                        </div>
+
+
                         <button type="submit"
-                            class="btn btn-lg btn-dark mb-7 mt-7 w-100 btn-hover-bg-primary btn-hover-border-primary">Adicionar ao Carrinho
+                            class="btn btn-lg btn-dark mb-7 mt-7 w-100 btn-hover-bg-primary btn-hover-border-primary">Adicionar
+                            ao Carrinho
                         </button>
                     </form>
-                    <div class="d-flex align-items-center flex-wrap">
+                    <!-- <div class="d-flex align-items-center flex-wrap">
                         <a href="../shop/compare.html"
                             class="text-decoration-none fw-semibold fs-6 me-9 pe-2 d-flex align-items-center">
                             <svg class="icon fs-5">
@@ -1119,19 +1147,19 @@
                             </svg>
                             <span class="ms-4 ps-2">Add to wishlist</span>
                         </a>
-                    </div>
+                    </div> -->
 
                     <ul class="single-product-meta list-unstyled border-top pt-7 mt-7">
-                        <li class="d-flex mb-4 pb-2 align-items-center">
+                        <!-- <li class="d-flex mb-4 pb-2 align-items-center">
                             <span class="text-body-emphasis fw-semibold fs-14px">Sku:</span>
                             <span class="ps-4">SF09281</span>
-                        </li>
+                        </li> -->
                         <li class="d-flex mb-4 pb-2 align-items-center">
-                            <span class="text-body-emphasis fw-semibold fs-14px">Categories:</span>
-                            <span class="ps-4">Makeup, Skincare</span>
+                            <span class="text-body-emphasis fw-semibold fs-14px">Categoria:</span>
+                            <span class="ps-4">{{ $produto->categoria }}</span>
                         </li>
-                        <li class="d-flex mb-4 pb-2 align-items-center">
-                            <span class="text-body-emphasis fw-semibold fs-14px">Share:</span>
+                        <!-- <li class="d-flex mb-4 pb-2 align-items-center">
+                            <span class="text-body-emphasis fw-semibold fs-14px">Compartilhar:</span>
                             <ul class="list-inline d-flex align-items-center mb-0 col-8 col-lg-10 ps-4">
                                 <li class="list-inline-item me-7">
                                     <a href="#" class="fs-14px text-body product-info-share" data-bs-toggle="tooltip"
@@ -1158,7 +1186,7 @@
                                     </a>
                                 </li>
                             </ul>
-                        </li>
+                        </li> -->
                     </ul>
 
 
@@ -1175,22 +1203,22 @@
                         <button
                             class="nav-link m-auto fw-semibold py-0 px-8 fs-4 fs-lg-3 border-0 text-body-emphasis active"
                             id="product-details-tab" data-bs-toggle="tab" data-bs-target="#product-details"
-                            type="button" role="tab" aria-controls="product-details" aria-selected="true">Product
-                            Details
+                            type="button" role="tab" aria-controls="product-details" aria-selected="true">Detalhes do
+                            Produto
                         </button>
                     </li>
-                    <li class="nav-item" role="presentation">
+                    <!-- <li class="nav-item" role="presentation">
                         <button class="nav-link m-auto fw-semibold py-0 px-8 fs-4 fs-lg-3 border-0 text-body-emphasis"
                             id="how-to-use-tab" data-bs-toggle="tab" data-bs-target="#how-to-use" type="button"
-                            role="tab" aria-controls="how-to-use" aria-selected="false">How To Use
+                            role="tab" aria-controls="how-to-use" aria-selected="false">Como usar
                         </button>
-                    </li>
-                    <li class="nav-item" role="presentation">
+                    </li> -->
+                    <!-- <li class="nav-item" role="presentation">
                         <button class="nav-link m-auto fw-semibold py-0 px-8 fs-4 fs-lg-3 border-0 text-body-emphasis"
                             id="ingredients-tab" data-bs-toggle="tab" data-bs-target="#ingredients" type="button"
-                            role="tab" aria-controls="ingredients" aria-selected="false">Ingredients
+                            role="tab" aria-controls="ingredients" aria-selected="false">Ingredientes
                         </button>
-                    </li>
+                    </li> -->
                 </ul>
                 <div class="tab-content">
                     <div class="tab-inner">
@@ -1216,28 +1244,34 @@
 
                                         </div>
                                         <div class="pb-3 col-12 col-lg-6 pt-12 pt-lg-0">
-                                            <p class="fw-semibold text-body-emphasis mb-2 pb-4">For Normal, Oily,
-                                                Combination Skin
-                                                Types</p>
-                                            <p class="mb-2 pb-4">Complexion-perfecting natural foundation enriched with
-                                                antioxidant-packed superfruits, vitamins, and other skin-nourishing
-                                                nutrients. Creamy liquid formula sets with a pristine matte finish
-                                                for soft, velvety smooth skin.</p>
-                                            <p class="mb-9">Say hello to flawless, long-lasting foundation that
+                                            <p class="fw-semibold text-body-emphasis mb-2 pb-4">{{ $produto->nome }}</p>
+                                            <p class="mb-2 pb-4">{{ $produto->descricao }}</p>
+                                            <!-- <p class="mb-9">Say hello to flawless, long-lasting foundation that
                                                 comes in 7
                                                 melt-into-your-skin shades. This lightweight, innovative formula
                                                 creates a smooth, natural matte finish that won’t settle into lines.
-                                                It’s the perfect fit for your skin. 1 fl. oz.</p>
-                                            <p class="fw-semibold text-body-emphasis mb-2 pb-4">Benefits</p>
+                                                It’s the perfect fit for your skin. 1 fl. oz.</p> -->
+                                            <p class="fw-semibold text-body-emphasis mb-2 pb-4">Características:</p>
                                             <ul class="mb-7 ps-6">
-                                                <li class="mb-1">Buildable medium-to-full coverage</li>
-                                                <li class="mb-1">Weightless, airy feel—no caking!</li>
-                                                <li class="mb-1">Long-wearing</li>
-                                                <li class="mb-1">Evens skin tone</li>
-                                                <li>Available in 07 shades (all exclusive to Makeaholic!)</li>
+                                                @if(!empty($produto->caracteristicas))
+                                                    @php
+                                                        // Decodificar a string JSON para um array PHP
+                                                        $caracteristicas = json_decode($produto->caracteristicas, true);
+                                                    @endphp
+                                                    @foreach($caracteristicas as $caracteristica)
+                                                        @if(isset($caracteristica['value']))
+                                                            <li class="mb-1">{{ $caracteristica['value'] }}</li>
+                                                        @endif
+                                                    @endforeach
+                                                @endif
+                                            
                                             </ul>
+
+
+                                            <p class="fw-semibold text-body-emphasis mb-2 pb-4">Modo de usar:</p>
+                                            <p class="mb-2 pb-4">{{ $produto->modo_de_usar }}</p>
                                             <div class="row">
-                                                <div class="col-6 col-md-3 text-center mb-9 pb-2">
+                                                <!-- <div class="col-6 col-md-3 text-center mb-9 pb-2">
 
                                                     <img class="lazy-image light-mode-img" src="#"
                                                         data-src="{{ asset('images/shop/product-info-3-1.png') }}"
@@ -1279,7 +1313,7 @@
                                                         data-src="{{ asset('images/shop/product-info-white-3-4.png') }}"
                                                         width="66" height="77" alt="">
 
-                                                </div>
+                                                </div> -->
                                             </div>
                                         </div>
                                     </div>
@@ -1294,11 +1328,11 @@
                                     <h5 class="mb-0">
                                         <button class="btn lh-2 fs-5 py-3 px-6 shadow-none w-100 border text-primary"
                                             type="button" data-bs-toggle="collapse" data-bs-target="#collapse-to-use"
-                                            aria-expanded="false" aria-controls="collapse-to-use">How To Use
+                                            aria-expanded="false" aria-controls="collapse-to-use">Como usar
                                         </button>
                                     </h5>
                                 </div>
-                                <div class="collapse border-md-0 border p-md-0 p-6" id="collapse-to-use">
+                                <!-- <div class="collapse border-md-0 border p-md-0 p-6" id="collapse-to-use">
                                     <div class="pb-3">
                                         <p class="fw-semibold text-body-emphasis mb-2 pb-4">Follow these safety
                                             guidelines
@@ -1327,7 +1361,7 @@
                                             </li>
                                         </ul>
                                     </div>
-                                </div>
+                                </div> -->
                             </div>
                         </div>
                         <div class="tab-pane fade" id="ingredients" role="tabpanel" aria-labelledby="ingredients-tab"
@@ -1341,7 +1375,7 @@
                                     </button>
                                 </h5>
                             </div>
-                            <div class="collapse border-md-0 border p-md-0 p-6" id="collapse-ingredients">
+                            <!-- <div class="collapse border-md-0 border p-md-0 p-6" id="collapse-ingredients">
                                 <div class="pb-3">
                                     <div class="table-responsive mb-5">
                                         <table class="table table-borderless mb-0">
@@ -1407,7 +1441,7 @@
                                         Box perfect for Equestrian home or Horse lover in your life.
                                     </p>
                                 </div>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                 </div>
@@ -1416,968 +1450,107 @@
         <div class="border-top w-100 h-1px"></div>
         <section class="container pt-15 pb-15 pt-lg-17 pb-lg-20">
             <div class="text-center">
-                <h3 class="mb-12">You may also like</h3>
+                <h3 class="mb-12">Você também pode gostar</h3>
             </div>
 
             <div class="slick-slider"
                 data-slick-options="{&#34;arrows&#34;:true,&#34;centerMode&#34;:true,&#34;centerPadding&#34;:&#34;calc((100% - 1440px) / 2)&#34;,&#34;dots&#34;:true,&#34;infinite&#34;:true,&#34;responsive&#34;:[{&#34;breakpoint&#34;:1200,&#34;settings&#34;:{&#34;arrows&#34;:false,&#34;dots&#34;:false,&#34;slidesToShow&#34;:3}},{&#34;breakpoint&#34;:992,&#34;settings&#34;:{&#34;arrows&#34;:false,&#34;dots&#34;:false,&#34;slidesToShow&#34;:2}},{&#34;breakpoint&#34;:576,&#34;settings&#34;:{&#34;arrows&#34;:false,&#34;dots&#34;:false,&#34;slidesToShow&#34;:1}}],&#34;slidesToShow&#34;:4}">
-                <div class="mb-6">
-                    <div class="card card-product grid-2 bg-transparent border-0">
-                        <figure class="card-img-top position-relative mb-7 overflow-hidden">
-                            <a href="../shop/product-details-v1.html" class="hover-zoom-in d-block"
-                                title="Shield Conditioner">
-                                <img src="#" data-src="{{ asset('images/products/product-01-330x440.jpg') }}"
-                                    class="img-fluid lazy-image w-100" alt="Shield Conditioner" width="330"
-                                    height="440">
-
-                            </a>
-
-                            <div class="position-absolute product-flash z-index-2 "><span
-                                    class="badge badge-product-flash on-sale bg-primary">-25%</span></div>
-                            <div class="position-absolute d-flex z-index-2 product-actions  vertical"><a
-                                    class="text-body-emphasis bg-body bg-dark-hover text-light-hover rounded-circle square product-action shadow-sm quick-view sm"
-                                    href="#" data-bs-toggle="tooltip" data-bs-placement="left"
-                                    data-bs-title="Quick View">
-                                    <span data-bs-toggle="modal" data-bs-target="#quickViewModal"
-                                        class="d-flex align-items-center justify-content-center">
-                                        <svg class="icon icon-eye-light">
-                                            <use xlink:href="#icon-eye-light"></use>
-                                        </svg>
-                                    </span>
+                <!-- Adicionar produtos dinâmicos  -->
+                @foreach($todos_produtos as $produto)
+                    <div class="mb-6">
+                        <div class="card card-product grid-2 bg-transparent border-0">
+                            <figure class="card-img-top position-relative mb-7 overflow-hidden">
+                                <a href="{{ route('produtos.show', $produto->id) }}" class="hover-zoom-in d-block"
+                                    title="{{ $produto->nome }}">
+                                    <img src="#" data-src="{{ asset('images/products/' . $produto->imagem) }}"
+                                        class="img-fluid lazy-image w-100" alt="{{ $produto->nome }}" width="330"
+                                        height="440">
                                 </a>
-                                <a class="text-body-emphasis bg-body bg-dark-hover text-light-hover rounded-circle square product-action shadow-sm wishlist sm"
-                                    href="#" data-bs-toggle="tooltip" data-bs-placement="left"
-                                    data-bs-title="Add To Wishlist">
-                                    <svg class="icon icon-star-light">
-                                        <use xlink:href="#icon-star-light"></use>
-                                    </svg>
-                                </a>
-                                <a class="text-body-emphasis bg-body bg-dark-hover text-light-hover rounded-circle square product-action shadow-sm compare sm"
-                                    href="../shop/compare.html" data-bs-toggle="tooltip" data-bs-placement="left"
-                                    data-bs-title="Compare">
-                                    <svg class="icon icon-arrows-left-right-light">
-                                        <use xlink:href="#icon-arrows-left-right-light"></use>
-                                    </svg>
-                                </a>
-                            </div><a href="#"
-                                class="btn btn-add-to-cart btn-dark btn-hover-bg-primary btn-hover-border-primary position-absolute z-index-2 text-nowrap btn-sm px-6 py-3 lh-2">Add
-                                To Cart</a>
-                        </figure>
-                        <div class="card-body text-center p-0">
 
-
-
-
-
-
-                            <span
-                                class="d-flex align-items-center price text-body-emphasis fw-bold justify-content-center mb-3 fs-6">
-                                <del class=" text-body fw-500 me-4 fs-13px">$40.00</del>
-                                <ins class="text-decoration-none">$30.00</ins></span>
-
-                            <h4
-                                class="product-title card-title text-primary-hover text-body-emphasis fs-15px fw-500 mb-3">
-                                <a class="text-decoration-none text-reset" href="../shop/product-details-v1.html">Shield
-                                    Conditioner</a>
-                            </h4>
-                            <div class="d-flex align-items-center fs-12px justify-content-center">
-                                <div class="rating">
-                                    <div class="empty-stars">
-                                        <span class="star">
-                                            <svg class="icon star-o">
-                                                <use xlink:href="#star-o"></use>
-                                            </svg>
-                                        </span>
-                                        <span class="star">
-                                            <svg class="icon star-o">
-                                                <use xlink:href="#star-o"></use>
-                                            </svg>
-                                        </span>
-                                        <span class="star">
-                                            <svg class="icon star-o">
-                                                <use xlink:href="#star-o"></use>
-                                            </svg>
-                                        </span>
-                                        <span class="star">
-                                            <svg class="icon star-o">
-                                                <use xlink:href="#star-o"></use>
-                                            </svg>
-                                        </span>
-                                        <span class="star">
-                                            <svg class="icon star-o">
-                                                <use xlink:href="#star-o"></use>
-                                            </svg>
-                                        </span>
+                                @if($produto->preco_promocional)
+                                    <div class="position-absolute product-flash z-index-2">
+                                        <span
+                                            class="badge badge-product-flash on-sale bg-primary">-{{ round((($produto->preco - $produto->preco_promocional) / $produto->preco) * 100) }}%</span>
                                     </div>
-                                    <div class="filled-stars" style="width: 80%">
-                                        <span class="star">
-                                            <svg class="icon star text-primary">
-                                                <use xlink:href="#star"></use>
-                                            </svg>
-                                        </span>
-                                        <span class="star">
-                                            <svg class="icon star text-primary">
-                                                <use xlink:href="#star"></use>
-                                            </svg>
-                                        </span>
-                                        <span class="star">
-                                            <svg class="icon star text-primary">
-                                                <use xlink:href="#star"></use>
-                                            </svg>
-                                        </span>
-                                        <span class="star">
-                                            <svg class="icon star text-primary">
-                                                <use xlink:href="#star"></use>
-                                            </svg>
-                                        </span>
-                                        <span class="star">
-                                            <svg class="icon star text-primary">
-                                                <use xlink:href="#star"></use>
-                                            </svg>
-                                        </span>
+                                @endif
+
+                                <!-- <div class="position-absolute d-flex z-index-2 product-actions vertical">
+                                            <a class="text-body-emphasis bg-body bg-dark-hover text-light-hover rounded-circle square product-action shadow-sm quick-view sm" href="#" data-bs-toggle="tooltip" data-bs-placement="left" data-bs-title="Quick View">
+                                                <span data-bs-toggle="modal" data-bs-target="#quickViewModal" class="d-flex align-items-center justify-content-center">
+                                                    <svg class="icon icon-eye-light">
+                                                        <use xlink:href="#icon-eye-light"></use>
+                                                    </svg>
+                                                </span>
+                                            </a>
+                                            <a class="text-body-emphasis bg-body bg-dark-hover text-light-hover rounded-circle square product-action shadow-sm wishlist sm" href="#" data-bs-toggle="tooltip" data-bs-placement="left" data-bs-title="Add To Wishlist">
+                                                <svg class="icon icon-star-light">
+                                                    <use xlink:href="#icon-star-light"></use>
+                                                </svg>
+                                            </a>
+                                            <a class="text-body-emphasis bg-body bg-dark-hover text-light-hover rounded-circle square product-action shadow-sm compare sm" href="#" data-bs-toggle="tooltip" data-bs-placement="left" data-bs-title="Compare">
+                                                <svg class="icon icon-arrows-left-right-light">
+                                                    <use xlink:href="#icon-arrows-left-right-light"></use>
+                                                </svg>
+                                            </a>
+                                        </div> -->
+                                <a href="#"
+                                    class="btn btn-add-to-cart btn-dark btn-hover-bg-primary btn-hover-border-primary position-absolute z-index-2 text-nowrap btn-sm px-6 py-3 lh-2">Adicionar
+                                    ao Carrinho</a>
+                            </figure>
+                            <div class="card-body text-center p-0">
+                                <span
+                                    class="d-flex align-items-center price text-body-emphasis fw-bold justify-content-center mb-3 fs-6">
+                                    @if($produto->desconto)
+                                        <del
+                                            class="text-body fw-500 me-4 fs-13px">${{ number_format($produto->preco_original, 2, ',', '.') }}</del>
+                                        <ins class="text-decoration-none">R$
+                                            {{ number_format($produto->preco_promocional, 2, ',', '.') }}</ins>
+                                    @else
+                                        <ins class="text-decoration-none">R$
+                                            {{ number_format($produto->preco, 2, ',', '.') }}</ins>
+                                    @endif
+                                </span>
+
+                                <h4
+                                    class="product-title card-title text-primary-hover text-body-emphasis fs-15px fw-500 mb-3">
+                                    <a class="text-decoration-none text-reset" href="#">{{ $produto->nome }}</a>
+                                </h4>
+                                <div class="d-flex align-items-center fs-12px justify-content-center">
+                                    <div class="rating">
+                                        <div class="empty-stars">
+                                            @for($i = 0; $i < 5; $i++)
+                                                <span class="star">
+                                                    <svg class="icon star-o">
+                                                        <use xlink:href="#star-o"></use>
+                                                    </svg>
+                                                </span>
+                                            @endfor
+                                        </div>
+                                        <div class="filled-stars" style="width: {{ $produto->avaliacao * 20 }}%">
+                                            @for($i = 0; $i < 5; $i++)
+                                                <span class="star">
+                                                    <svg class="icon star text-primary">
+                                                        <use xlink:href="#star"></use>
+                                                    </svg>
+                                                </span>
+                                            @endfor
+                                        </div>
                                     </div>
-                                </div><span class="reviews ms-4 pt-3 fs-14px">2947 reviews</span>
+                                    <span class="reviews ms-4 pt-3 fs-14px">{{ $produto->num_reviews }} reviews</span>
+                                </div>
                             </div>
                         </div>
                     </div>
-
-                </div>
-                <div class="mb-6">
-                    <div class="card card-product grid-2 bg-transparent border-0">
-                        <figure class="card-img-top position-relative mb-7 overflow-hidden">
-                            <a href="../shop/product-details-v1.html" class="hover-zoom-in d-block"
-                                title="Perfecting Facial Oil">
-                                <img src="#" data-src="{{ asset('images/products/product-02-330x440.jpg') }}"
-                                    class="img-fluid lazy-image w-100" alt="Perfecting Facial Oil" width="330"
-                                    height="440">
-
-                            </a>
-
-                            <div class="position-absolute d-flex z-index-2 product-actions  vertical"><a
-                                    class="text-body-emphasis bg-body bg-dark-hover text-light-hover rounded-circle square product-action shadow-sm quick-view sm"
-                                    href="#" data-bs-toggle="tooltip" data-bs-placement="left"
-                                    data-bs-title="Quick View">
-                                    <span data-bs-toggle="modal" data-bs-target="#quickViewModal"
-                                        class="d-flex align-items-center justify-content-center">
-                                        <svg class="icon icon-eye-light">
-                                            <use xlink:href="#icon-eye-light"></use>
-                                        </svg>
-                                    </span>
-                                </a>
-                                <a class="text-body-emphasis bg-body bg-dark-hover text-light-hover rounded-circle square product-action shadow-sm wishlist sm"
-                                    href="#" data-bs-toggle="tooltip" data-bs-placement="left"
-                                    data-bs-title="Add To Wishlist">
-                                    <svg class="icon icon-star-light">
-                                        <use xlink:href="#icon-star-light"></use>
-                                    </svg>
-                                </a>
-                                <a class="text-body-emphasis bg-body bg-dark-hover text-light-hover rounded-circle square product-action shadow-sm compare sm"
-                                    href="../shop/compare.html" data-bs-toggle="tooltip" data-bs-placement="left"
-                                    data-bs-title="Compare">
-                                    <svg class="icon icon-arrows-left-right-light">
-                                        <use xlink:href="#icon-arrows-left-right-light"></use>
-                                    </svg>
-                                </a>
-                            </div><a href="#"
-                                class="btn btn-add-to-cart btn-dark btn-hover-bg-primary btn-hover-border-primary position-absolute z-index-2 text-nowrap btn-sm px-6 py-3 lh-2">Add
-                                To Cart</a>
-                        </figure>
-                        <div class="card-body text-center p-0">
-
-
-
-
-
-
-                            <span
-                                class="d-flex align-items-center price text-body-emphasis fw-bold justify-content-center mb-3 fs-6">$20.00</span>
-
-                            <h4
-                                class="product-title card-title text-primary-hover text-body-emphasis fs-15px fw-500 mb-3">
-                                <a class="text-decoration-none text-reset"
-                                    href="../shop/product-details-v1.html">Perfecting Facial Oil</a>
-                            </h4>
-                            <div class="d-flex align-items-center fs-12px justify-content-center">
-                                <div class="rating">
-                                    <div class="empty-stars">
-                                        <span class="star">
-                                            <svg class="icon star-o">
-                                                <use xlink:href="#star-o"></use>
-                                            </svg>
-                                        </span>
-                                        <span class="star">
-                                            <svg class="icon star-o">
-                                                <use xlink:href="#star-o"></use>
-                                            </svg>
-                                        </span>
-                                        <span class="star">
-                                            <svg class="icon star-o">
-                                                <use xlink:href="#star-o"></use>
-                                            </svg>
-                                        </span>
-                                        <span class="star">
-                                            <svg class="icon star-o">
-                                                <use xlink:href="#star-o"></use>
-                                            </svg>
-                                        </span>
-                                        <span class="star">
-                                            <svg class="icon star-o">
-                                                <use xlink:href="#star-o"></use>
-                                            </svg>
-                                        </span>
-                                    </div>
-                                    <div class="filled-stars" style="width: 100%">
-                                        <span class="star">
-                                            <svg class="icon star text-primary">
-                                                <use xlink:href="#star"></use>
-                                            </svg>
-                                        </span>
-                                        <span class="star">
-                                            <svg class="icon star text-primary">
-                                                <use xlink:href="#star"></use>
-                                            </svg>
-                                        </span>
-                                        <span class="star">
-                                            <svg class="icon star text-primary">
-                                                <use xlink:href="#star"></use>
-                                            </svg>
-                                        </span>
-                                        <span class="star">
-                                            <svg class="icon star text-primary">
-                                                <use xlink:href="#star"></use>
-                                            </svg>
-                                        </span>
-                                        <span class="star">
-                                            <svg class="icon star text-primary">
-                                                <use xlink:href="#star"></use>
-                                            </svg>
-                                        </span>
-                                    </div>
-                                </div><span class="reviews ms-4 pt-3 fs-14px">2947 reviews</span>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-                <div class="mb-6">
-                    <div class="card card-product grid-2 bg-transparent border-0">
-                        <figure class="card-img-top position-relative mb-7 overflow-hidden">
-                            <a href="../shop/product-details-v1.html" class="hover-zoom-in d-block"
-                                title="Enriched Hand &amp; Body Wash">
-                                <img src="#" data-src="{{ asset('images/products/product-03-330x440.jpg') }}"
-                                    class="img-fluid lazy-image w-100" alt="Enriched Hand & Body Wash" width="330"                                  height="440">
-
-                            </a>
-
-                            <div class="position-absolute product-flash z-index-2 "><span
-                                    class="badge badge-product-flash on-new">New</span></div>
-                            <div class="position-absolute d-flex z-index-2 product-actions  vertical"><a
-                                    class="text-body-emphasis bg-body bg-dark-hover text-light-hover rounded-circle square product-action shadow-sm quick-view sm"
-                                    href="#" data-bs-toggle="tooltip" data-bs-placement="left"
-                                    data-bs-title="Quick View">
-                                    <span data-bs-toggle="modal" data-bs-target="#quickViewModal"
-                                        class="d-flex align-items-center justify-content-center">
-                                        <svg class="icon icon-eye-light">
-                                            <use xlink:href="#icon-eye-light"></use>
-                                        </svg>
-                                    </span>
-                                </a>
-                                <a class="text-body-emphasis bg-body bg-dark-hover text-light-hover rounded-circle square product-action shadow-sm wishlist sm"
-                                    href="#" data-bs-toggle="tooltip" data-bs-placement="left"
-                                    data-bs-title="Add To Wishlist">
-                                    <svg class="icon icon-star-light">
-                                        <use xlink:href="#icon-star-light"></use>
-                                    </svg>
-                                </a>
-                                <a class="text-body-emphasis bg-body bg-dark-hover text-light-hover rounded-circle square product-action shadow-sm compare sm"
-                                    href="../shop/compare.html" data-bs-toggle="tooltip" data-bs-placement="left"
-                                    data-bs-title="Compare">
-                                    <svg class="icon icon-arrows-left-right-light">
-                                        <use xlink:href="#icon-arrows-left-right-light"></use>
-                                    </svg>
-                                </a>
-                            </div><a href="#"
-                                class="btn btn-add-to-cart btn-dark btn-hover-bg-primary btn-hover-border-primary position-absolute z-index-2 text-nowrap btn-sm px-6 py-3 lh-2">Add
-                                To Cart</a>
-                        </figure>
-                        <div class="card-body text-center p-0">
-
-
-
-
-
-
-                            <span
-                                class="d-flex align-items-center price text-body-emphasis fw-bold justify-content-center mb-3 fs-6">$29.00</span>
-
-                            <h4
-                                class="product-title card-title text-primary-hover text-body-emphasis fs-15px fw-500 mb-3">
-                                <a class="text-decoration-none text-reset"
-                                    href="../shop/product-details-v1.html">Enriched Hand &amp; Body Wash</a>
-                            </h4>
-                            <div class="d-flex align-items-center fs-12px justify-content-center">
-                                <div class="rating">
-                                    <div class="empty-stars">
-                                        <span class="star">
-                                            <svg class="icon star-o">
-                                                <use xlink:href="#star-o"></use>
-                                            </svg>
-                                        </span>
-                                        <span class="star">
-                                            <svg class="icon star-o">
-                                                <use xlink:href="#star-o"></use>
-                                            </svg>
-                                        </span>
-                                        <span class="star">
-                                            <svg class="icon star-o">
-                                                <use xlink:href="#star-o"></use>
-                                            </svg>
-                                        </span>
-                                        <span class="star">
-                                            <svg class="icon star-o">
-                                                <use xlink:href="#star-o"></use>
-                                            </svg>
-                                        </span>
-                                        <span class="star">
-                                            <svg class="icon star-o">
-                                                <use xlink:href="#star-o"></use>
-                                            </svg>
-                                        </span>
-                                    </div>
-                                    <div class="filled-stars" style="width: 100%">
-                                        <span class="star">
-                                            <svg class="icon star text-primary">
-                                                <use xlink:href="#star"></use>
-                                            </svg>
-                                        </span>
-                                        <span class="star">
-                                            <svg class="icon star text-primary">
-                                                <use xlink:href="#star"></use>
-                                            </svg>
-                                        </span>
-                                        <span class="star">
-                                            <svg class="icon star text-primary">
-                                                <use xlink:href="#star"></use>
-                                            </svg>
-                                        </span>
-                                        <span class="star">
-                                            <svg class="icon star text-primary">
-                                                <use xlink:href="#star"></use>
-                                            </svg>
-                                        </span>
-                                        <span class="star">
-                                            <svg class="icon star text-primary">
-                                                <use xlink:href="#star"></use>
-                                            </svg>
-                                        </span>
-                                    </div>
-                                </div><span class="reviews ms-4 pt-3 fs-14px">2947 reviews</span>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-                <div class="mb-6">
-                    <div class="card card-product grid-2 bg-transparent border-0">
-                        <figure class="card-img-top position-relative mb-7 overflow-hidden">
-                            <a href="../shop/product-details-v1.html" class="hover-zoom-in d-block"
-                                title="Shield Shampoo">
-                                <img src="#" data-src="{{ asset('images/products/product-04-330x440.jpg') }}"
-                                    class="img-fluid lazy-image w-100" alt="Shield Shampoo" width="330" height="440">
-
-                            </a>
-
-                            <div class="position-absolute product-flash z-index-2 "><span
-                                    class="badge badge-product-flash on-sale bg-primary">-24%</span></div>
-                            <div class="position-absolute d-flex z-index-2 product-actions  vertical"><a
-                                    class="text-body-emphasis bg-body bg-dark-hover text-light-hover rounded-circle square product-action shadow-sm quick-view sm"
-                                    href="#" data-bs-toggle="tooltip" data-bs-placement="left"
-                                    data-bs-title="Quick View">
-                                    <span data-bs-toggle="modal" data-bs-target="#quickViewModal"
-                                        class="d-flex align-items-center justify-content-center">
-                                        <svg class="icon icon-eye-light">
-                                            <use xlink:href="#icon-eye-light"></use>
-                                        </svg>
-                                    </span>
-                                </a>
-                                <a class="text-body-emphasis bg-body bg-dark-hover text-light-hover rounded-circle square product-action shadow-sm wishlist sm"
-                                    href="#" data-bs-toggle="tooltip" data-bs-placement="left"
-                                    data-bs-title="Add To Wishlist">
-                                    <svg class="icon icon-star-light">
-                                        <use xlink:href="#icon-star-light"></use>
-                                    </svg>
-                                </a>
-                                <a class="text-body-emphasis bg-body bg-dark-hover text-light-hover rounded-circle square product-action shadow-sm compare sm"
-                                    href="../shop/compare.html" data-bs-toggle="tooltip" data-bs-placement="left"
-                                    data-bs-title="Compare">
-                                    <svg class="icon icon-arrows-left-right-light">
-                                        <use xlink:href="#icon-arrows-left-right-light"></use>
-                                    </svg>
-                                </a>
-                            </div><a href="#"
-                                class="btn btn-add-to-cart btn-dark btn-hover-bg-primary btn-hover-border-primary position-absolute z-index-2 text-nowrap btn-sm px-6 py-3 lh-2">Add
-                                To Cart</a>
-                        </figure>
-                        <div class="card-body text-center p-0">
-
-
-
-
-
-
-                            <span
-                                class="d-flex align-items-center price text-body-emphasis fw-bold justify-content-center mb-3 fs-6">
-                                <del class=" text-body fw-500 me-4 fs-13px">$25.00</del>
-                                <ins class="text-decoration-none">$19.00</ins></span>
-
-                            <h4
-                                class="product-title card-title text-primary-hover text-body-emphasis fs-15px fw-500 mb-3">
-                                <a class="text-decoration-none text-reset" href="../shop/product-details-v1.html">Shield
-                                    Shampoo</a>
-                            </h4>
-                            <div class="d-flex align-items-center fs-12px justify-content-center">
-                                <div class="rating">
-                                    <div class="empty-stars">
-                                        <span class="star">
-                                            <svg class="icon star-o">
-                                                <use xlink:href="#star-o"></use>
-                                            </svg>
-                                        </span>
-                                        <span class="star">
-                                            <svg class="icon star-o">
-                                                <use xlink:href="#star-o"></use>
-                                            </svg>
-                                        </span>
-                                        <span class="star">
-                                            <svg class="icon star-o">
-                                                <use xlink:href="#star-o"></use>
-                                            </svg>
-                                        </span>
-                                        <span class="star">
-                                            <svg class="icon star-o">
-                                                <use xlink:href="#star-o"></use>
-                                            </svg>
-                                        </span>
-                                        <span class="star">
-                                            <svg class="icon star-o">
-                                                <use xlink:href="#star-o"></use>
-                                            </svg>
-                                        </span>
-                                    </div>
-                                    <div class="filled-stars" style="width: 80%">
-                                        <span class="star">
-                                            <svg class="icon star text-primary">
-                                                <use xlink:href="#star"></use>
-                                            </svg>
-                                        </span>
-                                        <span class="star">
-                                            <svg class="icon star text-primary">
-                                                <use xlink:href="#star"></use>
-                                            </svg>
-                                        </span>
-                                        <span class="star">
-                                            <svg class="icon star text-primary">
-                                                <use xlink:href="#star"></use>
-                                            </svg>
-                                        </span>
-                                        <span class="star">
-                                            <svg class="icon star text-primary">
-                                                <use xlink:href="#star"></use>
-                                            </svg>
-                                        </span>
-                                        <span class="star">
-                                            <svg class="icon star text-primary">
-                                                <use xlink:href="#star"></use>
-                                            </svg>
-                                        </span>
-                                    </div>
-                                </div><span class="reviews ms-4 pt-3 fs-14px">2947 reviews</span>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-                <div class="mb-6">
-                    <div class="card card-product grid-2 bg-transparent border-0">
-                        <figure class="card-img-top position-relative mb-7 overflow-hidden">
-                            <a href="../shop/product-details-v1.html" class="hover-zoom-in d-block"
-                                title="Enriched Hand Wash">
-                                <img src="#" data-src="{{ asset('images/products/product-05-330x440.jpg') }}"
-                                    class="img-fluid lazy-image w-100" alt="Enriched Hand Wash" width="330" height="440">
-
-                            </a>
-
-                            <div class="position-absolute product-flash z-index-2 "><span
-                                    class="badge badge-product-flash on-sale bg-primary">-26%</span></div>
-                            <div class="position-absolute d-flex z-index-2 product-actions  vertical"><a
-                                    class="text-body-emphasis bg-body bg-dark-hover text-light-hover rounded-circle square product-action shadow-sm quick-view sm"
-                                    href="#" data-bs-toggle="tooltip" data-bs-placement="left"
-                                    data-bs-title="Quick View">
-                                    <span data-bs-toggle="modal" data-bs-target="#quickViewModal"
-                                        class="d-flex align-items-center justify-content-center">
-                                        <svg class="icon icon-eye-light">
-                                            <use xlink:href="#icon-eye-light"></use>
-                                        </svg>
-                                    </span>
-                                </a>
-                                <a class="text-body-emphasis bg-body bg-dark-hover text-light-hover rounded-circle square product-action shadow-sm wishlist sm"
-                                    href="#" data-bs-toggle="tooltip" data-bs-placement="left"
-                                    data-bs-title="Add To Wishlist">
-                                    <svg class="icon icon-star-light">
-                                        <use xlink:href="#icon-star-light"></use>
-                                    </svg>
-                                </a>
-                                <a class="text-body-emphasis bg-body bg-dark-hover text-light-hover rounded-circle square product-action shadow-sm compare sm"
-                                    href="../shop/compare.html" data-bs-toggle="tooltip" data-bs-placement="left"
-                                    data-bs-title="Compare">
-                                    <svg class="icon icon-arrows-left-right-light">
-                                        <use xlink:href="#icon-arrows-left-right-light"></use>
-                                    </svg>
-                                </a>
-                            </div><a href="#"
-                                class="btn btn-add-to-cart btn-dark btn-hover-bg-primary btn-hover-border-primary position-absolute z-index-2 text-nowrap btn-sm px-6 py-3 lh-2">Add
-                                To Cart</a>
-                        </figure>
-                        <div class="card-body text-center p-0">
-
-
-
-
-
-
-                            <span
-                                class="d-flex align-items-center price text-body-emphasis fw-bold justify-content-center mb-3 fs-6">
-                                <del class=" text-body fw-500 me-4 fs-13px">$39.00</del>
-                                <ins class="text-decoration-none">$29.00</ins></span>
-
-                            <h4
-                                class="product-title card-title text-primary-hover text-body-emphasis fs-15px fw-500 mb-3">
-                                <a class="text-decoration-none text-reset"
-                                    href="../shop/product-details-v1.html">Enriched Hand Wash</a>
-                            </h4>
-                            <div class="d-flex align-items-center fs-12px justify-content-center">
-                                <div class="rating">
-                                    <div class="empty-stars">
-                                        <span class="star">
-                                            <svg class="icon star-o">
-                                                <use xlink:href="#star-o"></use>
-                                            </svg>
-                                        </span>
-                                        <span class="star">
-                                            <svg class="icon star-o">
-                                                <use xlink:href="#star-o"></use>
-                                            </svg>
-                                        </span>
-                                        <span class="star">
-                                            <svg class="icon star-o">
-                                                <use xlink:href="#star-o"></use>
-                                            </svg>
-                                        </span>
-                                        <span class="star">
-                                            <svg class="icon star-o">
-                                                <use xlink:href="#star-o"></use>
-                                            </svg>
-                                        </span>
-                                        <span class="star">
-                                            <svg class="icon star-o">
-                                                <use xlink:href="#star-o"></use>
-                                            </svg>
-                                        </span>
-                                    </div>
-                                    <div class="filled-stars" style="width: 80%">
-                                        <span class="star">
-                                            <svg class="icon star text-primary">
-                                                <use xlink:href="#star"></use>
-                                            </svg>
-                                        </span>
-                                        <span class="star">
-                                            <svg class="icon star text-primary">
-                                                <use xlink:href="#star"></use>
-                                            </svg>
-                                        </span>
-                                        <span class="star">
-                                            <svg class="icon star text-primary">
-                                                <use xlink:href="#star"></use>
-                                            </svg>
-                                        </span>
-                                        <span class="star">
-                                            <svg class="icon star text-primary">
-                                                <use xlink:href="#star"></use>
-                                            </svg>
-                                        </span>
-                                        <span class="star">
-                                            <svg class="icon star text-primary">
-                                                <use xlink:href="#star"></use>
-                                            </svg>
-                                        </span>
-                                    </div>
-                                </div><span class="reviews ms-4 pt-3 fs-14px">2947 reviews</span>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-                <div class="mb-6">
-                    <div class="card card-product grid-2 bg-transparent border-0">
-                        <figure class="card-img-top position-relative mb-7 overflow-hidden">
-                            <a href="../shop/product-details-v1.html" class="hover-zoom-in d-block"
-                                title="Enriched Duo">
-                                <img src="#" data-src="{{ asset('images/products/product-06-330x440.jpg') }}"
-                                    class="img-fluid lazy-image w-100" alt="Enriched Duo" width="330" height="440">
-
-                            </a>
-
-                            <div class="position-absolute d-flex z-index-2 product-actions  vertical"><a
-                                    class="text-body-emphasis bg-body bg-dark-hover text-light-hover rounded-circle square product-action shadow-sm quick-view sm"
-                                    href="#" data-bs-toggle="tooltip" data-bs-placement="left"
-                                    data-bs-title="Quick View">
-                                    <span data-bs-toggle="modal" data-bs-target="#quickViewModal"
-                                        class="d-flex align-items-center justify-content-center">
-                                        <svg class="icon icon-eye-light">
-                                            <use xlink:href="#icon-eye-light"></use>
-                                        </svg>
-                                    </span>
-                                </a>
-                                <a class="text-body-emphasis bg-body bg-dark-hover text-light-hover rounded-circle square product-action shadow-sm wishlist sm"
-                                    href="#" data-bs-toggle="tooltip" data-bs-placement="left"
-                                    data-bs-title="Add To Wishlist">
-                                    <svg class="icon icon-star-light">
-                                        <use xlink:href="#icon-star-light"></use>
-                                    </svg>
-                                </a>
-                                <a class="text-body-emphasis bg-body bg-dark-hover text-light-hover rounded-circle square product-action shadow-sm compare sm"
-                                    href="../shop/compare.html" data-bs-toggle="tooltip" data-bs-placement="left"
-                                    data-bs-title="Compare">
-                                    <svg class="icon icon-arrows-left-right-light">
-                                        <use xlink:href="#icon-arrows-left-right-light"></use>
-                                    </svg>
-                                </a>
-                            </div><a href="#"
-                                class="btn btn-add-to-cart btn-dark btn-hover-bg-primary btn-hover-border-primary position-absolute z-index-2 text-nowrap btn-sm px-6 py-3 lh-2">Add
-                                To Cart</a>
-                        </figure>
-                        <div class="card-body text-center p-0">
-
-
-
-
-
-
-                            <span
-                                class="d-flex align-items-center price text-body-emphasis fw-bold justify-content-center mb-3 fs-6">$29.00</span>
-
-                            <h4
-                                class="product-title card-title text-primary-hover text-body-emphasis fs-15px fw-500 mb-3">
-                                <a class="text-decoration-none text-reset"
-                                    href="../shop/product-details-v1.html">Enriched Duo</a>
-                            </h4>
-                            <div class="d-flex align-items-center fs-12px justify-content-center">
-                                <div class="rating">
-                                    <div class="empty-stars">
-                                        <span class="star">
-                                            <svg class="icon star-o">
-                                                <use xlink:href="#star-o"></use>
-                                            </svg>
-                                        </span>
-                                        <span class="star">
-                                            <svg class="icon star-o">
-                                                <use xlink:href="#star-o"></use>
-                                            </svg>
-                                        </span>
-                                        <span class="star">
-                                            <svg class="icon star-o">
-                                                <use xlink:href="#star-o"></use>
-                                            </svg>
-                                        </span>
-                                        <span class="star">
-                                            <svg class="icon star-o">
-                                                <use xlink:href="#star-o"></use>
-                                            </svg>
-                                        </span>
-                                        <span class="star">
-                                            <svg class="icon star-o">
-                                                <use xlink:href="#star-o"></use>
-                                            </svg>
-                                        </span>
-                                    </div>
-                                    <div class="filled-stars" style="width: 100%">
-                                        <span class="star">
-                                            <svg class="icon star text-primary">
-                                                <use xlink:href="#star"></use>
-                                            </svg>
-                                        </span>
-                                        <span class="star">
-                                            <svg class="icon star text-primary">
-                                                <use xlink:href="#star"></use>
-                                            </svg>
-                                        </span>
-                                        <span class="star">
-                                            <svg class="icon star text-primary">
-                                                <use xlink:href="#star"></use>
-                                            </svg>
-                                        </span>
-                                        <span class="star">
-                                            <svg class="icon star text-primary">
-                                                <use xlink:href="#star"></use>
-                                            </svg>
-                                        </span>
-                                        <span class="star">
-                                            <svg class="icon star text-primary">
-                                                <use xlink:href="#star"></use>
-                                            </svg>
-                                        </span>
-                                    </div>
-                                </div><span class="reviews ms-4 pt-3 fs-14px">2947 reviews</span>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-                <div class="mb-6">
-                    <div class="card card-product grid-2 bg-transparent border-0">
-                        <figure class="card-img-top position-relative mb-7 overflow-hidden">
-                            <a href="../shop/product-details-v1.html" class="hover-zoom-in d-block"
-                                title="Shield Spray">
-                                <img src="#" data-src="{{ asset('images/products/product-07-330x440.jpg') }}"
-                                    class="img-fluid lazy-image w-100" alt="Shield Spray" width="330" height="440">
-
-                            </a>
-
-                            <div class="position-absolute d-flex z-index-2 product-actions  vertical"><a
-                                    class="text-body-emphasis bg-body bg-dark-hover text-light-hover rounded-circle square product-action shadow-sm quick-view sm"
-                                    href="#" data-bs-toggle="tooltip" data-bs-placement="left"
-                                    data-bs-title="Quick View">
-                                    <span data-bs-toggle="modal" data-bs-target="#quickViewModal"
-                                        class="d-flex align-items-center justify-content-center">
-                                        <svg class="icon icon-eye-light">
-                                            <use xlink:href="#icon-eye-light"></use>
-                                        </svg>
-                                    </span>
-                                </a>
-                                <a class="text-body-emphasis bg-body bg-dark-hover text-light-hover rounded-circle square product-action shadow-sm wishlist sm"
-                                    href="#" data-bs-toggle="tooltip" data-bs-placement="left"
-                                    data-bs-title="Add To Wishlist">
-                                    <svg class="icon icon-star-light">
-                                        <use xlink:href="#icon-star-light"></use>
-                                    </svg>
-                                </a>
-                                <a class="text-body-emphasis bg-body bg-dark-hover text-light-hover rounded-circle square product-action shadow-sm compare sm"
-                                    href="../shop/compare.html" data-bs-toggle="tooltip" data-bs-placement="left"
-                                    data-bs-title="Compare">
-                                    <svg class="icon icon-arrows-left-right-light">
-                                        <use xlink:href="#icon-arrows-left-right-light"></use>
-                                    </svg>
-                                </a>
-                            </div><a href="#"
-                                class="btn btn-add-to-cart btn-dark btn-hover-bg-primary btn-hover-border-primary position-absolute z-index-2 text-nowrap btn-sm px-6 py-3 lh-2">Add
-                                To Cart</a>
-                        </figure>
-                        <div class="card-body text-center p-0">
-
-
-
-
-
-
-                            <span
-                                class="d-flex align-items-center price text-body-emphasis fw-bold justify-content-center mb-3 fs-6">$29.00</span>
-
-                            <h4
-                                class="product-title card-title text-primary-hover text-body-emphasis fs-15px fw-500 mb-3">
-                                <a class="text-decoration-none text-reset" href="../shop/product-details-v1.html">Shield
-                                    Spray</a>
-                            </h4>
-                            <div class="d-flex align-items-center fs-12px justify-content-center">
-                                <div class="rating">
-                                    <div class="empty-stars">
-                                        <span class="star">
-                                            <svg class="icon star-o">
-                                                <use xlink:href="#star-o"></use>
-                                            </svg>
-                                        </span>
-                                        <span class="star">
-                                            <svg class="icon star-o">
-                                                <use xlink:href="#star-o"></use>
-                                            </svg>
-                                        </span>
-                                        <span class="star">
-                                            <svg class="icon star-o">
-                                                <use xlink:href="#star-o"></use>
-                                            </svg>
-                                        </span>
-                                        <span class="star">
-                                            <svg class="icon star-o">
-                                                <use xlink:href="#star-o"></use>
-                                            </svg>
-                                        </span>
-                                        <span class="star">
-                                            <svg class="icon star-o">
-                                                <use xlink:href="#star-o"></use>
-                                            </svg>
-                                        </span>
-                                    </div>
-                                    <div class="filled-stars" style="width: 100%">
-                                        <span class="star">
-                                            <svg class="icon star text-primary">
-                                                <use xlink:href="#star"></use>
-                                            </svg>
-                                        </span>
-                                        <span class="star">
-                                            <svg class="icon star text-primary">
-                                                <use xlink:href="#star"></use>
-                                            </svg>
-                                        </span>
-                                        <span class="star">
-                                            <svg class="icon star text-primary">
-                                                <use xlink:href="#star"></use>
-                                            </svg>
-                                        </span>
-                                        <span class="star">
-                                            <svg class="icon star text-primary">
-                                                <use xlink:href="#star"></use>
-                                            </svg>
-                                        </span>
-                                        <span class="star">
-                                            <svg class="icon star text-primary">
-                                                <use xlink:href="#star"></use>
-                                            </svg>
-                                        </span>
-                                    </div>
-                                </div><span class="reviews ms-4 pt-3 fs-14px">2947 reviews</span>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-                <div class="mb-6">
-                    <div class="card card-product grid-2 bg-transparent border-0">
-                        <figure class="card-img-top position-relative mb-7 overflow-hidden">
-                            <a href="../shop/product-details-v1.html" class="hover-zoom-in d-block"
-                                title="Shield Spray">
-                                <img src="#" data-src="{{ asset('images/products/product-08-330x440.jpg') }}"
-                                    class="img-fluid lazy-image w-100" alt="Shield Spray" width="330" height="440">
-
-                            </a>
-
-                            <div class="position-absolute product-flash z-index-2 "><span
-                                    class="badge badge-product-flash on-sale bg-primary">-36%</span></div>
-                            <div class="position-absolute d-flex z-index-2 product-actions  vertical"><a
-                                    class="text-body-emphasis bg-body bg-dark-hover text-light-hover rounded-circle square product-action shadow-sm quick-view sm"
-                                    href="#" data-bs-toggle="tooltip" data-bs-placement="left"
-                                    data-bs-title="Quick View">
-                                    <span data-bs-toggle="modal" data-bs-target="#quickViewModal"
-                                        class="d-flex align-items-center justify-content-center">
-                                        <svg class="icon icon-eye-light">
-                                            <use xlink:href="#icon-eye-light"></use>
-                                        </svg>
-                                    </span>
-                                </a>
-                                <a class="text-body-emphasis bg-body bg-dark-hover text-light-hover rounded-circle square product-action shadow-sm wishlist sm"
-                                    href="#" data-bs-toggle="tooltip" data-bs-placement="left"
-                                    data-bs-title="Add To Wishlist">
-                                    <svg class="icon icon-star-light">
-                                        <use xlink:href="#icon-star-light"></use>
-                                    </svg>
-                                </a>
-                                <a class="text-body-emphasis bg-body bg-dark-hover text-light-hover rounded-circle square product-action shadow-sm compare sm"
-                                    href="../shop/compare.html" data-bs-toggle="tooltip" data-bs-placement="left"
-                                    data-bs-title="Compare">
-                                    <svg class="icon icon-arrows-left-right-light">
-                                        <use xlink:href="#icon-arrows-left-right-light"></use>
-                                    </svg>
-                                </a>
-                            </div><a href="#"
-                                class="btn btn-add-to-cart btn-dark btn-hover-bg-primary btn-hover-border-primary position-absolute z-index-2 text-nowrap btn-sm px-6 py-3 lh-2">Add
-                                To Cart</a>
-                        </figure>
-                        <div class="card-body text-center p-0">
-
-
-
-
-
-
-                            <span
-                                class="d-flex align-items-center price text-body-emphasis fw-bold justify-content-center mb-3 fs-6">
-                                <del class=" text-body fw-500 me-4 fs-13px">$39.00</del>
-                                <ins class="text-decoration-none">$25.00</ins></span>
-
-                            <h4
-                                class="product-title card-title text-primary-hover text-body-emphasis fs-15px fw-500 mb-3">
-                                <a class="text-decoration-none text-reset" href="../shop/product-details-v1.html">Shield
-                                    Spray</a>
-                            </h4>
-                            <div class="d-flex align-items-center fs-12px justify-content-center">
-                                <div class="rating">
-                                    <div class="empty-stars">
-                                        <span class="star">
-                                            <svg class="icon star-o">
-                                                <use xlink:href="#star-o"></use>
-                                            </svg>
-                                        </span>
-                                        <span class="star">
-                                            <svg class="icon star-o">
-                                                <use xlink:href="#star-o"></use>
-                                            </svg>
-                                        </span>
-                                        <span class="star">
-                                            <svg class="icon star-o">
-                                                <use xlink:href="#star-o"></use>
-                                            </svg>
-                                        </span>
-                                        <span class="star">
-                                            <svg class="icon star-o">
-                                                <use xlink:href="#star-o"></use>
-                                            </svg>
-                                        </span>
-                                        <span class="star">
-                                            <svg class="icon star-o">
-                                                <use xlink:href="#star-o"></use>
-                                            </svg>
-                                        </span>
-                                    </div>
-                                    <div class="filled-stars" style="width: 90%">
-                                        <span class="star">
-                                            <svg class="icon star text-primary">
-                                                <use xlink:href="#star"></use>
-                                            </svg>
-                                        </span>
-                                        <span class="star">
-                                            <svg class="icon star text-primary">
-                                                <use xlink:href="#star"></use>
-                                            </svg>
-                                        </span>
-                                        <span class="star">
-                                            <svg class="icon star text-primary">
-                                                <use xlink:href="#star"></use>
-                                            </svg>
-                                        </span>
-                                        <span class="star">
-                                            <svg class="icon star text-primary">
-                                                <use xlink:href="#star"></use>
-                                            </svg>
-                                        </span>
-                                        <span class="star">
-                                            <svg class="icon star text-primary">
-                                                <use xlink:href="#star"></use>
-                                            </svg>
-                                        </span>
-                                    </div>
-                                </div><span class="reviews ms-4 pt-3 fs-14px">2947 reviews</span>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
+                @endforeach          
             </div>
         </section>
         <div class="border-top w-100"></div>
         <section class="container pt-15 pb-15 pt-lg-17 pb-lg-20">
-            <div class="text-center">
-                <h3 class="mb-12">Customer Reviews</h3>
-            </div>
+            <!-- <div class="text-center">
+                <h3 class="mb-12">Avaliações de clientes</h3>
+            </div> -->
 
-            <div class="mb-11">
+            <!-- <div class="mb-11">
                 <div class=" d-md-flex justify-content-between align-items-center">
                     <div class=" d-flex align-items-center">
                         <h4 class="fs-1 me-9 mb-0">4.86</h4>
@@ -2453,7 +1626,7 @@
                     </div>
                 </div>
 
-            </div>
+            </div> -->
             <div class="collapse mb-14" id="customer-review">
                 <form class="product-review-form">
                     <div class="row">
@@ -2521,10 +1694,10 @@
 
             <div class="product-filter-review">
 
-                <h3 class="fs-5">Filter Review</h3>
+                <!-- <h3 class="fs-5">Filter Review</h3> -->
 
                 <ul class="list-inline mb-8 mx-n3 filter-review">
-                    <li class="list-inline-item spacing">
+                    <!-- <li class="list-inline-item spacing">
                         <a href="#"
                             class="btn btn-outline btn-hove-border-body-emphasis-color btn-border-1 py-4 px-6 fw-500">
                             Foundation
@@ -2566,12 +1739,12 @@
                             Face
                         </a>
                     </li>
-                    <li class="list-inline-item spacing">
+                     <li class="list-inline-item spacing">
                         <a href="#"
                             class="btn btn-outline btn-hove-border-body-emphasis-color btn-border-1 py-4 px-6 fw-500">
-                            Ingredients
+                            Ingredientes
                         </a>
-                    </li>
+                    </li> 
                     <li class="list-inline-item spacing">
                         <a href="#"
                             class="btn btn-outline btn-hove-border-body-emphasis-color btn-border-1 py-4 px-6 fw-500">
@@ -2596,7 +1769,7 @@
                             aria-controls="collapseExample">
                             ...
                         </a>
-                    </li>
+                    </li> -->
                     <li class="collapse m-3 list-inline-item collapse" id="collapseExample">
                         <ul class="list-inline list-inline-item">
                             <li class="list-inline-item">
@@ -2635,7 +1808,7 @@
 
 
                 </ul>
-                <div class="row gy-15px align-items-center spacing-02">
+                <!-- <div class="row gy-15px align-items-center spacing-02">
                     <div class="col-auto search-review w-100 px-4">
                         <div class="form-group product-review-form">
                             <div class="input-group-prepend position-absolute z-index-10">
@@ -2676,11 +1849,11 @@
                             <option>Oldest</option>
                         </select>
                     </div>
-                </div>
+                </div> -->
             </div>
 
 
-            <div class=" mt-12">
+            <!-- <div class=" mt-12">
                 <h3 class="fs-5">2947 Reviews</h3>
 
                 <div class="border-bottom pb-7 pt-10">
@@ -3191,10 +2364,10 @@
                     </div>
                 </div>
 
-            </div>
+            </div> -->
 
 
-            <nav class="d-flex mt-13 pt-3 justify-content-center" aria-label="pagination">
+            <!--  <nav class="d-flex mt-13 pt-3 justify-content-center" aria-label="pagination">
                 <ul class="pagination m-0">
                     <li class="page-item">
                         <a class="page-link rounded-circle d-flex align-items-center justify-content-center" href="#"
@@ -3218,13 +2391,13 @@
                         </a>
                     </li>
                 </ul>
-            </nav>
+            </nav> -->
         </section>
     </main>
     <footer class="pt-15 pt-lg-20 pb-16 footer bg-section-4">
         <div class="container container-xxl pt-4">
             <div class="row">
-                <div class="col-lg col-md-4 col-12 mb-11 mb-lg-0 fs-14px">
+                <!-- <div class="col-lg col-md-4 col-12 mb-11 mb-lg-0 fs-14px">
                     <h3 class="fs-5 mb-6 ">Company</h3>
 
 
@@ -3288,26 +2461,27 @@
 
                     </ul>
 
-                </div>
+                </div> -->
                 <div class="col-lg-5 col-12 mb-11 mb-lg-0">
-                    <h3 class="mb-4 ">Good emails.</h3>
-                    <p class="lh-2 ">Enter your email below to be the first to know about new collections and product
-                        launches.</p>
-                    <form class=" pt-8">
+                    <h3 class="mb-4">Deseja receber novidades por e-mail.</h3>
+                    <p class="lh-2">Digite seu e-mail abaixo para ser o primeiro a saber sobre novas coleções e
+                        lançamentos de produtos.</p>
+                    <form class="pt-8">
                         <div class="input-group position-relative">
                             <input type="email" class="form-control bg-body rounded-left"
-                                placeholder="Enter your email address">
+                                placeholder="Digite seu endereço de e-mail">
                             <button type="submit"
                                 class="btn btn-dark btn-hover-bg-primary btn-hover-border-primary ms-0">
-                                Subscribe
+                                Inscrever-se
                             </button>
                         </div>
                     </form>
                 </div>
+
             </div>
             <div class="row align-items-center mt-0 mt-lg-20 pt-lg-4">
                 <div class="col-sm-12 col-md-6 col-lg-4 d-flex align-items-center order-2 order-lg-1 fs-6 mt-8 mt-lg-0">
-                    <p class="mb-0">© Glowing 2023</p>
+                    <p class="mb-0">© Elegance Cintra {{ date('Y') }}</p>
                     <ul class="list-inline fs-18px ms-6 mb-0">
                         <li class="list-inline-item me-8">
                             <a href="#"><i class="fab fa-twitter"></i></a>
@@ -3328,10 +2502,10 @@
 
 
                         <img class="lazy-image img-fluid light-mode-img" src="#"
-                            data-src="{{ asset('images/others/logo.png') }}" width="179" height="26"
+                            data-src="{{ asset('images/others/logo-oficial-02.png') }}" width="179" height="76"
                             alt="Glowing - Bootstrap 5 HTML Templates">
                         <img class="lazy-image dark-mode-img img-fluid" src="#"
-                            data-src="{{ asset('images/others/logo-white.png') }}" width="179" height="26"
+                            data-src="{{ asset('images/others/logo-oficial-02.png') }}" width="179" height="76"
                             alt="Glowing - Bootstrap 5 HTML Templates">
 
                     </a>
@@ -3342,6 +2516,8 @@
 
                 </div>
             </div>
+
+
 
         </div>
     </footer>
@@ -4273,7 +3449,7 @@
             <nav class="navbar navbar-expand-xl px-0 py-6 py-xl-12 row align-items-start">
                 <div class="col-xl-3 d-flex justify-content-center justify-content-xl-start">
                     <a href="../" class="navbar-brand py-4 d-lg-inline-block">
-                        <img src="{{ asset('images/others/logo.png') }}" height="26"
+                        <img src="{{ asset('images/others/logo-oficial-02.png') }}" height="76"
                             alt="Glowingg - Bootstrap 5 HTML Templates">
 
                     </a>
@@ -4338,7 +3514,7 @@
     </div>
     <div id="shoppingCart" data-bs-scroll="false" class="offcanvas offcanvas-end">
         <div class="offcanvas-header fs-4">
-            <h4 class="offcanvas-title fw-semibold">Shopping Bag</h4>
+            <h4 class="offcanvas-title fw-semibold">Carrinho de Compras</h4>
             <button type="button" class="btn-close btn-close-bg-none" data-bs-dismiss="offcanvas" aria-label="Close">
                 <i class="far fa-times"></i>
             </button>
@@ -4348,11 +3524,14 @@
                 <table class="table table-borderless">
                     <thead>
                         <tr class="fw-500">
-                            <td colspan="3" class="border-bottom pb-6"><i
+                            <td colspan="3" class="border-bottom pb-6">
+                                <i
                                     class="far fa-check fs-12px border me-4 px-2 py-1 text-body-emphasis border-dark rounded-circle"></i>
-                                Your cart is saved for the next <span class="text-body-emphasis">4m34s</span></td>
+                                Seu carrinho está salvo e os produtos permanecerão nele até que você os remova.
+                            </td>
                         </tr>
                     </thead>
+
                     <tbody>
                         <tr class="position-relative">
                             <td class="align-middle text-center">
@@ -4465,12 +3644,12 @@
         </div>
         <div class="offcanvas-footer flex-wrap">
             <div class="d-flex align-items-center justify-content-between w-100 mb-5">
-                <span class="text-body-emphasis">Total price:</span>
-                <span class="cart-total fw-bold text-body-emphasis">$106.00</span>
+                <span class="text-body-emphasis">Preço total:</span>
+                <span class="cart-total fw-bold text-body-emphasis">R$ ajustar valor dinamico</span>
             </div>
-            <a href="../shop/checkout.html" class="btn btn-dark w-100 mb-7" title="Check Out">Check Out</a>
-            <a href="../shop/shopping-cart.html" class="btn btn-outline-dark w-100" title="View shopping cart">View
-                shopping cart</a>
+            <a href="../shop/checkout.html" class="btn btn-dark w-100 mb-7" title="Check Out">Finalizar Compra</a>
+            <!-- <a href="../shop/shopping-cart.html" class="btn btn-outline-dark w-100" title="View shopping cart">View
+                shopping cart</a> -->
         </div>
     </div>
 
@@ -4716,7 +3895,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <a href="#" class="border-start ps-6 text-body">Read 2947 reviews</a>
+                                <!--  <a href="#" class="border-start ps-6 text-body">Leia 2947 comentários</a> -->
                             </div>
                             <p class="fs-15px">Niacinamide and Vitamin C are two anti-aging superstars but not usually
                                 formulated together because of their different pH levels.</p>
@@ -4845,9 +4024,8 @@
 
                     <li class="nav-item transition-all-xl-1 py-0 dropdown dropdown-fullwidth">
                         <a class="nav-link d-flex justify-content-between position-relative text-uppercase fw-semibold ls-1 fs-15px dropdown-toggle"
-                            href="../index.html" data-bs-toggle="dropdown" id="menu-item-home-canvas"
-                            aria-haspopup="true" aria-expanded="false">Home</a>
-                        <div class="dropdown-menu mega-menu start-0 py-6 " aria-labelledby="menu-item-home-canvas"
+                            href="/" id="menu-item-home-canvas" aria-haspopup="true" aria-expanded="false">Início</a>
+                        <!-- <div class="dropdown-menu mega-menu start-0 py-6 " aria-labelledby="menu-item-home-canvas"
                             style="width:320px">
                             <div class="megamenu-home container py-8 px-12">
                                 <div class="row">
@@ -4954,187 +4132,192 @@
                                 </div>
                             </div>
 
-                        </div>
+                        </div> -->
                     </li>
+                    <!--                     Itens menu responsivo-->
                     <li class="nav-item transition-all-xl-1 py-0 dropdown dropdown-fullwidth position-static">
                         <a class="nav-link d-flex justify-content-between position-relative text-uppercase fw-semibold ls-1 fs-15px dropdown-toggle"
                             href="../store.html" data-bs-toggle="dropdown" id="menu-item-shop-canvas"
-                            aria-haspopup="true" aria-expanded="false">Shop</a>
+                            aria-haspopup="true" aria-expanded="false">Loja</a>
                         <div class="dropdown-menu mega-menu start-0 py-6  w-100"
                             aria-labelledby="menu-item-shop-canvas">
                             <div class="megamenu-shop container-wide py-8 px-12">
                                 <div class="row">
                                     <div class="col">
-                                        <h6 class="fs-18px">Shop Pages</h6>
+                                        <h6 class="fs-18px">Cuidados com a pele</h6>
                                         <ul class="list-unstyled mb-0">
                                             <li>
-                                                <a href="../shop/shop-layout-v1.html"
-                                                    class="border-hover text-decoration-none py-3 d-block"><span
-                                                        class="border-hover-target">Shop Layout <sup>v1</sup></span></a>
+                                                <a href="{{ route('buscarPorCategoria', ['categoria' => 'hidratantes', 'scroll_to' => 'listagemprod']) }}"
+                                                    class="border-hover text-decoration-none py-3 d-block">
+                                                    <span class="border-hover-target">Hidratantes</span>
+                                                </a>
                                             </li>
                                             <li>
-                                                <a href="../shop/shop-layout-v2.html"
-                                                    class="border-hover text-decoration-none py-3 d-block"><span
-                                                        class="border-hover-target">Shop Layout <sup>v2</sup></span></a>
+                                                <a href="{{ route('buscarPorCategoria', ['categoria' => 'Protetores solares', 'scroll_to' => 'listagemprod']) }}"
+                                                    class="border-hover text-decoration-none py-3 d-block">
+                                                    <span class="border-hover-target">Protetores solares</span>
+                                                </a>
                                             </li>
                                             <li>
-                                                <a href="../shop/shop-layout-v3.html"
-                                                    class="border-hover text-decoration-none py-3 d-block"><span
-                                                        class="border-hover-target">Shop Layout <sup>v3</sup></span></a>
+                                                <a href="{{ route('buscarPorCategoria', ['categoria' => 'Limpeza facial', 'scroll_to' => 'listagemprod']) }}"
+                                                    class="border-hover text-decoration-none py-3 d-block">
+                                                    <span class="border-hover-target">Limpeza facial</span>
+                                                </a>
                                             </li>
                                             <li>
-                                                <a href="../shop/shop-layout-v4.html"
-                                                    class="border-hover text-decoration-none py-3 d-block"><span
-                                                        class="border-hover-target">Shop Layout <sup>v4</sup></span></a>
+                                                <a href="{{ route('buscarPorCategoria', ['categoria' => 'Esfoliantes', 'scroll_to' => 'listagemprod']) }}"
+                                                    class="border-hover text-decoration-none py-3 d-block">
+                                                    <span class="border-hover-target">Esfoliantes</span>
+                                                </a>
                                             </li>
                                             <li>
-                                                <a href="../shop/shop-layout-v5.html"
-                                                    class="border-hover text-decoration-none py-3 d-block"><span
-                                                        class="border-hover-target">Shop Layout <sup>v5</sup></span></a>
+                                                <a href="{{ route('buscarPorCategoria', ['categoria' => 'Tônicos', 'scroll_to' => 'listagemprod']) }}"
+                                                    class="border-hover text-decoration-none py-3 d-block">
+                                                    <span class="border-hover-target">Tônicos</span>
+                                                </a>
                                             </li>
                                         </ul>
                                     </div>
                                     <div class="col">
-                                        <h6 class="fs-18px">Product Pages</h6>
+                                        <h6 class="fs-18px">Maquiagem</h6>
                                         <ul class="list-unstyled mb-0">
                                             <li>
-                                                <a href="../shop/product-details-v1.html"
-                                                    class="border-hover text-decoration-none py-3 d-block"><span
-                                                        class="border-hover-target">Product Detail
-                                                        <sup>v1</sup></span></a>
+                                                <a href="{{ route('buscarPorCategoria', ['categoria' => 'Corretivos', 'scroll_to' => 'listagemprod']) }}"
+                                                    class="border-hover text-decoration-none py-3 d-block">
+                                                    <span class="border-hover-target">Corretivos</span>
+                                                </a>
                                             </li>
                                             <li>
-                                                <a href="../shop/product-details-v2.html"
-                                                    class="border-hover text-decoration-none py-3 d-block"><span
-                                                        class="border-hover-target">Product Detail
-                                                        <sup>v2</sup></span></a>
+                                                <a href="{{ route('buscarPorCategoria', ['categoria' => 'Pó facial', 'scroll_to' => 'listagemprod']) }}"
+                                                    class="border-hover text-decoration-none py-3 d-block">
+                                                    <span class="border-hover-target">Pó facial</span>
+                                                </a>
                                             </li>
                                             <li>
-                                                <a href="../shop/product-details-v3.html"
-                                                    class="border-hover text-decoration-none py-3 d-block"><span
-                                                        class="border-hover-target">Product Detail
-                                                        <sup>v3</sup></span></a>
+                                                <a href="{{ route('buscarPorCategoria', ['categoria' => 'Sombras', 'scroll_to' => 'listagemprod']) }}"
+                                                    class="border-hover text-decoration-none py-3 d-block">
+                                                    <span class="border-hover-target">Sombras</span>
+                                                </a>
                                             </li>
                                             <li>
-                                                <a href="../shop/product-details-v4.html"
-                                                    class="border-hover text-decoration-none py-3 d-block"><span
-                                                        class="border-hover-target">Product Detail
-                                                        <sup>v4</sup></span></a>
+                                                <a href="{{ route('buscarPorCategoria', ['categoria' => 'Máscara para cílios (rímel)', 'scroll_to' => 'listagemprod']) }}"
+                                                    class="border-hover text-decoration-none py-3 d-block">
+                                                    <span class="border-hover-target">Máscara para cílios (rímel)</span>
+                                                </a>
                                             </li>
                                             <li>
-                                                <a href="../shop/product-details-v5.html"
-                                                    class="border-hover text-decoration-none py-3 d-block"><span
-                                                        class="border-hover-target">Product Detail
-                                                        <sup>v5</sup></span></a>
+                                                <a href="{{ route('buscarPorCategoria', ['categoria' => 'Delineadores', 'scroll_to' => 'listagemprod']) }}"
+                                                    class="border-hover text-decoration-none py-3 d-block">
+                                                    <span class="border-hover-target">Delineadores</span>
+                                                </a>
                                             </li>
                                             <li>
-                                                <a href="../shop/product-details-v6.html"
-                                                    class="border-hover text-decoration-none py-3 d-block"><span
-                                                        class="border-hover-target">Product Detail
-                                                        <sup>v6</sup></span></a>
+                                                <a href="{{ route('buscarPorCategoria', ['categoria' => 'Batons e gloss', 'scroll_to' => 'listagemprod']) }}"
+                                                    class="border-hover text-decoration-none py-3 d-block">
+                                                    <span class="border-hover-target">Batons e gloss</span>
+                                                </a>
                                             </li>
                                             <li>
-                                                <a href="../shop/product-details-v7.html"
-                                                    class="border-hover text-decoration-none py-3 d-block"><span
-                                                        class="border-hover-target">Product Detail
-                                                        <sup>v7</sup></span></a>
+                                                <a href="{{ route('buscarPorCategoria', ['categoria' => 'Blush e bronzer', 'scroll_to' => 'listagemprod']) }}"
+                                                    class="border-hover text-decoration-none py-3 d-block">
+                                                    <span class="border-hover-target">Blush e bronzer</span>
+                                                </a>
                                             </li>
                                             <li>
-                                                <a href="../shop/product-details-v8.html"
-                                                    class="border-hover text-decoration-none py-3 d-block"><span
-                                                        class="border-hover-target">Product Detail
-                                                        <sup>v8</sup></span></a>
+                                                <a href="{{ route('buscarPorCategoria', ['categoria' => 'Iluminadores', 'scroll_to' => 'listagemprod']) }}"
+                                                    class="border-hover text-decoration-none py-3 d-block">
+                                                    <span class="border-hover-target">Iluminadores</span>
+                                                </a>
                                             </li>
                                         </ul>
                                     </div>
                                     <div class="col">
-                                        <h6 class="fs-18px">Product Types</h6>
+                                        <h6 class="fs-18px">Cabelos</h6>
                                         <ul class="list-unstyled mb-0">
                                             <li>
-                                                <a href="../shop/product-simple.html"
-                                                    class="border-hover text-decoration-none py-3 d-block"><span
-                                                        class="border-hover-target">Product Simple</span></a>
+                                                <a href="{{ route('buscarPorCategoria', ['categoria' => 'Shampoos', 'scroll_to' => 'listagemprod']) }}"
+                                                    class="border-hover text-decoration-none py-3 d-block">
+                                                    <span class="border-hover-target">Shampoos</span>
+                                                </a>
                                             </li>
                                             <li>
-                                                <a href="../shop/product-variable.html"
-                                                    class="border-hover text-decoration-none py-3 d-block"><span
-                                                        class="border-hover-target">Product Variable</span></a>
+                                                <a href="{{ route('buscarPorCategoria', ['categoria' => 'Óleos capilares', 'scroll_to' => 'listagemprod']) }}"
+                                                    class="border-hover text-decoration-none py-3 d-block">
+                                                    <span class="border-hover-target">Óleos capilares</span>
+                                                </a>
                                             </li>
                                             <li>
-                                                <a href="../shop/product-time-limit.html"
-                                                    class="border-hover text-decoration-none py-3 d-block"><span
-                                                        class="border-hover-target">Product Time Limit</span></a>
+                                                <a href="{{ route('buscarPorCategoria', ['categoria' => 'Tinturas e colorações', 'scroll_to' => 'listagemprod']) }}"
+                                                    class="border-hover text-decoration-none py-3 d-block">
+                                                    <span class="border-hover-target">Tinturas e colorações</span>
+                                                </a>
                                             </li>
                                             <li>
-                                                <a href="../shop/product-grouped.html"
-                                                    class="border-hover text-decoration-none py-3 d-block"><span
-                                                        class="border-hover-target">Product Grouped</span></a>
+                                                <a href="{{ route('buscarPorCategoria', ['categoria' => 'Produtos para alisamento ou cachos', 'scroll_to' => 'listagemprod']) }}"
+                                                    class="border-hover text-decoration-none py-3 d-block">
+                                                    <span class="border-hover-target">Produtos para alisamento ou
+                                                        cachos</span>
+                                                </a>
                                             </li>
                                         </ul>
                                     </div>
                                     <div class="col">
-                                        <h6 class="fs-18px">Other Pages</h6>
+                                        <h6 class="fs-18px">Cuidados com o Corpo</h6>
                                         <ul class="list-unstyled mb-0">
                                             <li>
-                                                <a href="../shop/shopping-cart.html"
-                                                    class="border-hover text-decoration-none py-3 d-block"><span
-                                                        class="border-hover-target">Shopping Cart</span></a>
+                                                <a href="{{ route('buscarPorCategoria', ['categoria' => 'Hidratantes Corporais', 'scroll_to' => 'listagemprod']) }}"
+                                                    class="border-hover text-decoration-none py-3 d-block">
+                                                    <span class="border-hover-target">Hidratantes Corporais</span>
+                                                </a>
                                             </li>
                                             <li>
-                                                <a href="../shop/compare.html"
-                                                    class="border-hover text-decoration-none py-3 d-block"><span
-                                                        class="border-hover-target">Compare</span></a>
+                                                <a href="{{ route('buscarPorCategoria', ['categoria' => 'Esfoliantes Corporais', 'scroll_to' => 'listagemprod']) }}"
+                                                    class="border-hover text-decoration-none py-3 d-block">
+                                                    <span class="border-hover-target">Esfoliantes Corporais</span>
+                                                </a>
                                             </li>
                                             <li>
-                                                <a href="../shop/wishlist.html"
-                                                    class="border-hover text-decoration-none py-3 d-block"><span
-                                                        class="border-hover-target">Wishlist</span></a>
+                                                <a href="{{ route('buscarPorCategoria', ['categoria' => 'Óleos Corporais', 'scroll_to' => 'listagemprod']) }}"
+                                                    class="border-hover text-decoration-none py-3 d-block">
+                                                    <span class="border-hover-target">Óleos Corporais</span>
+                                                </a>
                                             </li>
                                             <li>
-                                                <a href="../shop/checkout.html"
-                                                    class="border-hover text-decoration-none py-3 d-block"><span
-                                                        class="border-hover-target">Checkout</span></a>
+                                                <a href="{{ route('buscarPorCategoria', ['categoria' => 'Produtos para Banho', 'scroll_to' => 'listagemprod']) }}"
+                                                    class="border-hover text-decoration-none py-3 d-block">
+                                                    <span class="border-hover-target">Produtos para Banho</span>
+                                                </a>
                                             </li>
                                             <li>
-                                                <a href="../user-registration.html"
-                                                    class="border-hover text-decoration-none py-3 d-block"><span
-                                                        class="border-hover-target">Register</span></a>
+                                                <a href="{{ route('buscarPorCategoria', ['categoria' => 'Protetores e Autobronzeadores', 'scroll_to' => 'listagemprod']) }}"
+                                                    class="border-hover text-decoration-none py-3 d-block">
+                                                    <span class="border-hover-target">Protetores e
+                                                        Autobronzeadores</span>
+                                                </a>
                                             </li>
                                             <li>
-                                                <a href="../user-login.html"
-                                                    class="border-hover text-decoration-none py-3 d-block"><span
-                                                        class="border-hover-target">Login</span></a>
+                                                <a href="{{ route('buscarPorCategoria', ['categoria' => 'Cuidados com a Celulite', 'scroll_to' => 'listagemprod']) }}"
+                                                    class="border-hover text-decoration-none py-3 d-block">
+                                                    <span class="border-hover-target">Cuidados com a Celulite</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="{{ route('buscarPorCategoria', ['categoria' => 'Cuidados com a Estria', 'scroll_to' => 'listagemprod']) }}"
+                                                    class="border-hover text-decoration-none py-3 d-block">
+                                                    <span class="border-hover-target">Cuidados com a Estria</span>
+                                                </a>
                                             </li>
                                         </ul>
-                                    </div>
-                                    <div class="col d-xxl-block d-none megamenu-shop-banner" data-bs-theme="light">
-                                        <div class="card border-0 mt-4">
-                                            <img src="{{ asset('images/background/bg-mega-menu-shop.jpg') }}"
-                                                alt="bg mega menu" class="card-img">
-
-                                            <div class="card-img-overlay d-flex flex-column mx-2 px-9 py-6">
-                                                <p class="text-body-emphasis ls-1 fw-semibold mb-4 mt-6 text-uppercase">
-                                                    new collection
-                                                </p>
-                                                <h3 class="fs-3">
-                                                    Special <br>
-                                                    Offer
-                                                </h3>
-                                                <div class="mt-auto">
-                                                    <a href="#" class="btn btn-white">Shop Sale</a>
-                                                </div>
-                                            </div>
-                                        </div>
                                     </div>
                                 </div>
                             </div>
 
                         </div>
                     </li>
-                    <li class="nav-item transition-all-xl-1 py-0 dropdown">
+                    <!-- <li class="nav-item transition-all-xl-1 py-0 dropdown">
                         <a class="nav-link d-flex justify-content-between position-relative text-uppercase fw-semibold ls-1 fs-15px dropdown-toggle"
                             href="#" data-bs-toggle="dropdown" id="menu-item-pages-canvas" aria-haspopup="true"
-                            aria-expanded="false">Pages</a>
+                            aria-expanded="false">Páginas</a>
                         <ul class="dropdown-menu py-6" aria-labelledby="menu-item-pages-canvas">
                             <li class="dropend" aria-haspopup="true" aria-expanded="false">
                                 <a class="dropdown-item pe-6 dropdown-toggle d-flex justify-content-between border-hover"
@@ -5306,8 +4489,8 @@
                                 </a>
                             </li>
                         </ul>
-                    </li>
-                    <li class="nav-item transition-all-xl-1 py-0 dropdown dropdown-fullwidth">
+                    </li> -->
+                    <!-- <li class="nav-item transition-all-xl-1 py-0 dropdown dropdown-fullwidth">
                         <a class="nav-link d-flex justify-content-between position-relative text-uppercase fw-semibold ls-1 fs-15px dropdown-toggle"
                             href="#" data-bs-toggle="dropdown" id="menu-item-blocks-canvas" aria-haspopup="true"
                             aria-expanded="false">Blocks</a>
@@ -5419,8 +4602,8 @@
                             </div>
 
                         </div>
-                    </li>
-                    <li class="nav-item transition-all-xl-1 py-0 dropdown dropdown-fullwidth">
+                    </li> -->
+                    <!-- <li class="nav-item transition-all-xl-1 py-0 dropdown dropdown-fullwidth">
                         <a class="nav-link d-flex justify-content-between position-relative text-uppercase fw-semibold ls-1 fs-15px dropdown-toggle"
                             href="#" data-bs-toggle="dropdown" id="menu-item-docs-canvas" aria-haspopup="true"
                             aria-expanded="false">Docs</a>
@@ -5491,14 +4674,15 @@
 
                             </div>
                         </div>
-                    </li>
+                    </li> -->
                 </ul>
             </div>
             <hr class="mb-0">
             <div class="offcanvas-footer bg-body-tertiary">
-                © 2023 Glowing. <br>
-                All rights reserved.
+                © Elegance Cintra {{ date('Y') }}. <br>
+                Todos os direitos reservados.
             </div>
+
         </div>
     </div>
     <div class="position-fixed z-index-10 bottom-0 end-0 p-10">

@@ -19,7 +19,9 @@ class Produto extends Model
         'imagem',
         'imagens_adicionais',
         'ativo',
-        'tags'
+        'tags',
+        'modo_de_usar',
+        'caracteristicas'
     ];
 
     protected $casts = [

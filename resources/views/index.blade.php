@@ -58,10 +58,11 @@
 							<a href="./" class="navbar-brand has-sticky-logo px-8 py-4 mx-auto">
 								<img class="light-mode-img" src="{{ asset('images/others/logo-oficial-02.png') }}"
 									width="179" height="76" alt="Glowing - Bootstrap 5 HTML Templates">
-								<img class="dark-mode-img" src="{{ asset('images/others/logo-oficial-02.png') }}" width="179"
-									height="76" alt="Glowing - Bootstrap 5 HTML Templates">
-								<img class="sticky-logo sticky-logo-light" src="{{ asset('images/others/logo.png') }}"
-									width="179" height="26" alt="Glowing - Bootstrap 5 HTML Templates">
+								<img class="dark-mode-img" src="{{ asset('images/others/logo-oficial-02.png') }}"
+									width="179" height="76" alt="Glowing - Bootstrap 5 HTML Templates">
+								<img class="sticky-logo sticky-logo-light"
+									src="{{ asset('images/others/logo-oficial-02.png') }}" width="179" height="26"
+									alt="Glowing - Bootstrap 5 HTML Templates">
 								<img class="sticky-logo sticky-logo-dark"
 									src="{{ asset('images/others/logo-oficial-02.png') }}" width="179" height="76"
 									alt="Glowing - Bootstrap 5 HTML Templates">
@@ -136,6 +137,7 @@
 					</div>
 					<div class="d-none d-xl-flex flex-column flex-xl-row w-100">
 						<div class="w-auto w-xl-50 d-flex align-items-center">
+							<!-- daqui -->
 							<div class="icons-actions d-flex justify-content-start me-auto fs-28px text-white">
 								<div class="pe-10">
 									<a class="lh-1 color-inherit text-decoration-none" href="#"
@@ -148,6 +150,25 @@
 									</a>
 								</div>
 							</div>
+							<!--até aqui 111 -->
+							<!-- Modal de Busca -->
+							<!-- <div class="offcanvas offcanvas-top" tabindex="-1" id="searchModal" aria-labelledby="searchModalLabel">
+    <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="searchModalLabel">Procurar</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+        <input type="text" id="searchInput" class="form-control" placeholder="Digite o nome do produto">
+
+    </div>
+</div> -->
+
+
+
+
+
+
+
 
 							<ul class="navbar-nav w-100 w-xl-auto">
 
@@ -158,8 +179,8 @@
 								<li
 									class="nav-item transition-all-xl-1 py-xl-11 py-0 px-xxl-8 px-xl-6 dropdown dropdown-hover dropdown-fullwidth">
 									<a class="nav-link d-flex justify-content-between position-relative py-xl-0 px-xl-0 text-uppercase fw-semibold ls-1 fs-15px fs-xl-14px dropdown-toggle"
-										href="./index.html" data-bs-toggle="dropdown" id="menu-item-home"
-										aria-haspopup="true" aria-expanded="false">Início</a>
+										href="/" id="menu-item-home" aria-haspopup="true"
+										aria-expanded="false">Início</a>
 
 									<!-- <div class="dropdown-menu mega-menu start-0 py-6 " aria-labelledby="menu-item-home"
 										style="width:320px">
@@ -283,31 +304,35 @@
 													<h6 class="fs-18px">Cuidados com a pele</h6>
 													<ul class="list-unstyled mb-0">
 														<li>
-															<a href="./shop/shop-layout-v1.html"
-																class="border-hover text-decoration-none py-3 d-block"><span
-																	class="border-hover-target">Hidratantes
-																	</span></a>
+															<a href="{{ route('buscarPorCategoria', ['categoria' => 'hidratantes', 'scroll_to' => 'listagemprod']) }}"
+																class="border-hover text-decoration-none py-3 d-block">
+																<span class="border-hover-target">Hidratantes</span>
+															</a>
 														</li>
 														<li>
-															<a href="./shop/shop-layout-v2.html"
-																class="border-hover text-decoration-none py-3 d-block"><span
-																	class="border-hover-target">Protetores solares
-																	</span></a>
+															<a href="{{ route('buscarPorCategoria', ['categoria' => 'Protetores solares', 'scroll_to' => 'listagemprod']) }}"
+																class="border-hover text-decoration-none py-3 d-block">
+																<span class="border-hover-target">Protetores
+																	solares</span>
+															</a>
 														</li>
 														<li>
-															<a href="./shop/shop-layout-v3.html"
-																class="border-hover text-decoration-none py-3 d-block"><span
-																	class="border-hover-target">Limpeza facial (sabonetes, géis de limpeza)</span></a>
+															<a href="{{ route('buscarPorCategoria', ['categoria' => 'Limpeza facial', 'scroll_to' => 'listagemprod']) }}"
+																class="border-hover text-decoration-none py-3 d-block">
+																<span class="border-hover-target">Limpeza facial</span>
+															</a>
 														</li>
 														<li>
-															<a href="./shop/shop-layout-v4.html"
-																class="border-hover text-decoration-none py-3 d-block"><span
-																	class="border-hover-target">Esfoliantes</span></a>
+															<a href="{{ route('buscarPorCategoria', ['categoria' => 'Esfoliantes', 'scroll_to' => 'listagemprod']) }}"
+																class="border-hover text-decoration-none py-3 d-block">
+																<span class="border-hover-target">Esfoliantes</span>
+															</a>
 														</li>
 														<li>
-															<a href="./shop/shop-layout-v5.html"
-																class="border-hover text-decoration-none py-3 d-block"><span
-																	class="border-hover-target">Tônicos</span></a>
+															<a href="{{ route('buscarPorCategoria', ['categoria' => 'Tônicos', 'scroll_to' => 'listagemprod']) }}"
+																class="border-hover text-decoration-none py-3 d-block">
+																<span class="border-hover-target">Tônicos</span>
+															</a>
 														</li>
 													</ul>
 												</div>
@@ -315,44 +340,53 @@
 													<h6 class="fs-18px">Maquiagem</h6>
 													<ul class="list-unstyled mb-0">
 														<li>
-															<a href="./shop/product-details-v1.html"
-																class="border-hover text-decoration-none py-3 d-block"><span
-																	class="border-hover-target">Corretivos</span></a>
+															<a href="{{ route('buscarPorCategoria', ['categoria' => 'Corretivos', 'scroll_to' => 'listagemprod']) }}"
+																class="border-hover text-decoration-none py-3 d-block">
+																<span class="border-hover-target">Corretivos</span>
+															</a>
 														</li>
 														<li>
-															<a href="./shop/product-details-v2.html"
-																class="border-hover text-decoration-none py-3 d-block"><span
-																	class="border-hover-target">Pó facial</span></a>
+															<a href="{{ route('buscarPorCategoria', ['categoria' => 'Pó facial', 'scroll_to' => 'listagemprod']) }}"
+																class="border-hover text-decoration-none py-3 d-block">
+																<span class="border-hover-target">Pó facial</span>
+															</a>
 														</li>
 														<li>
-															<a href="./shop/product-details-v3.html"
-																class="border-hover text-decoration-none py-3 d-block"><span
-																	class="border-hover-target">Sombras</span></a>
+															<a href="{{ route('buscarPorCategoria', ['categoria' => 'Sombras', 'scroll_to' => 'listagemprod']) }}"
+																class="border-hover text-decoration-none py-3 d-block">
+																<span class="border-hover-target">Sombras</span>
+															</a>
 														</li>
 														<li>
-															<a href="./shop/product-details-v4.html"
-																class="border-hover text-decoration-none py-3 d-block"><span
-																	class="border-hover-target">Máscara para cílios (rímel)</span></a>
+															<a href="{{ route('buscarPorCategoria', ['categoria' => 'Máscara para cílios (rímel)', 'scroll_to' => 'listagemprod']) }}"
+																class="border-hover text-decoration-none py-3 d-block">
+																<span class="border-hover-target">Máscara para cílios
+																	(rímel)</span>
+															</a>
 														</li>
 														<li>
-															<a href="./shop/product-details-v5.html"
-																class="border-hover text-decoration-none py-3 d-block"><span
-																	class="border-hover-target">Delineadores</span></a>
+															<a href="{{ route('buscarPorCategoria', ['categoria' => 'Delineadores', 'scroll_to' => 'listagemprod']) }}"
+																class="border-hover text-decoration-none py-3 d-block">
+																<span class="border-hover-target">Delineadores</span>
+															</a>
 														</li>
 														<li>
-															<a href="./shop/product-details-v6.html"
-																class="border-hover text-decoration-none py-3 d-block"><span
-																	class="border-hover-target">Batons e gloss</span></a>
+															<a href="{{ route('buscarPorCategoria', ['categoria' => 'Batons e gloss', 'scroll_to' => 'listagemprod']) }}"
+																class="border-hover text-decoration-none py-3 d-block">
+																<span class="border-hover-target">Batons e gloss</span>
+															</a>
 														</li>
 														<li>
-															<a href="./shop/product-details-v7.html"
-																class="border-hover text-decoration-none py-3 d-block"><span
-																	class="border-hover-target">Blush e bronzer</span></a>
+															<a href="{{ route('buscarPorCategoria', ['categoria' => 'Blush e bronzer', 'scroll_to' => 'listagemprod']) }}"
+																class="border-hover text-decoration-none py-3 d-block">
+																<span class="border-hover-target">Blush e bronzer</span>
+															</a>
 														</li>
 														<li>
-															<a href="./shop/product-details-v8.html"
-																class="border-hover text-decoration-none py-3 d-block"><span
-																	class="border-hover-target">Iluminadores</span></a>
+															<a href="{{ route('buscarPorCategoria', ['categoria' => 'Iluminadores', 'scroll_to' => 'listagemprod']) }}"
+																class="border-hover text-decoration-none py-3 d-block">
+																<span class="border-hover-target">Iluminadores</span>
+															</a>
 														</li>
 													</ul>
 												</div>
@@ -360,24 +394,30 @@
 													<h6 class="fs-18px">Cabelos</h6>
 													<ul class="list-unstyled mb-0">
 														<li>
-															<a href="./shop/product-simple.html"
-																class="border-hover text-decoration-none py-3 d-block"><span
-																	class="border-hover-target">Shampoos</span></a>
+															<a href="{{ route('buscarPorCategoria', ['categoria' => 'Shampoos', 'scroll_to' => 'listagemprod']) }}"
+																class="border-hover text-decoration-none py-3 d-block">
+																<span class="border-hover-target">Shampoos</span>
+															</a>
 														</li>
 														<li>
-															<a href="./shop/product-variable.html"
-																class="border-hover text-decoration-none py-3 d-block"><span
-																	class="border-hover-target">Óleos capilares</span></a>
+															<a href="{{ route('buscarPorCategoria', ['categoria' => 'Óleos capilares', 'scroll_to' => 'listagemprod']) }}"
+																class="border-hover text-decoration-none py-3 d-block">
+																<span class="border-hover-target">Óleos capilares</span>
+															</a>
 														</li>
 														<li>
-															<a href="./shop/product-time-limit.html"
-																class="border-hover text-decoration-none py-3 d-block"><span
-																	class="border-hover-target">Tinturas e colorações</span></a>
+															<a href="{{ route('buscarPorCategoria', ['categoria' => 'Tinturas e colorações', 'scroll_to' => 'listagemprod']) }}"
+																class="border-hover text-decoration-none py-3 d-block">
+																<span class="border-hover-target">Tinturas e
+																	colorações</span>
+															</a>
 														</li>
 														<li>
-															<a href="./shop/product-grouped.html"
-																class="border-hover text-decoration-none py-3 d-block"><span
-																	class="border-hover-target">Produtos para alisamento ou cachos</span></a>
+															<a href="{{ route('buscarPorCategoria', ['categoria' => 'Produtos para alisamento ou cachos', 'scroll_to' => 'listagemprod']) }}"
+																class="border-hover text-decoration-none py-3 d-block">
+																<span class="border-hover-target">Produtos para
+																	alisamento ou cachos</span>
+															</a>
 														</li>
 													</ul>
 												</div>
@@ -385,65 +425,62 @@
 													<h6 class="fs-18px">Cuidados com o Corpo</h6>
 													<ul class="list-unstyled mb-0">
 														<li>
-															<a href="./shop/shopping-cart.html"
-																class="border-hover text-decoration-none py-3 d-block"><span
-																	class="border-hover-target">Shopping Cart</span></a>
+															<a href="{{ route('buscarPorCategoria', ['categoria' => 'Hidratantes Corporais', 'scroll_to' => 'listagemprod']) }}"
+																class="border-hover text-decoration-none py-3 d-block">
+																<span class="border-hover-target">Hidratantes
+																	Corporais</span>
+															</a>
 														</li>
 														<li>
-															<a href="./shop/compare.html"
-																class="border-hover text-decoration-none py-3 d-block"><span
-																	class="border-hover-target">Compare</span></a>
+															<a href="{{ route('buscarPorCategoria', ['categoria' => 'Esfoliantes Corporais', 'scroll_to' => 'listagemprod']) }}"
+																class="border-hover text-decoration-none py-3 d-block">
+																<span class="border-hover-target">Esfoliantes
+																	Corporais</span>
+															</a>
 														</li>
 														<li>
-															<a href="./shop/wishlist.html"
-																class="border-hover text-decoration-none py-3 d-block"><span
-																	class="border-hover-target">Lista de desejos</span></a>
+															<a href="{{ route('buscarPorCategoria', ['categoria' => 'Óleos Corporais', 'scroll_to' => 'listagemprod']) }}"
+																class="border-hover text-decoration-none py-3 d-block">
+																<span class="border-hover-target">Óleos Corporais</span>
+															</a>
 														</li>
 														<li>
-															<a href="./shop/checkout.html"
-																class="border-hover text-decoration-none py-3 d-block"><span
-																	class="border-hover-target">Checkout</span></a>
+															<a href="{{ route('buscarPorCategoria', ['categoria' => 'Produtos para Banho', 'scroll_to' => 'listagemprod']) }}"
+																class="border-hover text-decoration-none py-3 d-block">
+																<span class="border-hover-target">Produtos para
+																	Banho</span>
+															</a>
 														</li>
 														<li>
-															<a href="./user-registration.html"
-																class="border-hover text-decoration-none py-3 d-block"><span
-																	class="border-hover-target">Register</span></a>
+															<a href="{{ route('buscarPorCategoria', ['categoria' => 'Protetores e Autobronzeadores', 'scroll_to' => 'listagemprod']) }}"
+																class="border-hover text-decoration-none py-3 d-block">
+																<span class="border-hover-target">Protetores e
+																	Autobronzeadores</span>
+															</a>
 														</li>
 														<li>
-															<a href="./user-login.html"
-																class="border-hover text-decoration-none py-3 d-block"><span
-																	class="border-hover-target">Login</span></a>
+															<a href="{{ route('buscarPorCategoria', ['categoria' => 'Cuidados com a Celulite', 'scroll_to' => 'listagemprod']) }}"
+																class="border-hover text-decoration-none py-3 d-block">
+																<span class="border-hover-target">Cuidados com a
+																	Celulite</span>
+															</a>
+														</li>
+														<li>
+															<a href="{{ route('buscarPorCategoria', ['categoria' => 'Cuidados com a Estria', 'scroll_to' => 'listagemprod']) }}"
+																class="border-hover text-decoration-none py-3 d-block">
+																<span class="border-hover-target">Cuidados com a
+																	Estria</span>
+															</a>
 														</li>
 													</ul>
 												</div>
-												<div class="col d-xxl-block d-none megamenu-shop-banner"
-													data-bs-theme="light">
-													<div class="card border-0 mt-4">
-														<img src="{{ asset('images/background/bg-mega-menu-shop.jpg') }}"
-															alt="bg mega menu" class="card-img">
-
-													
-														<div class="card-img-overlay d-flex flex-column mx-2 px-9 py-6">
-															<p
-																class="text-body-emphasis ls-1 fw-semibold mb-4 mt-6 text-uppercase">
-																new collection
-															</p>
-															<h3 class="fs-3">
-																Special <br>
-																Offer
-															</h3>
-															<div class="mt-auto">
-																<a href="#" class="btn btn-white">Shop Sale</a>
-															</div>
-														</div>
-													</div>
-												</div>
 											</div>
+
 										</div>
 
 									</div>
 								</li>
-								<li
+								<!-- <li
 									class="nav-item transition-all-xl-1 py-xl-11 py-0 px-xxl-8 px-xl-6 dropdown dropdown-hover">
 									<a class="nav-link d-flex justify-content-between position-relative py-xl-0 px-xl-0 text-uppercase fw-semibold ls-1 fs-15px fs-xl-14px dropdown-toggle"
 										href="#" data-bs-toggle="dropdown" id="menu-item-pages" aria-haspopup="true"
@@ -629,7 +666,7 @@
 											</a>
 										</li>
 									</ul>
-								</li>
+								</li> -->
 							</ul>
 						</div>
 						<div class="px-10 d-flex align-items-center ">
@@ -645,10 +682,11 @@
 								<img class="light-mode-img" src="{{ asset('images/others/logo-oficial-02.png') }}"
 									width="179" height="76" alt="Glowing - Bootstrap 5 HTML Templates">
 								<!-- Imagem logo central -->
-								<img class="dark-mode-img" src="{{ asset('images/others/logo-oficial-02.png') }}" width="179"
-									height="76" alt="Glowing - Bootstrap 5 HTML Templates">
-								<img class="sticky-logo sticky-logo-light" src="{{ asset('images/others/logo.png') }}"
-									width="179" height="26" alt="Glowing - Bootstrap 5 HTML Templates">
+								<img class="dark-mode-img" src="{{ asset('images/others/logo-oficial-02.png') }}"
+									width="179" height="76" alt="Glowing - Bootstrap 5 HTML Templates">
+								<img class="sticky-logo sticky-logo-light"
+									src="{{ asset('images/others/logo-oficial-02.png') }}" width="179" height="26"
+									alt="Glowing - Bootstrap 5 HTML Templates">
 								<img class="sticky-logo sticky-logo-dark"
 									src="{{ asset('images/others/logo-oficial-02.png') }}" width="179" height="76"
 									alt="Glowing - Bootstrap 5 HTML Templates">
@@ -661,7 +699,7 @@
 
 
 
-								<li
+								<!-- <li
 									class="nav-item transition-all-xl-1 py-xl-11 py-0 px-xxl-8 px-xl-6 dropdown dropdown-hover dropdown-fullwidth">
 									<a class="nav-link d-flex justify-content-between position-relative py-xl-0 px-xl-0 text-uppercase fw-semibold ls-1 fs-15px fs-xl-14px dropdown-toggle"
 										href="#" data-bs-toggle="dropdown" id="menu-item-blocks" aria-haspopup="true"
@@ -776,7 +814,7 @@
 										</div>
 
 									</div>
-								</li>
+								</li> -->
 								<!-- <li class="nav-item transition-all-xl-1 py-xl-11 py-0 px-xxl-8 px-xl-6 dropdown dropdown-hover dropdown-fullwidth">
 		<a class="nav-link d-flex justify-content-between position-relative py-xl-0 px-xl-0 text-uppercase fw-semibold ls-1 fs-15px fs-xl-14px dropdown-toggle"
 		   href="#" data-bs-toggle="dropdown" id="menu-item-docs" aria-haspopup="true" aria-expanded="false">Docss</a><div class="dropdown-menu mega-menu start-0 py-6 "
@@ -940,9 +978,10 @@
 					<div class="hero-content">
 						<div data-animate="fadeInDown">
 							<p class="text-white mb-8 fw-semibold fs-4">Encontre Inspiração</p>
-							<h1 class="text-white fw-semibold mb-8 hero-title-2">Desperte a Beleza <br> em Cada Detalhe</h1>
-							</div>
-						<a href="#" data-animate="fadeInUp"
+							<h1 class="text-white fw-semibold mb-8 hero-title-2">Desperte a Beleza <br> em Cada Detalhe
+							</h1>
+						</div>
+						<a href="#because_you_need_time_for_yourself_2" data-animate="fadeInUp"
 							class="pb-2 bg-transparent fw-semibold text-decoration-none hero-link pb-2 bg-transparent fw-semibold text-decoration-none hero-link p-0 text-white">
 							Descubra agora
 							<svg class="icon">
@@ -973,7 +1012,9 @@
 							<div
 								class="card-img-overlay d-inline-flex flex-column justify-content-end px-11 pt-11 pb-9 mb-2">
 								<h3 class="card-title fw-semibold pe-xxl-25">Itens<br /> Essenciais</h3>
-								<div><a href="#" class="btn btn-link text-decoration-none p-0 fw-semibold">Compre 1 leve 2<svg class="icon">
+								<div><a href="#listagemprod"
+										class="btn btn-link text-decoration-none p-0 fw-semibold">Compre 1 leve 2<svg
+											class="icon">
 											<use xlink:href="#icon-arrow-right">
 
 											</use>
@@ -998,7 +1039,8 @@
 							<div
 								class="card-img-overlay d-inline-flex flex-column justify-content-end px-11 pt-11 pb-9 mb-2">
 								<h3 class="card-title fw-semibold pe-xxl-25">Economize<br /> em kits</h3>
-								<div><a href="#" class="btn btn-link text-decoration-none p-0 fw-semibold">Economize
+								<div><a href="#listagemprod"
+										class="btn btn-link text-decoration-none p-0 fw-semibold">Economize
 										R$ 15,99<svg class="icon">
 											<use xlink:href="#icon-arrow-right"></use>
 										</svg></a></div>
@@ -1021,7 +1063,8 @@
 							<div
 								class="card-img-overlay d-inline-flex flex-column justify-content-end px-11 pt-11 pb-9 mb-2">
 								<h3 class="card-title fw-semibold pe-xxl-25">25% de<br /> Desconto</h3>
-								<div><a href="#" class="btn btn-link text-decoration-none p-0 fw-semibold">Compre em Promoção<svg
+								<div><a href="#listagemprod"
+										class="btn btn-link text-decoration-none p-0 fw-semibold">Compre em Promoção<svg
 											class="icon">
 											<use xlink:href="#icon-arrow-right"></use>
 										</svg></a></div>
@@ -1042,142 +1085,165 @@
 				</div>
 
 
-<!-- Início Listagem Produtos -->
-<div class="row gy-50px">
-    @foreach ($produtos as $produto)
-        <div class="col-lg-3 col-md-4 col-sm-6 col-12">
-            <div class="card card-product grid-1 bg-transparent border-0" data-animate="fadeInUp">
-                <figure class="card-img-top position-relative mb-7 overflow-hidden">
-                    <a href="{{ route('produtos.show', $produto->id) }}" class="hover-zoom-in d-block" title="{{ $produto->nome }}">
-                        <img src="{{ asset('images/products/' . $produto->imagem) }}" class="img-fluid lazy-image w-100" style="height: 361px; object-fit: cover;" alt="{{ $produto->nome }}">
-                    </a>
-                    @if($produto->preco_promocional)
-                    <div class="position-absolute product-flash z-index-2">
-                        <span class="badge badge-product-flash on-sale bg-primary">-{{ round((($produto->preco - $produto->preco_promocional) / $produto->preco) * 100) }}%</span>
-                    </div>
-                    @endif
-                    <div class="position-absolute d-flex z-index-2 product-actions horizontal">
-                        <a class="text-body-emphasis bg-body bg-dark-hover text-light-hover rounded-circle square product-action shadow-sm add_to_cart" href="#" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Add To Cart">
-                            <svg class="icon icon-shopping-bag-open-light">
-                                <use xlink:href="#icon-shopping-bag-open-light"></use>
-                            </svg>
-                        </a>
-                        <a class="text-body-emphasis bg-body bg-dark-hover text-light-hover rounded-circle square product-action shadow-sm quick-view"
-                           href="###"
-                           data-bs-toggle="modal"
-                           data-bs-target="#quickViewModal"
-                           data-id="{{ $produto->id }}"
-                           data-nome="{{ $produto->nome }}"
-                           data-imagem="{{ $produto->imagem }}"
-                           data-bs-toggle="tooltip"
-                           data-bs-placement="top"
-                           data-bs-title="Ver"
-                           onclick="saveProductInfo({{ $produto->id }}, '{{ $produto->nome }}', '{{ $produto->imagem }}', '{{ $produto->descricao }}', '{{ $produto->preco }}', '{{ $produto->preco_promocional }}', '{{ $produto->imagens_adicionais }}')">
-                            <span class="d-flex align-items-center justify-content-center">
-                                <svg class="icon icon-eye-light">
-                                    <use xlink:href="#icon-eye-light"></use>
-                                </svg>
-                            </span>
-                        </a>
-                        <a class="text-body-emphasis bg-body bg-dark-hover text-light-hover rounded-circle square product-action shadow-sm wishlist" href="#" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Add To Wishlist">
-                            <svg class="icon icon-star-light">
-                                <use xlink:href="#icon-star-light"></use>
-                            </svg>
-                        </a>
-                        <a class="text-body-emphasis bg-body bg-dark-hover text-light-hover rounded-circle square product-action shadow-sm compare" href="./shop/compare.html" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Compare">
-                            <svg class="icon icon-arrows-left-right-light">
-                                <use xlink:href="#icon-arrows-left-right-light"></use>
-                            </svg>
-                        </a>
-                    </div>
-                </figure>
-                <div class="card-body text-center p-0">
-                    <span class="d-flex align-items-center price text-body-emphasis fw-bold justify-content-center mb-3 fs-6">
-                        @if($produto->preco_promocional)
-                        <del class="text-body fw-500 me-4 fs-13px">R${{ number_format($produto->preco, 2, ',', '.') }}</del>
-                        @endif
-						
-						@php
-						$idproduto = $produto->id;
-						@endphp
-                        <ins class="text-decoration-none">R${{ number_format($produto->preco_promocional ?? $produto->preco, 2, ',', '.') }}</ins>
-                    </span>
-                    <h4 class="product-title card-title text-primary-hover text-body-emphasis fs-15px fw-500 mb-3">
-                        <a class="text-decoration-none text-reset" href="{{ route('produtos.show', $produto->id) }}">{{ $produto->nome }}</a>
-                    </h4>
-                    <div class="d-flex align-items-center fs-12px justify-content-center">
-                        <div class="rating">
-                            <div class="empty-stars">
-                                <span class="star">
-                                    <svg class="icon star-o">
-                                        <use xlink:href="#star-o"></use>
-                                    </svg>
-                                </span>
-                                <!-- Repeat for more stars -->
-                            </div>
-                            <div class="filled-stars" style="width: 80%">
-                                <span class="star">
-                                    <svg class="icon star text-primary">
-                                        <use xlink:href="#star"></use>
-                                    </svg>
-                                </span>
-                                <!-- Repeat for more stars -->
-                            </div>
-                        </div>
-                        <span class="reviews ms-4 pt-3 fs-14px">100 avaliações</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-		
-    @endforeach
-</div>
-<!-- Fim Listagem Produtos -->
+				<!-- Início Listagem Produtos -->
+				<div class="row gy-50px" id="listagemprod">
+					@foreach ($produtos as $produto)
+										<div class="col-lg-3 col-md-4 col-sm-6 col-12">
+											<div class="card card-product grid-1 bg-transparent border-0" data-animate="fadeInUp"
+												data-nome="{{ $produto->nome }}">
+												<figure class="card-img-top position-relative mb-7 overflow-hidden">
+													<a href="{{ route('produtos.show', $produto->id) }}" class="hover-zoom-in d-block"
+														title="{{ $produto->nome }}">
+														<img src="{{ asset('images/products/' . $produto->imagem) }}"
+															class="img-fluid lazy-image w-100" style="height: 361px; object-fit: cover;"
+															alt="{{ $produto->nome }}">
+													</a>
+													@if($produto->preco_promocional)
+														<div class="position-absolute product-flash z-index-2">
+															<!-- alculo de porcentagem de desconto de produto -->
+															<span
+																class="badge badge-product-flash on-sale bg-primary">-{{ round((($produto->preco - $produto->preco_promocional) / $produto->preco) * 100) }}%</span>
+														</div>
+													@endif
+													<div class="position-absolute d-flex z-index-2 product-actions horizontal">
+														<a class="text-body-emphasis bg-body bg-dark-hover text-light-hover rounded-circle square product-action shadow-sm add_to_cart"
+															href="#" data-bs-toggle="tooltip" data-bs-placement="top"
+															data-bs-title="Add To Cart">
+															<svg class="icon icon-shopping-bag-open-light">
+																<use xlink:href="#icon-shopping-bag-open-light"></use>
+															</svg>
+														</a>
+														<a class="text-body-emphasis bg-body bg-dark-hover text-light-hover rounded-circle square product-action shadow-sm quick-view"
+															href="###" data-bs-toggle="modal" data-bs-target="#quickViewModal"
+															data-id="{{ $produto->id }}" data-nome="{{ $produto->nome }}"
+															data-imagem="{{ $produto->imagem }}" data-bs-toggle="tooltip"
+															data-bs-placement="top" data-bs-title="Ver"
+															onclick="saveProductInfo({{ $produto->id }}, '{{ $produto->nome }}', '{{ $produto->imagem }}', '{{ $produto->descricao }}', '{{ $produto->preco }}', '{{ $produto->preco_promocional }}', '{{ $produto->imagens_adicionais }}')">
+															<span class="d-flex align-items-center justify-content-center">
+																<svg class="icon icon-eye-light">
+																	<use xlink:href="#icon-eye-light"></use>
+																</svg>
+															</span>
+														</a>
+														<a class="text-body-emphasis bg-body bg-dark-hover text-light-hover rounded-circle square product-action shadow-sm wishlist"
+															href="#" data-bs-toggle="tooltip" data-bs-placement="top"
+															data-bs-title="Add To Wishlist">
+															<svg class="icon icon-star-light">
+																<use xlink:href="#icon-star-light"></use>
+															</svg>
+														</a>
+														<a class="text-body-emphasis bg-body bg-dark-hover text-light-hover rounded-circle square product-action shadow-sm compare"
+															href="./shop/compare.html" data-bs-toggle="tooltip" data-bs-placement="top"
+															data-bs-title="Compare">
+															<svg class="icon icon-arrows-left-right-light">
+																<use xlink:href="#icon-arrows-left-right-light"></use>
+															</svg>
+														</a>
+													</div>
+												</figure>
+												<div class="card-body text-center p-0">
+													<span
+														class="d-flex align-items-center price text-body-emphasis fw-bold justify-content-center mb-3 fs-6">
+														@if($produto->preco_promocional)
+															<del
+																class="text-body fw-500 me-4 fs-13px">R${{ number_format($produto->preco, 2, ',', '.') }}</del>
+														@endif
 
-<!-- Início do Modal exibido ao clicar em ver em cada produto-->
-<div class="modal fade" id="quickViewModal" tabindex="-1" aria-labelledby="quickViewModal" aria-hidden="true">
-    <div class="modal-dialog modal-xl">
-        <div class="modal-content">
-            <div class="modal-header border-0 py-5">
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body pt-0">
-                <div class="row">
+														@php
+															$idproduto = $produto->id;
+														@endphp
+														<ins
+															class="text-decoration-none">R${{ number_format($produto->preco_promocional ?? $produto->preco, 2, ',', '.') }}</ins>
+													</span>
+													<h4
+														class="product-title card-title text-primary-hover text-body-emphasis fs-15px fw-500 mb-3">
+														<a class="text-decoration-none text-reset"
+															href="{{ route('produtos.show', $produto->id) }}">{{ $produto->nome }}</a>
+													</h4>
+													<div class="d-flex align-items-center fs-12px justify-content-center">
+														<div class="rating">
+															<div class="empty-stars">
+																<span class="star">
+																	<svg class="icon star-o">
+																		<use xlink:href="#star-o"></use>
+																	</svg>
+																</span>
+																<!-- Repeat for more stars -->
+															</div>
+															<div class="filled-stars" style="width: 80%">
+																<span class="star">
+																	<svg class="icon star text-primary">
+																		<use xlink:href="#star"></use>
+																	</svg>
+																</span>
+																<!-- Repeat for more stars -->
+															</div>
+														</div>
+														<span class="reviews ms-4 pt-3 fs-14px">100 avaliações</span>
+													</div>
+												</div>
+											</div>
+										</div>
 
-					                    
-<div class="col-md-6 pe-13">
-    <div class="position-relative">
-        <div class="position-absolute z-index-2 w-100 d-flex justify-content-end">
-            <div class="p-6">
-                <a href="#" class="d-flex align-items-center justify-content-center product-gallery-action rounded-circle" data-bs-toggle="tooltip" data-bs-placement="left" data-bs-title="Add to wishlist">
-                    <svg class="icon fs-4">
-                        <use xlink:href="#icon-star-light"></use>
-                    </svg>
-                </a>
-                <a href="./shop/compare.html" class="d-flex align-items-center justify-content-center mt-5 product-gallery-action rounded-circle" data-bs-toggle="tooltip" data-bs-placement="left" data-bs-title="Compare">
-                    <svg class="icon fs-4">
-                        <use xlink:href="#icon-arrows-left-right-light"></use>
-                    </svg>
-                </a>
-            </div>
-        </div>
+					@endforeach
+				</div>
+				<!-- Fim Listagem Produtos -->
 
-        <!-- Imagem Principal -->
-        <div id="slider" class="slick-slider slick-slider-arrow-inside slick-slider-dots-inside slick-slider-dots-light g-0" data-slick-options='{"arrows":false,"asNavFor":"#slider-thumb","dots":false,"slidesToShow":1}'>
-            <!-- Exibir Imagem Principal Primeiro -->
-            <div class="position-relative">
-                <!--passa imagem principal dinâmicamente pelo js-->
-				@php
-                    $imagens = json_decode($produto->imagens_adicionais);
-                @endphp  
-				                                  
-                <img id="modalProductImage"  alt="imagem principal" class="d-block w-100 img-main">
-            </div>                    
-        </div>
-    </div>
+				<!-- Início do Modal exibido ao clicar em ver em cada produto-->
+				<div class="modal fade" id="quickViewModal" tabindex="-1" aria-labelledby="quickViewModal"
+					aria-hidden="true">
+					<div class="modal-dialog modal-xl">
+						<div class="modal-content">
+							<div class="modal-header border-0 py-5">
+								<button type="button" class="btn-close" data-bs-dismiss="modal"
+									aria-label="Close"></button>
+							</div>
+							<div class="modal-body pt-0">
+								<div class="row">
 
-    <!-- Imagens Adicionais -->
-    <!-- <div class="mt-6">
+
+									<div class="col-md-6 pe-13">
+										<div class="position-relative">
+											<div class="position-absolute z-index-2 w-100 d-flex justify-content-end">
+												<div class="p-6">
+													<a href="#"
+														class="d-flex align-items-center justify-content-center product-gallery-action rounded-circle"
+														data-bs-toggle="tooltip" data-bs-placement="left"
+														data-bs-title="Add to wishlist">
+														<svg class="icon fs-4">
+															<use xlink:href="#icon-star-light"></use>
+														</svg>
+													</a>
+													<a href="./shop/compare.html"
+														class="d-flex align-items-center justify-content-center mt-5 product-gallery-action rounded-circle"
+														data-bs-toggle="tooltip" data-bs-placement="left"
+														data-bs-title="Compare">
+														<svg class="icon fs-4">
+															<use xlink:href="#icon-arrows-left-right-light"></use>
+														</svg>
+													</a>
+												</div>
+											</div>
+
+											<!-- Imagem Principal -->
+											<div id="slider"
+												class="slick-slider slick-slider-arrow-inside slick-slider-dots-inside slick-slider-dots-light g-0"
+												data-slick-options='{"arrows":false,"asNavFor":"#slider-thumb","dots":false,"slidesToShow":1}'>
+												<!-- Exibir Imagem Principal Primeiro -->
+												<div class="position-relative">
+													<!--passa imagem principal dinâmicamente pelo js-->
+													@php
+														$imagens = json_decode($produto->imagens_adicionais);
+													@endphp
+
+													<img id="modalProductImage" alt="imagem principal"
+														class="d-block w-100 img-main">
+												</div>
+											</div>
+										</div>
+
+										<!-- Imagens Adicionais -->
+										<!-- <div class="mt-6">
         <div id="slider-thumb" class="slick-slider-thumb ps-1 ms-n3 me-n4 slick-initialized slick-slider" data-slick-options='{"arrows":false,"asNavFor":"#slider","dots":false,"focusOnSelect":true,"slidesToShow":5,"vertical":false}'>
             <div class="slick-list draggable" style="height: 1204.6px;">
                 <div class="slick-track" style="opacity: 1; width: 2500px; transform: translate3d(0px, 0px, 0px);">
@@ -1193,137 +1259,172 @@
             </div>
         </div>
     </div> -->
-	<!-- Imagens Adicionais -->
-<div class="mt-6">
-    <div id="slider-thumb" class="slick-slider-thumb ps-1 ms-n3 me-n4 slick-initialized slick-slider" data-slick-options='{"arrows":false,"asNavFor":"#slider","dots":false,"focusOnSelect":true,"slidesToShow":5,"vertical":false}'>
-        <div class="slick-list draggable">
-            <div class="slick-track">
-                <!-- As imagens serão inseridas aqui pelo JS -->
-            </div>
-        </div>
-    </div>
-</div>
+										<!-- Imagens Adicionais -->
+										<div class="mt-6">
+											<div id="slider-thumb"
+												class="slick-slider-thumb ps-1 ms-n3 me-n4 slick-initialized slick-slider"
+												data-slick-options='{"arrows":false,"asNavFor":"#slider","dots":false,"focusOnSelect":true,"slidesToShow":5,"vertical":false}'>
+												<div class="slick-list draggable">
+													<div class="slick-track">
+														<!-- As imagens serão inseridas aqui pelo JS -->
+													</div>
+												</div>
+											</div>
+										</div>
 
-	<style>
-		/* Certificar que o contêiner do slider esteja em modo flex */
-.slick-slider-thumb .slick-track {
-    display: flex !important; /* Alinha as imagens em linha */
-    flex-wrap: nowrap !important; /* Impede que as imagens se movam para baixo */
-    gap: 10px !important; /* Espaço entre as imagens */
-}
+										<style>
+											/* Certificar que o contêiner do slider esteja em modo flex */
+											.slick-slider-thumb .slick-track {
+												display: flex !important;
+												/* Alinha as imagens em linha */
+												flex-wrap: nowrap !important;
+												/* Impede que as imagens se movam para baixo */
+												gap: 10px !important;
+												/* Espaço entre as imagens */
+											}
 
-.slick-slider-thumb .slick-slide {
-    display: flex !important; /* Garantir que cada slide use flexbox */
-    justify-content: center !important; /* Centraliza a imagem */
-    align-items: center !important; /* Centraliza a imagem verticalmente */
-    flex: 0 0 auto !important; /* Impede que os slides se redimensionem automaticamente */
-}
+											.slick-slider-thumb .slick-slide {
+												display: flex !important;
+												/* Garantir que cada slide use flexbox */
+												justify-content: center !important;
+												/* Centraliza a imagem */
+												align-items: center !important;
+												/* Centraliza a imagem verticalmente */
+												flex: 0 0 auto !important;
+												/* Impede que os slides se redimensionem automaticamente */
+											}
 
-.slick-slider-thumb .slick-slide .img-thumb {
-    width: 80px !important; /* Ajuste o tamanho das imagens conforme necessário */
-    height: auto !important; /* Mantém a proporção das imagens */
-    object-fit: cover !important; /* Faz com que a imagem se ajuste ao contêiner sem distorção */
-}
+											.slick-slider-thumb .slick-slide .img-thumb {
+												width: 80px !important;
+												/* Ajuste o tamanho das imagens conforme necessário */
+												height: auto !important;
+												/* Mantém a proporção das imagens */
+												object-fit: cover !important;
+												/* Faz com que a imagem se ajuste ao contêiner sem distorção */
+											}
+										</style>
+
+									</div>
 
 
-	</style>
-   
-</div>
 
 
 
-
-
-<!-- 					<img src="{{ asset('images/products/' . $produto->imagem) }}" data-src="{{ asset('images/products/' . $produto->imagem) }}" class="mx-3 px-0 h-auto cursor-pointer loaded slick-slide slick-active" width="75" height="100" alt="" loading="lazy" data-ll-status="loaded" tabindex="0" style="width: 92.4px;" data-slick-index="1" aria-hidden="false">
+									<!-- 					<img src="{{ asset('images/products/' . $produto->imagem) }}" data-src="{{ asset('images/products/' . $produto->imagem) }}" class="mx-3 px-0 h-auto cursor-pointer loaded slick-slide slick-active" width="75" height="100" alt="" loading="lazy" data-ll-status="loaded" tabindex="0" style="width: 92.4px;" data-slick-index="1" aria-hidden="false">
 						<img src="{{ asset('images/products/' . $produto->imagem) }}" data-src="{{ asset('images/products/' . $produto->imagem) }}" class="mx-3 px-0 h-auto cursor-pointer loaded slick-slide slick-active" width="75" height="100" alt="" loading="lazy" data-ll-status="loaded" tabindex="0" style="width: 92.4px;" data-slick-index="1" aria-hidden="false">
 				 -->
 
 
-                    <div class="col-md-6 pt-md-0 pt-10">
-                        <!-- Detalhes do produto -->
-                        <p class="d-flex align-items-center mb-6">
-                            <span class="text-decoration-line-through" id="modalProductPrecoAntigo"></span>
-                            <span class="fs-18px text-body-emphasis ps-6 fw-bold" id="modalProductPrecoAtual"></span>
-                            <span class="badge text-bg-primary fs-6 fw-semibold ms-7 px-6 py-3" id="modalProductDesconto"></span>
-                        </p>
-                        <h1 class="mb-4 pb-2 fs-4" id="modalProductNome">
-                            <!-- O nome do produto será exibido aqui -->
-                        </h1>
-                        <div class="d-flex align-items-center fs-15px mb-6">
-                            <p class="mb-0 fw-semibold text-body-emphasis me-4">Avaliação:</p>
-                            <div class="rating">
-                                <div class="empty-stars">
-                                    <span class="star">
-                                        <svg class="icon star-o">
-                                            <use xlink:href="#star-o"></use>
-                                        </svg>
-                                    </span>
-                                    <!-- Repita para mais estrelas -->
-                                </div>
-                                <div class="filled-stars" style="width: 80%">
-                                    <span class="star">
-                                        <svg class="icon star text-primary">
-                                            <use xlink:href="#star"></use>
-                                        </svg>
-                                    </span>
-                                    <!-- Repita para mais estrelas -->
-                                </div>
-                            </div>
-                            <span class="reviews ms-4 pt-3 fs-14px">100 avaliações</span>
-                        </div>
-                        <p class="fs-15px text-body mb-6" id="modalProductDescricao"></p>
+									<div class="col-md-6 pt-md-0 pt-10">
+										<!-- Detalhes do produto -->
+										<p class="d-flex align-items-center mb-6">
+											<span class="text-decoration-line-through"
+												id="modalProductPrecoAntigo"></span>
+											<span class="fs-18px text-body-emphasis ps-6 fw-bold"
+												id="modalProductPrecoAtual"></span>
+											<span class="badge text-bg-primary fs-6 fw-semibold ms-7 px-6 py-3"
+												id="modalProductDesconto"></span>
+										</p>
+										<h1 class="mb-4 pb-2 fs-4" id="modalProductNome">
+											<!-- O nome do produto será exibido aqui -->
+										</h1>
+										<div class="d-flex align-items-center fs-15px mb-6">
+											<p class="mb-0 fw-semibold text-body-emphasis me-4">Avaliação:</p>
+											<div class="rating">
+												<div class="empty-stars">
+													<span class="star">
+														<svg class="icon star-o">
+															<use xlink:href="#star-o"></use>
+														</svg>
+													</span>
+													<!-- Repita para mais estrelas -->
+												</div>
+												<div class="filled-stars" style="width: 80%">
+													<span class="star">
+														<svg class="icon star text-primary">
+															<use xlink:href="#star"></use>
+														</svg>
+													</span>
+													<!-- Repita para mais estrelas -->
+												</div>
+											</div>
+											<span class="reviews ms-4 pt-3 fs-14px">100 avaliações</span>
+										</div>
+										<p class="fs-15px text-body mb-6" id="modalProductDescricao"></p>
 
-<!--                         <form method="post" action="###" class="d-flex align-items-center mb-5">
+										<!--                         <form method="post" action="###" class="d-flex align-items-center mb-5">
                             <div class="me-5">
                                 <label for="modalProductQuantidade" class="form-label">Quantidade</label>
                                 <input type="number" id="modalProductQuantidade" class="form-control" value="1" min="1">
                             </div>
                             <button type="submit" class="btn btn-primary">Adicionar ao Carrinho</button>
                         </form> -->
-						<form class="mb-9 pb-2">
+										<form class="mb-9 pb-2">
 											<div class="row align-items-end">
 												<div class="form-group col-sm-4">
-													<label class="text-body-emphasis fw-semibold fs-15px pb-6" for="QuickViewNumber">Quantidade: </label>
+													<label class="text-body-emphasis fw-semibold fs-15px pb-6"
+														for="QuickViewNumber">Quantidade: </label>
 													<div class="input-group position-relative w-100 input-group-lg">
-														<a href="#" class="shop-down position-absolute translate-middle-y top-50 start-0 ps-7 product-info-2-minus"><i class="far fa-minus"></i></a>
-														<input name="number" type="number" id="QuickViewNumber" class="product-info-2-quantity form-control w-100 px-6 text-center" value="1" required="">
-														<a href="#" class="shop-up position-absolute translate-middle-y top-50 end-0 pe-7 product-info-2-plus"><i class="far fa-plus"></i></a>
+														<a href="#"
+															class="shop-down position-absolute translate-middle-y top-50 start-0 ps-7 product-info-2-minus"><i
+																class="far fa-minus"></i></a>
+														<input name="number" type="number" id="QuickViewNumber"
+															class="product-info-2-quantity form-control w-100 px-6 text-center"
+															value="1" required="">
+														<a href="#"
+															class="shop-up position-absolute translate-middle-y top-50 end-0 pe-7 product-info-2-plus"><i
+																class="far fa-plus"></i></a>
 													</div>
 												</div>
 												<div class="col-sm-8 pt-9 mt-2 mt-sm-0 pt-sm-0">
-													<button type="submit" class="btn-hover-bg-primary btn-hover-border-primary btn btn-lg btn-dark w-100">Adicionar ao Carrinho</button>
+													<button type="submit"
+														class="btn-hover-bg-primary btn-hover-border-primary btn btn-lg btn-dark w-100">Adicionar
+														ao Carrinho</button>
 												</div>
 											</div>
 										</form>
 
 										<p class="mb-4 pb-2">
-											<span class="text-body-emphasis"><svg class="icon fs-28px me-2 pe-4"><use xlink:href="#icon-delivery-1"></use></svg>Previsão de Entrega</span> {{ $produto->data_entrega }}
+											<span class="text-body-emphasis"><svg class="icon fs-28px me-2 pe-4">
+													<use xlink:href="#icon-delivery-1"></use>
+												</svg>Previsão de Entrega</span> {{ $produto->data_entrega }}
 										</p>
 										<p class="mb-4 pb-2">
-											<span class="text-body-emphasis"><svg class="icon fs-28px me-2 pe-4"><use xlink:href="#icon-Package"></use></svg>Devolução gratuita </span> dentro de 10 dias
+											<span class="text-body-emphasis"><svg class="icon fs-28px me-2 pe-4">
+													<use xlink:href="#icon-Package"></use>
+												</svg>Devolução gratuita </span> dentro de 10 dias
 										</p>
-							
+
 										<div class="card border-0 bg-body-tertiary rounded text-center mt-7">
 											<div class="pt-8 px-5">
-											<img class="img-fluid" src="{{ asset('images/shop/product-info-2.png') }}" alt="pay" width="357" height="28">
+												<img class="img-fluid"
+													src="{{ asset('images/shop/product-info-2.png') }}" alt="pay"
+													width="357" height="28">
 											</div>
 											<div class="card-body pt-6 pb-7">
-											<p class="fs-14px fw-normal mb-0">Pagamento  &amp; Checkout Seguros</p>
+												<p class="fs-14px fw-normal mb-0">Pagamento &amp; Checkout Seguros</p>
 											</div>
 										</div>
-										
+
 
 										<div class="d-flex justify-content-start">
-											<p class="me-5"><a class="link-cover text-decoration-underline" href="./shop/product-details-v1.html">Guia de tamanho</a></p>
-											<p><a class="link-cover text-decoration-underline" href="#">Faça uma pergunta</a></p>
+											<p class="me-5"><a class="link-cover text-decoration-underline"
+													href="./shop/product-details-v1.html">Guia de tamanho</a></p>
+											<p><a class="link-cover text-decoration-underline" href="#">Faça uma
+													pergunta</a></p>
 										</div>
 										<div class="d-flex justify-content-start mt-8">
 											<a href="#" class="me-5">
-												<svg class="icon fs-28px me-2 pe-4"><use xlink:href="#icon-Heart"></use></svg>
-												<span class="link-cover text-decoration-underline">Adicionar à lista de desejos</span>
+												<svg class="icon fs-28px me-2 pe-4">
+													<use xlink:href="#icon-Heart"></use>
+												</svg>
+												<span class="link-cover text-decoration-underline">Adicionar à lista de
+													desejos</span>
 											</a>
 											<a href="#">
-												<svg class="icon fs-28px me-2 pe-4"><use xlink:href="#icon-arrows-left-right"></use></svg>
+												<svg class="icon fs-28px me-2 pe-4">
+													<use xlink:href="#icon-arrows-left-right"></use>
+												</svg>
 												<span class="link-cover text-decoration-underline">Compare</span>
 											</a>
 										</div>
@@ -1332,7 +1433,8 @@
 												<span class="text-body-emphasis">SKU:</span> {{ $produto->sku }}
 											</li>
 											<li class="fw-semibold mb-1">
-												<span class="text-body-emphasis">Category:</span> {{ $produto->categoria }}
+												<span class="text-body-emphasis">Category:</span>
+												{{ $produto->categoria }}
 											</li>
 											<li class="fw-semibold mb-1">
 												<span class="text-body-emphasis">Tags:</span>
@@ -1343,13 +1445,19 @@
 										</ul>
 										<div class="mt-10">
 											<a href="#" class="me-4">
-												<svg class="icon fs-24px"><use xlink:href="#icon-facebook-f-light"></use></svg>
+												<svg class="icon fs-24px">
+													<use xlink:href="#icon-facebook-f-light"></use>
+												</svg>
 											</a>
 											<a href="#" class="me-4">
-												<svg class="icon fs-24px"><use xlink:href="#icon-twitter-light"></use></svg>
+												<svg class="icon fs-24px">
+													<use xlink:href="#icon-twitter-light"></use>
+												</svg>
 											</a>
 											<a href="#">
-												<svg class="icon fs-24px"><use xlink:href="#icon-pinterest-p-light"></use></svg>
+												<svg class="icon fs-24px">
+													<use xlink:href="#icon-pinterest-p-light"></use>
+												</svg>
 											</a>
 										</div>
 									</div>
@@ -1361,65 +1469,138 @@
 				<!-- Fim do Modal exibido ao clicar em ver em cada produto-->
 
 				<script>
-       
-	   function saveProductInfo(id, nome, imagem, descricao, preco, preco_promocional, imagens_adicionais) {
-    // Atualizar informações do produto
-    document.getElementById('modalProductNome').textContent = nome;
-    document.getElementById('modalProductNome').textContent = id;
 
-    const formatPrice = (price) => {
-        return `R$${parseFloat(price).toFixed(2).replace('.', ',')}`;
-    };
+					function saveProductInfo(id, nome, imagem, descricao, preco, preco_promocional, imagens_adicionais) {
+						// Atualizar informações do produto
+						document.getElementById('modalProductNome').textContent = nome;
+/* 						document.getElementById('modalProductNome').textContent = id;
+ */
+						const formatPrice = (price) => {
+							return `R$${parseFloat(price).toFixed(2).replace('.', ',')}`;
+						};
 
-    if (preco_promocional && preco_promocional !== 'null') {
-        document.getElementById('modalProductPrecoAtual').textContent = formatPrice(preco_promocional);
-        document.getElementById('modalProductPrecoAntigo').textContent = formatPrice(preco);
-        document.getElementById('modalProductPrecoAntigo').style.display = 'inline';
-    } else {
-        document.getElementById('modalProductPrecoAtual').textContent = formatPrice(preco);
-        document.getElementById('modalProductPrecoAntigo').style.display = 'none';
-    }
+						if (preco_promocional && preco_promocional !== 'null') {
+							document.getElementById('modalProductPrecoAtual').textContent = formatPrice(preco_promocional);
+							document.getElementById('modalProductPrecoAntigo').textContent = formatPrice(preco);
+							document.getElementById('modalProductPrecoAntigo').style.display = 'inline';
+						} else {
+							document.getElementById('modalProductPrecoAtual').textContent = formatPrice(preco);
+							document.getElementById('modalProductPrecoAntigo').style.display = 'none';
+						}
 
-    document.getElementById('modalProductDescricao').textContent = descricao;
-    document.getElementById('modalProductImage').src = `{{ asset('images/products/') }}/${imagem}`;
+						document.getElementById('modalProductDescricao').textContent = descricao;
+						document.getElementById('modalProductImage').src = `{{ asset('images/products/') }}/${imagem}`;
 
-    // Atualizar imagens adicionais
-    const sliderThumb = document.getElementById('slider-thumb');
-    const slickTrack = sliderThumb.querySelector('.slick-track');
+						// Atualizar imagens adicionais
+						const sliderThumb = document.getElementById('slider-thumb');
+						const slickTrack = sliderThumb.querySelector('.slick-track');
 
-    slickTrack.innerHTML = ''; // Limpar imagens anteriores
+						slickTrack.innerHTML = ''; // Limpar imagens anteriores
 
-    console.log('Imagens Adicionais', imagens_adicionais);
-    const imagensArray = JSON.parse(imagens_adicionais);
-    console.log('Imagens Convertidas em Array', imagensArray);
+						console.log('Imagens Adicionais', imagens_adicionais);
+						const imagensArray = JSON.parse(imagens_adicionais);
+						console.log('Imagens Convertidas em Array', imagensArray);
 
-    if (Array.isArray(imagensArray)) {
-        imagensArray.forEach((img) => {
-            const thumbImage = document.createElement('div');
-            thumbImage.className = 'slick-slide';
-            thumbImage.innerHTML = `<img src="{{ asset('images/products/') }}/${img}" alt="imagem adicional" class="d-block w-100 img-thumb" data-main-img="${img}">`;
-            thumbImage.addEventListener('click', (event) => {
-                const mainImageSrc = event.target.getAttribute('data-main-img');
-                document.getElementById('modalProductImage').src = `{{ asset('images/products/') }}/${mainImageSrc}`;
-            });
-            slickTrack.appendChild(thumbImage);
-        });
-    } else {
-        console.error('Imagens Adicionais não é um array válido');
-    }
-}
+						if (Array.isArray(imagensArray)) {
+							imagensArray.forEach((img) => {
+								const thumbImage = document.createElement('div');
+								thumbImage.className = 'slick-slide';
+								thumbImage.innerHTML = `<img src="{{ asset('images/products/') }}/${img}" alt="imagem adicional" class="d-block w-100 img-thumb" data-main-img="${img}">`;
+								thumbImage.addEventListener('click', (event) => {
+									const mainImageSrc = event.target.getAttribute('data-main-img');
+									document.getElementById('modalProductImage').src = `{{ asset('images/products/') }}/${mainImageSrc}`;
+								});
+								slickTrack.appendChild(thumbImage);
+							});
+						} else {
+							console.error('Imagens Adicionais não é um array válido');
+						}
+					} 
+				</script>
+
+				<script>
+					document.addEventListener('DOMContentLoaded', function () {
+						const searchInput = document.getElementById('searchInput');
+						const searchButton = document.getElementById('searchButton'); // Adicione o botão de pesquisa se não estiver presente
+
+						function performSearch() {
+							const query = searchInput.value.trim();
 
 
-   
-   </script>
+							if (query.length >= 3) {
+								// Redirecionar para a página com a busca					
+								window.location.href = `/busca?query=${encodeURIComponent(query)}`;
+							}
+						}
 
-<!-- ate aqui -->
+						if (searchInput) {
+							searchInput.addEventListener('keypress', function (e) {
+								if (e.key === 'Enter') {
+									e.preventDefault();
+									performSearch();
+								}
+							});
+						}
+
+						if (searchButton) {
+							searchButton.addEventListener('click', function (e) {
+								e.preventDefault();
+								performSearch();
+							});
+						}
+
+						// Rolar para o elemento com id='listagemprod' após o carregamento da página
+						const urlParams = new URLSearchParams(window.location.search);
+						const query = urlParams.get('query');
+
+						if (query) {
+
+							// Atrasar a rolagem para garantir que o conteúdo esteja carregado
+							setTimeout(function () {
+								const listagemProd = document.getElementById('listagemprod');
+								if (listagemProd) {
+									listagemProd.scrollIntoView({ behavior: 'smooth' });
+								}
+							}, 1000); // Ajuste o atraso se necessário
+						}
+					});
+				</script>
+
+				<!-- O conteúdo da sua view -->
+
+				<!-- O conteúdo da sua view -->
+
+				<script>
+					document.addEventListener('DOMContentLoaded', function () {
+						// Verifica se o parâmetro 'scroll_to' está presente na URL
+						const urlParams = new URLSearchParams(window.location.search);
+						const scrollTo = urlParams.get('scroll_to');
+
+						// Adiciona um log para verificar o valor do parâmetro
+						console.log('Parâmetro scroll_to:', scrollTo);
+						console.log('urlParams=', urlParams);
+
+						if (scrollTo) {
+							const element = document.getElementById(scrollTo);
+							if (element) {
+								console.log('Elemento encontrado:', element);
+								element.scrollIntoView({ behavior: 'smooth' });
+							} else {
+								console.log('Elemento não encontrado para o ID:', scrollTo);
+							}
+						}
+					});
+				</script>
 
 
 
-	
+
+
+
+				<!-- ate aqui -->
+
 				<div class="text-center mt-12" data-animate="fadeInUp">
-					<a href="#" class="btn btn-outline-dark">
+					<a href="/" class="btn btn-outline-dark">
 						Veja Todos os Produtos
 					</a>
 				</div>
@@ -1439,38 +1620,41 @@
 						<div class="py-25 my-xl-21 my-lg-8"></div>
 					</div>
 					<div class="col-lg-6 py-lg-10 py-16 ps-lg-10 ps-xl-18 order-2" data-animate="fadeInUp">
-    <div class="text-left">
-        <p class="fs-15px mb-6 ls-1 text-body-emphasis fw-semibold">OFERTA ESPECIAL <span
-                class="badge bg-primary fs-15px py-3 px-4 ms-4">-20%</span></p>
-        <h2 class="mb-6">Economize em Kits</h2>
-        <p class="fs-18px w-md-70 w-lg-100 w-xl-75 mb-7 text-body">Feito com ingredientes limpos e não tóxicos,
-            nossos produtos são projetados para todos.</p>
-    </div>
+						<div class="text-left">
+							<p class="fs-15px mb-6 ls-1 text-body-emphasis fw-semibold">OFERTA ESPECIAL <span
+									class="badge bg-primary fs-15px py-3 px-4 ms-4">-20%</span></p>
+							<h2 class="mb-6">Produto exemplo</h2>
+							<p class="fs-18px w-md-70 w-lg-100 w-xl-75 mb-7 text-body">Feito com ingredientes limpos e
+								não tóxicos,
+								nossos produtos são projetados para todos.</p>
+						</div>
 
-    <div class="d-flex countdown ms-n4 ms-md-n7" data-countdown="true"
-        data-countdown-end="27 Jan 2024 18:24:25">
+						<div class="d-flex countdown ms-n4 ms-md-n7" data-countdown="true"
+							data-countdown-end="27 Jan 2024 18:24:25">
 
 
-		<div class="countdown-item text-center px-md-7 px-4 fs-1" id="hour">
-    <span class="fw-semibold text-primary font-primary"></span>
-</div>
+							<div class="countdown-item text-center px-md-7 px-4 fs-1" id="hour">
+								<span class="fw-semibold text-primary font-primary"></span>
+							</div>
 
-<div class="separate fw-semibold fs-1 text-primary">:</div>
+							<div class="separate fw-semibold fs-1 text-primary">:</div>
 
-<div class="countdown-item text-center px-md-7 px-4 fs-1" id="minute">
-    <span class="fw-semibold text-primary font-primary"></span>
-</div>
+							<div class="countdown-item text-center px-md-7 px-4 fs-1" id="minute">
+								<span class="fw-semibold text-primary font-primary"></span>
+							</div>
 
-<div class="separate fw-semibold fs-1 text-primary">:</div>
+							<div class="separate fw-semibold fs-1 text-primary">:</div>
 
-<div class="countdown-item text-center px-md-7 px-4 fs-1" id="second">
-    <span class="fw-semibold text-primary font-primary"></span>
-</div>
+							<div class="countdown-item text-center px-md-7 px-4 fs-1" id="second">
+								<span class="fw-semibold text-primary font-primary"></span>
+							</div>
 
-    </div>
+						</div>
 
-    <a href="#" class="mt-11 btn btn-dark btn-hover-text-light btn-hover-bg-primary btn-hover-border-primary shadow-sm">Apenas R$39,00</a>
-</div>
+						<a href="#listagemprod"
+							class="mt-11 btn btn-dark btn-hover-text-light btn-hover-bg-primary btn-hover-border-primary shadow-sm">Apenas
+							R$39,00</a>
+					</div>
 
 				</div>
 			</div>
@@ -1500,7 +1684,8 @@
 							<div class="text-left">
 								<p class="fs-15px mb-7 ls-1  fw-semibold text-uppercase">Oferta especial</p>
 								<h2 class="mb-6 mw-lg-60 pt-1 text-reset">Beleza Inspirada na Vida Real</h2>
-								<p class="fs-18px mb-0 mw-lg-75">Feitos com ingredientes limpos e não tóxicos, nossos produtos são projetados para todos.</p>
+								<p class="fs-18px mb-0 mw-lg-75">Feitos com ingredientes limpos e não tóxicos, nossos
+									produtos são projetados para todos.</p>
 							</div>
 
 							<a href="#" class="btn btn-white mt-10 mb-2">Descubra Agora</a>
@@ -1517,7 +1702,8 @@
 			<div class="container">
 				<div class="text-center" data-animate="fadeInUp">
 					<h2 class="mb-6">Do Nosso Blog</h2>
-					<p class="fs-18px mb-0 mw-xl-50 mw-lg-75 ms-auto me-auto">Nossos kits foram projetados para agrupar convenientemente os seus essenciais de bronzeamento, economizando seu dinheiro.</p>
+					<p class="fs-18px mb-0 mw-xl-50 mw-lg-75 ms-auto me-auto">Nossos kits foram projetados para agrupar
+						convenientemente os seus essenciais de bronzeamento, economizando seu dinheiro.</p>
 				</div>
 
 			</div>
@@ -1543,11 +1729,13 @@
 							<div class="card-body text-center px-md-9 py-0">
 								<h4 class="card-title lh-base mb-9"><a class="text-decoration-none"
 										href="../blog/details-01.html"
-										title="Um Guia Amigável para Limpadores Naturais da Pele">Um Guia Amigável para Limpadores Naturais da Pele</a></h4>
+										title="Um Guia Amigável para Limpadores Naturais da Pele">Um Guia Amigável para
+										Limpadores Naturais da Pele</a></h4>
 								<ul class="post-meta list-inline lh-1 d-flex flex-wrap justify-content-center m-0">
 									<li class="list-inline-item border-end pe-5 me-5">By <a href="#"
 											title="Admin">Admin</a></li>
-									<li class="list-inline-item">02 Ago, 2024</li>
+									<li class="list-inline-item">02 Ago, {{ date('Y') }}</li>
+
 								</ul>
 							</div>
 						</article>
@@ -1560,8 +1748,9 @@
 									<!--     <img data-src="./assets/images/blog/post-05-370x450.jpg" class="img-fluid lazy-image w-100" alt="Our Favorite Multitasking Products" width="370" height="450" src="#">
  -->
 									<img data-src="{{ asset('images/blog/post-05-370x450.jpg') }}"
-										class="img-fluid lazy-image w-100" alt="Nossos Produtos Multifuncionais Favoritos"
-										width="370" height="450" src="#">
+										class="img-fluid lazy-image w-100"
+										alt="Nossos Produtos Multifuncionais Favoritos" width="370" height="450"
+										src="#">
 
 								</a><a href="#"
 									class="post-item-cate btn btn-light btn-text-light-body-emphasis btn-hover-bg-dark btn-hover-text-light fw-500 post-cat position-absolute top-100 start-50 translate-middle py-2 px-7 border-0"
@@ -1569,11 +1758,14 @@
 							</figure>
 							<div class="card-body text-center px-md-9 py-0">
 								<h4 class="card-title lh-base mb-9"><a class="text-decoration-none"
-										href="../blog/details-01.html" title="Nossos Produtos Multifuncionais Favoritos">Nossos Produtos Multifuncionais Favoritos</a></h4>
+										href="../blog/details-01.html"
+										title="Nossos Produtos Multifuncionais Favoritos">Nossos Produtos
+										Multifuncionais Favoritos</a></h4>
 								<ul class="post-meta list-inline lh-1 d-flex flex-wrap justify-content-center m-0">
 									<li class="list-inline-item border-end pe-5 me-5">By <a href="#"
 											title="Admin">Admin</a></li>
-									<li class="list-inline-item">06 Ago, 2024</li>
+									<li class="list-inline-item">06 Ago, {{ date('Y') }}</li>
+
 								</ul>
 							</div>
 						</article>
@@ -1597,11 +1789,13 @@
 							<div class="card-body text-center px-md-9 py-0">
 								<h4 class="card-title lh-base mb-9"><a class="text-decoration-none"
 										href="../blog/details-01.html"
-										title="Como Escolher a Fragrância Certa para o Seu Lar">Como Escolher a Fragrância Certa para o Seu Lar</a></h4>
+										title="Como Escolher a Fragrância Certa para o Seu Lar">Como Escolher a
+										Fragrância Certa para o Seu Lar</a></h4>
 								<ul class="post-meta list-inline lh-1 d-flex flex-wrap justify-content-center m-0">
 									<li class="list-inline-item border-end pe-5 me-5">By <a href="#"
 											title="Admin">Admin</a></li>
-									<li class="list-inline-item">08 Ago, 2024</li>
+									<li class="list-inline-item">08 Ago, {{ date('Y') }}</li>
+
 								</ul>
 							</div>
 						</article>
@@ -1627,7 +1821,9 @@
 						<div class="form-check d-flex justify-content-center">
 							<input class="form-check-input me-4 rounded" type="checkbox" value="" id="flexCheckDefault">
 							<label class="form-check-label text-body fs-14px" for="flexCheckDefault">
-    							Aceito os <a href="#" class="text-decoration-none border-bottom">termos e condições</a> e <a href="#" class="text-decoration-none border-bottom">a política de proteção de dados</a>
+								Aceito os <a href="#" class="text-decoration-none border-bottom">termos e condições</a>
+								e <a href="#" class="text-decoration-none border-bottom">a política de proteção de
+									dados</a>
 							</label>
 
 						</div>
@@ -1655,13 +1851,14 @@
 			<div class="row">
 				<div class="col-lg-5 col-12 mb-11 mb-lg-0">
 
-				<h3 class="mb-6">Cuide da Sua Pele, <br> Cuide da Sua Beleza</h3>
-				<p class="pe-xl-24 mb-lg-11">Sorria com o brilho da sua pele. Deixe-a mostrar sua verdadeira idade, não os anos que passaram.</p>
-				<a class="fw-semibold fs-6 text-decoration-none" href="../find-a-store.html">
-					Encontre uma loja <svg class="icon ms-5">
-						<use xlink:href="#icon-arrow-right"></use>
-					</svg>
-				</a>
+					<h3 class="mb-6">Cuide da Sua Pele, <br> Cuide da Sua Beleza</h3>
+					<p class="pe-xl-24 mb-lg-11">Sorria com o brilho da sua pele. Deixe-a mostrar sua verdadeira idade,
+						não os anos que passaram.</p>
+					<a class="fw-semibold fs-6 text-decoration-none" href="#listagemprod">
+						Volte aos produtos <svg class="icon ms-5">
+							<use xlink:href="#icon-arrow-right"></use>
+						</svg>
+					</a>
 
 
 				</div>
@@ -1707,7 +1904,8 @@
 						</li>
 
 						<li class="pt-3 mb-4">
-							<a href="#" title="Bundle &amp; Save" class="text-body">Compre em Kit e Economize</a>
+							<a href="#listagemprod" title="Bundle &amp; Save" class="text-body">Compre em Kit e
+								Economize</a>
 						</li>
 
 						<li class="pt-3 mb-4">
@@ -1749,7 +1947,7 @@
 			<div class="row align-items-center mt-0 mt-lg-20 pt-lg-4">
 				<div
 					class="col-12 col-md-6 col-lg-4 d-flex align-items-center order-2 order-lg-1 mt-7 mt-md-11 mt-lg-0">
-					<p class="mb-0">© Elegance Cintra 2024</p>
+					<p class="mb-0">© Elegance Cintra {{ date('Y') }}</p>
 					<ul class="list-inline fs-18px ms-6 mb-0">
 						<li class="list-inline-item me-8">
 							<a href="#"><i class="fab fa-twitter"></i></a>
@@ -1772,7 +1970,7 @@
 						<!-- <img class="lazy-image img-fluid light-mode-img" src="#" data-src="./assets/images/others/logo.png" width="179" height="26" alt="Glowing - Bootstrap 5 HTML Templates">
 <img class="lazy-image dark-mode-img img-fluid" src="#" data-src="./assets/images/others/logo-white.png" width="179" height="26" alt="Glowing - Bootstrap 5 HTML Templates"> -->
 						<img class="lazy-image img-fluid light-mode-img" src="#"
-							data-src="{{ asset('images/others/logo.png') }}" width="179" height="26"
+							data-src="{{ asset('images/others/logo-oficial-02.png') }}" width="179" height="26"
 							alt="Glowing - Bootstrap 5 HTML Templates">
 						<img class="lazy-image dark-mode-img img-fluid" src="#"
 							data-src="{{ asset('images/others/logo-oficial-02.png') }}" width="179" height="26"
@@ -2722,15 +2920,15 @@
 			<nav class="navbar navbar-expand-xl px-0 py-6 py-xl-12 row align-items-start">
 				<div class="col-xl-3 d-flex justify-content-center justify-content-xl-start">
 					<a href="./" class="navbar-brand py-4 d-lg-inline-block">
-						<!-- 				<img src="./assets/images/others/logo.png" height="26" alt="Glowing - Bootstrap 5 HTML Templates">-->
-						<img src="{{ asset('images/others/logo.png') }}" height="26"
+						<!--Imagem logo ao procurar Produto no cabeçalho-->
+						<img src="{{ asset('images/others/logo-oficial-02.png') }}" height="56"
 							alt="Glowing - Bootstrap 5 HTML Templates">
 					</a>
 				</div>
 				<div class="col-xl-6 d-flex justify-content-center">
-					<form class="w-xl-100 w-sm-75 w-100 mt-6 mt-xl-0 px-6 px-xl-0">
+					<!-- <form class="w-xl-100 w-sm-75 w-100 mt-6 mt-xl-0 px-6 px-xl-0">
 						<div class="input-group mx-auto">
-							<input type="text" class="form-control form-control bg-transparent border-primary"
+							<input  type="text" class="form-control form-control bg-transparent border-primary"
 								placeholder="Procurar produto">
 							<div
 								class="form-control-append position-absolute end-0 top-0 bottom-0 d-flex align-items-center">
@@ -2747,7 +2945,31 @@
 								<a class="nav-link text-decoration-underline py-0 px-4" href="#">creme</a>
 							</nav>
 						</div>
+					</form> -->
+					<form class="w-xl-100 w-sm-75 w-100 mt-6 mt-xl-0 px-6 px-xl-0" action="/busca" method="GET">
+						<div class="input-group mx-auto">
+							<input id="searchInput" type="text" name="query"
+								class="form-control form-control bg-transparent border-primary"
+								placeholder="Procurar produto" value="{{ request('query') }}">
+							<div
+								class="form-control-append position-absolute end-0 top-0 bottom-0 d-flex align-items-center">
+								<button id="searchButton" class="input-group-text bg-transparent border-0 px-0 me-6"
+									type="submit">
+									<i class="far fa-search fs-5"></i>
+								</button>
+							</div>
+						</div>
+						<div class="d-flex align-items-center justify-content-center mt-6">
+							<p class="text-muted mb-0 mr-3">Pesquisas populares</p>
+							<nav class="nav">
+								<a class="nav-link text-decoration-underline py-0 px-4" href="?query=rímel">rímel</a>
+								<a class="nav-link text-decoration-underline py-0 px-4"
+									href="?query=esfoliantes">esfoliantes</a>
+								<a class="nav-link text-decoration-underline py-0 px-4" href="?query=creme">creme</a>
+							</nav>
+						</div>
 					</form>
+
 				</div>
 				<div class="icons-actions col-xl-3 d-flex justify-content-end fs-28px text-body-emphasis">
 					<div class="px-5 d-none d-xl-inline-block">
@@ -2918,7 +3140,8 @@
 				<span class="cart-total fw-bold text-body-emphasis">$106.00</span>
 			</div>
 			<a href="../shop/checkout.html" class="btn btn-dark w-100 mb-7" title="Check Out">Check Out</a>
-			<a href="../shop/shopping-cart.html" class="btn btn-outline-dark w-100" title="View shopping cart">Carrinho de Compras</a>
+			<a href="../shop/shopping-cart.html" class="btn btn-outline-dark w-100" title="View shopping cart">Carrinho
+				de Compras</a>
 		</div>
 	</div>
 
@@ -3041,15 +3264,14 @@
 
 					<li class="nav-item transition-all-xl-1 py-0 dropdown dropdown-fullwidth">
 						<a class="nav-link d-flex justify-content-between position-relative text-uppercase fw-semibold ls-1 fs-15px dropdown-toggle"
-							href="./index.html" data-bs-toggle="dropdown" id="menu-item-home-canvas"
-							aria-haspopup="true" aria-expanded="false">Home</a>
+							href="/" id="menu-item-home-canvas" aria-haspopup="true" aria-expanded="false">Início</a>
 						<div class="dropdown-menu mega-menu start-0 py-6 " aria-labelledby="menu-item-home-canvas"
 							style="width:320px">
 							<div class="megamenu-home container py-8 px-12">
 								<div class="row">
 									<div class="col">
 										<h6 class="fs-18px">Group 1</h6>
-										<ul class="list-unstyled">
+										<!-- <ul class="list-unstyled">
 											<li>
 												<a href="./home-01.html"
 													class="border-hover text-decoration-none py-3 d-block"><span
@@ -3095,9 +3317,9 @@
 													class="border-hover text-decoration-none py-3 d-block"><span
 														class="border-hover-target">Home 09</span></a>
 											</li>
-										</ul>
+										</ul> -->
 									</div>
-									<div class="col">
+									<!-- <div class="col">
 										<h6 class="fs-18px">Group 2</h6>
 										<ul class="list-unstyled">
 											<li>
@@ -3146,7 +3368,7 @@
 														class="border-hover-target">Home 18</span></a>
 											</li>
 										</ul>
-									</div>
+									</div> -->
 								</div>
 							</div>
 
@@ -3155,182 +3377,186 @@
 					<li class="nav-item transition-all-xl-1 py-0 dropdown dropdown-fullwidth position-static">
 						<a class="nav-link d-flex justify-content-between position-relative text-uppercase fw-semibold ls-1 fs-15px dropdown-toggle"
 							href="./store.html" data-bs-toggle="dropdown" id="menu-item-shop-canvas"
-							aria-haspopup="true" aria-expanded="false">Shop</a>
+							aria-haspopup="true" aria-expanded="false">Loja</a>
 						<div class="dropdown-menu mega-menu start-0 py-6  w-100"
 							aria-labelledby="menu-item-shop-canvas">
 							<div class="megamenu-shop container-wide py-8 px-12">
 								<div class="row">
 									<div class="col">
-										<h6 class="fs-18px">Shop Pages</h6>
+										<h6 class="fs-18px">Cuidados com a pele</h6>
 										<ul class="list-unstyled mb-0">
 											<li>
-												<a href="./shop/shop-layout-v1.html"
-													class="border-hover text-decoration-none py-3 d-block"><span
-														class="border-hover-target">Shop Layout <sup>v1</sup></span></a>
+												<a href="{{ route('buscarPorCategoria', ['categoria' => 'hidratantes', 'scroll_to' => 'listagemprod']) }}"
+													class="border-hover text-decoration-none py-3 d-block">
+													<span class="border-hover-target">Hidratantes</span>
+												</a>
 											</li>
 											<li>
-												<a href="./shop/shop-layout-v2.html"
-													class="border-hover text-decoration-none py-3 d-block"><span
-														class="border-hover-target">Shop Layout <sup>v2</sup></span></a>
+												<a href="{{ route('buscarPorCategoria', ['categoria' => 'Protetores solares', 'scroll_to' => 'listagemprod']) }}"
+													class="border-hover text-decoration-none py-3 d-block">
+													<span class="border-hover-target">Protetores solares</span>
+												</a>
 											</li>
 											<li>
-												<a href="./shop/shop-layout-v3.html"
-													class="border-hover text-decoration-none py-3 d-block"><span
-														class="border-hover-target">Shop Layout <sup>v3</sup></span></a>
+												<a href="{{ route('buscarPorCategoria', ['categoria' => 'Limpeza facial', 'scroll_to' => 'listagemprod']) }}"
+													class="border-hover text-decoration-none py-3 d-block">
+													<span class="border-hover-target">Limpeza facial</span>
+												</a>
 											</li>
 											<li>
-												<a href="./shop/shop-layout-v4.html"
-													class="border-hover text-decoration-none py-3 d-block"><span
-														class="border-hover-target">Shop Layout <sup>v4</sup></span></a>
+												<a href="{{ route('buscarPorCategoria', ['categoria' => 'Esfoliantes', 'scroll_to' => 'listagemprod']) }}"
+													class="border-hover text-decoration-none py-3 d-block">
+													<span class="border-hover-target">Esfoliantes</span>
+												</a>
 											</li>
 											<li>
-												<a href="./shop/shop-layout-v5.html"
-													class="border-hover text-decoration-none py-3 d-block"><span
-														class="border-hover-target">Shop Layout <sup>v5</sup></span></a>
+												<a href="{{ route('buscarPorCategoria', ['categoria' => 'Tônicos', 'scroll_to' => 'listagemprod']) }}"
+													class="border-hover text-decoration-none py-3 d-block">
+													<span class="border-hover-target">Tônicos</span>
+												</a>
 											</li>
 										</ul>
 									</div>
 									<div class="col">
-										<h6 class="fs-18px">Product Pages</h6>
+										<h6 class="fs-18px">Maquiagem</h6>
 										<ul class="list-unstyled mb-0">
 											<li>
-												<a href="./shop/product-details-v1.html"
-													class="border-hover text-decoration-none py-3 d-block"><span
-														class="border-hover-target">Product Detail
-														<sup>v1</sup></span></a>
+												<a href="{{ route('buscarPorCategoria', ['categoria' => 'Corretivos', 'scroll_to' => 'listagemprod']) }}"
+													class="border-hover text-decoration-none py-3 d-block">
+													<span class="border-hover-target">Corretivos</span>
+												</a>
 											</li>
 											<li>
-												<a href="./shop/product-details-v2.html"
-													class="border-hover text-decoration-none py-3 d-block"><span
-														class="border-hover-target">Product Detail
-														<sup>v2</sup></span></a>
+												<a href="{{ route('buscarPorCategoria', ['categoria' => 'Pó facial', 'scroll_to' => 'listagemprod']) }}"
+													class="border-hover text-decoration-none py-3 d-block">
+													<span class="border-hover-target">Pó facial</span>
+												</a>
 											</li>
 											<li>
-												<a href="./shop/product-details-v3.html"
-													class="border-hover text-decoration-none py-3 d-block"><span
-														class="border-hover-target">Product Detail
-														<sup>v3</sup></span></a>
+												<a href="{{ route('buscarPorCategoria', ['categoria' => 'Sombras', 'scroll_to' => 'listagemprod']) }}"
+													class="border-hover text-decoration-none py-3 d-block">
+													<span class="border-hover-target">Sombras</span>
+												</a>
 											</li>
 											<li>
-												<a href="./shop/product-details-v4.html"
-													class="border-hover text-decoration-none py-3 d-block"><span
-														class="border-hover-target">Product Detail
-														<sup>v4</sup></span></a>
+												<a href="{{ route('buscarPorCategoria', ['categoria' => 'Máscara para cílios (rímel)', 'scroll_to' => 'listagemprod']) }}"
+													class="border-hover text-decoration-none py-3 d-block">
+													<span class="border-hover-target">Máscara para cílios (rímel)</span>
+												</a>
 											</li>
 											<li>
-												<a href="./shop/product-details-v5.html"
-													class="border-hover text-decoration-none py-3 d-block"><span
-														class="border-hover-target">Product Detail
-														<sup>v5</sup></span></a>
+												<a href="{{ route('buscarPorCategoria', ['categoria' => 'Delineadores', 'scroll_to' => 'listagemprod']) }}"
+													class="border-hover text-decoration-none py-3 d-block">
+													<span class="border-hover-target">Delineadores</span>
+												</a>
 											</li>
 											<li>
-												<a href="./shop/product-details-v6.html"
-													class="border-hover text-decoration-none py-3 d-block"><span
-														class="border-hover-target">Product Detail
-														<sup>v6</sup></span></a>
+												<a href="{{ route('buscarPorCategoria', ['categoria' => 'Batons e gloss', 'scroll_to' => 'listagemprod']) }}"
+													class="border-hover text-decoration-none py-3 d-block">
+													<span class="border-hover-target">Batons e gloss</span>
+												</a>
 											</li>
 											<li>
-												<a href="./shop/product-details-v7.html"
-													class="border-hover text-decoration-none py-3 d-block"><span
-														class="border-hover-target">Product Detail
-														<sup>v7</sup></span></a>
+												<a href="{{ route('buscarPorCategoria', ['categoria' => 'Blush e bronzer', 'scroll_to' => 'listagemprod']) }}"
+													class="border-hover text-decoration-none py-3 d-block">
+													<span class="border-hover-target">Blush e bronzer</span>
+												</a>
 											</li>
 											<li>
-												<a href="./shop/product-details-v8.html"
-													class="border-hover text-decoration-none py-3 d-block"><span
-														class="border-hover-target">Product Detail
-														<sup>v8</sup></span></a>
+												<a href="{{ route('buscarPorCategoria', ['categoria' => 'Iluminadores', 'scroll_to' => 'listagemprod']) }}"
+													class="border-hover text-decoration-none py-3 d-block">
+													<span class="border-hover-target">Iluminadores</span>
+												</a>
 											</li>
 										</ul>
 									</div>
 									<div class="col">
-										<h6 class="fs-18px">Product Types</h6>
+										<h6 class="fs-18px">Cabelos</h6>
 										<ul class="list-unstyled mb-0">
 											<li>
-												<a href="./shop/product-simple.html"
-													class="border-hover text-decoration-none py-3 d-block"><span
-														class="border-hover-target">Product Simple</span></a>
+												<a href="{{ route('buscarPorCategoria', ['categoria' => 'Shampoos', 'scroll_to' => 'listagemprod']) }}"
+													class="border-hover text-decoration-none py-3 d-block">
+													<span class="border-hover-target">Shampoos</span>
+												</a>
 											</li>
 											<li>
-												<a href="./shop/product-variable.html"
-													class="border-hover text-decoration-none py-3 d-block"><span
-														class="border-hover-target">Product Variable</span></a>
+												<a href="{{ route('buscarPorCategoria', ['categoria' => 'Óleos capilares', 'scroll_to' => 'listagemprod']) }}"
+													class="border-hover text-decoration-none py-3 d-block">
+													<span class="border-hover-target">Óleos capilares</span>
+												</a>
 											</li>
 											<li>
-												<a href="./shop/product-time-limit.html"
-													class="border-hover text-decoration-none py-3 d-block"><span
-														class="border-hover-target">Product Time Limit</span></a>
+												<a href="{{ route('buscarPorCategoria', ['categoria' => 'Tinturas e colorações', 'scroll_to' => 'listagemprod']) }}"
+													class="border-hover text-decoration-none py-3 d-block">
+													<span class="border-hover-target">Tinturas e colorações</span>
+												</a>
 											</li>
 											<li>
-												<a href="./shop/product-grouped.html"
-													class="border-hover text-decoration-none py-3 d-block"><span
-														class="border-hover-target">Product Grouped</span></a>
+												<a href="{{ route('buscarPorCategoria', ['categoria' => 'Produtos para alisamento ou cachos', 'scroll_to' => 'listagemprod']) }}"
+													class="border-hover text-decoration-none py-3 d-block">
+													<span class="border-hover-target">Produtos para alisamento ou
+														cachos</span>
+												</a>
 											</li>
 										</ul>
 									</div>
 									<div class="col">
-										<h6 class="fs-18px">Other Pages</h6>
+										<h6 class="fs-18px">Cuidados com o Corpo</h6>
 										<ul class="list-unstyled mb-0">
 											<li>
-												<a href="./shop/shopping-cart.html"
-													class="border-hover text-decoration-none py-3 d-block"><span
-														class="border-hover-target">Carrinho de Compras</span></a>
+												<a href="{{ route('buscarPorCategoria', ['categoria' => 'Hidratantes Corporais', 'scroll_to' => 'listagemprod']) }}"
+													class="border-hover text-decoration-none py-3 d-block">
+													<span class="border-hover-target">Hidratantes Corporais</span>
+												</a>
 											</li>
 											<li>
-												<a href="./shop/compare.html"
-													class="border-hover text-decoration-none py-3 d-block"><span
-														class="border-hover-target">Compare</span></a>
+												<a href="{{ route('buscarPorCategoria', ['categoria' => 'Esfoliantes Corporais', 'scroll_to' => 'listagemprod']) }}"
+													class="border-hover text-decoration-none py-3 d-block">
+													<span class="border-hover-target">Esfoliantes Corporais</span>
+												</a>
 											</li>
 											<li>
-												<a href="./shop/wishlist.html"
-													class="border-hover text-decoration-none py-3 d-block"><span
-														class="border-hover-target">Wishlist</span></a>
+												<a href="{{ route('buscarPorCategoria', ['categoria' => 'Óleos Corporais', 'scroll_to' => 'listagemprod']) }}"
+													class="border-hover text-decoration-none py-3 d-block">
+													<span class="border-hover-target">Óleos Corporais</span>
+												</a>
 											</li>
 											<li>
-												<a href="./shop/checkout.html"
-													class="border-hover text-decoration-none py-3 d-block"><span
-														class="border-hover-target">Checkout</span></a>
+												<a href="{{ route('buscarPorCategoria', ['categoria' => 'Produtos para Banho', 'scroll_to' => 'listagemprod']) }}"
+													class="border-hover text-decoration-none py-3 d-block">
+													<span class="border-hover-target">Produtos para Banho</span>
+												</a>
 											</li>
 											<li>
-												<a href="./user-registration.html"
-													class="border-hover text-decoration-none py-3 d-block"><span
-														class="border-hover-target">Register</span></a>
+												<a href="{{ route('buscarPorCategoria', ['categoria' => 'Protetores e Autobronzeadores', 'scroll_to' => 'listagemprod']) }}"
+													class="border-hover text-decoration-none py-3 d-block">
+													<span class="border-hover-target">Protetores e
+														Autobronzeadores</span>
+												</a>
 											</li>
 											<li>
-												<a href="./user-login.html"
-													class="border-hover text-decoration-none py-3 d-block"><span
-														class="border-hover-target">Login</span></a>
+												<a href="{{ route('buscarPorCategoria', ['categoria' => 'Cuidados com a Celulite', 'scroll_to' => 'listagemprod']) }}"
+													class="border-hover text-decoration-none py-3 d-block">
+													<span class="border-hover-target">Cuidados com a Celulite</span>
+												</a>
+											</li>
+											<li>
+												<a href="{{ route('buscarPorCategoria', ['categoria' => 'Cuidados com a Estria', 'scroll_to' => 'listagemprod']) }}"
+													class="border-hover text-decoration-none py-3 d-block">
+													<span class="border-hover-target">Cuidados com a Estria</span>
+												</a>
 											</li>
 										</ul>
-									</div>
-									<div class="col d-xxl-block d-none megamenu-shop-banner" data-bs-theme="light">
-										<div class="card border-0 mt-4">
-											<!-- 			<img src="./assets/images/background/bg-mega-menu-shop.jpg" alt="bg mega menu" class="card-img">
- --> <img src="{{ asset('images/background/bg-mega-menu-shop.jpg') }}" alt="bg mega menu" class="card-img">
-											<div class="card-img-overlay d-flex flex-column mx-2 px-9 py-6">
-												<p class="text-body-emphasis ls-1 fw-semibold mb-4 mt-6 text-uppercase">
-													new collection
-												</p>
-												<h3 class="fs-3">
-													Special <br>
-													Offer
-												</h3>
-												<div class="mt-auto">
-													<a href="#" class="btn btn-white">Shop Sale</a>
-												</div>
-											</div>
-										</div>
 									</div>
 								</div>
 							</div>
-
 						</div>
 					</li>
 					<li class="nav-item transition-all-xl-1 py-0 dropdown">
-						<a class="nav-link d-flex justify-content-between position-relative text-uppercase fw-semibold ls-1 fs-15px dropdown-toggle"
+						<!-- <a class="nav-link d-flex justify-content-between position-relative text-uppercase fw-semibold ls-1 fs-15px dropdown-toggle"
 							href="#" data-bs-toggle="dropdown" id="menu-item-pages-canvas" aria-haspopup="true"
-							aria-expanded="false">Pages</a>
-						<ul class="dropdown-menu py-6" aria-labelledby="menu-item-pages-canvas">
+							aria-expanded="false">Pages</a> -->
+						<!-- <ul class="dropdown-menu py-6" aria-labelledby="menu-item-pages-canvas">
 							<li class="dropend" aria-haspopup="true" aria-expanded="false">
 								<a class="dropdown-item pe-6 dropdown-toggle d-flex justify-content-between border-hover"
 									href="#" data-bs-toggle="dropdown" id="menu-item-blog-canvas">
@@ -3500,9 +3726,9 @@
 									</span>
 								</a>
 							</li>
-						</ul>
+						</ul> -->
 					</li>
-					<li class="nav-item transition-all-xl-1 py-0 dropdown dropdown-fullwidth">
+					<!-- <li class="nav-item transition-all-xl-1 py-0 dropdown dropdown-fullwidth">
 						<a class="nav-link d-flex justify-content-between position-relative text-uppercase fw-semibold ls-1 fs-15px dropdown-toggle"
 							href="#" data-bs-toggle="dropdown" id="menu-item-blocks-canvas" aria-haspopup="true"
 							aria-expanded="false">Blocks</a>
@@ -3614,8 +3840,8 @@
 							</div>
 
 						</div>
-					</li>
-					<li class="nav-item transition-all-xl-1 py-0 dropdown dropdown-fullwidth">
+					</li> -->
+					<!-- <li class="nav-item transition-all-xl-1 py-0 dropdown dropdown-fullwidth">
 						<a class="nav-link d-flex justify-content-between position-relative text-uppercase fw-semibold ls-1 fs-15px dropdown-toggle"
 							href="#" data-bs-toggle="dropdown" id="menu-item-docs-canvas" aria-haspopup="true"
 							aria-expanded="false">Docs</a>
@@ -3686,14 +3912,15 @@
 
 							</div>
 						</div>
-					</li>
+					</li> -->
 				</ul>
 			</div>
 			<hr class="mb-0">
 			<div class="offcanvas-footer bg-body-tertiary">
-				© 2024 Elegance Cintra. <br>
+				© Elegance Cintra {{ date('Y') }}. <br>
 				Todos os direitos reservados.
 			</div>
+
 		</div>
 	</div>
 	<div class="position-fixed z-index-10 bottom-0 end-0 p-10">
@@ -3702,9 +3929,9 @@
 			title="Back To Top" style="--square-size: 48px"><i class="fa-solid fa-arrow-up"></i></a>
 	</div>
 
-	
 
-	
+
+
 </body>
 
 
