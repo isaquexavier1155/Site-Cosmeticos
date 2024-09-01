@@ -80,9 +80,9 @@ body {
     border-radius: 0.375rem;
 }
 
-.mb-3 #caracteristicas{
+/* .mb-3 #caracteristicas{
     background-color: red!important;
-}
+} */
 
 
     </style>
