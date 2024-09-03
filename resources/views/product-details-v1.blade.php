@@ -183,180 +183,161 @@
                                 <div class="dropdown-menu mega-menu start-0 py-6  w-100"
                                     aria-labelledby="menu-item-shop">
                                     <div class="megamenu-shop container-wide py-8 px-12">
-                                        <div class="row">
-                                            <div class="col">
-                                                <h6 class="fs-18px">Cuidados com a pele</h6>
-                                                <ul class="list-unstyled mb-0">
-                                                    <li>
-                                                        <a href="{{ route('buscarPorCategoria', ['categoria' => 'hidratantes', 'scroll_to' => 'listagemprod']) }}"
-                                                            class="border-hover text-decoration-none py-3 d-block">
-                                                            <span class="border-hover-target">Hidratantes</span>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="{{ route('buscarPorCategoria', ['categoria' => 'Protetores solares', 'scroll_to' => 'listagemprod']) }}"
-                                                            class="border-hover text-decoration-none py-3 d-block">
-                                                            <span class="border-hover-target">Protetores solares</span>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="{{ route('buscarPorCategoria', ['categoria' => 'Limpeza facial', 'scroll_to' => 'listagemprod']) }}"
-                                                            class="border-hover text-decoration-none py-3 d-block">
-                                                            <span class="border-hover-target">Limpeza facial</span>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="{{ route('buscarPorCategoria', ['categoria' => 'Esfoliantes', 'scroll_to' => 'listagemprod']) }}"
-                                                            class="border-hover text-decoration-none py-3 d-block">
-                                                            <span class="border-hover-target">Esfoliantes</span>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="{{ route('buscarPorCategoria', ['categoria' => 'Tônicos', 'scroll_to' => 'listagemprod']) }}"
-                                                            class="border-hover text-decoration-none py-3 d-block">
-                                                            <span class="border-hover-target">Tônicos</span>
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                            <div class="col">
-                                                <h6 class="fs-18px">Maquiagem</h6>
-                                                <ul class="list-unstyled mb-0">
-                                                    <li>
-                                                        <a href="{{ route('buscarPorCategoria', ['categoria' => 'Corretivos', 'scroll_to' => 'listagemprod']) }}"
-                                                            class="border-hover text-decoration-none py-3 d-block">
-                                                            <span class="border-hover-target">Corretivos</span>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="{{ route('buscarPorCategoria', ['categoria' => 'Pó facial', 'scroll_to' => 'listagemprod']) }}"
-                                                            class="border-hover text-decoration-none py-3 d-block">
-                                                            <span class="border-hover-target">Pó facial</span>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="{{ route('buscarPorCategoria', ['categoria' => 'Sombras', 'scroll_to' => 'listagemprod']) }}"
-                                                            class="border-hover text-decoration-none py-3 d-block">
-                                                            <span class="border-hover-target">Sombras</span>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="{{ route('buscarPorCategoria', ['categoria' => 'Máscara para cílios (rímel)', 'scroll_to' => 'listagemprod']) }}"
-                                                            class="border-hover text-decoration-none py-3 d-block">
-                                                            <span class="border-hover-target">Máscara para cílios
-                                                                (rímel)</span>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="{{ route('buscarPorCategoria', ['categoria' => 'Delineadores', 'scroll_to' => 'listagemprod']) }}"
-                                                            class="border-hover text-decoration-none py-3 d-block">
-                                                            <span class="border-hover-target">Delineadores</span>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="{{ route('buscarPorCategoria', ['categoria' => 'Batons e gloss', 'scroll_to' => 'listagemprod']) }}"
-                                                            class="border-hover text-decoration-none py-3 d-block">
-                                                            <span class="border-hover-target">Batons e gloss</span>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="{{ route('buscarPorCategoria', ['categoria' => 'Blush e bronzer', 'scroll_to' => 'listagemprod']) }}"
-                                                            class="border-hover text-decoration-none py-3 d-block">
-                                                            <span class="border-hover-target">Blush e bronzer</span>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="{{ route('buscarPorCategoria', ['categoria' => 'Iluminadores', 'scroll_to' => 'listagemprod']) }}"
-                                                            class="border-hover text-decoration-none py-3 d-block">
-                                                            <span class="border-hover-target">Iluminadores</span>
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                            <div class="col">
-                                                <h6 class="fs-18px">Cabelos</h6>
-                                                <ul class="list-unstyled mb-0">
-                                                    <li>
-                                                        <a href="{{ route('buscarPorCategoria', ['categoria' => 'Shampoos', 'scroll_to' => 'listagemprod']) }}"
-                                                            class="border-hover text-decoration-none py-3 d-block">
-                                                            <span class="border-hover-target">Shampoos</span>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="{{ route('buscarPorCategoria', ['categoria' => 'Óleos capilares', 'scroll_to' => 'listagemprod']) }}"
-                                                            class="border-hover text-decoration-none py-3 d-block">
-                                                            <span class="border-hover-target">Óleos capilares</span>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="{{ route('buscarPorCategoria', ['categoria' => 'Tinturas e colorações', 'scroll_to' => 'listagemprod']) }}"
-                                                            class="border-hover text-decoration-none py-3 d-block">
-                                                            <span class="border-hover-target">Tinturas e
-                                                                colorações</span>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="{{ route('buscarPorCategoria', ['categoria' => 'Produtos para alisamento ou cachos', 'scroll_to' => 'listagemprod']) }}"
-                                                            class="border-hover text-decoration-none py-3 d-block">
-                                                            <span class="border-hover-target">Produtos para alisamento
-                                                                ou cachos</span>
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                            <div class="col">
-                                                <h6 class="fs-18px">Cuidados com o Corpo</h6>
-                                                <ul class="list-unstyled mb-0">
-                                                    <li>
-                                                        <a href="{{ route('buscarPorCategoria', ['categoria' => 'Hidratantes Corporais', 'scroll_to' => 'listagemprod']) }}"
-                                                            class="border-hover text-decoration-none py-3 d-block">
-                                                            <span class="border-hover-target">Hidratantes
-                                                                Corporais</span>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="{{ route('buscarPorCategoria', ['categoria' => 'Esfoliantes Corporais', 'scroll_to' => 'listagemprod']) }}"
-                                                            class="border-hover text-decoration-none py-3 d-block">
-                                                            <span class="border-hover-target">Esfoliantes
-                                                                Corporais</span>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="{{ route('buscarPorCategoria', ['categoria' => 'Óleos Corporais', 'scroll_to' => 'listagemprod']) }}"
-                                                            class="border-hover text-decoration-none py-3 d-block">
-                                                            <span class="border-hover-target">Óleos Corporais</span>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="{{ route('buscarPorCategoria', ['categoria' => 'Produtos para Banho', 'scroll_to' => 'listagemprod']) }}"
-                                                            class="border-hover text-decoration-none py-3 d-block">
-                                                            <span class="border-hover-target">Produtos para Banho</span>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="{{ route('buscarPorCategoria', ['categoria' => 'Protetores e Autobronzeadores', 'scroll_to' => 'listagemprod']) }}"
-                                                            class="border-hover text-decoration-none py-3 d-block">
-                                                            <span class="border-hover-target">Protetores e
-                                                                Autobronzeadores</span>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="{{ route('buscarPorCategoria', ['categoria' => 'Cuidados com a Celulite', 'scroll_to' => 'listagemprod']) }}"
-                                                            class="border-hover text-decoration-none py-3 d-block">
-                                                            <span class="border-hover-target">Cuidados com a
-                                                                Celulite</span>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="{{ route('buscarPorCategoria', ['categoria' => 'Cuidados com a Estria', 'scroll_to' => 'listagemprod']) }}"
-                                                            class="border-hover text-decoration-none py-3 d-block">
-                                                            <span class="border-hover-target">Cuidados com a
-                                                                Estria</span>
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
+                                    <div class="row">
+												<div class="col">
+													<a href="{{ route('buscarPorCategoria', ['categoria' => 'Perfumes', 'scroll_to' => 'listagemprod']) }}">
+														<h6 class="fs-18px">Perfumes</h6>
+													</a>
+												</div>
+												<div class="col">
+													<a href="{{ route('buscarPorCategoria', ['categoria' => 'Body splash', 'scroll_to' => 'listagemprod']) }}">
+														<h6 class="fs-18px">Body splash</h6>
+													</a>
+												</div>
+												<div class="col">
+													<a href="{{ route('buscarPorCategoria', ['categoria' => 'Hidratantes', 'scroll_to' => 'listagemprod']) }}">
+														<h6 class="fs-18px">Hidratantes</h6>
+													</a>
+												</div>
+												<!-- <div class="col">
+													<h6 class="fs-18px">Maquiagem</h6>
+													<ul class="list-unstyled mb-0">
+														<li>
+															<a href="{{ route('buscarPorCategoria', ['categoria' => 'Corretivos', 'scroll_to' => 'listagemprod']) }}"
+																class="border-hover text-decoration-none py-3 d-block">
+																<span class="border-hover-target">Corretivos</span>
+															</a>
+														</li>
+														<li>
+															<a href="{{ route('buscarPorCategoria', ['categoria' => 'Pó facial', 'scroll_to' => 'listagemprod']) }}"
+																class="border-hover text-decoration-none py-3 d-block">
+																<span class="border-hover-target">Pó facial</span>
+															</a>
+														</li>
+														<li>
+															<a href="{{ route('buscarPorCategoria', ['categoria' => 'Sombras', 'scroll_to' => 'listagemprod']) }}"
+																class="border-hover text-decoration-none py-3 d-block">
+																<span class="border-hover-target">Sombras</span>
+															</a>
+														</li>
+														<li>
+															<a href="{{ route('buscarPorCategoria', ['categoria' => 'Máscara para cílios (rímel)', 'scroll_to' => 'listagemprod']) }}"
+																class="border-hover text-decoration-none py-3 d-block">
+																<span class="border-hover-target">Máscara para cílios
+																	(rímel)</span>
+															</a>
+														</li>
+														<li>
+															<a href="{{ route('buscarPorCategoria', ['categoria' => 'Delineadores', 'scroll_to' => 'listagemprod']) }}"
+																class="border-hover text-decoration-none py-3 d-block">
+																<span class="border-hover-target">Delineadores</span>
+															</a>
+														</li>
+														<li>
+															<a href="{{ route('buscarPorCategoria', ['categoria' => 'Batons e gloss', 'scroll_to' => 'listagemprod']) }}"
+																class="border-hover text-decoration-none py-3 d-block">
+																<span class="border-hover-target">Batons e gloss</span>
+															</a>
+														</li>
+														<li>
+															<a href="{{ route('buscarPorCategoria', ['categoria' => 'Blush e bronzer', 'scroll_to' => 'listagemprod']) }}"
+																class="border-hover text-decoration-none py-3 d-block">
+																<span class="border-hover-target">Blush e bronzer</span>
+															</a>
+														</li>
+														<li>
+															<a href="{{ route('buscarPorCategoria', ['categoria' => 'Iluminadores', 'scroll_to' => 'listagemprod']) }}"
+																class="border-hover text-decoration-none py-3 d-block">
+																<span class="border-hover-target">Iluminadores</span>
+															</a>
+														</li>
+													</ul>
+												</div> -->
+												<!-- <div class="col">
+													<h6 class="fs-18px">Cabelos</h6>
+													<ul class="list-unstyled mb-0">
+														<li>
+															<a href="{{ route('buscarPorCategoria', ['categoria' => 'Shampoos', 'scroll_to' => 'listagemprod']) }}"
+																class="border-hover text-decoration-none py-3 d-block">
+																<span class="border-hover-target">Shampoos</span>
+															</a>
+														</li>
+														<li>
+															<a href="{{ route('buscarPorCategoria', ['categoria' => 'Óleos capilares', 'scroll_to' => 'listagemprod']) }}"
+																class="border-hover text-decoration-none py-3 d-block">
+																<span class="border-hover-target">Óleos capilares</span>
+															</a>
+														</li>
+														<li>
+															<a href="{{ route('buscarPorCategoria', ['categoria' => 'Tinturas e colorações', 'scroll_to' => 'listagemprod']) }}"
+																class="border-hover text-decoration-none py-3 d-block">
+																<span class="border-hover-target">Tinturas e
+																	colorações</span>
+															</a>
+														</li>
+														<li>
+															<a href="{{ route('buscarPorCategoria', ['categoria' => 'Produtos para alisamento ou cachos', 'scroll_to' => 'listagemprod']) }}"
+																class="border-hover text-decoration-none py-3 d-block">
+																<span class="border-hover-target">Produtos para
+																	alisamento ou cachos</span>
+															</a>
+														</li>
+													</ul>
+												</div> -->
+												<!-- <div class="col">
+													<h6 class="fs-18px">Cuidados com o Corpo</h6>
+													<ul class="list-unstyled mb-0">
+														<li>
+															<a href="{{ route('buscarPorCategoria', ['categoria' => 'Hidratantes Corporais', 'scroll_to' => 'listagemprod']) }}"
+																class="border-hover text-decoration-none py-3 d-block">
+																<span class="border-hover-target">Hidratantes
+																	Corporais</span>
+															</a>
+														</li>
+														<li>
+															<a href="{{ route('buscarPorCategoria', ['categoria' => 'Esfoliantes Corporais', 'scroll_to' => 'listagemprod']) }}"
+																class="border-hover text-decoration-none py-3 d-block">
+																<span class="border-hover-target">Esfoliantes
+																	Corporais</span>
+															</a>
+														</li>
+														<li>
+															<a href="{{ route('buscarPorCategoria', ['categoria' => 'Óleos Corporais', 'scroll_to' => 'listagemprod']) }}"
+																class="border-hover text-decoration-none py-3 d-block">
+																<span class="border-hover-target">Óleos Corporais</span>
+															</a>
+														</li>
+														<li>
+															<a href="{{ route('buscarPorCategoria', ['categoria' => 'Produtos para Banho', 'scroll_to' => 'listagemprod']) }}"
+																class="border-hover text-decoration-none py-3 d-block">
+																<span class="border-hover-target">Produtos para
+																	Banho</span>
+															</a>
+														</li>
+														<li>
+															<a href="{{ route('buscarPorCategoria', ['categoria' => 'Protetores e Autobronzeadores', 'scroll_to' => 'listagemprod']) }}"
+																class="border-hover text-decoration-none py-3 d-block">
+																<span class="border-hover-target">Protetores e
+																	Autobronzeadores</span>
+															</a>
+														</li>
+														<li>
+															<a href="{{ route('buscarPorCategoria', ['categoria' => 'Cuidados com a Celulite', 'scroll_to' => 'listagemprod']) }}"
+																class="border-hover text-decoration-none py-3 d-block">
+																<span class="border-hover-target">Cuidados com a
+																	Celulite</span>
+															</a>
+														</li>
+														<li>
+															<a href="{{ route('buscarPorCategoria', ['categoria' => 'Cuidados com a Estria', 'scroll_to' => 'listagemprod']) }}"
+																class="border-hover text-decoration-none py-3 d-block">
+																<span class="border-hover-target">Cuidados com a
+																	Estria</span>
+															</a>
+														</li>
+													</ul>
+												</div> -->
+											</div>
 
                                     </div>
 
@@ -4142,174 +4123,161 @@
                         <div class="dropdown-menu mega-menu start-0 py-6  w-100"
                             aria-labelledby="menu-item-shop-canvas">
                             <div class="megamenu-shop container-wide py-8 px-12">
-                                <div class="row">
-                                    <div class="col">
-                                        <h6 class="fs-18px">Cuidados com a pele</h6>
-                                        <ul class="list-unstyled mb-0">
-                                            <li>
-                                                <a href="{{ route('buscarPorCategoria', ['categoria' => 'hidratantes', 'scroll_to' => 'listagemprod']) }}"
-                                                    class="border-hover text-decoration-none py-3 d-block">
-                                                    <span class="border-hover-target">Hidratantes</span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="{{ route('buscarPorCategoria', ['categoria' => 'Protetores solares', 'scroll_to' => 'listagemprod']) }}"
-                                                    class="border-hover text-decoration-none py-3 d-block">
-                                                    <span class="border-hover-target">Protetores solares</span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="{{ route('buscarPorCategoria', ['categoria' => 'Limpeza facial', 'scroll_to' => 'listagemprod']) }}"
-                                                    class="border-hover text-decoration-none py-3 d-block">
-                                                    <span class="border-hover-target">Limpeza facial</span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="{{ route('buscarPorCategoria', ['categoria' => 'Esfoliantes', 'scroll_to' => 'listagemprod']) }}"
-                                                    class="border-hover text-decoration-none py-3 d-block">
-                                                    <span class="border-hover-target">Esfoliantes</span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="{{ route('buscarPorCategoria', ['categoria' => 'Tônicos', 'scroll_to' => 'listagemprod']) }}"
-                                                    class="border-hover text-decoration-none py-3 d-block">
-                                                    <span class="border-hover-target">Tônicos</span>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div class="col">
-                                        <h6 class="fs-18px">Maquiagem</h6>
-                                        <ul class="list-unstyled mb-0">
-                                            <li>
-                                                <a href="{{ route('buscarPorCategoria', ['categoria' => 'Corretivos', 'scroll_to' => 'listagemprod']) }}"
-                                                    class="border-hover text-decoration-none py-3 d-block">
-                                                    <span class="border-hover-target">Corretivos</span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="{{ route('buscarPorCategoria', ['categoria' => 'Pó facial', 'scroll_to' => 'listagemprod']) }}"
-                                                    class="border-hover text-decoration-none py-3 d-block">
-                                                    <span class="border-hover-target">Pó facial</span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="{{ route('buscarPorCategoria', ['categoria' => 'Sombras', 'scroll_to' => 'listagemprod']) }}"
-                                                    class="border-hover text-decoration-none py-3 d-block">
-                                                    <span class="border-hover-target">Sombras</span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="{{ route('buscarPorCategoria', ['categoria' => 'Máscara para cílios (rímel)', 'scroll_to' => 'listagemprod']) }}"
-                                                    class="border-hover text-decoration-none py-3 d-block">
-                                                    <span class="border-hover-target">Máscara para cílios (rímel)</span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="{{ route('buscarPorCategoria', ['categoria' => 'Delineadores', 'scroll_to' => 'listagemprod']) }}"
-                                                    class="border-hover text-decoration-none py-3 d-block">
-                                                    <span class="border-hover-target">Delineadores</span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="{{ route('buscarPorCategoria', ['categoria' => 'Batons e gloss', 'scroll_to' => 'listagemprod']) }}"
-                                                    class="border-hover text-decoration-none py-3 d-block">
-                                                    <span class="border-hover-target">Batons e gloss</span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="{{ route('buscarPorCategoria', ['categoria' => 'Blush e bronzer', 'scroll_to' => 'listagemprod']) }}"
-                                                    class="border-hover text-decoration-none py-3 d-block">
-                                                    <span class="border-hover-target">Blush e bronzer</span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="{{ route('buscarPorCategoria', ['categoria' => 'Iluminadores', 'scroll_to' => 'listagemprod']) }}"
-                                                    class="border-hover text-decoration-none py-3 d-block">
-                                                    <span class="border-hover-target">Iluminadores</span>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div class="col">
-                                        <h6 class="fs-18px">Cabelos</h6>
-                                        <ul class="list-unstyled mb-0">
-                                            <li>
-                                                <a href="{{ route('buscarPorCategoria', ['categoria' => 'Shampoos', 'scroll_to' => 'listagemprod']) }}"
-                                                    class="border-hover text-decoration-none py-3 d-block">
-                                                    <span class="border-hover-target">Shampoos</span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="{{ route('buscarPorCategoria', ['categoria' => 'Óleos capilares', 'scroll_to' => 'listagemprod']) }}"
-                                                    class="border-hover text-decoration-none py-3 d-block">
-                                                    <span class="border-hover-target">Óleos capilares</span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="{{ route('buscarPorCategoria', ['categoria' => 'Tinturas e colorações', 'scroll_to' => 'listagemprod']) }}"
-                                                    class="border-hover text-decoration-none py-3 d-block">
-                                                    <span class="border-hover-target">Tinturas e colorações</span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="{{ route('buscarPorCategoria', ['categoria' => 'Produtos para alisamento ou cachos', 'scroll_to' => 'listagemprod']) }}"
-                                                    class="border-hover text-decoration-none py-3 d-block">
-                                                    <span class="border-hover-target">Produtos para alisamento ou
-                                                        cachos</span>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div class="col">
-                                        <h6 class="fs-18px">Cuidados com o Corpo</h6>
-                                        <ul class="list-unstyled mb-0">
-                                            <li>
-                                                <a href="{{ route('buscarPorCategoria', ['categoria' => 'Hidratantes Corporais', 'scroll_to' => 'listagemprod']) }}"
-                                                    class="border-hover text-decoration-none py-3 d-block">
-                                                    <span class="border-hover-target">Hidratantes Corporais</span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="{{ route('buscarPorCategoria', ['categoria' => 'Esfoliantes Corporais', 'scroll_to' => 'listagemprod']) }}"
-                                                    class="border-hover text-decoration-none py-3 d-block">
-                                                    <span class="border-hover-target">Esfoliantes Corporais</span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="{{ route('buscarPorCategoria', ['categoria' => 'Óleos Corporais', 'scroll_to' => 'listagemprod']) }}"
-                                                    class="border-hover text-decoration-none py-3 d-block">
-                                                    <span class="border-hover-target">Óleos Corporais</span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="{{ route('buscarPorCategoria', ['categoria' => 'Produtos para Banho', 'scroll_to' => 'listagemprod']) }}"
-                                                    class="border-hover text-decoration-none py-3 d-block">
-                                                    <span class="border-hover-target">Produtos para Banho</span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="{{ route('buscarPorCategoria', ['categoria' => 'Protetores e Autobronzeadores', 'scroll_to' => 'listagemprod']) }}"
-                                                    class="border-hover text-decoration-none py-3 d-block">
-                                                    <span class="border-hover-target">Protetores e
-                                                        Autobronzeadores</span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="{{ route('buscarPorCategoria', ['categoria' => 'Cuidados com a Celulite', 'scroll_to' => 'listagemprod']) }}"
-                                                    class="border-hover text-decoration-none py-3 d-block">
-                                                    <span class="border-hover-target">Cuidados com a Celulite</span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="{{ route('buscarPorCategoria', ['categoria' => 'Cuidados com a Estria', 'scroll_to' => 'listagemprod']) }}"
-                                                    class="border-hover text-decoration-none py-3 d-block">
-                                                    <span class="border-hover-target">Cuidados com a Estria</span>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
+                            <div class="row">
+												<div class="col">
+													<a href="{{ route('buscarPorCategoria', ['categoria' => 'Perfumes', 'scroll_to' => 'listagemprod']) }}">
+														<h6 class="fs-18px">Perfumes</h6>
+													</a>
+												</div>
+												<div class="col">
+													<a href="{{ route('buscarPorCategoria', ['categoria' => 'Body splash', 'scroll_to' => 'listagemprod']) }}">
+														<h6 class="fs-18px">Body splash</h6>
+													</a>
+												</div>
+												<div class="col">
+													<a href="{{ route('buscarPorCategoria', ['categoria' => 'Hidratantes', 'scroll_to' => 'listagemprod']) }}">
+														<h6 class="fs-18px">Hidratantes</h6>
+													</a>
+												</div>
+												<!-- <div class="col">
+													<h6 class="fs-18px">Maquiagem</h6>
+													<ul class="list-unstyled mb-0">
+														<li>
+															<a href="{{ route('buscarPorCategoria', ['categoria' => 'Corretivos', 'scroll_to' => 'listagemprod']) }}"
+																class="border-hover text-decoration-none py-3 d-block">
+																<span class="border-hover-target">Corretivos</span>
+															</a>
+														</li>
+														<li>
+															<a href="{{ route('buscarPorCategoria', ['categoria' => 'Pó facial', 'scroll_to' => 'listagemprod']) }}"
+																class="border-hover text-decoration-none py-3 d-block">
+																<span class="border-hover-target">Pó facial</span>
+															</a>
+														</li>
+														<li>
+															<a href="{{ route('buscarPorCategoria', ['categoria' => 'Sombras', 'scroll_to' => 'listagemprod']) }}"
+																class="border-hover text-decoration-none py-3 d-block">
+																<span class="border-hover-target">Sombras</span>
+															</a>
+														</li>
+														<li>
+															<a href="{{ route('buscarPorCategoria', ['categoria' => 'Máscara para cílios (rímel)', 'scroll_to' => 'listagemprod']) }}"
+																class="border-hover text-decoration-none py-3 d-block">
+																<span class="border-hover-target">Máscara para cílios
+																	(rímel)</span>
+															</a>
+														</li>
+														<li>
+															<a href="{{ route('buscarPorCategoria', ['categoria' => 'Delineadores', 'scroll_to' => 'listagemprod']) }}"
+																class="border-hover text-decoration-none py-3 d-block">
+																<span class="border-hover-target">Delineadores</span>
+															</a>
+														</li>
+														<li>
+															<a href="{{ route('buscarPorCategoria', ['categoria' => 'Batons e gloss', 'scroll_to' => 'listagemprod']) }}"
+																class="border-hover text-decoration-none py-3 d-block">
+																<span class="border-hover-target">Batons e gloss</span>
+															</a>
+														</li>
+														<li>
+															<a href="{{ route('buscarPorCategoria', ['categoria' => 'Blush e bronzer', 'scroll_to' => 'listagemprod']) }}"
+																class="border-hover text-decoration-none py-3 d-block">
+																<span class="border-hover-target">Blush e bronzer</span>
+															</a>
+														</li>
+														<li>
+															<a href="{{ route('buscarPorCategoria', ['categoria' => 'Iluminadores', 'scroll_to' => 'listagemprod']) }}"
+																class="border-hover text-decoration-none py-3 d-block">
+																<span class="border-hover-target">Iluminadores</span>
+															</a>
+														</li>
+													</ul>
+												</div> -->
+												<!-- <div class="col">
+													<h6 class="fs-18px">Cabelos</h6>
+													<ul class="list-unstyled mb-0">
+														<li>
+															<a href="{{ route('buscarPorCategoria', ['categoria' => 'Shampoos', 'scroll_to' => 'listagemprod']) }}"
+																class="border-hover text-decoration-none py-3 d-block">
+																<span class="border-hover-target">Shampoos</span>
+															</a>
+														</li>
+														<li>
+															<a href="{{ route('buscarPorCategoria', ['categoria' => 'Óleos capilares', 'scroll_to' => 'listagemprod']) }}"
+																class="border-hover text-decoration-none py-3 d-block">
+																<span class="border-hover-target">Óleos capilares</span>
+															</a>
+														</li>
+														<li>
+															<a href="{{ route('buscarPorCategoria', ['categoria' => 'Tinturas e colorações', 'scroll_to' => 'listagemprod']) }}"
+																class="border-hover text-decoration-none py-3 d-block">
+																<span class="border-hover-target">Tinturas e
+																	colorações</span>
+															</a>
+														</li>
+														<li>
+															<a href="{{ route('buscarPorCategoria', ['categoria' => 'Produtos para alisamento ou cachos', 'scroll_to' => 'listagemprod']) }}"
+																class="border-hover text-decoration-none py-3 d-block">
+																<span class="border-hover-target">Produtos para
+																	alisamento ou cachos</span>
+															</a>
+														</li>
+													</ul>
+												</div> -->
+												<!-- <div class="col">
+													<h6 class="fs-18px">Cuidados com o Corpo</h6>
+													<ul class="list-unstyled mb-0">
+														<li>
+															<a href="{{ route('buscarPorCategoria', ['categoria' => 'Hidratantes Corporais', 'scroll_to' => 'listagemprod']) }}"
+																class="border-hover text-decoration-none py-3 d-block">
+																<span class="border-hover-target">Hidratantes
+																	Corporais</span>
+															</a>
+														</li>
+														<li>
+															<a href="{{ route('buscarPorCategoria', ['categoria' => 'Esfoliantes Corporais', 'scroll_to' => 'listagemprod']) }}"
+																class="border-hover text-decoration-none py-3 d-block">
+																<span class="border-hover-target">Esfoliantes
+																	Corporais</span>
+															</a>
+														</li>
+														<li>
+															<a href="{{ route('buscarPorCategoria', ['categoria' => 'Óleos Corporais', 'scroll_to' => 'listagemprod']) }}"
+																class="border-hover text-decoration-none py-3 d-block">
+																<span class="border-hover-target">Óleos Corporais</span>
+															</a>
+														</li>
+														<li>
+															<a href="{{ route('buscarPorCategoria', ['categoria' => 'Produtos para Banho', 'scroll_to' => 'listagemprod']) }}"
+																class="border-hover text-decoration-none py-3 d-block">
+																<span class="border-hover-target">Produtos para
+																	Banho</span>
+															</a>
+														</li>
+														<li>
+															<a href="{{ route('buscarPorCategoria', ['categoria' => 'Protetores e Autobronzeadores', 'scroll_to' => 'listagemprod']) }}"
+																class="border-hover text-decoration-none py-3 d-block">
+																<span class="border-hover-target">Protetores e
+																	Autobronzeadores</span>
+															</a>
+														</li>
+														<li>
+															<a href="{{ route('buscarPorCategoria', ['categoria' => 'Cuidados com a Celulite', 'scroll_to' => 'listagemprod']) }}"
+																class="border-hover text-decoration-none py-3 d-block">
+																<span class="border-hover-target">Cuidados com a
+																	Celulite</span>
+															</a>
+														</li>
+														<li>
+															<a href="{{ route('buscarPorCategoria', ['categoria' => 'Cuidados com a Estria', 'scroll_to' => 'listagemprod']) }}"
+																class="border-hover text-decoration-none py-3 d-block">
+																<span class="border-hover-target">Cuidados com a
+																	Estria</span>
+															</a>
+														</li>
+													</ul>
+												</div> -->
+											</div>
                             </div>
 
                         </div>
