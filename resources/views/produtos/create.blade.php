@@ -158,35 +158,18 @@ body {
             </div>
 
             <div class="mb-3">
-                <label for="categoria" class="form-label">Categoria:</label>
-                <select id="categoria" name="categoria" class="form-select" required>
-                    <option value="">Selecione a Categoria</option>
-                    <option value="Hidratantes" {{ old('categoria') == 'Hidratantes' ? 'selected' : '' }}>Hidratantes</option>
-                    <option value="Protetores solares" {{ old('categoria') == 'Protetores solares' ? 'selected' : '' }}>Protetores solares</option>
-                    <option value="Limpeza facial" {{ old('categoria') == 'Limpeza facial' ? 'selected' : '' }}>Limpeza facial (sabonetes, géis de limpeza)</option>
-                    <option value="Esfoliantes" {{ old('categoria') == 'Esfoliantes' ? 'selected' : '' }}>Esfoliantes</option>
-                    <option value="Tônicos" {{ old('categoria') == 'Tônicos' ? 'selected' : '' }}>Tônicos</option>
-                    <option value="Corretivos" {{ old('categoria') == 'Corretivos' ? 'selected' : '' }}>Corretivos</option>
-                    <option value="Pó facial" {{ old('categoria') == 'Pó facial' ? 'selected' : '' }}>Pó facial</option>
-                    <option value="Sombras" {{ old('categoria') == 'Sombras' ? 'selected' : '' }}>Sombras</option>
-                    <option value="Máscara para cílios (rímel)" {{ old('categoria') == 'Máscara para cílios (rímel)' ? 'selected' : '' }}>Máscara para cílios (rímel)</option>
-                    <option value="Delineadores" {{ old('categoria') == 'Delineadores' ? 'selected' : '' }}>Delineadores</option>
-                    <option value="Batons e gloss" {{ old('categoria') == 'Batons e gloss' ? 'selected' : '' }}>Batons e gloss</option>
-                    <option value="Blush e bronzer" {{ old('categoria') == 'Blush e bronzer' ? 'selected' : '' }}>Blush e bronzer</option>
-                    <option value="Iluminadores" {{ old('categoria') == 'Iluminadores' ? 'selected' : '' }}>Iluminadores</option>
-                    <option value="Shampoos" {{ old('categoria') == 'Shampoos' ? 'selected' : '' }}>Shampoos</option>
-                    <option value="Óleos capilares" {{ old('categoria') == 'Óleos capilares' ? 'selected' : '' }}>Óleos capilares</option>
-                    <option value="Tinturas e colorações" {{ old('categoria') == 'Tinturas e colorações' ? 'selected' : '' }}>Tinturas e colorações</option>
-                    <option value="Produtos para alisamento ou cachos" {{ old('categoria') == 'Produtos para alisamento ou cachos' ? 'selected' : '' }}>Produtos para alisamento ou cachos</option>
-                    <option value="Hidratantes Corporais" {{ old('categoria') == 'Hidratantes Corporais' ? 'selected' : '' }}>Hidratantes Corporais</option>
-                    <option value="Esfoliantes Corporais" {{ old('categoria') == 'Esfoliantes Corporais' ? 'selected' : '' }}>Esfoliantes Corporais</option>
-                    <option value="Óleos Corporais" {{ old('categoria') == 'Óleos Corporais' ? 'selected' : '' }}>Óleos Corporais</option>
-                    <option value="Protetores Solares Corporais" {{ old('categoria') == 'Protetores Solares Corporais' ? 'selected' : '' }}>Protetores Solares Corporais</option>
-                </select>
-                @error('categoria')
-                    <div class="text-danger">{{ $message }}</div>
-                @enderror
-            </div>
+    <label for="categoria" class="form-label">Categoria:</label>
+    <select id="categoria" name="categoria" class="form-select" required>
+        <option value="">Selecione a Categoria</option>
+        <option value="Perfumes" {{ old('categoria') == 'Perfumes' ? 'selected' : '' }}>Perfumes</option>
+        <option value="Body splash" {{ old('categoria') == 'Body splash' ? 'selected' : '' }}>Body splash</option>
+        <option value="Hidratantes" {{ old('categoria') == 'Hidratantes' ? 'selected' : '' }}>Hidratantes</option>
+    </select>
+    @error('categoria')
+        <div class="text-danger">{{ $message }}</div>
+    @enderror
+</div>
+
 
             <div class="mb-3">
                 <label for="imagem" class="form-label">Imagem Principal</label>
