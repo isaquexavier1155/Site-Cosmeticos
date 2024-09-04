@@ -952,7 +952,7 @@
 					<div class="card-img-overlay"></div>
 				</div> -->
 				<div class="video-cover">
-					<img src="{{ asset('images/index/topo.jpg') }}" alt="Descrição da imagem" class="img-fluid w-100" style="object-fit: cover; height: 100%;">
+					<img src="{{ asset('images/topo.jpg') }}" alt="Descrição da imagem" class="img-fluid w-100" style="object-fit: cover; height: 100%;">
 <!-- 					<div class="card-img-overlay position-absolute top-0 start-0 w-100 h-100" style="background: rgba(0, 0, 0, 0.3);"></div>
  -->					<div class="card-img-overlay"></div>
 				</div>
