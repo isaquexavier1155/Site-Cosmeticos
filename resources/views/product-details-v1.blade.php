@@ -1213,7 +1213,7 @@
                                             type="button" data-bs-toggle="collapse"
                                             data-bs-target="#collapse-product-detail" aria-expanded="false"
                                             aria-controls="collapse-product-detail">
-                                            Product Detail
+                                            Detalhes do Produto
                                         </button>
                                     </h5>
                                 </div>
@@ -1248,7 +1248,7 @@
                                             
                                             </ul>
 
-
+                                            <!-- DEIXAR -->
                                             <p class="fw-semibold text-body-emphasis mb-2 pb-4">Modo de usar:</p>
                                             <p class="mb-2 pb-4">{{ $produto->modo_de_usar }}</p>
                                             <div class="row">
@@ -1304,15 +1304,15 @@
                         <div class="tab-pane fade" id="how-to-use" role="tabpanel" aria-labelledby="how-to-use-tab"
                             tabindex="0">
                             <div class="card border-0 bg-transparent">
-                                <div
+                                <!-- <div
                                     class="card-header border-0 bg-transparent px-0 py-4 product-tabs-mobile d-block d-md-none">
                                     <h5 class="mb-0">
                                         <button class="btn lh-2 fs-5 py-3 px-6 shadow-none w-100 border text-primary"
                                             type="button" data-bs-toggle="collapse" data-bs-target="#collapse-to-use"
-                                            aria-expanded="false" aria-controls="collapse-to-use">Como usar
+                                            aria-expanded="false" aria-controls="collapse-to-use">Modo de usar:
                                         </button>
                                     </h5>
-                                </div>
+                                </div> -->
                                 <!-- <div class="collapse border-md-0 border p-md-0 p-6" id="collapse-to-use">
                                     <div class="pb-3">
                                         <p class="fw-semibold text-body-emphasis mb-2 pb-4">Follow these safety
@@ -1347,7 +1347,7 @@
                         </div>
                         <div class="tab-pane fade" id="ingredients" role="tabpanel" aria-labelledby="ingredients-tab"
                             tabindex="0">
-                            <div
+                            <!-- <div
                                 class="card-header border-0 bg-transparent px-0 py-4 product-tabs-mobile d-block d-md-none">
                                 <h5 class="mb-0">
                                     <button class="btn lh-2 fs-5 py-3 px-6 shadow-none w-100 border text-primary"
@@ -1355,7 +1355,7 @@
                                         aria-expanded="false" aria-controls="collapse-ingredients">How To Use
                                     </button>
                                 </h5>
-                            </div>
+                            </div> -->
                             <!-- <div class="collapse border-md-0 border p-md-0 p-6" id="collapse-ingredients">
                                 <div class="pb-3">
                                     <div class="table-responsive mb-5">
