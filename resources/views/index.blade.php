@@ -1059,7 +1059,11 @@
 				<div class="mb-13 text-center pb-3" data-animate="fadeInUp">
 					<img data-src="{{ asset('images/shop/single-image-01.png') }}" width="140" height="138"
 						class="mb-5 img-fluid lazy-image d-inline-block" alt="..." src="#">
-					<h2 class="h3 mb-0">Porque Você Merece Um Tempo Para Si.<br />Desperte a Beleza em Você</h2>
+					<!-- <h2 class="h3 mb-0">Porque Você Merece Um Tempo Para Si.<br/>Desperte a Beleza em Você</h2> -->					
+					 <h2 class="h3 mb-0">Bem-vindo à Elegância em Fragrâncias!<br/>
+					Descubra o mundo dos perfumes importados com nossa seleção exclusiva de fragrâncias que despertam os sentidos e deixam uma marca inesquecível.<br/>
+					Seja qual for a ocasião, temos o perfume perfeito para você.<br/> 
+					Mergulhe na sofisticação e encontre o aroma que mais combina com sua personalidade.</h2>
 				</div>
 
 
