@@ -946,19 +946,25 @@
 		<section class="overflow-hidden">
 
 			<div class="hero vh-100 position-relative d-flex align-items-end">
-				<div class="video-cover">
+				<!-- <div class="video-cover">
 					<iframe class="border-0" id="existing-iframe-example"
 						src="https://www.youtube.com/embed/U5DhkJrtUjM?autoplay=1&amp;rel=0&amp;playsinline=1&amp;mute=1&amp;controls=0&amp;loop=1&amp;playlist=U5DhkJrtUjM"></iframe>
 					<div class="card-img-overlay"></div>
+				</div> -->
+				<div class="video-cover">
+					<img src="{{ asset('images/index/topo.jpg') }}" alt="Descrição da imagem" class="img-fluid w-100" style="object-fit: cover; height: 100%;">
+<!-- 					<div class="card-img-overlay position-absolute top-0 start-0 w-100 h-100" style="background: rgba(0, 0, 0, 0.3);"></div>
+ -->					<div class="card-img-overlay"></div>
 				</div>
+
 				<div data-animate="fadeInDown" class="container container-wide pb-15 p-xl-15 position-relative">
 
 					<div class="hero-content">
-						<div data-animate="fadeInDown">
+						<!-- <div data-animate="fadeInDown">
 							<p class="text-white mb-8 fw-semibold fs-4">Encontre Inspiração</p>
 							<h1 class="text-white fw-semibold mb-8 hero-title-2">Desperte a Beleza <br> em Cada Detalhe
 							</h1>
-						</div>
+						</div> -->
 						<a href="#because_you_need_time_for_yourself_2" data-animate="fadeInUp"
 							class="pb-2 bg-transparent fw-semibold text-decoration-none hero-link pb-2 bg-transparent fw-semibold text-decoration-none hero-link p-0 text-white">
 							Descubra agora
