@@ -83,7 +83,7 @@ class ProdutoController extends Controller
         'categoria' => 'required|string',
         'ativo' => 'nullable|boolean',
         'tags' => 'nullable|string',
-        'imagem' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+        'imagem' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:700',
         'imagens_adicionais.*' => 'nullable|image|mimes:jpeg,png,jpg,gif',
         'modo_de_usar' => 'nullable|string',
         'caracteristicas' => 'nullable|string', // O campo "caracteristicas" será salvo como JSON

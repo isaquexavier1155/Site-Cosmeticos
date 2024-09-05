@@ -889,7 +889,7 @@
                             <div id="vertical-slider-slides"
                                 class="slick-slider slick-slider-arrow-inside slick-slider-dots-inside slick-slider-dots-light g-0"
                                 data-slick-options='{&#34;arrows&#34;:false,&#34;asNavFor&#34;:&#34;#vertical-slider-thumb&#34;,&#34;dots&#34;:false,&#34;slidesToShow&#34;:1,&#34;vertical&#34;:true}'>
-                                <a href="{{ asset('images/shop/product-gallery-05.jpg') }}"
+                                <a href="{{ asset('images/products/' . $produto->imagem) }}"
                                     data-gallery="product-gallery"
                                     data-thumb-src="{{ asset('images/shop/product-gallery-05.jpg') }}">
                                     <!--Imagem Principal grande
