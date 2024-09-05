@@ -1461,8 +1461,8 @@
 					function saveProductInfo(id, nome, imagem, descricao, preco, preco_promocional, imagens_adicionais) {
 						// Atualizar informações do produto
 						document.getElementById('modalProductNome').textContent = nome;
-/* 						document.getElementById('modalProductNome').textContent = id;
- */
+ 						document.getElementById('modalProductNome').textContent = id;
+ 
 						const formatPrice = (price) => {
 							return `R$${parseFloat(price).toFixed(2).replace('.', ',')}`;
 						};
