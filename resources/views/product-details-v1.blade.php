@@ -10,6 +10,8 @@
     <title>Elegance Cintra Beauty - Cosméticos em geral</title>
     <link rel="icon" href="{{ asset('favicon.ico') }}">
 
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
 
     <link rel="stylesheet" href="{{ asset('vendors/lightgallery/css/lightgallery-bundle.min.css') }}">
     <link rel="stylesheet" href="{{ asset('vendors/fontawesome/css/all.min.css') }}">
@@ -751,6 +753,7 @@
                                         style="--square-size: 18px">3</span>
                                 </a>
                             </div>
+                            <!-- Tela grande - Inicio Icone sacola abre modal carrinho 01 - Adicionar ao carrinho-->
                             <div class="px-5 d-none d-xl-inline-block">
                                 <a class="position-relative lh-1 color-inherit text-decoration-none" href="#"
                                     data-bs-toggle="offcanvas" data-bs-target="#shoppingCart"
@@ -763,6 +766,7 @@
                                         style="--square-size: 18px">3</span>
                                 </a>
                             </div>
+                             <!--Tela grande -  Fim Icone sacola abre modal carrinho 01 - Adicionar ao carrinho-->
 
                             <div class="color-modes position-relative ps-5">
                                 <a class="bd-theme btn btn-link nav-link dropdown-toggle d-inline-flex align-items-center justify-content-center text-primary p-0 position-relative rounded-circle"
@@ -1017,118 +1021,129 @@
                     </div>
                     <p class="fs-15px">{{ $produto->descricao }}</p>
 
+                    <!-- Início adicionar ao Carrinho: -->
+<form id="add-to-cart-form" class="product-info-custom" method="POST" action="{{ route('carrinho.adicionar') }}">
+    @csrf
+    <input type="hidden" name="produto_id" value="{{ $produto->id }}">
 
-                    <form class="product-info-custom">
-                        <!-- <div class="form-group shop-swatch mb-7 d-flex align-items-center">
-                            <span class="fw-semibold text-body-emphasis me-7">Size: </span>
-                            <ul class="list-inline d-flex justify-content-start mb-0">
-                                <li class="list-inline-item me-4 fw-semibold">
-                                    <input type="radio" id="radio1" name="radio" class="product-info-size d-none"
-                                        checked>
-                                    <label for="radio1" class="fs-14px p-4 d-block rounded text-decoration-none border"
-                                        data-var="full size">Full size</label>
-                                </li>
-                                <li class="list-inline-item me-4 fw-semibold">
-                                    <input type="radio" id="radio2" name="radio" class="product-info-size d-none">
-                                    <label for="radio2" class="fs-14px p-4 d-block rounded text-decoration-none border"
-                                        data-var="full size">Mini size</label>
-                                </li>
+    <p class="text-body-emphasis fw-semibold mb-6">Quantidade: </p>
+    @php
+        $precoOriginal = $produto->preco_promocional; // Preço original por unidade
 
-                            </ul>
-                        </div> -->
+        // Descontos por quantidade
+        $descontos = [
+            1 => 0.00, // Sem desconto para 1 unidade
+            2 => 0.05, // 5% de desconto para 2 unidades
+            3 => 0.08, // 8% de desconto para 3 unidades
+            4 => 0.10  // 10% de desconto para 4 unidades
+        ];
 
-                        <p class="text-body-emphasis fw-semibold mb-6">Quantidade: </p>
-                        @php
-                            $precoOriginal = $produto->preco_promocional; // Preço original por unidade
+        // Cálculo dos preços com desconto
+        $precosComDesconto = [];
+        foreach ($descontos as $quantidade => $desconto) {
+            $precosComDesconto[$quantidade] = $precoOriginal * (1 - $desconto) * $quantidade;
+        }
+    @endphp
 
-                            // Descontos por quantidade
-                            $descontos = [
-                                1 => 0.00, // Sem desconto para 1 unidade
-                                2 => 0.05, // 5% de desconto para 2 unidades
-                                3 => 0.08, // 8% de desconto para 3 unidades
-                                4 => 0.10  // 10% de desconto para 4 unidades
-                            ];
+    <!-- Compra de 1 unidade -->
+    <div class="form-check mb-2 pb-4">
+        <input type="radio" id="buy1" name="quantidade" value="1"
+            class="me-4 form-check-input product-info-input">
+        <label for="buy1" class="text-body-emphasis form-check-label">
+            Comprar 1 -
+            <span class="text-body">R${{ number_format($precoOriginal, 2, ',', '.') }}</span>
+        </label>
+    </div>
 
-                            // Cálculo dos preços com desconto
-                            $precosComDesconto = [];
-                            foreach ($descontos as $quantidade => $desconto) {
-                                $precosComDesconto[$quantidade] = $precoOriginal * (1 - $desconto) * $quantidade;
-                            }
-                        @endphp
+    <!-- Compra de 2 unidades com 5% de desconto -->
+    <div class="form-check mb-2 pb-4">
+        <input type="radio" id="buy2" name="quantidade" value="2"
+            class="me-4 form-check-input product-info-input">
+        <label for="buy2" class="text-body-emphasis form-check-label">
+            Comprar 2 -
+            <span
+                class="text-decoration-line-through mx-3 text-body">R${{ number_format($precoOriginal * 2, 2, ',', '.') }}</span>
+            <span class="fw-bold">R${{ number_format($precosComDesconto[2], 2, ',', '.') }}</span>
+        </label>
+        <span class="badge badge-primary fs-12px border text-primary fw-bold ms-4">Economize +5%</span>
+    </div>
 
-                        <!-- Compra de 1 unidade -->
-                        <div class="form-check mb-2 pb-4">
-                            <input type="radio" id="buy1" name="quality" value="1"
-                                class="me-4 form-check-input product-info-input">
-                            <label for="buy1" class="text-body-emphasis form-check-label">
-                                Comprar 1 -
-                                <span class="text-body">R${{ number_format($precoOriginal, 2, ',', '.') }}</span>
-                            </label>
-                        </div>
+    <!-- Compra de 3 unidades com 8% de desconto -->
+    <div class="form-check mb-2 pb-4">
+        <input type="radio" id="buy3" name="quantidade" value="3"
+            class="me-4 form-check-input product-info-input">
+        <label for="buy3" class="text-body-emphasis form-check-label">
+            Comprar 3 -
+            <span
+                class="text-decoration-line-through mx-3 text-body">R${{ number_format($precoOriginal * 3, 2, ',', '.') }}</span>
+            <span class="fw-bold">R${{ number_format($precosComDesconto[3], 2, ',', '.') }}</span>
+        </label>
+        <span class="badge badge-primary fs-12px border text-primary fw-bold ms-4">Economize +8%</span>
+    </div>
 
-                        <!-- Compra de 2 unidades com 5% de desconto -->
-                        <div class="form-check mb-2 pb-4">
-                            <input type="radio" id="buy2" name="quality" value="2"
-                                class="me-4 form-check-input product-info-input">
-                            <label for="buy2" class="text-body-emphasis form-check-label">
-                                Comprar 2 -
-                                <span
-                                    class="text-decoration-line-through mx-3 text-body">R${{ number_format($precoOriginal * 2, 2, ',', '.') }}</span>
-                                <span class="fw-bold">R${{ number_format($precosComDesconto[2], 2, ',', '.') }}</span>
-                            </label>
-                            <span class="badge badge-primary fs-12px border text-primary fw-bold ms-4">Economize
-                                +5%</span>
-                        </div>
+    <!-- Compra de 4 unidades com 10% de desconto -->
+    <div class="form-check mb-2 pb-4">
+        <input type="radio" id="buy4" name="quantidade" value="4"
+            class="me-4 form-check-input product-info-input">
+        <label for="buy4" class="text-body-emphasis form-check-label">
+            Comprar 4 -
+            <span
+                class="text-decoration-line-through mx-3 text-body">R${{ number_format($precoOriginal * 4, 2, ',', '.') }}</span>
+            <span class="fw-bold">R${{ number_format($precosComDesconto[4], 2, ',', '.') }}</span>
+        </label>
+        <span class="badge badge-primary fs-12px border text-primary fw-bold ms-4">Economize +10%</span>
+    </div>
 
-                        <!-- Compra de 3 unidades com 8% de desconto -->
-                        <div class="form-check mb-2 pb-4">
-                            <input type="radio" id="buy3" name="quality" value="3"
-                                class="me-4 form-check-input product-info-input">
-                            <label for="buy3" class="text-body-emphasis form-check-label">
-                                Comprar 3 -
-                                <span
-                                    class="text-decoration-line-through mx-3 text-body">R${{ number_format($precoOriginal * 3, 2, ',', '.') }}</span>
-                                <span class="fw-bold">R${{ number_format($precosComDesconto[3], 2, ',', '.') }}</span>
-                            </label>
-                            <span class="badge badge-primary fs-12px border text-primary fw-bold ms-4">Economize
-                                +8%</span>
-                        </div>
-
-                        <!-- Compra de 4 unidades com 10% de desconto -->
-                        <div class="form-check mb-2 pb-4">
-                            <input type="radio" id="buy4" name="quality" value="4"
-                                class="me-4 form-check-input product-info-input">
-                            <label for="buy4" class="text-body-emphasis form-check-label">
-                                Comprar 4 -
-                                <span
-                                    class="text-decoration-line-through mx-3 text-body">R${{ number_format($precoOriginal * 4, 2, ',', '.') }}</span>
-                                <span class="fw-bold">R${{ number_format($precosComDesconto[4], 2, ',', '.') }}</span>
-                            </label>
-                            <span class="badge badge-primary fs-12px border text-primary fw-bold ms-4">Economize
-                                +10%</span>
-                        </div>
+    <button type="submit"
+        class="btn btn-lg btn-dark mb-7 mt-7 w-100 btn-hover-bg-primary btn-hover-border-primary">Adicionar ao Carrinho
+    </button>
+</form>
+<!-- Fim adicionar ao Carrinho: -->
 
 
-                        <button type="submit"
-                            class="btn btn-lg btn-dark mb-7 mt-7 w-100 btn-hover-bg-primary btn-hover-border-primary">Adicionar
-                            ao Carrinho
-                        </button>
-                    </form>
-                    <!-- <div class="d-flex align-items-center flex-wrap">
-                        <a href="../shop/compare.html"
-                            class="text-decoration-none fw-semibold fs-6 me-9 pe-2 d-flex align-items-center">
-                            <svg class="icon fs-5">
-                                <use xlink:href="#icon-arrows-left-right-light"></use>
-                            </svg>
-                            <span class="ms-4 ps-2">Compare</span>
-                        </a>
-                        <a href="#" class="text-decoration-none fw-semibold fs-6 me-9 pe-2 d-flex align-items-center">
-                            <svg class="icon fs-5">
-                                <use xlink:href="#icon-star-light"></use>
-                            </svg>
-                            <span class="ms-4 ps-2">Add to wishlist</span>
-                        </a>
-                    </div> -->
+  <!--                  <script>
+<script>
+    document.getElementById('add-to-cart-form').addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        const formData = new FormData(this);
+        const quantidade = formData.get('quantidade'); // Corrigido o nome do campo
+        const produtoId = formData.get('produto_id'); // Obtendo o produto_id do formulário
+
+        addToCart(produtoId, quantidade);
+    });
+
+    function addToCart(produtoId, quantidade) {
+        fetch('{{ route("carrinho.adicionar") }}', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRF-TOKEN': '{{ csrf_token() }}'
+            },
+            body: JSON.stringify({ produto_id: produtoId, quantidade: quantidade })
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => {
+            if (data.success) {
+                updateCart(data.carrinho);
+                alert('Produto adicionado ao carrinho!');
+            } else {
+                alert('Ocorreu um erro ao adicionar o produto ao carrinho.');
+            }
+        })
+        .catch(error => {
+            console.error('Erro:', error);
+            alert('Ocorreu um erro ao adicionar o produto ao carrinho.');
+        });
+    }
+</script>
+
+</script> -->
 
                     <ul class="single-product-meta list-unstyled border-top pt-7 mt-7">
                         <!-- <li class="d-flex mb-4 pb-2 align-items-center">
@@ -3477,6 +3492,8 @@
                                 style="--square-size: 18px">3</span>
                         </a>
                     </div>
+
+                    <!-- Dispo Moveis - Inicio Icone sacola abre modal carrinho 02 - Adicionar ao carrinho-->
                     <div class="px-5 d-none d-xl-inline-block">
                         <a class="position-relative lh-1 color-inherit text-decoration-none" href="#"
                             data-bs-toggle="offcanvas" data-bs-target="#shoppingCart" aria-controls="shoppingCart"
@@ -3489,10 +3506,13 @@
                                 style="--square-size: 18px">3</span>
                         </a>
                     </div>
+                    <!-- Dispo Moveis - Fim Icone sacola abre modal carrinho 02 - Adicionar ao carrinho-->
                 </div>
             </nav>
         </div>
     </div>
+
+    <!--  Tela grande e pequena - Inicio  adicionar ao Carrinho - Produtos no Carrinho de compras: -->
     <div id="shoppingCart" data-bs-scroll="false" class="offcanvas offcanvas-end">
         <div class="offcanvas-header fs-4">
             <h4 class="offcanvas-title fw-semibold">Carrinho de Compras</h4>
@@ -3633,6 +3653,7 @@
                 shopping cart</a> -->
         </div>
     </div>
+     <!--  Fim  adicionar ao Carrinho - Carrinho de compras: -->
 
     <div class="modal" id="signInModal" tabindex="-1" aria-labelledby="signInModal" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">

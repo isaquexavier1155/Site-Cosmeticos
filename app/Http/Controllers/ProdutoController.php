@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Produto;
+use App\Models\Cart;
 use Intervention\Image\Facades\Image;
+use Illuminate\Support\Facades\Auth;
 class ProdutoController extends Controller
 {
     public function index()
@@ -169,23 +171,35 @@ class ProdutoController extends Controller
         return view('index', compact('produtos', 'categoria', 'scrollTo'));
     }
 
-/*     public function buscarPorCategoria(Request $request)
+
+    public function adicionar(Request $request)
     {
-        // Obter o parâmetro de categoria e scroll_to, se existirem
-        $categoria = $request->query('categoria');
-        $scrollTo = $request->query('scroll_to', ''); // 'scroll_to' é opcional
+        // Validação básica
+        $validated = $request->validate([
+            'quantidade' => 'required|integer|min:1',
+            'produto_id' => 'required|exists:produtos,id',
+        ]);
     
-        // Buscar produtos com base na categoria, se fornecida
-        if ($categoria) {
-            $produtos = Produto::where('categoria', $categoria)->get();
-        } else {
-            $produtos = Produto::all(); // Retorna todos os produtos se não houver filtro
-        }
+        // Obtendo o usuário logado
+        $user = auth()->user();
     
-        // Retornar a view index com os produtos encontrados e parâmetro de rolagem
-        return view('index', compact('produtos', 'categoria', 'scrollTo'));
-    } */
+        // Lógica para adicionar ao carrinho
+        Cart::create([
+            'product_id' => $validated['produto_id'], // Nome correto do campo
+            'quantity' => $validated['quantidade'],  // Nome correto do campo
+            'user_id' => $user->id,
+            'price' => Produto::find($validated['produto_id'])->preco_promocional, // Exemplo para definir o preço
+        ]);
     
+        return response()->json([
+            'success' => true,
+            'carrinho' => 'carrinhoAtualizado',
+        ]);
+    }
+    
+    
+    
+     
  
  
 

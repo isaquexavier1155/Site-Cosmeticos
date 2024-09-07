@@ -27,4 +27,10 @@ class Produto extends Model
     protected $casts = [
         'ativo' => 'boolean',
     ];
+
+    // Relacionamento com o modelo Cart
+    public function carts()
+    {
+        return $this->hasMany(Cart::class, 'produto_id');
+    }
 }
