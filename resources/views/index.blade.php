@@ -1482,7 +1482,7 @@
                                 document.querySelectorAll('tbody#cart-items tr').forEach(function (row) {
                                     const quantity = parseInt(row.querySelector('.quantity-input').value) || 0;
                                     const price = parseFloat(row.querySelector('.item-price').dataset.price) || 0;
-                                    total += quantity * price;
+                                    total += price;
                                 });
 
                                 // Atualiza o valor total na tela
@@ -3185,10 +3185,28 @@
                         </tr>
                     </thead>
                     <tbody id="cart-items">
+                        @php
+                            $total_geral = 0;
+                        @endphp
+
                         @if(isset($carrinho) && $carrinho->isNotEmpty())
                                             @foreach($carrinho as $item)
                                                                 @php
                                                                     $produto = App\Models\Produto::find($item->product_id);
+                                                                    $preco_original = $produto->preco;
+                                                                    $preco_com_desconto = $item->price;
+
+                                                                    // Aplicar o desconto progressivo
+                                                                    if ($item->quantity == 2) {
+                                                                        $preco_com_desconto = $preco_com_desconto * 0.95; // 5% de desconto
+                                                                    } elseif ($item->quantity == 3) {
+                                                                        $preco_com_desconto = $preco_com_desconto * 0.92; // 8% de desconto
+                                                                    } elseif ($item->quantity == 4) {
+                                                                        $preco_com_desconto = $preco_com_desconto * 0.90; // 10% de desconto
+                                                                    }
+
+                                                                    $total_item = $preco_com_desconto * $item->quantity; // Total do item considerando o preço com desconto
+                                                                    $total_geral += $total_item; // Soma o total do item ao total geral
                                                                 @endphp
                                                                 <tr class="position-relative">
                                                                     <td class="align-middle text-center">
@@ -3204,27 +3222,25 @@
                                                                             </div>
                                                                             <div class="">
                                                                                 <p class="card-text mb-1">
+                                                                                    <!-- Preço original riscado multiplicado pela quantidade -->
                                                                                     <span class="fs-13px fw-500 text-decoration-line-through pe-3">
-                                                                                        ${{ number_format($produto->preco, 2, ',', '.') }}
+                                                                                        ${{ number_format($produto->preco_promocional * $item->quantity, 2, ',', '.') }}
                                                                                     </span>
                                                                                     <span class="fs-15px fw-bold text-body-emphasis item-price"
-                                                                                        data-price="{{ $item->price }}">
-                                                                                        ${{ number_format($item->price, 2, ',', '.') }}
+                                                                                        data-price="{{ $total_item }}">
+                                                                                        ${{ number_format($total_item, 2, ',', '.') }}
                                                                                     </span>
                                                                                 </p>
                                                                                 <p class="fw-500 text-body-emphasis">{{ $produto->nome }}</p>
                                                                             </div>
                                                                         </div>
                                                                     </td>
+
                                                                     <td class="align-middle p-0">
                                                                         <div class="input-group position-relative shop-quantity">
-                                                                            <a href="#" class="shop-down position-absolute z-index-2"><i
-                                                                                    class="far fa-minus"></i></a>
                                                                             <input name="number[]" type="number"
                                                                                 class="form-control form-control-sm px-6 py-4 fs-6 text-center border-0 quantity-input"
                                                                                 value="{{ $item->quantity }}" readonly>
-                                                                            <a href="#" class="shop-up position-absolute z-index-2"><i
-                                                                                    class="far fa-plus"></i></a>
                                                                         </div>
                                                                     </td>
                                                                 </tr>
@@ -3241,7 +3257,9 @@
         <div class="offcanvas-footer flex-wrap">
             <div class="d-flex align-items-center justify-content-between w-100 mb-5">
                 <span class="text-body-emphasis">Preço total:</span>
-                <span id="cart-total" class="cart-total fw-bold text-body-emphasis">R$ 0,00</span>
+                <span id="cart-total" class="cart-total fw-bold text-body-emphasis">
+                    R${{ number_format($total_geral, 2, ',', '.') }}
+                </span>
             </div>
             <a href="../shop/checkout.html" class="btn btn-dark w-100 mb-7" title="Check Out">Finalizar Compra</a>
         </div>

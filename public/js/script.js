@@ -53,39 +53,32 @@ document.addEventListener('DOMContentLoaded', function() {
 
 //Script 6 - para atualizar o preço total -->
 
-    document.addEventListener('DOMContentLoaded', function() {
+    /* document.addEventListener('DOMContentLoaded', function() {
         
         function updateTotal() {
             let total = 0;
 
-            // Itera sobre todos os itens do carrinho
             document.querySelectorAll('tbody#cart-items tr').forEach(function(row) {
                 const quantity = parseInt(row.querySelector('.quantity-input').value) || 0;
                 const price = parseFloat(row.querySelector('.item-price').dataset.price) || 0;
                 total += quantity * price;
             });
 
-            // Atualiza o valor total na tela
             document.getElementById('cart-total').textContent = `R$ ${total.toFixed(2).replace('.', ',')}`;
         }
 
-        // Função para adicionar eventos de atualização de preço total
         function addUpdateTotalListeners() {
-            // Atualiza o total quando a quantidade muda
             document.querySelectorAll('.quantity-input').forEach(input => {
                 input.addEventListener('change', updateTotal);
             });
 
-            // Atualiza o total quando os botões de incremento e decremento são clicados
             document.querySelectorAll('.shop-up, .shop-down').forEach(button => {
                 button.addEventListener('click', function() {
-                    // Deferir a atualização do total até que a quantidade tenha sido atualizada
                     setTimeout(updateTotal, 100);
                 });
             });
         }
 
-        // Inicializa a atualização do total
         addUpdateTotalListeners();
         updateTotal();
-    });
+    }); */
