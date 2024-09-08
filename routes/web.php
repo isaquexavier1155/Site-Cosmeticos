@@ -38,6 +38,11 @@ Route::get('/produtos/get/{id}', [ProdutoController::class, 'getProdutoById'])->
  */
     Route::post('/carrinho/adicionar', [ProdutoController::class, 'adicionar'])->name('carrinho.adicionar');
 
+    //Rota para remover itens do carrinho de compras e da tabela cart do banco de dados
+
+    // Rota para remover item do carrinho
+    Route::delete('/carrinho/remover/{id}', [ProdutoController::class, 'remove'])->name('carrinho.remover');
+
 
 
 
@@ -46,9 +51,9 @@ Route::get('/produtos/get/{id}', [ProdutoController::class, 'getProdutoById'])->
  */
 use App\Http\Controllers\ProfileController;
 
-Route::get('/', function () {
+/* Route::get('/', function () {
     return view('welcome');
-});
+}); */
 
 Route::get('/dashboard', function () {
     return view('dashboard');

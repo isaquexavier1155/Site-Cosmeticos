@@ -750,7 +750,7 @@
                                     </svg>
                                     <span
                                         class="badge bg-dark text-white position-absolute top-0 start-100 translate-middle mt-4 rounded-circle fs-13px p-0 square"
-                                        style="--square-size: 18px">3</span>
+                                        style="--square-size: 18px">4</span>
                                 </a>
                             </div>
                             @guest
@@ -767,17 +767,21 @@
 
                             <!-- Tela grande - Inicio Icone sacola abre modal carrinho 01 - Adicionar ao carrinho-->
                             <div class="px-5 d-none d-xl-inline-block">
-                                <a class="position-relative lh-1 color-inherit text-decoration-none" href="#"
-                                    data-bs-toggle="offcanvas" data-bs-target="#shoppingCart"
-                                    aria-controls="shoppingCart" aria-expanded="false">
-                                    <svg class="icon icon-star-light">
-                                        <use xlink:href="#icon-shopping-bag-open-light"></use>
-                                    </svg>
-                                    <span
-                                        class="badge bg-dark text-white position-absolute top-0 start-100 translate-middle mt-4 rounded-circle fs-13px p-0 square"
-                                        style="--square-size: 18px">3</span>
-                                </a>
-                            </div>
+                            <a class="position-relative lh-1 color-inherit text-decoration-none" href="#"
+                                data-bs-toggle="offcanvas" data-bs-target="#shoppingCart"
+                                aria-controls="shoppingCart" aria-expanded="false">
+                                <svg class="icon icon-star-light">
+                                    <use xlink:href="#icon-shopping-bag-open-light"></use>
+                                </svg>
+                                <span id="cart-item-count"
+                                    class="badge bg-dark text-white position-absolute top-0 start-100 translate-middle mt-4 rounded-circle fs-13px p-0 square"
+                                    style="--square-size: 18px">
+                                    {{ isset($total_items) ? $total_items : 0 }}
+                                </span>
+                            </a>
+                        </div>
+
+
                              <!--Tela grande -  Fim Icone sacola abre modal carrinho 01 - Adicionar ao carrinho-->
 
                             <div class="color-modes position-relative ps-5">
@@ -1180,13 +1184,9 @@ document.addEventListener('DOMContentLoaded', function() {
             if (data.success) {
                 console.log('Produto adicionado com sucesso.');
 
-                const openCartButton = document.querySelector('[data-bs-toggle="offcanvas"][data-bs-target="#shoppingCart"]');
-                if (openCartButton) {
-                    openCartButton.click();
-                    console.log('Modal do carrinho aberto com sucesso.');
-                } else {
-                    console.error('Elemento para abrir o carrinho não encontrado.');
-                }
+                // Armazena um valor no sessionStorage para indicar que o produto foi adicionado
+                sessionStorage.setItem('cart_added', 'true');
+                window.location.reload(); // Recarrega a página
             } else {
                 console.warn('Erro ao adicionar o produto:', data.message);
                 alert(data.message || 'Ocorreu um erro ao adicionar o produto ao carrinho.');
@@ -1194,11 +1194,31 @@ document.addEventListener('DOMContentLoaded', function() {
         })
         .catch(error => {
             console.error('Erro:', error);
-            // Já lidamos com o redirecionamento para a página de login acima, não é necessário aqui.
         });
     }
 });
 </script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('Script carregado e DOM pronto.');
+
+    // Verifica se o valor 'cart_added' está presente no sessionStorage
+    if (sessionStorage.getItem('cart_added') === 'true') {
+        const openCartButton = document.querySelector('[data-bs-toggle="offcanvas"][data-bs-target="#shoppingCart"]');
+        if (openCartButton) {
+            openCartButton.click();
+            console.log('Modal do carrinho aberto com sucesso.');
+        } else {
+            console.error('Elemento para abrir o carrinho não encontrado.');
+        }
+
+        // Remove o valor do sessionStorage após abrir o carrinho
+        sessionStorage.removeItem('cart_added');
+    }
+});
+</script>
+
+
 
 
 
@@ -3574,146 +3594,123 @@ document.addEventListener('DOMContentLoaded', function() {
     </div>
 
     <!--  Tela grande e pequena - Inicio  adicionar ao Carrinho - Produtos no Carrinho de compras: -->
-    <div id="shoppingCart" data-bs-scroll="false" class="offcanvas offcanvas-end">
-        <div class="offcanvas-header fs-4">
-            <h4 class="offcanvas-title fw-semibold">Carrinho de Compras</h4>
-            <button type="button" class="btn-close btn-close-bg-none" data-bs-dismiss="offcanvas" aria-label="Close">
-                <i class="far fa-times"></i>
-            </button>
-        </div>
-        <div class="offcanvas-body me-xl-auto pt-0 mb-2 mb-xl-0">
-            <form class="table-responsive-md shopping-cart pb-8 pb-lg-10">
-                <table class="table table-borderless">
-                    <thead>
-                        <tr class="fw-500">
-                            <td colspan="3" class="border-bottom pb-6">
-                                <i
-                                    class="far fa-check fs-12px border me-4 px-2 py-1 text-body-emphasis border-dark rounded-circle"></i>
-                                Seu carrinho está salvo e os produtos permanecerão nele até que você os remova.
-                            </td>
-                        </tr>
-                    </thead>
-
-                    <tbody>
-                        <tr class="position-relative">
-                            <td class="align-middle text-center">
-                                <a href="#" class="d-block clear-product">
-                                    <i class="far fa-times"></i>
-                                </a>
-                            </td>
-                            <td class="shop-product">
-                                <div class="d-flex align-items-center">
-                                    <div class="me-6">
-                                        <img src="{{ asset('images/products/product-03-75x100.jpg') }}" width="60"
-                                            height="80" alt="natural coconut cleansing oil">
-
-                                    </div>
-                                    <div class="">
-                                        <p class="card-text mb-1">
-                                            <span class="fs-13px fw-500 text-decoration-line-through pe-3">$39.00</span>
-                                            <span class="fs-15px fw-bold text-body-emphasis">$29.00</span>
-
-                                        </p>
-                                        <p class="fw-500 text-body-emphasis">Natural Coconut Cleansing Oil</p>
-                                    </div>
-                                </div>
-                            </td>
-                            <td class="align-middle p-0">
-                                <div class="input-group position-relative shop-quantity">
-                                    <a href="#" class="shop-down position-absolute z-index-2"><i
-                                            class="far fa-minus"></i></a>
-                                    <input name="number[]" type="number"
-                                        class="form-control form-control-sm px-6 py-4 fs-6 text-center border-0"
-                                        value="1" required="">
-                                    <a href="#" class="shop-up position-absolute z-index-2"><i class="far fa-plus"></i>
-                                    </a>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr class="position-relative">
-                            <td class="align-middle text-center">
-                                <a href="#" class="d-block clear-product">
-                                    <i class="far fa-times"></i>
-                                </a>
-                            </td>
-                            <td class="shop-product">
-                                <div class="d-flex align-items-center">
-                                    <div class="me-6">
-                                        <img src="{{ asset('images/products/product-06-75x100.jpg') }}" width="60"
-                                            height="80" alt="natural coconut cleansing oil">
-
-                                    </div>
-                                    <div class="">
-                                        <p class="card-text mb-1">
-                                            <span class="fs-13px fw-500 text-decoration-line-through pe-3">$39.00</span>
-                                            <span class="fs-15px fw-bold text-body-emphasis">$29.00</span>
-
-                                        </p>
-                                        <p class="fw-500 text-body-emphasis">Super Pure</p>
-                                    </div>
-                                </div>
-                            </td>
-                            <td class="align-middle p-0">
-                                <div class="input-group position-relative shop-quantity">
-                                    <a href="#" class="shop-down position-absolute z-index-2"><i
-                                            class="far fa-minus"></i></a>
-                                    <input name="number[]" type="number"
-                                        class="form-control form-control-sm px-6 py-4 fs-6 text-center border-0"
-                                        value="1" required="">
-                                    <a href="#" class="shop-up position-absolute z-index-2"><i class="far fa-plus"></i>
-                                    </a>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr class="position-relative">
-                            <td class="align-middle text-center">
-                                <a href="#" class="d-block clear-product">
-                                    <i class="far fa-times"></i>
-                                </a>
-                            </td>
-                            <td class="shop-product">
-                                <div class="d-flex align-items-center">
-                                    <div class="me-6">
-                                        <img src="{{ asset('images/products/product-09-75x100.jpg') }}" width="60"
-                                            height="80" alt="natural coconut cleansing oil">
-
-                                    </div>
-                                    <div class="">
-                                        <p class="card-text mb-1">
-                                            <span class="fs-13px fw-500 text-decoration-line-through pe-3">$39.00</span>
-                                            <span class="fs-15px fw-bold text-body-emphasis">$29.00</span>
-
-                                        </p>
-                                        <p class="fw-500 text-body-emphasis">Cleansing Balm</p>
-                                    </div>
-                                </div>
-                            </td>
-                            <td class="align-middle p-0">
-                                <div class="input-group position-relative shop-quantity">
-                                    <a href="#" class="shop-down position-absolute z-index-2"><i
-                                            class="far fa-minus"></i></a>
-                                    <input name="number[]" type="number"
-                                        class="form-control form-control-sm px-6 py-4 fs-6 text-center border-0"
-                                        value="1" required="">
-                                    <a href="#" class="shop-up position-absolute z-index-2"><i class="far fa-plus"></i>
-                                    </a>
-                                </div>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </form>
-        </div>
-        <div class="offcanvas-footer flex-wrap">
-            <div class="d-flex align-items-center justify-content-between w-100 mb-5">
-                <span class="text-body-emphasis">Preço total:</span>
-                <span class="cart-total fw-bold text-body-emphasis">R$ ajustar valor dinamico</span>
-            </div>
-            <a href="../shop/checkout.html" class="btn btn-dark w-100 mb-7" title="Check Out">Finalizar Compra</a>
-            <!-- <a href="../shop/shopping-cart.html" class="btn btn-outline-dark w-100" title="View shopping cart">View
-                shopping cart</a> -->
-        </div>
+   <div id="shoppingCart" data-bs-scroll="false" class="offcanvas offcanvas-end">
+    <div class="offcanvas-header fs-4">
+        <h4 class="offcanvas-title fw-semibold">Carrinho de Compras</h4>
+        <button type="button" class="btn-close btn-close-bg-none" data-bs-dismiss="offcanvas" aria-label="Close">
+            <i class="far fa-times"></i>
+        </button>
     </div>
+    <div class="offcanvas-body me-xl-auto pt-0 mb-2 mb-xl-0">
+        <form class="table-responsive-md shopping-cart pb-8 pb-lg-10">
+            <table class="table table-borderless">
+                <thead>
+                    <tr class="fw-500">
+                        <td colspan="3" class="border-bottom pb-6">
+                            <i class="far fa-check fs-12px border me-4 px-2 py-1 text-body-emphasis border-dark rounded-circle"></i>
+                            Seu carrinho está salvo e os produtos permanecerão nele até que você os remova.
+                        </td>
+                    </tr>
+                </thead>
+                <tbody id="cart-items">
+                    @if(isset($carrinho) && $carrinho->isNotEmpty())
+                        @foreach($carrinho as $item)
+                            @php
+                                $produto = App\Models\Produto::find($item->product_id);
+                            @endphp
+                            <tr class="position-relative">
+                                <td class="align-middle text-center">
+                                    <a href="#" class="d-block clear-product">
+                                        <i class="far fa-times"></i>
+                                    </a>
+                                </td>
+                                <td class="shop-product">
+                                    <div class="d-flex align-items-center">
+                                        <div class="me-6">
+                                            <img src="{{ asset('images/products/' . $produto->imagem) }}" width="60" height="80" alt="{{ $produto->nome }}">
+                                        </div>
+                                        <div class="">
+                                            <p class="card-text mb-1">
+                                                <span class="fs-13px fw-500 text-decoration-line-through pe-3">
+                                                    ${{ number_format($produto->preco, 2, ',', '.') }}
+                                                </span>
+                                                <span class="fs-15px fw-bold text-body-emphasis item-price" data-price="{{ $item->price }}">
+                                                    ${{ number_format($item->price, 2, ',', '.') }}
+                                                </span>
+                                            </p>
+                                            <p class="fw-500 text-body-emphasis">{{ $produto->nome }}</p>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="align-middle p-0">
+                                    <div class="input-group position-relative shop-quantity">
+                                        <a href="#" class="shop-down position-absolute z-index-2"><i class="far fa-minus"></i></a>
+                                        <input name="number[]" type="number" class="form-control form-control-sm px-6 py-4 fs-6 text-center border-0 quantity-input" value="{{ $item->quantity }}" readonly>
+                                        <a href="#" class="shop-up position-absolute z-index-2"><i class="far fa-plus"></i></a>
+                                    </div>
+                                </td>
+                            </tr>
+                        @endforeach
+                    @else
+                        <tr>
+                            <td colspan="3" class="text-center">Seu carrinho está vazio.</td>
+                        </tr>
+                    @endif
+                </tbody>
+            </table>
+        </form>
+    </div>
+    <div class="offcanvas-footer flex-wrap">
+        <div class="d-flex align-items-center justify-content-between w-100 mb-5">
+            <span class="text-body-emphasis">Preço total:</span>
+            <span id="cart-total" class="cart-total fw-bold text-body-emphasis">R$ 0,00</span>
+        </div>
+        <a href="../shop/checkout.html" class="btn btn-dark w-100 mb-7" title="Check Out">Finalizar Compra</a>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Função para atualizar o preço total
+        function updateTotal() {
+            let total = 0;
+
+            // Itera sobre todos os itens do carrinho
+            document.querySelectorAll('tbody#cart-items tr').forEach(function(row) {
+                const quantity = parseInt(row.querySelector('.quantity-input').value) || 0;
+                const price = parseFloat(row.querySelector('.item-price').dataset.price) || 0;
+                total += quantity * price;
+            });
+
+            // Atualiza o valor total na tela
+            document.getElementById('cart-total').textContent = `R$ ${total.toFixed(2).replace('.', ',')}`;
+        }
+
+        // Função para adicionar eventos de atualização de preço total
+        function addUpdateTotalListeners() {
+            // Atualiza o total quando a quantidade muda
+            document.querySelectorAll('.quantity-input').forEach(input => {
+                input.addEventListener('change', updateTotal);
+            });
+
+            // Atualiza o total quando os botões de incremento e decremento são clicados
+            document.querySelectorAll('.shop-up, .shop-down').forEach(button => {
+                button.addEventListener('click', function() {
+                    // Deferir a atualização do total até que a quantidade tenha sido atualizada
+                    setTimeout(updateTotal, 100);
+                });
+            });
+        }
+
+        // Inicializa a atualização do total
+        addUpdateTotalListeners();
+        updateTotal();
+    });
+</script>
+
+
+
+
      <!--  Fim  adicionar ao Carrinho - Carrinho de compras: -->
 
     <div class="modal" id="signInModal" tabindex="-1" aria-labelledby="signInModal" aria-hidden="true">

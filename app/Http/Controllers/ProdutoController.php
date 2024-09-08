@@ -34,35 +34,27 @@ class ProdutoController extends Controller
 
 
     public function show($id)
-    {
-        $produto = Produto::find($id);
-        $todos_produtos = Produto::all(); // Busca todos os produtos do banco de dados
-    
-        if ($produto) {
-            /* return response()->json([
-                'imagem' => $produto->imagem,
-                'nome' => $produto->nome,
-                'preco_antigo' => $produto->preco_antigo,
-                'preco_atual' => $produto->preco_atual,
-                'desconto' => $produto->desconto,
-                'avaliacao' => $produto->avaliacao,
-                'avaliacoes_count' => $produto->avaliacoes_count,
-                'descricao' => $produto->descricao,
-                'visualizacoes' => $produto->visualizacoes,
-                'estoque' => $produto->estoque,
-                'estoque_percent' => $produto->estoque_percent,
-                'data_entrega' => $produto->data_entrega,
-                'sku' => $produto->sku,
-                'categoria' => $produto->categoria,
-                'tags' => $produto->tags,
-                'imagens_adicionais' => $produto->imagens_adicionais, // Assumindo que isso seja um array de strings (caminhos das imagens)
-            ]); */
+{
+    $produto = Produto::find($id);
+    $todos_produtos = Produto::all(); // Busca todos os produtos do banco de dados
 
-            return view('product-details-v1', compact('produto','todos_produtos'));
+    if ($produto) {
+        $user = Auth::user();
+        if ($user) {
+            $carrinho = Cart::where('user_id', $user->id)->get();
+            $total_items = $carrinho->count(); // Conta o número total de itens únicos no carrinho
+            $total = $carrinho->reduce(function ($carry, $item) {
+                return $carry + ($item->price * $item->quantity);
+            }, 0);
+            return view('product-details-v1', compact('produto', 'todos_produtos', 'carrinho', 'total', 'total_items'));
         }
-    
-        return response()->json(['error' => 'Produto não encontrado'], 404);
+
+        return view('product-details-v1', compact('produto', 'todos_produtos'));
     }
+
+    return response()->json(['error' => 'Produto não encontrado'], 404);
+}
+
     
 
     //view de cadastro de produtos
@@ -171,8 +163,8 @@ class ProdutoController extends Controller
         return view('index', compact('produtos', 'categoria', 'scrollTo'));
     }
 
-
-    public function adicionar(Request $request)
+/* Funçao para adicionar itens ao carrinho e depois abrir carrinho de compras se der tudo certo
+ */    public function adicionar(Request $request)
     {
         // Validação básica
         $validated = $request->validate([
@@ -203,7 +195,22 @@ class ProdutoController extends Controller
             'success' => true,
         ]);
     }
+
+
+    public function remove($id)
+    {
+        $user = Auth::user();
+        if ($user) {
+            // Remover item do carrinho
+            Cart::where('id', $id)->where('user_id', $user->id)->delete();
     
+            // Retornar resposta para atualização do front-end
+            return response()->json(['success' => true]);
+        }
+    
+        return response()->json(['error' => 'Não autorizado'], 403);
+    }
+     
     
    
 
