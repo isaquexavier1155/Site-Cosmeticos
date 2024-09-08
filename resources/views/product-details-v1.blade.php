@@ -737,14 +737,14 @@
                                     </svg>
                                 </a>
                             </div> -->
-                            <div class="px-5 d-none d-xl-inline-block">
+                           <!--  <div class="px-5 d-none d-xl-inline-block">
                                 <a class="lh-1 color-inherit text-decoration-none" href="#" data-bs-toggle="modal"
                                     data-bs-target="#signInModal">
                                     <svg class="icon icon-user-light">
                                         <use xlink:href="#icon-user-light"></use>
                                     </svg>
                                 </a>
-                            </div>
+                            </div> -->
                             <!-- <div class="px-5 d-none d-xl-inline-block">
                                 <a class="position-relative lh-1 color-inherit text-decoration-none"
                                     href="../shop/wishlist.html">
@@ -756,16 +756,7 @@
                                         style="--square-size: 18px">4</span>
                                 </a>
                             </div> -->
-                            @guest
-                                <a href="{{ route('login') }}" class="btn btn-primary">Login</a>
-                            @endguest
 
-                            @auth
-                                <form method="POST" action="{{ route('logout') }}">
-                                    @csrf
-                                    <button type="submit" class="btn btn-danger">Logout</button>
-                                </form>
-                            @endauth
 
 
                             <!-- Tela grande - Inicio Icone sacola abre modal carrinho 01 - Adicionar ao carrinho-->
@@ -778,7 +769,7 @@
                                     <use xlink:href="#icon-shopping-bag-open-light"></use>
                                 </svg> -->
                                     <!-- Pelo novo SVG do carrinho de compras -->
-                                    <svg class="icon icon-cart">
+                                    <svg class="icon2 icon-cart">
                                         <use xlink:href="#icon-shopping-cart"></use>
                                     </svg>
                                     <span id="cart-item-count"
@@ -841,6 +832,16 @@
                             </div>
                         </div>
                 </div>
+                @guest
+                                <a href="{{ route('login') }}" class="bd-theme btn btn-link nav-link  d-inline-flex align-items-center justify-content-center text-primary p-0 position-relative rounded-circle">Entrar</a>
+                            @endguest
+
+                            @auth
+                                <form method="POST" action="{{ route('logout') }}">
+                                    @csrf
+                                    <button type="submit" class="bd-theme btn btn-link nav-link  d-inline-flex align-items-center justify-content-center text-primary p-0 position-relative rounded-circle">Sair</button>
+                                </form>
+                            @endauth
             </div>
         </div>
     </header>
@@ -3613,14 +3614,14 @@
                     </form>
                 </div>
                 <div class="icons-actions col-xl-3 d-flex justify-content-end fs-28px text-body-emphasis">
-                    <div class="px-5 d-none d-xl-inline-block">
+                    <!-- <div class="px-5 d-none d-xl-inline-block">
                         <a class="lh-1 color-inherit text-decoration-none" href="#" data-bs-toggle="modal"
                             data-bs-target="#signInModal">
                             <svg class="icon icon-user-light">
                                 <use xlink:href="#icon-user-light"></use>
                             </svg>
                         </a>
-                    </div>
+                    </div> -->
                     <!-- <div class="px-5 d-none d-xl-inline-block">
                         <a class="position-relative lh-1 color-inherit text-decoration-none"
                             href="../shop/wishlist.html">
