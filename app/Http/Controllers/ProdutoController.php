@@ -11,8 +11,22 @@ class ProdutoController extends Controller
 {
     public function index()
     {
-        $produtos = Produto::all(); // Busca todos os produtos do banco de dados
-        return view('index', compact('produtos')); // Passa a variável $produtos para a view
+        $produtos = Produto::all(); 
+        if ($produtos) {
+            $user = Auth::user();
+            if ($user) {
+                $carrinho = Cart::where('user_id', $user->id)->get();
+                $total_items = $carrinho->count(); // Conta o número total de itens únicos no carrinho
+                $total = $carrinho->reduce(function ($carry, $item) {
+                    return $carry + ($item->price * $item->quantity);
+                }, 0);
+                return view('index', compact('produtos', 'carrinho', 'total', 'total_items'));
+            }
+    
+            return view('index', compact('produtos'));
+        }
+    
+        return response()->json(['error' => 'Produto não encontrado'], 404);
     }
 
     public function busca(Request $request)
@@ -23,13 +37,6 @@ class ProdutoController extends Controller
         // Redireciona para a view index com os produtos filtrados
         return view('index', compact('produtos'));
     }
-
-    /* public function getProdutoById($id)
-    {
-        $produto = Produto::findOrFail($id);
-
-        return response()->json($produto);
-    } */
 
 
 

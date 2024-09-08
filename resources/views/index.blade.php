@@ -296,21 +296,25 @@
 									<a class="nav-link d-flex justify-content-between position-relative py-xl-0 px-xl-0 text-uppercase fw-semibold ls-1 fs-15px fs-xl-14px dropdown-toggle"
 										href="./shop/shop-layout-v1.html" data-bs-toggle="dropdown" id="menu-item-shop"
 										aria-haspopup="true" aria-expanded="false">Loja</a>
-									<div class="dropdown-menu mega-menu start-0 py-6  w-100" aria-labelledby="menu-item-shop">
+									<div class="dropdown-menu mega-menu start-0 py-6  w-100"
+										aria-labelledby="menu-item-shop">
 										<div class="megamenu-shop container-wide py-8 px-12">
 											<div class="row">
 												<div class="col">
-													<a href="{{ route('buscarPorCategoria', ['categoria' => 'Perfumes', 'scroll_to' => 'listagemprod']) }}">
+													<a
+														href="{{ route('buscarPorCategoria', ['categoria' => 'Perfumes', 'scroll_to' => 'listagemprod']) }}">
 														<h6 class="fs-18px">Perfumes</h6>
 													</a>
 												</div>
 												<div class="col">
-													<a href="{{ route('buscarPorCategoria', ['categoria' => 'Body splash', 'scroll_to' => 'listagemprod']) }}">
+													<a
+														href="{{ route('buscarPorCategoria', ['categoria' => 'Body splash', 'scroll_to' => 'listagemprod']) }}">
 														<h6 class="fs-18px">Body splash</h6>
 													</a>
 												</div>
 												<div class="col">
-													<a href="{{ route('buscarPorCategoria', ['categoria' => 'Hidratantes', 'scroll_to' => 'listagemprod']) }}">
+													<a
+														href="{{ route('buscarPorCategoria', ['categoria' => 'Hidratantes', 'scroll_to' => 'listagemprod']) }}">
 														<h6 class="fs-18px">Hidratantes</h6>
 													</a>
 												</div>
@@ -856,7 +860,7 @@
 	</li> -->
 							</ul>
 							<div class="icons-actions d-flex justify-content-end ms-auto fs-28px text-white">
-								<div class="px-5 d-none d-xl-inline-block">
+								<!-- <div class="px-5 d-none d-xl-inline-block">
 									<a class="lh-1 color-inherit text-decoration-none" href="#" data-bs-toggle="modal"
 										data-bs-target="#signInModal">
 										<svg class="icon icon-user-light">
@@ -874,17 +878,24 @@
 											class="badge bg-white text-dark position-absolute top-0 start-100 translate-middle mt-4 rounded-circle fs-13px p-0 square"
 											style="--square-size: 18px">3</span>
 									</a>
-								</div>
+								</div> -->
 								<div class="px-5 d-none d-xl-inline-block">
 									<a class="position-relative lh-1 color-inherit text-decoration-none" href="#"
 										data-bs-toggle="offcanvas" data-bs-target="#shoppingCart"
 										aria-controls="shoppingCart" aria-expanded="false">
-										<svg class="icon icon-star-light">
-											<use xlink:href="#icon-shopping-bag-open-light"></use>
+										<!-- ícone de sacola de compras -->
+										<!--  <svg class="icon icon-star-light">
+                                    <use xlink:href="#icon-shopping-bag-open-light"></use>
+                                </svg> -->
+										<!-- Pelo novo SVG do carrinho de compras -->
+										<svg class="icon2 icon-cart">
+											<use xlink:href="#icon-shopping-cart"></use>
 										</svg>
-										<span
-											class="badge bg-white text-dark position-absolute top-0 start-100 translate-middle mt-4 rounded-circle fs-13px p-0 square"
-											style="--square-size: 18px">3</span>
+										<span id="cart-item-count"
+											class="badge bg-dark text-white position-absolute top-0 start-100 translate-middle mt-4 rounded-circle fs-13px p-0 square"
+											style="--square-size: 18px">
+											{{ isset($total_items) ? $total_items : 0 }}
+										</span>
 									</a>
 								</div>
 
@@ -939,6 +950,18 @@
 						</div>
 					</div>
 				</div>
+				@guest
+					<a href="{{ route('login') }}"
+						class="bd-theme btn btn-link nav-link  d-inline-flex align-items-center justify-content-center text-primary p-0 position-relative rounded-circle">Entrar</a>
+				@endguest
+
+				@auth
+					<form method="POST" action="{{ route('logout') }}">
+						@csrf
+						<button type="submit"
+							class="bd-theme btn btn-link nav-link  d-inline-flex align-items-center justify-content-center text-primary p-0 position-relative rounded-circle">Sair</button>
+					</form>
+				@endauth
 			</div>
 		</div>
 	</header>
@@ -952,9 +975,11 @@
 					<div class="card-img-overlay"></div>
 				</div> -->
 				<div class="video-cover">
-					<img src="{{ asset('images/topo.jpg') }}" alt="Descrição da imagem" class="img-fluid w-100" style="object-fit: cover; height: 100%;">
-<!-- 					<div class="card-img-overlay position-absolute top-0 start-0 w-100 h-100" style="background: rgba(0, 0, 0, 0.3);"></div>
- -->					<div class="card-img-overlay"></div>
+					<img src="{{ asset('images/topo.jpg') }}" alt="Descrição da imagem" class="img-fluid w-100"
+						style="object-fit: cover; height: 100%;">
+					<!-- 					<div class="card-img-overlay position-absolute top-0 start-0 w-100 h-100" style="background: rgba(0, 0, 0, 0.3);"></div>
+ -->
+					<div class="card-img-overlay"></div>
 				</div>
 
 				<div data-animate="fadeInDown" class="container container-wide pb-15 p-xl-15 position-relative">
@@ -1065,11 +1090,12 @@
 				<div class="mb-13 text-center pb-3" data-animate="fadeInUp">
 					<img data-src="{{ asset('images/shop/single-image-01.png') }}" width="140" height="138"
 						class="mb-5 img-fluid lazy-image d-inline-block" alt="..." src="#">
-					<!-- <h2 class="h3 mb-0">Porque Você Merece Um Tempo Para Si.<br/>Desperte a Beleza em Você</h2> -->					
-					 <h2 class="h3 mb-0">Bem-vindo à Elegância em Fragrâncias!<br/>
-					Descubra o mundo dos perfumes importados com nossa seleção exclusiva de fragrâncias que despertam os sentidos e deixam uma marca inesquecível.<br/>
-					Seja qual for a ocasião, temos o perfume perfeito para você.<br/> 
-					Mergulhe na sofisticação e encontre o aroma que mais combina com sua personalidade.</h2>
+					<!-- <h2 class="h3 mb-0">Porque Você Merece Um Tempo Para Si.<br/>Desperte a Beleza em Você</h2> -->
+					<h2 class="h3 mb-0">Bem-vindo à Elegância em Fragrâncias!<br />
+						Descubra o mundo dos perfumes importados com nossa seleção exclusiva de fragrâncias que
+						despertam os sentidos e deixam uma marca inesquecível.<br />
+						Seja qual for a ocasião, temos o perfume perfeito para você.<br />
+						Mergulhe na sofisticação e encontre o aroma que mais combina com sua personalidade.</h2>
 				</div>
 
 
@@ -1093,12 +1119,14 @@
 																class="badge badge-product-flash on-sale bg-primary">-{{ round((($produto->preco - $produto->preco_promocional) / $produto->preco) * 100) }}%</span>
 														</div>
 													@endif
-													<div class="position-absolute d-flex z-index-2 product-actions horizontal">
-														<a class="text-body-emphasis bg-body bg-dark-hover text-light-hover rounded-circle square product-action shadow-sm add_to_cart"
-															href="#" data-bs-toggle="tooltip" data-bs-placement="top"
-															data-bs-title="Add To Cart">
-															<svg class="icon icon-shopping-bag-open-light">
-																<use xlink:href="#icon-shopping-bag-open-light"></use>
+													<!-- <div class="position-absolute d-flex z-index-2 product-actions horizontal">
+																													
+															<a class="text-body-emphasis bg-body bg-dark-hover text-light-hover rounded-circle square product-action shadow-sm add_to_cart"
+															href="{{ route('carrinho.adicionar') }}" data-bs-toggle="tooltip" data-bs-placement="top"
+															data-bs-title="Add To Cartt">
+															
+															<svg class="icon2 icon-cart">
+																<use xlink:href="#icon-shopping-cart"></use>
 															</svg>
 														</a>
 														<a class="text-body-emphasis bg-body bg-dark-hover text-light-hover rounded-circle square product-action shadow-sm quick-view"
@@ -1127,7 +1155,7 @@
 																<use xlink:href="#icon-arrows-left-right-light"></use>
 															</svg>
 														</a>
-													</div>
+													</div> -->
 												</figure>
 												<div class="card-body text-center p-0">
 													<span
@@ -1371,6 +1399,138 @@
 												</div>
 											</div>
 										</form>
+										<!-- Script para abrir modal do carrinho de compras se produto for adicionado com sucesso-->
+										<script>
+                        document.addEventListener('DOMContentLoaded', function () {
+                            console.log('Script carregado e DOM pronto.');
+
+                            const form = document.getElementById('add-to-cart-form');
+                            if (form) {
+                                form.addEventListener('submit', function (event) {
+                                    event.preventDefault();
+
+                                    console.log('Formulário enviado, processando...');
+
+                                    const formData = new FormData(this);
+                                    const quantity = formData.get('quantidade');
+                                    const productId = formData.get('produto_id'); // ID do produto obtido do formulário
+
+                                    console.log('Produto ID:', productId);
+                                    console.log('Quantidade:', quantity);
+
+                                    addToCart(productId, quantity);
+                                });
+                            } else {
+                                console.error('Formulário "add-to-cart-form" não encontrado.');
+                            }
+
+                            function addToCart(productId, quantity) {
+                                console.log('Enviando dados para adicionar ao carrinho...');
+
+                                fetch('{{ route("carrinho.adicionar") }}', {
+                                    method: 'POST',
+                                    headers: {
+                                        'Content-Type': 'application/json',
+                                        'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                                    },
+                                    body: JSON.stringify({ produto_id: productId, quantidade: quantity })
+                                })
+                                    .then(response => {
+                                        console.log('Resposta recebida:', response);
+
+                                        if (response.ok) {
+                                            return response.json(); // Convertendo a resposta para JSON
+                                        } else if (response.status === 401) {
+                                            // Redirecionar para a página de login se o status for 401
+                                            window.location.href = '{{ route("login") }}';
+                                            console.log('Usuário não autenticado. Redirecionando para a página de login.');
+                                            throw new Error('Usuário não autenticado.');
+                                        } else {
+                                            console.warn('Status da resposta não é OK, algo deu errado.');
+                                            throw new Error('Resposta inesperada do servidor.');
+                                        }
+                                    })
+                                    .then(data => {
+                                        console.log('Dados recebidos:', data);
+
+                                        if (data.success) {
+                                            console.log('Produto adicionado com sucesso.');
+
+                                            // Armazena um valor no sessionStorage para indicar que o produto foi adicionado
+                                            sessionStorage.setItem('cart_added', 'true');
+                                            window.location.reload(); // Recarrega a página
+                                        } else {
+                                            console.warn('Erro ao adicionar o produto:', data.message);
+                                            alert(data.message || 'Ocorreu um erro ao adicionar o produto ao carrinho.');
+                                        }
+                                    })
+                                    .catch(error => {
+                                        console.error('Erro:', error);
+                                    });
+                            }
+                        });
+                    </script>
+
+                    <!-- Script 5 - para remover itens do carrinho de compras e do banco de dados-->
+                    <script>
+
+                        document.addEventListener('DOMContentLoaded', function () {
+                            function updateTotal() {
+                                let total = 0;
+
+                                // Itera sobre todos os itens do carrinho
+                                document.querySelectorAll('tbody#cart-items tr').forEach(function (row) {
+                                    const quantity = parseInt(row.querySelector('.quantity-input').value) || 0;
+                                    const price = parseFloat(row.querySelector('.item-price').dataset.price) || 0;
+                                    total += quantity * price;
+                                });
+
+                                // Atualiza o valor total na tela
+                                document.getElementById('cart-total').textContent = `R$ ${total.toFixed(2).replace('.', ',')}`;
+                            }
+                            document.addEventListener('click', function (event) {
+                                if (event.target.closest('.clear-product')) {
+                                    event.preventDefault();
+
+                                    const element = event.target.closest('.clear-product');
+                                    const id = element.getAttribute('data-id');
+
+                                    fetch(`/carrinho/remover/${id}`, {
+                                        method: 'DELETE',
+                                        headers: {
+                                            'Content-Type': 'application/json',
+                                            'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                                        }
+                                    })
+                                        .then(response => response.json())
+                                        .then(data => {
+                                            if (data.success) {
+                                                // Remover a linha da tabela
+                                                element.closest('tr').remove();
+
+                                                // Atualizar o total de itens no carrinho
+                                                updateCartItemCount();
+                                                updateTotal();
+                                            } else {
+                                                console.error('Erro ao remover item do carrinho:', data.error);
+                                            }
+                                        })
+                                        .catch(error => {
+                                            console.error('Erro:', error);
+                                        });
+                                }
+                            });
+
+                            function updateCartItemCount() {
+                                fetch('/carrinho/quantidade')
+                                    .then(response => response.json())
+                                    .then(data => {
+                                        document.getElementById('cart-item-count').textContent = data.total_items || '0';
+                                    })
+                                    .catch(error => console.error('Erro ao atualizar o total de itens:', error));
+                            }
+                        });
+                    </script>
 
 										<p class="mb-4 pb-2">
 											<span class="text-body-emphasis"><svg class="icon fs-28px me-2 pe-4">
@@ -1461,8 +1621,8 @@
 					function saveProductInfo(id, nome, imagem, descricao, preco, preco_promocional, imagens_adicionais) {
 						// Atualizar informações do produto
 						document.getElementById('modalProductNome').textContent = nome;
- 						document.getElementById('modalProductNome').textContent = id;
- 
+						document.getElementById('modalProductNome').textContent = id;
+
 						const formatPrice = (price) => {
 							return `R$${parseFloat(price).toFixed(2).replace('.', ',')}`;
 						};
@@ -2003,6 +2163,8 @@
 	<script src="{{ asset('js/theme.min.js') }}"></script>
 	<script src="{{ asset('js/contador.js') }}"></script>
 
+	<script src="{{ asset('js/script.js') }}"></script>
+
 
 	<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
 		<symbol id="icon-bedroom" viewBox="0 0 46 32">
@@ -2503,6 +2665,11 @@
 				d="M27 5.25h-22c-0.966 0.001-1.749 0.784-1.75 1.75v18c0.001 0.966 0.784 1.749 1.75 1.75h22c0.966-0.001 1.749-0.784 1.75-1.75v-18c-0.001-0.966-0.784-1.749-1.75-1.75h-0zM5 6.75h22c0.138 0 0.25 0.112 0.25 0.25v2.25h-22.5v-2.25c0-0.138 0.112-0.25 0.25-0.25h0zM27 25.25h-22c-0.138-0-0.25-0.112-0.25-0.25v-14.25h22.5v14.25c-0 0.138-0.112 0.25-0.25 0.25h-0zM21.75 14c0 3.176-2.574 5.75-5.75 5.75s-5.75-2.574-5.75-5.75v0c0-0.414 0.336-0.75 0.75-0.75s0.75 0.336 0.75 0.75v0c0 2.347 1.903 4.25 4.25 4.25s4.25-1.903 4.25-4.25v0c0-0.414 0.336-0.75 0.75-0.75s0.75 0.336 0.75 0.75v0z">
 			</path>
 		</symbol>
+		<symbol id="icon-shopping-cart" viewBox="0 0 32 32">
+			<path
+				d="M25 2h-2.25l-2.438 5.25h-12.624l-2.438-5.25h-2.25c-1.103 0-2 .897-2 2v0.5c0 0.248 0.018 0.485 0.053 0.719l3.079 8.689-0.014 0.026 1.681 5.084c0.314 0.943 1.188 1.607 2.25 1.607h15.444c1.061 0 1.936-0.664 2.25-1.607l1.373-4.107c0.087-0.254 0.155-0.512 0.203-0.773l3.04-8.44c0.037-0.154 0.057-0.312 0.057-0.475v-0.5c0-1.103-0.897-2-2-2zM9.584 7.5h10.832l1.614 3.5h-14.06l1.614-3.5zM6.418 17l-2.623-7.5h13.322l-2.623 7.5h-8.076zM22.236 20h-14.2l-1.209-3.577 5.668-5.571c0.338-0.337 0.792-0.549 1.28-0.549s0.943 0.211 1.281 0.549l5.668 5.571-1.209 3.577z">
+			</path>
+		</symbol>
 		<symbol id="icon-magnifying-glass-light" viewBox="0 0 32 32">
 			<path
 				d="M28.529 27.47l-5.566-5.566c1.731-1.97 2.787-4.57 2.787-7.417 0-6.221-5.043-11.264-11.264-11.264s-11.264 5.043-11.264 11.264c0 6.221 5.043 11.264 11.264 11.264 2.846 0 5.446-1.056 7.429-2.797l-0.013 0.011 5.566 5.566c0.136 0.136 0.323 0.22 0.53 0.22 0.414 0 0.75-0.336 0.75-0.75 0-0.207-0.084-0.395-0.22-0.53v0zM4.75 14.5c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75c0 5.385-4.365 9.75-9.75 9.75v0c-5.382-0.006-9.744-4.368-9.75-9.749v-0.001z">
@@ -2983,8 +3150,11 @@
 						<a class="position-relative lh-1 color-inherit text-decoration-none" href="#"
 							data-bs-toggle="offcanvas" data-bs-target="#shoppingCart" aria-controls="shoppingCart"
 							aria-expanded="false">
-							<svg class="icon icon-star-light">
+							<!-- <svg class="icon icon-star-light">
 								<use xlink:href="#icon-shopping-bag-open-light"></use>
+							</svg> -->
+							<svg class="icon2 icon-cart">
+								<use xlink:href="#icon-shopping-cart"></use>
 							</svg>
 							<span
 								class="badge bg-dark text-white position-absolute top-0 start-100 translate-middle mt-4 rounded-circle fs-13px p-0 square"
@@ -2996,142 +3166,86 @@
 		</div>
 	</div>
 	<div id="shoppingCart" data-bs-scroll="false" class="offcanvas offcanvas-end">
-		<div class="offcanvas-header fs-4">
-			<h4 class="offcanvas-title fw-semibold">Shopping Bag</h4>
-			<button type="button" class="btn-close btn-close-bg-none" data-bs-dismiss="offcanvas" aria-label="Close">
-				<i class="far fa-times"></i>
-			</button>
-		</div>
-		<div class="offcanvas-body me-xl-auto pt-0 mb-2 mb-xl-0">
-			<form class="table-responsive-md shopping-cart pb-8 pb-lg-10">
-				<table class="table table-borderless">
-					<thead>
-						<tr class="fw-500">
-							<td colspan="3" class="border-bottom pb-6"><i
-									class="far fa-check fs-12px border me-4 px-2 py-1 text-body-emphasis border-dark rounded-circle"></i>
-								Your cart is saved for the next <span class="text-body-emphasis">4m34s</span></td>
-						</tr>
-					</thead>
-					<tbody>
-						<tr class="position-relative">
-							<td class="align-middle text-center">
-								<a href="#" class="d-block clear-product">
-									<i class="far fa-times"></i>
-								</a>
-							</td>
-							<td class="shop-product">
-								<div class="d-flex align-items-center">
-									<div class="me-6">
-										<!-- 									<img src="./assets/images/products/product-03-75x100.jpg" width="60" height="80" alt="natural coconut cleansing oil">-->
-										<img src="{{ asset('images/products/product-03-75x100.jpg') }}" width="60"
-											height="80" alt="natural coconut cleansing oil">
-									</div>
-									<div class="">
-										<p class="card-text mb-1">
-											<span class="fs-13px fw-500 text-decoration-line-through pe-3">$39.00</span>
-											<span class="fs-15px fw-bold text-body-emphasis">$29.00</span>
-
-										</p>
-										<p class="fw-500 text-body-emphasis">Natural Coconut Cleansing Oil</p>
-									</div>
-								</div>
-							</td>
-							<td class="align-middle p-0">
-								<div class="input-group position-relative shop-quantity">
-									<a href="#" class="shop-down position-absolute z-index-2"><i
-											class="far fa-minus"></i></a>
-									<input name="number[]" type="number"
-										class="form-control form-control-sm px-6 py-4 fs-6 text-center border-0"
-										value="1" required="">
-									<a href="#" class="shop-up position-absolute z-index-2"><i class="far fa-plus"></i>
-									</a>
-								</div>
-							</td>
-						</tr>
-						<tr class="position-relative">
-							<td class="align-middle text-center">
-								<a href="#" class="d-block clear-product">
-									<i class="far fa-times"></i>
-								</a>
-							</td>
-							<td class="shop-product">
-								<div class="d-flex align-items-center">
-									<div class="me-6">
-										<!-- 										<img src="./assets/images/products/product-06-75x100.jpg" width="60" height="80" alt="natural coconut cleansing oil">
- --> <img src="{{ asset('images/products/product-06-75x100.jpg') }}" width="60" height="80"
-											alt="natural coconut cleansing oil">
-									</div>
-									<div class="">
-										<p class="card-text mb-1">
-											<span class="fs-13px fw-500 text-decoration-line-through pe-3">$39.00</span>
-											<span class="fs-15px fw-bold text-body-emphasis">$29.00</span>
-
-										</p>
-										<p class="fw-500 text-body-emphasis">Super Pure</p>
-									</div>
-								</div>
-							</td>
-							<td class="align-middle p-0">
-								<div class="input-group position-relative shop-quantity">
-									<a href="#" class="shop-down position-absolute z-index-2"><i
-											class="far fa-minus"></i></a>
-									<input name="number[]" type="number"
-										class="form-control form-control-sm px-6 py-4 fs-6 text-center border-0"
-										value="1" required="">
-									<a href="#" class="shop-up position-absolute z-index-2"><i class="far fa-plus"></i>
-									</a>
-								</div>
-							</td>
-						</tr>
-						<tr class="position-relative">
-							<td class="align-middle text-center">
-								<a href="#" class="d-block clear-product">
-									<i class="far fa-times"></i>
-								</a>
-							</td>
-							<td class="shop-product">
-								<div class="d-flex align-items-center">
-									<div class="me-6">
-										<!-- 										<img src="./assets/images/products/product-09-75x100.jpg" width="60" height="80" alt="natural coconut cleansing oil">
- --> <img src="{{ asset('images/products/product-09-75x100.jpg') }}" width="60" height="80"
-											alt="natural coconut cleansing oil">
-									</div>
-									<div class="">
-										<p class="card-text mb-1">
-											<span class="fs-13px fw-500 text-decoration-line-through pe-3">$39.00</span>
-											<span class="fs-15px fw-bold text-body-emphasis">$29.00</span>
-
-										</p>
-										<p class="fw-500 text-body-emphasis">Cleansing Balm</p>
-									</div>
-								</div>
-							</td>
-							<td class="align-middle p-0">
-								<div class="input-group position-relative shop-quantity">
-									<a href="#" class="shop-down position-absolute z-index-2"><i
-											class="far fa-minus"></i></a>
-									<input name="number[]" type="number"
-										class="form-control form-control-sm px-6 py-4 fs-6 text-center border-0"
-										value="1" required="">
-									<a href="#" class="shop-up position-absolute z-index-2"><i class="far fa-plus"></i>
-									</a>
-								</div>
-							</td>
-						</tr>
-					</tbody>
-				</table>
-			</form>
-		</div>
-		<div class="offcanvas-footer flex-wrap">
-			<div class="d-flex align-items-center justify-content-between w-100 mb-5">
-				<span class="text-body-emphasis">Total price:</span>
-				<span class="cart-total fw-bold text-body-emphasis">$106.00</span>
-			</div>
-			<a href="../shop/checkout.html" class="btn btn-dark w-100 mb-7" title="Check Out">Check Out</a>
-			<a href="../shop/shopping-cart.html" class="btn btn-outline-dark w-100" title="View shopping cart">Carrinho
-				de Compras</a>
-		</div>
-	</div>
+        <div class="offcanvas-header fs-4">
+            <h4 class="offcanvas-title fw-semibold">Carrinho de Compras</h4>
+            <button type="button" class="btn-close btn-close-bg-none" data-bs-dismiss="offcanvas" aria-label="Close">
+                <i class="far fa-times" id="fecharmoddal"></i>
+            </button>
+        </div>
+        <div class="offcanvas-body me-xl-auto pt-0 mb-2 mb-xl-0">
+            <form class="table-responsive-md shopping-cart pb-8 pb-lg-10">
+                <table class="table table-borderless">
+                    <thead>
+                        <tr class="fw-500">
+                            <td colspan="3" class="border-bottom pb-6">
+                                <i
+                                    class="far fa-check fs-12px border me-4 px-2 py-1 text-body-emphasis border-dark rounded-circle"></i>
+                                Seu carrinho está salvo e os produtos permanecerão nele até que você os remova.
+                            </td>
+                        </tr>
+                    </thead>
+                    <tbody id="cart-items">
+                        @if(isset($carrinho) && $carrinho->isNotEmpty())
+                                            @foreach($carrinho as $item)
+                                                                @php
+                                                                    $produto = App\Models\Produto::find($item->product_id);
+                                                                @endphp
+                                                                <tr class="position-relative">
+                                                                    <td class="align-middle text-center">
+                                                                        <a href="#" class="d-block clear-product" data-id="{{ $item->id }}">
+                                                                            <i class="far fa-times"></i>
+                                                                        </a>
+                                                                    </td>
+                                                                    <td class="shop-product">
+                                                                        <div class="d-flex align-items-center">
+                                                                            <div class="me-6">
+                                                                                <img src="{{ asset('images/products/' . $produto->imagem) }}" width="60"
+                                                                                    height="80" alt="{{ $produto->nome }}">
+                                                                            </div>
+                                                                            <div class="">
+                                                                                <p class="card-text mb-1">
+                                                                                    <span class="fs-13px fw-500 text-decoration-line-through pe-3">
+                                                                                        ${{ number_format($produto->preco, 2, ',', '.') }}
+                                                                                    </span>
+                                                                                    <span class="fs-15px fw-bold text-body-emphasis item-price"
+                                                                                        data-price="{{ $item->price }}">
+                                                                                        ${{ number_format($item->price, 2, ',', '.') }}
+                                                                                    </span>
+                                                                                </p>
+                                                                                <p class="fw-500 text-body-emphasis">{{ $produto->nome }}</p>
+                                                                            </div>
+                                                                        </div>
+                                                                    </td>
+                                                                    <td class="align-middle p-0">
+                                                                        <div class="input-group position-relative shop-quantity">
+                                                                            <a href="#" class="shop-down position-absolute z-index-2"><i
+                                                                                    class="far fa-minus"></i></a>
+                                                                            <input name="number[]" type="number"
+                                                                                class="form-control form-control-sm px-6 py-4 fs-6 text-center border-0 quantity-input"
+                                                                                value="{{ $item->quantity }}" readonly>
+                                                                            <a href="#" class="shop-up position-absolute z-index-2"><i
+                                                                                    class="far fa-plus"></i></a>
+                                                                        </div>
+                                                                    </td>
+                                                                </tr>
+                                            @endforeach
+                        @else
+                            <tr>
+                                <td colspan="3" class="text-center">Seu carrinho está vazio.</td>
+                            </tr>
+                        @endif
+                    </tbody>
+                </table>
+            </form>
+        </div>
+        <div class="offcanvas-footer flex-wrap">
+            <div class="d-flex align-items-center justify-content-between w-100 mb-5">
+                <span class="text-body-emphasis">Preço total:</span>
+                <span id="cart-total" class="cart-total fw-bold text-body-emphasis">R$ 0,00</span>
+            </div>
+            <a href="../shop/checkout.html" class="btn btn-dark w-100 mb-7" title="Check Out">Finalizar Compra</a>
+        </div>
+    </div>
 
 	<div class="modal" id="signInModal" tabindex="-1" aria-labelledby="signInModal" aria-hidden="true">
 		<div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
@@ -3369,23 +3483,26 @@
 						<div class="dropdown-menu mega-menu start-0 py-6  w-100"
 							aria-labelledby="menu-item-shop-canvas">
 							<div class="megamenu-shop container-wide py-8 px-12">
-							<div class="row">
-												<div class="col">
-													<a href="{{ route('buscarPorCategoria', ['categoria' => 'Perfumes', 'scroll_to' => 'listagemprod']) }}">
-														<h6 class="fs-18px">Perfumes</h6>
-													</a>
-												</div>
-												<div class="col">
-													<a href="{{ route('buscarPorCategoria', ['categoria' => 'Body splash', 'scroll_to' => 'listagemprod']) }}">
-														<h6 class="fs-18px">Body splash</h6>
-													</a>
-												</div>
-												<div class="col">
-													<a href="{{ route('buscarPorCategoria', ['categoria' => 'Hidratantes', 'scroll_to' => 'listagemprod']) }}">
-														<h6 class="fs-18px">Hidratantes</h6>
-													</a>
-												</div>
-												<!-- <div class="col">
+								<div class="row">
+									<div class="col">
+										<a
+											href="{{ route('buscarPorCategoria', ['categoria' => 'Perfumes', 'scroll_to' => 'listagemprod']) }}">
+											<h6 class="fs-18px">Perfumes</h6>
+										</a>
+									</div>
+									<div class="col">
+										<a
+											href="{{ route('buscarPorCategoria', ['categoria' => 'Body splash', 'scroll_to' => 'listagemprod']) }}">
+											<h6 class="fs-18px">Body splash</h6>
+										</a>
+									</div>
+									<div class="col">
+										<a
+											href="{{ route('buscarPorCategoria', ['categoria' => 'Hidratantes', 'scroll_to' => 'listagemprod']) }}">
+											<h6 class="fs-18px">Hidratantes</h6>
+										</a>
+									</div>
+									<!-- <div class="col">
 													<h6 class="fs-18px">Maquiagem</h6>
 													<ul class="list-unstyled mb-0">
 														<li>
@@ -3439,7 +3556,7 @@
 														</li>
 													</ul>
 												</div> -->
-												<!-- <div class="col">
+									<!-- <div class="col">
 													<h6 class="fs-18px">Cabelos</h6>
 													<ul class="list-unstyled mb-0">
 														<li>
@@ -3470,7 +3587,7 @@
 														</li>
 													</ul>
 												</div> -->
-												<!-- <div class="col">
+									<!-- <div class="col">
 													<h6 class="fs-18px">Cuidados com o Corpo</h6>
 													<ul class="list-unstyled mb-0">
 														<li>
@@ -3523,7 +3640,7 @@
 														</li>
 													</ul>
 												</div> -->
-											</div>
+								</div>
 							</div>
 						</div>
 					</li>

@@ -737,7 +737,7 @@
                                     </svg>
                                 </a>
                             </div> -->
-                           <!--  <div class="px-5 d-none d-xl-inline-block">
+                            <!--  <div class="px-5 d-none d-xl-inline-block">
                                 <a class="lh-1 color-inherit text-decoration-none" href="#" data-bs-toggle="modal"
                                     data-bs-target="#signInModal">
                                     <svg class="icon icon-user-light">
@@ -833,15 +833,17 @@
                         </div>
                 </div>
                 @guest
-                                <a href="{{ route('login') }}" class="bd-theme btn btn-link nav-link  d-inline-flex align-items-center justify-content-center text-primary p-0 position-relative rounded-circle">Entrar</a>
-                            @endguest
+                    <a href="{{ route('login') }}"
+                        class="bd-theme btn btn-link nav-link  d-inline-flex align-items-center justify-content-center text-primary p-0 position-relative rounded-circle">Entrar</a>
+                @endguest
 
-                            @auth
-                                <form method="POST" action="{{ route('logout') }}">
-                                    @csrf
-                                    <button type="submit" class="bd-theme btn btn-link nav-link  d-inline-flex align-items-center justify-content-center text-primary p-0 position-relative rounded-circle">Sair</button>
-                                </form>
-                            @endauth
+                @auth
+                    <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+                        <button type="submit"
+                            class="bd-theme btn btn-link nav-link  d-inline-flex align-items-center justify-content-center text-primary p-0 position-relative rounded-circle">Sair</button>
+                    </form>
+                @endauth
             </div>
         </div>
     </header>
@@ -1603,24 +1605,24 @@
                                 @endif
 
                                 <!-- <div class="position-absolute d-flex z-index-2 product-actions vertical">
-                                                <a class="text-body-emphasis bg-body bg-dark-hover text-light-hover rounded-circle square product-action shadow-sm quick-view sm" href="#" data-bs-toggle="tooltip" data-bs-placement="left" data-bs-title="Quick View">
-                                                    <span data-bs-toggle="modal" data-bs-target="#quickViewModal" class="d-flex align-items-center justify-content-center">
-                                                        <svg class="icon icon-eye-light">
-                                                            <use xlink:href="#icon-eye-light"></use>
+                                                    <a class="text-body-emphasis bg-body bg-dark-hover text-light-hover rounded-circle square product-action shadow-sm quick-view sm" href="#" data-bs-toggle="tooltip" data-bs-placement="left" data-bs-title="Quick View">
+                                                        <span data-bs-toggle="modal" data-bs-target="#quickViewModal" class="d-flex align-items-center justify-content-center">
+                                                            <svg class="icon icon-eye-light">
+                                                                <use xlink:href="#icon-eye-light"></use>
+                                                            </svg>
+                                                        </span>
+                                                    </a>
+                                                    <a class="text-body-emphasis bg-body bg-dark-hover text-light-hover rounded-circle square product-action shadow-sm wishlist sm" href="#" data-bs-toggle="tooltip" data-bs-placement="left" data-bs-title="Add To Wishlist">
+                                                        <svg class="icon icon-star-light">
+                                                            <use xlink:href="#icon-star-light"></use>
                                                         </svg>
-                                                    </span>
-                                                </a>
-                                                <a class="text-body-emphasis bg-body bg-dark-hover text-light-hover rounded-circle square product-action shadow-sm wishlist sm" href="#" data-bs-toggle="tooltip" data-bs-placement="left" data-bs-title="Add To Wishlist">
-                                                    <svg class="icon icon-star-light">
-                                                        <use xlink:href="#icon-star-light"></use>
-                                                    </svg>
-                                                </a>
-                                                <a class="text-body-emphasis bg-body bg-dark-hover text-light-hover rounded-circle square product-action shadow-sm compare sm" href="#" data-bs-toggle="tooltip" data-bs-placement="left" data-bs-title="Compare">
-                                                    <svg class="icon icon-arrows-left-right-light">
-                                                        <use xlink:href="#icon-arrows-left-right-light"></use>
-                                                    </svg>
-                                                </a>
-                                            </div> -->
+                                                    </a>
+                                                    <a class="text-body-emphasis bg-body bg-dark-hover text-light-hover rounded-circle square product-action shadow-sm compare sm" href="#" data-bs-toggle="tooltip" data-bs-placement="left" data-bs-title="Compare">
+                                                        <svg class="icon icon-arrows-left-right-light">
+                                                            <use xlink:href="#icon-arrows-left-right-light"></use>
+                                                        </svg>
+                                                    </a>
+                                                </div> -->
                                 <a href="#"
                                     class="btn btn-add-to-cart btn-dark btn-hover-bg-primary btn-hover-border-primary position-absolute z-index-2 text-nowrap btn-sm px-6 py-3 lh-2">Adicionar
                                     ao Carrinho</a>
@@ -3738,14 +3740,6 @@
             <a href="../shop/checkout.html" class="btn btn-dark w-100 mb-7" title="Check Out">Finalizar Compra</a>
         </div>
     </div>
-
-
-
-
-
-
-
-
 
 
     <!--  Fim  adicionar ao Carrinho - Carrinho de compras: -->
