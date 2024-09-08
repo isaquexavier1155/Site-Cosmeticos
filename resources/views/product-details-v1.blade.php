@@ -753,6 +753,18 @@
                                         style="--square-size: 18px">3</span>
                                 </a>
                             </div>
+                            @guest
+    <a href="{{ route('login') }}" class="btn btn-primary">Login</a>
+@endguest
+
+@auth
+    <form method="POST" action="{{ route('logout') }}">
+        @csrf
+        <button type="submit" class="btn btn-danger">Logout</button>
+    </form>
+@endauth
+
+
                             <!-- Tela grande - Inicio Icone sacola abre modal carrinho 01 - Adicionar ao carrinho-->
                             <div class="px-5 d-none d-xl-inline-block">
                                 <a class="position-relative lh-1 color-inherit text-decoration-none" href="#"
@@ -1047,8 +1059,7 @@
 
     <!-- Compra de 1 unidade -->
     <div class="form-check mb-2 pb-4">
-        <input type="radio" id="buy1" name="quantidade" value="1"
-            class="me-4 form-check-input product-info-input">
+        <input type="radio" id="buy1" name="quantidade" value="1" class="me-4 form-check-input product-info-input">
         <label for="buy1" class="text-body-emphasis form-check-label">
             Comprar 1 -
             <span class="text-body">R${{ number_format($precoOriginal, 2, ',', '.') }}</span>
@@ -1057,12 +1068,10 @@
 
     <!-- Compra de 2 unidades com 5% de desconto -->
     <div class="form-check mb-2 pb-4">
-        <input type="radio" id="buy2" name="quantidade" value="2"
-            class="me-4 form-check-input product-info-input">
+        <input type="radio" id="buy2" name="quantidade" value="2" class="me-4 form-check-input product-info-input">
         <label for="buy2" class="text-body-emphasis form-check-label">
             Comprar 2 -
-            <span
-                class="text-decoration-line-through mx-3 text-body">R${{ number_format($precoOriginal * 2, 2, ',', '.') }}</span>
+            <span class="text-decoration-line-through mx-3 text-body">R${{ number_format($precoOriginal * 2, 2, ',', '.') }}</span>
             <span class="fw-bold">R${{ number_format($precosComDesconto[2], 2, ',', '.') }}</span>
         </label>
         <span class="badge badge-primary fs-12px border text-primary fw-bold ms-4">Economize +5%</span>
@@ -1070,12 +1079,10 @@
 
     <!-- Compra de 3 unidades com 8% de desconto -->
     <div class="form-check mb-2 pb-4">
-        <input type="radio" id="buy3" name="quantidade" value="3"
-            class="me-4 form-check-input product-info-input">
+        <input type="radio" id="buy3" name="quantidade" value="3" class="me-4 form-check-input product-info-input">
         <label for="buy3" class="text-body-emphasis form-check-label">
             Comprar 3 -
-            <span
-                class="text-decoration-line-through mx-3 text-body">R${{ number_format($precoOriginal * 3, 2, ',', '.') }}</span>
+            <span class="text-decoration-line-through mx-3 text-body">R${{ number_format($precoOriginal * 3, 2, ',', '.') }}</span>
             <span class="fw-bold">R${{ number_format($precosComDesconto[3], 2, ',', '.') }}</span>
         </label>
         <span class="badge badge-primary fs-12px border text-primary fw-bold ms-4">Economize +8%</span>
@@ -1083,67 +1090,121 @@
 
     <!-- Compra de 4 unidades com 10% de desconto -->
     <div class="form-check mb-2 pb-4">
-        <input type="radio" id="buy4" name="quantidade" value="4"
-            class="me-4 form-check-input product-info-input">
+        <input type="radio" id="buy4" name="quantidade" value="4" class="me-4 form-check-input product-info-input">
         <label for="buy4" class="text-body-emphasis form-check-label">
             Comprar 4 -
-            <span
-                class="text-decoration-line-through mx-3 text-body">R${{ number_format($precoOriginal * 4, 2, ',', '.') }}</span>
+            <span class="text-decoration-line-through mx-3 text-body">R${{ number_format($precoOriginal * 4, 2, ',', '.') }}</span>
             <span class="fw-bold">R${{ number_format($precosComDesconto[4], 2, ',', '.') }}</span>
         </label>
         <span class="badge badge-primary fs-12px border text-primary fw-bold ms-4">Economize +10%</span>
     </div>
 
-    <button type="submit"
-        class="btn btn-lg btn-dark mb-7 mt-7 w-100 btn-hover-bg-primary btn-hover-border-primary">Adicionar ao Carrinho
+    <button id="add-to-cart-button" type="submit"
+        class="btn btn-lg btn-dark mb-7 mt-7 w-100 btn-hover-bg-primary btn-hover-border-primary" disabled>Adicionar ao Carrinho
     </button>
 </form>
 <!-- Fim adicionar ao Carrinho: -->
 
+<!-- Script para não ser possível adicionar ao carrinho sem ter pelo menos uma quntidade selecionada-->
+ <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const radioButtons = document.querySelectorAll('input[name="quantidade"]');
+        const addToCartButton = document.getElementById('add-to-cart-button');
 
-  <!--                  <script>
-<script>
-    document.getElementById('add-to-cart-form').addEventListener('submit', function(event) {
-        event.preventDefault();
-
-        const formData = new FormData(this);
-        const quantidade = formData.get('quantidade'); // Corrigido o nome do campo
-        const produtoId = formData.get('produto_id'); // Obtendo o produto_id do formulário
-
-        addToCart(produtoId, quantidade);
+        radioButtons.forEach(function (radio) {
+            radio.addEventListener('change', function () {
+                if (radio.checked) {
+                    addToCartButton.disabled = false;
+                }
+            });
+        });
     });
+</script>
 
-    function addToCart(produtoId, quantidade) {
+
+
+<!-- Script para abrir modal do carrinho de compras se produto for adicionado com sucesso-->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('Script carregado e DOM pronto.');
+
+    const form = document.getElementById('add-to-cart-form');
+    if (form) {
+        form.addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            console.log('Formulário enviado, processando...');
+
+            const formData = new FormData(this);
+            const quantity = formData.get('quantidade');
+            const productId = formData.get('produto_id'); // ID do produto obtido do formulário
+
+            console.log('Produto ID:', productId);
+            console.log('Quantidade:', quantity);
+
+            addToCart(productId, quantity);
+        });
+    } else {
+        console.error('Formulário "add-to-cart-form" não encontrado.');
+    }
+
+    function addToCart(productId, quantity) {
+        console.log('Enviando dados para adicionar ao carrinho...');
+
         fetch('{{ route("carrinho.adicionar") }}', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
                 'X-CSRF-TOKEN': '{{ csrf_token() }}'
             },
-            body: JSON.stringify({ produto_id: produtoId, quantidade: quantidade })
+            body: JSON.stringify({ produto_id: productId, quantidade: quantity })
         })
         .then(response => {
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
+            console.log('Resposta recebida:', response);
+
+            if (response.ok) {
+                return response.json(); // Convertendo a resposta para JSON
+            } else if (response.status === 401) {
+                // Redirecionar para a página de login se o status for 401
+                window.location.href = '{{ route("login") }}';
+                console.log('Usuário não autenticado. Redirecionando para a página de login.');
+                throw new Error('Usuário não autenticado.');
+            } else {
+                console.warn('Status da resposta não é OK, algo deu errado.');
+                throw new Error('Resposta inesperada do servidor.');
             }
-            return response.json();
         })
         .then(data => {
+            console.log('Dados recebidos:', data);
+
             if (data.success) {
-                updateCart(data.carrinho);
-                alert('Produto adicionado ao carrinho!');
+                console.log('Produto adicionado com sucesso.');
+
+                const openCartButton = document.querySelector('[data-bs-toggle="offcanvas"][data-bs-target="#shoppingCart"]');
+                if (openCartButton) {
+                    openCartButton.click();
+                    console.log('Modal do carrinho aberto com sucesso.');
+                } else {
+                    console.error('Elemento para abrir o carrinho não encontrado.');
+                }
             } else {
-                alert('Ocorreu um erro ao adicionar o produto ao carrinho.');
+                console.warn('Erro ao adicionar o produto:', data.message);
+                alert(data.message || 'Ocorreu um erro ao adicionar o produto ao carrinho.');
             }
         })
         .catch(error => {
             console.error('Erro:', error);
-            alert('Ocorreu um erro ao adicionar o produto ao carrinho.');
+            // Já lidamos com o redirecionamento para a página de login acima, não é necessário aqui.
         });
     }
+});
 </script>
 
-</script> -->
+
+
+
+
+
 
                     <ul class="single-product-meta list-unstyled border-top pt-7 mt-7">
                         <!-- <li class="d-flex mb-4 pb-2 align-items-center">

@@ -23,7 +23,7 @@ Route::get('/busca', [ProdutoController::class, 'busca'])->name('busca');
 //rota abaixo inpedia rota produtos create de ser exibida
 //inverti a ordem para resolver o conflito
 Route::get('/produtos/{id}', [ProdutoController::class, 'show'])->name('produtos.show');
-
+//->can('admin'); - para ver somente pelo admin
 /*  
 Route::get('/produto/{id}', [ProdutoController::class, 'show']); */
 /* 
@@ -34,9 +34,10 @@ Route::get('/produtos/get/{id}', [ProdutoController::class, 'getProdutoById'])->
 /* buscar produto por categoria
  */Route::get('/buscar-por-categoria', [ProdutoController::class, 'buscarPorCategoria'])->name('buscarPorCategoria');
 
-/* Rota para adicionar produtos ao Carrinho de compras
+/* Rota para adicionar produtos ao Carrinho de compras - Login Obrigatorio
  */
-Route::post('/carrinho/adicionar', [ProdutoController::class, 'adicionar'])->name('carrinho.adicionar');
+    Route::post('/carrinho/adicionar', [ProdutoController::class, 'adicionar'])->name('carrinho.adicionar');
+
 
 
 

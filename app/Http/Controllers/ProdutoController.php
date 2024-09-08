@@ -183,25 +183,29 @@ class ProdutoController extends Controller
         // Obtendo o usuário logado
         $user = auth()->user();
     
+        if (!$user) {
+            // Se o usuário não estiver logado, retornar um erro para redirecionar para a página de login
+            return response()->json([
+                'success' => false,
+                'redirect' => route('login') // URL de redirecionamento para a página de login
+            ], 401); // Status 401 Unauthorized
+        }
+    
         // Lógica para adicionar ao carrinho
         Cart::create([
-            'product_id' => $validated['produto_id'], // Nome correto do campo
-            'quantity' => $validated['quantidade'],  // Nome correto do campo
+            'product_id' => $validated['produto_id'],
+            'quantity' => $validated['quantidade'],
             'user_id' => $user->id,
-            'price' => Produto::find($validated['produto_id'])->preco_promocional, // Exemplo para definir o preço
+            'price' => Produto::find($validated['produto_id'])->preco_promocional,
         ]);
     
         return response()->json([
             'success' => true,
-            'carrinho' => 'carrinhoAtualizado',
         ]);
     }
     
     
-    
-     
- 
- 
+   
 
     
     
