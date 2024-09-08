@@ -185,23 +185,26 @@
                                 <div class="dropdown-menu mega-menu start-0 py-6  w-100"
                                     aria-labelledby="menu-item-shop">
                                     <div class="megamenu-shop container-wide py-8 px-12">
-                                    <div class="row">
-												<div class="col">
-													<a href="{{ route('buscarPorCategoria', ['categoria' => 'Perfumes', 'scroll_to' => 'listagemprod']) }}">
-														<h6 class="fs-18px">Perfumes</h6>
-													</a>
-												</div>
-												<div class="col">
-													<a href="{{ route('buscarPorCategoria', ['categoria' => 'Body splash', 'scroll_to' => 'listagemprod']) }}">
-														<h6 class="fs-18px">Body splash</h6>
-													</a>
-												</div>
-												<div class="col">
-													<a href="{{ route('buscarPorCategoria', ['categoria' => 'Hidratantes', 'scroll_to' => 'listagemprod']) }}">
-														<h6 class="fs-18px">Hidratantes</h6>
-													</a>
-												</div>
-												<!-- <div class="col">
+                                        <div class="row">
+                                            <div class="col">
+                                                <a
+                                                    href="{{ route('buscarPorCategoria', ['categoria' => 'Perfumes', 'scroll_to' => 'listagemprod']) }}">
+                                                    <h6 class="fs-18px">Perfumes</h6>
+                                                </a>
+                                            </div>
+                                            <div class="col">
+                                                <a
+                                                    href="{{ route('buscarPorCategoria', ['categoria' => 'Body splash', 'scroll_to' => 'listagemprod']) }}">
+                                                    <h6 class="fs-18px">Body splash</h6>
+                                                </a>
+                                            </div>
+                                            <div class="col">
+                                                <a
+                                                    href="{{ route('buscarPorCategoria', ['categoria' => 'Hidratantes', 'scroll_to' => 'listagemprod']) }}">
+                                                    <h6 class="fs-18px">Hidratantes</h6>
+                                                </a>
+                                            </div>
+                                            <!-- <div class="col">
 													<h6 class="fs-18px">Maquiagem</h6>
 													<ul class="list-unstyled mb-0">
 														<li>
@@ -255,7 +258,7 @@
 														</li>
 													</ul>
 												</div> -->
-												<!-- <div class="col">
+                                            <!-- <div class="col">
 													<h6 class="fs-18px">Cabelos</h6>
 													<ul class="list-unstyled mb-0">
 														<li>
@@ -286,7 +289,7 @@
 														</li>
 													</ul>
 												</div> -->
-												<!-- <div class="col">
+                                            <!-- <div class="col">
 													<h6 class="fs-18px">Cuidados com o Corpo</h6>
 													<ul class="list-unstyled mb-0">
 														<li>
@@ -339,7 +342,7 @@
 														</li>
 													</ul>
 												</div> -->
-											</div>
+                                        </div>
 
                                     </div>
 
@@ -742,7 +745,7 @@
                                     </svg>
                                 </a>
                             </div>
-                            <div class="px-5 d-none d-xl-inline-block">
+                            <!-- <div class="px-5 d-none d-xl-inline-block">
                                 <a class="position-relative lh-1 color-inherit text-decoration-none"
                                     href="../shop/wishlist.html">
                                     <svg class="icon icon-star-light">
@@ -752,37 +755,42 @@
                                         class="badge bg-dark text-white position-absolute top-0 start-100 translate-middle mt-4 rounded-circle fs-13px p-0 square"
                                         style="--square-size: 18px">4</span>
                                 </a>
-                            </div>
+                            </div> -->
                             @guest
-    <a href="{{ route('login') }}" class="btn btn-primary">Login</a>
-@endguest
+                                <a href="{{ route('login') }}" class="btn btn-primary">Login</a>
+                            @endguest
 
-@auth
-    <form method="POST" action="{{ route('logout') }}">
-        @csrf
-        <button type="submit" class="btn btn-danger">Logout</button>
-    </form>
-@endauth
+                            @auth
+                                <form method="POST" action="{{ route('logout') }}">
+                                    @csrf
+                                    <button type="submit" class="btn btn-danger">Logout</button>
+                                </form>
+                            @endauth
 
 
                             <!-- Tela grande - Inicio Icone sacola abre modal carrinho 01 - Adicionar ao carrinho-->
                             <div class="px-5 d-none d-xl-inline-block">
-                            <a class="position-relative lh-1 color-inherit text-decoration-none" href="#"
-                                data-bs-toggle="offcanvas" data-bs-target="#shoppingCart"
-                                aria-controls="shoppingCart" aria-expanded="false">
-                                <svg class="icon icon-star-light">
+                                <a class="position-relative lh-1 color-inherit text-decoration-none" href="#"
+                                    data-bs-toggle="offcanvas" data-bs-target="#shoppingCart"
+                                    aria-controls="shoppingCart" aria-expanded="false">
+                                    <!-- ícone de sacola de compras -->
+                                    <!--  <svg class="icon icon-star-light">
                                     <use xlink:href="#icon-shopping-bag-open-light"></use>
-                                </svg>
-                                <span id="cart-item-count"
-                                    class="badge bg-dark text-white position-absolute top-0 start-100 translate-middle mt-4 rounded-circle fs-13px p-0 square"
-                                    style="--square-size: 18px">
-                                    {{ isset($total_items) ? $total_items : 0 }}
-                                </span>
-                            </a>
-                        </div>
+                                </svg> -->
+                                    <!-- Pelo novo SVG do carrinho de compras -->
+                                    <svg class="icon icon-cart">
+                                        <use xlink:href="#icon-shopping-cart"></use>
+                                    </svg>
+                                    <span id="cart-item-count"
+                                        class="badge bg-dark text-white position-absolute top-0 start-100 translate-middle mt-4 rounded-circle fs-13px p-0 square"
+                                        style="--square-size: 18px">
+                                        {{ isset($total_items) ? $total_items : 0 }}
+                                    </span>
+                                </a>
+                            </div>
 
 
-                             <!--Tela grande -  Fim Icone sacola abre modal carrinho 01 - Adicionar ao carrinho-->
+                            <!--Tela grande -  Fim Icone sacola abre modal carrinho 01 - Adicionar ao carrinho-->
 
                             <div class="color-modes position-relative ps-5">
                                 <a class="bd-theme btn btn-link nav-link dropdown-toggle d-inline-flex align-items-center justify-content-center text-primary p-0 position-relative rounded-circle"
@@ -1038,185 +1046,227 @@
                     <p class="fs-15px">{{ $produto->descricao }}</p>
 
                     <!-- Início adicionar ao Carrinho: -->
-<form id="add-to-cart-form" class="product-info-custom" method="POST" action="{{ route('carrinho.adicionar') }}">
-    @csrf
-    <input type="hidden" name="produto_id" value="{{ $produto->id }}">
+                    <form id="add-to-cart-form" class="product-info-custom" method="POST"
+                        action="{{ route('carrinho.adicionar') }}">
+                        @csrf
+                        <input type="hidden" name="produto_id" value="{{ $produto->id }}">
 
-    <p class="text-body-emphasis fw-semibold mb-6">Quantidade: </p>
-    @php
-        $precoOriginal = $produto->preco_promocional; // Preço original por unidade
+                        <p class="text-body-emphasis fw-semibold mb-6">Quantidade: </p>
+                        @php
+                            $precoOriginal = $produto->preco_promocional; // Preço original por unidade
 
-        // Descontos por quantidade
-        $descontos = [
-            1 => 0.00, // Sem desconto para 1 unidade
-            2 => 0.05, // 5% de desconto para 2 unidades
-            3 => 0.08, // 8% de desconto para 3 unidades
-            4 => 0.10  // 10% de desconto para 4 unidades
-        ];
+                            // Descontos por quantidade
+                            $descontos = [
+                                1 => 0.00, // Sem desconto para 1 unidade
+                                2 => 0.05, // 5% de desconto para 2 unidades
+                                3 => 0.08, // 8% de desconto para 3 unidades
+                                4 => 0.10  // 10% de desconto para 4 unidades
+                            ];
 
-        // Cálculo dos preços com desconto
-        $precosComDesconto = [];
-        foreach ($descontos as $quantidade => $desconto) {
-            $precosComDesconto[$quantidade] = $precoOriginal * (1 - $desconto) * $quantidade;
-        }
-    @endphp
+                            // Cálculo dos preços com desconto
+                            $precosComDesconto = [];
+                            foreach ($descontos as $quantidade => $desconto) {
+                                $precosComDesconto[$quantidade] = $precoOriginal * (1 - $desconto) * $quantidade;
+                            }
+                        @endphp
 
-    <!-- Compra de 1 unidade -->
-    <div class="form-check mb-2 pb-4">
-        <input type="radio" id="buy1" name="quantidade" value="1" class="me-4 form-check-input product-info-input">
-        <label for="buy1" class="text-body-emphasis form-check-label">
-            Comprar 1 -
-            <span class="text-body">R${{ number_format($precoOriginal, 2, ',', '.') }}</span>
-        </label>
-    </div>
+                        <!-- Compra de 1 unidade -->
+                        <div class="form-check mb-2 pb-4">
+                            <input type="radio" id="buy1" name="quantidade" value="1"
+                                class="me-4 form-check-input product-info-input">
+                            <label for="buy1" class="text-body-emphasis form-check-label">
+                                Comprar 1 -
+                                <span class="text-body">R${{ number_format($precoOriginal, 2, ',', '.') }}</span>
+                            </label>
+                        </div>
 
-    <!-- Compra de 2 unidades com 5% de desconto -->
-    <div class="form-check mb-2 pb-4">
-        <input type="radio" id="buy2" name="quantidade" value="2" class="me-4 form-check-input product-info-input">
-        <label for="buy2" class="text-body-emphasis form-check-label">
-            Comprar 2 -
-            <span class="text-decoration-line-through mx-3 text-body">R${{ number_format($precoOriginal * 2, 2, ',', '.') }}</span>
-            <span class="fw-bold">R${{ number_format($precosComDesconto[2], 2, ',', '.') }}</span>
-        </label>
-        <span class="badge badge-primary fs-12px border text-primary fw-bold ms-4">Economize +5%</span>
-    </div>
+                        <!-- Compra de 2 unidades com 5% de desconto -->
+                        <div class="form-check mb-2 pb-4">
+                            <input type="radio" id="buy2" name="quantidade" value="2"
+                                class="me-4 form-check-input product-info-input">
+                            <label for="buy2" class="text-body-emphasis form-check-label">
+                                Comprar 2 -
+                                <span
+                                    class="text-decoration-line-through mx-3 text-body">R${{ number_format($precoOriginal * 2, 2, ',', '.') }}</span>
+                                <span class="fw-bold">R${{ number_format($precosComDesconto[2], 2, ',', '.') }}</span>
+                            </label>
+                            <span class="badge badge-primary fs-12px border text-primary fw-bold ms-4">Economize
+                                +5%</span>
+                        </div>
 
-    <!-- Compra de 3 unidades com 8% de desconto -->
-    <div class="form-check mb-2 pb-4">
-        <input type="radio" id="buy3" name="quantidade" value="3" class="me-4 form-check-input product-info-input">
-        <label for="buy3" class="text-body-emphasis form-check-label">
-            Comprar 3 -
-            <span class="text-decoration-line-through mx-3 text-body">R${{ number_format($precoOriginal * 3, 2, ',', '.') }}</span>
-            <span class="fw-bold">R${{ number_format($precosComDesconto[3], 2, ',', '.') }}</span>
-        </label>
-        <span class="badge badge-primary fs-12px border text-primary fw-bold ms-4">Economize +8%</span>
-    </div>
+                        <!-- Compra de 3 unidades com 8% de desconto -->
+                        <div class="form-check mb-2 pb-4">
+                            <input type="radio" id="buy3" name="quantidade" value="3"
+                                class="me-4 form-check-input product-info-input">
+                            <label for="buy3" class="text-body-emphasis form-check-label">
+                                Comprar 3 -
+                                <span
+                                    class="text-decoration-line-through mx-3 text-body">R${{ number_format($precoOriginal * 3, 2, ',', '.') }}</span>
+                                <span class="fw-bold">R${{ number_format($precosComDesconto[3], 2, ',', '.') }}</span>
+                            </label>
+                            <span class="badge badge-primary fs-12px border text-primary fw-bold ms-4">Economize
+                                +8%</span>
+                        </div>
 
-    <!-- Compra de 4 unidades com 10% de desconto -->
-    <div class="form-check mb-2 pb-4">
-        <input type="radio" id="buy4" name="quantidade" value="4" class="me-4 form-check-input product-info-input">
-        <label for="buy4" class="text-body-emphasis form-check-label">
-            Comprar 4 -
-            <span class="text-decoration-line-through mx-3 text-body">R${{ number_format($precoOriginal * 4, 2, ',', '.') }}</span>
-            <span class="fw-bold">R${{ number_format($precosComDesconto[4], 2, ',', '.') }}</span>
-        </label>
-        <span class="badge badge-primary fs-12px border text-primary fw-bold ms-4">Economize +10%</span>
-    </div>
+                        <!-- Compra de 4 unidades com 10% de desconto -->
+                        <div class="form-check mb-2 pb-4">
+                            <input type="radio" id="buy4" name="quantidade" value="4"
+                                class="me-4 form-check-input product-info-input">
+                            <label for="buy4" class="text-body-emphasis form-check-label">
+                                Comprar 4 -
+                                <span
+                                    class="text-decoration-line-through mx-3 text-body">R${{ number_format($precoOriginal * 4, 2, ',', '.') }}</span>
+                                <span class="fw-bold">R${{ number_format($precosComDesconto[4], 2, ',', '.') }}</span>
+                            </label>
+                            <span class="badge badge-primary fs-12px border text-primary fw-bold ms-4">Economize
+                                +10%</span>
+                        </div>
 
-    <button id="add-to-cart-button" type="submit"
-        class="btn btn-lg btn-dark mb-7 mt-7 w-100 btn-hover-bg-primary btn-hover-border-primary" disabled>Adicionar ao Carrinho
-    </button>
-</form>
-<!-- Fim adicionar ao Carrinho: -->
-
-<!-- Script para não ser possível adicionar ao carrinho sem ter pelo menos uma quntidade selecionada-->
- <script>
-    document.addEventListener('DOMContentLoaded', function () {
-        const radioButtons = document.querySelectorAll('input[name="quantidade"]');
-        const addToCartButton = document.getElementById('add-to-cart-button');
-
-        radioButtons.forEach(function (radio) {
-            radio.addEventListener('change', function () {
-                if (radio.checked) {
-                    addToCartButton.disabled = false;
-                }
-            });
-        });
-    });
-</script>
+                        <button id="add-to-cart-button" type="submit"
+                            class="btn btn-lg btn-dark mb-7 mt-7 w-100 btn-hover-bg-primary btn-hover-border-primary"
+                            disabled>Adicionar ao Carrinho
+                        </button>
+                    </form>
+                    <!-- Fim adicionar ao Carrinho: -->
 
 
 
-<!-- Script para abrir modal do carrinho de compras se produto for adicionado com sucesso-->
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    console.log('Script carregado e DOM pronto.');
 
-    const form = document.getElementById('add-to-cart-form');
-    if (form) {
-        form.addEventListener('submit', function(event) {
-            event.preventDefault();
 
-            console.log('Formulário enviado, processando...');
+                    <!-- Script para abrir modal do carrinho de compras se produto for adicionado com sucesso-->
+                    <script>
+                        document.addEventListener('DOMContentLoaded', function () {
+                            console.log('Script carregado e DOM pronto.');
 
-            const formData = new FormData(this);
-            const quantity = formData.get('quantidade');
-            const productId = formData.get('produto_id'); // ID do produto obtido do formulário
+                            const form = document.getElementById('add-to-cart-form');
+                            if (form) {
+                                form.addEventListener('submit', function (event) {
+                                    event.preventDefault();
 
-            console.log('Produto ID:', productId);
-            console.log('Quantidade:', quantity);
+                                    console.log('Formulário enviado, processando...');
 
-            addToCart(productId, quantity);
-        });
-    } else {
-        console.error('Formulário "add-to-cart-form" não encontrado.');
-    }
+                                    const formData = new FormData(this);
+                                    const quantity = formData.get('quantidade');
+                                    const productId = formData.get('produto_id'); // ID do produto obtido do formulário
 
-    function addToCart(productId, quantity) {
-        console.log('Enviando dados para adicionar ao carrinho...');
+                                    console.log('Produto ID:', productId);
+                                    console.log('Quantidade:', quantity);
 
-        fetch('{{ route("carrinho.adicionar") }}', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'X-CSRF-TOKEN': '{{ csrf_token() }}'
-            },
-            body: JSON.stringify({ produto_id: productId, quantidade: quantity })
-        })
-        .then(response => {
-            console.log('Resposta recebida:', response);
+                                    addToCart(productId, quantity);
+                                });
+                            } else {
+                                console.error('Formulário "add-to-cart-form" não encontrado.');
+                            }
 
-            if (response.ok) {
-                return response.json(); // Convertendo a resposta para JSON
-            } else if (response.status === 401) {
-                // Redirecionar para a página de login se o status for 401
-                window.location.href = '{{ route("login") }}';
-                console.log('Usuário não autenticado. Redirecionando para a página de login.');
-                throw new Error('Usuário não autenticado.');
-            } else {
-                console.warn('Status da resposta não é OK, algo deu errado.');
-                throw new Error('Resposta inesperada do servidor.');
-            }
-        })
-        .then(data => {
-            console.log('Dados recebidos:', data);
+                            function addToCart(productId, quantity) {
+                                console.log('Enviando dados para adicionar ao carrinho...');
 
-            if (data.success) {
-                console.log('Produto adicionado com sucesso.');
+                                fetch('{{ route("carrinho.adicionar") }}', {
+                                    method: 'POST',
+                                    headers: {
+                                        'Content-Type': 'application/json',
+                                        'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                                    },
+                                    body: JSON.stringify({ produto_id: productId, quantidade: quantity })
+                                })
+                                    .then(response => {
+                                        console.log('Resposta recebida:', response);
 
-                // Armazena um valor no sessionStorage para indicar que o produto foi adicionado
-                sessionStorage.setItem('cart_added', 'true');
-                window.location.reload(); // Recarrega a página
-            } else {
-                console.warn('Erro ao adicionar o produto:', data.message);
-                alert(data.message || 'Ocorreu um erro ao adicionar o produto ao carrinho.');
-            }
-        })
-        .catch(error => {
-            console.error('Erro:', error);
-        });
-    }
-});
-</script>
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    console.log('Script carregado e DOM pronto.');
+                                        if (response.ok) {
+                                            return response.json(); // Convertendo a resposta para JSON
+                                        } else if (response.status === 401) {
+                                            // Redirecionar para a página de login se o status for 401
+                                            window.location.href = '{{ route("login") }}';
+                                            console.log('Usuário não autenticado. Redirecionando para a página de login.');
+                                            throw new Error('Usuário não autenticado.');
+                                        } else {
+                                            console.warn('Status da resposta não é OK, algo deu errado.');
+                                            throw new Error('Resposta inesperada do servidor.');
+                                        }
+                                    })
+                                    .then(data => {
+                                        console.log('Dados recebidos:', data);
 
-    // Verifica se o valor 'cart_added' está presente no sessionStorage
-    if (sessionStorage.getItem('cart_added') === 'true') {
-        const openCartButton = document.querySelector('[data-bs-toggle="offcanvas"][data-bs-target="#shoppingCart"]');
-        if (openCartButton) {
-            openCartButton.click();
-            console.log('Modal do carrinho aberto com sucesso.');
-        } else {
-            console.error('Elemento para abrir o carrinho não encontrado.');
-        }
+                                        if (data.success) {
+                                            console.log('Produto adicionado com sucesso.');
 
-        // Remove o valor do sessionStorage após abrir o carrinho
-        sessionStorage.removeItem('cart_added');
-    }
-});
-</script>
+                                            // Armazena um valor no sessionStorage para indicar que o produto foi adicionado
+                                            sessionStorage.setItem('cart_added', 'true');
+                                            window.location.reload(); // Recarrega a página
+                                        } else {
+                                            console.warn('Erro ao adicionar o produto:', data.message);
+                                            alert(data.message || 'Ocorreu um erro ao adicionar o produto ao carrinho.');
+                                        }
+                                    })
+                                    .catch(error => {
+                                        console.error('Erro:', error);
+                                    });
+                            }
+                        });
+                    </script>
+
+                    <!-- Script 5 - para remover itens do carrinho de compras e do banco de dados-->
+                    <script>
+
+                        document.addEventListener('DOMContentLoaded', function () {
+                            function updateTotal() {
+                                let total = 0;
+
+                                // Itera sobre todos os itens do carrinho
+                                document.querySelectorAll('tbody#cart-items tr').forEach(function (row) {
+                                    const quantity = parseInt(row.querySelector('.quantity-input').value) || 0;
+                                    const price = parseFloat(row.querySelector('.item-price').dataset.price) || 0;
+                                    total += quantity * price;
+                                });
+
+                                // Atualiza o valor total na tela
+                                document.getElementById('cart-total').textContent = `R$ ${total.toFixed(2).replace('.', ',')}`;
+                            }
+                            document.addEventListener('click', function (event) {
+                                if (event.target.closest('.clear-product')) {
+                                    event.preventDefault();
+
+                                    const element = event.target.closest('.clear-product');
+                                    const id = element.getAttribute('data-id');
+
+                                    fetch(`/carrinho/remover/${id}`, {
+                                        method: 'DELETE',
+                                        headers: {
+                                            'Content-Type': 'application/json',
+                                            'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                                        }
+                                    })
+                                        .then(response => response.json())
+                                        .then(data => {
+                                            if (data.success) {
+                                                // Remover a linha da tabela
+                                                element.closest('tr').remove();
+
+                                                // Atualizar o total de itens no carrinho
+                                                updateCartItemCount();
+                                                updateTotal();
+                                            } else {
+                                                console.error('Erro ao remover item do carrinho:', data.error);
+                                            }
+                                        })
+                                        .catch(error => {
+                                            console.error('Erro:', error);
+                                        });
+                                }
+                            });
+
+                            function updateCartItemCount() {
+                                fetch('/carrinho/quantidade')
+                                    .then(response => response.json())
+                                    .then(data => {
+                                        document.getElementById('cart-item-count').textContent = data.total_items || '0';
+                                    })
+                                    .catch(error => console.error('Erro ao atualizar o total de itens:', error));
+                            }
+                        });
+                    </script>
+
+
 
 
 
@@ -1331,17 +1381,17 @@ document.addEventListener('DOMContentLoaded', function() {
                                             <p class="fw-semibold text-body-emphasis mb-2 pb-4">Características:</p>
                                             <ul class="mb-7 ps-6">
                                                 @if(!empty($produto->caracteristicas))
-                                                    @php
-                                                        // Decodificar a string JSON para um array PHP
-                                                        $caracteristicas = json_decode($produto->caracteristicas, true);
-                                                    @endphp
-                                                    @foreach($caracteristicas as $caracteristica)
-                                                        @if(isset($caracteristica['value']))
-                                                            <li class="mb-1">{{ $caracteristica['value'] }}</li>
-                                                        @endif
-                                                    @endforeach
+                                                                                                @php
+                                                                                                    // Decodificar a string JSON para um array PHP
+                                                                                                    $caracteristicas = json_decode($produto->caracteristicas, true);
+                                                                                                @endphp
+                                                                                                @foreach($caracteristicas as $caracteristica)
+                                                                                                    @if(isset($caracteristica['value']))
+                                                                                                        <li class="mb-1">{{ $caracteristica['value'] }}</li>
+                                                                                                    @endif
+                                                                                                @endforeach
                                                 @endif
-                                            
+
                                             </ul>
 
                                             <!-- DEIXAR -->
@@ -1552,24 +1602,24 @@ document.addEventListener('DOMContentLoaded', function() {
                                 @endif
 
                                 <!-- <div class="position-absolute d-flex z-index-2 product-actions vertical">
-                                            <a class="text-body-emphasis bg-body bg-dark-hover text-light-hover rounded-circle square product-action shadow-sm quick-view sm" href="#" data-bs-toggle="tooltip" data-bs-placement="left" data-bs-title="Quick View">
-                                                <span data-bs-toggle="modal" data-bs-target="#quickViewModal" class="d-flex align-items-center justify-content-center">
-                                                    <svg class="icon icon-eye-light">
-                                                        <use xlink:href="#icon-eye-light"></use>
+                                                <a class="text-body-emphasis bg-body bg-dark-hover text-light-hover rounded-circle square product-action shadow-sm quick-view sm" href="#" data-bs-toggle="tooltip" data-bs-placement="left" data-bs-title="Quick View">
+                                                    <span data-bs-toggle="modal" data-bs-target="#quickViewModal" class="d-flex align-items-center justify-content-center">
+                                                        <svg class="icon icon-eye-light">
+                                                            <use xlink:href="#icon-eye-light"></use>
+                                                        </svg>
+                                                    </span>
+                                                </a>
+                                                <a class="text-body-emphasis bg-body bg-dark-hover text-light-hover rounded-circle square product-action shadow-sm wishlist sm" href="#" data-bs-toggle="tooltip" data-bs-placement="left" data-bs-title="Add To Wishlist">
+                                                    <svg class="icon icon-star-light">
+                                                        <use xlink:href="#icon-star-light"></use>
                                                     </svg>
-                                                </span>
-                                            </a>
-                                            <a class="text-body-emphasis bg-body bg-dark-hover text-light-hover rounded-circle square product-action shadow-sm wishlist sm" href="#" data-bs-toggle="tooltip" data-bs-placement="left" data-bs-title="Add To Wishlist">
-                                                <svg class="icon icon-star-light">
-                                                    <use xlink:href="#icon-star-light"></use>
-                                                </svg>
-                                            </a>
-                                            <a class="text-body-emphasis bg-body bg-dark-hover text-light-hover rounded-circle square product-action shadow-sm compare sm" href="#" data-bs-toggle="tooltip" data-bs-placement="left" data-bs-title="Compare">
-                                                <svg class="icon icon-arrows-left-right-light">
-                                                    <use xlink:href="#icon-arrows-left-right-light"></use>
-                                                </svg>
-                                            </a>
-                                        </div> -->
+                                                </a>
+                                                <a class="text-body-emphasis bg-body bg-dark-hover text-light-hover rounded-circle square product-action shadow-sm compare sm" href="#" data-bs-toggle="tooltip" data-bs-placement="left" data-bs-title="Compare">
+                                                    <svg class="icon icon-arrows-left-right-light">
+                                                        <use xlink:href="#icon-arrows-left-right-light"></use>
+                                                    </svg>
+                                                </a>
+                                            </div> -->
                                 <a href="#"
                                     class="btn btn-add-to-cart btn-dark btn-hover-bg-primary btn-hover-border-primary position-absolute z-index-2 text-nowrap btn-sm px-6 py-3 lh-2">Adicionar
                                     ao Carrinho</a>
@@ -2620,6 +2670,9 @@ document.addEventListener('DOMContentLoaded', function() {
     <script src="{{ asset('vendors/mapbox-gl/mapbox-gl.js') }}"></script>
     <script src="{{ asset('js/theme.min.js') }}"></script>
 
+    <script src="{{ asset('js/script.js') }}"></script>
+
+
 
 
     <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
@@ -3121,6 +3174,12 @@ document.addEventListener('DOMContentLoaded', function() {
                 d="M27 5.25h-22c-0.966 0.001-1.749 0.784-1.75 1.75v18c0.001 0.966 0.784 1.749 1.75 1.75h22c0.966-0.001 1.749-0.784 1.75-1.75v-18c-0.001-0.966-0.784-1.749-1.75-1.75h-0zM5 6.75h22c0.138 0 0.25 0.112 0.25 0.25v2.25h-22.5v-2.25c0-0.138 0.112-0.25 0.25-0.25h0zM27 25.25h-22c-0.138-0-0.25-0.112-0.25-0.25v-14.25h22.5v14.25c-0 0.138-0.112 0.25-0.25 0.25h-0zM21.75 14c0 3.176-2.574 5.75-5.75 5.75s-5.75-2.574-5.75-5.75v0c0-0.414 0.336-0.75 0.75-0.75s0.75 0.336 0.75 0.75v0c0 2.347 1.903 4.25 4.25 4.25s4.25-1.903 4.25-4.25v0c0-0.414 0.336-0.75 0.75-0.75s0.75 0.336 0.75 0.75v0z">
             </path>
         </symbol>
+        <symbol id="icon-shopping-cart" viewBox="0 0 32 32">
+            <path
+                d="M25 2h-2.25l-2.438 5.25h-12.624l-2.438-5.25h-2.25c-1.103 0-2 .897-2 2v0.5c0 0.248 0.018 0.485 0.053 0.719l3.079 8.689-0.014 0.026 1.681 5.084c0.314 0.943 1.188 1.607 2.25 1.607h15.444c1.061 0 1.936-0.664 2.25-1.607l1.373-4.107c0.087-0.254 0.155-0.512 0.203-0.773l3.04-8.44c0.037-0.154 0.057-0.312 0.057-0.475v-0.5c0-1.103-0.897-2-2-2zM9.584 7.5h10.832l1.614 3.5h-14.06l1.614-3.5zM6.418 17l-2.623-7.5h13.322l-2.623 7.5h-8.076zM22.236 20h-14.2l-1.209-3.577 5.668-5.571c0.338-0.337 0.792-0.549 1.28-0.549s0.943 0.211 1.281 0.549l5.668 5.571-1.209 3.577z">
+            </path>
+        </symbol>
+
         <symbol id="icon-magnifying-glass-light" viewBox="0 0 32 32">
             <path
                 d="M28.529 27.47l-5.566-5.566c1.731-1.97 2.787-4.57 2.787-7.417 0-6.221-5.043-11.264-11.264-11.264s-11.264 5.043-11.264 11.264c0 6.221 5.043 11.264 11.264 11.264 2.846 0 5.446-1.056 7.429-2.797l-0.013 0.011 5.566 5.566c0.136 0.136 0.323 0.22 0.53 0.22 0.414 0 0.75-0.336 0.75-0.75 0-0.207-0.084-0.395-0.22-0.53v0zM4.75 14.5c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75c0 5.385-4.365 9.75-9.75 9.75v0c-5.382-0.006-9.744-4.368-9.75-9.749v-0.001z">
@@ -3562,7 +3621,7 @@ document.addEventListener('DOMContentLoaded', function() {
                             </svg>
                         </a>
                     </div>
-                    <div class="px-5 d-none d-xl-inline-block">
+                    <!-- <div class="px-5 d-none d-xl-inline-block">
                         <a class="position-relative lh-1 color-inherit text-decoration-none"
                             href="../shop/wishlist.html">
                             <svg class="icon icon-star-light">
@@ -3572,15 +3631,18 @@ document.addEventListener('DOMContentLoaded', function() {
                                 class="badge bg-dark text-white position-absolute top-0 start-100 translate-middle mt-4 rounded-circle fs-13px p-0 square"
                                 style="--square-size: 18px">3</span>
                         </a>
-                    </div>
+                    </div> -->
 
                     <!-- Dispo Moveis - Inicio Icone sacola abre modal carrinho 02 - Adicionar ao carrinho-->
                     <div class="px-5 d-none d-xl-inline-block">
                         <a class="position-relative lh-1 color-inherit text-decoration-none" href="#"
                             data-bs-toggle="offcanvas" data-bs-target="#shoppingCart" aria-controls="shoppingCart"
                             aria-expanded="false">
-                            <svg class="icon icon-star-light">
+                            <!--                             <svg class="icon icon-star-light">
                                 <use xlink:href="#icon-shopping-bag-open-light"></use>
+                            </svg> -->
+                            <svg class="icon icon-cart">
+                                <use xlink:href="#icon-shopping-cart"></use>
                             </svg>
                             <span
                                 class="badge bg-dark text-white position-absolute top-0 start-100 translate-middle mt-4 rounded-circle fs-13px p-0 square"
@@ -3594,124 +3656,98 @@ document.addEventListener('DOMContentLoaded', function() {
     </div>
 
     <!--  Tela grande e pequena - Inicio  adicionar ao Carrinho - Produtos no Carrinho de compras: -->
-   <div id="shoppingCart" data-bs-scroll="false" class="offcanvas offcanvas-end">
-    <div class="offcanvas-header fs-4">
-        <h4 class="offcanvas-title fw-semibold">Carrinho de Compras</h4>
-        <button type="button" class="btn-close btn-close-bg-none" data-bs-dismiss="offcanvas" aria-label="Close">
-            <i class="far fa-times"></i>
-        </button>
-    </div>
-    <div class="offcanvas-body me-xl-auto pt-0 mb-2 mb-xl-0">
-        <form class="table-responsive-md shopping-cart pb-8 pb-lg-10">
-            <table class="table table-borderless">
-                <thead>
-                    <tr class="fw-500">
-                        <td colspan="3" class="border-bottom pb-6">
-                            <i class="far fa-check fs-12px border me-4 px-2 py-1 text-body-emphasis border-dark rounded-circle"></i>
-                            Seu carrinho está salvo e os produtos permanecerão nele até que você os remova.
-                        </td>
-                    </tr>
-                </thead>
-                <tbody id="cart-items">
-                    @if(isset($carrinho) && $carrinho->isNotEmpty())
-                        @foreach($carrinho as $item)
-                            @php
-                                $produto = App\Models\Produto::find($item->product_id);
-                            @endphp
-                            <tr class="position-relative">
-                                <td class="align-middle text-center">
-                                    <a href="#" class="d-block clear-product">
-                                        <i class="far fa-times"></i>
-                                    </a>
-                                </td>
-                                <td class="shop-product">
-                                    <div class="d-flex align-items-center">
-                                        <div class="me-6">
-                                            <img src="{{ asset('images/products/' . $produto->imagem) }}" width="60" height="80" alt="{{ $produto->nome }}">
-                                        </div>
-                                        <div class="">
-                                            <p class="card-text mb-1">
-                                                <span class="fs-13px fw-500 text-decoration-line-through pe-3">
-                                                    ${{ number_format($produto->preco, 2, ',', '.') }}
-                                                </span>
-                                                <span class="fs-15px fw-bold text-body-emphasis item-price" data-price="{{ $item->price }}">
-                                                    ${{ number_format($item->price, 2, ',', '.') }}
-                                                </span>
-                                            </p>
-                                            <p class="fw-500 text-body-emphasis">{{ $produto->nome }}</p>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td class="align-middle p-0">
-                                    <div class="input-group position-relative shop-quantity">
-                                        <a href="#" class="shop-down position-absolute z-index-2"><i class="far fa-minus"></i></a>
-                                        <input name="number[]" type="number" class="form-control form-control-sm px-6 py-4 fs-6 text-center border-0 quantity-input" value="{{ $item->quantity }}" readonly>
-                                        <a href="#" class="shop-up position-absolute z-index-2"><i class="far fa-plus"></i></a>
-                                    </div>
-                                </td>
-                            </tr>
-                        @endforeach
-                    @else
-                        <tr>
-                            <td colspan="3" class="text-center">Seu carrinho está vazio.</td>
-                        </tr>
-                    @endif
-                </tbody>
-            </table>
-        </form>
-    </div>
-    <div class="offcanvas-footer flex-wrap">
-        <div class="d-flex align-items-center justify-content-between w-100 mb-5">
-            <span class="text-body-emphasis">Preço total:</span>
-            <span id="cart-total" class="cart-total fw-bold text-body-emphasis">R$ 0,00</span>
+    <div id="shoppingCart" data-bs-scroll="false" class="offcanvas offcanvas-end">
+        <div class="offcanvas-header fs-4">
+            <h4 class="offcanvas-title fw-semibold">Carrinho de Compras</h4>
+            <button type="button" class="btn-close btn-close-bg-none" data-bs-dismiss="offcanvas" aria-label="Close">
+                <i class="far fa-times" id="fecharmoddal"></i>
+            </button>
         </div>
-        <a href="../shop/checkout.html" class="btn btn-dark w-100 mb-7" title="Check Out">Finalizar Compra</a>
+        <div class="offcanvas-body me-xl-auto pt-0 mb-2 mb-xl-0">
+            <form class="table-responsive-md shopping-cart pb-8 pb-lg-10">
+                <table class="table table-borderless">
+                    <thead>
+                        <tr class="fw-500">
+                            <td colspan="3" class="border-bottom pb-6">
+                                <i
+                                    class="far fa-check fs-12px border me-4 px-2 py-1 text-body-emphasis border-dark rounded-circle"></i>
+                                Seu carrinho está salvo e os produtos permanecerão nele até que você os remova.
+                            </td>
+                        </tr>
+                    </thead>
+                    <tbody id="cart-items">
+                        @if(isset($carrinho) && $carrinho->isNotEmpty())
+                                            @foreach($carrinho as $item)
+                                                                @php
+                                                                    $produto = App\Models\Produto::find($item->product_id);
+                                                                @endphp
+                                                                <tr class="position-relative">
+                                                                    <td class="align-middle text-center">
+                                                                        <a href="#" class="d-block clear-product" data-id="{{ $item->id }}">
+                                                                            <i class="far fa-times"></i>
+                                                                        </a>
+                                                                    </td>
+                                                                    <td class="shop-product">
+                                                                        <div class="d-flex align-items-center">
+                                                                            <div class="me-6">
+                                                                                <img src="{{ asset('images/products/' . $produto->imagem) }}" width="60"
+                                                                                    height="80" alt="{{ $produto->nome }}">
+                                                                            </div>
+                                                                            <div class="">
+                                                                                <p class="card-text mb-1">
+                                                                                    <span class="fs-13px fw-500 text-decoration-line-through pe-3">
+                                                                                        ${{ number_format($produto->preco, 2, ',', '.') }}
+                                                                                    </span>
+                                                                                    <span class="fs-15px fw-bold text-body-emphasis item-price"
+                                                                                        data-price="{{ $item->price }}">
+                                                                                        ${{ number_format($item->price, 2, ',', '.') }}
+                                                                                    </span>
+                                                                                </p>
+                                                                                <p class="fw-500 text-body-emphasis">{{ $produto->nome }}</p>
+                                                                            </div>
+                                                                        </div>
+                                                                    </td>
+                                                                    <td class="align-middle p-0">
+                                                                        <div class="input-group position-relative shop-quantity">
+                                                                            <a href="#" class="shop-down position-absolute z-index-2"><i
+                                                                                    class="far fa-minus"></i></a>
+                                                                            <input name="number[]" type="number"
+                                                                                class="form-control form-control-sm px-6 py-4 fs-6 text-center border-0 quantity-input"
+                                                                                value="{{ $item->quantity }}" readonly>
+                                                                            <a href="#" class="shop-up position-absolute z-index-2"><i
+                                                                                    class="far fa-plus"></i></a>
+                                                                        </div>
+                                                                    </td>
+                                                                </tr>
+                                            @endforeach
+                        @else
+                            <tr>
+                                <td colspan="3" class="text-center">Seu carrinho está vazio.</td>
+                            </tr>
+                        @endif
+                    </tbody>
+                </table>
+            </form>
+        </div>
+        <div class="offcanvas-footer flex-wrap">
+            <div class="d-flex align-items-center justify-content-between w-100 mb-5">
+                <span class="text-body-emphasis">Preço total:</span>
+                <span id="cart-total" class="cart-total fw-bold text-body-emphasis">R$ 0,00</span>
+            </div>
+            <a href="../shop/checkout.html" class="btn btn-dark w-100 mb-7" title="Check Out">Finalizar Compra</a>
+        </div>
     </div>
-</div>
-
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        // Função para atualizar o preço total
-        function updateTotal() {
-            let total = 0;
-
-            // Itera sobre todos os itens do carrinho
-            document.querySelectorAll('tbody#cart-items tr').forEach(function(row) {
-                const quantity = parseInt(row.querySelector('.quantity-input').value) || 0;
-                const price = parseFloat(row.querySelector('.item-price').dataset.price) || 0;
-                total += quantity * price;
-            });
-
-            // Atualiza o valor total na tela
-            document.getElementById('cart-total').textContent = `R$ ${total.toFixed(2).replace('.', ',')}`;
-        }
-
-        // Função para adicionar eventos de atualização de preço total
-        function addUpdateTotalListeners() {
-            // Atualiza o total quando a quantidade muda
-            document.querySelectorAll('.quantity-input').forEach(input => {
-                input.addEventListener('change', updateTotal);
-            });
-
-            // Atualiza o total quando os botões de incremento e decremento são clicados
-            document.querySelectorAll('.shop-up, .shop-down').forEach(button => {
-                button.addEventListener('click', function() {
-                    // Deferir a atualização do total até que a quantidade tenha sido atualizada
-                    setTimeout(updateTotal, 100);
-                });
-            });
-        }
-
-        // Inicializa a atualização do total
-        addUpdateTotalListeners();
-        updateTotal();
-    });
-</script>
 
 
 
 
-     <!--  Fim  adicionar ao Carrinho - Carrinho de compras: -->
+
+
+
+
+
+
+    <!--  Fim  adicionar ao Carrinho - Carrinho de compras: -->
 
     <div class="modal" id="signInModal" tabindex="-1" aria-labelledby="signInModal" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
@@ -4000,8 +4036,8 @@ document.addEventListener('DOMContentLoaded', function() {
                                     </div>
                                     <div class="col-sm-8 pt-9 mt-2 mt-sm-0 pt-sm-0">
                                         <button type="submit"
-                                            class="btn-hover-bg-primary btn-hover-border-primary btn btn-lg btn-dark w-100">Add
-                                            To Bag
+                                            class="btn-hover-bg-primary btn-hover-border-primary btn btn-lg btn-dark w-100">Adicionar
+                                            ao Carrinho
                                         </button>
                                     </div>
                                 </div>
@@ -4202,23 +4238,26 @@ document.addEventListener('DOMContentLoaded', function() {
                         <div class="dropdown-menu mega-menu start-0 py-6  w-100"
                             aria-labelledby="menu-item-shop-canvas">
                             <div class="megamenu-shop container-wide py-8 px-12">
-                            <div class="row">
-												<div class="col">
-													<a href="{{ route('buscarPorCategoria', ['categoria' => 'Perfumes', 'scroll_to' => 'listagemprod']) }}">
-														<h6 class="fs-18px">Perfumes</h6>
-													</a>
-												</div>
-												<div class="col">
-													<a href="{{ route('buscarPorCategoria', ['categoria' => 'Body splash', 'scroll_to' => 'listagemprod']) }}">
-														<h6 class="fs-18px">Body splash</h6>
-													</a>
-												</div>
-												<div class="col">
-													<a href="{{ route('buscarPorCategoria', ['categoria' => 'Hidratantes', 'scroll_to' => 'listagemprod']) }}">
-														<h6 class="fs-18px">Hidratantes</h6>
-													</a>
-												</div>
-												<!-- <div class="col">
+                                <div class="row">
+                                    <div class="col">
+                                        <a
+                                            href="{{ route('buscarPorCategoria', ['categoria' => 'Perfumes', 'scroll_to' => 'listagemprod']) }}">
+                                            <h6 class="fs-18px">Perfumes</h6>
+                                        </a>
+                                    </div>
+                                    <div class="col">
+                                        <a
+                                            href="{{ route('buscarPorCategoria', ['categoria' => 'Body splash', 'scroll_to' => 'listagemprod']) }}">
+                                            <h6 class="fs-18px">Body splash</h6>
+                                        </a>
+                                    </div>
+                                    <div class="col">
+                                        <a
+                                            href="{{ route('buscarPorCategoria', ['categoria' => 'Hidratantes', 'scroll_to' => 'listagemprod']) }}">
+                                            <h6 class="fs-18px">Hidratantes</h6>
+                                        </a>
+                                    </div>
+                                    <!-- <div class="col">
 													<h6 class="fs-18px">Maquiagem</h6>
 													<ul class="list-unstyled mb-0">
 														<li>
@@ -4272,7 +4311,7 @@ document.addEventListener('DOMContentLoaded', function() {
 														</li>
 													</ul>
 												</div> -->
-												<!-- <div class="col">
+                                    <!-- <div class="col">
 													<h6 class="fs-18px">Cabelos</h6>
 													<ul class="list-unstyled mb-0">
 														<li>
@@ -4303,7 +4342,7 @@ document.addEventListener('DOMContentLoaded', function() {
 														</li>
 													</ul>
 												</div> -->
-												<!-- <div class="col">
+                                    <!-- <div class="col">
 													<h6 class="fs-18px">Cuidados com o Corpo</h6>
 													<ul class="list-unstyled mb-0">
 														<li>
@@ -4356,7 +4395,7 @@ document.addEventListener('DOMContentLoaded', function() {
 														</li>
 													</ul>
 												</div> -->
-											</div>
+                                </div>
                             </div>
 
                         </div>
