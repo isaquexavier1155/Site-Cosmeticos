@@ -196,50 +196,68 @@ class PagamentoController extends Controller
 }
 
 /* Função acionada ao clicar em Pagar no Formulário do Bricks */
-public function processarPagamento(Request $request)
-    {
-        $accessToken = env('MERCADOPAGO_ACCESS_TOKEN');
-        $preferenceUrl = 'https://api.mercadopago.com/checkout/preferences?access_token=' . $accessToken;
+public function processarPagamentoFinal(Request $request)
+{
+    $accessToken = env('MERCADOPAGO_ACCESS_TOKEN');
+    $idempotencyKey = bin2hex(random_bytes(16)); // Gera uma chave idempotente única
 
-        $data = [
-            'items' => [
-                [
-                    'title' => 'Produto Exemplo',
-                    'quantity' => 1,
-                    'unit_price' => 100.00
-                ]
+    $paymentUrl = 'https://api.mercadopago.com/v1/payments?access_token=' . $accessToken;
+
+    $body = json_decode($request->getContent());
+
+    $data = [
+        'description' => 'Payment for product',
+        'installments' => $body->installments,
+        'payer' => [
+            'email' => $body->payer->email,
+            'identification' => [
+                'type' => $body->payer->identification->type,
+                'number' => $body->payer->identification->number,
             ],
-            'back_urls' => [
-                'success' => route('pagamento.sucesso'),
-                'failure' => route('pagamento.falha'),
-                'pending' => route('pagamento.pendente')
-            ],
-            'auto_return' => 'approved'
-        ];
+        ],
+        'issuer_id' => $body->issuer_id,
+        'payment_method_id' => $body->payment_method_id,
+        'token' => $body->token,
+        'transaction_amount' => $body->transaction_amount,
+    ];
 
-        $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, $preferenceUrl);
-        curl_setopt($ch, CURLOPT_POST, 1);
-        curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($data));
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLOPT_HTTPHEADER, [
-            'Content-Type: application/json'
-        ]);
+    $ch = curl_init();
+    curl_setopt_array($ch, [
+        CURLOPT_URL => $paymentUrl,
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_ENCODING => '',
+        CURLOPT_MAXREDIRS => 10,
+        CURLOPT_TIMEOUT => 0,
+        CURLOPT_FOLLOWLOCATION => true,
+        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+        CURLOPT_CUSTOMREQUEST => 'POST',
+        CURLOPT_POSTFIELDS => json_encode($data),
+        CURLOPT_HTTPHEADER => [
+            'Content-Type: application/json',
+            'Authorization: Bearer ' . $accessToken,
+            'X-Idempotency-Key: ' . $idempotencyKey,
+        ],
+    ]);
 
-        $response = curl_exec($ch);
+    $response = curl_exec($ch);
 
-        if ($response === false) {
-            $error = curl_error($ch);
-            curl_close($ch);
-            return response()->json(['error' => $error], 500);
-        }
-
+    if (curl_errno($ch)) {
+        $error = curl_error($ch);
         curl_close($ch);
-
-        $responseData = json_decode($response, true);
-        
-        return response()->json(['preference_id' => $responseData['id']]);
+        return response()->json(['error' => $error], 500);
     }
+
+    curl_close($ch);
+
+    $responseData = json_decode($response, true);
+
+    if (isset($responseData['id'])) {
+        return response()->json(['payment_id' => $responseData['id']]);
+    } else {
+        return response()->json(['error' => 'Payment ID não encontrado na resposta do servidor.'], 500);
+    }
+}
+
 
     public function getPreference(Request $request)
     {
