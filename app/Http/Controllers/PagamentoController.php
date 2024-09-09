@@ -237,7 +237,7 @@ public function processarPagamento(Request $request)
         curl_close($ch);
 
         $responseData = json_decode($response, true);
-        dd($responseData);
+        
         return response()->json(['preference_id' => $responseData['id']]);
     }
 
