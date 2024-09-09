@@ -329,10 +329,17 @@ class PagamentoController extends Controller
             return response()->json(['error' => 'Erro ao criar preferência de pagamento.'], 500);
         }}
 
-    public function sucesso()
-    {
-        return view('pagamento.sucesso');
-    }
+// No seu PaymentController
+
+public function sucesso(Request $request)
+{
+    $paymentId = $request->input('payment_id');
+    // Você pode usar o paymentId aqui para registrar o pagamento ou atualizar o status do pedido
+
+    // Exemplo de uso: Você pode passar o paymentId para uma view
+    return view('sucesso', ['payment_id' => $paymentId]);
+}
+
 
     public function falha()
     {
