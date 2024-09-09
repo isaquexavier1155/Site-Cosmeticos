@@ -1605,24 +1605,24 @@
                                 @endif
 
                                 <!-- <div class="position-absolute d-flex z-index-2 product-actions vertical">
-                                                                <a class="text-body-emphasis bg-body bg-dark-hover text-light-hover rounded-circle square product-action shadow-sm quick-view sm" href="#" data-bs-toggle="tooltip" data-bs-placement="left" data-bs-title="Quick View">
-                                                                    <span data-bs-toggle="modal" data-bs-target="#quickViewModal" class="d-flex align-items-center justify-content-center">
-                                                                        <svg class="icon icon-eye-light">
-                                                                            <use xlink:href="#icon-eye-light"></use>
+                                                                    <a class="text-body-emphasis bg-body bg-dark-hover text-light-hover rounded-circle square product-action shadow-sm quick-view sm" href="#" data-bs-toggle="tooltip" data-bs-placement="left" data-bs-title="Quick View">
+                                                                        <span data-bs-toggle="modal" data-bs-target="#quickViewModal" class="d-flex align-items-center justify-content-center">
+                                                                            <svg class="icon icon-eye-light">
+                                                                                <use xlink:href="#icon-eye-light"></use>
+                                                                            </svg>
+                                                                        </span>
+                                                                    </a>
+                                                                    <a class="text-body-emphasis bg-body bg-dark-hover text-light-hover rounded-circle square product-action shadow-sm wishlist sm" href="#" data-bs-toggle="tooltip" data-bs-placement="left" data-bs-title="Add To Wishlist">
+                                                                        <svg class="icon icon-star-light">
+                                                                            <use xlink:href="#icon-star-light"></use>
                                                                         </svg>
-                                                                    </span>
-                                                                </a>
-                                                                <a class="text-body-emphasis bg-body bg-dark-hover text-light-hover rounded-circle square product-action shadow-sm wishlist sm" href="#" data-bs-toggle="tooltip" data-bs-placement="left" data-bs-title="Add To Wishlist">
-                                                                    <svg class="icon icon-star-light">
-                                                                        <use xlink:href="#icon-star-light"></use>
-                                                                    </svg>
-                                                                </a>
-                                                                <a class="text-body-emphasis bg-body bg-dark-hover text-light-hover rounded-circle square product-action shadow-sm compare sm" href="#" data-bs-toggle="tooltip" data-bs-placement="left" data-bs-title="Compare">
-                                                                    <svg class="icon icon-arrows-left-right-light">
-                                                                        <use xlink:href="#icon-arrows-left-right-light"></use>
-                                                                    </svg>
-                                                                </a>
-                                                            </div> -->
+                                                                    </a>
+                                                                    <a class="text-body-emphasis bg-body bg-dark-hover text-light-hover rounded-circle square product-action shadow-sm compare sm" href="#" data-bs-toggle="tooltip" data-bs-placement="left" data-bs-title="Compare">
+                                                                        <svg class="icon icon-arrows-left-right-light">
+                                                                            <use xlink:href="#icon-arrows-left-right-light"></use>
+                                                                        </svg>
+                                                                    </a>
+                                                                </div> -->
                                 <a href="#"
                                     class="btn btn-add-to-cart btn-dark btn-hover-bg-primary btn-hover-border-primary position-absolute z-index-2 text-nowrap btn-sm px-6 py-3 lh-2">Adicionar
                                     ao Carrinho</a>
@@ -3718,7 +3718,7 @@
                                                                                 <p class="card-text mb-1">
                                                                                     <!-- Preço original riscado multiplicado pela quantidade -->
                                                                                     <span class="fs-13px fw-500 text-decoration-line-through pe-3">
-                                                                                        
+
                                                                                         ${{ number_format($produto->preco_promocional * $item->quantity, 2, ',', '.') }}
                                                                                     </span>
                                                                                     <span class="fs-15px fw-bold text-body-emphasis item-price"
@@ -3750,19 +3750,18 @@
             </form>
         </div>
         <div class="offcanvas-footer flex-wrap">
-    <div class="d-flex align-items-center justify-content-between w-100 mb-5">
-        <span class="text-body-emphasis">Preço total:</span>
-        <span id="cart-total" class="cart-total fw-bold text-body-emphasis">
-            R${{ number_format($total_geral, 2, ',', '.') }}
-        </span>
-    </div>
-    <form action="{{ route('payment') }}" method="POST">
-        @csrf
-        <input type="hidden" name="amount" value="{{ $total_geral }}">
-        <button type="submit" class="btn btn-dark w-100 mb-7" title="Finalizar Compra">Finalizar Compra</button>
-    </form>
-</div>
-
+            <div class="d-flex align-items-center justify-content-between w-100 mb-5">
+                <span class="text-body-emphasis">Preço total:</span>
+                <span id="cart-total" class="cart-total fw-bold text-body-emphasis">
+                    R${{ number_format($total_geral, 2, ',', '.') }}
+                </span>
+            </div>
+            <form action="{{ route('payment') }}" method="POST">
+                @csrf
+                <input type="hidden" name="amount" value="{{ $total_geral }}">
+                <button type="submit" class="btn btn-dark w-100 mb-7" title="Finalizar Compra">Finalizar Compra</button>
+            </form>
+        </div>
     </div>
 
 

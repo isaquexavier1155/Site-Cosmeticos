@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta charset="UTF-8">
@@ -7,17 +8,36 @@
     <title>Pagar com Mercado Pago</title>
     <script src="https://sdk.mercadopago.com/js/v2"></script>
 </head>
+
 <body>
+    <!-- tenho que deixar esse formulario pois oculta alguns dados que preciso -->
     <form id="form-pagamento">
         <input type="hidden" id="preference_id" name="preference_id" value="{{ $preference_id }}">
         <input type="hidden" id="amount" name="amount" value="{{ $amount }}">
-        <div id="paymentBrick_container"></div>
-        <button type="submit">Pagar com Mercado Pago</button>
+        <!-- <div id="paymentBrick_container2"></div> -->
+        <!-- <button type="submit">Pagar com Mercado Pago</button> -->
     </form>
+
+    <!-- <div id="paymentBrick_container"> -->
+    <div class="card-page">
+        <div id="statusScreenBrick_container"></div>
+        <div id="paymentBrick_container"></div>
+    </div>
+    </div>
+    <style>
+        .card-page {
+            width: 500px;
+            margin: 0 auto;
+        }
+        /*Alinhar texto Meios de pagamento rota payment*/ 
+       .svelte-101ibq7 {
+            text-align: center;
+        }
+    </style>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            const mp = new MercadoPago('APP_USR-d25ab668-bf5e-4fe0-a1cc-6235f5fd8e47');
+            const mp = new MercadoPago('TEST-f4fa1c3f-7150-4c78-96e9-778ffedeea78');
             const bricksBuilder = mp.bricks();
 
             const renderPaymentBrick = async (bricksBuilder) => {
@@ -27,13 +47,22 @@
                     initialization: {
                         amount: document.getElementById('amount').value,
                         preferenceId: document.getElementById('preference_id').value,
+
+                        payer: {
+                            firstName: "isaque",
+                            lastName: "xavier",
+                            email: "isaque.ixs@gmail.com",
+                        },
                     },
                     customization: {
+                        visual: {
+                            style: {
+                                theme: "default",
+                            },
+                        },
                         paymentMethods: {
-                            ticket: "all",
                             bankTransfer: "all",
                             creditCard: "all",
-                            debitCard: "all",
                             mercadoPago: "all",
                         },
                     },
@@ -55,55 +84,55 @@
                                     },
                                     body: JSON.stringify(formData),
                                 })
-                                .then((response) => response.text()) // Obter como texto bruto primeiro
-                                .then((text) => {
-                                    console.log("Texto bruto da resposta:", text);
-                                    
-                                    try {
-                                        // Tente converter para JSON
-                                        const jsonResponse = JSON.parse(text);
-                                        console.log("Resposta JSON do servidor:", jsonResponse);
+                                    .then((response) => response.text()) // Obter como texto bruto primeiro
+                                    .then((text) => {
+                                        console.log("Texto bruto da resposta:", text);
 
-                                        if (!jsonResponse.id) {
-                                            throw new Error("Payment ID não encontrado na resposta do servidor.");
-                                        }
+                                        try {
+                                            // Tente converter para JSON
+                                            const jsonResponse = JSON.parse(text);
+                                            console.log("Resposta JSON do servidor:", jsonResponse);
 
-                                        const renderStatusScreenBrick = async (bricksBuilder) => {
-                                            console.log("Iniciando a configuração do Status Screen Brick.");
+                                            if (!jsonResponse.id) {
+                                                throw new Error("Payment ID não encontrado na resposta do servidor.");
+                                            }
 
-                                            const settings = {
-                                                initialization: {
-                                                    paymentId: jsonResponse.id, // id do pagamento a ser mostrado
-                                                },
-                                                callbacks: {
-                                                    onReady: () => {
-                                                        console.log("Status Screen Brick está pronto.");
-                                                        document.getElementById('paymentBrick_container').style.display = 'none';
+                                            const renderStatusScreenBrick = async (bricksBuilder) => {
+                                                console.log("Iniciando a configuração do Status Screen Brick.");
+
+                                                const settings = {
+                                                    initialization: {
+                                                        paymentId: jsonResponse.id, // id do pagamento a ser mostrado
                                                     },
-                                                    onError: (error) => {
-                                                        console.error("Erro no Status Screen Brick:", error);
+                                                    callbacks: {
+                                                        onReady: () => {
+                                                            console.log("Status Screen Brick está pronto.");
+                                                            document.getElementById('paymentBrick_container').style.display = 'none';
+                                                        },
+                                                        onError: (error) => {
+                                                            console.error("Erro no Status Screen Brick:", error);
+                                                        },
                                                     },
-                                                },
+                                                };
+                                                window.statusScreenBrickController = await bricksBuilder.create(
+                                                    'statusScreen',
+                                                    'statusScreenBrick_container',
+                                                    settings,
+                                                );
+                                                console.log("Status Screen Brick criado com sucesso.");
                                             };
-                                            window.statusScreenBrickController = await bricksBuilder.create(
-                                                'statusScreen',
-                                                'paymentBrick_container',
-                                                settings,
-                                            );
-                                            console.log("Status Screen Brick criado com sucesso.");
-                                        };
 
-                                        renderStatusScreenBrick(bricksBuilder);
-                                        resolve();
-                                    } catch (error) {
-                                        console.error("Erro ao tentar analisar JSON:", error);
+                                            renderStatusScreenBrick(bricksBuilder);
+                                            resolve();
+                                        } catch (error) {
+                                            console.error("Erro ao tentar analisar JSON:", error);
+                                            reject();
+                                        }
+                                    })
+                                    .catch((error) => {
+                                        console.error("Erro ao criar o pagamento:", error);
                                         reject();
-                                    }
-                                })
-                                .catch((error) => {
-                                    console.error("Erro ao criar o pagamento:", error);
-                                    reject();
-                                });
+                                    });
                             });
                         },
                         onError: (error) => {
@@ -125,4 +154,5 @@
         });
     </script>
 </body>
+
 </html>

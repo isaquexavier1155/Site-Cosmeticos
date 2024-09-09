@@ -100,7 +100,7 @@ class PagamentoController extends Controller
 {
     $accesstoken = env('MERCADOPAGO_ACCESS_TOKEN');
     
-        $amount = 100;
+        $amount = 85;
     
         if (empty($amount) || !is_numeric($amount)) {
             return response()->json(['error' => 'Valor deve ser um número válido.'], 400);
@@ -196,7 +196,7 @@ class PagamentoController extends Controller
 }
 
 /* Função acionada ao clicar em Pagar no Formulário do Bricks */
-public function processarPagamentoFinal(Request $request)
+public function processarPagamento(Request $request)
 {
     $accessToken = env('MERCADOPAGO_ACCESS_TOKEN');
     $idempotencyKey = bin2hex(random_bytes(16)); // Gera uma chave idempotente única
@@ -204,6 +204,12 @@ public function processarPagamentoFinal(Request $request)
     $paymentUrl = 'https://api.mercadopago.com/v1/payments?access_token=' . $accessToken;
 
     $body = json_decode($request->getContent());
+
+    // Verificar se $body foi decodificado corretamente
+    //verificado
+    if (!$body) {
+        return response()->json(['error' => 'Corpo da requisição inválido.'], 400);
+    }
 
     $data = [
         'description' => 'Payment for product',
@@ -221,13 +227,20 @@ public function processarPagamentoFinal(Request $request)
         'transaction_amount' => $body->transaction_amount,
     ];
 
+/*     if ($data) {
+        return response()->json([
+            'error' => '$data válida.',
+            'body' => $data
+        ], 400);
+    } */
+
     $ch = curl_init();
     curl_setopt_array($ch, [
         CURLOPT_URL => $paymentUrl,
         CURLOPT_RETURNTRANSFER => true,
         CURLOPT_ENCODING => '',
         CURLOPT_MAXREDIRS => 10,
-        CURLOPT_TIMEOUT => 0,
+        CURLOPT_TIMEOUT => 30, // Timeout aumentado para 30 segundos
         CURLOPT_FOLLOWLOCATION => true,
         CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
         CURLOPT_CUSTOMREQUEST => 'POST',
@@ -237,32 +250,36 @@ public function processarPagamentoFinal(Request $request)
             'Authorization: Bearer ' . $accessToken,
             'X-Idempotency-Key: ' . $idempotencyKey,
         ],
+        CURLOPT_SSL_VERIFYPEER => false,  // Adicione esta linha
     ]);
 
     $response = curl_exec($ch);
-    echo '<pre>';
-var_dump($response);
-echo '</pre>';
+    $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE); // Obtém o código HTTP da resposta
 
     if (curl_errno($ch)) {
         $error = curl_error($ch);
         curl_close($ch);
         return response()->json(['error' => $error], 500);
     }
-    echo '<pre>';
-var_dump($response);
-echo '</pre>';
 
     curl_close($ch);
+
+    // Verifica se a resposta não foi um erro de servidor
+    if ($httpCode >= 400) {
+        return response()->json(['error' => 'Erro na API do Mercado Pago', 'details' => $response], $httpCode);
+    }
 
     $responseData = json_decode($response, true);
 
     if (isset($responseData['id'])) {
-        return response()->json(['payment_id' => $responseData['id']]);
-    } else {
+        echo $response;
+        die;
+/*         return response()->json(['payment_id' => $responseData['id']]);
+ */    } else {
         return response()->json(['error' => 'Payment ID não encontrado na resposta do servidor.'], 500);
     }
 }
+
 
 
     public function getPreference(Request $request)

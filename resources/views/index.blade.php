@@ -1120,42 +1120,42 @@
 														</div>
 													@endif
 													<!-- <div class="position-absolute d-flex z-index-2 product-actions horizontal">
-																													
-															<a class="text-body-emphasis bg-body bg-dark-hover text-light-hover rounded-circle square product-action shadow-sm add_to_cart"
-															href="{{ route('carrinho.adicionar') }}" data-bs-toggle="tooltip" data-bs-placement="top"
-															data-bs-title="Add To Cartt">
-															
-															<svg class="icon2 icon-cart">
-																<use xlink:href="#icon-shopping-cart"></use>
-															</svg>
-														</a>
-														<a class="text-body-emphasis bg-body bg-dark-hover text-light-hover rounded-circle square product-action shadow-sm quick-view"
-															href="###" data-bs-toggle="modal" data-bs-target="#quickViewModal"
-															data-id="{{ $produto->id }}" data-nome="{{ $produto->nome }}"
-															data-imagem="{{ $produto->imagem }}" data-bs-toggle="tooltip"
-															data-bs-placement="top" data-bs-title="Ver"
-															onclick="saveProductInfo({{ $produto->id }}, '{{ $produto->nome }}', '{{ $produto->imagem }}', '{{ $produto->descricao }}', '{{ $produto->preco }}', '{{ $produto->preco_promocional }}', '{{ $produto->imagens_adicionais }}')">
-															<span class="d-flex align-items-center justify-content-center">
-																<svg class="icon icon-eye-light">
-																	<use xlink:href="#icon-eye-light"></use>
-																</svg>
-															</span>
-														</a>
-														<a class="text-body-emphasis bg-body bg-dark-hover text-light-hover rounded-circle square product-action shadow-sm wishlist"
-															href="#" data-bs-toggle="tooltip" data-bs-placement="top"
-															data-bs-title="Add To Wishlist">
-															<svg class="icon icon-star-light">
-																<use xlink:href="#icon-star-light"></use>
-															</svg>
-														</a>
-														<a class="text-body-emphasis bg-body bg-dark-hover text-light-hover rounded-circle square product-action shadow-sm compare"
-															href="./shop/compare.html" data-bs-toggle="tooltip" data-bs-placement="top"
-															data-bs-title="Compare">
-															<svg class="icon icon-arrows-left-right-light">
-																<use xlink:href="#icon-arrows-left-right-light"></use>
-															</svg>
-														</a>
-													</div> -->
+
+																				<a class="text-body-emphasis bg-body bg-dark-hover text-light-hover rounded-circle square product-action shadow-sm add_to_cart"
+																				href="{{ route('carrinho.adicionar') }}" data-bs-toggle="tooltip" data-bs-placement="top"
+																				data-bs-title="Add To Cartt">
+
+																				<svg class="icon2 icon-cart">
+																					<use xlink:href="#icon-shopping-cart"></use>
+																				</svg>
+																			</a>
+																			<a class="text-body-emphasis bg-body bg-dark-hover text-light-hover rounded-circle square product-action shadow-sm quick-view"
+																				href="###" data-bs-toggle="modal" data-bs-target="#quickViewModal"
+																				data-id="{{ $produto->id }}" data-nome="{{ $produto->nome }}"
+																				data-imagem="{{ $produto->imagem }}" data-bs-toggle="tooltip"
+																				data-bs-placement="top" data-bs-title="Ver"
+																				onclick="saveProductInfo({{ $produto->id }}, '{{ $produto->nome }}', '{{ $produto->imagem }}', '{{ $produto->descricao }}', '{{ $produto->preco }}', '{{ $produto->preco_promocional }}', '{{ $produto->imagens_adicionais }}')">
+																				<span class="d-flex align-items-center justify-content-center">
+																					<svg class="icon icon-eye-light">
+																						<use xlink:href="#icon-eye-light"></use>
+																					</svg>
+																				</span>
+																			</a>
+																			<a class="text-body-emphasis bg-body bg-dark-hover text-light-hover rounded-circle square product-action shadow-sm wishlist"
+																				href="#" data-bs-toggle="tooltip" data-bs-placement="top"
+																				data-bs-title="Add To Wishlist">
+																				<svg class="icon icon-star-light">
+																					<use xlink:href="#icon-star-light"></use>
+																				</svg>
+																			</a>
+																			<a class="text-body-emphasis bg-body bg-dark-hover text-light-hover rounded-circle square product-action shadow-sm compare"
+																				href="./shop/compare.html" data-bs-toggle="tooltip" data-bs-placement="top"
+																				data-bs-title="Compare">
+																				<svg class="icon icon-arrows-left-right-light">
+																					<use xlink:href="#icon-arrows-left-right-light"></use>
+																				</svg>
+																			</a>
+																		</div> -->
 												</figure>
 												<div class="card-body text-center p-0">
 													<span
@@ -1401,136 +1401,136 @@
 										</form>
 										<!-- Script para abrir modal do carrinho de compras se produto for adicionado com sucesso-->
 										<script>
-                        document.addEventListener('DOMContentLoaded', function () {
-                            console.log('Script carregado e DOM pronto.');
+											document.addEventListener('DOMContentLoaded', function () {
+												console.log('Script carregado e DOM pronto.');
 
-                            const form = document.getElementById('add-to-cart-form');
-                            if (form) {
-                                form.addEventListener('submit', function (event) {
-                                    event.preventDefault();
+												const form = document.getElementById('add-to-cart-form');
+												if (form) {
+													form.addEventListener('submit', function (event) {
+														event.preventDefault();
 
-                                    console.log('Formulário enviado, processando...');
+														console.log('Formulário enviado, processando...');
 
-                                    const formData = new FormData(this);
-                                    const quantity = formData.get('quantidade');
-                                    const productId = formData.get('produto_id'); // ID do produto obtido do formulário
+														const formData = new FormData(this);
+														const quantity = formData.get('quantidade');
+														const productId = formData.get('produto_id'); // ID do produto obtido do formulário
 
-                                    console.log('Produto ID:', productId);
-                                    console.log('Quantidade:', quantity);
+														console.log('Produto ID:', productId);
+														console.log('Quantidade:', quantity);
 
-                                    addToCart(productId, quantity);
-                                });
-                            } else {
-                                console.error('Formulário "add-to-cart-form" não encontrado.');
-                            }
+														addToCart(productId, quantity);
+													});
+												} else {
+													console.error('Formulário "add-to-cart-form" não encontrado.');
+												}
 
-                            function addToCart(productId, quantity) {
-                                console.log('Enviando dados para adicionar ao carrinho...');
+												function addToCart(productId, quantity) {
+													console.log('Enviando dados para adicionar ao carrinho...');
 
-                                fetch('{{ route("carrinho.adicionar") }}', {
-                                    method: 'POST',
-                                    headers: {
-                                        'Content-Type': 'application/json',
-                                        'X-CSRF-TOKEN': '{{ csrf_token() }}'
-                                    },
-                                    body: JSON.stringify({ produto_id: productId, quantidade: quantity })
-                                })
-                                    .then(response => {
-                                        console.log('Resposta recebida:', response);
+													fetch('{{ route("carrinho.adicionar") }}', {
+														method: 'POST',
+														headers: {
+															'Content-Type': 'application/json',
+															'X-CSRF-TOKEN': '{{ csrf_token() }}'
+														},
+														body: JSON.stringify({ produto_id: productId, quantidade: quantity })
+													})
+														.then(response => {
+															console.log('Resposta recebida:', response);
 
-                                        if (response.ok) {
-                                            return response.json(); // Convertendo a resposta para JSON
-                                        } else if (response.status === 401) {
-                                            // Redirecionar para a página de login se o status for 401
-                                            window.location.href = '{{ route("login") }}';
-                                            console.log('Usuário não autenticado. Redirecionando para a página de login.');
-                                            throw new Error('Usuário não autenticado.');
-                                        } else {
-                                            console.warn('Status da resposta não é OK, algo deu errado.');
-                                            throw new Error('Resposta inesperada do servidor.');
-                                        }
-                                    })
-                                    .then(data => {
-                                        console.log('Dados recebidos:', data);
+															if (response.ok) {
+																return response.json(); // Convertendo a resposta para JSON
+															} else if (response.status === 401) {
+																// Redirecionar para a página de login se o status for 401
+																window.location.href = '{{ route("login") }}';
+																console.log('Usuário não autenticado. Redirecionando para a página de login.');
+																throw new Error('Usuário não autenticado.');
+															} else {
+																console.warn('Status da resposta não é OK, algo deu errado.');
+																throw new Error('Resposta inesperada do servidor.');
+															}
+														})
+														.then(data => {
+															console.log('Dados recebidos:', data);
 
-                                        if (data.success) {
-                                            console.log('Produto adicionado com sucesso.');
+															if (data.success) {
+																console.log('Produto adicionado com sucesso.');
 
-                                            // Armazena um valor no sessionStorage para indicar que o produto foi adicionado
-                                            sessionStorage.setItem('cart_added', 'true');
-                                            window.location.reload(); // Recarrega a página
-                                        } else {
-                                            console.warn('Erro ao adicionar o produto:', data.message);
-                                            alert(data.message || 'Ocorreu um erro ao adicionar o produto ao carrinho.');
-                                        }
-                                    })
-                                    .catch(error => {
-                                        console.error('Erro:', error);
-                                    });
-                            }
-                        });
-                    </script>
+																// Armazena um valor no sessionStorage para indicar que o produto foi adicionado
+																sessionStorage.setItem('cart_added', 'true');
+																window.location.reload(); // Recarrega a página
+															} else {
+																console.warn('Erro ao adicionar o produto:', data.message);
+																alert(data.message || 'Ocorreu um erro ao adicionar o produto ao carrinho.');
+															}
+														})
+														.catch(error => {
+															console.error('Erro:', error);
+														});
+												}
+											});
+										</script>
 
-                    <!-- Script 5 - para remover itens do carrinho de compras e do banco de dados-->
-                    <script>
+										<!-- Script 5 - para remover itens do carrinho de compras e do banco de dados-->
+										<script>
 
-                        document.addEventListener('DOMContentLoaded', function () {
-                            function updateTotal() {
-                                let total = 0;
+											document.addEventListener('DOMContentLoaded', function () {
+												function updateTotal() {
+													let total = 0;
 
-                                // Itera sobre todos os itens do carrinho
-                                document.querySelectorAll('tbody#cart-items tr').forEach(function (row) {
-                                    const quantity = parseInt(row.querySelector('.quantity-input').value) || 0;
-                                    const price = parseFloat(row.querySelector('.item-price').dataset.price) || 0;
-                                    total += price;
-                                });
+													// Itera sobre todos os itens do carrinho
+													document.querySelectorAll('tbody#cart-items tr').forEach(function (row) {
+														const quantity = parseInt(row.querySelector('.quantity-input').value) || 0;
+														const price = parseFloat(row.querySelector('.item-price').dataset.price) || 0;
+														total += price;
+													});
 
-                                // Atualiza o valor total na tela
-                                document.getElementById('cart-total').textContent = `R$ ${total.toFixed(2).replace('.', ',')}`;
-                            }
-                            document.addEventListener('click', function (event) {
-                                if (event.target.closest('.clear-product')) {
-                                    event.preventDefault();
+													// Atualiza o valor total na tela
+													document.getElementById('cart-total').textContent = `R$ ${total.toFixed(2).replace('.', ',')}`;
+												}
+												document.addEventListener('click', function (event) {
+													if (event.target.closest('.clear-product')) {
+														event.preventDefault();
 
-                                    const element = event.target.closest('.clear-product');
-                                    const id = element.getAttribute('data-id');
+														const element = event.target.closest('.clear-product');
+														const id = element.getAttribute('data-id');
 
-                                    fetch(`/carrinho/remover/${id}`, {
-                                        method: 'DELETE',
-                                        headers: {
-                                            'Content-Type': 'application/json',
-                                            'X-CSRF-TOKEN': '{{ csrf_token() }}'
-                                        }
-                                    })
-                                        .then(response => response.json())
-                                        .then(data => {
-                                            if (data.success) {
-                                                // Remover a linha da tabela
-                                                element.closest('tr').remove();
+														fetch(`/carrinho/remover/${id}`, {
+															method: 'DELETE',
+															headers: {
+																'Content-Type': 'application/json',
+																'X-CSRF-TOKEN': '{{ csrf_token() }}'
+															}
+														})
+															.then(response => response.json())
+															.then(data => {
+																if (data.success) {
+																	// Remover a linha da tabela
+																	element.closest('tr').remove();
 
-                                                // Atualizar o total de itens no carrinho
-                                                updateCartItemCount();
-                                                updateTotal();
-                                            } else {
-                                                console.error('Erro ao remover item do carrinho:', data.error);
-                                            }
-                                        })
-                                        .catch(error => {
-                                            console.error('Erro:', error);
-                                        });
-                                }
-                            });
+																	// Atualizar o total de itens no carrinho
+																	updateCartItemCount();
+																	updateTotal();
+																} else {
+																	console.error('Erro ao remover item do carrinho:', data.error);
+																}
+															})
+															.catch(error => {
+																console.error('Erro:', error);
+															});
+													}
+												});
 
-                            function updateCartItemCount() {
-                                fetch('/carrinho/quantidade')
-                                    .then(response => response.json())
-                                    .then(data => {
-                                        document.getElementById('cart-item-count').textContent = data.total_items || '0';
-                                    })
-                                    .catch(error => console.error('Erro ao atualizar o total de itens:', error));
-                            }
-                        });
-                    </script>
+												function updateCartItemCount() {
+													fetch('/carrinho/quantidade')
+														.then(response => response.json())
+														.then(data => {
+															document.getElementById('cart-item-count').textContent = data.total_items || '0';
+														})
+														.catch(error => console.error('Erro ao atualizar o total de itens:', error));
+												}
+											});
+										</script>
 
 										<p class="mb-4 pb-2">
 											<span class="text-body-emphasis"><svg class="icon fs-28px me-2 pe-4">
@@ -3166,104 +3166,108 @@
 		</div>
 	</div>
 	<div id="shoppingCart" data-bs-scroll="false" class="offcanvas offcanvas-end">
-        <div class="offcanvas-header fs-4">
-            <h4 class="offcanvas-title fw-semibold">Carrinho de Compras</h4>
-            <button type="button" class="btn-close btn-close-bg-none" data-bs-dismiss="offcanvas" aria-label="Close">
-                <i class="far fa-times" id="fecharmoddal"></i>
-            </button>
-        </div>
-        <div class="offcanvas-body me-xl-auto pt-0 mb-2 mb-xl-0">
-            <form class="table-responsive-md shopping-cart pb-8 pb-lg-10">
-                <table class="table table-borderless">
-                    <thead>
-                        <tr class="fw-500">
-                            <td colspan="3" class="border-bottom pb-6">
-                                <i
-                                    class="far fa-check fs-12px border me-4 px-2 py-1 text-body-emphasis border-dark rounded-circle"></i>
-                                Seu carrinho está salvo e os produtos permanecerão nele até que você os remova.
-                            </td>
-                        </tr>
-                    </thead>
-                    <tbody id="cart-items">
-                        @php
-                            $total_geral = 0;
-                        @endphp
+		<div class="offcanvas-header fs-4">
+			<h4 class="offcanvas-title fw-semibold">Carrinho de Compras</h4>
+			<button type="button" class="btn-close btn-close-bg-none" data-bs-dismiss="offcanvas" aria-label="Close">
+				<i class="far fa-times" id="fecharmoddal"></i>
+			</button>
+		</div>
+		<div class="offcanvas-body me-xl-auto pt-0 mb-2 mb-xl-0">
+			<form class="table-responsive-md shopping-cart pb-8 pb-lg-10">
+				<table class="table table-borderless">
+					<thead>
+						<tr class="fw-500">
+							<td colspan="3" class="border-bottom pb-6">
+								<i
+									class="far fa-check fs-12px border me-4 px-2 py-1 text-body-emphasis border-dark rounded-circle"></i>
+								Seu carrinho está salvo e os produtos permanecerão nele até que você os remova.
+							</td>
+						</tr>
+					</thead>
+					<tbody id="cart-items">
+						@php
+							$total_geral = 0;
+						@endphp
 
-                        @if(isset($carrinho) && $carrinho->isNotEmpty())
-                                            @foreach($carrinho as $item)
-                                                                @php
-                                                                    $produto = App\Models\Produto::find($item->product_id);
-                                                                    $preco_original = $produto->preco;
-                                                                    $preco_com_desconto = $item->price;
+						@if(isset($carrinho) && $carrinho->isNotEmpty())
+											@foreach($carrinho as $item)
+																@php
+																	$produto = App\Models\Produto::find($item->product_id);
+																	$preco_original = $produto->preco;
+																	$preco_com_desconto = $item->price;
 
-                                                                    // Aplicar o desconto progressivo
-                                                                    if ($item->quantity == 2) {
-                                                                        $preco_com_desconto = $preco_com_desconto * 0.95; // 5% de desconto
-                                                                    } elseif ($item->quantity == 3) {
-                                                                        $preco_com_desconto = $preco_com_desconto * 0.92; // 8% de desconto
-                                                                    } elseif ($item->quantity == 4) {
-                                                                        $preco_com_desconto = $preco_com_desconto * 0.90; // 10% de desconto
-                                                                    }
+																	// Aplicar o desconto progressivo
+																	if ($item->quantity == 2) {
+																		$preco_com_desconto = $preco_com_desconto * 0.95; // 5% de desconto
+																	} elseif ($item->quantity == 3) {
+																		$preco_com_desconto = $preco_com_desconto * 0.92; // 8% de desconto
+																	} elseif ($item->quantity == 4) {
+																		$preco_com_desconto = $preco_com_desconto * 0.90; // 10% de desconto
+																	}
 
-                                                                    $total_item = $preco_com_desconto * $item->quantity; // Total do item considerando o preço com desconto
-                                                                    $total_geral += $total_item; // Soma o total do item ao total geral
-                                                                @endphp
-                                                                <tr class="position-relative">
-                                                                    <td class="align-middle text-center">
-                                                                        <a href="#" class="d-block clear-product" data-id="{{ $item->id }}">
-                                                                            <i class="far fa-times"></i>
-                                                                        </a>
-                                                                    </td>
-                                                                    <td class="shop-product">
-                                                                        <div class="d-flex align-items-center">
-                                                                            <div class="me-6">
-                                                                                <img src="{{ asset('images/products/' . $produto->imagem) }}" width="60"
-                                                                                    height="80" alt="{{ $produto->nome }}">
-                                                                            </div>
-                                                                            <div class="">
-                                                                                <p class="card-text mb-1">
-                                                                                    <!-- Preço original riscado multiplicado pela quantidade -->
-                                                                                    <span class="fs-13px fw-500 text-decoration-line-through pe-3">
-                                                                                        ${{ number_format($produto->preco_promocional * $item->quantity, 2, ',', '.') }}
-                                                                                    </span>
-                                                                                    <span class="fs-15px fw-bold text-body-emphasis item-price"
-                                                                                        data-price="{{ $total_item }}">
-                                                                                        ${{ number_format($total_item, 2, ',', '.') }}
-                                                                                    </span>
-                                                                                </p>
-                                                                                <p class="fw-500 text-body-emphasis">{{ $produto->nome }}</p>
-                                                                            </div>
-                                                                        </div>
-                                                                    </td>
+																	$total_item = $preco_com_desconto * $item->quantity; // Total do item considerando o preço com desconto
+																	$total_geral += $total_item; // Soma o total do item ao total geral
+																@endphp
+																<tr class="position-relative">
+																	<td class="align-middle text-center">
+																		<a href="#" class="d-block clear-product" data-id="{{ $item->id }}">
+																			<i class="far fa-times"></i>
+																		</a>
+																	</td>
+																	<td class="shop-product">
+																		<div class="d-flex align-items-center">
+																			<div class="me-6">
+																				<img src="{{ asset('images/products/' . $produto->imagem) }}" width="60"
+																					height="80" alt="{{ $produto->nome }}">
+																			</div>
+																			<div class="">
+																				<p class="card-text mb-1">
+																					<!-- Preço original riscado multiplicado pela quantidade -->
+																					<span class="fs-13px fw-500 text-decoration-line-through pe-3">
+																						${{ number_format($produto->preco_promocional * $item->quantity, 2, ',', '.') }}
+																					</span>
+																					<span class="fs-15px fw-bold text-body-emphasis item-price"
+																						data-price="{{ $total_item }}">
+																						${{ number_format($total_item, 2, ',', '.') }}
+																					</span>
+																				</p>
+																				<p class="fw-500 text-body-emphasis">{{ $produto->nome }}</p>
+																			</div>
+																		</div>
+																	</td>
 
-                                                                    <td class="align-middle p-0">
-                                                                        <div class="input-group position-relative shop-quantity">
-                                                                            <input name="number[]" type="number"
-                                                                                class="form-control form-control-sm px-6 py-4 fs-6 text-center border-0 quantity-input"
-                                                                                value="{{ $item->quantity }}" readonly>
-                                                                        </div>
-                                                                    </td>
-                                                                </tr>
-                                            @endforeach
-                        @else
-                            <tr>
-                                <td colspan="3" class="text-center">Seu carrinho está vazio.</td>
-                            </tr>
-                        @endif
-                    </tbody>
-                </table>
-            </form>
-        </div>
-        <div class="offcanvas-footer flex-wrap">
-            <div class="d-flex align-items-center justify-content-between w-100 mb-5">
-                <span class="text-body-emphasis">Preço total:</span>
-                <span id="cart-total" class="cart-total fw-bold text-body-emphasis">
-                    R${{ number_format($total_geral, 2, ',', '.') }}
-                </span>
-            </div>
-            <a href="../shop/checkout.html" class="btn btn-dark w-100 mb-7" title="Check Out">Finalizar Compra</a>
-        </div>
-    </div>
+																	<td class="align-middle p-0">
+																		<div class="input-group position-relative shop-quantity">
+																			<input name="number[]" type="number"
+																				class="form-control form-control-sm px-6 py-4 fs-6 text-center border-0 quantity-input"
+																				value="{{ $item->quantity }}" readonly>
+																		</div>
+																	</td>
+																</tr>
+											@endforeach
+						@else
+							<tr>
+								<td colspan="3" class="text-center">Seu carrinho está vazio.</td>
+							</tr>
+						@endif
+					</tbody>
+				</table>
+			</form>
+		</div>
+		<div class="offcanvas-footer flex-wrap">
+			<div class="d-flex align-items-center justify-content-between w-100 mb-5">
+				<span class="text-body-emphasis">Preço total:</span>
+				<span id="cart-total" class="cart-total fw-bold text-body-emphasis">
+					R${{ number_format($total_geral, 2, ',', '.') }}
+				</span>
+			</div>
+			<form action="{{ route('payment') }}" method="POST">
+				@csrf
+				<input type="hidden" name="amount" value="{{ $total_geral }}">
+				<button type="submit" class="btn btn-dark w-100 mb-7" title="Finalizar Compra">Finalizar Compra</button>
+			</form>
+		</div>
+	</div>
 
 	<div class="modal" id="signInModal" tabindex="-1" aria-labelledby="signInModal" aria-hidden="true">
 		<div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
