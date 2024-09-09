@@ -16,111 +16,113 @@
     </form>
 
     <script>
-        const mp = new MercadoPago('APP_USR-d25ab668-bf5e-4fe0-a1cc-6235f5fd8e47');
-        const bricksBuilder = mp.bricks();
+        document.addEventListener('DOMContentLoaded', () => {
+            const mp = new MercadoPago('APP_USR-d25ab668-bf5e-4fe0-a1cc-6235f5fd8e47');
+            const bricksBuilder = mp.bricks();
 
-        const renderPaymentBrick = async (bricksBuilder) => {
-            console.log("Iniciando a configuração do Payment Brick.");
+            const renderPaymentBrick = async (bricksBuilder) => {
+                console.log("Iniciando a configuração do Payment Brick.");
 
-            const settings = {
-                initialization: {
-                    amount: document.getElementById('amount').value,
-                    preferenceId: document.getElementById('preference_id').value,
-                },
-                customization: {
-                    paymentMethods: {
-                        ticket: "all",
-                        bankTransfer: "all",
-                        creditCard: "all",
-                        debitCard: "all",
-                        mercadoPago: "all",
+                const settings = {
+                    initialization: {
+                        amount: document.getElementById('amount').value,
+                        preferenceId: document.getElementById('preference_id').value,
                     },
-                },
-                callbacks: {
-                    onReady: () => {
-                        console.log("Payment Brick está pronto.");
+                    customization: {
+                        paymentMethods: {
+                            ticket: "all",
+                            bankTransfer: "all",
+                            creditCard: "all",
+                            debitCard: "all",
+                            mercadoPago: "all",
+                        },
                     },
-                    onSubmit: ({ selectedPaymentMethod, formData }) => {
-                        console.log("Formulário submetido.");
-                        console.log("Método de pagamento selecionado:", selectedPaymentMethod);
-                        console.log("Dados do formulário:", formData);
+                    callbacks: {
+                        onReady: () => {
+                            console.log("Payment Brick está pronto.");
+                        },
+                        onSubmit: ({ selectedPaymentMethod, formData }) => {
+                            console.log("Formulário submetido.");
+                            console.log("Método de pagamento selecionado:", selectedPaymentMethod);
+                            console.log("Dados do formulário:", formData);
 
-                        return new Promise((resolve, reject) => {
-                            fetch("{{ route('processarpagamento') }}", { // Ajuste o nome da rota conforme sua aplicação
-                                method: "POST",
-                                headers: {
-                                    "Content-Type": "application/json",
-                                    "X-CSRF-Token": document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
-                                },
-                                body: JSON.stringify(formData),
-                            })
-                            .then((response) => response.text()) // Obter como texto bruto primeiro
-                            .then((text) => {
-                                console.log("Texto bruto da resposta:", text);
-                                console.log("Resposta JSON do servidor 1:", jsonResponse);
-                                try {
-                                    // Agora, tente converter para JSON
-                                    const jsonResponse = JSON.parse(text);
-                                    console.log("Resposta JSON do servidor:", jsonResponse);
+                            return new Promise((resolve, reject) => {
+                                fetch("{{ route('processarpagamento') }}", { // Ajuste o nome da rota conforme sua aplicação
+                                    method: "POST",
+                                    headers: {
+                                        "Content-Type": "application/json",
+                                        "X-CSRF-Token": document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+                                    },
+                                    body: JSON.stringify(formData),
+                                })
+                                .then((response) => response.text()) // Obter como texto bruto primeiro
+                                .then((text) => {
+                                    console.log("Texto bruto da resposta:", text);
+                                    
+                                    try {
+                                        // Tente converter para JSON
+                                        const jsonResponse = JSON.parse(text);
+                                        console.log("Resposta JSON do servidor:", jsonResponse);
 
-                                    if (!jsonResponse.id) {
-                                        throw new Error("Payment ID não encontrado na resposta do servidor.");
-                                    }
+                                        if (!jsonResponse.id) {
+                                            throw new Error("Payment ID não encontrado na resposta do servidor.");
+                                        }
 
-                                    const renderStatusScreenBrick = async (bricksBuilder) => {
-                                        console.log("Iniciando a configuração do Status Screen Brick.");
+                                        const renderStatusScreenBrick = async (bricksBuilder) => {
+                                            console.log("Iniciando a configuração do Status Screen Brick.");
 
-                                        const settings = {
-                                            initialization: {
-                                                paymentId: jsonResponse.id, // id do pagamento a ser mostrado
-                                            },
-                                            callbacks: {
-                                                onReady: () => {
-                                                    console.log("Status Screen Brick está pronto.");
-                                                    document.getElementById('paymentBrick_container').style.display = 'none';
+                                            const settings = {
+                                                initialization: {
+                                                    paymentId: jsonResponse.id, // id do pagamento a ser mostrado
                                                 },
-                                                onError: (error) => {
-                                                    console.error("Erro no Status Screen Brick:", error);
+                                                callbacks: {
+                                                    onReady: () => {
+                                                        console.log("Status Screen Brick está pronto.");
+                                                        document.getElementById('paymentBrick_container').style.display = 'none';
+                                                    },
+                                                    onError: (error) => {
+                                                        console.error("Erro no Status Screen Brick:", error);
+                                                    },
                                                 },
-                                            },
+                                            };
+                                            window.statusScreenBrickController = await bricksBuilder.create(
+                                                'statusScreen',
+                                                'paymentBrick_container',
+                                                settings,
+                                            );
+                                            console.log("Status Screen Brick criado com sucesso.");
                                         };
-                                        window.statusScreenBrickController = await bricksBuilder.create(
-                                            'statusScreen',
-                                            'statusScreenBrick_container',
-                                            settings,
-                                        );
-                                        console.log("Status Screen Brick criado com sucesso.");
-                                    };
 
-                                    renderStatusScreenBrick(bricksBuilder);
-                                    resolve();
-                                } catch (error) {
-                                    console.error("Erro ao tentar analisar JSON:", error);
+                                        renderStatusScreenBrick(bricksBuilder);
+                                        resolve();
+                                    } catch (error) {
+                                        console.error("Erro ao tentar analisar JSON:", error);
+                                        reject();
+                                    }
+                                })
+                                .catch((error) => {
+                                    console.error("Erro ao criar o pagamento:", error);
                                     reject();
-                                }
-                            })
-                            .catch((error) => {
-                                console.error("Erro ao criar o pagamento:", error);
-                                reject();
+                                });
                             });
-                        });
+                        },
+                        onError: (error) => {
+                            console.error("Erro no Payment Brick:", error);
+                        },
                     },
-                    onError: (error) => {
-                        console.error("Erro no Payment Brick:", error);
-                    },
-                },
+                };
+
+                console.log("Criando o Payment Brick.");
+                window.paymentBrickController = await bricksBuilder.create(
+                    "payment",
+                    "paymentBrick_container",
+                    settings
+                );
+                console.log("Payment Brick criado com sucesso.");
             };
 
-            console.log("Criando o Payment Brick.");
-            window.paymentBrickController = await bricksBuilder.create(
-                "payment",
-                "paymentBrick_container",
-                settings
-            );
-            console.log("Payment Brick criado com sucesso.");
-        };
-
-        renderPaymentBrick(bricksBuilder);
+            renderPaymentBrick(bricksBuilder);
+        });
     </script>
 </body>
 </html>
