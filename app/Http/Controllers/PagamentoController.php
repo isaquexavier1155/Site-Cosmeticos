@@ -195,7 +195,8 @@ class PagamentoController extends Controller
     //return view('pagamento', ['amount' => $amount]);
 }
 
-    public function processarPagamento(Request $request)
+/* Função acionada ao clicar em Pagar no Formulário do Bricks */
+public function processarPagamento(Request $request)
     {
         $accessToken = env('MERCADOPAGO_ACCESS_TOKEN');
         $preferenceUrl = 'https://api.mercadopago.com/checkout/preferences?access_token=' . $accessToken;
@@ -236,7 +237,7 @@ class PagamentoController extends Controller
         curl_close($ch);
 
         $responseData = json_decode($response, true);
-
+        dd($responseData);
         return response()->json(['preference_id' => $responseData['id']]);
     }
 
