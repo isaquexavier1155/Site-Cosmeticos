@@ -57,7 +57,7 @@
                             .then((response) => response.text()) // Obter como texto bruto primeiro
                             .then((text) => {
                                 console.log("Texto bruto da resposta:", text);
-
+                                console.log("Resposta JSON do servidor 1:", jsonResponse);
                                 try {
                                     // Agora, tente converter para JSON
                                     const jsonResponse = JSON.parse(text);
