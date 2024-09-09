@@ -240,12 +240,18 @@ public function processarPagamentoFinal(Request $request)
     ]);
 
     $response = curl_exec($ch);
+    echo '<pre>';
+var_dump($response);
+echo '</pre>';
 
     if (curl_errno($ch)) {
         $error = curl_error($ch);
         curl_close($ch);
         return response()->json(['error' => $error], 500);
     }
+    echo '<pre>';
+var_dump($response);
+echo '</pre>';
 
     curl_close($ch);
 
