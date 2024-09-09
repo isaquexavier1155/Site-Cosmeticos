@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProdutoController;
+use App\Http\Controllers\PagamentoController;
 
 /* Route::get('/', function () {
     return view('welcome');
@@ -43,8 +44,29 @@ Route::get('/produtos/get/{id}', [ProdutoController::class, 'getProdutoById'])->
     // Rota para remover item do carrinho
     Route::delete('/carrinho/remover/{id}', [ProdutoController::class, 'remove'])->name('carrinho.remover');
 
+//ROTAS PARA INTEGRÇÃO COM SISTEMA DE PAGAMENTO DO MERCADO PAGO
 
 
+// Exibe o formulário de pagamento com o Payment Brick
+/* Route::get('/pagamento', function () {
+    return view('pagamento');
+}); */
+
+Route::get('/pagamento', [PagamentoController::class, 'viewPagamento']);
+
+
+
+//Route::post('/api/criar-pagamento', [PagamentoController::class, 'criarPagamento']);
+Route::get('/pagamento/sucesso', [PagamentoController::class, 'sucesso'])->name('pagamento.sucesso');
+Route::get('/pagamento/falha', [PagamentoController::class, 'falha'])->name('pagamento.falha');
+Route::get('/pagamento/pendente', [PagamentoController::class, 'pendente'])->name('pagamento.pendente');
+
+// routes/web.php ou routes/api.php
+Route::get('/payment/preference', [PagamentoController::class, 'getPreference']);
+
+Route::post('/payment', [PagamentoController::class, 'showPagamento'])->name('payment');
+
+Route::post('/processar-pagamento', [PagamentoController::class, 'processarPagamento'])->name('processarpagamento');
 
 /* Rotas criadas automaticamente ao instalar sistema de autenticação:
 

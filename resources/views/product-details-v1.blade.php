@@ -3750,14 +3750,19 @@
             </form>
         </div>
         <div class="offcanvas-footer flex-wrap">
-            <div class="d-flex align-items-center justify-content-between w-100 mb-5">
-                <span class="text-body-emphasis">Preço total:</span>
-                <span id="cart-total" class="cart-total fw-bold text-body-emphasis">
-                    R${{ number_format($total_geral, 2, ',', '.') }}
-                </span>
-            </div>
-            <a href="../shop/checkout.html" class="btn btn-dark w-100 mb-7" title="Check Out">Finalizar Compra</a>
-        </div>
+    <div class="d-flex align-items-center justify-content-between w-100 mb-5">
+        <span class="text-body-emphasis">Preço total:</span>
+        <span id="cart-total" class="cart-total fw-bold text-body-emphasis">
+            R${{ number_format($total_geral, 2, ',', '.') }}
+        </span>
+    </div>
+    <form action="{{ route('payment') }}" method="POST">
+        @csrf
+        <input type="hidden" name="amount" value="{{ $total_geral }}">
+        <button type="submit" class="btn btn-dark w-100 mb-7" title="Finalizar Compra">Finalizar Compra</button>
+    </form>
+</div>
+
     </div>
 
 
