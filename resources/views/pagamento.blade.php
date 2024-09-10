@@ -37,7 +37,7 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            const mp = new MercadoPago('TEST-f4fa1c3f-7150-4c78-96e9-778ffedeea78');
+            const mp = new MercadoPago('APP_USR-d25ab668-bf5e-4fe0-a1cc-6235f5fd8e47');
             const bricksBuilder = mp.bricks();
 
             const renderPaymentBrick = async (bricksBuilder) => {
@@ -61,7 +61,7 @@
                             },
                         },
                         paymentMethods: {
-                            bankTransfer: "all",
+                            bankTransfer: "all",//pix
                             creditCard: "all",
                             mercadoPago: "all",
                         },
