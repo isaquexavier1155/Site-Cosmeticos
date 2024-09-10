@@ -234,15 +234,32 @@ class PagamentoController extends Controller
                     "external_reference" => "1255455",
                     "notification_url" => "https://www.google.com/",
                     "payer" => [
-                        "email" => "test_user_123@testuser.com",
+                        "email" => $body->payer->email,,
                         "identification" => [
-                            "type" => "CPF",
-                            "number" => "95749019047"
+                            "type" =>  $body->payer->identification->type,
+                            "number" => $body->payer->identification->number
                         ]
                     ],
                     "payment_method_id" => "pix",
                     "transaction_amount" => $body->transaction_amount,
                 ]),
+
+               /*  $data = [
+                    'description' => 'Payment for product',
+                    'installments' => $body->installments,
+                    'payer' => [
+                        'email' => $body->payer->email,
+                        'identification' => [
+                            'type' => $body->payer->identification->type,
+                            'number' => $body->payer->identification->number,
+                        ],
+                    ],
+                    'issuer_id' => $body->issuer_id,
+                    'payment_method_id' => $body->payment_method_id,
+                    'token' => $body->token,
+                    'transaction_amount' => $body->transaction_amount,
+                ]; */
+
                 CURLOPT_HTTPHEADER => array(
                     'Content-Type: application/json',
                     'Authorization: Bearer ' . $accesstoken,
