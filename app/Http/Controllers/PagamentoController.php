@@ -89,6 +89,7 @@ class PagamentoController extends Controller
 
         $obj = json_decode($response);
 
+
         if (isset($obj->id)) {
             return view('pagamento', [
                 'preference_id' => $obj->id,
@@ -236,13 +237,15 @@ class PagamentoController extends Controller
                     "payer" => [
                         "email" => $body->payer->email,
                         "identification" => [
-                            "type" =>  $body->payer->identification->type,
-                            "number" => $body->payer->identification->number
+                            "type" => "CPF",
+                            "number" => "03213135003"
                         ]
                     ],
-                    "payment_method_id" => "pix",
+                    "payment_method_id" => $body->payment_method_id,
                     "transaction_amount" => $body->transaction_amount,
                 ]),
+
+                     
 
                /*  $data = [
                     'description' => 'Payment for product',
@@ -267,6 +270,13 @@ class PagamentoController extends Controller
                 ),
                 CURLOPT_CAINFO => base_path('certificates/cacert.pem'),
             ));
+
+            /* if ($body) {
+                return response()->json([
+                    'error' => 'Corpo da requisição:',
+                    'body' => $body
+                ], 400);
+            } */  
 
             $response = curl_exec($curl);
 

@@ -35,4 +35,11 @@ return [
         ],
     ],
 
+    //public key de teste do Mercado Pago
+    'mercadopago' => [
+        'public_key' => env('MERCADOPAGO_PUBLIC_KEY'),
+    ],
+
+
+
 ];
