@@ -234,7 +234,7 @@ class PagamentoController extends Controller
                     "external_reference" => "1255455",
                     "notification_url" => "https://www.google.com/",
                     "payer" => [
-                        "email" => $body->payer->email,,
+                        "email" => $body->payer->email,
                         "identification" => [
                             "type" =>  $body->payer->identification->type,
                             "number" => $body->payer->identification->number
