@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Http\Request;
 use App\Models\Payment; // Importa a classe Payment
+use Illuminate\Support\Facades\Auth;
+
 
 class PagamentoController extends Controller
 {
@@ -104,20 +106,26 @@ class PagamentoController extends Controller
     {
         $accesstoken = env('MERCADOPAGO_ACCESS_TOKEN');
 
+        //esse valor esta sendo passado para a view pagamento.blade.php
+        //e quando um pagamento por link 1 (wallet_purchase) é iniciado obtem sempre esse valor
         $amount = 83;
+        $user = Auth::user();
+
+        
 
         if (empty($amount) || !is_numeric($amount)) {
             return response()->json(['error' => 'Valor deve ser um número válido.'], 400);
         }
 
-        if ($amount < 1 || $amount > 100) {
-            return response()->json(['error' => 'Valor deve estar entre 1 e 100.'], 400);
+        if ($amount < 1) {
+            return response()->json(['error' => 'Valor deve ser maior que zero.'], 400);
         }
 
         $amount = (float) $amount;
 
         // Utiliza o modelo Payment para adicionar um pagamento
-        $payCreate = Payment::addPayment($amount, 1);
+        //Ajustei linha abaixo
+        $payCreate = Payment::addPayment($amount, $user->id);
 
         if (!$payCreate) {
             return response()->json(['error' => 'Erro ao criar pagamento.'], 500);
@@ -182,6 +190,7 @@ class PagamentoController extends Controller
 
         if (isset($obj->id)) {
             $amount = $request->input('amount');
+           //inserir retorno para ver se amount não vem no objeto echo($obj);
             return view('pagamento', [
                 'preference_id' => $obj->id,
                 'amount' => $amount
