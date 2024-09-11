@@ -16,7 +16,7 @@
     <!-- tenho que deixar esse formulario pois oculta alguns dados que preciso -->
     <form id="form-pagamento">
         <input type="hidden" id="preference_id" name="preference_id" value="{{ $preference_id }}">
-        <input type="hidden" id="amount" name="amount" value="<?php echo $amount; ?>">
+        <input type="hidden" id="amount" name="amount" value="{{ $amount }}">
 
             <!-- Exibindo o valor de amount na tela -->
     <!-- <p>Valor a pagar: R$ <span id="valor-amount">{{ number_format($amount, 2, ',', '.') }}</span></p>
