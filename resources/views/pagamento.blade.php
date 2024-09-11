@@ -11,7 +11,7 @@
 
 <body>
     @php
-   // var_dump($amount);
+    var_dump($amount);
     @endphp
     <!-- tenho que deixar esse formulario pois oculta alguns dados que preciso -->
     <form id="form-pagamento">

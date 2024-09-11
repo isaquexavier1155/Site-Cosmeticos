@@ -108,9 +108,10 @@ class PagamentoController extends Controller
 
         //esse valor esta sendo passado para a view pagamento.blade.php
         //e quando um pagamento por link 1 (wallet_purchase) é iniciado obtem sempre esse valor
-        $amount = 83;
+        $amount = $request->amount;
         $user = Auth::user();
 
+        //var_dump($request->amount);
         
 
         if (empty($amount) || !is_numeric($amount)) {
