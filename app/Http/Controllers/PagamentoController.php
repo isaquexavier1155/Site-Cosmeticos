@@ -357,7 +357,7 @@ class PagamentoController extends Controller
                     'Authorization: Bearer ' . $accessToken,
                     'X-Idempotency-Key: ' . $idempotencyKey,
                 ],
-                CURLOPT_SSL_VERIFYPEER => false,  // Adicione esta linha
+                //CURLOPT_SSL_VERIFYPEER => false,  // Adicione esta linha
             ]);
 
             $response = curl_exec($ch);
