@@ -104,7 +104,7 @@ class PagamentoController extends Controller
     {
         $accesstoken = env('MERCADOPAGO_ACCESS_TOKEN');
 
-        $amount = 85;
+        $amount = 83;
 
         if (empty($amount) || !is_numeric($amount)) {
             return response()->json(['error' => 'Valor deve ser um número válido.'], 400);
