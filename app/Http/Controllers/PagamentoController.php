@@ -111,7 +111,7 @@ class PagamentoController extends Controller
         $amount = $request->amount;
         $user = Auth::user();
 
-        //var_dump($request->amount);
+       // var_dump($request->status);
         
 
         if (empty($amount) || !is_numeric($amount)) {
@@ -278,7 +278,8 @@ class PagamentoController extends Controller
                     'Authorization: Bearer ' . $accesstoken,
                     'X-Idempotency-Key: ' . $idempotencyKey
                 ),
-                CURLOPT_CAINFO => base_path('certificates/cacert.pem'),
+                //CURLOPT_SSL_VERIFYPEER => false,  // Deixar essa linha em desenvolvimento
+                CURLOPT_CAINFO => base_path('certificates/cacert.pem'), //deixar essa linha em produção
             ));
 
             /* if ($body) {
@@ -357,7 +358,9 @@ class PagamentoController extends Controller
                     'Authorization: Bearer ' . $accessToken,
                     'X-Idempotency-Key: ' . $idempotencyKey,
                 ],
-                //CURLOPT_SSL_VERIFYPEER => false,  // Adicione esta linha
+                //CURLOPT_SSL_VERIFYPEER => false,  // Deixar essa linha em desenvolvimento
+                CURLOPT_CAINFO => base_path('certificates/cacert.pem'), //deixar essa linha em produção
+          
             ]);
 
             $response = curl_exec($ch);
@@ -502,4 +505,5 @@ class PagamentoController extends Controller
     {
         return view('pagamento.pendente');
     }
+    
 }

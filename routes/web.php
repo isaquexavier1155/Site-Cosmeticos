@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProdutoController;
 use App\Http\Controllers\PagamentoController;
+use App\Http\Controllers\FreteController;
+
 
 /* Route::get('/', function () {
     return view('welcome');
@@ -61,15 +63,38 @@ Route::get('/pagamento/sucesso', [PagamentoController::class, 'sucesso'])->name(
 Route::get('/pagamento/falha', [PagamentoController::class, 'falha'])->name('pagamento.falha');
 Route::get('/pagamento/pendente', [PagamentoController::class, 'pendente'])->name('pagamento.pendente');
 
-// routes/web.php ou routes/api.php
+// Retorna parâmetro preference_id necessário para processar requisição
 Route::get('/payment/preference', [PagamentoController::class, 'getPreference']);
 
+//Exibe view pagamento.blade.php enviando alguns dados pela controller
 Route::post('/payment', [PagamentoController::class, 'showPagamento'])->name('payment');
 
+//Rota acionada ao clicar em Pagar na página onde é gerado formulario de pagamento Bricks
 Route::post('/processar-pagamento', [PagamentoController::class, 'processarPagamento'])->name('processarpagamento');
 
-/* Rotas criadas automaticamente ao instalar sistema de autenticação:
+//rota responsavel por retornar resposta da API onde é possível obter status da cobrança dos números escolhidos por qrcode
+//Route::get('/consult-qrcode-payment-tikets', [PagamentoController::class, 'consultQrCodePaymentTikets'])->middleware('auth');
 
+//rota para formulário de captação de dados de entrega
+//Route::get('/checkout-entrega', [FreteController::class, 'retornaDadosEntrega'])->name('checkout.entrega');
+
+//rota para aclacular frete dos produtos
+//Route::post('/calcular-frete', [FreteController::class, 'calcularFrete']);
+
+//rota para salvar dados adicionais de entrega na tabela users com usuário já logado
+Route::post('/checkout-entrega/salvar', [FreteController::class, 'salvarDadosEntrega'])->name('checkout.entrega.salvar');
+
+
+// web.php
+
+Route::get('/checkout-entrega', [FreteController::class, 'retornaDadosEntrega'])->name('checkout-entrega');
+Route::post('/salvar-dados-entrega', [FreteController::class, 'salvarDadosEntrega'])->name('salvar-dados-entrega');
+//Route::post('/payment', action: [PagamentoController::class, 'processarPagamento'])->name('payment');
+
+
+
+/* ////////////////////////////////////////////////////////////////////////////////////////////////////////
+Rotas criadas automaticamente ao instalar sistema de autenticação:
  */
 use App\Http\Controllers\ProfileController;
 

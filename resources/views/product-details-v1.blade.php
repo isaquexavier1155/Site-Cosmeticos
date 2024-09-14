@@ -900,9 +900,9 @@
                                     <img src="#" data-src="{{ asset('images/products/' . $imagem) }}"
                                         class="cursor-pointer lazy-image mx-3 mx-xl-0 px-0 mb-xl-7" width="75" height="100"
                                         title="02" alt="">
-                                @endforeach 
+                                @endforeach
 
-                                   <!--  Com 3 imagens diconais funcionou perfeitamente. -->
+                                <!--  Com 3 imagens diconais funcionou perfeitamente. -->
                                 <!--  <div class="position-relative cursor-pointer mx-3 mx-xl-0 px-0 mb-xl-7">
                                          <img src="#" data-src="{{ asset('images/shop/product-gallery-08-154x205.jpg') }}"
                                         class="w-100 lazy-image" alt="product gallery" width="75" height="100"> 
@@ -1606,24 +1606,24 @@
                                 @endif
 
                                 <!-- <div class="position-absolute d-flex z-index-2 product-actions vertical">
-                                                                    <a class="text-body-emphasis bg-body bg-dark-hover text-light-hover rounded-circle square product-action shadow-sm quick-view sm" href="#" data-bs-toggle="tooltip" data-bs-placement="left" data-bs-title="Quick View">
-                                                                        <span data-bs-toggle="modal" data-bs-target="#quickViewModal" class="d-flex align-items-center justify-content-center">
-                                                                            <svg class="icon icon-eye-light">
-                                                                                <use xlink:href="#icon-eye-light"></use>
-                                                                            </svg>
-                                                                        </span>
-                                                                    </a>
-                                                                    <a class="text-body-emphasis bg-body bg-dark-hover text-light-hover rounded-circle square product-action shadow-sm wishlist sm" href="#" data-bs-toggle="tooltip" data-bs-placement="left" data-bs-title="Add To Wishlist">
-                                                                        <svg class="icon icon-star-light">
-                                                                            <use xlink:href="#icon-star-light"></use>
-                                                                        </svg>
-                                                                    </a>
-                                                                    <a class="text-body-emphasis bg-body bg-dark-hover text-light-hover rounded-circle square product-action shadow-sm compare sm" href="#" data-bs-toggle="tooltip" data-bs-placement="left" data-bs-title="Compare">
-                                                                        <svg class="icon icon-arrows-left-right-light">
-                                                                            <use xlink:href="#icon-arrows-left-right-light"></use>
-                                                                        </svg>
-                                                                    </a>
-                                                                </div> -->
+                                                                            <a class="text-body-emphasis bg-body bg-dark-hover text-light-hover rounded-circle square product-action shadow-sm quick-view sm" href="#" data-bs-toggle="tooltip" data-bs-placement="left" data-bs-title="Quick View">
+                                                                                <span data-bs-toggle="modal" data-bs-target="#quickViewModal" class="d-flex align-items-center justify-content-center">
+                                                                                    <svg class="icon icon-eye-light">
+                                                                                        <use xlink:href="#icon-eye-light"></use>
+                                                                                    </svg>
+                                                                                </span>
+                                                                            </a>
+                                                                            <a class="text-body-emphasis bg-body bg-dark-hover text-light-hover rounded-circle square product-action shadow-sm wishlist sm" href="#" data-bs-toggle="tooltip" data-bs-placement="left" data-bs-title="Add To Wishlist">
+                                                                                <svg class="icon icon-star-light">
+                                                                                    <use xlink:href="#icon-star-light"></use>
+                                                                                </svg>
+                                                                            </a>
+                                                                            <a class="text-body-emphasis bg-body bg-dark-hover text-light-hover rounded-circle square product-action shadow-sm compare sm" href="#" data-bs-toggle="tooltip" data-bs-placement="left" data-bs-title="Compare">
+                                                                                <svg class="icon icon-arrows-left-right-light">
+                                                                                    <use xlink:href="#icon-arrows-left-right-light"></use>
+                                                                                </svg>
+                                                                            </a>
+                                                                        </div> -->
                                 <a href="#"
                                     class="btn btn-add-to-cart btn-dark btn-hover-bg-primary btn-hover-border-primary position-absolute z-index-2 text-nowrap btn-sm px-6 py-3 lh-2">Adicionar
                                     ao Carrinho</a>
@@ -1672,7 +1672,7 @@
                             </div>
                         </div>
                     </div>
-                @endforeach          
+                @endforeach
             </div>
         </section>
         <div class="border-top w-100"></div>
@@ -3762,6 +3762,8 @@
                 <input type="hidden" name="amount" value="{{ $total_geral }}">
                 <button type="submit" class="btn btn-dark w-100 mb-7" title="Finalizar Compra">Finalizar Compra</button>
             </form>
+
+
         </div>
     </div>
 
