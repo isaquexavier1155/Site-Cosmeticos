@@ -3757,7 +3757,7 @@
                     R${{ number_format($total_geral, 2, ',', '.') }}
                 </span>
             </div>
-            <form action="{{ route('payment') }}" method="POST">
+            <form action="{{ route('checkout-entrega') }}" method="GET">
                 @csrf
                 <input type="hidden" name="amount" value="{{ $total_geral }}">
                 <button type="submit" class="btn btn-dark w-100 mb-7" title="Finalizar Compra">Finalizar Compra</button>
