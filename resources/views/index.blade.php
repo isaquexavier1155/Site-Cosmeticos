@@ -3255,18 +3255,37 @@
 			</form>
 		</div>
 		<div class="offcanvas-footer flex-wrap">
-			<div class="d-flex align-items-center justify-content-between w-100 mb-5">
-				<span class="text-body-emphasis">Preço total:</span>
-				<span id="cart-total" class="cart-total fw-bold text-body-emphasis">
-					R${{ number_format($total_geral, 2, ',', '.') }}
-				</span>
-			</div>
-			<form action="{{ route('payment') }}" method="POST">
-				@csrf
-				<input type="hidden" name="amount" value="{{ $total_geral }}">
-				<button type="submit" class="btn btn-dark w-100 mb-7" title="Finalizar Compra">Finalizar Compra</button>
-			</form>
-		</div>
+            <!-- Campo de CEP e botão para calcular frete -->
+            <div class="d-flex align-items-center justify-content-between w-100 mb-3">
+                <label for="cep" class="form-label" style="margin-bottom: 0.1rem;margin-right: 6px;">CEP:</label>
+                <input type="text" id="cep" name="cep" value="{{ auth()->user()->cep ?? '' }}"
+                    class="form-control me-3">
+                <button type="button" id="calcularFreteBtn"
+                    class="btn btn-primary d-flex align-items-center justify-content-center"
+                    style="height: 50px; width: 80px;">Calcular Frete</button>
+            </div>
+
+            <!-- Exibir o valor calculado do frete -->
+            <div id="frete-result" class="d-none mb-3">
+                <span class="text-body">Valor do Frete: </span>
+                <span id="frete-valor" class="fw-bold text-body-emphasis"></span>
+            </div>
+
+            <!-- Preço total -->
+            <div class="d-flex align-items-center justify-content-between w-100 mb-5">
+                <span class="text-body-emphasis">Preço total:</span>
+                <span id="cart-total" class="cart-total fw-bold text-body-emphasis">
+                    R${{ number_format($total_geral, 2, ',', '.') }}
+                </span>
+            </div>
+
+            <!-- Formulário para finalizar compra -->
+            <form action="{{ route('checkout-entrega') }}" method="GET">
+                @csrf
+                <input type="hidden" name="amount" value="{{ $total_geral }}">
+                <button type="submit" class="btn btn-dark w-100 mb-7" title="Finalizar Compra">Finalizar Compra</button>
+            </form>
+        </div>
 	</div>
 
 	<div class="modal" id="signInModal" tabindex="-1" aria-labelledby="signInModal" aria-hidden="true">

@@ -72,14 +72,6 @@ Route::post('/payment', [PagamentoController::class, 'showPagamento'])->name('pa
 //Rota acionada ao clicar em Pagar na página onde é gerado formulario de pagamento Bricks
 Route::post('/processar-pagamento', [PagamentoController::class, 'processarPagamento'])->name('processarpagamento');
 
-//rota responsavel por retornar resposta da API onde é possível obter status da cobrança dos números escolhidos por qrcode
-//Route::get('/consult-qrcode-payment-tikets', [PagamentoController::class, 'consultQrCodePaymentTikets'])->middleware('auth');
-
-//rota para formulário de captação de dados de entrega
-//Route::get('/checkout-entrega', [FreteController::class, 'retornaDadosEntrega'])->name('checkout.entrega');
-
-//rota para aclacular frete dos produtos
-//Route::post('/calcular-frete', [FreteController::class, 'calcularFrete']);
 
 //rota para salvar dados adicionais de entrega na tabela users com usuário já logado
 Route::post('/checkout-entrega/salvar', [FreteController::class, 'salvarDadosEntrega'])->name('checkout.entrega.salvar');
@@ -89,7 +81,10 @@ Route::post('/checkout-entrega/salvar', [FreteController::class, 'salvarDadosEnt
 
 Route::get('/checkout-entrega', [FreteController::class, 'retornaDadosEntrega'])->name('checkout-entrega');
 Route::post('/salvar-dados-entrega', [FreteController::class, 'salvarDadosEntrega'])->name('salvar-dados-entrega');
-//Route::post('/payment', action: [PagamentoController::class, 'processarPagamento'])->name('payment');
+
+
+//rota para aclacular frete dos produtos
+Route::post('/calcular-frete', [FreteController::class, 'calcularFrete'])->name('calcular-frete');
 
 
 
