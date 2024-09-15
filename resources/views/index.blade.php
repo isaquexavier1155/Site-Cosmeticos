@@ -56,10 +56,10 @@
 						<div class="d-flex mx-auto">
 
 							<a href="./" class="navbar-brand has-sticky-logo px-8 py-4 mx-auto">
-								<img class="light-mode-img" src="{{ asset('images/others/logo-oficial-02.png') }}"
-									width="179" height="76" alt="Glowing - Bootstrap 5 HTML Templates">
-								<img class="dark-mode-img" src="{{ asset('images/others/logo-oficial-02.png') }}"
-									width="179" height="76" alt="Glowing - Bootstrap 5 HTML Templates">
+								<!-- <img class="light-mode-img" src="{{ asset('images/others/logo-oficial-022.png') }}"
+									width="179" height="76" alt="Glowingg - Bootstrap 5 HTML Templates">
+								<img class="dark-mode-img" src="{{ asset('images/others/logo-oficial-022.png') }}"
+									width="179" height="76" alt="Glowingg - Bootstrap 5 HTML Templatess"> -->
 								<img class="sticky-logo sticky-logo-light"
 									src="{{ asset('images/others/logo-oficial-02.png') }}" width="179" height="26"
 									alt="Glowing - Bootstrap 5 HTML Templates">
@@ -982,6 +982,14 @@
 					<div class="card-img-overlay"></div>
 				</div>
 
+				<style>
+					@media (max-width: 768px) {
+						.video-cover img {
+							height: auto !important;
+						}
+					}
+				</style>
+
 				<div data-animate="fadeInDown" class="container container-wide pb-15 p-xl-15 position-relative">
 
 					<div class="hero-content">
@@ -1121,41 +1129,41 @@
 													@endif
 													<!-- <div class="position-absolute d-flex z-index-2 product-actions horizontal">
 
-																				<a class="text-body-emphasis bg-body bg-dark-hover text-light-hover rounded-circle square product-action shadow-sm add_to_cart"
-																				href="{{ route('carrinho.adicionar') }}" data-bs-toggle="tooltip" data-bs-placement="top"
-																				data-bs-title="Add To Cartt">
+																														<a class="text-body-emphasis bg-body bg-dark-hover text-light-hover rounded-circle square product-action shadow-sm add_to_cart"
+																														href="{{ route('carrinho.adicionar') }}" data-bs-toggle="tooltip" data-bs-placement="top"
+																														data-bs-title="Add To Cartt">
 
-																				<svg class="icon2 icon-cart">
-																					<use xlink:href="#icon-shopping-cart"></use>
-																				</svg>
-																			</a>
-																			<a class="text-body-emphasis bg-body bg-dark-hover text-light-hover rounded-circle square product-action shadow-sm quick-view"
-																				href="###" data-bs-toggle="modal" data-bs-target="#quickViewModal"
-																				data-id="{{ $produto->id }}" data-nome="{{ $produto->nome }}"
-																				data-imagem="{{ $produto->imagem }}" data-bs-toggle="tooltip"
-																				data-bs-placement="top" data-bs-title="Ver"
-																				onclick="saveProductInfo({{ $produto->id }}, '{{ $produto->nome }}', '{{ $produto->imagem }}', '{{ $produto->descricao }}', '{{ $produto->preco }}', '{{ $produto->preco_promocional }}', '{{ $produto->imagens_adicionais }}')">
-																				<span class="d-flex align-items-center justify-content-center">
-																					<svg class="icon icon-eye-light">
-																						<use xlink:href="#icon-eye-light"></use>
-																					</svg>
-																				</span>
-																			</a>
-																			<a class="text-body-emphasis bg-body bg-dark-hover text-light-hover rounded-circle square product-action shadow-sm wishlist"
-																				href="#" data-bs-toggle="tooltip" data-bs-placement="top"
-																				data-bs-title="Add To Wishlist">
-																				<svg class="icon icon-star-light">
-																					<use xlink:href="#icon-star-light"></use>
-																				</svg>
-																			</a>
-																			<a class="text-body-emphasis bg-body bg-dark-hover text-light-hover rounded-circle square product-action shadow-sm compare"
-																				href="./shop/compare.html" data-bs-toggle="tooltip" data-bs-placement="top"
-																				data-bs-title="Compare">
-																				<svg class="icon icon-arrows-left-right-light">
-																					<use xlink:href="#icon-arrows-left-right-light"></use>
-																				</svg>
-																			</a>
-																		</div> -->
+																														<svg class="icon2 icon-cart">
+																															<use xlink:href="#icon-shopping-cart"></use>
+																														</svg>
+																													</a>
+																													<a class="text-body-emphasis bg-body bg-dark-hover text-light-hover rounded-circle square product-action shadow-sm quick-view"
+																														href="###" data-bs-toggle="modal" data-bs-target="#quickViewModal"
+																														data-id="{{ $produto->id }}" data-nome="{{ $produto->nome }}"
+																														data-imagem="{{ $produto->imagem }}" data-bs-toggle="tooltip"
+																														data-bs-placement="top" data-bs-title="Ver"
+																														onclick="saveProductInfo({{ $produto->id }}, '{{ $produto->nome }}', '{{ $produto->imagem }}', '{{ $produto->descricao }}', '{{ $produto->preco }}', '{{ $produto->preco_promocional }}', '{{ $produto->imagens_adicionais }}')">
+																														<span class="d-flex align-items-center justify-content-center">
+																															<svg class="icon icon-eye-light">
+																																<use xlink:href="#icon-eye-light"></use>
+																															</svg>
+																														</span>
+																													</a>
+																													<a class="text-body-emphasis bg-body bg-dark-hover text-light-hover rounded-circle square product-action shadow-sm wishlist"
+																														href="#" data-bs-toggle="tooltip" data-bs-placement="top"
+																														data-bs-title="Add To Wishlist">
+																														<svg class="icon icon-star-light">
+																															<use xlink:href="#icon-star-light"></use>
+																														</svg>
+																													</a>
+																													<a class="text-body-emphasis bg-body bg-dark-hover text-light-hover rounded-circle square product-action shadow-sm compare"
+																														href="./shop/compare.html" data-bs-toggle="tooltip" data-bs-placement="top"
+																														data-bs-title="Compare">
+																														<svg class="icon icon-arrows-left-right-light">
+																															<use xlink:href="#icon-arrows-left-right-light"></use>
+																														</svg>
+																													</a>
+																												</div> -->
 												</figure>
 												<div class="card-body text-center p-0">
 													<span
@@ -3255,127 +3263,127 @@
 			</form>
 		</div>
 		<div class="offcanvas-footer flex-wrap">
-            <!-- Campo de CEP e botão para calcular frete -->
-            <div class="d-flex align-items-center justify-content-between w-100 mb-3">
-                <label for="cep" class="form-label" style="margin-bottom: 0.1rem;margin-right: 6px;">CEP:</label>
-                <input type="text" id="cep" name="cep" value="{{ auth()->user()->cep ?? '' }}"
-                    class="form-control me-3">
-                <button type="button" id="calcularFreteBtn"
-                    class="btn btn-primary d-flex align-items-center justify-content-center"
-                    style="height: 50px; width: 80px;">Calcular Frete</button>
-            </div>
+			<!-- Campo de CEP e botão para calcular frete -->
+			<div class="d-flex align-items-center justify-content-between w-100 mb-3">
+				<label for="cep" class="form-label" style="margin-bottom: 0.1rem;margin-right: 6px;">CEP:</label>
+				<input type="text" id="cep" name="cep" value="{{ auth()->user()->cep ?? '' }}"
+					class="form-control me-3">
+				<button type="button" id="calcularFreteBtn"
+					class="btn btn-primary d-flex align-items-center justify-content-center"
+					style="height: 50px; width: 80px;">Calcular Frete</button>
+			</div>
 
-            <!-- Exibir o valor calculado do frete -->
-            <div id="frete-result" class="d-none mb-3">
-                <span class="text-body">Opções de Frete: </span>
-                <div id="frete-valor" class="fw-bold text-body-emphasis"></div>
-            </div>
+			<!-- Exibir o valor calculado do frete -->
+			<div id="frete-result" class="d-none mb-3">
+				<span class="text-body">Opções de Frete: </span>
+				<div id="frete-valor" class="fw-bold text-body-emphasis"></div>
+			</div>
 
-            <!-- Preço total -->
-            <div class="d-flex align-items-center justify-content-between w-100 mb-5">
-                <span class="text-body-emphasis">Preço total:</span>
-                <span id="cart-total" class="cart-total fw-bold text-body-emphasis">
-                    R${{ number_format($total_geral, 2, ',', '.') }}
-                </span>
-                <input type="hidden" id="hidden-total" value="{{ $total_geral }}">
-            </div>
+			<!-- Preço total -->
+			<div class="d-flex align-items-center justify-content-between w-100 mb-5">
+				<span class="text-body-emphasis">Preço total:</span>
+				<span id="cart-total" class="cart-total fw-bold text-body-emphasis">
+					R${{ number_format($total_geral, 2, ',', '.') }}
+				</span>
+				<input type="hidden" id="hidden-total" value="{{ $total_geral }}">
+			</div>
 
-            <!-- Formulário para finalizar compra -->
-            <form action="{{ route('checkout-entrega') }}" method="GET">
-                @csrf
-                <input type="hidden" name="amount" id="hidden-amount" value="{{ $total_geral }}">
-                <button type="submit" id="finalizar-compra-btn" class="btn btn-dark w-100 mb-7" title="Finalizar Compra"
-                    disabled>Finalizar Compra</button>
-            </form>
-        </div>
+			<!-- Formulário para finalizar compra -->
+			<form action="{{ route('checkout-entrega') }}" method="GET">
+				@csrf
+				<input type="hidden" name="amount" id="hidden-amount" value="{{ $total_geral }}">
+				<button type="submit" id="finalizar-compra-btn" class="btn btn-dark w-100 mb-7" title="Finalizar Compra"
+					disabled>Finalizar Compra</button>
+			</form>
+		</div>
 
-        <!--//Script Responsável por buscar resposta do calculo de frete e exibir na tela do carrinho de compras
+		<!--//Script Responsável por buscar resposta do calculo de frete e exibir na tela do carrinho de compras
         //Responsavel por recalcular valor do Preço Total da venda baseado na opção de frete selecionado
         //Responsavel por inpedir usuário de finalizar Compra sem selecionar opção de frete -->
-        <script>
+		<script>
 
-            let selectedFretePrice = 0; // Variável para armazenar o valor do frete selecionado
-            let originalTotal; // Variável para armazenar o valor total original
+			let selectedFretePrice = 0; // Variável para armazenar o valor do frete selecionado
+			let originalTotal; // Variável para armazenar o valor total original
 
-            document.getElementById('calcularFreteBtn').addEventListener('click', function () {
-                const cep = document.getElementById('cep').value;
+			document.getElementById('calcularFreteBtn').addEventListener('click', function () {
+				const cep = document.getElementById('cep').value;
 
-                if (!cep) {
-                    alert('Por favor, informe um CEP.');
-                    return;
-                }
+				if (!cep) {
+					alert('Por favor, informe um CEP.');
+					return;
+				}
 
-                fetch('{{ route('calcular-frete') }}', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'X-CSRF-TOKEN': '{{ csrf_token() }}'
-                    },
-                    body: JSON.stringify({ cep: cep })
-                })
-                    .then(response => response.json())
-                    .then(data => {
-                        if (data.error) {
-                            alert(data.error);
-                            return;
-                        }
+				fetch('{{ route('calcular-frete') }}', {
+					method: 'POST',
+					headers: {
+						'Content-Type': 'application/json',
+						'X-CSRF-TOKEN': '{{ csrf_token() }}'
+					},
+					body: JSON.stringify({ cep: cep })
+				})
+					.then(response => response.json())
+					.then(data => {
+						if (data.error) {
+							alert(data.error);
+							return;
+						}
 
-                        const freteResultDiv = document.getElementById('frete-result');
-                        const freteValorSpan = document.getElementById('frete-valor');
-                        freteValorSpan.innerHTML = '';
+						const freteResultDiv = document.getElementById('frete-result');
+						const freteValorSpan = document.getElementById('frete-valor');
+						freteValorSpan.innerHTML = '';
 
-                        // Armazena o valor total original
-                        originalTotal = parseFloat(document.getElementById('hidden-total').value);
+						// Armazena o valor total original
+						originalTotal = parseFloat(document.getElementById('hidden-total').value);
 
-                        data.forEach(option => {
-                            const price = parseFloat(option.price); // Convertendo o preço para número
-                            const deliveryTime = option.delivery_time;
-                            const companyName = option.name;
-                            const companyImage = option.company.picture; // Imagem da transportadora
+						data.forEach(option => {
+							const price = parseFloat(option.price); // Convertendo o preço para número
+							const deliveryTime = option.delivery_time;
+							const companyName = option.name;
+							const companyImage = option.company.picture; // Imagem da transportadora
 
-                            // Criar e adicionar elementos de exibição
-                            const optionDiv = document.createElement('div');
-                            optionDiv.classList.add('frete-option');
-                            optionDiv.innerHTML = `
+							// Criar e adicionar elementos de exibição
+							const optionDiv = document.createElement('div');
+							optionDiv.classList.add('frete-option');
+							optionDiv.innerHTML = `
                 <input type="radio" name="frete" value="${price}" id="frete-${option.id}" class="me-2">
                 <label for="frete-${option.id}">
                     <img src="${companyImage}" alt="${companyName}" style="width: 50px; height: auto; margin-right: 10px;">
                     <strong>${companyName}:</strong> R$${price} - ${deliveryTime} dias úteis
                 </label>
             `;
-                            freteValorSpan.appendChild(optionDiv);
+							freteValorSpan.appendChild(optionDiv);
 
-                            // Atualiza o valor do frete selecionado quando a opção é alterada
-                            document.querySelector(`input[name="frete"][value="${price}"]`).addEventListener('change', function () {
-                                selectedFretePrice = price;
-                                updateTotalPrice();
-                                enableFinalizeButton(); // Habilita o botão de finalizar compra
-                            });
-                        });
+							// Atualiza o valor do frete selecionado quando a opção é alterada
+							document.querySelector(`input[name="frete"][value="${price}"]`).addEventListener('change', function () {
+								selectedFretePrice = price;
+								updateTotalPrice();
+								enableFinalizeButton(); // Habilita o botão de finalizar compra
+							});
+						});
 
-                        freteResultDiv.classList.remove('d-none');
-                    })
-                    .catch(error => {
-                        console.error('Erro ao calcular o frete:', error);
-                        alert('Erro ao calcular o frete.');
-                    });
-            });
+						freteResultDiv.classList.remove('d-none');
+					})
+					.catch(error => {
+						console.error('Erro ao calcular o frete:', error);
+						alert('Erro ao calcular o frete.');
+					});
+			});
 
-            function updateTotalPrice() {
-                const cartTotalElement = document.getElementById('cart-total');
-                const hiddenAmountElement = document.getElementById('hidden-amount');
+			function updateTotalPrice() {
+				const cartTotalElement = document.getElementById('cart-total');
+				const hiddenAmountElement = document.getElementById('hidden-amount');
 
-                // Atualiza o valor do preço total
-                const newTotal = originalTotal + selectedFretePrice;
-                cartTotalElement.textContent = `R$${newTotal.toFixed(2).replace('.', ',')}`;
-                hiddenAmountElement.value = newTotal.toFixed(2); // Atualiza o valor escondido para o formulário
-            }
+				// Atualiza o valor do preço total
+				const newTotal = originalTotal + selectedFretePrice;
+				cartTotalElement.textContent = `R$${newTotal.toFixed(2).replace('.', ',')}`;
+				hiddenAmountElement.value = newTotal.toFixed(2); // Atualiza o valor escondido para o formulário
+			}
 
-            function enableFinalizeButton() {
-                const finalizeButton = document.getElementById('finalizar-compra-btn');
-                finalizeButton.disabled = false;
-            }
-        </script>
+			function enableFinalizeButton() {
+				const finalizeButton = document.getElementById('finalizar-compra-btn');
+				finalizeButton.disabled = false;
+			}
+		</script>
 	</div>
 
 	<div class="modal" id="signInModal" tabindex="-1" aria-labelledby="signInModal" aria-hidden="true">
