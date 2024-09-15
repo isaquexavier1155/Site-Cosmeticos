@@ -72,40 +72,6 @@ class FreteController extends Controller
         $this->melhorEnvio = $melhorEnvio;
     }
 
-    /*   public function calcularFrete(Request $request)
-      {
-          // Dados de envio, baseados no que você vai coletar do frontend
-          $dadosEnvio = [
-              "from" => [
-                  "postal_code" => "01010000", // CEP de origem
-              ],
-              "to" => [
-                  "postal_code" => $request->cep_destino, // CEP de destino
-              ],
-              "products" => [
-                  [
-                      "weight" => 0.5, // Peso do produto
-                      "width" => 16,
-                      "height" => 12,
-                      "length" => 18,
-                      "quantity" => 1,
-                  ],
-              ],
-              "services" => "1,2", // Tipos de serviço (Correios, JadLog, etc.)
-              "insurance_value" => 100.00, // Valor do seguro do envio
-              "options" => [
-                  "receipt" => false, // Aviso de recebimento
-                  "own_hand" => false, // Mão própria
-              ],
-          ];
-
-          // Chama o serviço para calcular o frete
-          $frete = $this->melhorEnvio->calcularFrete($dadosEnvio);
-
-          // Retorna a resposta como JSON
-          return response()->json($frete);
-      } */
-
 
     public function calcularFrete(Request $request)
     {
@@ -144,7 +110,7 @@ class FreteController extends Controller
             //em produção deixar a linha abaixo
             CURLOPT_URL => 'https://melhorenvio.com.br/api/v2/me/shipment/calculate',
             //Em desenvolvimento deixar a linha abaixo
-             //CURLOPT_URL => 'https://sandbox.melhorenvio.com.br/api/v2/me/shipment/calculate',
+            //CURLOPT_URL => 'https://sandbox.melhorenvio.com.br/api/v2/me/shipment/calculate',
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_ENCODING => '',
             CURLOPT_MAXREDIRS => 10,

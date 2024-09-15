@@ -1606,24 +1606,24 @@
                                 @endif
 
                                 <!-- <div class="position-absolute d-flex z-index-2 product-actions vertical">
-                                                                                                        <a class="text-body-emphasis bg-body bg-dark-hover text-light-hover rounded-circle square product-action shadow-sm quick-view sm" href="#" data-bs-toggle="tooltip" data-bs-placement="left" data-bs-title="Quick View">
-                                                                                                            <span data-bs-toggle="modal" data-bs-target="#quickViewModal" class="d-flex align-items-center justify-content-center">
-                                                                                                                <svg class="icon icon-eye-light">
-                                                                                                                    <use xlink:href="#icon-eye-light"></use>
-                                                                                                                </svg>
-                                                                                                            </span>
-                                                                                                        </a>
-                                                                                                        <a class="text-body-emphasis bg-body bg-dark-hover text-light-hover rounded-circle square product-action shadow-sm wishlist sm" href="#" data-bs-toggle="tooltip" data-bs-placement="left" data-bs-title="Add To Wishlist">
-                                                                                                            <svg class="icon icon-star-light">
-                                                                                                                <use xlink:href="#icon-star-light"></use>
-                                                                                                            </svg>
-                                                                                                        </a>
-                                                                                                        <a class="text-body-emphasis bg-body bg-dark-hover text-light-hover rounded-circle square product-action shadow-sm compare sm" href="#" data-bs-toggle="tooltip" data-bs-placement="left" data-bs-title="Compare">
-                                                                                                            <svg class="icon icon-arrows-left-right-light">
-                                                                                                                <use xlink:href="#icon-arrows-left-right-light"></use>
-                                                                                                            </svg>
-                                                                                                        </a>
-                                                                                                    </div> -->
+                                                                                                                    <a class="text-body-emphasis bg-body bg-dark-hover text-light-hover rounded-circle square product-action shadow-sm quick-view sm" href="#" data-bs-toggle="tooltip" data-bs-placement="left" data-bs-title="Quick View">
+                                                                                                                        <span data-bs-toggle="modal" data-bs-target="#quickViewModal" class="d-flex align-items-center justify-content-center">
+                                                                                                                            <svg class="icon icon-eye-light">
+                                                                                                                                <use xlink:href="#icon-eye-light"></use>
+                                                                                                                            </svg>
+                                                                                                                        </span>
+                                                                                                                    </a>
+                                                                                                                    <a class="text-body-emphasis bg-body bg-dark-hover text-light-hover rounded-circle square product-action shadow-sm wishlist sm" href="#" data-bs-toggle="tooltip" data-bs-placement="left" data-bs-title="Add To Wishlist">
+                                                                                                                        <svg class="icon icon-star-light">
+                                                                                                                            <use xlink:href="#icon-star-light"></use>
+                                                                                                                        </svg>
+                                                                                                                    </a>
+                                                                                                                    <a class="text-body-emphasis bg-body bg-dark-hover text-light-hover rounded-circle square product-action shadow-sm compare sm" href="#" data-bs-toggle="tooltip" data-bs-placement="left" data-bs-title="Compare">
+                                                                                                                        <svg class="icon icon-arrows-left-right-light">
+                                                                                                                            <use xlink:href="#icon-arrows-left-right-light"></use>
+                                                                                                                        </svg>
+                                                                                                                    </a>
+                                                                                                                </div> -->
                                 <a href="#"
                                     class="btn btn-add-to-cart btn-dark btn-hover-bg-primary btn-hover-border-primary position-absolute z-index-2 text-nowrap btn-sm px-6 py-3 lh-2">Adicionar
                                     ao Carrinho</a>
@@ -3751,125 +3751,129 @@
             </form>
         </div>
         <div class="offcanvas-footer flex-wrap">
-    <!-- Campo de CEP e botão para calcular frete -->
-    <div class="d-flex align-items-center justify-content-between w-100 mb-3">
-        <label for="cep" class="form-label" style="margin-bottom: 0.1rem;margin-right: 6px;">CEP:</label>
-        <input type="text" id="cep" name="cep" value="{{ auth()->user()->cep ?? '' }}" class="form-control me-3">
-        <button type="button" id="calcularFreteBtn" class="btn btn-primary d-flex align-items-center justify-content-center" style="height: 50px; width: 80px;">Calcular Frete</button>
-    </div>
+            <!-- Campo de CEP e botão para calcular frete -->
+            <div class="d-flex align-items-center justify-content-between w-100 mb-3">
+                <label for="cep" class="form-label" style="margin-bottom: 0.1rem;margin-right: 6px;">CEP:</label>
+                <input type="text" id="cep" name="cep" value="{{ auth()->user()->cep ?? '' }}"
+                    class="form-control me-3">
+                <button type="button" id="calcularFreteBtn"
+                    class="btn btn-primary d-flex align-items-center justify-content-center"
+                    style="height: 50px; width: 80px;">Calcular Frete</button>
+            </div>
 
-    <!-- Exibir o valor calculado do frete -->
-    <div id="frete-result" class="d-none mb-3">
-        <span class="text-body">Opções de Frete: </span>
-        <div id="frete-valor" class="fw-bold text-body-emphasis"></div>
-    </div>
+            <!-- Exibir o valor calculado do frete -->
+            <div id="frete-result" class="d-none mb-3">
+                <span class="text-body">Opções de Frete: </span>
+                <div id="frete-valor" class="fw-bold text-body-emphasis"></div>
+            </div>
 
-    <!-- Preço total -->
-    <div class="d-flex align-items-center justify-content-between w-100 mb-5">
-        <span class="text-body-emphasis">Preço total:</span>
-        <span id="cart-total" class="cart-total fw-bold text-body-emphasis">
-            R${{ number_format($total_geral, 2, ',', '.') }}
-        </span>
-        <input type="hidden" id="hidden-total" value="{{ $total_geral }}">
-    </div>
+            <!-- Preço total -->
+            <div class="d-flex align-items-center justify-content-between w-100 mb-5">
+                <span class="text-body-emphasis">Preço total:</span>
+                <span id="cart-total" class="cart-total fw-bold text-body-emphasis">
+                    R${{ number_format($total_geral, 2, ',', '.') }}
+                </span>
+                <input type="hidden" id="hidden-total" value="{{ $total_geral }}">
+            </div>
 
-    <!-- Formulário para finalizar compra -->
-    <form action="{{ route('checkout-entrega') }}" method="GET">
-        @csrf
-        <input type="hidden" name="amount" id="hidden-amount" value="{{ $total_geral }}">
-        <button type="submit" class="btn btn-dark w-100 mb-7" title="Finalizar Compra">Finalizar Compra</button>
-    </form>
-</div>
+            <!-- Formulário para finalizar compra -->
+            <form action="{{ route('checkout-entrega') }}" method="GET">
+                @csrf
+                <input type="hidden" name="amount" id="hidden-amount" value="{{ $total_geral }}">
+                <button type="submit" id="finalizar-compra-btn" class="btn btn-dark w-100 mb-7" title="Finalizar Compra"
+                    disabled>Finalizar Compra</button>
+            </form>
+        </div>
 
-<script>
-let selectedFretePrice = 0; // Variável para armazenar o valor do frete selecionado
-let originalTotal; // Variável para armazenar o valor total original
+        <!--//Script Responsável por buscar resposta do calculo de frete e exibir na tela do carrinho de compras
+        //Responsavel por recalcular valor do Preço Total da venda baseado na opção de frete selecionado
+        //Responsavel por inpedir usuário de finalizar Compra sem selecionar opção de frete -->
+        <script>
 
-document.getElementById('calcularFreteBtn').addEventListener('click', function () {
-    const cep = document.getElementById('cep').value;
+            let selectedFretePrice = 0; // Variável para armazenar o valor do frete selecionado
+            let originalTotal; // Variável para armazenar o valor total original
 
-    if (!cep) {
-        alert('Por favor, informe um CEP.');
-        return;
-    }
+            document.getElementById('calcularFreteBtn').addEventListener('click', function () {
+                const cep = document.getElementById('cep').value;
 
-    fetch('{{ route('calcular-frete') }}', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'X-CSRF-TOKEN': '{{ csrf_token() }}'
-        },
-        body: JSON.stringify({ cep: cep })
-    })
-    .then(response => response.json())
-    .then(data => {
-        if (data.error) {
-            alert(data.error);
-            return;
-        }
+                if (!cep) {
+                    alert('Por favor, informe um CEP.');
+                    return;
+                }
 
-        const freteResultDiv = document.getElementById('frete-result');
-        const freteValorSpan = document.getElementById('frete-valor');
-        freteValorSpan.innerHTML = '';
+                fetch('{{ route('calcular-frete') }}', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                    },
+                    body: JSON.stringify({ cep: cep })
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.error) {
+                            alert(data.error);
+                            return;
+                        }
 
-        // Armazena o valor total original
-        originalTotal = parseFloat(document.getElementById('hidden-total').value);
+                        const freteResultDiv = document.getElementById('frete-result');
+                        const freteValorSpan = document.getElementById('frete-valor');
+                        freteValorSpan.innerHTML = '';
 
-        data.forEach(option => {
-            const price = parseFloat(option.price); // Convertendo o preço para número
-            const deliveryTime = option.delivery_time;
-            const companyName = option.name;
-            const companyImage = option.company.picture; // Imagem da transportadora
+                        // Armazena o valor total original
+                        originalTotal = parseFloat(document.getElementById('hidden-total').value);
 
-            // Criar e adicionar elementos de exibição
-            const optionDiv = document.createElement('div');
-            optionDiv.classList.add('frete-option');
-            optionDiv.innerHTML = `
+                        data.forEach(option => {
+                            const price = parseFloat(option.price); // Convertendo o preço para número
+                            const deliveryTime = option.delivery_time;
+                            const companyName = option.name;
+                            const companyImage = option.company.picture; // Imagem da transportadora
+
+                            // Criar e adicionar elementos de exibição
+                            const optionDiv = document.createElement('div');
+                            optionDiv.classList.add('frete-option');
+                            optionDiv.innerHTML = `
                 <input type="radio" name="frete" value="${price}" id="frete-${option.id}" class="me-2">
                 <label for="frete-${option.id}">
                     <img src="${companyImage}" alt="${companyName}" style="width: 50px; height: auto; margin-right: 10px;">
                     <strong>${companyName}:</strong> R$${price} - ${deliveryTime} dias úteis
                 </label>
             `;
-            freteValorSpan.appendChild(optionDiv);
+                            freteValorSpan.appendChild(optionDiv);
 
-            // Atualiza o valor do frete selecionado quando a opção é alterada
-            document.querySelector(`input[name="frete"][value="${price}"]`).addEventListener('change', function () {
-                selectedFretePrice = price;
-                updateTotalPrice();
+                            // Atualiza o valor do frete selecionado quando a opção é alterada
+                            document.querySelector(`input[name="frete"][value="${price}"]`).addEventListener('change', function () {
+                                selectedFretePrice = price;
+                                updateTotalPrice();
+                                enableFinalizeButton(); // Habilita o botão de finalizar compra
+                            });
+                        });
+
+                        freteResultDiv.classList.remove('d-none');
+                    })
+                    .catch(error => {
+                        console.error('Erro ao calcular o frete:', error);
+                        alert('Erro ao calcular o frete.');
+                    });
             });
-        });
 
-        freteResultDiv.classList.remove('d-none');
-    })
-    .catch(error => {
-        console.error('Erro ao calcular o frete:', error);
-        alert('Erro ao calcular o frete.');
-    });
-});
+            function updateTotalPrice() {
+                const cartTotalElement = document.getElementById('cart-total');
+                const hiddenAmountElement = document.getElementById('hidden-amount');
 
-function updateTotalPrice() {
-    const cartTotalElement = document.getElementById('cart-total');
-    const hiddenAmountElement = document.getElementById('hidden-amount');
+                // Atualiza o valor do preço total
+                const newTotal = originalTotal + selectedFretePrice;
+                cartTotalElement.textContent = `R$${newTotal.toFixed(2).replace('.', ',')}`;
+                hiddenAmountElement.value = newTotal.toFixed(2); // Atualiza o valor escondido para o formulário
+            }
 
-    // Atualiza o valor do preço total
-    const newTotal = originalTotal + selectedFretePrice;
-    cartTotalElement.textContent = `R$${newTotal.toFixed(2).replace('.', ',')}`;
-    hiddenAmountElement.value = newTotal.toFixed(2); // Atualiza o valor escondido para o formulário
-}
-</script>
-
-
-
-
-
+            function enableFinalizeButton() {
+                const finalizeButton = document.getElementById('finalizar-compra-btn');
+                finalizeButton.disabled = false;
+            }
+        </script>
 
     </div>
-
-
-
-
-
 
 
     <!--  Fim  adicionar ao Carrinho - Carrinho de compras: -->

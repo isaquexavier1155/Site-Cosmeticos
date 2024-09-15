@@ -82,3 +82,6 @@ document.addEventListener('DOMContentLoaded', function() {
         addUpdateTotalListeners();
         updateTotal();
     }); */
+
+    
+    

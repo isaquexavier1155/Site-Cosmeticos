@@ -52,7 +52,7 @@
             const bricksBuilder = mp.bricks();
 
             const renderPaymentBrick = async (bricksBuilder) => {
-                console.log("Iniciando a configuração do Payment Brick.");
+                //console.log("Iniciando a configuração do Payment Brick.");
 
                 const settings = {
                     initialization: {
@@ -79,12 +79,12 @@
                     },
                     callbacks: {
                         onReady: () => {
-                            console.log("Payment Brick está pronto.");
+                            //console.log("Payment Brick está pronto.");
                         },
                         onSubmit: ({ selectedPaymentMethod, formData }) => {
-                            console.log("Formulário submetido.");
-                            console.log("Método de pagamento selecionado:", selectedPaymentMethod);
-                            console.log("Dados do formulário:", formData);
+                           // console.log("Formulário submetido.");
+                           // console.log("Método de pagamento selecionado:", selectedPaymentMethod);
+                            //console.log("Dados do formulário:", formData);
 
                             return new Promise((resolve, reject) => {
                                 fetch("{{ route('processarpagamento') }}", { // Ajuste o nome da rota conforme sua aplicação
@@ -97,19 +97,19 @@
                                 })
                                     .then((response) => response.text()) // Obter como texto bruto primeiro
                                     .then((text) => {
-                                        console.log("Texto bruto da resposta:", text);
+                                        //console.log("Texto bruto da resposta:", text);
 
                                         try {
                                             // Tente converter para JSON
                                             const jsonResponse = JSON.parse(text);
-                                            console.log("Resposta JSON do servidor:", jsonResponse);
+                                            //console.log("Resposta JSON do servidor:", jsonResponse);
 
                                             if (!jsonResponse.id) {
                                                 throw new Error("Payment ID não encontrado na resposta do servidor.");
                                             }
 
                                             const renderStatusScreenBrick = async (bricksBuilder) => {
-                                                console.log("Iniciando a configuração do Status Screen Brick.");
+                                               // console.log("Iniciando a configuração do Status Screen Brick.");
 
                                                 const settings = {
                                                     initialization: {
@@ -117,7 +117,7 @@
                                                     },
                                                     callbacks: {
                                                         onReady: () => {
-                                                            console.log("Status Screen Brick está pronto.");
+                                                           // console.log("Status Screen Brick está pronto.");
                                                             document.getElementById('paymentBrick_container').style.display = 'none';
                                                         },
                                                         onError: (error) => {
@@ -152,7 +152,7 @@
                     },
                 };
 
-                console.log("Criando o Payment Brick.");
+               // console.log("Criando o Payment Brick.");
                 window.paymentBrickController = await bricksBuilder.create(
                     "payment",
                     "paymentBrick_container",

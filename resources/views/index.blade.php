@@ -3267,8 +3267,8 @@
 
             <!-- Exibir o valor calculado do frete -->
             <div id="frete-result" class="d-none mb-3">
-                <span class="text-body">Valor do Frete: </span>
-                <span id="frete-valor" class="fw-bold text-body-emphasis"></span>
+                <span class="text-body">Opções de Frete: </span>
+                <div id="frete-valor" class="fw-bold text-body-emphasis"></div>
             </div>
 
             <!-- Preço total -->
@@ -3277,15 +3277,105 @@
                 <span id="cart-total" class="cart-total fw-bold text-body-emphasis">
                     R${{ number_format($total_geral, 2, ',', '.') }}
                 </span>
+                <input type="hidden" id="hidden-total" value="{{ $total_geral }}">
             </div>
 
             <!-- Formulário para finalizar compra -->
             <form action="{{ route('checkout-entrega') }}" method="GET">
                 @csrf
-                <input type="hidden" name="amount" value="{{ $total_geral }}">
-                <button type="submit" class="btn btn-dark w-100 mb-7" title="Finalizar Compra">Finalizar Compra</button>
+                <input type="hidden" name="amount" id="hidden-amount" value="{{ $total_geral }}">
+                <button type="submit" id="finalizar-compra-btn" class="btn btn-dark w-100 mb-7" title="Finalizar Compra"
+                    disabled>Finalizar Compra</button>
             </form>
         </div>
+
+        <!--//Script Responsável por buscar resposta do calculo de frete e exibir na tela do carrinho de compras
+        //Responsavel por recalcular valor do Preço Total da venda baseado na opção de frete selecionado
+        //Responsavel por inpedir usuário de finalizar Compra sem selecionar opção de frete -->
+        <script>
+
+            let selectedFretePrice = 0; // Variável para armazenar o valor do frete selecionado
+            let originalTotal; // Variável para armazenar o valor total original
+
+            document.getElementById('calcularFreteBtn').addEventListener('click', function () {
+                const cep = document.getElementById('cep').value;
+
+                if (!cep) {
+                    alert('Por favor, informe um CEP.');
+                    return;
+                }
+
+                fetch('{{ route('calcular-frete') }}', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                    },
+                    body: JSON.stringify({ cep: cep })
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.error) {
+                            alert(data.error);
+                            return;
+                        }
+
+                        const freteResultDiv = document.getElementById('frete-result');
+                        const freteValorSpan = document.getElementById('frete-valor');
+                        freteValorSpan.innerHTML = '';
+
+                        // Armazena o valor total original
+                        originalTotal = parseFloat(document.getElementById('hidden-total').value);
+
+                        data.forEach(option => {
+                            const price = parseFloat(option.price); // Convertendo o preço para número
+                            const deliveryTime = option.delivery_time;
+                            const companyName = option.name;
+                            const companyImage = option.company.picture; // Imagem da transportadora
+
+                            // Criar e adicionar elementos de exibição
+                            const optionDiv = document.createElement('div');
+                            optionDiv.classList.add('frete-option');
+                            optionDiv.innerHTML = `
+                <input type="radio" name="frete" value="${price}" id="frete-${option.id}" class="me-2">
+                <label for="frete-${option.id}">
+                    <img src="${companyImage}" alt="${companyName}" style="width: 50px; height: auto; margin-right: 10px;">
+                    <strong>${companyName}:</strong> R$${price} - ${deliveryTime} dias úteis
+                </label>
+            `;
+                            freteValorSpan.appendChild(optionDiv);
+
+                            // Atualiza o valor do frete selecionado quando a opção é alterada
+                            document.querySelector(`input[name="frete"][value="${price}"]`).addEventListener('change', function () {
+                                selectedFretePrice = price;
+                                updateTotalPrice();
+                                enableFinalizeButton(); // Habilita o botão de finalizar compra
+                            });
+                        });
+
+                        freteResultDiv.classList.remove('d-none');
+                    })
+                    .catch(error => {
+                        console.error('Erro ao calcular o frete:', error);
+                        alert('Erro ao calcular o frete.');
+                    });
+            });
+
+            function updateTotalPrice() {
+                const cartTotalElement = document.getElementById('cart-total');
+                const hiddenAmountElement = document.getElementById('hidden-amount');
+
+                // Atualiza o valor do preço total
+                const newTotal = originalTotal + selectedFretePrice;
+                cartTotalElement.textContent = `R$${newTotal.toFixed(2).replace('.', ',')}`;
+                hiddenAmountElement.value = newTotal.toFixed(2); // Atualiza o valor escondido para o formulário
+            }
+
+            function enableFinalizeButton() {
+                const finalizeButton = document.getElementById('finalizar-compra-btn');
+                finalizeButton.disabled = false;
+            }
+        </script>
 	</div>
 
 	<div class="modal" id="signInModal" tabindex="-1" aria-labelledby="signInModal" aria-hidden="true">
