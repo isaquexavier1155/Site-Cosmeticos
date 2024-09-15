@@ -985,7 +985,7 @@
 				<style>
 					@media (max-width: 768px) {
 						.video-cover img {
-							height: auto !important;
+							/* height: auto !important; */
 						}
 					}
 				</style>
