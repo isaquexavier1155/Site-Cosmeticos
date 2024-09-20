@@ -97,10 +97,10 @@ class PainelAdministrativoController extends Controller
         // Verifica se a geração foi bem-sucedida
         if ($gerarResponse->getStatusCode() === 200) {
             $data = $gerarResponse->getData();
-            return redirect()->route('painel-administrativo')->with('success', 'Etiqueta gerada com sucesso! <a href="' . $data->url . '" target="_blank">Imprimir Etiqueta</a>');
+            return redirect()->route('painel-administrativo')->with('success', 'Etiqueta gerada com sucesso! <a href="' . $data->url . '" target="_blank">Imprimir Etiqueta</a>')->with('sale_id', $saleId);
         } else {
             $data = $gerarResponse->getData();
-            return redirect()->route('painel-administrativo')->with('error', $data->message ?? 'Erro ao gerar etiqueta.');
+            return redirect()->route('painel-administrativo')->with('error', $data->message ?? 'Erro ao gerar etiqueta.')->with('sale_id', $saleId);
         }
 
     }
@@ -359,6 +359,7 @@ class PainelAdministrativoController extends Controller
             // Verifica se a etiqueta foi gerada com sucesso
             if ($httpCode === 200 && isset($decodedResponse['url'])) {
                 // Atualiza a URL da etiqueta no banco de dados
+               //dd($saleId);
                 $payment = Payment::find($saleId);  // Ajuste para buscar pelo ID de pagamento se necessário
                 if ($payment) {
                     $payment->etiqueta_url = $decodedResponse['url'];

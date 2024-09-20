@@ -57,7 +57,6 @@
                 </form>
             </div>
 
-            
 
 
             {{-- Detalhes da venda (produtos) --}}

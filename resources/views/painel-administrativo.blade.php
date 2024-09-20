@@ -263,31 +263,72 @@
                                         <a href="{{ $sale['etiqueta_url'] }}" class="btn btn-secondary btn-sm ms-2"
                                             target="_blank">Imprimir Etiqueta</a>
                                     @else
-                                        <form action="{{ route('painel.gerarEtiqueta', $sale['id']) }}" method="POST">
+                                        <form action="{{ route('painel.gerarEtiqueta', $sale['id']) }}" method="POST"
+                                            class="gerar-etiqueta-form" data-sale-id="{{ $sale['id'] }}">
                                             @csrf
                                             <button type="submit" class="btn btn-success btn-sm">Gerar Etiqueta</button>
                                         </form>
                                     @endif
                                 </div>
+                                <!-- @dump($sale['id']);
+                                @dump(session('success'));
+                                @dump(session('sale_id')); -->
 
-
-                                @if (session('success'))
-                                    <div class="alert alert-success mt-3">
+                                {{-- Mensagens de sucesso e erro específicas para cada venda --}}
+                                @if (session('sale_id') == $sale['id'] && session('success'))
+                                    <div id="mensagem-sucesso-{{ $sale['id'] }}" class="alert alert-success mt-3">
                                         {!! session('success') !!}
                                     </div>
                                 @endif
 
-                                @if (session('error'))
-                                    <div class="alert alert-danger mt-3">
+                                @if (session('sale_id') == $sale['id'] && session('error'))
+                                    <div id="mensagem-erro-{{ $sale['id'] }}" class="alert alert-danger mt-3">
                                         {!! session('error') !!}
                                     </div>
                                 @endif
+
                             @empty
                                 <p class="text-muted">Nenhuma venda a preparar no momento.</p>
                             @endforelse
 
+                            <script>
+                                document.addEventListener('DOMContentLoaded', function () {
+                                    // Verificar se existe uma mensagem de sucesso ou erro e rolar até ela na venda correspondente
+                                    const forms = document.querySelectorAll('.gerar-etiqueta-form');
+
+                                    forms.forEach(form => {
+                                        form.addEventListener('submit', function () {
+                                            const saleId = this.getAttribute('data-sale-id');
+                                            scrollToMessage(saleId);
+                                        });
+                                    });
+
+                                    function scrollToMessage(saleId) {
+                                        const mensagemSucesso = document.getElementById('mensagem-sucesso-' + saleId);
+                                        const mensagemErro = document.getElementById('mensagem-erro-' + saleId);
+
+                                        if (mensagemSucesso) {
+                                            mensagemSucesso.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                                        } else if (mensagemErro) {
+                                            mensagemErro.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                                        }
+                                    }
+
+                                    // Se houver uma mensagem de sucesso ou erro ao carregar a página, rola para ela
+                                    @foreach ($salesAPreparar as $sale)
+                                        scrollToMessage({{ $sale['id'] }});
+                                    @endforeach
+                                });
+                            </script>
+
+
+
+
                         </div>
                     </div>
+
+
+
 
                     <!-- Aba Em Trânsito -->
                     <div class="tab-pane fade" id="em-transito" role="tabpanel" aria-labelledby="em-transito-tab">
