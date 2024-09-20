@@ -88,7 +88,7 @@ Route::post('/salvar-dados-entrega', [FreteController::class, 'salvarDadosEntreg
 Route::post('/calcular-frete', [FreteController::class, 'calcularFrete'])->name('calcular-frete');
 
 // Rota para o Painel Administrativo
-Route::get('/my_purchases', [PainelAdministrativoController::class, 'index'])
+Route::get('/my_acount', [PainelAdministrativoController::class, 'index'])
     ->name('painel-administrativo');
 
 //Rota para atualizar status manualmente no painel administrativo
