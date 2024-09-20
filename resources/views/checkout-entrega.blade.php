@@ -10,7 +10,8 @@
     <!-- Bootstrap CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.1.0/css/bootstrap.min.css" rel="stylesheet">
     <style>
-        html, body {
+        html,
+        body {
             height: 100%;
             margin: 0;
         }
@@ -38,7 +39,8 @@
             font-weight: bold;
         }
 
-        .form-control, .form-select {
+        .form-control,
+        .form-select {
             border-radius: 0.375rem;
             box-shadow: none;
             border: 1px solid #ced4da;
@@ -47,7 +49,8 @@
             height: 4vh;
         }
 
-        .form-control:focus, .form-select:focus {
+        .form-control:focus,
+        .form-select:focus {
             border-color: #80bdff;
             box-shadow: 0 0 0 0.2rem rgba(38, 143, 255, 0.25);
         }
@@ -86,57 +89,76 @@
         @endif
 
         <form action="{{ route('salvar-dados-entrega') }}" method="POST">
-        @csrf
-    <!-- Campos do formulário -->
-    <div class="mb-3">
-        <label for="nome" class="form-label">Nome Completo</label>
-        <input type="text" name="nome" id="nome" class="form-control" value="{{ old('nome', auth()->user()->name) }}" required>
-    </div>
-    <div class="mb-3">
-        <label for="email" class="form-label">Email</label>
-        <input type="email" name="email" id="email" class="form-control" value="{{ old('email', auth()->user()->email) }}" required>
-    </div>
-    <div class="mb-3">
-        <label for="cpf" class="form-label">CPF</label>
-        <input type="text" name="cpf" id="cpf" class="form-control" value="{{ old('cpf', auth()->user()->cpf) }}" required>
-    </div>
-    <div class="mb-3">
-        <label for="celular" class="form-label">Celular</label>
-        <input type="text" name="celular" id="celular" class="form-control" value="{{ old('celular', auth()->user()->celular) }}" required>
-    </div>
-    <div class="mb-3">
-        <label for="cep" class="form-label">CEP</label>
-        <input type="text" name="cep" id="cep" class="form-control" value="{{ old('cep', auth()->user()->cep) }}" required>
-    </div>
-    <div class="mb-3">
-        <label for="rua" class="form-label">Rua</label>
-        <input type="text" name="rua" id="rua" class="form-control" value="{{ old('rua', auth()->user()->rua) }}" required>
-    </div>
-    <div class="mb-3">
-        <label for="numero" class="form-label">Número</label>
-        <input type="text" name="numero" id="numero" class="form-control" value="{{ old('numero', auth()->user()->numero) }}" required>
-    </div>
-    <div class="mb-3">
-        <label for="complemento" class="form-label">Complemento</label>
-        <input type="text" name="complemento" id="complemento" class="form-control" value="{{ old('complemento', auth()->user()->complemento) }}">
-    </div>
-    <div class="mb-3">
-        <label for="bairro" class="form-label">Bairro</label>
-        <input type="text" name="bairro" id="bairro" class="form-control" value="{{ old('bairro', auth()->user()->bairro) }}" required>
-    </div>
-    <div class="mb-3">
-        <label for="cidade" class="form-label">Cidade</label>
-        <input type="text" name="cidade" id="cidade" class="form-control" value="{{ old('cidade', auth()->user()->cidade) }}" required>
-    </div>
-    <div class="mb-3">
-        <label for="estado" class="form-label">Estado</label>
-        <input type="text" name="estado" id="estado" class="form-control" value="{{ old('estado', auth()->user()->estado) }}" required>
-    </div>
+            @csrf
+            <!-- Campos do formulário -->
+            <div class="mb-3">
+                <label for="nome" class="form-label">Nome Completo</label>
+                <input type="text" name="nome" id="nome" class="form-control"
+                    value="{{ old('nome', auth()->user()->name) }}" required>
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" name="email" id="email" class="form-control"
+                    value="{{ old('email', auth()->user()->email) }}" required>
+            </div>
+            <div class="mb-3">
+                <label for="cpf" class="form-label">CPF</label>
+                <input type="text" name="cpf" id="cpf" class="form-control"
+                    value="{{ old('cpf', auth()->user()->cpf) }}" required>
+            </div>
+            <div class="mb-3">
+                <label for="celular" class="form-label">Celular</label>
+                <input type="text" name="celular" id="celular" class="form-control"
+                    value="{{ old('celular', auth()->user()->celular) }}" required>
+            </div>
+            <div class="mb-3">
+                <label for="cep" class="form-label">CEP</label>
+                <input type="text" name="cep" id="cep" class="form-control"
+                    value="{{ old('cep', auth()->user()->cep) }}" required>
+            </div>
+            <div class="mb-3">
+                <label for="rua" class="form-label">Rua</label>
+                <input type="text" name="rua" id="rua" class="form-control"
+                    value="{{ old('rua', auth()->user()->rua) }}" required>
+            </div>
+            <div class="mb-3">
+                <label for="numero" class="form-label">Número</label>
+                <input type="text" name="numero" id="numero" class="form-control"
+                    value="{{ old('numero', auth()->user()->numero) }}" required>
+            </div>
+            <div class="mb-3">
+                <label for="complemento" class="form-label">Complemento</label>
+                <input type="text" name="complemento" id="complemento" class="form-control"
+                    value="{{ old('complemento', auth()->user()->complemento) }}">
+            </div>
+            <div class="mb-3">
+                <label for="bairro" class="form-label">Bairro</label>
+                <input type="text" name="bairro" id="bairro" class="form-control"
+                    value="{{ old('bairro', auth()->user()->bairro) }}" required>
+            </div>
+            <div class="mb-3">
+                <label for="cidade" class="form-label">Cidade</label>
+                <input type="text" name="cidade" id="cidade" class="form-control"
+                    value="{{ old('cidade', auth()->user()->cidade) }}" required>
+            </div>
+            <div class="mb-3">
+                <label for="estado" class="form-label">Estado</label>
+                <input type="text" name="estado" id="estado" class="form-control"
+                    value="{{ old('estado', auth()->user()->estado) }}" required>
+            </div>
 
-    <input type="hidden" name="amount" value="{{ session('total_geral') }}">
+            <input type="hidden" name="amount" value="{{ session('total_geral') }}">
 
-    <button type="submit" class="btn btn-primary">Continuar</button>
-</form>
+            @php
+                //dump("IDS dos Produtos = " . $produto_ids_str);
+            @endphp
+
+            <input type="hidden" name="produto_ids" value="{{ $produto_ids_str }}">
+            <input type="hidden" name="produto_qtds" value="{{ $produto_qtds_str }}"> 
+            <input type="hidden" name="frete_selecionado" value="{{ $frete_selecionado }}"> 
+
+            <button type="submit" class="btn btn-primary">Continuar</button>
+        </form>
 
     </div>
 

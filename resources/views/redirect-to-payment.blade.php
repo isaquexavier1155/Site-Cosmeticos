@@ -14,6 +14,12 @@
     <form id="payment-form" action="{{ route('payment') }}" method="POST">
         @csrf
         <input type="hidden" name="amount" value="{{ $amount }}">
+        <input type="hidden" name="produto_ids" value="{{ $produto_ids_str }}">
+        <input type="hidden" name="produto_qtds" value="{{ $produto_qtds_str }}">
+        <input type="hidden" name="frete_selecionado" value="{{ $frete_selecionado }}">
+
+        
+
         <button type="submit">Redirecionando para ambiente seguro...</button>
     </form>
 </body>

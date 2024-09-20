@@ -18,9 +18,22 @@ class FreteController extends Controller
         $total_geral = $request->input('amount');
         session(['total_geral' => $total_geral]);
 
-        // Exibe a view com o formulário de dados de entrega
-        return view('checkout-entrega');
+        // Recebe os IDs dos produtos e as quantidades no formato de string, por exemplo: "5,8"
+        $produto_ids_str = $request->input('produto_ids');
+        $produto_qtds_str = $request->input('produto_qtds');
+        $frete_selecionado = $request->frete_option;
+
+        // Converte as strings para arrays usando explode
+        //$produto_ids = explode(',', $produto_ids_str);
+        //$produto_qtds = explode(',', $produto_qtds_str);
+
+        // Depurando para ver os arrays de IDs e quantidades
+        //dd($request->frete_option);//"SEDEX"
+
+        // Exibe a view com o formulário de dados de entrega e passa os arrays para a view, se necessário
+        return view('checkout-entrega', compact('produto_ids_str', 'produto_qtds_str', 'frete_selecionado'));
     }
+
 
     public function salvarDadosEntrega(Request $request)
     {
@@ -39,6 +52,16 @@ class FreteController extends Controller
             'estado' => 'required|string|max:2',
             'amount' => 'required|numeric',
         ]);
+
+        //Estão chegando como string
+        //"8,5" // app\Http\Controllers\FreteController.php:58
+        //"1,2" // app\Http\Controllers\FreteController.php:58
+        $produto_ids_str = $request->input('produto_ids');
+        $produto_qtds_str = $request->input('produto_qtds');
+        //dd($request->frete_selecionado);//"SEDEX"
+        $frete_selecionado = $request->frete_selecionado;
+
+        //dd($produto_ids_str, $produto_qtds_str);
 
         // Atualiza os dados do usuário logado
         $user = Auth::user();
@@ -60,7 +83,13 @@ class FreteController extends Controller
 
         // Salva as alterações
         if ($user->save()) {
-            return view('redirect-to-payment', ['amount' => $validated['amount']]);
+            // Passa as variáveis para a view
+            return view('redirect-to-payment', [
+                'amount' => $validated['amount'],
+                'produto_ids_str' => $produto_ids_str,
+                'produto_qtds_str' => $produto_qtds_str,
+                'frete_selecionado' => $frete_selecionado
+            ]);
         }
 
         return back()->with('error', 'Não foi possível atualizar os dados do usuário.');
@@ -77,10 +106,12 @@ class FreteController extends Controller
     {
         // Pegar o token da API do arquivo .env
         $accesstoken = env('MELHOR_ENVIO_TOKEN');
+        //dd($request);
 
         if (!$accesstoken) {
             return response()->json(['error' => 'Token de acesso não encontrado'], 500);
         }
+
 
         // Dados necessários para a requisição
         $fromCep = '18552356'; // Substitua pelo CEP de origem real
@@ -94,10 +125,10 @@ class FreteController extends Controller
             [
                 'name' => 'Produto Exemplo',
                 'quantity' => 1,
-                'weight' => 0.5,
-                'length' => 16,
-                'height' => 11,
-                'width' => 11,
+                'weight' => 0.2,//peso médio 200g
+                'length' => 22,//comprimento
+                'height' => 7,//altura
+                'width' => 15,//largura
             ]
         ];
         $services = '1,2,3'; // Serviços de frete (exemplo: Correios, transportadoras)
@@ -108,9 +139,9 @@ class FreteController extends Controller
         // Configurando a requisição cURL
         curl_setopt_array($curl, [
             //em produção deixar a linha abaixo
-            CURLOPT_URL => 'https://melhorenvio.com.br/api/v2/me/shipment/calculate',
+            //CURLOPT_URL => 'https://melhorenvio.com.br/api/v2/me/shipment/calculate',
             //Em desenvolvimento deixar a linha abaixo
-            //CURLOPT_URL => 'https://sandbox.melhorenvio.com.br/api/v2/me/shipment/calculate',
+            CURLOPT_URL => 'https://sandbox.melhorenvio.com.br/api/v2/me/shipment/calculate',
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_ENCODING => '',
             CURLOPT_MAXREDIRS => 10,
@@ -142,8 +173,8 @@ class FreteController extends Controller
                 'User-Agent: Aplicação (email para contato técnico)'
             ],
 
-            //CURLOPT_SSL_VERIFYPEER => false,  // Deixar essa linha em desenvolvimento
-            CURLOPT_CAINFO => base_path('certificates/cacert.pem'), //deixar essa linha em produção
+            CURLOPT_SSL_VERIFYPEER => false,  // Deixar essa linha em desenvolvimento
+            // CURLOPT_CAINFO => base_path('certificates/cacert.pem'), //deixar essa linha em produção
         ]);
 
         // Executando a requisição e capturando a resposta

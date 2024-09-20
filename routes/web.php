@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProdutoController;
 use App\Http\Controllers\PagamentoController;
 use App\Http\Controllers\FreteController;
+use App\Http\Controllers\PainelAdministrativoController;
 
 
 /* Route::get('/', function () {
@@ -54,7 +55,7 @@ Route::get('/produtos/get/{id}', [ProdutoController::class, 'getProdutoById'])->
     return view('pagamento');
 }); */
 
-Route::get('/pagamento', [PagamentoController::class, 'viewPagamento']);
+//Route::get('/pagamento', [PagamentoController::class, 'viewPagamento']);
 
 
 
@@ -64,7 +65,7 @@ Route::get('/pagamento/falha', [PagamentoController::class, 'falha'])->name('pag
 Route::get('/pagamento/pendente', [PagamentoController::class, 'pendente'])->name('pagamento.pendente');
 
 // Retorna parâmetro preference_id necessário para processar requisição
-Route::get('/payment/preference', [PagamentoController::class, 'getPreference']);
+//Route::get('/payment/preference', [PagamentoController::class, 'getPreference']);
 
 //Exibe view pagamento.blade.php enviando alguns dados pela controller
 Route::post('/payment', [PagamentoController::class, 'showPagamento'])->name('payment');
@@ -86,6 +87,15 @@ Route::post('/salvar-dados-entrega', [FreteController::class, 'salvarDadosEntreg
 //rota para aclacular frete dos produtos
 Route::post('/calcular-frete', [FreteController::class, 'calcularFrete'])->name('calcular-frete');
 
+// Rota para o Painel Administrativo
+Route::get('/painel-administrativo', [PainelAdministrativoController::class, 'index'])
+    ->name('painel-administrativo');
+
+//Rota para atualizar status manualmente no painel administrativo
+Route::patch('/sales/{id}/status', [PainelAdministrativoController::class, 'updateStatus'])->name('sales.updateStatus');
+
+//Rota para gerar a etiqueta de envio de mercadoria
+Route::post('/painel/gerar-etiqueta/{paymentId}', [PainelAdministrativoController::class, 'gerarEtiqueta'])->name('painel.gerarEtiqueta');
 
 
 /* ////////////////////////////////////////////////////////////////////////////////////////////////////////

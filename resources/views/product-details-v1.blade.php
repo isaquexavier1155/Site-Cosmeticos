@@ -1606,24 +1606,24 @@
                                 @endif
 
                                 <!-- <div class="position-absolute d-flex z-index-2 product-actions vertical">
-                                                                                                                    <a class="text-body-emphasis bg-body bg-dark-hover text-light-hover rounded-circle square product-action shadow-sm quick-view sm" href="#" data-bs-toggle="tooltip" data-bs-placement="left" data-bs-title="Quick View">
-                                                                                                                        <span data-bs-toggle="modal" data-bs-target="#quickViewModal" class="d-flex align-items-center justify-content-center">
-                                                                                                                            <svg class="icon icon-eye-light">
-                                                                                                                                <use xlink:href="#icon-eye-light"></use>
-                                                                                                                            </svg>
-                                                                                                                        </span>
-                                                                                                                    </a>
-                                                                                                                    <a class="text-body-emphasis bg-body bg-dark-hover text-light-hover rounded-circle square product-action shadow-sm wishlist sm" href="#" data-bs-toggle="tooltip" data-bs-placement="left" data-bs-title="Add To Wishlist">
-                                                                                                                        <svg class="icon icon-star-light">
-                                                                                                                            <use xlink:href="#icon-star-light"></use>
-                                                                                                                        </svg>
-                                                                                                                    </a>
-                                                                                                                    <a class="text-body-emphasis bg-body bg-dark-hover text-light-hover rounded-circle square product-action shadow-sm compare sm" href="#" data-bs-toggle="tooltip" data-bs-placement="left" data-bs-title="Compare">
-                                                                                                                        <svg class="icon icon-arrows-left-right-light">
-                                                                                                                            <use xlink:href="#icon-arrows-left-right-light"></use>
-                                                                                                                        </svg>
-                                                                                                                    </a>
-                                                                                                                </div> -->
+                                                                                                                                                        <a class="text-body-emphasis bg-body bg-dark-hover text-light-hover rounded-circle square product-action shadow-sm quick-view sm" href="#" data-bs-toggle="tooltip" data-bs-placement="left" data-bs-title="Quick View">
+                                                                                                                                                            <span data-bs-toggle="modal" data-bs-target="#quickViewModal" class="d-flex align-items-center justify-content-center">
+                                                                                                                                                                <svg class="icon icon-eye-light">
+                                                                                                                                                                    <use xlink:href="#icon-eye-light"></use>
+                                                                                                                                                                </svg>
+                                                                                                                                                            </span>
+                                                                                                                                                        </a>
+                                                                                                                                                        <a class="text-body-emphasis bg-body bg-dark-hover text-light-hover rounded-circle square product-action shadow-sm wishlist sm" href="#" data-bs-toggle="tooltip" data-bs-placement="left" data-bs-title="Add To Wishlist">
+                                                                                                                                                            <svg class="icon icon-star-light">
+                                                                                                                                                                <use xlink:href="#icon-star-light"></use>
+                                                                                                                                                            </svg>
+                                                                                                                                                        </a>
+                                                                                                                                                        <a class="text-body-emphasis bg-body bg-dark-hover text-light-hover rounded-circle square product-action shadow-sm compare sm" href="#" data-bs-toggle="tooltip" data-bs-placement="left" data-bs-title="Compare">
+                                                                                                                                                            <svg class="icon icon-arrows-left-right-light">
+                                                                                                                                                                <use xlink:href="#icon-arrows-left-right-light"></use>
+                                                                                                                                                            </svg>
+                                                                                                                                                        </a>
+                                                                                                                                                    </div> -->
                                 <a href="#"
                                     class="btn btn-add-to-cart btn-dark btn-hover-bg-primary btn-hover-border-primary position-absolute z-index-2 text-nowrap btn-sm px-6 py-3 lh-2">Adicionar
                                     ao Carrinho</a>
@@ -3682,26 +3682,37 @@
                     <tbody id="cart-items">
                         @php
                             $total_geral = 0;
+                            // Inicializa um array para armazenar os IDs dos produtos
+                            $produto_ids = [];
+                            // Inicializa um array para armazenar as quantidades dos produtos
+                            $produto_qtds = [];
                         @endphp
 
                         @if(isset($carrinho) && $carrinho->isNotEmpty())
                                             @foreach($carrinho as $item)
                                                                 @php
                                                                     $produto = App\Models\Produto::find($item->product_id);
-                                                                    $preco_original = $produto->preco;
-                                                                    $preco_com_desconto = $item->price;
 
-                                                                    // Aplicar o desconto progressivo
-                                                                    if ($item->quantity == 2) {
-                                                                        $preco_com_desconto = $preco_com_desconto * 0.95; // 5% de desconto
-                                                                    } elseif ($item->quantity == 3) {
-                                                                        $preco_com_desconto = $preco_com_desconto * 0.92; // 8% de desconto
-                                                                    } elseif ($item->quantity == 4) {
-                                                                        $preco_com_desconto = $preco_com_desconto * 0.90; // 10% de desconto
+                                                                    if ($produto) {
+                                                                        // Adiciona o ID do produto ao array
+                                                                        $produto_ids[] = $produto->id;
+                                                                        $produto_qtds[] = $item->quantity;
+
+                                                                        $preco_original = $produto->preco;
+                                                                        $preco_com_desconto = $item->price;
+
+                                                                        // Aplicar o desconto progressivo
+                                                                        if ($item->quantity == 2) {
+                                                                            $preco_com_desconto = $preco_com_desconto * 0.95; // 5% de desconto
+                                                                        } elseif ($item->quantity == 3) {
+                                                                            $preco_com_desconto = $preco_com_desconto * 0.92; // 8% de desconto
+                                                                        } elseif ($item->quantity == 4) {
+                                                                            $preco_com_desconto = $preco_com_desconto * 0.90; // 10% de desconto
+                                                                        }
+
+                                                                        $total_item = $preco_com_desconto * $item->quantity; // Total do item considerando o preço com desconto
+                                                                        $total_geral += $total_item; // Soma o total do item ao total geral
                                                                     }
-
-                                                                    $total_item = $preco_com_desconto * $item->quantity; // Total do item considerando o preço com desconto
-                                                                    $total_geral += $total_item; // Soma o total do item ao total geral
                                                                 @endphp
                                                                 <tr class="position-relative">
                                                                     <td class="align-middle text-center">
@@ -3719,7 +3730,6 @@
                                                                                 <p class="card-text mb-1">
                                                                                     <!-- Preço original riscado multiplicado pela quantidade -->
                                                                                     <span class="fs-13px fw-500 text-decoration-line-through pe-3">
-
                                                                                         ${{ number_format($produto->preco_promocional * $item->quantity, 2, ',', '.') }}
                                                                                     </span>
                                                                                     <span class="fs-15px fw-bold text-body-emphasis item-price"
@@ -3778,100 +3788,121 @@
 
             <!-- Formulário para finalizar compra -->
             <form action="{{ route('checkout-entrega') }}" method="GET">
-                @csrf
                 <input type="hidden" name="amount" id="hidden-amount" value="{{ $total_geral }}">
+                {{-- Converter o array em uma string separada por vírgulas --}}
+                @php
+                    $produto_ids_str = implode(',', $produto_ids);
+                    $produto_qtds_str = implode(',', $produto_qtds);
+                @endphp
+
+                {{-- Campo oculto para enviar o array de IDs --}}
+                <input type="hidden" name="produto_ids" id="hidden-ids" value="{{ $produto_ids_str }}">
+                <input type="hidden" name="produto_qtds" id="hidden-qtds" value="{{ $produto_qtds_str }}">
+                <!-- Campo oculto para capturar a opção de frete selecionada -->
+                <input type="hidden" name="frete_option" id="hidden-frete-option" value="">
                 <button type="submit" id="finalizar-compra-btn" class="btn btn-dark w-100 mb-7" title="Finalizar Compra"
                     disabled>Finalizar Compra</button>
             </form>
         </div>
 
+
         <!--//Script Responsável por buscar resposta do calculo de frete e exibir na tela do carrinho de compras
         //Responsavel por recalcular valor do Preço Total da venda baseado na opção de frete selecionado
-        //Responsavel por inpedir usuário de finalizar Compra sem selecionar opção de frete -->
+        //Responsavel por inpedir usuário de finalizar Compra sem selecionar opção de frete 
+        Responsavel por passar para a proxima view o tipo de frete selecionado no carrinho-->
+
         <script>
+			let selectedFretePrice = 0; // Variável para armazenar o valor do frete selecionado
+			let selectedFreteOption = ''; // Variável para armazenar a opção de frete selecionada (ID ou nome)
+			let originalTotal; // Variável para armazenar o valor total original
 
-            let selectedFretePrice = 0; // Variável para armazenar o valor do frete selecionado
-            let originalTotal; // Variável para armazenar o valor total original
+			document.getElementById('calcularFreteBtn').addEventListener('click', function () {
+				const cep = document.getElementById('cep').value;
 
-            document.getElementById('calcularFreteBtn').addEventListener('click', function () {
-                const cep = document.getElementById('cep').value;
+				if (!cep) {
+					alert('Por favor, informe um CEP.');
+					return;
+				}
 
-                if (!cep) {
-                    alert('Por favor, informe um CEP.');
-                    return;
-                }
+				fetch('{{ route('calcular-frete') }}', {
+					method: 'POST',
+					headers: {
+						'Content-Type': 'application/json',
+						'X-CSRF-TOKEN': '{{ csrf_token() }}'
+					},
+					body: JSON.stringify({ cep: cep })
+				})
+					.then(response => response.json())
+					.then(data => {
+						if (data.error) {
+							alert(data.error);
+							return;
+						}
 
-                fetch('{{ route('calcular-frete') }}', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'X-CSRF-TOKEN': '{{ csrf_token() }}'
-                    },
-                    body: JSON.stringify({ cep: cep })
-                })
-                    .then(response => response.json())
-                    .then(data => {
-                        if (data.error) {
-                            alert(data.error);
-                            return;
-                        }
+						const freteResultDiv = document.getElementById('frete-result');
+						const freteValorSpan = document.getElementById('frete-valor');
+						freteValorSpan.innerHTML = ''; // Limpar as opções anteriores
 
-                        const freteResultDiv = document.getElementById('frete-result');
-                        const freteValorSpan = document.getElementById('frete-valor');
-                        freteValorSpan.innerHTML = '';
+						// Armazena o valor total original
+						originalTotal = parseFloat(document.getElementById('hidden-total').value);
 
-                        // Armazena o valor total original
-                        originalTotal = parseFloat(document.getElementById('hidden-total').value);
+						data.forEach(option => {
+							const price = parseFloat(option.price); // Convertendo o preço para número
+							const deliveryTime = option.delivery_time;
+							const companyName = option.name;
+							const companyImage = option.company.picture; // Imagem da transportadora
 
-                        data.forEach(option => {
-                            const price = parseFloat(option.price); // Convertendo o preço para número
-                            const deliveryTime = option.delivery_time;
-                            const companyName = option.name;
-                            const companyImage = option.company.picture; // Imagem da transportadora
+							// Criar e adicionar elementos de exibição
+							const optionDiv = document.createElement('div');
+							optionDiv.classList.add('frete-option');
+							optionDiv.innerHTML = `
+					<input type="radio" name="frete" value="${price}" id="frete-${option.id}" class="me-2">
+					<label for="frete-${option.id}">
+						<img src="${companyImage}" alt="${companyName}" style="width: 50px; height: auto; margin-right: 10px;">
+						<strong>${companyName}:</strong> R$${price} - ${deliveryTime} dias úteis
+					</label>
+				`;
+							freteValorSpan.appendChild(optionDiv);
 
-                            // Criar e adicionar elementos de exibição
-                            const optionDiv = document.createElement('div');
-                            optionDiv.classList.add('frete-option');
-                            optionDiv.innerHTML = `
-                <input type="radio" name="frete" value="${price}" id="frete-${option.id}" class="me-2">
-                <label for="frete-${option.id}">
-                    <img src="${companyImage}" alt="${companyName}" style="width: 50px; height: auto; margin-right: 10px;">
-                    <strong>${companyName}:</strong> R$${price} - ${deliveryTime} dias úteis
-                </label>
-            `;
-                            freteValorSpan.appendChild(optionDiv);
+							// Atualiza o valor e a opção de frete selecionada quando a opção é alterada
+							document.querySelector(`input[name="frete"][value="${price}"]`).addEventListener('change', function () {
+								selectedFretePrice = price;
+								selectedFreteOption = companyName; // Captura o nome da transportadora
+								updateTotalPrice();
+								enableFinalizeButton(); // Habilita o botão de finalizar compra
+							});
+						});
 
-                            // Atualiza o valor do frete selecionado quando a opção é alterada
-                            document.querySelector(`input[name="frete"][value="${price}"]`).addEventListener('change', function () {
-                                selectedFretePrice = price;
-                                updateTotalPrice();
-                                enableFinalizeButton(); // Habilita o botão de finalizar compra
-                            });
-                        });
+						freteResultDiv.classList.remove('d-none');
+					})
+					.catch(error => {
+						console.error('Erro ao calcular o frete:', error);
+						alert('Erro ao calcular o frete.');
+					});
+			});
 
-                        freteResultDiv.classList.remove('d-none');
-                    })
-                    .catch(error => {
-                        console.error('Erro ao calcular o frete:', error);
-                        alert('Erro ao calcular o frete.');
-                    });
-            });
+			// Atualizar o preço total
+			function updateTotalPrice() {
+				const cartTotalElement = document.getElementById('cart-total');
+				const hiddenAmountElement = document.getElementById('hidden-amount');
 
-            function updateTotalPrice() {
-                const cartTotalElement = document.getElementById('cart-total');
-                const hiddenAmountElement = document.getElementById('hidden-amount');
+				// Atualiza o valor do preço total
+				const newTotal = originalTotal + selectedFretePrice;
+				cartTotalElement.textContent = `R$${newTotal.toFixed(2).replace('.', ',')}`;
+				hiddenAmountElement.value = newTotal.toFixed(2); // Atualiza o valor escondido para o formulário
+			}
 
-                // Atualiza o valor do preço total
-                const newTotal = originalTotal + selectedFretePrice;
-                cartTotalElement.textContent = `R$${newTotal.toFixed(2).replace('.', ',')}`;
-                hiddenAmountElement.value = newTotal.toFixed(2); // Atualiza o valor escondido para o formulário
-            }
+			// Habilitar o botão de finalizar compra
+			function enableFinalizeButton() {
+				const finalizeButton = document.getElementById('finalizar-compra-btn');
+				const hiddenFreteOption = document.getElementById('hidden-frete-option');
 
-            function enableFinalizeButton() {
-                const finalizeButton = document.getElementById('finalizar-compra-btn');
-                finalizeButton.disabled = false;
-            }
-        </script>
+				// Armazena a opção de frete selecionada no campo oculto
+				hiddenFreteOption.value = selectedFreteOption;
+
+				finalizeButton.disabled = false;
+			}
+		</script>
 
     </div>
 

@@ -11,11 +11,13 @@ use Illuminate\Support\Facades\Auth;
 class PagamentoController extends Controller
 {
 
-    public function viewPagamento()
+    //Rota pagamento removida
+    /* public function viewPagamento()
     {
         $accesstoken = env('MERCADOPAGO_ACCESS_TOKEN');
 
         $amount = 100;
+        
 
         if (empty($amount) || !is_numeric($amount)) {
             return response()->json(['error' => 'Valor deve ser um número válido.'], 400);
@@ -27,7 +29,6 @@ class PagamentoController extends Controller
 
         $amount = (float) $amount;
 
-        // Utiliza o modelo Payment para adicionar um pagamento
         $payCreate = Payment::addPayment($amount, 1);
 
         if (!$payCreate) {
@@ -101,7 +102,10 @@ class PagamentoController extends Controller
             return response()->json(['error' => 'Erro ao criar preferência de pagamento.'], 500);
         }
 
-    }
+    } */
+    
+    //Calcula reference id e passa para a view pagamento pra ser possível gerar a tela do Payment Bricks
+    //Cria novo registro na tabela payments salvando: amount em valor e userid
     public function showPagamento(Request $request)
     {
         $accesstoken = env('MERCADOPAGO_ACCESS_TOKEN');
@@ -110,9 +114,31 @@ class PagamentoController extends Controller
         //e quando um pagamento por link 1 (wallet_purchase) é iniciado obtem sempre esse valor
         $amount = $request->amount;
         $user = Auth::user();
+        //token e amount chegam aqui via urlno request
+        //   #parameters: array:2 [▼
+        // "_token" => "7MxmGWg1DoV13pNnoPcMCgoAutp0ZnThAGJaUlO9"
+        //"amount" => "28.55"
 
-       // var_dump($request->status);
-        
+        /* Preciso que chegue aqui a informaçao da opção de envio selecionada no carrinho
+         para vendedor saber qual metodo de envio utilizar para enviar pedidos */
+
+       // Não estava chegando $produto_ids_str e $produto_qtds_str
+       //Agora estão chegando
+       //Tem que chegar aqui para eu salvar no banco de dados
+
+    // Obtém os dados do request
+    $produto_ids_str = $request->input('produto_ids'); 
+    $produto_qtds_str = $request->input('produto_qtds');
+
+    // Converte as strings para arrays e depois para JSON
+    $produto_ids_array = explode(',', $produto_ids_str);
+    $produto_qtds_array = explode(',', $produto_qtds_str);
+    $produto_ids_json = json_encode($produto_ids_array);
+    $produto_qtds_json = json_encode($produto_qtds_array);
+
+    // dd($request->frete_selecionado);
+    //Frete selecionado no carrinho de compras exemplo: SEDEX
+    $frete_selecionado = $request->frete_selecionado;
 
         if (empty($amount) || !is_numeric($amount)) {
             return response()->json(['error' => 'Valor deve ser um número válido.'], 400);
@@ -124,9 +150,11 @@ class PagamentoController extends Controller
 
         $amount = (float) $amount;
 
+       // $user = Auth::user();
+
         // Utiliza o modelo Payment para adicionar um pagamento
-        //Ajustei linha abaixo
-        $payCreate = Payment::addPayment($amount, $user->id);
+        $payCreate = Payment::addPayment($amount, $user->id, $produto_ids_json, $produto_qtds_json, $frete_selecionado);
+        //$statusUpdate = Payment::setStatusPayment('Pendentee');
 
         if (!$payCreate) {
             return response()->json(['error' => 'Erro ao criar pagamento.'], 500);
@@ -191,7 +219,7 @@ class PagamentoController extends Controller
 
         if (isset($obj->id)) {
             $amount = $request->input('amount');
-           //inserir retorno para ver se amount não vem no objeto echo($obj);
+            //inserir retorno para ver se amount não vem no objeto echo($obj);
             return view('pagamento', [
                 'preference_id' => $obj->id,
                 'amount' => $amount
@@ -255,23 +283,23 @@ class PagamentoController extends Controller
                     "transaction_amount" => $body->transaction_amount,
                 ]),
 
-                     
 
-               /*  $data = [
-                    'description' => 'Payment for product',
-                    'installments' => $body->installments,
-                    'payer' => [
-                        'email' => $body->payer->email,
-                        'identification' => [
-                            'type' => $body->payer->identification->type,
-                            'number' => $body->payer->identification->number,
-                        ],
-                    ],
-                    'issuer_id' => $body->issuer_id,
-                    'payment_method_id' => $body->payment_method_id,
-                    'token' => $body->token,
-                    'transaction_amount' => $body->transaction_amount,
-                ]; */
+
+                /*  $data = [
+                     'description' => 'Payment for product',
+                     'installments' => $body->installments,
+                     'payer' => [
+                         'email' => $body->payer->email,
+                         'identification' => [
+                             'type' => $body->payer->identification->type,
+                             'number' => $body->payer->identification->number,
+                         ],
+                     ],
+                     'issuer_id' => $body->issuer_id,
+                     'payment_method_id' => $body->payment_method_id,
+                     'token' => $body->token,
+                     'transaction_amount' => $body->transaction_amount,
+                 ]; */
 
                 CURLOPT_HTTPHEADER => array(
                     'Content-Type: application/json',
@@ -287,7 +315,7 @@ class PagamentoController extends Controller
                     'error' => 'Corpo da requisição:',
                     'body' => $body
                 ], 400);
-            } */  
+            } */
 
             $response = curl_exec($curl);
 
@@ -360,7 +388,7 @@ class PagamentoController extends Controller
                 ],
                 //CURLOPT_SSL_VERIFYPEER => false,  // Deixar essa linha em desenvolvimento
                 CURLOPT_CAINFO => base_path('certificates/cacert.pem'), //deixar essa linha em produção
-          
+
             ]);
 
             $response = curl_exec($ch);
@@ -394,11 +422,14 @@ class PagamentoController extends Controller
 
 
 
-    public function getPreference(Request $request)
+/*     public function getPreference(Request $request)
     {
         $accesstoken = env('MERCADOPAGO_ACCESS_TOKEN');
 
+        
+     
         $amount = 100;
+
 
         if (empty($amount) || !is_numeric($amount)) {
             return response()->json(['error' => 'Valor deve ser um número válido.'], 400);
@@ -410,7 +441,6 @@ class PagamentoController extends Controller
 
         $amount = (float) $amount;
 
-        // Utiliza o modelo Payment para adicionar um pagamento
         $payCreate = Payment::addPayment($amount, 1);
 
         if (!$payCreate) {
@@ -482,9 +512,8 @@ class PagamentoController extends Controller
         } else {
             return response()->json(['error' => 'Erro ao criar preferência de pagamento.'], 500);
         }
-    }
+    } */
 
-    // No seu PaymentController
 
     public function sucesso(Request $request)
     {
@@ -505,5 +534,5 @@ class PagamentoController extends Controller
     {
         return view('pagamento.pendente');
     }
-    
+
 }
