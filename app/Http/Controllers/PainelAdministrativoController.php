@@ -110,8 +110,44 @@ class PainelAdministrativoController extends Controller
     //Adicionando frete ao carrinho com sucesso
     public function adicionarAoCarrinho($saleId)
     {
+        // Buscar o pagamento pelo ID da venda
+        $payment = Payment::find($saleId);
+        //dd($payment->valor);
 
-        //dd($saleId);
+        // Se o pagamento não for encontrado, retornar um erro
+        if (!$payment) {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Pagamento não encontrado.'
+            ]);
+        }
+
+        // Buscar o usuário pelo user_id
+        $user = User::find($payment->user_id);
+
+        // Se o usuário não for encontrado, retornar um erro
+        if (!$user) {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Usuário não encontrado.'
+            ]);
+        }
+
+        // Mapeamento entre o valor da string e o código do serviço
+        //passa abaixo no corpo da requisição
+        $serviceMap = [
+            'PAC' => 1,
+            'SEDEX' => 2,
+            '.Package' => 3,
+            // Adicione mais opções conforme necessário
+        ];
+
+        // Verifica se o frete selecionado está no mapeamento e atribui o código correspondente
+        $freteSelecionado = $payment->frete_selecionado;
+        $service = isset($serviceMap[$freteSelecionado]) ? $serviceMap[$freteSelecionado] : null;
+
+
+        //dd($service);/////////////////////////
         $ch = curl_init();
 
         curl_setopt($ch, CURLOPT_URL, 'https://sandbox.melhorenvio.com.br/api/v2/me/cart');
@@ -129,7 +165,7 @@ class PainelAdministrativoController extends Controller
 
         // Corpo da requisição
         $payload = json_encode([
-            'service' => 1,
+            'service' => $service,
             'from' => [
                 'name' => 'Alan Pontes da Silva',
                 'phone' => '5511967692383',
@@ -144,17 +180,17 @@ class PainelAdministrativoController extends Controller
                 'country_id' => 'BR'
             ],
             'to' => [
-                'name' => 'Ana Cariline Melo Xavier',
-                'phone' => '5551980388229',
-                'document' => '03541475013',
-                'address' => 'Rua Exemplo',
-                'complement' => '',
-                'number' => '456',
-                'district' => 'Bairro',
-                'postal_code' => '02002000',
-                'city' => 'Igrejinha',
-                'state_abbr' => 'RS',
-                'country_id' => 'BR'
+                'name' => $user->name, // Supondo que o nome do usuário está no campo 'name'
+                'phone' => $user->celular, // Supondo que o telefone está no campo 'phone'
+                'document' => $user->cpf, // Supondo que o CPF está no campo 'document'
+                'address' => $user->rua, // Endereço do usuário
+                'complement' => $user->complemento, // Complemento
+                'number' => $user->numero, // Número do endereço
+                'district' => $user->bairro, // Bairro
+                'postal_code' => $user->cep, // CEP
+                'city' => $user->cidade, // Cidade
+                'state_abbr' => $user->estado, // Estado
+                'country_id' => 'BR' // País
             ],
             'volumes' => [
                 [
@@ -166,16 +202,18 @@ class PainelAdministrativoController extends Controller
 
             ],
             'options' => [
-                'insurance_value' => 50.00,
+                //abaixo defini para seguradora pagar 50% do valor total da copra em caso de extravio
+                //isso influencia no valor total do frete
+                'insurance_value' => $payment->valor * 0.5,//valor que seguradora pagará em caso de estravio de produto
                 'receipt' => false,
                 'own_hand' => false,
                 'reverse' => false,
-                'non_commercial' => true,
-                'platform' => 'Minha plataforma',
+                'non_commercial' => true, //false = Indica que o envio é comercial e pode incluir documentos fiscais como nota fiscal ou declaração de conteudo
+                'platform' => 'Site Cintra Beauty',
                 'tags' => [
                     [
-                        'tag' => 50000000000001,
-                        'url' => 'https://www.minha-plataforma.com/pedido/123'
+                        'tag' => "Minha conta",
+                        'url' => 'https://cintrabeauty.com.br/my_acount'
                     ]
                 ]
             ]
