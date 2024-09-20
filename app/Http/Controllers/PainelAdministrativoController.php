@@ -183,11 +183,11 @@ class PainelAdministrativoController extends Controller
 
         curl_setopt($ch, CURLOPT_POSTFIELDS, $payload);
 
-        dump('Início da função adicionarAoCarrinho'); // Depuração
+        //dump('Início da função adicionarAoCarrinho'); // Depuração
 
         $response = curl_exec($ch);
 
-        dump('Resposta do carrinho: ', $response); // Depuração
+        //dump('Resposta do carrinho: ', $response); // Depuração
 
         $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
 
