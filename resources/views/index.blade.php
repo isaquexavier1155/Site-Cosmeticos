@@ -1519,6 +1519,7 @@
 																	// Atualizar o total de itens no carrinho
 																	updateCartItemCount();
 																	updateTotal();
+																	window.location.reload(); // Recarrega a página
 																} else {
 																	console.error('Erro ao remover item do carrinho:', data.error);
 																}
