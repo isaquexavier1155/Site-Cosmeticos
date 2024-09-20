@@ -88,14 +88,14 @@ Route::post('/salvar-dados-entrega', [FreteController::class, 'salvarDadosEntreg
 Route::post('/calcular-frete', [FreteController::class, 'calcularFrete'])->name('calcular-frete');
 
 // Rota para o Painel Administrativo
-Route::get('/painel-administrativo', [PainelAdministrativoController::class, 'index'])
+Route::get('/my_purchases', [PainelAdministrativoController::class, 'index'])
     ->name('painel-administrativo');
 
 //Rota para atualizar status manualmente no painel administrativo
 Route::patch('/sales/{id}/status', [PainelAdministrativoController::class, 'updateStatus'])->name('sales.updateStatus');
 
 //Rota para gerar a etiqueta de envio de mercadoria
-Route::post('/painel/gerar-etiqueta/{paymentId}', [PainelAdministrativoController::class, 'gerarEtiqueta'])->name('painel.gerarEtiqueta');
+Route::post('/gerar-etiqueta/{saleId}', [PainelAdministrativoController::class, 'gerarEtiquetaCompleta'])->name('painel.gerarEtiqueta');
 
 
 /* ////////////////////////////////////////////////////////////////////////////////////////////////////////

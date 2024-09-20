@@ -261,8 +261,7 @@
                                 <div class="d-flex justify-content-end mt-2">
                                     @if (isset($sale['etiqueta_url']) && $sale['etiqueta_url'])
                                         <a href="{{ $sale['etiqueta_url'] }}" class="btn btn-secondary btn-sm ms-2"
-                                            target="_blank">Imprimir
-                                            Etiqueta</a>
+                                            target="_blank">Imprimir Etiqueta</a>
                                     @else
                                         <form action="{{ route('painel.gerarEtiqueta', $sale['id']) }}" method="POST">
                                             @csrf
@@ -270,6 +269,7 @@
                                         </form>
                                     @endif
                                 </div>
+
 
                                 @if (session('success'))
                                     <div class="alert alert-success mt-3">
