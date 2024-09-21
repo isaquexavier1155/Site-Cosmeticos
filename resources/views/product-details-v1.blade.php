@@ -729,6 +729,72 @@
                             height="76" alt="Glowing - Bootstrap 5 HTML Templates">
 
                         <div class="icons-actions d-flex justify-content-end w-xl-50 fs-28px text-body-emphasis">
+                            <div class="px-5 d-none d-xl-inline-block dropdown">
+                                <a class="lh-1 color-inherit text-decoration-none dropdown-toggle" href="#"
+                                    id="dropdownAccount" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <!-- Ícone de conta usando Font Awesome (ou similar) -->
+                                    <i class="fas fa-user-circle" style="font-size: 1.5rem;" title="Conta"></i>
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownAccount">
+
+                                    <!-- Verificar se o usuário está autenticado e é admin -->
+                                    @if(auth()->check() && auth()->user()->isAdmin())
+                                        <li>
+                                            <a class="dropdown-item" href="{{ route('painel-administrativo') }}">
+                                                Gerenciar
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="{{ route('logout') }}"
+                                                onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                                Sair
+                                            </a>
+
+                                            <!-- Formulário oculto para enviar a requisição POST para o logout -->
+                                            <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                                style="display: none;">
+                                                @csrf
+                                            </form>
+                                        </li>
+
+                                        <!-- Verificar se o usuário está autenticado e não é admin -->
+                                    @elseif(auth()->check())
+                                        <li>
+                                            <a class="dropdown-item" href="{{ route('painel-administrativo') }}">
+                                                Minhas Compras
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="{{ route('logout') }}"
+                                                onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                                Sair
+                                            </a>
+
+                                            <!-- Formulário oculto para enviar a requisição POST para o logout -->
+                                            <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                                style="display: none;">
+                                                @csrf
+                                            </form>
+                                        </li>
+
+                                        <!-- Verificar se o usuário não está autenticado -->
+                                    @else
+                                        <li>
+                                            <!-- <a class="dropdown-item" href="{{ route('login') }}">
+                                                                    Entrar
+                                                                </a> -->
+                                            <a class="dropdown-item" href="#" data-bs-toggle="modal"
+                                                data-bs-target="#signInModal">
+                                                Entrar
+                                            </a>
+                                        </li>
+                                    @endif
+
+
+                                </ul>
+                            </div>
+
+                            <!-- ícone de lupa para pesquisar -->
                             <!-- <div class="px-xl-5 d-inline-block">
                                 <a class="lh-1 color-inherit text-decoration-none" href="#" data-bs-toggle="offcanvas"
                                     data-bs-target="#searchModal" aria-controls="searchModal" aria-expanded="false">
@@ -832,18 +898,7 @@
                             </div>
                         </div>
                 </div>
-                @guest
-                    <a href="{{ route('login') }}"
-                        class="bd-theme btn btn-link nav-link  d-inline-flex align-items-center justify-content-center text-primary p-0 position-relative rounded-circle">Entrar</a>
-                @endguest
 
-                @auth
-                    <form method="POST" action="{{ route('logout') }}">
-                        @csrf
-                        <button type="submit"
-                            class="bd-theme btn btn-link nav-link  d-inline-flex align-items-center justify-content-center text-primary p-0 position-relative rounded-circle">Sair</button>
-                    </form>
-                @endauth
             </div>
         </div>
     </header>
@@ -1162,7 +1217,7 @@
                             }
 
                             function addToCart(productId, quantity) {
-                               // console.log('Enviando dados para adicionar ao carrinho...');
+                                // console.log('Enviando dados para adicionar ao carrinho...');
 
                                 fetch('{{ route("carrinho.adicionar") }}', {
                                     method: 'POST',
@@ -1180,7 +1235,7 @@
                                         } else if (response.status === 401) {
                                             // Redirecionar para a página de login se o status for 401
                                             window.location.href = '{{ route("login") }}';
-                                           // console.log('Usuário não autenticado. Redirecionando para a página de login.');
+                                            // console.log('Usuário não autenticado. Redirecionando para a página de login.');
                                             throw new Error('Usuário não autenticado.');
                                         } else {
                                             console.warn('Status da resposta não é OK, algo deu errado.');
@@ -1188,10 +1243,10 @@
                                         }
                                     })
                                     .then(data => {
-                                      //  console.log('Dados recebidos:', data);
+                                        //  console.log('Dados recebidos:', data);
 
                                         if (data.success) {
-                                           // console.log('Produto adicionado com sucesso.');
+                                            // console.log('Produto adicionado com sucesso.');
 
                                             // Armazena um valor no sessionStorage para indicar que o produto foi adicionado
                                             sessionStorage.setItem('cart_added', 'true');
@@ -1606,24 +1661,24 @@
                                 @endif
 
                                 <!-- <div class="position-absolute d-flex z-index-2 product-actions vertical">
-                                                                                                                                                        <a class="text-body-emphasis bg-body bg-dark-hover text-light-hover rounded-circle square product-action shadow-sm quick-view sm" href="#" data-bs-toggle="tooltip" data-bs-placement="left" data-bs-title="Quick View">
-                                                                                                                                                            <span data-bs-toggle="modal" data-bs-target="#quickViewModal" class="d-flex align-items-center justify-content-center">
-                                                                                                                                                                <svg class="icon icon-eye-light">
-                                                                                                                                                                    <use xlink:href="#icon-eye-light"></use>
-                                                                                                                                                                </svg>
-                                                                                                                                                            </span>
-                                                                                                                                                        </a>
-                                                                                                                                                        <a class="text-body-emphasis bg-body bg-dark-hover text-light-hover rounded-circle square product-action shadow-sm wishlist sm" href="#" data-bs-toggle="tooltip" data-bs-placement="left" data-bs-title="Add To Wishlist">
-                                                                                                                                                            <svg class="icon icon-star-light">
-                                                                                                                                                                <use xlink:href="#icon-star-light"></use>
-                                                                                                                                                            </svg>
-                                                                                                                                                        </a>
-                                                                                                                                                        <a class="text-body-emphasis bg-body bg-dark-hover text-light-hover rounded-circle square product-action shadow-sm compare sm" href="#" data-bs-toggle="tooltip" data-bs-placement="left" data-bs-title="Compare">
-                                                                                                                                                            <svg class="icon icon-arrows-left-right-light">
-                                                                                                                                                                <use xlink:href="#icon-arrows-left-right-light"></use>
-                                                                                                                                                            </svg>
-                                                                                                                                                        </a>
-                                                                                                                                                    </div> -->
+                                                                                                                                                                    <a class="text-body-emphasis bg-body bg-dark-hover text-light-hover rounded-circle square product-action shadow-sm quick-view sm" href="#" data-bs-toggle="tooltip" data-bs-placement="left" data-bs-title="Quick View">
+                                                                                                                                                                        <span data-bs-toggle="modal" data-bs-target="#quickViewModal" class="d-flex align-items-center justify-content-center">
+                                                                                                                                                                            <svg class="icon icon-eye-light">
+                                                                                                                                                                                <use xlink:href="#icon-eye-light"></use>
+                                                                                                                                                                            </svg>
+                                                                                                                                                                        </span>
+                                                                                                                                                                    </a>
+                                                                                                                                                                    <a class="text-body-emphasis bg-body bg-dark-hover text-light-hover rounded-circle square product-action shadow-sm wishlist sm" href="#" data-bs-toggle="tooltip" data-bs-placement="left" data-bs-title="Add To Wishlist">
+                                                                                                                                                                        <svg class="icon icon-star-light">
+                                                                                                                                                                            <use xlink:href="#icon-star-light"></use>
+                                                                                                                                                                        </svg>
+                                                                                                                                                                    </a>
+                                                                                                                                                                    <a class="text-body-emphasis bg-body bg-dark-hover text-light-hover rounded-circle square product-action shadow-sm compare sm" href="#" data-bs-toggle="tooltip" data-bs-placement="left" data-bs-title="Compare">
+                                                                                                                                                                        <svg class="icon icon-arrows-left-right-light">
+                                                                                                                                                                            <use xlink:href="#icon-arrows-left-right-light"></use>
+                                                                                                                                                                        </svg>
+                                                                                                                                                                    </a>
+                                                                                                                                                                </div> -->
                                 <a href="#"
                                     class="btn btn-add-to-cart btn-dark btn-hover-bg-primary btn-hover-border-primary position-absolute z-index-2 text-nowrap btn-sm px-6 py-3 lh-2">Adicionar
                                     ao Carrinho</a>
@@ -3617,6 +3672,71 @@
                     </form>
                 </div>
                 <div class="icons-actions col-xl-3 d-flex justify-content-end fs-28px text-body-emphasis">
+                    <div class="px-5 d-none d-xl-inline-block dropdown">
+                        <a class="lh-1 color-inherit text-decoration-none dropdown-toggle" href="#" id="dropdownAccount"
+                            role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <!-- Ícone de conta usando Font Awesome (ou similar) -->
+                            <i class="fas fa-user-circle" style="font-size: 1.5rem;" title="Conta"></i>
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownAccount">
+
+                            <!-- Verificar se o usuário está autenticado e é admin -->
+                            @if(auth()->check() && auth()->user()->isAdmin())
+                                <li>
+                                    <a class="dropdown-item" href="{{ route('painel-administrativo') }}">
+                                        Gerenciar
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                        Sair
+                                    </a>
+
+                                    <!-- Formulário oculto para enviar a requisição POST para o logout -->
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                        style="display: none;">
+                                        @csrf
+                                    </form>
+                                </li>
+
+                                <!-- Verificar se o usuário está autenticado e não é admin -->
+                            @elseif(auth()->check())
+                                <li>
+                                    <a class="dropdown-item" href="{{ route('painel-administrativo') }}">
+                                        Minhas Compras
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                        Sair
+                                    </a>
+
+                                    <!-- Formulário oculto para enviar a requisição POST para o logout -->
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                        style="display: none;">
+                                        @csrf
+                                    </form>
+                                </li>
+
+                                <!-- Verificar se o usuário não está autenticado -->
+                            @else
+                                <li>
+                                    <!-- <a class="dropdown-item" href="{{ route('login') }}">
+                                                                            Entrar
+                                                                        </a> -->
+                                    <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#signInModal">
+                                        Entrar
+                                    </a>
+                                </li>
+                            @endif
+
+
+                        </ul>
+                    </div>
+
+
                     <!-- <div class="px-5 d-none d-xl-inline-block">
                         <a class="lh-1 color-inherit text-decoration-none" href="#" data-bs-toggle="modal"
                             data-bs-target="#signInModal">
@@ -3812,193 +3932,198 @@
         Responsavel por passar para a proxima view o tipo de frete selecionado no carrinho-->
 
         <script>
-			let selectedFretePrice = 0; // Variável para armazenar o valor do frete selecionado
-			let selectedFreteOption = ''; // Variável para armazenar a opção de frete selecionada (ID ou nome)
-			let originalTotal; // Variável para armazenar o valor total original
+            let selectedFretePrice = 0; // Variável para armazenar o valor do frete selecionado
+            let selectedFreteOption = ''; // Variável para armazenar a opção de frete selecionada (ID ou nome)
+            let originalTotal; // Variável para armazenar o valor total original
 
-			document.getElementById('calcularFreteBtn').addEventListener('click', function () {
-				const cep = document.getElementById('cep').value;
+            document.getElementById('calcularFreteBtn').addEventListener('click', function () {
+                const cep = document.getElementById('cep').value;
 
-				if (!cep) {
-					alert('Por favor, informe um CEP.');
-					return;
-				}
+                if (!cep) {
+                    alert('Por favor, informe um CEP.');
+                    return;
+                }
 
-				fetch('{{ route('calcular-frete') }}', {
-					method: 'POST',
-					headers: {
-						'Content-Type': 'application/json',
-						'X-CSRF-TOKEN': '{{ csrf_token() }}'
-					},
-					body: JSON.stringify({ cep: cep })
-				})
-					.then(response => response.json())
-					.then(data => {
-						if (data.error) {
-							alert(data.error);
-							return;
-						}
+                fetch('{{ route('calcular-frete') }}', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                    },
+                    body: JSON.stringify({ cep: cep })
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.error) {
+                            alert(data.error);
+                            return;
+                        }
 
-						const freteResultDiv = document.getElementById('frete-result');
-						const freteValorSpan = document.getElementById('frete-valor');
-						freteValorSpan.innerHTML = ''; // Limpar as opções anteriores
+                        const freteResultDiv = document.getElementById('frete-result');
+                        const freteValorSpan = document.getElementById('frete-valor');
+                        freteValorSpan.innerHTML = ''; // Limpar as opções anteriores
 
-						// Armazena o valor total original
-						originalTotal = parseFloat(document.getElementById('hidden-total').value);
+                        // Armazena o valor total original
+                        originalTotal = parseFloat(document.getElementById('hidden-total').value);
 
-						data.forEach(option => {
-							const price = parseFloat(option.price); // Convertendo o preço para número
-							const deliveryTime = option.delivery_time;
-							const companyName = option.name;
-							const companyImage = option.company.picture; // Imagem da transportadora
+                        data.forEach(option => {
+                            const price = parseFloat(option.price); // Convertendo o preço para número
+                            const deliveryTime = option.delivery_time;
+                            const companyName = option.name;
+                            const companyImage = option.company.picture; // Imagem da transportadora
 
-							// Criar e adicionar elementos de exibição
-							const optionDiv = document.createElement('div');
-							optionDiv.classList.add('frete-option');
-							optionDiv.innerHTML = `
+                            // Criar e adicionar elementos de exibição
+                            const optionDiv = document.createElement('div');
+                            optionDiv.classList.add('frete-option');
+                            optionDiv.innerHTML = `
 					<input type="radio" name="frete" value="${price}" id="frete-${option.id}" class="me-2">
 					<label for="frete-${option.id}">
 						<img src="${companyImage}" alt="${companyName}" style="width: 50px; height: auto; margin-right: 10px;">
 						<strong>${companyName}:</strong> R$${price} - ${deliveryTime} dias úteis
 					</label>
 				`;
-							freteValorSpan.appendChild(optionDiv);
+                            freteValorSpan.appendChild(optionDiv);
 
-							// Atualiza o valor e a opção de frete selecionada quando a opção é alterada
-							document.querySelector(`input[name="frete"][value="${price}"]`).addEventListener('change', function () {
-								selectedFretePrice = price;
-								selectedFreteOption = companyName; // Captura o nome da transportadora
-								updateTotalPrice();
-								enableFinalizeButton(); // Habilita o botão de finalizar compra
-							});
-						});
+                            // Atualiza o valor e a opção de frete selecionada quando a opção é alterada
+                            document.querySelector(`input[name="frete"][value="${price}"]`).addEventListener('change', function () {
+                                selectedFretePrice = price;
+                                selectedFreteOption = companyName; // Captura o nome da transportadora
+                                updateTotalPrice();
+                                enableFinalizeButton(); // Habilita o botão de finalizar compra
+                            });
+                        });
 
-						freteResultDiv.classList.remove('d-none');
-					})
-					.catch(error => {
-						console.error('Erro ao calcular o frete:', error);
-						alert('Erro ao calcular o frete.');
-					});
-			});
+                        freteResultDiv.classList.remove('d-none');
+                    })
+                    .catch(error => {
+                        console.error('Erro ao calcular o frete:', error);
+                        alert('Erro ao calcular o frete.');
+                    });
+            });
 
-			// Atualizar o preço total
-			function updateTotalPrice() {
-				const cartTotalElement = document.getElementById('cart-total');
-				const hiddenAmountElement = document.getElementById('hidden-amount');
+            // Atualizar o preço total
+            function updateTotalPrice() {
+                const cartTotalElement = document.getElementById('cart-total');
+                const hiddenAmountElement = document.getElementById('hidden-amount');
 
-				// Atualiza o valor do preço total
-				const newTotal = originalTotal + selectedFretePrice;
-				cartTotalElement.textContent = `R$${newTotal.toFixed(2).replace('.', ',')}`;
-				hiddenAmountElement.value = newTotal.toFixed(2); // Atualiza o valor escondido para o formulário
-			}
+                // Atualiza o valor do preço total
+                const newTotal = originalTotal + selectedFretePrice;
+                cartTotalElement.textContent = `R$${newTotal.toFixed(2).replace('.', ',')}`;
+                hiddenAmountElement.value = newTotal.toFixed(2); // Atualiza o valor escondido para o formulário
+            }
 
-			// Habilitar o botão de finalizar compra
-			function enableFinalizeButton() {
-				const finalizeButton = document.getElementById('finalizar-compra-btn');
-				const hiddenFreteOption = document.getElementById('hidden-frete-option');
+            // Habilitar o botão de finalizar compra
+            function enableFinalizeButton() {
+                const finalizeButton = document.getElementById('finalizar-compra-btn');
+                const hiddenFreteOption = document.getElementById('hidden-frete-option');
 
-				// Armazena a opção de frete selecionada no campo oculto
-				hiddenFreteOption.value = selectedFreteOption;
+                // Armazena a opção de frete selecionada no campo oculto
+                hiddenFreteOption.value = selectedFreteOption;
 
-				finalizeButton.disabled = false;
-			}
-		</script>
+                finalizeButton.disabled = false;
+            }
+        </script>
 
     </div>
 
 
     <!--  Fim  adicionar ao Carrinho - Carrinho de compras: -->
 
+    <!-- Modal de Login original ajustado -->
     <div class="modal" id="signInModal" tabindex="-1" aria-labelledby="signInModal" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
             <div class="modal-content">
                 <div class="modal-header text-center border-0 pb-0">
                     <button type="button" class="btn-close position-absolute end-5 top-5" data-bs-dismiss="modal"
-                        aria-label="Close"></button>
-                    <h3 class="modal-title w-100" id="signInModalLabel">Sign In</h3>
+                        aria-label="Fechar"></button>
+                    <h3 class="modal-title w-100" id="signInModalLabel">Entrar</h3>
                 </div>
                 <div class="modal-body px-sm-13 px-8">
-                    <p class="text-center fs-16 mb-10">Don’t have an account yet? <a href="#" data-bs-toggle="modal"
-                            data-bs-target="#signUpModal" class="text-black">Sign up</a> for free</p>
-                    <form action="#">
-                        <input name="email" type="email" class="form-control mb-5" placeholder="Your email" required>
-                        <input name="password" type="password" class="form-control" placeholder="Password" required>
+                    <p class="text-center fs-16 mb-10">Ainda não tem uma conta? <a href="#" data-bs-toggle="modal"
+                            data-bs-target="#signUpModal" class="text-black">Cadastre-se</a> gratuitamente</p>
+                    <form action="{{ route('login') }}" method="POST">
+                        @csrf
+                        <input name="email" type="email" class="form-control mb-5" placeholder="Seu email" required>
+                        <input name="password" type="password" class="form-control" placeholder="Senha" required>
                         <div class="d-flex align-items-center justify-content-between mt-8 mb-7">
                             <div class="custom-control d-flex form-check">
-                                <input name="stay-signed-in" type="checkbox" class="form-check-input rounded-0 me-3"
+                                <input name="remember" type="checkbox" class="form-check-input rounded-0 me-3"
                                     id="staySignedIn">
-                                <label class="custom-control-label text-body" for="staySignedIn">Stay signed in</label>
+                                <label class="custom-control-label text-body" for="staySignedIn">Manter
+                                    conectado</label>
                             </div>
-                            <a href="#" class="text-secondary">Forgot your password?</a>
+                            <!-- <a href="{{ route('password.request') }}" class="text-secondary">Esqueceu sua senha?</a> -->
                         </div>
-                        <button type="submit" value="Login"
-                            class="btn btn-dark btn-hover-bg-primary btn-hover-border-primary w-100">Log In</button>
+                        <button type="submit"
+                            class="btn btn-dark btn-hover-bg-primary btn-hover-border-primary w-100">Entrar</button>
                     </form>
                 </div>
                 <div class="modal-footer px-13 pt-0 pb-12 border-0">
-                    <div class="border-bottom w-100"></div>
-                    <div class="text-center lh-1 mb-8 w-100 mt-n5">
-                        <span class="fs-14 bg-body lh-1 px-4">or Log-in with</span>
-                    </div>
-                    <div class="d-flex w-100">
-                        <a href="#"
-                            class="btn btn-outline-secondary w-100 border-2x me-5 btn-hover-bg-primary btn-hover-border-primary"><i
-                                class="fab fa-facebook-f me-4" style="color: #2E58B2"></i>Facebook</a>
-                        <a href="#"
-                            class="btn btn-outline-secondary w-100 border-2x mt-0 btn-hover-bg-primary btn-hover-border-primary"><i
-                                class="fab fa-google me-4" style="color: #DD4B39"></i>Google</a>
-                    </div>
+                    <!-- <div class="border-bottom w-100"></div>
+					<div class="text-center lh-1 mb-8 w-100 mt-n5">
+						<span class="fs-14 bg-body lh-1 px-4">ou faça login com</span>
+					</div>
+					<div class="d-flex w-100">
+						<a href="#"
+							class="btn btn-outline-secondary w-100 border-2x me-5 btn-hover-bg-primary btn-hover-border-primary">
+							<i class="fab fa-facebook-f me-4" style="color: #2E58B2"></i>Facebook</a>
+						<a href="#"
+							class="btn btn-outline-secondary w-100 border-2x mt-0 btn-hover-bg-primary btn-hover-border-primary">
+							<i class="fab fa-google me-4" style="color: #DD4B39"></i>Google</a>
+					</div> -->
                 </div>
             </div>
         </div>
     </div>
 
+    <!-- Modal de Criação de Conta -->
     <div class="modal" id="signUpModal" tabindex="-1" aria-labelledby="signUpModal" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
             <div class="modal-content">
                 <div class="modal-header text-center border-0 pb-0">
                     <button type="button" class="btn-close position-absolute end-5 top-5" data-bs-dismiss="modal"
-                        aria-label="Close"></button>
-                    <h3 class="modal-title w-100" id="signUpModalLabel">Sign Up</h3>
+                        aria-label="Fechar"></button>
+                    <h3 class="modal-title w-100" id="signUpModalLabel">Criar Conta</h3>
                 </div>
                 <div class="modal-body px-sm-13 px-8">
-                    <p class="text-center fs-16 mb-10">Already have an account? <a href="#" data-bs-toggle="modal"
-                            data-bs-target="#signInModal" class="text-black">Log in</a></p>
-                    <form action="#">
-                        <input name="first-name" type="text" class="form-control border-1 mb-5" placeholder="First name"
+                    <p class="text-center fs-16 mb-10">Já tem uma conta? <a href="#" data-bs-toggle="modal"
+                            data-bs-target="#signInModal" class="text-black">Entrar</a></p>
+                    <form action="{{ route('register') }}" method="POST">
+                        @csrf
+                        <input name="name" type="text" class="form-control border-1 mb-5" placeholder="Nome" required>
+                        <input name="email" type="email" class="form-control border-1 mb-5" placeholder="Seu email"
                             required>
-                        <input name="last-name" type="text" class="form-control border-1 mb-5" placeholder="Last name"
+                        <input name="password" type="password" class="form-control border-1 mb-5" placeholder="Senha"
                             required>
-                        <input name="email" type="email" class="form-control border-1 mb-5" placeholder="Your email"
-                            required>
-                        <input name="password" type="password" class="form-control border-1" placeholder="Password"
-                            required>
+                        <input name="password_confirmation" type="password" class="form-control border-1"
+                            placeholder="Confirmação de Senha" required>
                         <div class="d-flex align-items-center mt-8 mb-7">
                             <div class="form-check">
                                 <input name="agree-policy-terms" type="checkbox" class="form-check-input rounded-0 me-3"
-                                    id="agreePolicyTerm">
-                                <label class="custom-control-label text-body" for="agreePolicyTerm">Yes, I agree with
-                                    Grace <a href="#" class="text-black">Privacy Policy</a> and <a href="#"
-                                        class="text-black">Terms of Use</a></label>
+                                    id="agreePolicyTerm" required>
+                                <label class="custom-control-label text-body" for="agreePolicyTerm">Sim, concordo com a
+                                    <a href="#" class="text-black">Política de Privacidade</a> e com os
+                                    <a href="#" class="text-black">Termos de Uso</a></label>
                             </div>
                         </div>
-                        <button type="submit" value="Sign Up"
-                            class="btn btn-dark btn-hover-bg-primary btn-hover-border-primary w-100">Sign Up</button>
+                        <button type="submit"
+                            class="btn btn-dark btn-hover-bg-primary btn-hover-border-primary w-100">Criar
+                            Conta</button>
                     </form>
                 </div>
                 <div class="modal-footer px-13 pt-0 pb-12 border-0">
-                    <div class="border-bottom w-100"></div>
-                    <div class="text-center lh-1 mb-8 w-100 mt-n5">
-                        <span class="fs-14 bg-body lh-1 px-4">or Sign Up with</span>
-                    </div>
-                    <div class="d-flex w-100">
-                        <a href="#"
-                            class="btn btn-outline-secondary w-100 border-2x me-5 btn-hover-bg-primary btn-hover-border-primary"><i
-                                class="fab fa-facebook-f me-4" style="color: #2E58B2"></i>Facebook</a>
-                        <a href="#"
-                            class="btn btn-outline-secondary w-100 border-2x mt-0 btn-hover-bg-primary btn-hover-border-primary"><i
-                                class="fab fa-google me-4" style="color: #DD4B39"></i>Google</a>
-                    </div>
+                    <!-- <div class="border-bottom w-100"></div> -->
+                    <!-- <div class="text-center lh-1 mb-8 w-100 mt-n5">
+						<span class="fs-14 bg-body lh-1 px-4">ou crie sua conta com</span>
+					</div> -->
+                    <!-- <div class="d-flex w-100">
+						<a href="#"
+							class="btn btn-outline-secondary w-100 border-2x me-5 btn-hover-bg-primary btn-hover-border-primary">
+							<i class="fab fa-facebook-f me-4" style="color: #2E58B2"></i>Facebook</a>
+						<a href="#"
+							class="btn btn-outline-secondary w-100 border-2x mt-0 btn-hover-bg-primary btn-hover-border-primary">
+							<i class="fab fa-google me-4" style="color: #DD4B39"></i>Google</a>
+					</div> -->
                 </div>
             </div>
         </div>
