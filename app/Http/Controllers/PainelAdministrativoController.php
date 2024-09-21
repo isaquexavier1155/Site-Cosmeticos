@@ -135,7 +135,10 @@ class PainelAdministrativoController extends Controller
         //$id = "9d0eae98-6129-439b-a366-07354cffabcd"; // Remover isso
 
         curl_setopt_array($curl, array(
-            CURLOPT_URL => 'https://sandbox.melhorenvio.com.br/api/v2/me/shipment/tracking',
+            //produção
+            //CURLOPT_URL => 'https://sandbox.melhorenvio.com.br/api/v2/me/shipment/tracking',
+            //desenvolvimento
+            CURLOPT_URL => 'https://melhorenvio.com.br/api/v2/me/shipment/tracking',
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_ENCODING => '',
             CURLOPT_MAXREDIRS => 10,
@@ -269,7 +272,10 @@ class PainelAdministrativoController extends Controller
         //dd($service);/////////////////////////
         $ch = curl_init();
 
-        curl_setopt($ch, CURLOPT_URL, 'https://sandbox.melhorenvio.com.br/api/v2/me/cart');
+        //desenvolvimento
+        //curl_setopt($ch, CURLOPT_URL, 'https://sandbox.melhorenvio.com.br/api/v2/me/cart');
+        //produção
+        curl_setopt($ch, CURLOPT_URL, 'https://melhorenvio.com.br/api/v2/me/cart');
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_POST, true);
         curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false); // Desativa a verificação de SSL
@@ -384,7 +390,10 @@ class PainelAdministrativoController extends Controller
             $curl = curl_init();
 
             curl_setopt_array($curl, array(
-                CURLOPT_URL => 'https://sandbox.melhorenvio.com.br/api/v2/me/shipment/checkout',
+                //desenvolvimento
+                //CURLOPT_URL => 'https://sandbox.melhorenvio.com.br/api/v2/me/shipment/checkout',
+                //produção
+                CURLOPT_URL => 'https://melhorenvio.com.br/api/v2/me/shipment/checkout',
                 CURLOPT_RETURNTRANSFER => true,
                 CURLOPT_ENCODING => '',
                 CURLOPT_MAXREDIRS => 10,
@@ -445,7 +454,10 @@ class PainelAdministrativoController extends Controller
             $ch = curl_init();
 
             // Define a URL da API de sandbox (trocar pela URL de produção depois)
-            curl_setopt($ch, CURLOPT_URL, 'https://sandbox.melhorenvio.com.br/api/v2/me/shipment/print');
+            //em desenvolvimento deixar linha abaixo
+            //curl_setopt($ch, CURLOPT_URL, 'https://sandbox.melhorenvio.com.br/api/v2/me/shipment/print');
+            //em produção deixar linha abaixo
+            curl_setopt($ch, CURLOPT_URL, 'https://melhorenvio.com.br/api/v2/me/shipment/print');
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
             curl_setopt($ch, CURLOPT_POST, true);
             curl_setopt($ch, CURLOPT_HTTPHEADER, [
@@ -462,7 +474,7 @@ class PainelAdministrativoController extends Controller
             curl_setopt($ch, CURLOPT_POSTFIELDS, $payload);
 
             // Desativa a verificação de SSL para desenvolvimento
-            curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+            //curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 
             // Executa a requisição cURL
             $response = curl_exec($ch);
