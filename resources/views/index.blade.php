@@ -172,15 +172,12 @@
 
 							<ul class="navbar-nav w-100 w-xl-auto">
 
-
-
-
-
 								<li
 									class="nav-item transition-all-xl-1 py-xl-11 py-0 px-xxl-8 px-xl-6 dropdown dropdown-hover dropdown-fullwidth">
 									<a class="nav-link d-flex justify-content-between position-relative py-xl-0 px-xl-0 text-uppercase fw-semibold ls-1 fs-15px fs-xl-14px dropdown-toggle"
 										href="/" id="menu-item-home" aria-haspopup="true"
 										aria-expanded="false">Início</a>
+									<!-- link Início na tela index  -->
 
 									<!-- <div class="dropdown-menu mega-menu start-0 py-6 " aria-labelledby="menu-item-home"
 										style="width:320px">
@@ -859,9 +856,76 @@
 		
 	</li> -->
 							</ul>
-							
+
+							<!-- ícone de user para conta -->
 							<div class="icons-actions d-flex justify-content-end ms-auto fs-28px text-white">
-								<!-- Icone de user para login -->
+								<div class="px-5 d-none d-xl-inline-block dropdown">
+									<a class="lh-1 color-inherit text-decoration-none dropdown-toggle" href="#"
+										id="dropdownAccount" role="button" data-bs-toggle="dropdown"
+										aria-expanded="false">
+										<!-- Ícone de conta usando Font Awesome (ou similar) -->
+										<i class="fas fa-user-circle" style="font-size: 1.5rem;" title="Conta"></i>
+									</a>
+									<ul class="dropdown-menu" aria-labelledby="dropdownAccount">
+
+										<!-- Verificar se o usuário está autenticado e é admin -->
+										@if(auth()->check() && auth()->user()->isAdmin())
+											<li>
+												<a class="dropdown-item" href="{{ route('painel-administrativo') }}">
+													Gerenciar
+												</a>
+											</li>
+											<li>
+												<a class="dropdown-item" href="{{ route('logout') }}"
+													onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+													Sair
+												</a>
+
+												<!-- Formulário oculto para enviar a requisição POST para o logout -->
+												<form id="logout-form" action="{{ route('logout') }}" method="POST"
+													style="display: none;">
+													@csrf
+												</form>
+											</li>
+
+											<!-- Verificar se o usuário está autenticado e não é admin -->
+										@elseif(auth()->check())
+											<li>
+												<a class="dropdown-item" href="{{ route('painel-administrativo') }}">
+													Minhas Compras
+												</a>
+											</li>
+											<li>
+												<a class="dropdown-item" href="{{ route('logout') }}"
+													onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+													Sair
+												</a>
+
+												<!-- Formulário oculto para enviar a requisição POST para o logout -->
+												<form id="logout-form" action="{{ route('logout') }}" method="POST"
+													style="display: none;">
+													@csrf
+												</form>
+											</li>
+
+											<!-- Verificar se o usuário não está autenticado -->
+										@else
+											<li>
+												<!-- <a class="dropdown-item" href="{{ route('login') }}">
+																Entrar
+															</a> -->
+												<a class="dropdown-item" href="#" data-bs-toggle="modal"
+													data-bs-target="#signInModal">
+													Entrar
+												</a>
+											</li>
+										@endif
+
+
+									</ul>
+								</div>
+
+								<!-- ícone de user para login -->
 								<!-- <div class="px-5 d-none d-xl-inline-block">
 									<a class="lh-1 color-inherit text-decoration-none" href="#" data-bs-toggle="modal"
 										data-bs-target="#signInModal">
@@ -953,18 +1017,7 @@
 						</div>
 					</div>
 				</div>
-				@guest
-					<a href="{{ route('login') }}"
-						class="bd-theme btn btn-link nav-link  d-inline-flex align-items-center justify-content-center text-primary p-0 position-relative rounded-circle">Entrar</a>
-				@endguest
 
-				@auth
-					<form method="POST" action="{{ route('logout') }}">
-						@csrf
-						<button type="submit"
-							class="bd-theme btn btn-link nav-link  d-inline-flex align-items-center justify-content-center text-primary p-0 position-relative rounded-circle">Sair</button>
-					</form>
-				@endauth
 			</div>
 		</div>
 	</header>
@@ -1132,41 +1185,41 @@
 													@endif
 													<!-- <div class="position-absolute d-flex z-index-2 product-actions horizontal">
 
-																																																												<a class="text-body-emphasis bg-body bg-dark-hover text-light-hover rounded-circle square product-action shadow-sm add_to_cart"
-																																																												href="{{ route('carrinho.adicionar') }}" data-bs-toggle="tooltip" data-bs-placement="top"
-																																																												data-bs-title="Add To Cartt">
+																																																																																																																								<a class="text-body-emphasis bg-body bg-dark-hover text-light-hover rounded-circle square product-action shadow-sm add_to_cart"
+																																																																																																																								href="{{ route('carrinho.adicionar') }}" data-bs-toggle="tooltip" data-bs-placement="top"
+																																																																																																																								data-bs-title="Add To Cartt">
 
-																																																												<svg class="icon2 icon-cart">
-																																																													<use xlink:href="#icon-shopping-cart"></use>
-																																																												</svg>
-																																																											</a>
-																																																											<a class="text-body-emphasis bg-body bg-dark-hover text-light-hover rounded-circle square product-action shadow-sm quick-view"
-																																																												href="###" data-bs-toggle="modal" data-bs-target="#quickViewModal"
-																																																												data-id="{{ $produto->id }}" data-nome="{{ $produto->nome }}"
-																																																												data-imagem="{{ $produto->imagem }}" data-bs-toggle="tooltip"
-																																																												data-bs-placement="top" data-bs-title="Ver"
-																																																												onclick="saveProductInfo({{ $produto->id }}, '{{ $produto->nome }}', '{{ $produto->imagem }}', '{{ $produto->descricao }}', '{{ $produto->preco }}', '{{ $produto->preco_promocional }}', '{{ $produto->imagens_adicionais }}')">
-																																																												<span class="d-flex align-items-center justify-content-center">
-																																																													<svg class="icon icon-eye-light">
-																																																														<use xlink:href="#icon-eye-light"></use>
-																																																													</svg>
-																																																												</span>
-																																																											</a>
-																																																											<a class="text-body-emphasis bg-body bg-dark-hover text-light-hover rounded-circle square product-action shadow-sm wishlist"
-																																																												href="#" data-bs-toggle="tooltip" data-bs-placement="top"
-																																																												data-bs-title="Add To Wishlist">
-																																																												<svg class="icon icon-star-light">
-																																																													<use xlink:href="#icon-star-light"></use>
-																																																												</svg>
-																																																											</a>
-																																																											<a class="text-body-emphasis bg-body bg-dark-hover text-light-hover rounded-circle square product-action shadow-sm compare"
-																																																												href="./shop/compare.html" data-bs-toggle="tooltip" data-bs-placement="top"
-																																																												data-bs-title="Compare">
-																																																												<svg class="icon icon-arrows-left-right-light">
-																																																													<use xlink:href="#icon-arrows-left-right-light"></use>
-																																																												</svg>
-																																																											</a>
-																																																										</div> -->
+																																																																																																																								<svg class="icon2 icon-cart">
+																																																																																																																									<use xlink:href="#icon-shopping-cart"></use>
+																																																																																																																								</svg>
+																																																																																																																							</a>
+																																																																																																																							<a class="text-body-emphasis bg-body bg-dark-hover text-light-hover rounded-circle square product-action shadow-sm quick-view"
+																																																																																																																								href="###" data-bs-toggle="modal" data-bs-target="#quickViewModal"
+																																																																																																																								data-id="{{ $produto->id }}" data-nome="{{ $produto->nome }}"
+																																																																																																																								data-imagem="{{ $produto->imagem }}" data-bs-toggle="tooltip"
+																																																																																																																								data-bs-placement="top" data-bs-title="Ver"
+																																																																																																																								onclick="saveProductInfo({{ $produto->id }}, '{{ $produto->nome }}', '{{ $produto->imagem }}', '{{ $produto->descricao }}', '{{ $produto->preco }}', '{{ $produto->preco_promocional }}', '{{ $produto->imagens_adicionais }}')">
+																																																																																																																								<span class="d-flex align-items-center justify-content-center">
+																																																																																																																									<svg class="icon icon-eye-light">
+																																																																																																																										<use xlink:href="#icon-eye-light"></use>
+																																																																																																																									</svg>
+																																																																																																																								</span>
+																																																																																																																							</a>
+																																																																																																																							<a class="text-body-emphasis bg-body bg-dark-hover text-light-hover rounded-circle square product-action shadow-sm wishlist"
+																																																																																																																								href="#" data-bs-toggle="tooltip" data-bs-placement="top"
+																																																																																																																								data-bs-title="Add To Wishlist">
+																																																																																																																								<svg class="icon icon-star-light">
+																																																																																																																									<use xlink:href="#icon-star-light"></use>
+																																																																																																																								</svg>
+																																																																																																																							</a>
+																																																																																																																							<a class="text-body-emphasis bg-body bg-dark-hover text-light-hover rounded-circle square product-action shadow-sm compare"
+																																																																																																																								href="./shop/compare.html" data-bs-toggle="tooltip" data-bs-placement="top"
+																																																																																																																								data-bs-title="Compare">
+																																																																																																																								<svg class="icon icon-arrows-left-right-light">
+																																																																																																																									<use xlink:href="#icon-arrows-left-right-light"></use>
+																																																																																																																								</svg>
+																																																																																																																							</a>
+																																																																																																																						</div> -->
 												</figure>
 												<div class="card-body text-center p-0">
 													<span
@@ -3421,100 +3474,106 @@
 
 	</div>
 
+	<!-- Modal de Login original ajustado -->
 	<div class="modal" id="signInModal" tabindex="-1" aria-labelledby="signInModal" aria-hidden="true">
 		<div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
 			<div class="modal-content">
 				<div class="modal-header text-center border-0 pb-0">
 					<button type="button" class="btn-close position-absolute end-5 top-5" data-bs-dismiss="modal"
-						aria-label="Close"></button>
-					<h3 class="modal-title w-100" id="signInModalLabel">Sign In</h3>
+						aria-label="Fechar"></button>
+					<h3 class="modal-title w-100" id="signInModalLabel">Entrar</h3>
 				</div>
 				<div class="modal-body px-sm-13 px-8">
-					<p class="text-center fs-16 mb-10">Don’t have an account yet? <a href="#" data-bs-toggle="modal"
-							data-bs-target="#signUpModal" class="text-black">Sign up</a> for free</p>
-					<form action="#">
-						<input name="email" type="email" class="form-control mb-5" placeholder="Your email" required>
-						<input name="password" type="password" class="form-control" placeholder="Password" required>
+					<p class="text-center fs-16 mb-10">Ainda não tem uma conta? <a href="#" data-bs-toggle="modal"
+							data-bs-target="#signUpModal" class="text-black">Cadastre-se</a> gratuitamente</p>
+					<form action="{{ route('login') }}" method="POST">
+						@csrf
+						<input name="email" type="email" class="form-control mb-5" placeholder="Seu email" required>
+						<input name="password" type="password" class="form-control" placeholder="Senha" required>
 						<div class="d-flex align-items-center justify-content-between mt-8 mb-7">
 							<div class="custom-control d-flex form-check">
-								<input name="stay-signed-in" type="checkbox" class="form-check-input rounded-0 me-3"
+								<input name="remember" type="checkbox" class="form-check-input rounded-0 me-3"
 									id="staySignedIn">
-								<label class="custom-control-label text-body" for="staySignedIn">Stay signed in</label>
+								<label class="custom-control-label text-body" for="staySignedIn">Manter
+									conectado</label>
 							</div>
-							<a href="#" class="text-secondary">Forgot your password?</a>
+							<!-- <a href="{{ route('password.request') }}" class="text-secondary">Esqueceu sua senha?</a> -->
 						</div>
-						<button type="submit" value="Login"
-							class="btn btn-dark btn-hover-bg-primary btn-hover-border-primary w-100">Log In</button>
+						<button type="submit"
+							class="btn btn-dark btn-hover-bg-primary btn-hover-border-primary w-100">Entrar</button>
 					</form>
 				</div>
 				<div class="modal-footer px-13 pt-0 pb-12 border-0">
-					<div class="border-bottom w-100"></div>
+					<!-- <div class="border-bottom w-100"></div>
 					<div class="text-center lh-1 mb-8 w-100 mt-n5">
-						<span class="fs-14 bg-body lh-1 px-4">or Log-in with</span>
+						<span class="fs-14 bg-body lh-1 px-4">ou faça login com</span>
 					</div>
 					<div class="d-flex w-100">
 						<a href="#"
-							class="btn btn-outline-secondary w-100 border-2x me-5 btn-hover-bg-primary btn-hover-border-primary"><i
-								class="fab fa-facebook-f me-4" style="color: #2E58B2"></i>Facebook</a>
+							class="btn btn-outline-secondary w-100 border-2x me-5 btn-hover-bg-primary btn-hover-border-primary">
+							<i class="fab fa-facebook-f me-4" style="color: #2E58B2"></i>Facebook</a>
 						<a href="#"
-							class="btn btn-outline-secondary w-100 border-2x mt-0 btn-hover-bg-primary btn-hover-border-primary"><i
-								class="fab fa-google me-4" style="color: #DD4B39"></i>Google</a>
-					</div>
+							class="btn btn-outline-secondary w-100 border-2x mt-0 btn-hover-bg-primary btn-hover-border-primary">
+							<i class="fab fa-google me-4" style="color: #DD4B39"></i>Google</a>
+					</div> -->
 				</div>
 			</div>
 		</div>
 	</div>
 
+	<!-- Modal de Criação de Conta -->
 	<div class="modal" id="signUpModal" tabindex="-1" aria-labelledby="signUpModal" aria-hidden="true">
 		<div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
 			<div class="modal-content">
 				<div class="modal-header text-center border-0 pb-0">
 					<button type="button" class="btn-close position-absolute end-5 top-5" data-bs-dismiss="modal"
-						aria-label="Close"></button>
-					<h3 class="modal-title w-100" id="signUpModalLabel">Sign Up</h3>
+						aria-label="Fechar"></button>
+					<h3 class="modal-title w-100" id="signUpModalLabel">Criar Conta</h3>
 				</div>
 				<div class="modal-body px-sm-13 px-8">
-					<p class="text-center fs-16 mb-10">Already have an account? <a href="#" data-bs-toggle="modal"
-							data-bs-target="#signInModal" class="text-black">Log in</a></p>
-					<form action="#">
-						<input name="first-name" type="text" class="form-control border-1 mb-5" placeholder="First name"
+					<p class="text-center fs-16 mb-10">Já tem uma conta? <a href="#" data-bs-toggle="modal"
+							data-bs-target="#signInModal" class="text-black">Entrar</a></p>
+					<form action="{{ route('register') }}" method="POST">
+						@csrf
+						<input name="name" type="text" class="form-control border-1 mb-5" placeholder="Nome" required>
+						<input name="email" type="email" class="form-control border-1 mb-5" placeholder="Seu email"
 							required>
-						<input name="last-name" type="text" class="form-control border-1 mb-5" placeholder="Last name"
+						<input name="password" type="password" class="form-control border-1 mb-5" placeholder="Senha"
 							required>
-						<input name="email" type="email" class="form-control border-1 mb-5" placeholder="Your email"
-							required>
-						<input name="password" type="password" class="form-control border-1" placeholder="Password"
-							required>
+						<input name="password_confirmation" type="password" class="form-control border-1"
+							placeholder="Confirmação de Senha" required>
 						<div class="d-flex align-items-center mt-8 mb-7">
 							<div class="form-check">
 								<input name="agree-policy-terms" type="checkbox" class="form-check-input rounded-0 me-3"
-									id="agreePolicyTerm">
-								<label class="custom-control-label text-body" for="agreePolicyTerm">Yes, I agree with
-									Grace <a href="#" class="text-black">Privacy Policy</a> and <a href="#"
-										class="text-black">Terms of Use</a></label>
+									id="agreePolicyTerm" required>
+								<label class="custom-control-label text-body" for="agreePolicyTerm">Sim, concordo com a
+									<a href="#" class="text-black">Política de Privacidade</a> e com os
+									<a href="#" class="text-black">Termos de Uso</a></label>
 							</div>
 						</div>
-						<button type="submit" value="Sign Up"
-							class="btn btn-dark btn-hover-bg-primary btn-hover-border-primary w-100">Sign Up</button>
+						<button type="submit"
+							class="btn btn-dark btn-hover-bg-primary btn-hover-border-primary w-100">Criar
+							Conta</button>
 					</form>
 				</div>
 				<div class="modal-footer px-13 pt-0 pb-12 border-0">
-					<div class="border-bottom w-100"></div>
-					<div class="text-center lh-1 mb-8 w-100 mt-n5">
-						<span class="fs-14 bg-body lh-1 px-4">or Sign Up with</span>
-					</div>
-					<div class="d-flex w-100">
+					<!-- <div class="border-bottom w-100"></div> -->
+					<!-- <div class="text-center lh-1 mb-8 w-100 mt-n5">
+						<span class="fs-14 bg-body lh-1 px-4">ou crie sua conta com</span>
+					</div> -->
+					<!-- <div class="d-flex w-100">
 						<a href="#"
-							class="btn btn-outline-secondary w-100 border-2x me-5 btn-hover-bg-primary btn-hover-border-primary"><i
-								class="fab fa-facebook-f me-4" style="color: #2E58B2"></i>Facebook</a>
+							class="btn btn-outline-secondary w-100 border-2x me-5 btn-hover-bg-primary btn-hover-border-primary">
+							<i class="fab fa-facebook-f me-4" style="color: #2E58B2"></i>Facebook</a>
 						<a href="#"
-							class="btn btn-outline-secondary w-100 border-2x mt-0 btn-hover-bg-primary btn-hover-border-primary"><i
-								class="fab fa-google me-4" style="color: #DD4B39"></i>Google</a>
-					</div>
+							class="btn btn-outline-secondary w-100 border-2x mt-0 btn-hover-bg-primary btn-hover-border-primary">
+							<i class="fab fa-google me-4" style="color: #DD4B39"></i>Google</a>
+					</div> -->
 				</div>
 			</div>
 		</div>
 	</div>
+
 
 
 

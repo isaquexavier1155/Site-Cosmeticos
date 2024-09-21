@@ -12,7 +12,7 @@ use App\Http\Controllers\PainelAdministrativoController;
 }); */
 
 // Rota para a página inicial
-Route::get('/', [ProdutoController::class, 'index']);
+Route::get('/', [ProdutoController::class, 'index'])->name('index');
 
 
 
