@@ -11,15 +11,15 @@
 
 <body>
     @php
-    //var_dump($amount);
+        //var_dump($amount);
     @endphp
     <!-- tenho que deixar esse formulario pois oculta alguns dados que preciso -->
     <form id="form-pagamento">
         <input type="hidden" id="preference_id" name="preference_id" value="{{ $preference_id }}">
         <input type="hidden" id="amount" name="amount" value="{{ $amount }}">
 
-            <!-- Exibindo o valor de amount na tela -->
-    <!-- <p>Valor a pagar: R$ <span id="valor-amount">{{ number_format($amount, 2, ',', '.') }}</span></p>
+        <!-- Exibindo o valor de amount na tela -->
+        <!-- <p>Valor a pagar: R$ <span id="valor-amount">{{ number_format($amount, 2, ',', '.') }}</span></p>
     <p>Valor a pagar: R$ <?php echo number_format($amount, 2, ',', '.'); ?></p> -->
 
         <!-- <div id="paymentBrick_container2"></div> -->
@@ -37,15 +37,16 @@
             width: 500px;
             margin: 0 auto;
         }
-        /*Alinhar texto Meios de pagamento rota payment*/ 
-       .svelte-101ibq7 {
+
+        /*Alinhar texto Meios de pagamento rota payment*/
+        .svelte-101ibq7 {
             text-align: center;
         }
     </style>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            
+
             const mp = new MercadoPago('{{ config('services.mercadopago.public_key') }}');
 
             /* const mp = new MercadoPago('TEST-f4fa1c3f-7150-4c78-96e9-778ffedeea78'); */
@@ -82,8 +83,8 @@
                             //console.log("Payment Brick está pronto.");
                         },
                         onSubmit: ({ selectedPaymentMethod, formData }) => {
-                           // console.log("Formulário submetido.");
-                           // console.log("Método de pagamento selecionado:", selectedPaymentMethod);
+                            // console.log("Formulário submetido.");
+                            // console.log("Método de pagamento selecionado:", selectedPaymentMethod);
                             //console.log("Dados do formulário:", formData);
 
                             return new Promise((resolve, reject) => {
@@ -104,12 +105,17 @@
                                             const jsonResponse = JSON.parse(text);
                                             //console.log("Resposta JSON do servidor:", jsonResponse);
 
+
+
+                                            //Aqui esta chegando o parâmetro date_approved
+                                            //que é null quando pagamento não for aprovado
+                                            //e é setado com uma data quando o pagamento é aprovado
                                             if (!jsonResponse.id) {
                                                 throw new Error("Payment ID não encontrado na resposta do servidor.");
                                             }
 
                                             const renderStatusScreenBrick = async (bricksBuilder) => {
-                                               // console.log("Iniciando a configuração do Status Screen Brick.");
+                                                // console.log("Iniciando a configuração do Status Screen Brick.");
 
                                                 const settings = {
                                                     initialization: {
@@ -117,7 +123,7 @@
                                                     },
                                                     callbacks: {
                                                         onReady: () => {
-                                                           // console.log("Status Screen Brick está pronto.");
+                                                            // console.log("Status Screen Brick está pronto.");
                                                             document.getElementById('paymentBrick_container').style.display = 'none';
                                                         },
                                                         onError: (error) => {
@@ -130,10 +136,50 @@
                                                     'statusScreenBrick_container',
                                                     settings,
                                                 );
-                                                console.log("Status Screen Brick criado com sucesso.");
+                                                //console.log("Status Screen Brick criado com sucesso.");
                                             };
 
                                             renderStatusScreenBrick(bricksBuilder);
+
+                                            ////////////////////////////////--//////--VERFICA STATUS DO PAGAMENTO A CADA 3 SEGUNDOS
+                                            // Verifica a cada 3 segundos se o pagamento foi aprovado
+                                            const checkPaymentApproval = setInterval(() => {
+                                                if (jsonResponse.date_approved !== null) {
+                                                    let data_aprovacao_pagamento = jsonResponse.date_approved;
+                                                    //console.log("Data de aprovação do pagamento:", data_aprovacao_pagamento);
+
+                                                    // ID do pagamento e preference_id passado pelo Blade
+                                                    const paymentId = "{{ $id_payment }}";
+                                                    const statusPayment = 'Aprovado'; // Novo status
+                                                    const preferenceId = "{{ $preference_id }}"; // Preference ID gerado pelo Mercado Pago
+
+                                                    // Faz a requisição para salvar o status do pagamento e o preference ID
+                                                    fetch('/salvar-status-pagamento', {
+                                                        method: 'POST',
+                                                        headers: {
+                                                            'Content-Type': 'application/json',
+                                                            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content') // Para Laravel
+                                                        },
+                                                        body: JSON.stringify({
+                                                            payment_id: paymentId,
+                                                            status_payment: statusPayment,
+                                                            preference_id: preferenceId, // Envia também o preference_id
+                                                        }),
+                                                    })
+                                                        .then(response => response.json())
+                                                        .then(data => {
+                                                            console.log('Success:', data);
+                                                        })
+                                                        .catch(error => {
+                                                            console.error('Error:', error);
+                                                        });
+
+                                                    clearInterval(checkPaymentApproval); // Para a verificação
+                                                }
+                                            }, 3000);
+
+
+                                            //////////////////////////////////////
                                             resolve();
                                         } catch (error) {
                                             console.error("Erro ao tentar analisar JSON:", error);
@@ -152,7 +198,7 @@
                     },
                 };
 
-               // console.log("Criando o Payment Brick.");
+                // console.log("Criando o Payment Brick.");
                 window.paymentBrickController = await bricksBuilder.create(
                     "payment",
                     "paymentBrick_container",

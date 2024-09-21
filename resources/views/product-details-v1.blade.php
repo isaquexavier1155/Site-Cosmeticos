@@ -1139,21 +1139,21 @@
                     <!-- Script para abrir modal do carrinho de compras se produto for adicionado com sucesso-->
                     <script>
                         document.addEventListener('DOMContentLoaded', function () {
-                            console.log('Script carregado e DOM pronto.');
+                            //console.log('Script carregado e DOM pronto.');
 
                             const form = document.getElementById('add-to-cart-form');
                             if (form) {
                                 form.addEventListener('submit', function (event) {
                                     event.preventDefault();
 
-                                    console.log('Formulário enviado, processando...');
+                                    //console.log('Formulário enviado, processando...');
 
                                     const formData = new FormData(this);
                                     const quantity = formData.get('quantidade');
                                     const productId = formData.get('produto_id'); // ID do produto obtido do formulário
 
-                                    console.log('Produto ID:', productId);
-                                    console.log('Quantidade:', quantity);
+                                    //console.log('Produto ID:', productId);
+                                    //console.log('Quantidade:', quantity);
 
                                     addToCart(productId, quantity);
                                 });
@@ -1162,7 +1162,7 @@
                             }
 
                             function addToCart(productId, quantity) {
-                                console.log('Enviando dados para adicionar ao carrinho...');
+                               // console.log('Enviando dados para adicionar ao carrinho...');
 
                                 fetch('{{ route("carrinho.adicionar") }}', {
                                     method: 'POST',
@@ -1173,14 +1173,14 @@
                                     body: JSON.stringify({ produto_id: productId, quantidade: quantity })
                                 })
                                     .then(response => {
-                                        console.log('Resposta recebida:', response);
+                                        //console.log('Resposta recebida:', response);
 
                                         if (response.ok) {
                                             return response.json(); // Convertendo a resposta para JSON
                                         } else if (response.status === 401) {
                                             // Redirecionar para a página de login se o status for 401
                                             window.location.href = '{{ route("login") }}';
-                                            console.log('Usuário não autenticado. Redirecionando para a página de login.');
+                                           // console.log('Usuário não autenticado. Redirecionando para a página de login.');
                                             throw new Error('Usuário não autenticado.');
                                         } else {
                                             console.warn('Status da resposta não é OK, algo deu errado.');
@@ -1188,10 +1188,10 @@
                                         }
                                     })
                                     .then(data => {
-                                        console.log('Dados recebidos:', data);
+                                      //  console.log('Dados recebidos:', data);
 
                                         if (data.success) {
-                                            console.log('Produto adicionado com sucesso.');
+                                           // console.log('Produto adicionado com sucesso.');
 
                                             // Armazena um valor no sessionStorage para indicar que o produto foi adicionado
                                             sessionStorage.setItem('cart_added', 'true');

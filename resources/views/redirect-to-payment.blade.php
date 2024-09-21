@@ -20,7 +20,7 @@
 
         
 
-        <button type="submit">Redirecionando para ambiente seguro...</button>
+        <!-- <button type="submit"></button> -->
     </form>
 </body>
 </html>

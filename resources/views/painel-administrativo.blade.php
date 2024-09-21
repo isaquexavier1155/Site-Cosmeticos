@@ -5,15 +5,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Painel Administrativo</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-
     <!-- Tagify CSS -->
     <link href="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.css" rel="stylesheet">
-
     <!-- Tagify JS -->
     <script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.min.js"></script>
-
 
     <style>
         body {
@@ -21,11 +20,15 @@
             font-family: 'Poppins', sans-serif;
         }
 
-
         h1,
         h3 {
             color: white;
             font-weight: bold;
+        }
+
+        .mt-2 {
+            margin-top: .5rem !important;
+            margin-bottom: 1.5rem !important;
         }
 
         .nav-tabs .nav-link {
@@ -33,8 +36,8 @@
         }
 
         .nav-tabs .nav-link.active {
-            color: black;
-            color: #1f261d;
+            background-color: #E4AFAF;
+            color: #fff;
             border: none;
         }
 
@@ -51,19 +54,33 @@
         }
 
         .btn-primary {
-            background-color: #E4AFAF;
-            border-color: #E4AFAF;
+            background-color: #007bff;
+            border-color: #007bff;
+            border-radius: 8px;
         }
 
         .btn-primary:hover {
-            background-color: #C98585;
-            border-color: #C98585;
+            background-color: #0056b3;
         }
 
         .form-control,
-        .table {
-            border-radius: 5px;
+        .form-select {
+            border-radius: 8px;
             border: 1px solid #ddd;
+            padding: 12px;
+            box-shadow: none;
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus,
+        .form-select:focus {
+            border-color: #007bff;
+            box-shadow: 0 0 8px rgba(0, 123, 255, 0.2);
+        }
+
+        .form-label {
+            font-weight: bold;
+            color: #333;
         }
 
         .container {
@@ -83,50 +100,20 @@
         }
 
         .form-container .form-control {
-            border-radius: 5px;
-            border: 1px solid #ddd;
             margin-bottom: 10px;
         }
 
-        .form-container .btn-primary {
-            background-color: #E4AFAF;
-            border-color: #E4AFAF;
-        }
-
-        .form-container .btn-primary:hover {
-            background-color: #C98585;
-            border-color: #C98585;
-        }
-
-        .form-container .text-danger {
+        .text-danger {
+            font-size: 0.9em;
             color: #e74c3c;
         }
 
-        /* Sub-nav tabs */
-        .nav-tabs .nav-link {
-            color: #6c757d;
-        }
-
-        .nav-tabs .nav-link.active {
-            background-color: #E4AFAF;
-            color: #fff;
-            border: none;
-        }
-
-        .nav-tabs {
-            border-bottom: 2px solid #E4AFAF;
-        }
-
-        .tab-content {
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
-
-
         /* Responsividade */
         @media (max-width: 768px) {
+            .container {
+                max-width: 100%;
+            }
+
             h1 {
                 font-size: 1.75rem;
             }
@@ -134,72 +121,6 @@
             h3 {
                 font-size: 1.25rem;
             }
-
-            .tab-pane {
-                padding: 15px;
-            }
-
-            .table-responsive {
-                margin-top: 15px;
-            }
-
-            .container {
-                max-width: 100%;
-            }
-        }
-
-        /* Estilo Moderno do Formulário */
-        .form-control,
-        .form-select {
-            border-radius: 8px;
-            border: 1px solid #ddd;
-            padding: 12px;
-            transition: all 0.3s ease;
-            box-shadow: none;
-        }
-
-        .form-control:focus,
-        .form-select:focus {
-            border-color: #007bff;
-            box-shadow: 0 0 8px rgba(0, 123, 255, 0.2);
-        }
-
-        .form-label {
-            font-weight: bold;
-            color: #333;
-        }
-
-        .btn-primary {
-            background-color: #007bff;
-            border: none;
-            padding: 12px 20px;
-            border-radius: 8px;
-            font-size: 16px;
-            transition: background-color 0.3s ease;
-        }
-
-        .btn-primary:hover {
-            background-color: #0056b3;
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .container form {
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 12px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-
-        .text-danger {
-            font-size: 0.9em;
-        }
-
-        .form-control::placeholder {
-            color: #aaa;
-            opacity: 0.8;
         }
     </style>
 
@@ -207,131 +128,89 @@
 
 <body>
     <div class="container mt-5">
-        <!-- <h1 class="mb-4 text-center">Cadastro - Minhas Vendas - Minhas Compras</h1> -->
         <!-- Nav tabs -->
         <ul class="nav nav-tabs justify-content-center" id="adminTab" role="tablist">
-            <li class="nav-item" role="presentation">
+            <li class="nav-item">
                 <button class="nav-link active" id="vendas-tab" data-bs-toggle="tab" data-bs-target="#vendas"
-                    type="button" role="tab" aria-controls="vendas" aria-selected="false">Minhas Vendas</button>
+                    type="button">Minhas Vendas</button>
             </li>
-            <li class="nav-item" role="presentation">
-                <button class="nav-link" id="compras-tab" data-bs-toggle="tab" data-bs-target="#compras" type="button"
-                    role="tab" aria-controls="compras" aria-selected="false">Minhas Compras</button>
+            <li class="nav-item">
+                <button class="nav-link" id="compras-tab" data-bs-toggle="tab" data-bs-target="#compras"
+                    type="button">Minhas Compras</button>
             </li>
-            <li class="nav-item" role="presentation">
-                <button class="nav-link" id="produtos-tab" data-bs-toggle="tab" data-bs-target="#produtos" type="button"
-                    role="tab" aria-controls="produtos" aria-selected="true">Cadastro de Produtos</button>
+            <li class="nav-item">
+                <button class="nav-link" id="produtos-tab" data-bs-toggle="tab" data-bs-target="#produtos"
+                    type="button">Cadastro de Produtos</button>
             </li>
         </ul>
 
         <!-- Tab panes -->
         <div class="tab-content mt-3">
-
-
             <!-- Aba Minhas Vendas -->
             <div class="tab-pane fade show active" id="vendas" role="tabpanel" aria-labelledby="vendas-tab">
                 <ul class="nav nav-tabs" id="vendasSubTab" role="tablist">
-                    <li class="nav-item" role="presentation">
+                    <li class="nav-item">
                         <button class="nav-link active" id="a-preparar-tab" data-bs-toggle="tab"
-                            data-bs-target="#a-preparar" type="button" role="tab" aria-controls="a-preparar"
-                            aria-selected="true">A Preparar</button>
+                            data-bs-target="#a-preparar" type="button">A Preparar</button>
                     </li>
-                    <li class="nav-item" role="presentation">
+                    <li class="nav-item">
                         <button class="nav-link" id="em-transito-tab" data-bs-toggle="tab" data-bs-target="#em-transito"
-                            type="button" role="tab" aria-controls="em-transito" aria-selected="false">Em
-                            Trânsito </button>
+                            type="button">Em Trânsito</button>
                     </li>
-                    <li class="nav-item" role="presentation">
+                    <li class="nav-item">
                         <button class="nav-link" id="entregues-tab" data-bs-toggle="tab" data-bs-target="#entregues"
-                            type="button" role="tab" aria-controls="entregues" aria-selected="false">Entregues</button>
+                            type="button">Entregues</button>
                     </li>
                 </ul>
 
                 <!-- Sub Tab panes -->
                 <div class="tab-content mt-3">
                     <!-- Aba A Preparar -->
-                    <div class="tab-pane fade show active" id="a-preparar" role="tabpanel"
-                        aria-labelledby="a-preparar-tab">
+                    <div class="tab-pane fade show active" id="a-preparar" role="tabpanel">
                         <h3>A Preparar</h3>
                         <div class="row">
-                            <!-- Usando componente externo chamado sale-card.blade que vem da pasta partials -->
                             @forelse ($salesAPreparar as $sale)
                                 @include('partials.sale-card', ['sale' => $sale])
-                                {{-- Botão de gerar e imprimir etiqueta --}}
-                                <div class="d-flex justify-content-end mt-2">
-                                    @if (isset($sale['etiqueta_url']) && $sale['etiqueta_url'])
-                                        <a href="{{ $sale['etiqueta_url'] }}" class="btn btn-secondary btn-sm ms-2"
-                                            target="_blank">Imprimir Etiqueta</a>
-                                    @else
-                                        <form action="{{ route('painel.gerarEtiqueta', $sale['id']) }}" method="POST"
-                                            class="gerar-etiqueta-form" data-sale-id="{{ $sale['id'] }}">
-                                            @csrf
-                                            <button type="submit" class="btn btn-success btn-sm">Gerar Etiqueta</button>
-                                        </form>
-                                    @endif
-                                </div>
-                                <!-- @dump($sale['id']);
-                                @dump(session('success'));
-                                @dump(session('sale_id')); -->
-
-                                {{-- Mensagens de sucesso e erro específicas para cada venda --}}
-                                @if (session('sale_id') == $sale['id'] && session('success'))
-                                    <div id="mensagem-sucesso-{{ $sale['id'] }}" class="alert alert-success mt-3">
-                                        {!! session('success') !!}
-                                    </div>
-                                @endif
-
-                                @if (session('sale_id') == $sale['id'] && session('error'))
-                                    <div id="mensagem-erro-{{ $sale['id'] }}" class="alert alert-danger mt-3">
-                                        {!! session('error') !!}
-                                    </div>
-                                @endif
-
                             @empty
                                 <p class="text-muted">Nenhuma venda a preparar no momento.</p>
                             @endforelse
-
-                            <script>
-                                document.addEventListener('DOMContentLoaded', function () {
-                                    // Verificar se existe uma mensagem de sucesso ou erro e rolar até ela na venda correspondente
-                                    const forms = document.querySelectorAll('.gerar-etiqueta-form');
-
-                                    forms.forEach(form => {
-                                        form.addEventListener('submit', function () {
-                                            const saleId = this.getAttribute('data-sale-id');
-                                            scrollToMessage(saleId);
-                                        });
-                                    });
-
-                                    function scrollToMessage(saleId) {
-                                        const mensagemSucesso = document.getElementById('mensagem-sucesso-' + saleId);
-                                        const mensagemErro = document.getElementById('mensagem-erro-' + saleId);
-
-                                        if (mensagemSucesso) {
-                                            mensagemSucesso.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                                        } else if (mensagemErro) {
-                                            mensagemErro.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                                        }
-                                    }
-
-                                    // Se houver uma mensagem de sucesso ou erro ao carregar a página, rola para ela
-                                    @foreach ($salesAPreparar as $sale)
-                                        scrollToMessage({{ $sale['id'] }});
-                                    @endforeach
-                                });
-                            </script>
-
-
-
-
                         </div>
                     </div>
 
+                    <script>
+                        document.addEventListener('DOMContentLoaded', function () {
+                            // Verificar se existe uma mensagem de sucesso ou erro e rolar até ela na venda correspondente
+                            const forms = document.querySelectorAll('.gerar-etiqueta-form');
+
+                            forms.forEach(form => {
+                                form.addEventListener('submit', function () {
+                                    const saleId = this.getAttribute('data-sale-id');
+                                    scrollToMessage(saleId);
+                                });
+                            });
+
+                            function scrollToMessage(saleId) {
+                                const mensagemSucesso = document.getElementById('mensagem-sucesso-' + saleId);
+                                const mensagemErro = document.getElementById('mensagem-erro-' + saleId);
+
+                                if (mensagemSucesso) {
+                                    mensagemSucesso.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                                } else if (mensagemErro) {
+                                    mensagemErro.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                                }
+                            }
+
+                            // Se houver uma mensagem de sucesso ou erro ao carregar a página, rola para ela
+                            @foreach ($salesAPreparar as $sale)
+                                scrollToMessage({{ $sale['id'] }});
+                            @endforeach
+                        });
+                    </script>
 
 
 
                     <!-- Aba Em Trânsito -->
-                    <div class="tab-pane fade" id="em-transito" role="tabpanel" aria-labelledby="em-transito-tab">
+                    <div class="tab-pane fade" id="em-transito" role="tabpanel">
                         <h3>Em Trânsito</h3>
                         <div class="row">
                             @forelse ($salesEmTransito as $sale)
@@ -342,8 +221,10 @@
                         </div>
                     </div>
 
+
+
                     <!-- Aba Entregue -->
-                    <div class="tab-pane fade" id="entregues" role="tabpanel" aria-labelledby="entregues-tab">
+                    <div class="tab-pane fade" id="entregues" role="tabpanel">
                         <h3>Entregues</h3>
                         <div class="row">
                             @forelse ($salesEntregue as $sale)
@@ -354,19 +235,206 @@
                         </div>
                     </div>
                 </div>
-
-
-
-
             </div>
 
             <!-- Aba Minhas Compras -->
+            <!-- Aba Minhas Compras -->
+            <!-- Aba Minhas Compras -->
             <div class="tab-pane fade" id="compras" role="tabpanel" aria-labelledby="compras-tab">
                 <h3>Minhas Compras</h3>
-                <!-- Adicione a lógica e o conteúdo para a aba "Minhas Compras" aqui -->
+                <div class="row">
+                    @forelse ($montadasCompras as $purchase)
+                        <div class="col-md-12 mb-3">
+                            <div class="card">
+                                <div class="card-body">
+                                    <ul class="list-unstyled">
+                                        @foreach ($purchase['products'] as $product)
+                                            <li class="d-flex align-items-center mb-2">
+                                                <img src="{{ asset('images/products/' . $product->imagem) }}"
+                                                    alt="{{ $product->nome }}" class="img-thumbnail me-2"
+                                                    style="width: 100px; height: 100px;">
+                                                <div class="d-flex justify-content-between w-100">
+                                                    <span>{{ $product->nome }}</span>
+                                                    <span class="text-muted" style="font-size: 0.9rem;">Quantidade:
+                                                        {{ $product->quantidade }}</span>
+                                                </div>
+                                            </li>
+                                        @endforeach
+                                    </ul>
+                                    <p class="card-text">
+                                        R${{ number_format($purchase['valor_total'], 2, ',', '.') }}
+                                    </p>
+                                    <p class="card-ref">ref.{{ $purchase['id'] }}</p>
+
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <!-- @dump($purchase); -->
+                                        <span class="rastrear-produto"
+                                            onclick="rastrearProduto('{{ $purchase['etiqueta_id'] }}')"
+                                            style="cursor: pointer; font-family: 'Arial', sans-serif; color: #007bff; margin-bottom: 1.5rem;">
+                                            Onde está meu produto?
+                                            <!-- Estou utilizando um js abaixo para fazer a requisição e retornar dados do produto -->
+                                        </span>
+                                        <i class="fas fa-chevron-down"
+                                            onclick="rastrearProduto('{{ $purchase['etiqueta_id'] }}')"
+                                            style="cursor: pointer;"></i>
+                                    </div>
+
+                                    <style>
+                                        .card-ref {
+                                            font-size: 12px;
+                                        }
+
+                                        .rastrear-produto {
+                                            text-decoration: none;
+                                            /* Para dar destaque ao texto */
+                                            transition: color 0.3s;
+                                        }
+
+                                        .rastrear-produto:hover {
+                                            color: #0056b3;
+                                            /* Cor ao passar o mouse */
+                                        }
+                                    </style>
+
+
+
+                                    <div id="rastreio-{{ $purchase['etiqueta_id'] }}" class="rastreio-info"
+                                        style="display:none;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    @empty
+                        <p class="text-muted">Você não tem compras no momento.</p>
+                    @endforelse
+                </div>
             </div>
+            <script>
+                function rastrearProduto(id) {
+                    const rastreioDiv = document.getElementById(`rastreio-${id}`);
+                    if (rastreioDiv.style.display === 'none') {
+                        fetch(`/rastrear-envio/${id}`)
+                            .then(response => response.json())
+                            .then(data => {
+                                // Verifica se houve sucesso na requisição e se há dados
+                                if (data.status === 'success' && data.data) {
+                                    let status = data.data.status;
+
+                                    // Mapeia os status da Melhor Envio para descrições mais amigáveis
+                                    switch (status) {
+                                        case 'pending':
+                                            status = 'Pendente';
+                                            break;
+                                        case 'paid':
+                                            status = 'Pago';
+                                            break;
+                                        case 'released':
+                                            status = 'A Preparar';
+                                            break;
+                                        case 'posted':
+                                        case 'in transit':
+                                            status = 'Em trânsito';
+                                            break;
+                                        case 'delivered':
+                                            status = 'Entregue';
+                                            break;
+                                        case 'canceled':
+                                            status = 'Cancelado';
+                                            break;
+                                        case 'expired':
+                                            status = 'Expirado';
+                                            break;
+                                        case 'suspended':
+                                            status = 'Suspenso';
+                                            break;
+                                        default:
+                                            status = 'Desconhecido';
+                                            break;
+                                    }
+
+                                    // Função para formatar as datas no formato brasileiro
+                                    function formatDate(dateString) {
+                                        if (!dateString) return null;
+                                        const date = new Date(dateString);
+                                        return date.toLocaleDateString('pt-BR', {
+                                            day: '2-digit',
+                                            month: '2-digit',
+                                            year: 'numeric'
+                                        });
+                                    }
+
+                                    // Cria o conteúdo HTML apenas se os campos existirem
+                                    let info = `<h6>Status: ${status}</h6>`;
+
+                                    if (data.data.tracking) {
+                                        info += `<p>Rastreamento: ${data.data.tracking}</p>`;
+                                    }
+
+                                    if (data.data.protocol) {
+                                        info += `<p>Protocolo: ${data.data.protocol}</p>`;
+                                    }
+
+                                    const createdAt = formatDate(data.data.created_at);
+                                    if (createdAt) {
+                                        info += `<p>Criado em: ${createdAt}</p>`;
+                                    }
+
+                                    const postedAt = formatDate(data.data.posted_at);
+                                    if (postedAt) {
+                                        info += `<p>Postado em: ${postedAt}</p>`;
+                                    }
+
+                                    const deliveredAt = formatDate(data.data.delivered_at);
+                                    if (deliveredAt) {
+                                        info += `<p>Entregue em: ${deliveredAt}</p>`;
+                                    }
+
+                                    // Adiciona o link para Melhor Rastreio
+                                    if (data.data.tracking) {
+                                        info += `<p><a href="https://melhorrastreio.com.br/rastreio/${data.data.tracking}" target="_blank" style="text-decoration: none; color: #007bff;">Buscar no Melhor Rastreio</a></p>`;
+                                    }
+
+                                    // Se nenhum campo relevante estiver disponível, exibe uma mensagem informativa
+                                    if (!data.data.tracking && !data.data.protocol && !createdAt && !postedAt && !deliveredAt) {
+                                        info = `<p>Não foram encontradas informações detalhadas sobre o rastreio no momento.</p>`;
+                                    }
+
+                                    rastreioDiv.innerHTML = info;
+                                } else {
+                                    // Exibe mensagem caso o status seja diferente de "success"
+                                    rastreioDiv.innerHTML = `<p>Seu produto está a caminho. Em breve novas atualizações.</p>`;
+                                }
+
+                                rastreioDiv.style.display = 'block';
+                            })
+                            .catch(error => {
+                                console.error('Erro:', error);
+                                // Exibe mensagem de erro em caso de falha na requisição
+                                rastreioDiv.innerHTML = `<p>Seu produto está a caminho. Em breve novas atualizações.</p>`;
+                                rastreioDiv.style.display = 'block';
+                            });
+                    } else {
+                        rastreioDiv.style.display = 'none';
+                    }
+                }
+            </script>
+
+
+            <!-- rastreioDiv.innerHTML = `<p>Seu produto está a caminho. Em breve novas atualizações</p>`; -->
+
+
+
+
+
+
+
+
+
+
+
+
+
             <!-- Aba Cadastro de Produtos -->
-            <div class="tab-pane fade " id="produtos" role="tabpanel" aria-labelledby="produtos-tab">
+            <div class="tab-pane fade" id="produtos" role="tabpanel" aria-labelledby="produtos-tab">
                 <h3>Cadastro de Produtos</h3>
                 <form action="{{ route('produtos.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
@@ -474,6 +542,33 @@
 
     <!-- Bootstrap JS Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Limita Imagens adicionais em 3
+ -->
+    <script>
+        function validateFileCount(input) {
+            if (input.files.length > 3) {
+                alert('Você só pode enviar no máximo 3 imagens adicionais.');
+                input.value = ''; // Limpa o campo de input
+            }
+        }
+    </script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Inicializa o Tagify no campo 'caracteristicas'
+            new Tagify(document.querySelector("#caracteristicas"), {
+                delimiters: ", ",  // Opções para delimitadores
+                maxTags: 10,       // Limite de tags
+                dropdown: {
+                    enabled: 0     // Desabilita o dropdown de sugestões
+                }
+            });
+        });
+    </script>
+
+
+    <!-- <script src="{{ asset('js/app.js') }}"></script> -->
+
 </body>
 
 </html>

@@ -103,7 +103,7 @@ class PagamentoController extends Controller
         }
 
     } */
-    
+
     //Calcula reference id e passa para a view pagamento pra ser possível gerar a tela do Payment Bricks
     //Cria novo registro na tabela payments salvando: amount em valor e userid
     public function showPagamento(Request $request)
@@ -122,23 +122,23 @@ class PagamentoController extends Controller
         /* Preciso que chegue aqui a informaçao da opção de envio selecionada no carrinho
          para vendedor saber qual metodo de envio utilizar para enviar pedidos */
 
-       // Não estava chegando $produto_ids_str e $produto_qtds_str
-       //Agora estão chegando
-       //Tem que chegar aqui para eu salvar no banco de dados
+        // Não estava chegando $produto_ids_str e $produto_qtds_str
+        //Agora estão chegando
+        //Tem que chegar aqui para eu salvar no banco de dados
 
-    // Obtém os dados do request
-    $produto_ids_str = $request->input('produto_ids'); 
-    $produto_qtds_str = $request->input('produto_qtds');
+        // Obtém os dados do request
+        $produto_ids_str = $request->input('produto_ids');
+        $produto_qtds_str = $request->input('produto_qtds');
 
-    // Converte as strings para arrays e depois para JSON
-    $produto_ids_array = explode(',', $produto_ids_str);
-    $produto_qtds_array = explode(',', $produto_qtds_str);
-    $produto_ids_json = json_encode($produto_ids_array);
-    $produto_qtds_json = json_encode($produto_qtds_array);
+        // Converte as strings para arrays e depois para JSON
+        $produto_ids_array = explode(',', $produto_ids_str);
+        $produto_qtds_array = explode(',', $produto_qtds_str);
+        $produto_ids_json = json_encode($produto_ids_array);
+        $produto_qtds_json = json_encode($produto_qtds_array);
 
-    // dd($request->frete_selecionado);
-    //Frete selecionado no carrinho de compras exemplo: SEDEX
-    $frete_selecionado = $request->frete_selecionado;
+
+        //Frete selecionado no carrinho de compras exemplo: SEDEX
+        $frete_selecionado = $request->frete_selecionado;
 
         if (empty($amount) || !is_numeric($amount)) {
             return response()->json(['error' => 'Valor deve ser um número válido.'], 400);
@@ -150,11 +150,24 @@ class PagamentoController extends Controller
 
         $amount = (float) $amount;
 
-       // $user = Auth::user();
+        // $user = Auth::user();
+        $status_payment = "Pendente";
+
+        //SALVAR NO BANCO O CAMPO PREFERENCE ID
+        //dump($request);
 
         // Utiliza o modelo Payment para adicionar um pagamento
-        $payCreate = Payment::addPayment($amount, $user->id, $produto_ids_json, $produto_qtds_json, $frete_selecionado);
+        $payCreate = Payment::addPayment(
+            $amount,
+            $user->id,
+            $produto_ids_json,
+            $produto_qtds_json,
+            $frete_selecionado,
+            $status_payment
+        );
         //$statusUpdate = Payment::setStatusPayment('Pendentee');
+
+        
 
         if (!$payCreate) {
             return response()->json(['error' => 'Erro ao criar pagamento.'], 500);
@@ -208,6 +221,8 @@ class PagamentoController extends Controller
         ));
 
         $response = curl_exec($curl);
+        //$data = json_decode($response, true); // Decodifica o JSON em um array associativo
+        //dump($data); // Exibe os dados
 
         if (curl_errno($curl)) {
             return response()->json(['error' => 'cURL Error: ' . curl_error($curl)], 500);
@@ -217,12 +232,17 @@ class PagamentoController extends Controller
 
         $obj = json_decode($response);
 
+        //Passa id do pagamento que foi gerado ao preencher formulario de dados de entrega para a view de Pagamento
+        $id_payment = $obj->external_reference;
+        //dd($id_payment);
+
         if (isset($obj->id)) {
             $amount = $request->input('amount');
             //inserir retorno para ver se amount não vem no objeto echo($obj);
             return view('pagamento', [
                 'preference_id' => $obj->id,
-                'amount' => $amount
+                'amount' => $amount,
+                'id_payment' => $id_payment
             ]);
         } else {
             return response()->json(['error' => 'Erro ao criar preferência de pagamento.'], 500);
@@ -420,99 +440,136 @@ class PagamentoController extends Controller
         }
     }
 
-
-
-/*     public function getPreference(Request $request)
+    public function salvarStatusPagamento(Request $request)
     {
-        $accesstoken = env('MERCADOPAGO_ACCESS_TOKEN');
-
-        
-     
-        $amount = 100;
-
-
-        if (empty($amount) || !is_numeric($amount)) {
-            return response()->json(['error' => 'Valor deve ser um número válido.'], 400);
-        }
-
-        if ($amount < 1 || $amount > 100) {
-            return response()->json(['error' => 'Valor deve estar entre 1 e 100.'], 400);
-        }
-
-        $amount = (float) $amount;
-
-        $payCreate = Payment::addPayment($amount, 1);
-
-        if (!$payCreate) {
-            return response()->json(['error' => 'Erro ao criar pagamento.'], 500);
-        }
-
-        $curl = curl_init();
-
-        curl_setopt_array($curl, array(
-            CURLOPT_URL => 'https://api.mercadopago.com/checkout/preferences',
-            CURLOPT_RETURNTRANSFER => true,
-            CURLOPT_ENCODING => '',
-            CURLOPT_MAXREDIRS => 10,
-            CURLOPT_TIMEOUT => 0,
-            CURLOPT_FOLLOWLOCATION => true,
-            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-            CURLOPT_CUSTOMREQUEST => 'POST',
-            CURLOPT_POSTFIELDS => json_encode(array(
-                "back_urls" => array(
-                    "success" => "https://google.com/success",
-                    "pending" => "https://google.com/pending",
-                    "failure" => "https://google.com/failure"
-                ),
-                "external_reference" => $payCreate,
-                "notification_url" => "https://google.com",
-                "auto_return" => "approved",
-                "items" => array(
-                    array(
-                        "title" => "Dummy Title",
-                        "description" => "Dummy description",
-                        "picture_url" => "http://www.myapp.com/myimage.jpg",
-                        "category_id" => "car_electronics",
-                        "quantity" => 1,
-                        "currency_id" => "BRL",
-                        "unit_price" => $amount
-                    )
-                ),
-                "payment_methods" => array(
-                    "excluded_payment_methods" => array(
-                        array("id" => "pix")
-                    ),
-                    "excluded_payment_types" => array(
-                        array("id" => "ticket")
-                    )
-                )
-            )),
-            CURLOPT_HTTPHEADER => array(
-                'Content-Type: application/json',
-                'Authorization: Bearer ' . $accesstoken
-            ),
-            CURLOPT_CAINFO => base_path('certificates/cacert.pem'),
-        ));
-
-        $response = curl_exec($curl);
-
-        if (curl_errno($curl)) {
-            return response()->json(['error' => 'cURL Error: ' . curl_error($curl)], 500);
-        }
-
-        curl_close($curl);
-
-        $obj = json_decode($response);
-
-        if (isset($obj->id)) {
-            return view('pagamento', [
-                'preference_id' => $obj->id,
-                'amount' => $amount
+        // Valida a requisição
+        $request->validate([
+            'payment_id' => 'required|exists:payments,id', // Certifique-se de que o ID do pagamento existe
+            'status_payment' => 'required|string',        // Certifique-se de que o status não é vazio
+            'preference_id' => 'required|string',         // Certifique-se de que o preference_id não é vazio
+        ]);
+    
+        // Obtém os dados do request
+        $paymentId = $request->input('payment_id');
+        $statusPayment = $request->input('status_payment');
+        $preferenceId = $request->input('preference_id'); // Obtém o preference_id
+    
+        // Atualiza o status_payment e preference_id na tabela payments
+        $payment = Payment::find($paymentId);
+    
+        if ($payment) {
+            $payment->status_payment = $statusPayment;
+            $payment->preference_id = $preferenceId; // Atualiza o preference_id
+            $payment->save();
+    
+            // Retorna uma resposta de sucesso
+            return response()->json([
+                'status' => 'success',
+                'message' => 'Status do pagamento e Preference ID atualizados com sucesso.',
             ]);
-        } else {
-            return response()->json(['error' => 'Erro ao criar preferência de pagamento.'], 500);
         }
-    } */
+    
+        // Retorna uma resposta de erro se o pagamento não for encontrado
+        return response()->json([
+            'status' => 'error',
+            'message' => 'Pagamento não encontrado.',
+        ], 404);
+    }
+    
+
+
+
+    /*     public function getPreference(Request $request)
+        {
+            $accesstoken = env('MERCADOPAGO_ACCESS_TOKEN');
+
+            
+         
+            $amount = 100;
+
+
+            if (empty($amount) || !is_numeric($amount)) {
+                return response()->json(['error' => 'Valor deve ser um número válido.'], 400);
+            }
+
+            if ($amount < 1 || $amount > 100) {
+                return response()->json(['error' => 'Valor deve estar entre 1 e 100.'], 400);
+            }
+
+            $amount = (float) $amount;
+
+            $payCreate = Payment::addPayment($amount, 1);
+
+            if (!$payCreate) {
+                return response()->json(['error' => 'Erro ao criar pagamento.'], 500);
+            }
+
+            $curl = curl_init();
+
+            curl_setopt_array($curl, array(
+                CURLOPT_URL => 'https://api.mercadopago.com/checkout/preferences',
+                CURLOPT_RETURNTRANSFER => true,
+                CURLOPT_ENCODING => '',
+                CURLOPT_MAXREDIRS => 10,
+                CURLOPT_TIMEOUT => 0,
+                CURLOPT_FOLLOWLOCATION => true,
+                CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+                CURLOPT_CUSTOMREQUEST => 'POST',
+                CURLOPT_POSTFIELDS => json_encode(array(
+                    "back_urls" => array(
+                        "success" => "https://google.com/success",
+                        "pending" => "https://google.com/pending",
+                        "failure" => "https://google.com/failure"
+                    ),
+                    "external_reference" => $payCreate,
+                    "notification_url" => "https://google.com",
+                    "auto_return" => "approved",
+                    "items" => array(
+                        array(
+                            "title" => "Dummy Title",
+                            "description" => "Dummy description",
+                            "picture_url" => "http://www.myapp.com/myimage.jpg",
+                            "category_id" => "car_electronics",
+                            "quantity" => 1,
+                            "currency_id" => "BRL",
+                            "unit_price" => $amount
+                        )
+                    ),
+                    "payment_methods" => array(
+                        "excluded_payment_methods" => array(
+                            array("id" => "pix")
+                        ),
+                        "excluded_payment_types" => array(
+                            array("id" => "ticket")
+                        )
+                    )
+                )),
+                CURLOPT_HTTPHEADER => array(
+                    'Content-Type: application/json',
+                    'Authorization: Bearer ' . $accesstoken
+                ),
+                CURLOPT_CAINFO => base_path('certificates/cacert.pem'),
+            ));
+
+            $response = curl_exec($curl);
+
+            if (curl_errno($curl)) {
+                return response()->json(['error' => 'cURL Error: ' . curl_error($curl)], 500);
+            }
+
+            curl_close($curl);
+
+            $obj = json_decode($response);
+
+            if (isset($obj->id)) {
+                return view('pagamento', [
+                    'preference_id' => $obj->id,
+                    'amount' => $amount
+                ]);
+            } else {
+                return response()->json(['error' => 'Erro ao criar preferência de pagamento.'], 500);
+            }
+        } */
 
 
     public function sucesso(Request $request)

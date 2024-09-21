@@ -68,14 +68,24 @@ Route::get('/pagamento/pendente', [PagamentoController::class, 'pendente'])->nam
 //Route::get('/payment/preference', [PagamentoController::class, 'getPreference']);
 
 //Exibe view pagamento.blade.php enviando alguns dados pela controller
-Route::post('/payment', [PagamentoController::class, 'showPagamento'])->name('payment');
+Route::post('/payment', [PagamentoController::class, 'showPagamento'])
+->name('payment')
+->middleware('auth');
 
 //Rota acionada ao clicar em Pagar na página onde é gerado formulario de pagamento Bricks
-Route::post('/processar-pagamento', [PagamentoController::class, 'processarPagamento'])->name('processarpagamento');
+Route::post('/processar-pagamento', [PagamentoController::class, 'processarPagamento'])
+->name('processarpagamento')
+->middleware('auth');
 
 
 //rota para salvar dados adicionais de entrega na tabela users com usuário já logado
 Route::post('/checkout-entrega/salvar', [FreteController::class, 'salvarDadosEntrega'])->name('checkout.entrega.salvar');
+
+// routes/web.php ou routes/api.php
+use App\Http\Controllers\PaymentController;
+
+Route::post('/salvar-status-pagamento', [PagamentoController::class, 'salvarStatusPagamento'])
+->middleware('auth');
 
 
 // web.php
@@ -88,15 +98,21 @@ Route::post('/salvar-dados-entrega', [FreteController::class, 'salvarDadosEntreg
 Route::post('/calcular-frete', [FreteController::class, 'calcularFrete'])->name('calcular-frete');
 
 // Rota para o Painel Administrativo
-Route::get('/my_acount', [PainelAdministrativoController::class, 'index'])
-    ->name('painel-administrativo');
+Route::get('/my_account', [PainelAdministrativoController::class, 'index'])
+    ->name('painel-administrativo')
+    ->middleware('auth');
 
 //Rota para atualizar status manualmente no painel administrativo
-Route::patch('/sales/{id}/status', [PainelAdministrativoController::class, 'updateStatus'])->name('sales.updateStatus');
+//Route::patch('/sales/{id}/status', [PainelAdministrativoController::class, 'updateStatus'])->name('sales.updateStatus');
 
 //Rota para gerar a etiqueta de envio de mercadoria
 Route::post('/gerar-etiqueta/{saleId}', [PainelAdministrativoController::class, 'gerarEtiquetaCompleta'])->name('painel.gerarEtiqueta');
 
+//Rota para passar compras do usuário LOgado
+Route::get('my_acout/purchases', [PainelAdministrativoController::class, 'minhasCompras'])->name('painel.minhas-compras');
+
+//rota para rastrear envio de produtos na aba minhas Compras
+Route::get('/rastrear-envio/{id}', [PainelAdministrativoController::class, 'rastrearEnvio'])->name('rastrear.envio');
 
 /* ////////////////////////////////////////////////////////////////////////////////////////////////////////
 Rotas criadas automaticamente ao instalar sistema de autenticação:

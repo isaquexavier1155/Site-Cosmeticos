@@ -13,16 +13,74 @@ class PainelAdministrativoController extends Controller
 
     public function index()
     {
-        // Buscar pagamentos por status
-        $preparar = Payment::where('status', 'A preparar')->get();
-        $emTransito = Payment::where('status', 'Em trânsito')->get();
-        $entregue = Payment::where('status', 'Entregue')->get();
+        // Get the logged-in user's ID
+        $userId = auth()->id();
 
-        // Função auxiliar para montar as vendas
+        // Filtrando minhas compras da aba Minhas Compras
+        $purchases = Payment::where('user_id', $userId)
+            ->where('status_payment', 'Aprovado')
+            ->get();
+
+        // Buscar pagamentos por status
+        $preparar = Payment::where('status', 'A preparar')
+            ->where('status_payment', 'Aprovado')
+            ->get();
+        $emTransito = Payment::where('status', 'Em trânsito')
+            ->where('status_payment', 'Aprovado')
+            ->get();
+        $entregue = Payment::where('status', 'Entregue')
+            ->where('status_payment', 'Aprovado')
+            ->get();
+
+        // Função auxiliar para rastrear envio e atualizar o status
+        function rastrearEAtualizar($payment)
+        {
+            $etiquetaId = $payment->etiqueta_id;
+            if ($etiquetaId) {
+                $trackingResponse = app()->call('App\Http\Controllers\PainelAdministrativoController@rastrearEnvio', ['id' => $etiquetaId]);
+
+                if ($trackingResponse->getData()->status === 'success') {
+                    $trackingData = $trackingResponse->getData()->data;
+
+                    //dump($trackingData->status);
+
+                    // Atualizar o status do pagamento com base na resposta de rastreamento
+                    $novoStatus = $trackingData->status;
+                    switch ($trackingData->status) {
+                        case 'pending':
+                            $novoStatus = 'Pendente';
+                            break;
+                        case 'posted':
+                            $novoStatus = 'Em trânsito';
+                            break;
+                        case 'released':
+                            $novoStatus = 'A preparar';
+                            break;
+                        case 'in transit':
+                            $novoStatus = 'Em trânsito';
+                            break;
+                        case 'delivered':
+                            $novoStatus = 'Entregue';
+                            break;
+                        // Adicionar outros casos conforme necessário
+                    }
+
+
+
+                    $payment->status = $novoStatus;
+                    $payment->save();
+                }
+            }
+        }
+
+        // Função auxiliar para montar vendas ou compras
         function montarVendas($payments)
         {
             $sales = [];
             foreach ($payments as $payment) {
+                // Chamar a função para rastrear o envio e atualizar o status
+                rastrearEAtualizar($payment);
+
                 // Buscar o usuário associado ao pagamento
                 $user = User::find($payment->user_id);
 
@@ -51,6 +109,7 @@ class PainelAdministrativoController extends Controller
                     'created_at' => $payment->created_at,
                     'freteselecionado' => $payment->frete_selecionado,
                     'etiqueta_url' => $payment->etiqueta_url, // URL da etiqueta
+                    'etiqueta_id' => $payment->etiqueta_id, // ID da etiqueta
                 ];
             }
             return $sales;
@@ -61,9 +120,69 @@ class PainelAdministrativoController extends Controller
         $salesEmTransito = montarVendas($emTransito);
         $salesEntregue = montarVendas($entregue);
 
+        // Montar as compras do usuário
+        $montadasCompras = montarVendas($purchases);
+
         // Retornar as vendas organizadas por status
-        return view('painel-administrativo', compact('salesAPreparar', 'salesEmTransito', 'salesEntregue'));
+        return view('painel-administrativo', compact('salesAPreparar', 'salesEmTransito', 'salesEntregue', 'montadasCompras'));
     }
+
+
+    public function rastrearEnvio($id)
+    {
+        $curl = curl_init();
+
+        //$id = "9d0eae98-6129-439b-a366-07354cffabcd"; // Remover isso
+
+        curl_setopt_array($curl, array(
+            CURLOPT_URL => 'https://sandbox.melhorenvio.com.br/api/v2/me/shipment/tracking',
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => '',
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 0,
+            CURLOPT_FOLLOWLOCATION => true,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => 'POST',
+            CURLOPT_POSTFIELDS => json_encode(['orders' => [$id]]),
+            CURLOPT_HTTPHEADER => array(
+                'Accept: application/json',
+                'Authorization: Bearer ' . env('MELHOR_ENVIO_TOKEN'), // Use uma variável de ambiente
+                'Content-type: application/json',
+            ),
+            CURLOPT_SSL_VERIFYPEER => false, // Desabilita a verificação de SSL
+        ));
+
+        $response = curl_exec($curl);
+
+        // Verifica se houve erro na requisição cURL
+        if (curl_errno($curl)) {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Erro na requisição: ' . curl_error($curl),
+            ], 500);
+        }
+
+        curl_close($curl);
+
+        $trackingData = json_decode($response, true);
+
+        // Verifica se os dados de rastreamento estão disponíveis
+        if (isset($trackingData[$id])) {
+            return response()->json([
+                'status' => 'success',
+                'message' => 'Produto rastreado com sucesso',
+                'data' => $trackingData[$id], // Retorna os dados de rastreamento
+            ]);
+        } else {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Dados de rastreamento não encontrados.',
+                'response' => $trackingData, // Inclui a resposta original para depuração
+            ], 400);
+        }
+    }
+
+
 
 
 
@@ -234,9 +353,22 @@ class PainelAdministrativoController extends Controller
                 'status' => 'error',
                 'message' => 'Erro na requisição cURL: ' . curl_error($ch),
             ]);
+        } else {
+
+            /*  Para salvar id da etiqueta no banco de dados e utiliza-la na aba minhas vendas */
+            $etiqueta = json_decode($response, true); // Decodifica o JSON para um array associativo
+            //dd($etiqueta['id']); // Exibe apenas o ID
+
+            $payment = Payment::find($saleId);  // Ajuste para buscar pelo ID de pagamento se necessário
+
+            if ($payment) {
+                $payment->etiqueta_id = $etiqueta['id'];
+                $payment->save();
+            }
         }
 
         curl_close($ch);
+
 
         // Processa a resposta conforme necessário
         return response()->json([
@@ -334,6 +466,7 @@ class PainelAdministrativoController extends Controller
 
             // Executa a requisição cURL
             $response = curl_exec($ch);
+
             $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
 
             if (curl_errno($ch)) {
@@ -359,8 +492,9 @@ class PainelAdministrativoController extends Controller
             // Verifica se a etiqueta foi gerada com sucesso
             if ($httpCode === 200 && isset($decodedResponse['url'])) {
                 // Atualiza a URL da etiqueta no banco de dados
-               //dd($saleId);
+                //dd($saleId);
                 $payment = Payment::find($saleId);  // Ajuste para buscar pelo ID de pagamento se necessário
+
                 if ($payment) {
                     $payment->etiqueta_url = $decodedResponse['url'];
                     $payment->save();
@@ -384,6 +518,9 @@ class PainelAdministrativoController extends Controller
             ], 500);
         }
     }
+
+
+
 
 
 

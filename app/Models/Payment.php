@@ -16,7 +16,8 @@ class Payment extends Model
         'status', 
         'quantidade_produtos', 
         'id_produtos',
-        'frete_selecionado'
+        'frete_selecionado',
+        'status_payment'
     ];
 
     // Se sua tabela não tiver timestamps, defina como false
@@ -33,7 +34,7 @@ class Payment extends Model
 
     // Método para adicionar um pagamento
      // Método para adicionar um pagamento
-     public static function addPayment($valor, $user_id, $produto_ids_json, $produto_qtds_json, $frete_selecionado)
+     public static function addPayment($valor, $user_id, $produto_ids_json, $produto_qtds_json, $frete_selecionado, $status_payment)
      {
          // Cria um novo pagamento ao preencher formulário de Dados de Entrega
          // Seta status do pagamento e adiciona os campos de produtos
@@ -42,8 +43,9 @@ class Payment extends Model
              'user_id' => $user_id,
              'quantidade_produtos' => $produto_qtds_json,
              'id_produtos' => $produto_ids_json,
-             'frete_selecionado' => $frete_selecionado // Armazena a opção de frete selecionada
-         ]);
+             'frete_selecionado' => $frete_selecionado, // Armazena a opção de frete selecionada
+             'status_payment' => $status_payment
+            ]);
  
          // Retorna o ID do pagamento recém-criado
          return $payment->id;
