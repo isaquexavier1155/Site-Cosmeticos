@@ -14,6 +14,9 @@ use App\Http\Controllers\PainelAdministrativoController;
 // Rota para a página inicial
 Route::get('/', [ProdutoController::class, 'index']);
 
+
+
+
 Route::get('/produtos/create', [ProdutoController::class, 'create'])->name('produtos.create');
 Route::post('/produtos', [ProdutoController::class, 'store'])->name('produtos.store');
 
@@ -71,6 +74,13 @@ Route::get('/pagamento/pendente', [PagamentoController::class, 'pendente'])->nam
 Route::post('/payment', [PagamentoController::class, 'showPagamento'])
 ->name('payment')
 ->middleware('auth');
+
+//Para limitar acesso a rotas sem ser Administrador
+//Somente adoministradores acessam essas rotas
+/* Route::group(['middleware' => 'admin'], function () {
+    Route::get('/admin', [ProdutoController::class, 'index'])->name('admin.index');
+    // Adicione outras rotas admin aqui
+}); */
 
 //Rota acionada ao clicar em Pagar na página onde é gerado formulario de pagamento Bricks
 Route::post('/processar-pagamento', [PagamentoController::class, 'processarPagamento'])
