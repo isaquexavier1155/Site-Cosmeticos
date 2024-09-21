@@ -77,16 +77,16 @@
  -->
 						</div>
 						<div class="icons-actions d-flex d-xl-none justify-content-start fs-28px text-white">
-							<div class="px-xl-5 d-inline-block">
+							<!-- <div class="px-xl-5 d-inline-block">
 								<a class="lh-1 color-inherit text-decoration-none" href="#" data-bs-toggle="offcanvas"
 									data-bs-target="#searchModal" aria-controls="searchModal" aria-expanded="false">
 									<svg class="icon icon-magnifying-glass-light">
 										<use xlink:href="#icon-magnifying-glass-light"></use>
 									</svg>
 								</a>
-							</div>
+							</div> -->
 
-							<div class="color-modes position-relative ps-5">
+							<!-- <div class="color-modes position-relative ps-5">
 								<a class="bd-theme btn btn-link nav-link dropdown-toggle d-inline-flex align-items-center justify-content-center color-inherit p-0 position-relative rounded-circle"
 									href="#" aria-expanded="true" data-bs-toggle="dropdown" data-bs-display="static"
 									aria-label="Toggle theme (light)">
@@ -132,7 +132,23 @@
 										</button>
 									</li>
 								</ul>
-							</div>
+							</div> -->
+							<!-- Ícone de carrinho visível em telas pequenas -->
+							<div class="px-xl-5 d-inline-block d-xl-none">
+                                <!-- Ícone visível apenas em telas menores que 'xl' -->
+                                <a class="position-relative lh-1 color-inherit text-decoration-none" href="#"
+                                    data-bs-toggle="offcanvas" data-bs-target="#shoppingCart"
+                                    aria-controls="shoppingCart" aria-expanded="false">
+                                    <svg class="icon2 icon-cart">
+                                        <use xlink:href="#icon-shopping-cart"></use>
+                                    </svg>
+                                    <span id="cart-item-count"
+                                        class="badge bg-dark text-white position-absolute top-0 start-100 translate-middle mt-4 rounded-circle fs-13px p-0 square"
+                                        style="--square-size: 18px">
+                                        {{ isset($total_items) ? $total_items : 0 }}
+                                    </span>
+                                </a>
+                            </div>
 						</div>
 					</div>
 					<div class="d-none d-xl-flex flex-column flex-xl-row w-100">
@@ -912,8 +928,8 @@
 										@else
 											<li>
 												<!-- <a class="dropdown-item" href="{{ route('login') }}">
-																Entrar
-															</a> -->
+																	Entrar
+																</a> -->
 												<a class="dropdown-item" href="#" data-bs-toggle="modal"
 													data-bs-target="#signInModal">
 													Entrar
@@ -946,27 +962,27 @@
 											style="--square-size: 18px">3</span>
 									</a>
 								</div> -->
-								<div class="px-5 d-none d-xl-inline-block">
-									<a class="position-relative lh-1 color-inherit text-decoration-none" href="#"
-										data-bs-toggle="offcanvas" data-bs-target="#shoppingCart"
-										aria-controls="shoppingCart" aria-expanded="false">
-										<!-- ícone de sacola de compras -->
-										<!--  <svg class="icon icon-star-light">
-                                    <use xlink:href="#icon-shopping-bag-open-light"></use>
-                                </svg> -->
-										<!-- Pelo novo SVG do carrinho de compras -->
-										<svg class="icon2 icon-cart">
-											<use xlink:href="#icon-shopping-cart"></use>
-										</svg>
-										<span id="cart-item-count"
-											class="badge bg-dark text-white position-absolute top-0 start-100 translate-middle mt-4 rounded-circle fs-13px p-0 square"
-											style="--square-size: 18px">
-											{{ isset($total_items) ? $total_items : 0 }}
-										</span>
-									</a>
-								</div>
+								
+								
 
-								<div class="color-modes position-relative ps-5">
+                            <!-- Ícone de carrinho visível em telas grandes -->
+                            <div class="px-5 d-none d-xl-inline-block">
+                                <!-- Ícone visível apenas em telas maiores que 'xl' -->
+                                <a class="position-relative lh-1 color-inherit text-decoration-none" href="#"
+                                    data-bs-toggle="offcanvas" data-bs-target="#shoppingCart"
+                                    aria-controls="shoppingCart" aria-expanded="false">
+                                    <svg class="icon2 icon-cart">
+                                        <use xlink:href="#icon-shopping-cart"></use>
+                                    </svg>
+                                    <span id="cart-item-count"
+                                        class="badge bg-dark text-white position-absolute top-0 start-100 translate-middle mt-4 rounded-circle fs-13px p-0 square"
+                                        style="--square-size: 18px">
+                                        {{ isset($total_items) ? $total_items : 0 }}
+                                    </span>
+                                </a>
+                            </div>
+
+								<!-- <div class="color-modes position-relative ps-5">
 									<a class="bd-theme btn btn-link nav-link dropdown-toggle d-inline-flex align-items-center justify-content-center color-inherit p-0 position-relative rounded-circle"
 										href="#" aria-expanded="true" data-bs-toggle="dropdown" data-bs-display="static"
 										aria-label="Toggle theme (light)">
@@ -1012,7 +1028,7 @@
 											</button>
 										</li>
 									</ul>
-								</div>
+								</div> -->
 							</div>
 						</div>
 					</div>
@@ -1185,41 +1201,41 @@
 													@endif
 													<!-- <div class="position-absolute d-flex z-index-2 product-actions horizontal">
 
-																																																																																																																								<a class="text-body-emphasis bg-body bg-dark-hover text-light-hover rounded-circle square product-action shadow-sm add_to_cart"
-																																																																																																																								href="{{ route('carrinho.adicionar') }}" data-bs-toggle="tooltip" data-bs-placement="top"
-																																																																																																																								data-bs-title="Add To Cartt">
+																																																																																																																													<a class="text-body-emphasis bg-body bg-dark-hover text-light-hover rounded-circle square product-action shadow-sm add_to_cart"
+																																																																																																																													href="{{ route('carrinho.adicionar') }}" data-bs-toggle="tooltip" data-bs-placement="top"
+																																																																																																																													data-bs-title="Add To Cartt">
 
-																																																																																																																								<svg class="icon2 icon-cart">
-																																																																																																																									<use xlink:href="#icon-shopping-cart"></use>
-																																																																																																																								</svg>
-																																																																																																																							</a>
-																																																																																																																							<a class="text-body-emphasis bg-body bg-dark-hover text-light-hover rounded-circle square product-action shadow-sm quick-view"
-																																																																																																																								href="###" data-bs-toggle="modal" data-bs-target="#quickViewModal"
-																																																																																																																								data-id="{{ $produto->id }}" data-nome="{{ $produto->nome }}"
-																																																																																																																								data-imagem="{{ $produto->imagem }}" data-bs-toggle="tooltip"
-																																																																																																																								data-bs-placement="top" data-bs-title="Ver"
-																																																																																																																								onclick="saveProductInfo({{ $produto->id }}, '{{ $produto->nome }}', '{{ $produto->imagem }}', '{{ $produto->descricao }}', '{{ $produto->preco }}', '{{ $produto->preco_promocional }}', '{{ $produto->imagens_adicionais }}')">
-																																																																																																																								<span class="d-flex align-items-center justify-content-center">
-																																																																																																																									<svg class="icon icon-eye-light">
-																																																																																																																										<use xlink:href="#icon-eye-light"></use>
-																																																																																																																									</svg>
-																																																																																																																								</span>
-																																																																																																																							</a>
-																																																																																																																							<a class="text-body-emphasis bg-body bg-dark-hover text-light-hover rounded-circle square product-action shadow-sm wishlist"
-																																																																																																																								href="#" data-bs-toggle="tooltip" data-bs-placement="top"
-																																																																																																																								data-bs-title="Add To Wishlist">
-																																																																																																																								<svg class="icon icon-star-light">
-																																																																																																																									<use xlink:href="#icon-star-light"></use>
-																																																																																																																								</svg>
-																																																																																																																							</a>
-																																																																																																																							<a class="text-body-emphasis bg-body bg-dark-hover text-light-hover rounded-circle square product-action shadow-sm compare"
-																																																																																																																								href="./shop/compare.html" data-bs-toggle="tooltip" data-bs-placement="top"
-																																																																																																																								data-bs-title="Compare">
-																																																																																																																								<svg class="icon icon-arrows-left-right-light">
-																																																																																																																									<use xlink:href="#icon-arrows-left-right-light"></use>
-																																																																																																																								</svg>
-																																																																																																																							</a>
-																																																																																																																						</div> -->
+																																																																																																																													<svg class="icon2 icon-cart">
+																																																																																																																														<use xlink:href="#icon-shopping-cart"></use>
+																																																																																																																													</svg>
+																																																																																																																												</a>
+																																																																																																																												<a class="text-body-emphasis bg-body bg-dark-hover text-light-hover rounded-circle square product-action shadow-sm quick-view"
+																																																																																																																													href="###" data-bs-toggle="modal" data-bs-target="#quickViewModal"
+																																																																																																																													data-id="{{ $produto->id }}" data-nome="{{ $produto->nome }}"
+																																																																																																																													data-imagem="{{ $produto->imagem }}" data-bs-toggle="tooltip"
+																																																																																																																													data-bs-placement="top" data-bs-title="Ver"
+																																																																																																																													onclick="saveProductInfo({{ $produto->id }}, '{{ $produto->nome }}', '{{ $produto->imagem }}', '{{ $produto->descricao }}', '{{ $produto->preco }}', '{{ $produto->preco_promocional }}', '{{ $produto->imagens_adicionais }}')">
+																																																																																																																													<span class="d-flex align-items-center justify-content-center">
+																																																																																																																														<svg class="icon icon-eye-light">
+																																																																																																																															<use xlink:href="#icon-eye-light"></use>
+																																																																																																																														</svg>
+																																																																																																																													</span>
+																																																																																																																												</a>
+																																																																																																																												<a class="text-body-emphasis bg-body bg-dark-hover text-light-hover rounded-circle square product-action shadow-sm wishlist"
+																																																																																																																													href="#" data-bs-toggle="tooltip" data-bs-placement="top"
+																																																																																																																													data-bs-title="Add To Wishlist">
+																																																																																																																													<svg class="icon icon-star-light">
+																																																																																																																														<use xlink:href="#icon-star-light"></use>
+																																																																																																																													</svg>
+																																																																																																																												</a>
+																																																																																																																												<a class="text-body-emphasis bg-body bg-dark-hover text-light-hover rounded-circle square product-action shadow-sm compare"
+																																																																																																																													href="./shop/compare.html" data-bs-toggle="tooltip" data-bs-placement="top"
+																																																																																																																													data-bs-title="Compare">
+																																																																																																																													<svg class="icon icon-arrows-left-right-light">
+																																																																																																																														<use xlink:href="#icon-arrows-left-right-light"></use>
+																																																																																																																													</svg>
+																																																																																																																												</a>
+																																																																																																																											</div> -->
 												</figure>
 												<div class="card-body text-center p-0">
 													<span

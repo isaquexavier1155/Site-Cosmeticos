@@ -723,10 +723,10 @@
                     </div>
 
                     <a href="../" class="navbar-brand px-8 py-4 mx-auto">
-                        <img class="light-mode-img" src="{{ asset('images/others/logo-oficial-02.png') }}" width="179"
-                            height="76" alt="Glowing - Bootstrap 5 HTML Templates">
-                        <img class="dark-mode-img" src="{{ asset('images/others/logo-oficial-02.png') }}" width="179"
-                            height="76" alt="Glowing - Bootstrap 5 HTML Templates">
+                        <img class="light-mode-img" src="{{ asset('images/others/logo-white.png') }}" width="179"
+                            height="26" alt="Glowing - Bootstrap 5 HTML Templates">
+                        <img class="dark-mode-img" src="{{ asset('images/others/logo-white.png') }}" width="179"
+                            height="26" alt="Glowing - Bootstrap 5 HTML Templates">
 
                         <div class="icons-actions d-flex justify-content-end w-xl-50 fs-28px text-body-emphasis">
                             <div class="px-5 d-none d-xl-inline-block dropdown">
@@ -781,8 +781,8 @@
                                     @else
                                         <li>
                                             <!-- <a class="dropdown-item" href="{{ route('login') }}">
-                                                                    Entrar
-                                                                </a> -->
+                                                                                    Entrar
+                                                                                </a> -->
                                             <a class="dropdown-item" href="#" data-bs-toggle="modal"
                                                 data-bs-target="#signInModal">
                                                 Entrar
@@ -794,15 +794,6 @@
                                 </ul>
                             </div>
 
-                            <!-- ícone de lupa para pesquisar -->
-                            <!-- <div class="px-xl-5 d-inline-block">
-                                <a class="lh-1 color-inherit text-decoration-none" href="#" data-bs-toggle="offcanvas"
-                                    data-bs-target="#searchModal" aria-controls="searchModal" aria-expanded="false">
-                                    <svg class="icon icon-magnifying-glass-light">
-                                        <use xlink:href="#icon-magnifying-glass-light"></use>
-                                    </svg>
-                                </a>
-                            </div> -->
                             <!--  <div class="px-5 d-none d-xl-inline-block">
                                 <a class="lh-1 color-inherit text-decoration-none" href="#" data-bs-toggle="modal"
                                     data-bs-target="#signInModal">
@@ -823,18 +814,22 @@
                                 </a>
                             </div> -->
 
+                            <!-- ícone de lupa para pesquisar tela grande e pequena-->
+                            <!--                           <div class="px-xl-5 d-inline-block">
+                                <a class="lh-1 color-inherit text-decoration-none" href="#" data-bs-toggle="offcanvas"
+                                    data-bs-target="#searchModal" aria-controls="searchModal" aria-expanded="false">
+                                    <svg class="icon icon-magnifying-glass-light">
+                                        <use xlink:href="#icon-magnifying-glass-light"></use>
+                                    </svg>
+                                </a>
+                            </div> -->
 
-
-                            <!-- Tela grande - Inicio Icone sacola abre modal carrinho 01 - Adicionar ao carrinho-->
-                            <div class="px-5 d-none d-xl-inline-block">
+                            <!-- Ícone de carrinho visível em telas pequenas -->
+                            <div class="px-xl-5 d-inline-block d-xl-none">
+                                <!-- Ícone visível apenas em telas menores que 'xl' -->
                                 <a class="position-relative lh-1 color-inherit text-decoration-none" href="#"
                                     data-bs-toggle="offcanvas" data-bs-target="#shoppingCart"
                                     aria-controls="shoppingCart" aria-expanded="false">
-                                    <!-- ícone de sacola de compras -->
-                                    <!--  <svg class="icon icon-star-light">
-                                    <use xlink:href="#icon-shopping-bag-open-light"></use>
-                                </svg> -->
-                                    <!-- Pelo novo SVG do carrinho de compras -->
                                     <svg class="icon2 icon-cart">
                                         <use xlink:href="#icon-shopping-cart"></use>
                                     </svg>
@@ -845,6 +840,24 @@
                                     </span>
                                 </a>
                             </div>
+
+                            <!-- Ícone de carrinho visível em telas grandes -->
+                            <div class="px-5 d-none d-xl-inline-block">
+                                <!-- Ícone visível apenas em telas maiores que 'xl' -->
+                                <a class="position-relative lh-1 color-inherit text-decoration-none" href="#"
+                                    data-bs-toggle="offcanvas" data-bs-target="#shoppingCart"
+                                    aria-controls="shoppingCart" aria-expanded="false">
+                                    <svg class="icon2 icon-cart">
+                                        <use xlink:href="#icon-shopping-cart"></use>
+                                    </svg>
+                                    <span id="cart-item-count"
+                                        class="badge bg-dark text-white position-absolute top-0 start-100 translate-middle mt-4 rounded-circle fs-13px p-0 square"
+                                        style="--square-size: 18px">
+                                        {{ isset($total_items) ? $total_items : 0 }}
+                                    </span>
+                                </a>
+                            </div>
+
 
 
                             <!--Tela grande -  Fim Icone sacola abre modal carrinho 01 - Adicionar ao carrinho-->
@@ -910,8 +923,8 @@
                 <div class="container">
                     <nav class="py-4 lh-30px" aria-label="breadcrumb">
                         <ol class="breadcrumb justify-content-center py-1 mb-0">
-                            <li class="breadcrumb-item"><a title="Início" href="../index.html">Início</a></li>
-                            <li class="breadcrumb-item"><a title="Shop" href="../shop/shop-layout-v2.html">Loja</a></li>
+                            <li class="breadcrumb-item"><a title="Início" href="/">Início</a></li>
+                            <li class="breadcrumb-item"><a title="Shop" href="#">Loja</a></li>
                             <li class="breadcrumb-item active" aria-current="page">{{ $produto->nome }}</li>
                         </ol>
                     </nav>
@@ -1661,24 +1674,24 @@
                                 @endif
 
                                 <!-- <div class="position-absolute d-flex z-index-2 product-actions vertical">
-                                                                                                                                                                    <a class="text-body-emphasis bg-body bg-dark-hover text-light-hover rounded-circle square product-action shadow-sm quick-view sm" href="#" data-bs-toggle="tooltip" data-bs-placement="left" data-bs-title="Quick View">
-                                                                                                                                                                        <span data-bs-toggle="modal" data-bs-target="#quickViewModal" class="d-flex align-items-center justify-content-center">
-                                                                                                                                                                            <svg class="icon icon-eye-light">
-                                                                                                                                                                                <use xlink:href="#icon-eye-light"></use>
-                                                                                                                                                                            </svg>
-                                                                                                                                                                        </span>
-                                                                                                                                                                    </a>
-                                                                                                                                                                    <a class="text-body-emphasis bg-body bg-dark-hover text-light-hover rounded-circle square product-action shadow-sm wishlist sm" href="#" data-bs-toggle="tooltip" data-bs-placement="left" data-bs-title="Add To Wishlist">
-                                                                                                                                                                        <svg class="icon icon-star-light">
-                                                                                                                                                                            <use xlink:href="#icon-star-light"></use>
-                                                                                                                                                                        </svg>
-                                                                                                                                                                    </a>
-                                                                                                                                                                    <a class="text-body-emphasis bg-body bg-dark-hover text-light-hover rounded-circle square product-action shadow-sm compare sm" href="#" data-bs-toggle="tooltip" data-bs-placement="left" data-bs-title="Compare">
-                                                                                                                                                                        <svg class="icon icon-arrows-left-right-light">
-                                                                                                                                                                            <use xlink:href="#icon-arrows-left-right-light"></use>
-                                                                                                                                                                        </svg>
-                                                                                                                                                                    </a>
-                                                                                                                                                                </div> -->
+                                                                                                                                                                                    <a class="text-body-emphasis bg-body bg-dark-hover text-light-hover rounded-circle square product-action shadow-sm quick-view sm" href="#" data-bs-toggle="tooltip" data-bs-placement="left" data-bs-title="Quick View">
+                                                                                                                                                                                        <span data-bs-toggle="modal" data-bs-target="#quickViewModal" class="d-flex align-items-center justify-content-center">
+                                                                                                                                                                                            <svg class="icon icon-eye-light">
+                                                                                                                                                                                                <use xlink:href="#icon-eye-light"></use>
+                                                                                                                                                                                            </svg>
+                                                                                                                                                                                        </span>
+                                                                                                                                                                                    </a>
+                                                                                                                                                                                    <a class="text-body-emphasis bg-body bg-dark-hover text-light-hover rounded-circle square product-action shadow-sm wishlist sm" href="#" data-bs-toggle="tooltip" data-bs-placement="left" data-bs-title="Add To Wishlist">
+                                                                                                                                                                                        <svg class="icon icon-star-light">
+                                                                                                                                                                                            <use xlink:href="#icon-star-light"></use>
+                                                                                                                                                                                        </svg>
+                                                                                                                                                                                    </a>
+                                                                                                                                                                                    <a class="text-body-emphasis bg-body bg-dark-hover text-light-hover rounded-circle square product-action shadow-sm compare sm" href="#" data-bs-toggle="tooltip" data-bs-placement="left" data-bs-title="Compare">
+                                                                                                                                                                                        <svg class="icon icon-arrows-left-right-light">
+                                                                                                                                                                                            <use xlink:href="#icon-arrows-left-right-light"></use>
+                                                                                                                                                                                        </svg>
+                                                                                                                                                                                    </a>
+                                                                                                                                                                                </div> -->
                                 <a href="#"
                                     class="btn btn-add-to-cart btn-dark btn-hover-bg-primary btn-hover-border-primary position-absolute z-index-2 text-nowrap btn-sm px-6 py-3 lh-2">Adicionar
                                     ao Carrinho</a>
@@ -3724,8 +3737,8 @@
                             @else
                                 <li>
                                     <!-- <a class="dropdown-item" href="{{ route('login') }}">
-                                                                            Entrar
-                                                                        </a> -->
+                                                                                            Entrar
+                                                                                        </a> -->
                                     <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#signInModal">
                                         Entrar
                                     </a>

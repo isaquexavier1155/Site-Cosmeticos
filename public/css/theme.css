@@ -11630,8 +11630,9 @@ textarea.form-control-lg {
   padding-left: 1.25rem !important;
 }
 
+/* ao comentar a linha abaixo faz aparecer o link de lupa */
 .px-8 {
-  padding-right: 1.5rem !important;
+  /* padding-right: 1.5rem !important; */
   padding-left: 4.5rem !important;
 }
 
