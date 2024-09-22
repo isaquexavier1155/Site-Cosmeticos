@@ -135,9 +135,9 @@ class PainelAdministrativoController extends Controller
         //$id = "9d0eae98-6129-439b-a366-07354cffabcd"; // Remover isso
 
         curl_setopt_array($curl, array(
-            //produção
-            //CURLOPT_URL => 'https://sandbox.melhorenvio.com.br/api/v2/me/shipment/tracking',
             //desenvolvimento
+            //CURLOPT_URL => 'https://sandbox.melhorenvio.com.br/api/v2/me/shipment/tracking',
+            //produção
             CURLOPT_URL => 'https://melhorenvio.com.br/api/v2/me/shipment/tracking',
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_ENCODING => '',
@@ -184,9 +184,6 @@ class PainelAdministrativoController extends Controller
             ], 400);
         }
     }
-
-
-
 
 
     public function gerarEtiquetaCompleta($saleId)
@@ -368,6 +365,8 @@ class PainelAdministrativoController extends Controller
             $payment = Payment::find($saleId);  // Ajuste para buscar pelo ID de pagamento se necessário
 
             if ($payment) {
+                //esta dando erro aqui em produção
+                //acredito que deva ser por falta de saldo para comprar as etiquetas
                 $payment->etiqueta_id = $etiqueta['id'];
                 $payment->save();
             }

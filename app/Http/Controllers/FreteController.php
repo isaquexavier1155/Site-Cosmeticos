@@ -138,10 +138,10 @@ class FreteController extends Controller
 
         // Configurando a requisição cURL
         curl_setopt_array($curl, [
-            //em produção deixar a linha abaixo
-            CURLOPT_URL => 'https://melhorenvio.com.br/api/v2/me/shipment/calculate',
             //Em desenvolvimento deixar a linha abaixo
             //CURLOPT_URL => 'https://sandbox.melhorenvio.com.br/api/v2/me/shipment/calculate',
+            //em produção deixar a linha abaixo
+            CURLOPT_URL => 'https://melhorenvio.com.br/api/v2/me/shipment/calculate',
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_ENCODING => '',
             CURLOPT_MAXREDIRS => 10,
@@ -174,7 +174,7 @@ class FreteController extends Controller
             ],
 
             //CURLOPT_SSL_VERIFYPEER => false,  // Deixar essa linha em desenvolvimento
-             CURLOPT_CAINFO => base_path('certificates/cacert.pem'), //deixar essa linha em produção
+            CURLOPT_CAINFO => base_path('certificates/cacert.pem'), //deixar essa linha em produção
         ]);
 
         // Executando a requisição e capturando a resposta
