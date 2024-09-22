@@ -61,20 +61,13 @@
 								<img class="dark-mode-img" src="{{ asset('images/others/logo-oficial-022.png') }}"
 									width="179" height="76" alt="Glowingg - Bootstrap 5 HTML Templatess"> -->
 								<img class="sticky-logo sticky-logo-light"
-									src="{{ asset('images/others/logo-oficial-02.png') }}" width="179" height="26"
+									src="{{ asset('images/others/logo-oficial-02.png') }}" width="179" height="76"
 									alt="Glowing - Bootstrap 5 HTML Templates">
 								<img class="sticky-logo sticky-logo-dark"
 									src="{{ asset('images/others/logo-oficial-02.png') }}" width="179" height="76"
 									alt="Glowing - Bootstrap 5 HTML Templates">
 
-								<!-- 	<img class="light-mode-img" src="./assets/images/others/logo-white.png" width="179" height="26" alt="Glowing - Bootstrap 5 HTML Templates">
- -->
-								<!--  	<img class="dark-mode-img" src="./assets/images/others/logo-white.png" width="179" height="26" alt="Glowing - Bootstrap 5 HTML Templates">
- -->
-								<!--  <img class="sticky-logo sticky-logo-light" src="./assets/images/others/logo.png" width="179" height="26" alt="Glowing - Bootstrap 5 HTML Templates">
- -->
-								<!--  	<img class="sticky-logo sticky-logo-dark" src="./assets/images/others/logo-white.png" width="179" height="26" alt="Glowing - Bootstrap 5 HTML Templates"></a>
- -->
+								
 						</div>
 						<div class="icons-actions d-flex d-xl-none justify-content-start fs-28px text-white">
 							<!-- <div class="px-xl-5 d-inline-block">
@@ -720,18 +713,14 @@
 
 
 							<a href="./" class="navbar-brand has-sticky-logo px-8 py-4 mx-auto">
-								<!-- 	<img class="light-mode-img" src="./assets/images/others/logo-white.png" width="179" height="26" alt="Glowing - Bootstrap 5 HTML Templates">
-	<img class="dark-mode-img" src="./assets/images/others/logo-white.png" width="179" height="26" alt="Glowing - Bootstrap 5 HTML Templates">
-	<img class="sticky-logo sticky-logo-light" src="./assets/images/others/logo.png" width="179" height="26" alt="Glowing - Bootstrap 5 HTML Templates">
-	<img class="sticky-logo sticky-logo-dark" src="./assets/images/others/logo-white.png" width="179" height="26" alt="Glowing - Bootstrap 5 HTML Templates"></a>
- -->
+								
 								<img class="light-mode-img" src="{{ asset('images/others/logo-oficial-02.png') }}"
 									width="179" height="76" alt="Glowing - Bootstrap 5 HTML Templates">
 								<!-- Imagem logo central -->
 								<img class="dark-mode-img" src="{{ asset('images/others/logo-oficial-02.png') }}"
 									width="179" height="76" alt="Glowing - Bootstrap 5 HTML Templates">
 								<img class="sticky-logo sticky-logo-light"
-									src="{{ asset('images/others/logo-oficial-02.png') }}" width="179" height="26"
+									src="{{ asset('images/others/logo-oficial-02.png') }}" width="179" height="76"
 									alt="Glowing - Bootstrap 5 HTML Templates">
 								<img class="sticky-logo sticky-logo-dark"
 									src="{{ asset('images/others/logo-oficial-02.png') }}" width="179" height="76"
@@ -2299,14 +2288,11 @@
 				<div class="col-sm-12 col-lg-4 text-md-center order-1 order-lg-2 ">
 					<a class="d-inline-block" href="./">
 
-
-						<!-- <img class="lazy-image img-fluid light-mode-img" src="#" data-src="./assets/images/others/logo.png" width="179" height="26" alt="Glowing - Bootstrap 5 HTML Templates">
-<img class="lazy-image dark-mode-img img-fluid" src="#" data-src="./assets/images/others/logo-white.png" width="179" height="26" alt="Glowing - Bootstrap 5 HTML Templates"> -->
 						<img class="lazy-image img-fluid light-mode-img" src="#"
-							data-src="{{ asset('images/others/logo-oficial-02.png') }}" width="179" height="26"
+							data-src="{{ asset('images/others/logo-oficial-02.png') }}" width="179" height="76"
 							alt="Glowing - Bootstrap 5 HTML Templates">
 						<img class="lazy-image dark-mode-img img-fluid" src="#"
-							data-src="{{ asset('images/others/logo-oficial-02.png') }}" width="179" height="26"
+							data-src="{{ asset('images/others/logo-oficial-02.png') }}" width="179" height="76"
 							alt="Glowing - Bootstrap 5 HTML Templates">
 
 

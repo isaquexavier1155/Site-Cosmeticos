@@ -723,10 +723,10 @@
                     </div>
 
                     <a href="../" class="navbar-brand px-8 py-4 mx-auto">
-                        <img class="light-mode-img" src="{{ asset('images/others/logo-white.png') }}" width="179"
-                            height="26" alt="Glowing - Bootstrap 5 HTML Templates">
-                        <img class="dark-mode-img" src="{{ asset('images/others/logo-white.png') }}" width="179"
-                            height="26" alt="Glowing - Bootstrap 5 HTML Templates">
+                        <img class="light-mode-img" src="{{ asset('images/others/logo-oficial-02.png') }}" width="179"
+                            height="76" alt="Glowing - Bootstrap 5 HTML Templates">
+                        <img class="dark-mode-img" src="{{ asset('images/others/logo-oficial-02.png') }}" width="179"
+                            height="76" alt="Glowing - Bootstrap 5 HTML Templates">
 
                         <div class="icons-actions d-flex justify-content-end w-xl-50 fs-28px text-body-emphasis">
                             <div class="px-5 d-none d-xl-inline-block dropdown">
@@ -4451,7 +4451,7 @@
         <div id="offCanvasNavBar" class="offcanvas offcanvas-start" style="--bs-offcanvas-width: 310px">
 
             <div class="offcanvas-header bg-body-tertiary">
-                <h3 class="offcanvas-title text-uppercase">Glowing</h3>
+                <h3 class="offcanvas-title text-uppercase">Elegance Cintra</h3>
                 <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
             <hr class="mt-0">
