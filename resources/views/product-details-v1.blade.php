@@ -781,8 +781,8 @@
                                     @else
                                         <li>
                                             <!-- <a class="dropdown-item" href="{{ route('login') }}">
-                                                                                    Entrar
-                                                                                </a> -->
+                                                                                        Entrar
+                                                                                    </a> -->
                                             <a class="dropdown-item" href="#" data-bs-toggle="modal"
                                                 data-bs-target="#signInModal">
                                                 Entrar
@@ -843,7 +843,6 @@
 
                             <!-- Ícone de carrinho visível em telas grandes -->
                             <div class="px-5 d-none d-xl-inline-block">
-                                <!-- Ícone visível apenas em telas maiores que 'xl' -->
                                 <a class="position-relative lh-1 color-inherit text-decoration-none" href="#"
                                     data-bs-toggle="offcanvas" data-bs-target="#shoppingCart"
                                     aria-controls="shoppingCart" aria-expanded="false">
@@ -856,6 +855,57 @@
                                         {{ isset($total_items) ? $total_items : 0 }}
                                     </span>
                                 </a>
+                            </div>
+                            <!-- Ícone de conta visível apenas em telas pequenas -->
+                            <div class="px-5 d-inline-block d-xl-none dropdown">
+                                <!-- Ícone visível apenas em telas menores que 'xl' -->
+                                <a class="lh-1 color-inherit text-decoration-none dropdown-toggle" href="#"
+                                    id="dropdownAccountSmall" role="button" data-bs-toggle="dropdown"
+                                    aria-expanded="false">
+                                    <i class="fas fa-user-circle" style="font-size: 1.5rem;" title="Conta"></i>
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownAccountSmall">
+                                    @if(auth()->check() && auth()->user()->isAdmin())
+                                        <li>
+                                            <a class="dropdown-item" href="{{ route('painel-administrativo') }}">
+                                                Gerenciar
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="{{ route('logout') }}"
+                                                onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                                Sair
+                                            </a>
+                                            <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                                style="display: none;">
+                                                @csrf
+                                            </form>
+                                        </li>
+                                    @elseif(auth()->check())
+                                        <li>
+                                            <a class="dropdown-item" href="{{ route('painel-administrativo') }}">
+                                                Minhas Compras
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="{{ route('logout') }}"
+                                                onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                                Sair
+                                            </a>
+                                            <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                                style="display: none;">
+                                                @csrf
+                                            </form>
+                                        </li>
+                                    @else
+                                        <li>
+                                            <a class="dropdown-item" href="#" data-bs-toggle="modal"
+                                                data-bs-target="#signInModal">
+                                                Entrar
+                                            </a>
+                                        </li>
+                                    @endif
+                                </ul>
                             </div>
 
 
@@ -1674,24 +1724,24 @@
                                 @endif
 
                                 <!-- <div class="position-absolute d-flex z-index-2 product-actions vertical">
-                                                                                                                                                                                    <a class="text-body-emphasis bg-body bg-dark-hover text-light-hover rounded-circle square product-action shadow-sm quick-view sm" href="#" data-bs-toggle="tooltip" data-bs-placement="left" data-bs-title="Quick View">
-                                                                                                                                                                                        <span data-bs-toggle="modal" data-bs-target="#quickViewModal" class="d-flex align-items-center justify-content-center">
-                                                                                                                                                                                            <svg class="icon icon-eye-light">
-                                                                                                                                                                                                <use xlink:href="#icon-eye-light"></use>
+                                                                                                                                                                                        <a class="text-body-emphasis bg-body bg-dark-hover text-light-hover rounded-circle square product-action shadow-sm quick-view sm" href="#" data-bs-toggle="tooltip" data-bs-placement="left" data-bs-title="Quick View">
+                                                                                                                                                                                            <span data-bs-toggle="modal" data-bs-target="#quickViewModal" class="d-flex align-items-center justify-content-center">
+                                                                                                                                                                                                <svg class="icon icon-eye-light">
+                                                                                                                                                                                                    <use xlink:href="#icon-eye-light"></use>
+                                                                                                                                                                                                </svg>
+                                                                                                                                                                                            </span>
+                                                                                                                                                                                        </a>
+                                                                                                                                                                                        <a class="text-body-emphasis bg-body bg-dark-hover text-light-hover rounded-circle square product-action shadow-sm wishlist sm" href="#" data-bs-toggle="tooltip" data-bs-placement="left" data-bs-title="Add To Wishlist">
+                                                                                                                                                                                            <svg class="icon icon-star-light">
+                                                                                                                                                                                                <use xlink:href="#icon-star-light"></use>
                                                                                                                                                                                             </svg>
-                                                                                                                                                                                        </span>
-                                                                                                                                                                                    </a>
-                                                                                                                                                                                    <a class="text-body-emphasis bg-body bg-dark-hover text-light-hover rounded-circle square product-action shadow-sm wishlist sm" href="#" data-bs-toggle="tooltip" data-bs-placement="left" data-bs-title="Add To Wishlist">
-                                                                                                                                                                                        <svg class="icon icon-star-light">
-                                                                                                                                                                                            <use xlink:href="#icon-star-light"></use>
-                                                                                                                                                                                        </svg>
-                                                                                                                                                                                    </a>
-                                                                                                                                                                                    <a class="text-body-emphasis bg-body bg-dark-hover text-light-hover rounded-circle square product-action shadow-sm compare sm" href="#" data-bs-toggle="tooltip" data-bs-placement="left" data-bs-title="Compare">
-                                                                                                                                                                                        <svg class="icon icon-arrows-left-right-light">
-                                                                                                                                                                                            <use xlink:href="#icon-arrows-left-right-light"></use>
-                                                                                                                                                                                        </svg>
-                                                                                                                                                                                    </a>
-                                                                                                                                                                                </div> -->
+                                                                                                                                                                                        </a>
+                                                                                                                                                                                        <a class="text-body-emphasis bg-body bg-dark-hover text-light-hover rounded-circle square product-action shadow-sm compare sm" href="#" data-bs-toggle="tooltip" data-bs-placement="left" data-bs-title="Compare">
+                                                                                                                                                                                            <svg class="icon icon-arrows-left-right-light">
+                                                                                                                                                                                                <use xlink:href="#icon-arrows-left-right-light"></use>
+                                                                                                                                                                                            </svg>
+                                                                                                                                                                                        </a>
+                                                                                                                                                                                    </div> -->
                                 <a href="#"
                                     class="btn btn-add-to-cart btn-dark btn-hover-bg-primary btn-hover-border-primary position-absolute z-index-2 text-nowrap btn-sm px-6 py-3 lh-2">Adicionar
                                     ao Carrinho</a>
@@ -3737,8 +3787,8 @@
                             @else
                                 <li>
                                     <!-- <a class="dropdown-item" href="{{ route('login') }}">
-                                                                                            Entrar
-                                                                                        </a> -->
+                                                                                                Entrar
+                                                                                            </a> -->
                                     <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#signInModal">
                                         Entrar
                                     </a>

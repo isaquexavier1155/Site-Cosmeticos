@@ -29252,9 +29252,11 @@ svg.icon2 {
   width: 100%;
 }
 
-.color-inherit {
-  color: inherit !important;
-}
+  .color-inherit {
+    color: inherit !important;
+/*     margin-left: 2vw;
+ */}
+
 
 .color-current {
   color: currentColor !important;
@@ -31814,6 +31816,8 @@ ul.single-product-meta li span:first-child {
   color: inherit !important;
 }
 
+
+
 .border-transparent {
   border-color: transparent !important;
 }
@@ -32565,7 +32569,10 @@ ul.single-product-meta li span:first-child {
   .border-lg-end {
     border-right: var(--bs-border-width) var(--bs-border-style) var(--bs-border-color) !important;
   }
+
 }
+
+
 
 .video-cover {
   position: absolute;
