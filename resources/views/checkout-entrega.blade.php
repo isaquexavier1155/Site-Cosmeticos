@@ -45,6 +45,7 @@
             margin-bottom: 1rem;
             text-align: center;
             font-size: 1.1rem;
+            color: white;
         }
 
         .form-group {
