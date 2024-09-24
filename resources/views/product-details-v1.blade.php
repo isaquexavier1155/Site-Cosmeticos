@@ -781,8 +781,8 @@
                                     @else
                                         <li>
                                             <!-- <a class="dropdown-item" href="{{ route('login') }}">
-                                                                                        Entrar
-                                                                                    </a> -->
+                                                                                            Entrar
+                                                                                        </a> -->
                                             <a class="dropdown-item" href="#" data-bs-toggle="modal"
                                                 data-bs-target="#signInModal">
                                                 Entrar
@@ -1448,6 +1448,7 @@
             <div class="collapse-tabs">
                 <ul class="nav nav-tabs border-0 justify-content-center pb-12 d-none d-md-flex" id="productTabs"
                     role="tablist">
+                    <!-- Exibido em telas grandes -->
                     <li class="nav-item" role="presentation">
                         <button
                             class="nav-link m-auto fw-semibold py-0 px-8 fs-4 fs-lg-3 border-0 text-body-emphasis active"
@@ -1481,15 +1482,16 @@
                                             type="button" data-bs-toggle="collapse"
                                             data-bs-target="#collapse-product-detail" aria-expanded="false"
                                             aria-controls="collapse-product-detail">
-                                            Detalhes do Produto
+                                            Detalhes do Produto 
                                         </button>
                                     </h5>
                                 </div>
                                 <div class="collapse show border-md-0 border p-md-0 p-6" id="collapse-product-detail">
                                     <div class="row">
                                         <div class="col-12 col-lg-6 pe-lg-10 pe-xl-20">
-                                            <img src="#" data-src="{{ asset('images/shop/product-details-img.jpg') }}"
-                                                class="w-100 lazy-image" alt="" width="470" height="540">
+                                            <!-- Imagem exibida em tela grande e pequena -->
+                                            <img src="#" data-src="{{ asset('images/products/' . $imagem) }}"
+                                                class="w-100 lazy-image" >
 
                                         </div>
                                         <div class="pb-3 col-12 col-lg-6 pt-12 pt-lg-0">
@@ -1500,70 +1502,31 @@
                                                 melt-into-your-skin shades. This lightweight, innovative formula
                                                 creates a smooth, natural matte finish that won’t settle into lines.
                                                 It’s the perfect fit for your skin. 1 fl. oz.</p> -->
-                                            <p class="fw-semibold text-body-emphasis mb-2 pb-4">Características:</p>
-                                            <ul class="mb-7 ps-6">
-                                                @if(!empty($produto->caracteristicas))
-                                                                                                @php
-                                                                                                    // Decodificar a string JSON para um array PHP
-                                                                                                    $caracteristicas = json_decode($produto->caracteristicas, true);
-                                                                                                @endphp
-                                                                                                @foreach($caracteristicas as $caracteristica)
-                                                                                                    @if(isset($caracteristica['value']))
-                                                                                                        <li class="mb-1">{{ $caracteristica['value'] }}</li>
-                                                                                                    @endif
-                                                                                                @endforeach
-                                                @endif
+                                            @if(!empty($produto->caracteristicas))
+                                                        <p class="fw-semibold text-body-emphasis mb-2 pb-4">Características:</p>
+                                                        <ul class="mb-7 ps-6">
 
-                                            </ul>
+                                                            @php
+                                                            // Decodificar a string JSON para um array PHP
+                                                            $caracteristicas = json_decode($produto->caracteristicas, true);
+                                                            @endphp
+                                                            @foreach($caracteristicas as $caracteristica)
+                                                                @if(isset($caracteristica['value']))
+                                                                    <li class="mb-1">{{ $caracteristica['value'] }}</li>
+                                                                @endif
+                                                            @endforeach
+                                                        </ul>
+                                            @endif
+
+                                            @if(!empty($produto->modo_de_usar))
 
                                             <!-- DEIXAR -->
                                             <p class="fw-semibold text-body-emphasis mb-2 pb-4">Modo de usar:</p>
                                             <p class="mb-2 pb-4">{{ $produto->modo_de_usar }}</p>
                                             <div class="row">
-                                                <!-- <div class="col-6 col-md-3 text-center mb-9 pb-2">
-
-                                                    <img class="lazy-image light-mode-img" src="#"
-                                                        data-src="{{ asset('images/shop/product-info-3-1.png') }}"
-                                                        width="66" height="77" alt="">
-                                                    <img class="lazy-image dark-mode-img" src="#"
-                                                        data-src="{{ asset('images/shop/product-info-white-3-1.png') }}"
-                                                        width="66" height="77" alt="">
-
-                                                </div>
-                                                <div class="col-6 col-md-3 text-center mb-9 pb-2">
-
-
-                                                    <img class="lazy-image light-mode-img" src="#"
-                                                        data-src="{{ asset('images/shop/product-info-3-2.png') }}"
-                                                        width="66" height="77" alt="">
-                                                    <img class="lazy-image dark-mode-img" src="#"
-                                                        data-src="{{ asset('images/shop/product-info-white-3-2.png') }}"
-                                                        width="66" height="77" alt="">
-
-                                                </div>
-                                                <div class="col-6 col-md-3 text-center mb-9 pb-2">
-
-
-                                                    <img class="lazy-image light-mode-img" src="#"
-                                                        data-src="{{ asset('images/shop/product-info-3-3.png') }}"
-                                                        width="66" height="77" alt="">
-                                                    <img class="lazy-image dark-mode-img" src="#"
-                                                        data-src="{{ asset('images/shop/product-info-white-3-3.png') }}"
-                                                        width="66" height="77" alt="">
-
-                                                </div>
-                                                <div class="col-6 col-md-3 text-center mb-9 pb-2">
-
-
-                                                    <img class="lazy-image light-mode-img" src="#"
-                                                        data-src="{{ asset('images/shop/product-info-3-4.png') }}"
-                                                        width="66" height="77" alt="">
-                                                    <img class="lazy-image dark-mode-img" src="#"
-                                                        data-src="{{ asset('images/shop/product-info-white-3-4.png') }}"
-                                                        width="66" height="77" alt="">
-
-                                                </div> -->
+        
                                             </div>
+                                            @endif
                                         </div>
                                     </div>
                                 </div>
@@ -1724,24 +1687,24 @@
                                 @endif
 
                                 <!-- <div class="position-absolute d-flex z-index-2 product-actions vertical">
-                                                                                                                                                                                        <a class="text-body-emphasis bg-body bg-dark-hover text-light-hover rounded-circle square product-action shadow-sm quick-view sm" href="#" data-bs-toggle="tooltip" data-bs-placement="left" data-bs-title="Quick View">
-                                                                                                                                                                                            <span data-bs-toggle="modal" data-bs-target="#quickViewModal" class="d-flex align-items-center justify-content-center">
-                                                                                                                                                                                                <svg class="icon icon-eye-light">
-                                                                                                                                                                                                    <use xlink:href="#icon-eye-light"></use>
+                                                                                                                                                                                            <a class="text-body-emphasis bg-body bg-dark-hover text-light-hover rounded-circle square product-action shadow-sm quick-view sm" href="#" data-bs-toggle="tooltip" data-bs-placement="left" data-bs-title="Quick View">
+                                                                                                                                                                                                <span data-bs-toggle="modal" data-bs-target="#quickViewModal" class="d-flex align-items-center justify-content-center">
+                                                                                                                                                                                                    <svg class="icon icon-eye-light">
+                                                                                                                                                                                                        <use xlink:href="#icon-eye-light"></use>
+                                                                                                                                                                                                    </svg>
+                                                                                                                                                                                                </span>
+                                                                                                                                                                                            </a>
+                                                                                                                                                                                            <a class="text-body-emphasis bg-body bg-dark-hover text-light-hover rounded-circle square product-action shadow-sm wishlist sm" href="#" data-bs-toggle="tooltip" data-bs-placement="left" data-bs-title="Add To Wishlist">
+                                                                                                                                                                                                <svg class="icon icon-star-light">
+                                                                                                                                                                                                    <use xlink:href="#icon-star-light"></use>
                                                                                                                                                                                                 </svg>
-                                                                                                                                                                                            </span>
-                                                                                                                                                                                        </a>
-                                                                                                                                                                                        <a class="text-body-emphasis bg-body bg-dark-hover text-light-hover rounded-circle square product-action shadow-sm wishlist sm" href="#" data-bs-toggle="tooltip" data-bs-placement="left" data-bs-title="Add To Wishlist">
-                                                                                                                                                                                            <svg class="icon icon-star-light">
-                                                                                                                                                                                                <use xlink:href="#icon-star-light"></use>
-                                                                                                                                                                                            </svg>
-                                                                                                                                                                                        </a>
-                                                                                                                                                                                        <a class="text-body-emphasis bg-body bg-dark-hover text-light-hover rounded-circle square product-action shadow-sm compare sm" href="#" data-bs-toggle="tooltip" data-bs-placement="left" data-bs-title="Compare">
-                                                                                                                                                                                            <svg class="icon icon-arrows-left-right-light">
-                                                                                                                                                                                                <use xlink:href="#icon-arrows-left-right-light"></use>
-                                                                                                                                                                                            </svg>
-                                                                                                                                                                                        </a>
-                                                                                                                                                                                    </div> -->
+                                                                                                                                                                                            </a>
+                                                                                                                                                                                            <a class="text-body-emphasis bg-body bg-dark-hover text-light-hover rounded-circle square product-action shadow-sm compare sm" href="#" data-bs-toggle="tooltip" data-bs-placement="left" data-bs-title="Compare">
+                                                                                                                                                                                                <svg class="icon icon-arrows-left-right-light">
+                                                                                                                                                                                                    <use xlink:href="#icon-arrows-left-right-light"></use>
+                                                                                                                                                                                                </svg>
+                                                                                                                                                                                            </a>
+                                                                                                                                                                                        </div> -->
                                 <a href="#"
                                     class="btn btn-add-to-cart btn-dark btn-hover-bg-primary btn-hover-border-primary position-absolute z-index-2 text-nowrap btn-sm px-6 py-3 lh-2">Adicionar
                                     ao Carrinho</a>
@@ -3787,8 +3750,8 @@
                             @else
                                 <li>
                                     <!-- <a class="dropdown-item" href="{{ route('login') }}">
-                                                                                                Entrar
-                                                                                            </a> -->
+                                                                                                    Entrar
+                                                                                                </a> -->
                                     <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#signInModal">
                                         Entrar
                                     </a>
