@@ -965,8 +965,8 @@
 										@else
 											<li>
 												<!-- <a class="dropdown-item" href="{{ route('login') }}">
-																					Entrar
-																				</a> -->
+																							Entrar
+																						</a> -->
 												<a class="dropdown-item" href="#" data-bs-toggle="modal"
 													data-bs-target="#signInModal">
 													Entrar
@@ -1175,31 +1175,98 @@
 
 			<div class="container-fluid px-9">
 				<div class="row gy-30px gx-30px px-2">
+					<!-- PERFUMES -->
 					<div class="col-12 col-md-4" data-animate="fadeInUp">
 						<div class="card border-0 rounded-0 banner-05 hover-zoom-in hover-shine">
-							<img class="lazy-image card-img object-fit-cover light-mode-img" src="#"
-								data-src="{{ asset('images/banner/banner-29.jpg') }}" width="468" height="400"
-								alt="Itens essenciais">
-							<img class="lazy-image dark-mode-img card-img object-fit-cover" src="#"
-								data-src="{{ asset('images/banner/banner-white-29.jpg') }}" width="468" height="400"
-								alt="Itens essenciais">
+							<!-- Envolva a imagem em um link para o ID #listagemprod -->
+							<a href="#listagemprod">
+								<img class="lazy-image card-img object-fit-cover light-mode-img" src="#"
+									data-src="{{ asset('images/home/perfumes.jpg') }}" width="468" height="400"
+									alt="Perfumes">
+								<img class="lazy-image dark-mode-img card-img object-fit-cover" src="#"
+									data-src="{{ asset('images/home/perfumes.jpg') }}" width="468" height="400"
+									alt="Perfumes">
+							</a>
 
 							<div
 								class="card-img-overlay d-inline-flex flex-column justify-content-end px-11 pt-11 pb-9 mb-2">
-								<h3 class="card-title fw-semibold pe-xxl-25">Itens<br /> Essenciais</h3>
-								<div><a href="#listagemprod"
-										class="btn btn-link text-decoration-none p-0 fw-semibold">Compre 1 leve 2<svg
-											class="icon">
-											<use xlink:href="#icon-arrow-right">
-
-											</use>
-										</svg></a>
+								<!-- Envolva o título "Perfumes" em um link -->
+								<a href="#listagemprod" class="text-decoration-none">
+									<h3 class="card-title fw-semibold pe-xxl-25">Perfumes</h3>
+								</a>
+								<div>
+									<a href="#listagemprod" class="btn btn-link text-decoration-none p-0 fw-semibold">
+										Ver
+										<svg class="icon">
+											<use xlink:href="#icon-arrow-right"></use>
+										</svg>
+									</a>
 								</div>
 							</div>
 						</div>
-
 					</div>
+					<!-- BODY SPLASH --> 
 					<div class="col-12 col-md-4" data-animate="fadeInUp">
+						<div class="card border-0 rounded-0 banner-05 hover-zoom-in hover-shine">
+							<!-- Envolva a imagem em um link para o ID #listagemprod -->
+							<a href="#listagemprod">
+								<img class="lazy-image card-img object-fit-cover light-mode-img" src="#"
+									data-src="{{ asset('images/home/bodysplash.jpg') }}" width="468" height="400"
+									alt="Body splash">
+								<img class="lazy-image dark-mode-img card-img object-fit-cover" src="#"
+									data-src="{{ asset('images/home/bodysplash.jpg') }}" width="468" height="400"
+									alt="Body splash">
+							</a>
+
+							<div
+								class="card-img-overlay d-inline-flex flex-column justify-content-end px-11 pt-11 pb-9 mb-2">
+								<!-- Envolva o título "Perfumes" em um link -->
+								<a href="#listagemprod" class="text-decoration-none">
+									<h3 class="card-title fw-semibold pe-xxl-25">Body splash</h3>
+								</a>
+								<div>
+									<a href="#listagemprod" class="btn btn-link text-decoration-none p-0 fw-semibold">
+										Ver
+										<svg class="icon">
+											<use xlink:href="#icon-arrow-right"></use>
+										</svg>
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- HIDRATANTES -->
+					<div class="col-12 col-md-4" data-animate="fadeInUp">
+						<div class="card border-0 rounded-0 banner-05 hover-zoom-in hover-shine">
+							<!-- Envolva a imagem em um link para o ID #listagemprod -->
+							<a href="#listagemprod">
+								<img class="lazy-image card-img object-fit-cover light-mode-img" src="#"
+									data-src="{{ asset('images/home/hidratantes.jpg') }}" width="468" height="400"
+									alt="Hidratantes">
+								<img class="lazy-image dark-mode-img card-img object-fit-cover" src="#"
+									data-src="{{ asset('images/home/hidratantes.jpg') }}" width="468" height="400"
+									alt="Hidratantes">
+							</a>
+
+							<div
+								class="card-img-overlay d-inline-flex flex-column justify-content-end px-11 pt-11 pb-9 mb-2">
+								<!-- Envolva o título "Perfumes" em um link -->
+								<a href="#listagemprod" class="text-decoration-none">
+									<h3 class="card-title fw-semibold pe-xxl-25">Hidratantes</h3>
+								</a>
+								<div>
+									<a href="#listagemprod" class="btn btn-link text-decoration-none p-0 fw-semibold">
+										Ver
+										<svg class="icon">
+											<use xlink:href="#icon-arrow-right"></use>
+										</svg>
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>
+					
+					<!-- <div class="col-12 col-md-4" data-animate="fadeInUp">
 						<div class="card border-0 rounded-0 banner-05 hover-zoom-in hover-shine">
 							<img class="lazy-image card-img object-fit-cover light-mode-img" src="#"
 								data-src="{{ asset('images/banner/banner-30.jpg') }}" width="468" height="400"
@@ -1228,10 +1295,6 @@
 							<img class="lazy-image dark-mode-img card-img object-fit-cover" src="#"
 								data-src="{{ asset('images/banner/banner-white-31.jpg') }}" width="468" height="400"
 								alt="25% off Everything">
-
-							<!-- <img class="lazy-image card-img object-fit-cover light-mode-img" src="#" data-src="./assets/images/banner/banner-31.jpg" width="468" height="400" alt="25% off Everything">
-<img class="lazy-image dark-mode-img card-img object-fit-cover" src="#" data-src="./assets/images/banner/banner-white-31.jpg" width="468" height="400" alt="25% off Everything">
- -->
 							<div
 								class="card-img-overlay d-inline-flex flex-column justify-content-end px-11 pt-11 pb-9 mb-2">
 								<h3 class="card-title fw-semibold pe-xxl-25">25% de<br /> Desconto</h3>
@@ -1243,7 +1306,7 @@
 							</div>
 						</div>
 
-					</div>
+					</div> -->
 				</div>
 			</div>
 		</section>
@@ -1284,41 +1347,41 @@
 													@endif
 													<!-- <div class="position-absolute d-flex z-index-2 product-actions horizontal">
 
-																																																																																																																																																	<a class="text-body-emphasis bg-body bg-dark-hover text-light-hover rounded-circle square product-action shadow-sm add_to_cart"
-																																																																																																																																																	href="{{ route('carrinho.adicionar') }}" data-bs-toggle="tooltip" data-bs-placement="top"
-																																																																																																																																																	data-bs-title="Add To Cartt">
+																																																																																																																																																											<a class="text-body-emphasis bg-body bg-dark-hover text-light-hover rounded-circle square product-action shadow-sm add_to_cart"
+																																																																																																																																																											href="{{ route('carrinho.adicionar') }}" data-bs-toggle="tooltip" data-bs-placement="top"
+																																																																																																																																																											data-bs-title="Add To Cartt">
 
-																																																																																																																																																	<svg class="icon2 icon-cart">
-																																																																																																																																																		<use xlink:href="#icon-shopping-cart"></use>
-																																																																																																																																																	</svg>
-																																																																																																																																																</a>
-																																																																																																																																																<a class="text-body-emphasis bg-body bg-dark-hover text-light-hover rounded-circle square product-action shadow-sm quick-view"
-																																																																																																																																																	href="###" data-bs-toggle="modal" data-bs-target="#quickViewModal"
-																																																																																																																																																	data-id="{{ $produto->id }}" data-nome="{{ $produto->nome }}"
-																																																																																																																																																	data-imagem="{{ $produto->imagem }}" data-bs-toggle="tooltip"
-																																																																																																																																																	data-bs-placement="top" data-bs-title="Ver"
-																																																																																																																																																	onclick="saveProductInfo({{ $produto->id }}, '{{ $produto->nome }}', '{{ $produto->imagem }}', '{{ $produto->descricao }}', '{{ $produto->preco }}', '{{ $produto->preco_promocional }}', '{{ $produto->imagens_adicionais }}')">
-																																																																																																																																																	<span class="d-flex align-items-center justify-content-center">
-																																																																																																																																																		<svg class="icon icon-eye-light">
-																																																																																																																																																			<use xlink:href="#icon-eye-light"></use>
-																																																																																																																																																		</svg>
-																																																																																																																																																	</span>
-																																																																																																																																																</a>
-																																																																																																																																																<a class="text-body-emphasis bg-body bg-dark-hover text-light-hover rounded-circle square product-action shadow-sm wishlist"
-																																																																																																																																																	href="#" data-bs-toggle="tooltip" data-bs-placement="top"
-																																																																																																																																																	data-bs-title="Add To Wishlist">
-																																																																																																																																																	<svg class="icon icon-star-light">
-																																																																																																																																																		<use xlink:href="#icon-star-light"></use>
-																																																																																																																																																	</svg>
-																																																																																																																																																</a>
-																																																																																																																																																<a class="text-body-emphasis bg-body bg-dark-hover text-light-hover rounded-circle square product-action shadow-sm compare"
-																																																																																																																																																	href="./shop/compare.html" data-bs-toggle="tooltip" data-bs-placement="top"
-																																																																																																																																																	data-bs-title="Compare">
-																																																																																																																																																	<svg class="icon icon-arrows-left-right-light">
-																																																																																																																																																		<use xlink:href="#icon-arrows-left-right-light"></use>
-																																																																																																																																																	</svg>
-																																																																																																																																																</a>
-																																																																																																																																															</div> -->
+																																																																																																																																																											<svg class="icon2 icon-cart">
+																																																																																																																																																												<use xlink:href="#icon-shopping-cart"></use>
+																																																																																																																																																											</svg>
+																																																																																																																																																										</a>
+																																																																																																																																																										<a class="text-body-emphasis bg-body bg-dark-hover text-light-hover rounded-circle square product-action shadow-sm quick-view"
+																																																																																																																																																											href="###" data-bs-toggle="modal" data-bs-target="#quickViewModal"
+																																																																																																																																																											data-id="{{ $produto->id }}" data-nome="{{ $produto->nome }}"
+																																																																																																																																																											data-imagem="{{ $produto->imagem }}" data-bs-toggle="tooltip"
+																																																																																																																																																											data-bs-placement="top" data-bs-title="Ver"
+																																																																																																																																																											onclick="saveProductInfo({{ $produto->id }}, '{{ $produto->nome }}', '{{ $produto->imagem }}', '{{ $produto->descricao }}', '{{ $produto->preco }}', '{{ $produto->preco_promocional }}', '{{ $produto->imagens_adicionais }}')">
+																																																																																																																																																											<span class="d-flex align-items-center justify-content-center">
+																																																																																																																																																												<svg class="icon icon-eye-light">
+																																																																																																																																																													<use xlink:href="#icon-eye-light"></use>
+																																																																																																																																																												</svg>
+																																																																																																																																																											</span>
+																																																																																																																																																										</a>
+																																																																																																																																																										<a class="text-body-emphasis bg-body bg-dark-hover text-light-hover rounded-circle square product-action shadow-sm wishlist"
+																																																																																																																																																											href="#" data-bs-toggle="tooltip" data-bs-placement="top"
+																																																																																																																																																											data-bs-title="Add To Wishlist">
+																																																																																																																																																											<svg class="icon icon-star-light">
+																																																																																																																																																												<use xlink:href="#icon-star-light"></use>
+																																																																																																																																																											</svg>
+																																																																																																																																																										</a>
+																																																																																																																																																										<a class="text-body-emphasis bg-body bg-dark-hover text-light-hover rounded-circle square product-action shadow-sm compare"
+																																																																																																																																																											href="./shop/compare.html" data-bs-toggle="tooltip" data-bs-placement="top"
+																																																																																																																																																											data-bs-title="Compare">
+																																																																																																																																																											<svg class="icon icon-arrows-left-right-light">
+																																																																																																																																																												<use xlink:href="#icon-arrows-left-right-light"></use>
+																																																																																																																																																											</svg>
+																																																																																																																																																										</a>
+																																																																																																																																																									</div> -->
 												</figure>
 												<div class="card-body text-center p-0">
 													<span
