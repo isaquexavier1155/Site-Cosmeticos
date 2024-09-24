@@ -3548,6 +3548,7 @@
 							// Inicializa um array para armazenar as quantidades dos produtos
 							$produto_qtds = [];
 						@endphp
+						
 
 						@if(isset($carrinho) && $carrinho->isNotEmpty())
 											@foreach($carrinho as $item)
