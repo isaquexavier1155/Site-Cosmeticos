@@ -9,14 +9,14 @@ use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\Auth;
 class ProdutoController extends Controller
 {
-    public function index()
+    /* public function index()
     {
         $produtos = Produto::all(); 
         if ($produtos) {
             $user = Auth::user();
             if ($user) {
                 $carrinho = Cart::where('user_id', $user->id)->get();
-                $total_items = $carrinho->count(); // Conta o número total de itens únicos no carrinho
+                $total_items = $carrinho->count(); 
                 $total = $carrinho->reduce(function ($carry, $item) {
                     return $carry + ($item->price * $item->quantity);
                 }, 0);
@@ -27,7 +27,34 @@ class ProdutoController extends Controller
         }
     
         return response()->json(['error' => 'Produto não encontrado'], 404);
+    } */
+
+    public function index()
+{
+    // Filtrar produtos pelas categorias especificadas
+    $produtosPerfumes = Produto::where('categoria', 'Perfumes')->get();
+    $produtosBodySplash = Produto::where('categoria', 'Body Splash')->get();
+    $produtosHidratantes = Produto::where('categoria', 'Hidratantes')->get();
+
+    // Verificar se há produtos retornados
+    if ($produtosPerfumes->isNotEmpty() || $produtosBodySplash->isNotEmpty() || $produtosHidratantes->isNotEmpty()) {
+        $user = Auth::user();
+        
+        if ($user) {
+            $carrinho = Cart::where('user_id', $user->id)->get();
+            $total_items = $carrinho->count(); // Conta o número total de itens únicos no carrinho
+            $total = $carrinho->reduce(function ($carry, $item) {
+                return $carry + ($item->price * $item->quantity);
+            }, 0);
+            
+            return view('index', compact('produtosPerfumes', 'produtosBodySplash', 'produtosHidratantes', 'carrinho', 'total', 'total_items'));
+        }
+
+        return view('index', compact('produtosPerfumes', 'produtosBodySplash', 'produtosHidratantes'));
     }
+
+    return response()->json(['error' => 'Produto não encontrado'], 404);
+}
 
     public function busca(Request $request)
     {
