@@ -32,15 +32,37 @@
         <div id="paymentBrick_container"></div>
     </div>
     </div>
-    <style>
+<!--     <style>
         .card-page {
             width: 500px;
             margin: 0 auto;
         }
 
-        /*Alinhar texto Meios de pagamento rota payment*/
         .svelte-101ibq7 {
             text-align: center;
+        }
+    </style> -->
+    <style>
+        /* Ajustar a largura da card-page para ser responsiva */
+        .card-page {
+            width: 100%; /* Ocupa 100% da largura disponível */
+            max-width: 500px; /* Mantém a largura máxima em telas grandes */
+            margin: 0 auto; /* Centraliza o container */
+            padding: 1rem; /* Adiciona um pouco de padding */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra leve */
+            border-radius: 8px; /* Bordas arredondadas */
+        }
+
+        /* Alinhamento do texto */
+        .svelte-101ibq7 {
+            text-align: center;
+        }
+
+        /* Adiciona um estilo responsivo para telas pequenas */
+        @media (max-width: 576px) {
+            .card-page {
+                padding: 0.5rem; /* Ajusta o padding para telas pequenas */
+            }
         }
     </style>
 
