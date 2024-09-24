@@ -69,7 +69,8 @@
 
 								
 						</div>
-						<div class="icons-actions d-flex d-xl-none justify-content-start fs-28px text-white">
+						<!-- Alterei linha abaixo -->
+						<div class="icons-actions d-flex d-xl-none justify-content-end fs-28px text-white">
 							<!-- <div class="px-xl-5 d-inline-block">
 								<a class="lh-1 color-inherit text-decoration-none" href="#" data-bs-toggle="offcanvas"
 									data-bs-target="#searchModal" aria-controls="searchModal" aria-expanded="false">
@@ -1056,8 +1057,6 @@
 											style="--square-size: 18px">3</span>
 									</a>
 								</div> -->
-
-
 
 								<!-- Ícone de carrinho visível em telas grandes -->
 								<div class="px-5 d-none d-xl-inline-block">
