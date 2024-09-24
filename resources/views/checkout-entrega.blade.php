@@ -37,9 +37,30 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             width: 100%;
             max-width: 600px;
+            /* Mantém a largura máxima para telas maiores */
             display: flex;
             flex-direction: column;
+            margin: 2rem;
+            /* Margin padrão para telas grandes */
         }
+
+        /* Consulta de mídia para telas pequenas */
+        @media (max-width: 576px) {
+            .container {
+                width: 100%;
+                /* Garante que o container ocupe 100% da largura */
+                padding: 1rem;
+                /* Ajuste o padding se necessário */
+                margin: 0;
+                /* Remove o margin para telas pequenas */
+            }
+            body {
+            padding: 0;
+            margin: 0;
+        }
+
+        }
+
 
         h1 {
             margin-bottom: 1rem;
@@ -131,7 +152,7 @@
                     value="{{ old('nome', auth()->user()->name) }}" required>
             </div>
             <div class="form-group">
-                <input type="email" name="email" id="email" class="form-control" placeholder="Email"
+                <input type="text" name="email" id="email" class="form-control" placeholder="Email"
                     value="{{ old('email', auth()->user()->email) }}" required>
             </div>
             <div class="form-group">
@@ -167,37 +188,62 @@
                     value="{{ old('cidade', auth()->user()->cidade) }}" required>
             </div>
             <div class="form-group">
-    <select name="estado" id="estado" class="form-control" required>
-        <option value="" disabled selected>Selecione o Estado</option>
-        <option value="AC" {{ old('estado', auth()->user()->estado) == 'AC' ? 'selected' : '' }}>Acre</option>
-        <option value="AL" {{ old('estado', auth()->user()->estado) == 'AL' ? 'selected' : '' }}>Alagoas</option>
-        <option value="AP" {{ old('estado', auth()->user()->estado) == 'AP' ? 'selected' : '' }}>Amapá</option>
-        <option value="AM" {{ old('estado', auth()->user()->estado) == 'AM' ? 'selected' : '' }}>Amazonas</option>
-        <option value="BA" {{ old('estado', auth()->user()->estado) == 'BA' ? 'selected' : '' }}>Bahia</option>
-        <option value="CE" {{ old('estado', auth()->user()->estado) == 'CE' ? 'selected' : '' }}>Ceará</option>
-        <option value="DF" {{ old('estado', auth()->user()->estado) == 'DF' ? 'selected' : '' }}>Distrito Federal</option>
-        <option value="ES" {{ old('estado', auth()->user()->estado) == 'ES' ? 'selected' : '' }}>Espírito Santo</option>
-        <option value="GO" {{ old('estado', auth()->user()->estado) == 'GO' ? 'selected' : '' }}>Goiás</option>
-        <option value="MA" {{ old('estado', auth()->user()->estado) == 'MA' ? 'selected' : '' }}>Maranhão</option>
-        <option value="MT" {{ old('estado', auth()->user()->estado) == 'MT' ? 'selected' : '' }}>Mato Grosso</option>
-        <option value="MS" {{ old('estado', auth()->user()->estado) == 'MS' ? 'selected' : '' }}>Mato Grosso do Sul</option>
-        <option value="MG" {{ old('estado', auth()->user()->estado) == 'MG' ? 'selected' : '' }}>Minas Gerais</option>
-        <option value="PA" {{ old('estado', auth()->user()->estado) == 'PA' ? 'selected' : '' }}>Pará</option>
-        <option value="PB" {{ old('estado', auth()->user()->estado) == 'PB' ? 'selected' : '' }}>Paraíba</option>
-        <option value="PR" {{ old('estado', auth()->user()->estado) == 'PR' ? 'selected' : '' }}>Paraná</option>
-        <option value="PE" {{ old('estado', auth()->user()->estado) == 'PE' ? 'selected' : '' }}>Pernambuco</option>
-        <option value="PI" {{ old('estado', auth()->user()->estado) == 'PI' ? 'selected' : '' }}>Piauí</option>
-        <option value="RJ" {{ old('estado', auth()->user()->estado) == 'RJ' ? 'selected' : '' }}>Rio de Janeiro</option>
-        <option value="RN" {{ old('estado', auth()->user()->estado) == 'RN' ? 'selected' : '' }}>Rio Grande do Norte</option>
-        <option value="RS" {{ old('estado', auth()->user()->estado) == 'RS' ? 'selected' : '' }}>Rio Grande do Sul</option>
-        <option value="RO" {{ old('estado', auth()->user()->estado) == 'RO' ? 'selected' : '' }}>Rondônia</option>
-        <option value="RR" {{ old('estado', auth()->user()->estado) == 'RR' ? 'selected' : '' }}>Roraima</option>
-        <option value="SC" {{ old('estado', auth()->user()->estado) == 'SC' ? 'selected' : '' }}>Santa Catarina</option>
-        <option value="SP" {{ old('estado', auth()->user()->estado) == 'SP' ? 'selected' : '' }}>São Paulo</option>
-        <option value="SE" {{ old('estado', auth()->user()->estado) == 'SE' ? 'selected' : '' }}>Sergipe</option>
-        <option value="TO" {{ old('estado', auth()->user()->estado) == 'TO' ? 'selected' : '' }}>Tocantins</option>
-    </select>
-</div>
+                <select name="estado" id="estado" class="form-control" required>
+                    <option value="" disabled selected>Selecione o Estado</option>
+                    <option value="AC" {{ old('estado', auth()->user()->estado) == 'AC' ? 'selected' : '' }}>Acre</option>
+                    <option value="AL" {{ old('estado', auth()->user()->estado) == 'AL' ? 'selected' : '' }}>Alagoas
+                    </option>
+                    <option value="AP" {{ old('estado', auth()->user()->estado) == 'AP' ? 'selected' : '' }}>Amapá
+                    </option>
+                    <option value="AM" {{ old('estado', auth()->user()->estado) == 'AM' ? 'selected' : '' }}>Amazonas
+                    </option>
+                    <option value="BA" {{ old('estado', auth()->user()->estado) == 'BA' ? 'selected' : '' }}>Bahia
+                    </option>
+                    <option value="CE" {{ old('estado', auth()->user()->estado) == 'CE' ? 'selected' : '' }}>Ceará
+                    </option>
+                    <option value="DF" {{ old('estado', auth()->user()->estado) == 'DF' ? 'selected' : '' }}>Distrito
+                        Federal</option>
+                    <option value="ES" {{ old('estado', auth()->user()->estado) == 'ES' ? 'selected' : '' }}>Espírito
+                        Santo</option>
+                    <option value="GO" {{ old('estado', auth()->user()->estado) == 'GO' ? 'selected' : '' }}>Goiás
+                    </option>
+                    <option value="MA" {{ old('estado', auth()->user()->estado) == 'MA' ? 'selected' : '' }}>Maranhão
+                    </option>
+                    <option value="MT" {{ old('estado', auth()->user()->estado) == 'MT' ? 'selected' : '' }}>Mato Grosso
+                    </option>
+                    <option value="MS" {{ old('estado', auth()->user()->estado) == 'MS' ? 'selected' : '' }}>Mato Grosso
+                        do Sul</option>
+                    <option value="MG" {{ old('estado', auth()->user()->estado) == 'MG' ? 'selected' : '' }}>Minas Gerais
+                    </option>
+                    <option value="PA" {{ old('estado', auth()->user()->estado) == 'PA' ? 'selected' : '' }}>Pará</option>
+                    <option value="PB" {{ old('estado', auth()->user()->estado) == 'PB' ? 'selected' : '' }}>Paraíba
+                    </option>
+                    <option value="PR" {{ old('estado', auth()->user()->estado) == 'PR' ? 'selected' : '' }}>Paraná
+                    </option>
+                    <option value="PE" {{ old('estado', auth()->user()->estado) == 'PE' ? 'selected' : '' }}>Pernambuco
+                    </option>
+                    <option value="PI" {{ old('estado', auth()->user()->estado) == 'PI' ? 'selected' : '' }}>Piauí
+                    </option>
+                    <option value="RJ" {{ old('estado', auth()->user()->estado) == 'RJ' ? 'selected' : '' }}>Rio de
+                        Janeiro</option>
+                    <option value="RN" {{ old('estado', auth()->user()->estado) == 'RN' ? 'selected' : '' }}>Rio Grande do
+                        Norte</option>
+                    <option value="RS" {{ old('estado', auth()->user()->estado) == 'RS' ? 'selected' : '' }}>Rio Grande do
+                        Sul</option>
+                    <option value="RO" {{ old('estado', auth()->user()->estado) == 'RO' ? 'selected' : '' }}>Rondônia
+                    </option>
+                    <option value="RR" {{ old('estado', auth()->user()->estado) == 'RR' ? 'selected' : '' }}>Roraima
+                    </option>
+                    <option value="SC" {{ old('estado', auth()->user()->estado) == 'SC' ? 'selected' : '' }}>Santa
+                        Catarina</option>
+                    <option value="SP" {{ old('estado', auth()->user()->estado) == 'SP' ? 'selected' : '' }}>São Paulo
+                    </option>
+                    <option value="SE" {{ old('estado', auth()->user()->estado) == 'SE' ? 'selected' : '' }}>Sergipe
+                    </option>
+                    <option value="TO" {{ old('estado', auth()->user()->estado) == 'TO' ? 'selected' : '' }}>Tocantins
+                    </option>
+                </select>
+            </div>
 
 
             <input type="hidden" name="amount" value="{{ session('total_geral') }}">
