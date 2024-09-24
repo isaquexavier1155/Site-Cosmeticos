@@ -2102,11 +2102,11 @@
 
 				<!-- ate aqui -->
 
-				<div class="text-center mt-12" data-animate="fadeInUp">
+				<!-- <div class="text-center mt-12" data-animate="fadeInUp">
 					<a href="/" class="btn btn-outline-dark">
 						Veja Todos os Produtos
 					</a>
-				</div>
+				</div> -->
 			</div>
 
 		</section>
@@ -2124,12 +2124,14 @@
 					</div>
 					<div class="col-lg-6 py-lg-10 py-16 ps-lg-10 ps-xl-18 order-2" data-animate="fadeInUp">
 						<div class="text-left">
-							<p class="fs-15px mb-6 ls-1 text-body-emphasis fw-semibold">OFERTA ESPECIAL <span
-									class="badge bg-primary fs-15px py-3 px-4 ms-4">-20%</span></p>
-							<h2 class="mb-6">Produto exemplo</h2>
-							<p class="fs-18px w-md-70 w-lg-100 w-xl-75 mb-7 text-body">Feito com ingredientes limpos e
-								não tóxicos,
-								nossos produtos são projetados para todos.</p>
+							<p class="fs-15px mb-6 ls-1 text-body-emphasis fw-semibold">Promoção Relâmpago<span
+									class="badge bg-primary fs-15px py-3 px-4 ms-4"></span></p>
+							<h2 class="mb-6">Não perca essa chance!</h2>
+							<p class="fs-18px w-md-70 w-lg-100 w-xl-75 mb-7 text-body">
+							 Não perca a chance de adquirir suas fragrâncias favoritas com descontos imperdíveis!
+						     Confira nossas promoções e aproveite para renovar sua coleção com perfumes e body splash de alta qualidade.
+							 Ofertas limitadas para quem ama se sentir bem!
+							</p>
 						</div>
 
 						<div class="d-flex countdown ms-n4 ms-md-n7" data-countdown="true"
@@ -2185,10 +2187,13 @@
 					<div class="col-lg-6 ps-6" data-animate="fadeInUp">
 						<div class="py-lg-23 py-16 mt-lg-3 mb-lg-5 ms-lg-auto text-white content-wrap">
 							<div class="text-left">
-								<p class="fs-15px mb-7 ls-1  fw-semibold text-uppercase">Oferta especial</p>
-								<h2 class="mb-6 mw-lg-60 pt-1 text-reset">Beleza Inspirada na Vida Real</h2>
-								<p class="fs-18px mb-0 mw-lg-75">Feitos com ingredientes limpos e não tóxicos, nossos
-									produtos são projetados para todos.</p>
+								<p class="fs-15px mb-7 ls-1  fw-semibold text-uppercase">Promoções Exclusivas</p>
+								<h2 class="mb-6 mw-lg-60 pt-1 text-reset">Não perca essa chance!</h2>
+								<p class="fs-18px mb-0 mw-lg-75">
+								 Não perca a chance de adquirir suas fragrâncias favoritas com descontos imperdíveis!
+								 Confira nossas promoções e aproveite para renovar sua coleção com perfumes e body splash de alta qualidade. 
+								 Ofertas limitadas para quem ama se sentir bem!
+								</p>
 							</div>
 
 							<a href="#" class="btn btn-white mt-10 mb-2">Descubra Agora</a>
@@ -2202,15 +2207,19 @@
 
 		<section id="from_our_blog_2" class="pt-14 pb-16 py-lg-18 mt-1">
 
-			<div class="container">
+			<div class="container" >
 				<div class="text-center" data-animate="fadeInUp">
-					<h2 class="mb-6">Do Nosso Blog</h2>
-					<p class="fs-18px mb-0 mw-xl-50 mw-lg-75 ms-auto me-auto">Nossos kits foram projetados para agrupar
-						convenientemente os seus essenciais de bronzeamento, economizando seu dinheiro.</p>
+					<h2 class="mb-6" >Sobre Nós</h2>
+					<p class="fs-18px mb-0 mw-xl-50 mw-lg-75 ms-auto me-auto">
+						Na <b>CINTRA BEAUTY</b>, acreditamos que o perfume é mais do que um acessório - é uma expressão de quem você é.
+						Trabalhamos para trazer a você o melhor em fragrâncias importadas, com uma curadoria cuidadosa e paixão pelo que fazemos.
+						 Nossa missão é oferecer a você uma experiência única, do momento em que você escolhe sua fragrância até o instante em que a usa. 
+						 Seja bem-vindo ao nosso universo de aromas sofisticados.
+					</p>
 				</div>
 
 			</div>
-			<div class="container mt-12 pt-3">
+			<!-- <div class="container mt-12 pt-3">
 				<div class="slick-slider"
 					data-slick-options='{&#34;arrows&#34;:false,&#34;dots&#34;:false,&#34;responsive&#34;:[{&#34;breakpoint&#34;:1200,&#34;settings&#34;:{&#34;slidesToShow&#34;:3}},{&#34;breakpoint&#34;:992,&#34;settings&#34;:{&#34;dots&#34;:true,&#34;slidesToShow&#34;:2}},{&#34;breakpoint&#34;:768,&#34;settings&#34;:{&#34;dots&#34;:true,&#34;slidesToShow&#34;:1}}],&#34;slidesToShow&#34;:3}'>
 					<div>
@@ -2218,8 +2227,7 @@
 							<figure class="card-img-top position-relative mb-10"><a href="#"
 									class="hover-shine hover-zoom-in d-block"
 									title="Um Guia Fácil para Limpadores Naturais">
-									<!--    <img data-src="./assets/images/blog/post-04-370x450.jpg" class="img-fluid lazy-image w-100" alt="A User-Friendly Guide to Natural Cleansers" width="370" height="450" src="#">
- -->
+									
 									<img data-src="{{ asset('images/blog/post-04-370x450.jpg') }}"
 										class="img-fluid lazy-image w-100"
 										alt="Um Guia Amigável para Limpadores Naturais da Pele" width="370" height="450"
@@ -2248,8 +2256,7 @@
 							<figure class="card-img-top position-relative mb-10"><a href="#"
 									class="hover-shine hover-zoom-in d-block"
 									title="Nossos Produtos Multifuncionais Favoritos">
-									<!--     <img data-src="./assets/images/blog/post-05-370x450.jpg" class="img-fluid lazy-image w-100" alt="Our Favorite Multitasking Products" width="370" height="450" src="#">
- -->
+									
 									<img data-src="{{ asset('images/blog/post-05-370x450.jpg') }}"
 										class="img-fluid lazy-image w-100"
 										alt="Nossos Produtos Multifuncionais Favoritos" width="370" height="450"
@@ -2278,8 +2285,7 @@
 							<figure class="card-img-top position-relative mb-10"><a href="#"
 									class="hover-shine hover-zoom-in d-block"
 									title="Como Escolher a Fragrância Certa para o Seu Lar">
-									<!--     <img data-src="./assets/images/blog/post-06-370x450.jpg" class="img-fluid lazy-image w-100" alt="How To Choose The Right Sofa for your home" width="370" height="450" src="#">
- -->
+									
 									<img data-src="{{ asset('images/blog/post-06-370x450.jpg') }}"
 										class="img-fluid lazy-image w-100"
 										alt="Como Escolher a Fragrância Certa para o Seu Lar" width="370" height="450"
@@ -2304,7 +2310,7 @@
 						</article>
 					</div>
 				</div>
-			</div>
+			</div> -->
 		</section>
 		<section class="position-relative  lazy-bg bg-image pt-lg-17 pb-lg-17 pt-15 pb-15">
 
@@ -2328,10 +2334,8 @@
 								e <a href="#" class="text-decoration-none border-bottom">a política de proteção de
 									dados</a>
 							</label>
-
 						</div>
 					</div>
-
 				</form>
 			</div>
 
@@ -2371,7 +2375,7 @@
 					<ul class="list-unstyled mb-0 fw-medium ">
 
 						<li class="pt-3 mb-4">
-							<a href="#" title="About us" class="text-body">Sobre nós</a>
+							<a href="#from_our_blog_2" title="About us" class="text-body">Sobre nós</a>
 						</li>
 
 						<li class="pt-3 mb-4">
