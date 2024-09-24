@@ -8,12 +8,8 @@
 		content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title>Elegance Cintra Beauty - Cosméticos em geral</title>
-	<!-- <link rel="icon" href="./assets/images/others/favicon.ico"> -->
-	<!-- <link rel="icon" href="{{ asset('css/assets/images/others/favicon.ico') }}">
- -->
 
-	<link rel="icon" href="{{ asset('favicon.ico') }}">
-
+	<link rel="icon" href="{{ asset('images/others/icon.png') }}">
 
 	<link rel="stylesheet" href="{{ asset('vendors/lightgallery/css/lightgallery-bundle.min.css') }}">
 	<link rel="stylesheet" href="{{ asset('vendors/fontawesome/css/all.min.css') }}">
