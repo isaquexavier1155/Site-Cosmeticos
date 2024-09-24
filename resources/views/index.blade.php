@@ -69,7 +69,7 @@
 
 								
 						</div>
-						<!-- Alterei linha abaixo -->
+						<!-- Alterei linha abaixo justify-content-start para justify-content-end-->
 						<div class="icons-actions d-flex d-xl-none justify-content-end fs-28px text-white">
 							<!-- <div class="px-xl-5 d-inline-block">
 								<a class="lh-1 color-inherit text-decoration-none" href="#" data-bs-toggle="offcanvas"
