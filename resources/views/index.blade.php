@@ -356,19 +356,19 @@
 											<div class="row">
 												<div class="col">
 													<a
-														href="{{ route('buscarPorCategoria', ['categoria' => 'Perfumes', 'scroll_to' => 'listagemprod']) }}">
+														href="{{ route('buscarPorCategoria', ['categoria' => 'Perfumes', 'scroll_to' => 'listagemPerfumes']) }}">
 														<h6 class="fs-18px">Perfumes</h6>
 													</a>
 												</div>
 												<div class="col">
 													<a
-														href="{{ route('buscarPorCategoria', ['categoria' => 'Body splash', 'scroll_to' => 'listagemprod']) }}">
+														href="{{ route('buscarPorCategoria', ['categoria' => 'Body splash', 'scroll_to' => 'listagemBodySplash']) }}">
 														<h6 class="fs-18px">Body splash</h6>
 													</a>
 												</div>
 												<div class="col">
 													<a
-														href="{{ route('buscarPorCategoria', ['categoria' => 'Hidratantes', 'scroll_to' => 'listagemprod']) }}">
+														href="{{ route('buscarPorCategoria', ['categoria' => 'Hidratantes', 'scroll_to' => 'listagemHidratantes']) }}">
 														<h6 class="fs-18px">Hidratantes</h6>
 													</a>
 												</div>
@@ -965,8 +965,8 @@
 										@else
 											<li>
 												<!-- <a class="dropdown-item" href="{{ route('login') }}">
-																												Entrar
-																											</a> -->
+																													Entrar
+																												</a> -->
 												<a class="dropdown-item" href="#" data-bs-toggle="modal"
 													data-bs-target="#signInModal">
 													Entrar
@@ -1321,12 +1321,14 @@
 							<div class="mb-13 text-center pb-3" data-animate="fadeInUp">
 								<img data-src="{{ asset('images/shop/single-image-01.png') }}" width="140" height="138"
 									class="mb-5 img-fluid lazy-image d-inline-block" alt="..." src="#">
-									<h2 class="h3 mb-0">Perfumes Importados</h2> 
-									<h2 class="h3 mb-0">
-									Explore nossa coleção de perfumes importados, cuidadosamente selecionados para trazer até você as mais renomadas marcas do mundo.<br />
-									Cada fragrância é uma obra-prima, criada para envolver os sentidos e destacar sua presença única.<br />
+								<h2 class="h3 mb-0">Perfumes Importados</h2>
+								<h2 class="h3 mb-0">
+									Explore nossa coleção de perfumes importados, cuidadosamente selecionados para trazer até você
+									as mais renomadas marcas do mundo.<br />
+									Cada fragrância é uma obra-prima, criada para envolver os sentidos e destacar sua presença
+									única.<br />
 									Encontre seu perfume assinatura e deixe seu rastro de elegância por onde passar.
-									</h2>
+								</h2>
 							</div>
 
 							<!-- Início Listagem de Perfumes -->
@@ -1404,10 +1406,12 @@
 							<div class="mb-13 text-center pb-3" data-animate="fadeInUp">
 								<img data-src="{{ asset('images/shop/single-image-01.png') }}" width="140" height="138"
 									class="mb-5 img-fluid lazy-image d-inline-block" alt="..." src="#">
-								 <h2 class="h3 mb-0">Body Splash Leveza e frescor em cada borrifada</h2>
-								<h2 class="h3 mb-0">Os nossos body splash são perfeitos para quem busca um toque suave de fragrância ao longo do dia.<br />
-								 Feitos com ingredientes de alta qualidade, cada spray proporciona uma sensação revigorante que vai deixar sua pele perfumada e hidratada, sem perder a suavidade.<br />
-								 Escolha o seu e sinta-se refrescante o dia todo.</h2>
+								<h2 class="h3 mb-0">Body Splash Leveza e frescor em cada borrifada</h2>
+								<h2 class="h3 mb-0">Os nossos body splash são perfeitos para quem busca um toque suave de fragrância
+									ao longo do dia.<br />
+									Feitos com ingredientes de alta qualidade, cada spray proporciona uma sensação revigorante que
+									vai deixar sua pele perfumada e hidratada, sem perder a suavidade.<br />
+									Escolha o seu e sinta-se refrescante o dia todo.</h2>
 							</div>
 							<!-- Início Listagem de Body Splash -->
 							<div class="row gy-50px" id="listagemBodySplash">
@@ -1483,11 +1487,14 @@
 							<div class="mb-13 text-center pb-3" data-animate="fadeInUp">
 								<img data-src="{{ asset('images/shop/single-image-01.png') }}" width="140" height="138"
 									class="mb-5 img-fluid lazy-image d-inline-block" alt="..." src="#">
-								 <h2 class="h3 mb-0">Cremes Hidratantes e Nutritivos</h2> 
+								<h2 class="h3 mb-0">Cremes Hidratantes e Nutritivos</h2>
 								<h2 class="h3 mb-0">
-								 Cuide da sua pele com nossa linha de cremes hidratantes e nutritivos, desenvolvidos para proporcionar maciez e luminosidade em cada aplicação.<br />
-								 Feitos com ingredientes premium e fragrâncias suaves, nossos cremes oferecem hidratação profunda e são perfeitos para todos os tipos de pele.<br />
-								 Descubra a combinação ideal de cuidado e perfume, e sinta sua pele mais saudável e radiante todos os dias.
+									Cuide da sua pele com nossa linha de cremes hidratantes e nutritivos, desenvolvidos para
+									proporcionar maciez e luminosidade em cada aplicação.<br />
+									Feitos com ingredientes premium e fragrâncias suaves, nossos cremes oferecem hidratação profunda
+									e são perfeitos para todos os tipos de pele.<br />
+									Descubra a combinação ideal de cuidado e perfume, e sinta sua pele mais saudável e radiante
+									todos os dias.
 								</h2>
 							</div>
 							<!-- Início Listagem de Hidratantes -->
@@ -2026,14 +2033,13 @@
 				<script>
 					document.addEventListener('DOMContentLoaded', function () {
 						const searchInput = document.getElementById('searchInput');
-						const searchButton = document.getElementById('searchButton'); // Adicione o botão de pesquisa se não estiver presente
+						const searchButton = document.getElementById('searchButton');
 
 						function performSearch() {
 							const query = searchInput.value.trim();
 
-
 							if (query.length >= 3) {
-								// Redirecionar para a página com a busca					
+								// Redirecionar para a página com a busca
 								window.location.href = `/busca?query=${encodeURIComponent(query)}`;
 							}
 						}
@@ -2054,17 +2060,29 @@
 							});
 						}
 
-						// Rolar para o elemento com id='listagemprod' após o carregamento da página
+						// Rolar para o produto específico após o carregamento da página
 						const urlParams = new URLSearchParams(window.location.search);
 						const query = urlParams.get('query');
 
 						if (query) {
-
-							// Atrasar a rolagem para garantir que o conteúdo esteja carregado
 							setTimeout(function () {
-								const listagemProd = document.getElementById('listagemprod');
-								if (listagemProd) {
-									listagemProd.scrollIntoView({ behavior: 'smooth' });
+								// Selecionar todos os produtos visíveis na página
+								const produtos = document.querySelectorAll('.card-product');
+
+								// Iterar sobre os produtos e encontrar os que contêm o nome correspondente
+								let foundProduct = null;
+								produtos.forEach(function (produto) {
+									const nomeProduto = produto.getAttribute('data-nome');
+									if (nomeProduto && nomeProduto.toLowerCase().includes(query.toLowerCase())) {
+										foundProduct = produto;
+									}
+								});
+
+								// Se o produto for encontrado, rolar para ele
+								if (foundProduct) {
+									foundProduct.scrollIntoView({ behavior: 'smooth' });
+								} else {
+									console.log('Produto não encontrado');
 								}
 							}, 1000); // Ajuste o atraso se necessário
 						}
@@ -2072,7 +2090,8 @@
 				</script>
 
 
-				<!-- Script responsavel por rolar a página após pesquisa no cabeçalho-->
+
+				<!-- Script responsavel por rolar a página após pesquisa no cabeçalho na ABA LOJA-->
 				<script>
 					document.addEventListener('DOMContentLoaded', function () {
 						// Verifica se o parâmetro 'scroll_to' está presente na URL
@@ -2080,8 +2099,8 @@
 						const scrollTo = urlParams.get('scroll_to');
 
 						// Adiciona um log para verificar o valor do parâmetro
-						//console.log('Parâmetro scroll_to:', scrollTo);
-						//console.log('urlParams=', urlParams);
+						console.log('Parâmetro scroll_to:', scrollTo);
+						console.log('urlParams=', urlParams);
 
 						if (scrollTo) {
 							const element = document.getElementById(scrollTo);
@@ -2128,9 +2147,10 @@
 									class="badge bg-primary fs-15px py-3 px-4 ms-4"></span></p>
 							<h2 class="mb-6">Não perca essa chance!</h2>
 							<p class="fs-18px w-md-70 w-lg-100 w-xl-75 mb-7 text-body">
-							 Não perca a chance de adquirir suas fragrâncias favoritas com descontos imperdíveis!
-						     Confira nossas promoções e aproveite para renovar sua coleção com perfumes e body splash de alta qualidade.
-							 Ofertas limitadas para quem ama se sentir bem!
+								Não perca a chance de adquirir suas fragrâncias favoritas com descontos imperdíveis!
+								Confira nossas promoções e aproveite para renovar sua coleção com perfumes e body splash
+								de alta qualidade.
+								Ofertas limitadas para quem ama se sentir bem!
 							</p>
 						</div>
 
@@ -2190,9 +2210,10 @@
 								<p class="fs-15px mb-7 ls-1  fw-semibold text-uppercase">Promoções Exclusivas</p>
 								<h2 class="mb-6 mw-lg-60 pt-1 text-reset">Não perca essa chance!</h2>
 								<p class="fs-18px mb-0 mw-lg-75">
-								 Não perca a chance de adquirir suas fragrâncias favoritas com descontos imperdíveis!
-								 Confira nossas promoções e aproveite para renovar sua coleção com perfumes e body splash de alta qualidade. 
-								 Ofertas limitadas para quem ama se sentir bem!
+									Não perca a chance de adquirir suas fragrâncias favoritas com descontos imperdíveis!
+									Confira nossas promoções e aproveite para renovar sua coleção com perfumes e body
+									splash de alta qualidade.
+									Ofertas limitadas para quem ama se sentir bem!
 								</p>
 							</div>
 
@@ -2207,14 +2228,17 @@
 
 		<section id="from_our_blog_2" class="pt-14 pb-16 py-lg-18 mt-1">
 
-			<div class="container" >
+			<div class="container">
 				<div class="text-center" data-animate="fadeInUp">
-					<h2 class="mb-6" >Sobre Nós</h2>
+					<h2 class="mb-6">Sobre Nós</h2>
 					<p class="fs-18px mb-0 mw-xl-50 mw-lg-75 ms-auto me-auto">
-						Na <b>CINTRA BEAUTY</b>, acreditamos que o perfume é mais do que um acessório - é uma expressão de quem você é.
-						Trabalhamos para trazer a você o melhor em fragrâncias importadas, com uma curadoria cuidadosa e paixão pelo que fazemos.
-						 Nossa missão é oferecer a você uma experiência única, do momento em que você escolhe sua fragrância até o instante em que a usa. 
-						 Seja bem-vindo ao nosso universo de aromas sofisticados.
+						Na <b>CINTRA BEAUTY</b>, acreditamos que o perfume é mais do que um acessório - é uma expressão
+						de quem você é.
+						Trabalhamos para trazer a você o melhor em fragrâncias importadas, com uma curadoria cuidadosa e
+						paixão pelo que fazemos.
+						Nossa missão é oferecer a você uma experiência única, do momento em que você escolhe sua
+						fragrância até o instante em que a usa.
+						Seja bem-vindo ao nosso universo de aromas sofisticados.
 					</p>
 				</div>
 
@@ -3548,7 +3572,7 @@
 							// Inicializa um array para armazenar as quantidades dos produtos
 							$produto_qtds = [];
 						@endphp
-						
+
 
 						@if(isset($carrinho) && $carrinho->isNotEmpty())
 											@foreach($carrinho as $item)
@@ -4012,19 +4036,19 @@
 								<div class="row">
 									<div class="col">
 										<a
-											href="{{ route('buscarPorCategoria', ['categoria' => 'Perfumes', 'scroll_to' => 'listagemprod']) }}">
+											href="{{ route('buscarPorCategoria', ['categoria' => 'Perfumes', 'scroll_to' => 'listagemPerfumes']) }}">
 											<h6 class="fs-18px">Perfumes</h6>
 										</a>
 									</div>
 									<div class="col">
 										<a
-											href="{{ route('buscarPorCategoria', ['categoria' => 'Body splash', 'scroll_to' => 'listagemprod']) }}">
+											href="{{ route('buscarPorCategoria', ['categoria' => 'Body splash', 'scroll_to' => 'listagemBodySplash']) }}">
 											<h6 class="fs-18px">Body splash</h6>
 										</a>
 									</div>
 									<div class="col">
 										<a
-											href="{{ route('buscarPorCategoria', ['categoria' => 'Hidratantes', 'scroll_to' => 'listagemprod']) }}">
+											href="{{ route('buscarPorCategoria', ['categoria' => 'Hidratantes', 'scroll_to' => 'listagemHidratantes']) }}">
 											<h6 class="fs-18px">Hidratantes</h6>
 										</a>
 									</div>

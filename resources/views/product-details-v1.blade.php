@@ -186,24 +186,24 @@
                                     aria-labelledby="menu-item-shop">
                                     <div class="megamenu-shop container-wide py-8 px-12">
                                         <div class="row">
-                                            <div class="col">
-                                                <a
-                                                    href="{{ route('buscarPorCategoria', ['categoria' => 'Perfumes', 'scroll_to' => 'listagemprod']) }}">
-                                                    <h6 class="fs-18px">Perfumes</h6>
-                                                </a>
-                                            </div>
-                                            <div class="col">
-                                                <a
-                                                    href="{{ route('buscarPorCategoria', ['categoria' => 'Body splash', 'scroll_to' => 'listagemprod']) }}">
-                                                    <h6 class="fs-18px">Body splash</h6>
-                                                </a>
-                                            </div>
-                                            <div class="col">
-                                                <a
-                                                    href="{{ route('buscarPorCategoria', ['categoria' => 'Hidratantes', 'scroll_to' => 'listagemprod']) }}">
-                                                    <h6 class="fs-18px">Hidratantes</h6>
-                                                </a>
-                                            </div>
+                                        <div class="col">
+													<a
+														href="{{ route('buscarPorCategoria', ['categoria' => 'Perfumes', 'scroll_to' => 'listagemPerfumes']) }}">
+														<h6 class="fs-18px">Perfumes</h6>
+													</a>
+												</div>
+												<div class="col">
+													<a
+														href="{{ route('buscarPorCategoria', ['categoria' => 'Body splash', 'scroll_to' => 'listagemBodySplash']) }}">
+														<h6 class="fs-18px">Body splash</h6>
+													</a>
+												</div>
+												<div class="col">
+													<a
+														href="{{ route('buscarPorCategoria', ['categoria' => 'Hidratantes', 'scroll_to' => 'listagemHidratantes']) }}">
+														<h6 class="fs-18px">Hidratantes</h6>
+													</a>
+												</div>
                                             <!-- <div class="col">
 													<h6 class="fs-18px">Maquiagem</h6>
 													<ul class="list-unstyled mb-0">
@@ -4550,24 +4550,24 @@
                             aria-labelledby="menu-item-shop-canvas">
                             <div class="megamenu-shop container-wide py-8 px-12">
                                 <div class="row">
-                                    <div class="col">
-                                        <a
-                                            href="{{ route('buscarPorCategoria', ['categoria' => 'Perfumes', 'scroll_to' => 'listagemprod']) }}">
-                                            <h6 class="fs-18px">Perfumes</h6>
-                                        </a>
-                                    </div>
-                                    <div class="col">
-                                        <a
-                                            href="{{ route('buscarPorCategoria', ['categoria' => 'Body splash', 'scroll_to' => 'listagemprod']) }}">
-                                            <h6 class="fs-18px">Body splash</h6>
-                                        </a>
-                                    </div>
-                                    <div class="col">
-                                        <a
-                                            href="{{ route('buscarPorCategoria', ['categoria' => 'Hidratantes', 'scroll_to' => 'listagemprod']) }}">
-                                            <h6 class="fs-18px">Hidratantes</h6>
-                                        </a>
-                                    </div>
+                                <div class="col">
+													<a
+														href="{{ route('buscarPorCategoria', ['categoria' => 'Perfumes', 'scroll_to' => 'listagemPerfumes']) }}">
+														<h6 class="fs-18px">Perfumes</h6>
+													</a>
+												</div>
+												<div class="col">
+													<a
+														href="{{ route('buscarPorCategoria', ['categoria' => 'Body splash', 'scroll_to' => 'listagemBodySplash']) }}">
+														<h6 class="fs-18px">Body splash</h6>
+													</a>
+												</div>
+												<div class="col">
+													<a
+														href="{{ route('buscarPorCategoria', ['categoria' => 'Hidratantes', 'scroll_to' => 'listagemHidratantes']) }}">
+														<h6 class="fs-18px">Hidratantes</h6>
+													</a>
+												</div>
                                     <!-- <div class="col">
 													<h6 class="fs-18px">Maquiagem</h6>
 													<ul class="list-unstyled mb-0">
