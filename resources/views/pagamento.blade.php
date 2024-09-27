@@ -90,7 +90,7 @@
                         payer: {
                             firstName: "isaque",
                             lastName: "xavier",
-                            email: "isaque.ixs@gmail.com",
+                            email: "",
                         },
                     },
                     customization: {
@@ -112,7 +112,7 @@
                         onSubmit: ({ selectedPaymentMethod, formData }) => {
                             // console.log("Formulário submetido.");
                             // console.log("Método de pagamento selecionado:", selectedPaymentMethod);
-                            //console.log("Dados do formulário:", formData);
+                            console.log("Dados do formulário:", formData);
 
                             return new Promise((resolve, reject) => {
                                 fetch("{{ route('processarpagamento') }}", { // Ajuste o nome da rota conforme sua aplicação
