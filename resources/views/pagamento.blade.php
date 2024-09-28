@@ -113,6 +113,8 @@
                             // console.log("Formulário submetido.");
                             // console.log("Método de pagamento selecionado:", selectedPaymentMethod);
                             console.log("Dados do formulário:", formData);
+                            console.log("Resposta JSON do servidor 0:", jsonResponse);
+
 
                             return new Promise((resolve, reject) => {
                                 fetch("{{ route('processarpagamento') }}", { // Ajuste o nome da rota conforme sua aplicação
@@ -130,7 +132,7 @@
                                         try {
                                             // Tente converter para JSON
                                             const jsonResponse = JSON.parse(text);
-                                            //console.log("Resposta JSON do servidor:", jsonResponse);
+                                            console.log("Resposta JSON do servidor:", jsonResponse);
 
 
 
@@ -169,7 +171,7 @@
                                             renderStatusScreenBrick(bricksBuilder);
 
                                             ////////////////////////////////--//////--VERFICA STATUS DO PAGAMENTO A CADA 3 SEGUNDOS
-                                            // Verifica a cada 3 segundos se o pagamento foi aprovado
+                                            // Verifica a cada 3 segundos se o pagamento via cartão de credito foi aprovado
                                             const checkPaymentApproval = setInterval(() => {
                                                 if (jsonResponse.date_approved !== null) {
                                                     let data_aprovacao_pagamento = jsonResponse.date_approved;
@@ -232,7 +234,10 @@
                     settings
                 );
                 console.log("Payment Brick criado com sucesso.");
+                console.log("Resposta JSON do servidor 1:", jsonResponse);
+
             };
+            console.log("Resposta JSON do servidor 2:", jsonResponse);
 
             renderPaymentBrick(bricksBuilder);
         });
