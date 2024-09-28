@@ -440,6 +440,48 @@ class PagamentoController extends Controller
         }
     }
 
+    public function verificarStatusPagamento($paymentId)
+    {
+        // Inicializa o cURL
+        $curl = curl_init();
+
+        // Configurações do cURL
+        curl_setopt_array($curl, array(
+            CURLOPT_URL => "https://api.mercadopago.com/v1/payments/{$paymentId}",
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => '',
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 0,
+            CURLOPT_FOLLOWLOCATION => true,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => 'GET',
+            CURLOPT_HTTPHEADER => array(
+                'Content-Type: application/json',
+                'Authorization: ' . 'Bearer APP_USR-637006480626874-090617-c3b709b616db924424b9c690badfe83b-258457947'
+            ),
+        ));
+
+        // Executa a requisição
+        $response = curl_exec($curl);
+
+        // Fecha a conexão do cURL
+        curl_close($curl);
+
+        // Converte o JSON de resposta em um array associativo
+        $responseArray = json_decode($response, true);
+
+        // Verifica se ocorreu um erro
+        if (isset($responseArray['error'])) {
+            return response()->json([
+                'message' => 'Erro ao buscar status do pagamento.',
+                'error' => $responseArray['error']
+            ], 400);
+        }
+
+        // Retorna a resposta como JSON
+        return response()->json($responseArray);
+    }
+
     public function salvarStatusPagamento(Request $request)
     {
         // Valida a requisição

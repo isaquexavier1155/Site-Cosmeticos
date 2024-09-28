@@ -87,6 +87,10 @@ Route::post('/processar-pagamento', [PagamentoController::class, 'processarPagam
 ->name('processarpagamento')
 ->middleware('auth');
 
+Route::get('/pagamento/status/{id}', [PagamentoController::class, 'verificarStatusPagamento'])
+->name('verificarstatuspagamento');
+
+
 
 //rota para salvar dados adicionais de entrega na tabela users com usuário já logado
 Route::post('/checkout-entrega/salvar', [FreteController::class, 'salvarDadosEntrega'])->name('checkout.entrega.salvar');

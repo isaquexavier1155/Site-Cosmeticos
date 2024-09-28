@@ -37,7 +37,7 @@
         <div id="paymentBrick_container"></div>
     </div>
     </div>
-<!--     <style>
+    <!--     <style>
         .card-page {
             width: 500px;
             margin: 0 auto;
@@ -50,12 +50,18 @@
     <style>
         /* Ajustar a largura da card-page para ser responsiva */
         .card-page {
-            width: 100%; /* Ocupa 100% da largura disponível */
-            max-width: 500px; /* Mantém a largura máxima em telas grandes */
-            margin: 0 auto; /* Centraliza o container */
-            padding: 1rem; /* Adiciona um pouco de padding */
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra leve */
-            border-radius: 8px; /* Bordas arredondadas */
+            width: 100%;
+            /* Ocupa 100% da largura disponível */
+            max-width: 500px;
+            /* Mantém a largura máxima em telas grandes */
+            margin: 0 auto;
+            /* Centraliza o container */
+            padding: 1rem;
+            /* Adiciona um pouco de padding */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            /* Sombra leve */
+            border-radius: 8px;
+            /* Bordas arredondadas */
         }
 
         /* Alinhamento do texto */
@@ -66,7 +72,8 @@
         /* Adiciona um estilo responsivo para telas pequenas */
         @media (max-width: 576px) {
             .card-page {
-                padding: 0.5rem; /* Ajusta o padding para telas pequenas */
+                padding: 0.5rem;
+                /* Ajusta o padding para telas pequenas */
             }
         }
     </style>
@@ -168,41 +175,61 @@
 
                                             renderStatusScreenBrick(bricksBuilder);
 
-                                            ////////////////////////////////--//////--VERFICA STATUS DO PAGAMENTO A CADA 3 SEGUNDOS
+                                            ////////////////////////////////--//////--
+                                            // Usa id do pagamento e faz requisição GET
+                                            //https://api.mercadopago.com/v1/payments/89074463596
+
+
+                                            //////////////////////////////////////
                                             // Verifica a cada 3 segundos se o pagamento via cartão de credito foi aprovado
                                             const checkPaymentApproval = setInterval(() => {
-                                                if (jsonResponse.id !== null) {
-                                                    let data_aprovacao_pagamento = jsonResponse.date_approved;
-                                                    //console.log("Data de aprovação do pagamento:", data_aprovacao_pagamento);
+                                                let id_paymentt= jsonResponse.id;
+                                                console.log("ID Pagamento 1=", id_paymentt);
+                                                fetch(`/verificarstatuspagamento?paymentId=${id_paymentt}`, {  // Corrigido para usar o valor da variável
+                                                    method: 'GET',
+                                                    headers: {
+                                                        'Content-Type': 'application/json',
+                                                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content') // Para Laravel
+                                                    }
+                                                })
+                                                    .then(response => response.json())
+                                                    .then(jsonResponse => {
+                                                        if (jsonResponse.id !== null && jsonResponse.status === 'approved') {
+                                                            let data_aprovacao_pagamento = jsonResponse.date_approved;
+                                                            console.log("Data de aprovação do pagamento:", data_aprovacao_pagamento);
 
-                                                    // ID do pagamento e preference_id passado pelo Blade
-                                                    const paymentId = "{{ $id_payment }}";
-                                                    const statusPayment = 'Aprovado'; // Novo status
-                                                    const preferenceId = "{{ $preference_id }}"; // Preference ID gerado pelo Mercado Pago
+                                                            // ID do pagamento e preference_id passado pelo Blade
+                                                            const paymentId = "{{ $id_payment }}";
+                                                            const statusPayment = 'Aprovado'; // Novo status
+                                                            const preferenceId = "{{ $preference_id }}"; // Preference ID gerado pelo Mercado Pago
 
-                                                    // Faz a requisição para salvar o status do pagamento e o preference ID
-                                                    fetch('/salvar-status-pagamento', {
-                                                        method: 'POST',
-                                                        headers: {
-                                                            'Content-Type': 'application/json',
-                                                            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content') // Para Laravel
-                                                        },
-                                                        body: JSON.stringify({
-                                                            payment_id: paymentId,
-                                                            status_payment: statusPayment,
-                                                            preference_id: preferenceId, // Envia também o preference_id
-                                                        }),
+                                                            // Faz a requisição para salvar o status do pagamento e o preference ID
+                                                            fetch('/salvar-status-pagamento', {
+                                                                method: 'POST',
+                                                                headers: {
+                                                                    'Content-Type': 'application/json',
+                                                                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content') // Para Laravel
+                                                                },
+                                                                body: JSON.stringify({
+                                                                    payment_id: paymentId,
+                                                                    status_payment: statusPayment,
+                                                                    preference_id: preferenceId, // Envia também o preference_id
+                                                                }),
+                                                            })
+                                                                .then(response => response.json())
+                                                                .then(data => {
+                                                                    console.log('Success:', data);
+                                                                })
+                                                                .catch(error => {
+                                                                    console.error('Error:', error);
+                                                                });
+
+                                                            clearInterval(checkPaymentApproval); // Para parar a verificação
+                                                        }
                                                     })
-                                                        .then(response => response.json())
-                                                        .then(data => {
-                                                            console.log('Success:', data);
-                                                        })
-                                                        .catch(error => {
-                                                            console.error('Error:', error);
-                                                        });
-
-                                                    clearInterval(checkPaymentApproval); // Para a verificação
-                                                }
+                                                    .catch(error => {
+                                                        console.error('Error:', error);
+                                                    });
                                             }, 3000);
 
 
