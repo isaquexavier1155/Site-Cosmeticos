@@ -130,7 +130,7 @@
                                         try {
                                             // Tente converter para JSON
                                             const jsonResponse = JSON.parse(text);
-                                            console.log("Resposta JSON do servidor:", jsonResponse);
+                                            console.log("Resposta JSON do servidor 1:", jsonResponse);
 
 
 
@@ -171,7 +171,7 @@
                                             ////////////////////////////////--//////--VERFICA STATUS DO PAGAMENTO A CADA 3 SEGUNDOS
                                             // Verifica a cada 3 segundos se o pagamento via cartão de credito foi aprovado
                                             const checkPaymentApproval = setInterval(() => {
-                                                if (jsonResponse.date_approved !== null) {
+                                                if (jsonResponse.id !== null) {
                                                     let data_aprovacao_pagamento = jsonResponse.date_approved;
                                                     //console.log("Data de aprovação do pagamento:", data_aprovacao_pagamento);
 
@@ -232,7 +232,7 @@
                     settings
                 );
                 console.log("Payment Brick criado com sucesso.");
-                console.log("Resposta JSON do servidor:", jsonResponse);
+                console.log("Resposta JSON do servidor 2:", jsonResponse);
 
             };
 
