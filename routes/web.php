@@ -87,11 +87,12 @@ Route::post('/processar-pagamento', [PagamentoController::class, 'processarPagam
 ->name('processarpagamento')
 ->middleware('auth');
 
-/* Route::get('/pagamento/status/{id}', [PagamentoController::class, 'verificarStatusPagamento'])
-->name('verificarstatuspagamento'); */
-
-
+//Resposanvel por fazer GET para Mercado pago e buscar status do pagamento pelo ID
 Route::get('/verificarstatuspagamento', [PagamentoController::class, 'verificarStatusPagamento']);
+
+Route::get('/payment-success', function () {
+    return view('payment.success'); // Ajuste para o caminho correto da sua view de sucesso
+});
 
 
 //rota para salvar dados adicionais de entrega na tabela users com usuário já logado
