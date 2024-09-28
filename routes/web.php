@@ -91,7 +91,7 @@ Route::post('/processar-pagamento', [PagamentoController::class, 'processarPagam
 Route::get('/verificarstatuspagamento', [PagamentoController::class, 'verificarStatusPagamento']);
 
 Route::get('/payment-success', function () {
-    return view('payment.success'); // Ajuste para o caminho correto da sua view de sucesso
+    return view('sucesso-pagamento'); // Ajuste para o caminho correto da sua view de sucesso
 });
 
 
