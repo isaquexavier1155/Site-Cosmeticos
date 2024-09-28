@@ -3686,6 +3686,7 @@
 				<input type="hidden" name="produto_qtds" id="hidden-qtds" value="{{ $produto_qtds_str }}">
 				<!-- Campo oculto para capturar a opção de frete selecionada -->
 				<input type="hidden" name="frete_option" id="hidden-frete-option" value="">
+				<!-- ALterei disabled do botão para testar pagamento de valores menores -->
 				<button type="submit" id="finalizar-compra-btn" class="btn btn-dark w-100 mb-7" title="Finalizar Compra"
 					>Finalizar Compra</button>
 			</form>

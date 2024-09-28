@@ -113,8 +113,6 @@
                             // console.log("Formulário submetido.");
                             // console.log("Método de pagamento selecionado:", selectedPaymentMethod);
                             console.log("Dados do formulário:", formData);
-                            console.log("Resposta JSON do servidor 0:", jsonResponse);
-
 
                             return new Promise((resolve, reject) => {
                                 fetch("{{ route('processarpagamento') }}", { // Ajuste o nome da rota conforme sua aplicação
@@ -234,10 +232,9 @@
                     settings
                 );
                 console.log("Payment Brick criado com sucesso.");
-                console.log("Resposta JSON do servidor 1:", jsonResponse);
+                console.log("Resposta JSON do servidor:", jsonResponse);
 
             };
-            console.log("Resposta JSON do servidor 2:", jsonResponse);
 
             renderPaymentBrick(bricksBuilder);
         });
