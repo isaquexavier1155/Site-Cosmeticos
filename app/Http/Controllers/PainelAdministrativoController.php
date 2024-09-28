@@ -360,7 +360,7 @@ class PainelAdministrativoController extends Controller
 
             /*  Para salvar id da etiqueta no banco de dados e utiliza-la na aba minhas vendas */
             $etiqueta = json_decode($response, true); // Decodifica o JSON para um array associativo
-            dd($etiqueta); // Exibe apenas o ID
+           // dd($etiqueta); // Exibe apenas o ID
             //Unauthenticated
 
             $payment = Payment::find($saleId);  // Ajuste para buscar pelo ID de pagamento se necessário
