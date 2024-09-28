@@ -184,8 +184,8 @@
                                             // Verifica a cada 3 segundos se o pagamento via cartão de credito foi aprovado
                                             const checkPaymentApproval = setInterval(() => {
                                                 let id_paymentt = jsonResponse.id;
-                                                console.log("ID Pagamento 1=", id_paymentt);
-                                                console.log("Status do Pagamento 1=", jsonResponse.status);
+                                                //console.log("ID Pagamento 1=", id_paymentt);
+                                                //console.log("Status do Pagamento 1=", jsonResponse.status);
 
                                                 fetch(`/verificarstatuspagamento?paymentId=${id_paymentt}`, {
                                                     method: 'GET',
@@ -200,7 +200,7 @@
 
                                                         if (jsonResponse.id !== null && jsonResponse.status === 'approved') {
                                                             let data_aprovacao_pagamento = jsonResponse.date_approved;
-                                                            console.log("Data de aprovação do pagamento:", data_aprovacao_pagamento);
+                                                            //console.log("Data de aprovação do pagamento:", data_aprovacao_pagamento);
 
                                                             // ID do pagamento e preference_id gerado pelo Blade
                                                             const paymentId = "{{ $id_payment }}";
@@ -264,7 +264,7 @@
                     settings
                 );
                 console.log("Payment Brick criado com sucesso.");
-                console.log("Resposta JSON do servidor 2:", jsonResponse);
+                //console.log("Resposta JSON do servidor 2:", jsonResponse);
 
             };
 
