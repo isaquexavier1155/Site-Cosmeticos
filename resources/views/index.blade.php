@@ -3687,7 +3687,7 @@
 				<!-- Campo oculto para capturar a opção de frete selecionada -->
 				<input type="hidden" name="frete_option" id="hidden-frete-option" value="">
 				<button type="submit" id="finalizar-compra-btn" class="btn btn-dark w-100 mb-7" title="Finalizar Compra"
-					disabled>Finalizar Compra</button>
+					>Finalizar Compra</button>
 			</form>
 		</div>
 
@@ -3696,7 +3696,7 @@
         //Responsavel por recalcular valor do Preço Total da venda baseado na opção de frete selecionado
         //Responsavel por inpedir usuário de finalizar Compra sem selecionar opção de frete 
         Responsavel por passar para a proxima view o tipo de frete selecionado no carrinho-->
-		<!-- <script>
+		<script>
 			let selectedFretePrice = 0; // Variável para armazenar o valor do frete selecionado
 			let selectedFreteOption = ''; // Variável para armazenar a opção de frete selecionada (ID ou nome)
 			let originalTotal; // Variável para armazenar o valor total original
@@ -3708,6 +3708,7 @@
 					alert('Por favor, informe um CEP.');
 					return;
 				}
+				
 
 				fetch('{{ route('calcular-frete') }}', {
 					method: 'POST',
@@ -3728,6 +3729,7 @@
 						const freteValorSpan = document.getElementById('frete-valor');
 						freteValorSpan.innerHTML = ''; // Limpar as opções anteriores
 
+						// Armazena o valor total original
 						originalTotal = parseFloat(document.getElementById('hidden-total').value);
 
 						data.forEach(option => {
@@ -3736,6 +3738,7 @@
 							const companyName = option.name;
 							const companyImage = option.company.picture; // Imagem da transportadora
 
+							// Criar e adicionar elementos de exibição
 							const optionDiv = document.createElement('div');
 							optionDiv.classList.add('frete-option');
 							optionDiv.innerHTML = `
@@ -3746,7 +3749,9 @@
 					</label>
 				`;
 							freteValorSpan.appendChild(optionDiv);
+							
 
+							// Atualiza o valor e a opção de frete selecionada quando a opção é alterada
 							document.querySelector(`input[name="frete"][value="${price}"]`).addEventListener('change', function () {
 								selectedFretePrice = price;
 								selectedFreteOption = companyName; // Captura o nome da transportadora
@@ -3763,24 +3768,28 @@
 					});
 			});
 
+			// Atualizar o preço total
 			function updateTotalPrice() {
 				const cartTotalElement = document.getElementById('cart-total');
 				const hiddenAmountElement = document.getElementById('hidden-amount');
 
+				// Atualiza o valor do preço total
 				const newTotal = originalTotal + selectedFretePrice;
 				cartTotalElement.textContent = `R$${newTotal.toFixed(2).replace('.', ',')}`;
 				hiddenAmountElement.value = newTotal.toFixed(2); // Atualiza o valor escondido para o formulário
 			}
 
+			// Habilitar o botão de finalizar compra
 			function enableFinalizeButton() {
 				const finalizeButton = document.getElementById('finalizar-compra-btn');
 				const hiddenFreteOption = document.getElementById('hidden-frete-option');
 
+				// Armazena a opção de frete selecionada no campo oculto
 				hiddenFreteOption.value = selectedFreteOption;
 
 				finalizeButton.disabled = false;
 			}
-		</script> -->
+		</script>
 
 	</div>
 
