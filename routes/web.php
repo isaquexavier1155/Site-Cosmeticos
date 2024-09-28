@@ -87,9 +87,11 @@ Route::post('/processar-pagamento', [PagamentoController::class, 'processarPagam
 ->name('processarpagamento')
 ->middleware('auth');
 
-Route::get('/pagamento/status/{id}', [PagamentoController::class, 'verificarStatusPagamento'])
-->name('verificarstatuspagamento');
+/* Route::get('/pagamento/status/{id}', [PagamentoController::class, 'verificarStatusPagamento'])
+->name('verificarstatuspagamento'); */
 
+
+Route::get('/verificarstatuspagamento', [PagamentoController::class, 'verificarStatusPagamento']);
 
 
 //rota para salvar dados adicionais de entrega na tabela users com usuário já logado

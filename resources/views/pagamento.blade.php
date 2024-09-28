@@ -183,9 +183,11 @@
                                             //////////////////////////////////////
                                             // Verifica a cada 3 segundos se o pagamento via cartão de credito foi aprovado
                                             const checkPaymentApproval = setInterval(() => {
-                                                let id_paymentt= jsonResponse.id;
+                                                let id_paymentt = jsonResponse.id;
                                                 console.log("ID Pagamento 1=", id_paymentt);
-                                                fetch(`/verificarstatuspagamento?paymentId=${id_paymentt}`, {  // Corrigido para usar o valor da variável
+                                                console.log("Status do Pagamento 1=", jsonResponse.status);
+
+                                                fetch(`/verificarstatuspagamento?paymentId=${id_paymentt}`, {
                                                     method: 'GET',
                                                     headers: {
                                                         'Content-Type': 'application/json',
@@ -194,14 +196,16 @@
                                                 })
                                                     .then(response => response.json())
                                                     .then(jsonResponse => {
+                                                        console.log("Status do Pagamento 2=", jsonResponse.status);
+
                                                         if (jsonResponse.id !== null && jsonResponse.status === 'approved') {
                                                             let data_aprovacao_pagamento = jsonResponse.date_approved;
                                                             console.log("Data de aprovação do pagamento:", data_aprovacao_pagamento);
 
-                                                            // ID do pagamento e preference_id passado pelo Blade
+                                                            // ID do pagamento e preference_id gerado pelo Blade
                                                             const paymentId = "{{ $id_payment }}";
                                                             const statusPayment = 'Aprovado'; // Novo status
-                                                            const preferenceId = "{{ $preference_id }}"; // Preference ID gerado pelo Mercado Pago
+                                                            const preferenceId = "{{ $preference_id }}";
 
                                                             // Faz a requisição para salvar o status do pagamento e o preference ID
                                                             fetch('/salvar-status-pagamento', {
@@ -231,6 +235,7 @@
                                                         console.error('Error:', error);
                                                     });
                                             }, 3000);
+
 
 
                                             //////////////////////////////////////
