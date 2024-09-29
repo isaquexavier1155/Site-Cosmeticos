@@ -234,7 +234,7 @@ class PainelAdministrativoController extends Controller
 
         // Compra a etiqueta
         $comprarResponse = $this->comprarEtiqueta($etiquetaId);
-        dump($comprarResponse);
+        dd($comprarResponse);
         $comprarData = json_decode($comprarResponse->getContent(), true);
 
         if ($comprarData['status'] !== 'success') {
