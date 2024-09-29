@@ -217,7 +217,7 @@ class PainelAdministrativoController extends Controller
         // Adiciona ao carrinho
         $adicionarResponse = $this->adicionarAoCarrinho($saleId);
         dump($adicionarResponse);
-       // dd($adicionarResponse);
+        // dd($adicionarResponse);
         ////////////////////
 
         if ($adicionarResponse->getStatusCode() !== 200) {
@@ -231,8 +231,8 @@ class PainelAdministrativoController extends Controller
 
         if (!$etiquetaId) {
             return redirect()->route('painel-administrativo')
-            ->with('error', 'ID da etiqueta não encontrado.')
-            ->with('sale_id', $saleId);
+                ->with('error', 'ID da etiqueta não encontrado.')
+                ->with('sale_id', $saleId);
         }
 
         // Compra a etiqueta
@@ -242,8 +242,8 @@ class PainelAdministrativoController extends Controller
 
         if ($comprarData['status'] !== 'success') {
             return redirect()->route('painel-administrativo')
-            ->with('error', 'Erro ao comprar etiqueta: ' . $comprarData['message'])
-            ->with('sale_id', $saleId);
+                ->with('error', 'Erro ao comprar etiqueta: ' . $comprarData['message'])
+                ->with('sale_id', $saleId);
         }
 
         // Gere a etiqueta
@@ -256,7 +256,7 @@ class PainelAdministrativoController extends Controller
         } else {
             $data = $gerarResponse->getData();
             return redirect()->route('painel-administrativo')->with('error', $data->message ?? 'Erro ao gerar etiqueta.')
-            ->with('sale_id', $saleId);
+                ->with('sale_id', $saleId);
         }
 
     }
@@ -527,12 +527,24 @@ class PainelAdministrativoController extends Controller
                 ]);
             }
 
-            return response()->json([
-                'status' => 'error',
-                'message' => 'Falha ao comprar etiquetaa: ' . ($decodedResponse['message'] ?? 'Erro desconhecido.'),
-                'response_code' => $httpCode,
-                'response_body' => $response // Exibe a resposta bruta para depuração
-            ]);
+            // Trata o caso de erro (como saldo insuficiente)
+            if (isset($decodedResponse['error'])) {
+                // Extrai o erro da resposta
+                $errorMessage = $decodedResponse['error'];
+                return redirect()->route('painel-administrativo')
+                    ->with('error', 'Falha ao comprar etiqueta: ' . $errorMessage);
+            }
+
+            /*             return response()->json([
+                            'status' => 'error',
+                            'message' => 'Falha ao comprar etiquetaa: ' . ($decodedResponse['message'] ?? 'Erro desconhecido.'),
+                            'response_code' => $httpCode,
+                            'response_body' => $response // Exibe a resposta bruta para depuração
+                        ]); */
+
+            // Retorna erro desconhecido
+            return redirect()->route('painel-administrativo')
+                ->with('error', 'Falha ao comprar etiqueta: Erro desconhecido.');
 
         } catch (\Exception $e) {
             return response()->json([
@@ -574,7 +586,7 @@ class PainelAdministrativoController extends Controller
             curl_setopt($ch, CURLOPT_POSTFIELDS, $payload);
 
             // Desativa a verificação de SSL para desenvolvimento
-           // curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+            // curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 
             // Executa a requisição cURL
             $response = curl_exec($ch);
