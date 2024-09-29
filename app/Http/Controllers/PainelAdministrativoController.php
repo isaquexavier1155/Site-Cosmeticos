@@ -237,7 +237,7 @@ class PainelAdministrativoController extends Controller
 
         // Compra a etiqueta
         $comprarResponse = $this->comprarEtiqueta($etiquetaId);
-        
+
         $comprarData = json_decode($comprarResponse->getContent(), true);
 
         if ($comprarData['status'] !== 'success') {
@@ -527,20 +527,24 @@ class PainelAdministrativoController extends Controller
                 ]);
             }
 
-            // Trata o caso de erro (como saldo insuficiente)
-/*             if (isset($decodedResponse['error'])) {
-                // Extrai o erro da resposta
-                $errorMessage = $decodedResponse['error'];
-                return redirect()->route('painel-administrativo')
-                    ->with('error', 'Falha ao comprar etiqueta: ' . $errorMessage);
-            }
- */
-                        return response()->json([
-                            'status' => 'error',
-                            'message' => 'Falha ao comprar etiquetaa: ' . ($decodedResponse['message'] ?? 'Erro desconhecido.'),
-                            'response_code' => $httpCode,
-                            'response_body' => $response // Exibe a resposta bruta para depuração
-                        ]);
+
+            // Verifica se há uma mensagem de erro na resposta decodificada
+            $errorMessage = isset($decodedResponse['error']) ? $decodedResponse['error'] :
+                ($decodedResponse['message'] ?? 'Erro desconhecido.');
+
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Falha ao comprar etiqueta: ' . $errorMessage,
+                'response_code' => $httpCode,
+                'response_body' => $response // Exibe a resposta bruta para depuração
+            ]);
+
+            /*                         return response()->json([
+                                        'status' => 'error',
+                                        'message' => 'Falha ao comprar etiquetaa: ' . ($decodedResponse['message'] ?? 'Erro desconhecido.'),
+                                        'response_code' => $httpCode,
+                                        'response_body' => $response // Exibe a resposta bruta para depuração
+                                    ]); */
 
         } catch (\Exception $e) {
             return response()->json([
