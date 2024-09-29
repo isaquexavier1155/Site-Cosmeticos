@@ -222,23 +222,28 @@ class PainelAdministrativoController extends Controller
 
         if ($adicionarResponse->getStatusCode() !== 200) {
             return redirect()->route('painel-administrativo')
-                ->with('error');
+                ->with('error')
+                ->with('sale_id', $saleId);
         }
 
         $adicionarData = json_decode($adicionarResponse->getContent(), true);
         $etiquetaId = $adicionarData['response']['id'] ?? null;
 
         if (!$etiquetaId) {
-            return redirect()->route('painel-administrativo')->with('error', 'ID da etiqueta não encontrado.');
+            return redirect()->route('painel-administrativo')
+            ->with('error', 'ID da etiqueta não encontrado.')
+            ->with('sale_id', $saleId);
         }
 
         // Compra a etiqueta
         $comprarResponse = $this->comprarEtiqueta($etiquetaId);
-        dd($comprarResponse);
+        //dd($comprarResponse);
         $comprarData = json_decode($comprarResponse->getContent(), true);
 
         if ($comprarData['status'] !== 'success') {
-            return redirect()->route('painel-administrativo')->with('error', 'Erro ao comprar etiqueta: ' . $comprarData['message']);
+            return redirect()->route('painel-administrativo')
+            ->with('error', 'Erro ao comprar etiqueta: ' . $comprarData['message'])
+            ->with('sale_id', $saleId);
         }
 
         // Gere a etiqueta
@@ -250,7 +255,8 @@ class PainelAdministrativoController extends Controller
             return redirect()->route('painel-administrativo')->with('success', 'Etiqueta gerada com sucesso! <a href="' . $data->url . '" target="_blank">Imprimir Etiqueta</a>')->with('sale_id', $saleId);
         } else {
             $data = $gerarResponse->getData();
-            return redirect()->route('painel-administrativo')->with('error', $data->message ?? 'Erro ao gerar etiqueta.')->with('sale_id', $saleId);
+            return redirect()->route('painel-administrativo')->with('error', $data->message ?? 'Erro ao gerar etiqueta.')
+            ->with('sale_id', $saleId);
         }
 
     }
