@@ -49,7 +49,7 @@ class PainelAdministrativoController extends Controller
                     $novoStatus = $trackingData->status;
                     switch ($trackingData->status) {
                         case 'pending':
-                            $novoStatus = 'Pendente';
+                            $novoStatus = 'A preparar';
                             break;
                         case 'posted':
                             $novoStatus = 'Em trânsito';
@@ -65,8 +65,6 @@ class PainelAdministrativoController extends Controller
                             break;
                         // Adicionar outros casos conforme necessário
                     }
-
-
 
                     $payment->status = $novoStatus;
                     $payment->save();
@@ -192,6 +190,7 @@ class PainelAdministrativoController extends Controller
 
         // Chama a função de buscar saldo da carteira
         $buscaSaldoCarteiraResponse = $this->buscaSaldoCarteira();
+        dump($buscaSaldoCarteiraResponse);
 
         // Verifica se houve erro ao buscar o saldo
         if (isset($buscaSaldoCarteiraResponse['error'])) {
@@ -217,6 +216,8 @@ class PainelAdministrativoController extends Controller
         }
         // Adiciona ao carrinho
         $adicionarResponse = $this->adicionarAoCarrinho($saleId);
+        dump($adicionarResponse);
+       // dd($adicionarResponse);
         ////////////////////
 
         if ($adicionarResponse->getStatusCode() !== 200) {
@@ -233,6 +234,7 @@ class PainelAdministrativoController extends Controller
 
         // Compra a etiqueta
         $comprarResponse = $this->comprarEtiqueta($etiquetaId);
+        dump($comprarResponse);
         $comprarData = json_decode($comprarResponse->getContent(), true);
 
         if ($comprarData['status'] !== 'success') {
@@ -241,7 +243,7 @@ class PainelAdministrativoController extends Controller
 
         // Gere a etiqueta
         $gerarResponse = $this->gerarEtiqueta($saleId, $etiquetaId);
-
+        dump($gerarResponse);
         // Verifica se a geração foi bem-sucedida
         if ($gerarResponse->getStatusCode() === 200) {
             $data = $gerarResponse->getData();
@@ -263,7 +265,7 @@ class PainelAdministrativoController extends Controller
             //em desenvolvimento
             //CURLOPT_URL => 'https://sandbox.melhorenvio.com.br/api/v2/me/balance',
             //em produção
-             CURLOPT_URL => 'https://melhorenvio.com.br/api/v2/me/balance',
+            CURLOPT_URL => 'https://melhorenvio.com.br/api/v2/me/balance',
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_ENCODING => '',
             CURLOPT_MAXREDIRS => 10,
@@ -272,7 +274,7 @@ class PainelAdministrativoController extends Controller
             CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
             CURLOPT_CUSTOMREQUEST => 'GET',
             //deixar linha abaixo em desenvolvimento e remover em produção
-            CURLOPT_SSL_VERIFYPEER => false, // Desativa a verificação de SSL
+            //CURLOPT_SSL_VERIFYPEER => false, // Desativa a verificação de SSL
             CURLOPT_HTTPHEADER => [
                 'Accept: application/json',
                 'Authorization: Bearer ' . env('MELHOR_ENVIO_TOKEN'), // Pegando o token da variável de ambiente
@@ -420,7 +422,7 @@ class PainelAdministrativoController extends Controller
                 'receipt' => false,
                 'own_hand' => false,
                 'reverse' => false,
-                'non_commercial' => true, //false = Indica que o envio é comercial e pode incluir documentos fiscais como nota fiscal ou declaração de conteudo
+                'non_commercial' => false, //false = Indica que o envio é comercial e pode incluir documentos fiscais como nota fiscal ou declaração de conteudo
                 'platform' => 'Site Cintra Beauty',
                 'tags' => [
                     [
@@ -450,7 +452,7 @@ class PainelAdministrativoController extends Controller
 
             /*  Para salvar id da etiqueta no banco de dados e utiliza-la na aba minhas vendas */
             $etiqueta = json_decode($response, true); // Decodifica o JSON para um array associativo
-            // dd($etiqueta); // Exibe apenas o ID
+            //dd($etiqueta); // Exibe apenas o ID
             //Unauthenticated
 
             $payment = Payment::find($saleId);  // Ajuste para buscar pelo ID de pagamento se necessário
@@ -501,8 +503,8 @@ class PainelAdministrativoController extends Controller
                     'User-Agent: Aplicação (email para contato técnico)'
                 ),
             ));
-
-            curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
+            /* deixar linha abaixo em desenvolvimento e remover em produção */
+            //curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
 
             $response = curl_exec($curl);
             $httpCode = curl_getinfo($curl, CURLINFO_HTTP_CODE);
@@ -564,7 +566,7 @@ class PainelAdministrativoController extends Controller
             curl_setopt($ch, CURLOPT_POSTFIELDS, $payload);
 
             // Desativa a verificação de SSL para desenvolvimento
-            //curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+           // curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 
             // Executa a requisição cURL
             $response = curl_exec($ch);

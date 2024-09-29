@@ -163,7 +163,6 @@
                 <!-- Aba Minhas Vendas -->
                 <!-- active aqui -->
                 <div class="tab-pane fade show active" id="vendas" role="tabpanel" aria-labelledby="vendas-tab">
-                    <div class="d-flex justify-content-between align-items-center">
                         <!-- Abas de navegação -->
                         <ul class="nav nav-tabs" id="vendasSubTab" role="tablist">
                             <li class="nav-item">
@@ -178,7 +177,6 @@
                                 <button class="nav-link" id="entregues-tab" data-bs-toggle="tab" data-bs-target="#entregues"
                                     type="button">Entregues</button>
                             </li>
-
                         </ul>
 
                         <!-- Exibição do saldo à direita -->
@@ -196,7 +194,7 @@
                             </ul>
                         </div>
 
-                    </div>
+                    
                     <!-- Faz requisição na API do Melhor envio e busca saldo dísponível na carteira
                      ao clicar no ícone de olho no painel administrativo -->
                     <script>
