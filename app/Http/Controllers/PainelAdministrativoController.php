@@ -237,9 +237,9 @@ class PainelAdministrativoController extends Controller
 
         // Compra a etiqueta
         $comprarResponse = $this->comprarEtiqueta($etiquetaId);
-        //dd($comprarResponse);
+        
         $comprarData = json_decode($comprarResponse->getContent(), true);
-
+        dd($comprarResponse);
         if ($comprarData['status'] !== 'success') {
             return redirect()->route('painel-administrativo')
                 ->with('error', 'Erro ao comprar etiqueta: ' . $comprarData['message'])
