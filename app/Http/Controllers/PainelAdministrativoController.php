@@ -239,7 +239,7 @@ class PainelAdministrativoController extends Controller
         $comprarResponse = $this->comprarEtiqueta($etiquetaId);
         
         $comprarData = json_decode($comprarResponse->getContent(), true);
-        dd($comprarResponse);
+
         if ($comprarData['status'] !== 'success') {
             return redirect()->route('painel-administrativo')
                 ->with('error', 'Erro ao comprar etiqueta: ' . $comprarData['message'])
@@ -528,23 +528,19 @@ class PainelAdministrativoController extends Controller
             }
 
             // Trata o caso de erro (como saldo insuficiente)
-            if (isset($decodedResponse['error'])) {
+/*             if (isset($decodedResponse['error'])) {
                 // Extrai o erro da resposta
                 $errorMessage = $decodedResponse['error'];
                 return redirect()->route('painel-administrativo')
                     ->with('error', 'Falha ao comprar etiqueta: ' . $errorMessage);
             }
-
-            /*             return response()->json([
+ */
+                        return response()->json([
                             'status' => 'error',
                             'message' => 'Falha ao comprar etiquetaa: ' . ($decodedResponse['message'] ?? 'Erro desconhecido.'),
                             'response_code' => $httpCode,
                             'response_body' => $response // Exibe a resposta bruta para depuração
-                        ]); */
-
-            // Retorna erro desconhecido
-            return redirect()->route('painel-administrativo')
-                ->with('error', 'Falha ao comprar etiqueta: Erro desconhecido.');
+                        ]);
 
         } catch (\Exception $e) {
             return response()->json([
