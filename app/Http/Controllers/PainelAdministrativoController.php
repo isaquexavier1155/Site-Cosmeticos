@@ -523,7 +523,9 @@ class PainelAdministrativoController extends Controller
 
             return response()->json([
                 'status' => 'error',
-                'message' => 'Falha ao comprar etiqueta: ' . ($decodedResponse['message'] ?? 'Erro desconhecido.')
+                'message' => 'Falha ao comprar etiquetaa: ' . ($decodedResponse['message'] ?? 'Erro desconhecido.'),
+                'response_code' => $httpCode,
+                'response_body' => $response // Exibe a resposta bruta para depuração
             ]);
 
         } catch (\Exception $e) {
