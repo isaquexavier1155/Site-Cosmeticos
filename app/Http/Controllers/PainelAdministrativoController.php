@@ -190,7 +190,7 @@ class PainelAdministrativoController extends Controller
 
         // Chama a função de buscar saldo da carteira
         $buscaSaldoCarteiraResponse = $this->buscaSaldoCarteira();
-        dump($buscaSaldoCarteiraResponse);
+       //dump($buscaSaldoCarteiraResponse);
 
         // Verifica se houve erro ao buscar o saldo
         if (isset($buscaSaldoCarteiraResponse['error'])) {
@@ -216,7 +216,7 @@ class PainelAdministrativoController extends Controller
         }
         // Adiciona ao carrinho
         $adicionarResponse = $this->adicionarAoCarrinho($saleId);
-        dump($adicionarResponse);
+        //dump($adicionarResponse);
         // dd($adicionarResponse);
         ////////////////////
 
@@ -248,7 +248,7 @@ class PainelAdministrativoController extends Controller
 
         // Gere a etiqueta
         $gerarResponse = $this->gerarEtiqueta($saleId, $etiquetaId);
-        dump($gerarResponse);
+        //dump($gerarResponse);
         // Verifica se a geração foi bem-sucedida
         if ($gerarResponse->getStatusCode() === 200) {
             $data = $gerarResponse->getData();
