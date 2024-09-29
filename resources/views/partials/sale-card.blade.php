@@ -29,6 +29,17 @@
                         </div>
                     @endif
 
+                  <!--   @dump(session('sale_id'));
+                    @dump($sale['id']);
+                    @dump(session('error')); -->
+
+          <!--           @if (session('error'))
+                        <div id="mensagem-erro-{{ $sale['id'] }}" class="alert alert-danger mt-3">
+                            {!! session('error') !!}
+                        </div>
+                    @endif -->
+                    
+
                     @if (session('sale_id') == $sale['id'] && session('error'))
                         <div id="mensagem-erro-{{ $sale['id'] }}" class="alert alert-danger mt-3">
                             {!! session('error') !!}

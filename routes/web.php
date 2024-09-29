@@ -94,6 +94,9 @@ Route::get('/payment-success', function () {
     return view('sucesso-pagamento'); // Ajuste para o caminho correto da sua view de sucesso
 });
 
+Route::get('/buscar-saldo-carteira', [PainelAdministrativoController::class, 'buscaSaldoCarteira'])->name('buscar-saldo-carteira');
+
+
 
 //rota para salvar dados adicionais de entrega na tabela users com usuário já logado
 Route::post('/checkout-entrega/salvar', [FreteController::class, 'salvarDadosEntrega'])->name('checkout.entrega.salvar');

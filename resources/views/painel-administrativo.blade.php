@@ -137,9 +137,9 @@
                         type="button">Minhas Vendas</button>
                 </li>
                 <!-- <li class="nav-item">
-                        <button class="nav-link" id="compras-tab" data-bs-toggle="tab" data-bs-target="#compras"
-                            type="button">Minhas Compras</button>
-                    </li> -->
+                                            <button class="nav-link" id="compras-tab" data-bs-toggle="tab" data-bs-target="#compras"
+                                                type="button">Minhas Compras</button>
+                                        </li> -->
                 <li class="nav-item">
                     <button class="nav-link" id="produtos-tab" data-bs-toggle="tab" data-bs-target="#produtos"
                         type="button">Cadastro de Produtos</button>
@@ -150,9 +150,9 @@
                         type="button">Minhas Compras</button>
                 </li>
                 <!--                 <li class="nav-item">
-                            <button class="nav-link" id="produtos-tab" data-bs-toggle="tab" data-bs-target="#produtos"
-                                type="button">Cadastro de Produtos</button>
-                        </li> -->
+                                                <button class="nav-link" id="produtos-tab" data-bs-toggle="tab" data-bs-target="#produtos"
+                                                    type="button">Cadastro de Produtos</button>
+                                            </li> -->
             @endif
 
         </ul>
@@ -163,21 +163,85 @@
                 <!-- Aba Minhas Vendas -->
                 <!-- active aqui -->
                 <div class="tab-pane fade show active" id="vendas" role="tabpanel" aria-labelledby="vendas-tab">
-                    <ul class="nav nav-tabs" id="vendasSubTab" role="tablist">
-                        <li class="nav-item">
-                            <!-- active aqui -->
-                            <button class="nav-link active" id="a-preparar-tab" data-bs-toggle="tab"
-                                data-bs-target="#a-preparar" type="button">A Preparar</button>
-                        </li>
-                        <li class="nav-item">
-                            <button class="nav-link" id="em-transito-tab" data-bs-toggle="tab" data-bs-target="#em-transito"
-                                type="button">Em Trânsito</button>
-                        </li>
-                        <li class="nav-item">
-                            <button class="nav-link" id="entregues-tab" data-bs-toggle="tab" data-bs-target="#entregues"
-                                type="button">Entregues</button>
-                        </li>
-                    </ul>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <!-- Abas de navegação -->
+                        <ul class="nav nav-tabs" id="vendasSubTab" role="tablist">
+                            <li class="nav-item">
+                                <button class="nav-link active" id="a-preparar-tab" data-bs-toggle="tab"
+                                    data-bs-target="#a-preparar" type="button">A Preparar</button>
+                            </li>
+                            <li class="nav-item">
+                                <button class="nav-link" id="em-transito-tab" data-bs-toggle="tab"
+                                    data-bs-target="#em-transito" type="button">Em Trânsito</button>
+                            </li>
+                            <li class="nav-item">
+                                <button class="nav-link" id="entregues-tab" data-bs-toggle="tab" data-bs-target="#entregues"
+                                    type="button">Entregues</button>
+                            </li>
+
+                        </ul>
+
+                        <!-- Exibição do saldo à direita -->
+                        <div class="saldo-info" style="font-size: 1rem;">
+
+                            <ul class="nav nav-tabs" id="vendasSubTab" role="tablist">
+                                <!-- Ícone do olho para visualizar saldo -->
+                                 <!-- <span>Saldo Melhor Envio</span> -->
+                                <li class="nav-item ms-auto">
+                                    <span id="saldo-info" class="nav-link" style="cursor: pointer;" onclick="buscarSaldo()">Saldo Melhor Envio
+                                        <i id="saldo-eye" class="fa fa-eye"></i>
+                                        <span id="saldo-valor" style="display: none;"></span>
+                                  </span>
+                                </li>
+                            </ul>
+                        </div>
+
+                    </div>
+                    <!-- Faz requisição na API do Melhor envio e busca saldo dísponível na carteira
+                     ao clicar no ícone de olho no painel administrativo -->
+                    <script>
+                        function buscarSaldo() {
+                            const saldoEye = document.getElementById('saldo-eye');
+                            const saldoValor = document.getElementById('saldo-valor');
+
+                            // Ponto de depuração - Verificando estado inicial
+                            console.log("Estado inicial - saldoEye:", saldoEye.className, "saldoValor:", saldoValor.textContent, "Visível?", saldoValor.style.display !== 'none');
+
+                            if (saldoValor.style.display === 'none') {
+                                console.log("Iniciando busca de saldo...");
+
+                                // Fazendo requisição para buscar o saldo
+                                fetch('{{ route("buscar-saldo-carteira") }}')
+                                    .then(response => {
+                                        console.log("Resposta da requisição recebida:", response);
+                                        if (!response.ok) {
+                                            throw new Error("Erro na resposta da requisição");
+                                        }
+                                        return response.json();
+                                    })
+                                    .then(data => {
+                                        console.log("Dados de saldo recebidos:", data);
+                                        // Corrigindo o campo balance em vez de saldo
+                                        saldoValor.textContent = `R$ ${parseFloat(data.balance).toFixed(2)}`;
+                                        saldoValor.style.display = 'inline';
+                                        saldoEye.classList.replace('fa-eye', 'fa-eye-slash');
+                                        console.log("Saldo exibido:", saldoValor.textContent);
+                                    })
+                                    .catch(error => {
+                                        console.error('Erro ao buscar saldo:', error);
+                                    });
+                            } else {
+                                // Escondendo saldo
+                                console.log("Escondendo saldo...");
+                                saldoValor.style.display = 'none';
+                                saldoEye.classList.replace('fa-eye-slash', 'fa-eye');
+                            }
+
+                            // Ponto de depuração - Verificando estado final
+                            console.log("Estado final - saldoEye:", saldoEye.className, "saldoValor:", saldoValor.textContent, "Visível?", saldoValor.style.display !== 'none');
+                        }
+
+                    </script>
 
                     <!-- Sub Tab panes -->
                     <div class="tab-content mt-3">

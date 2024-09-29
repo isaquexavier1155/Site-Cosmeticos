@@ -13,6 +13,7 @@ class PainelAdministrativoController extends Controller
 
     public function index()
     {
+
         // Get the logged-in user's ID
         $userId = auth()->id();
 
@@ -188,11 +189,39 @@ class PainelAdministrativoController extends Controller
 
     public function gerarEtiquetaCompleta($saleId)
     {
+
+        // Chama a função de buscar saldo da carteira
+        $buscaSaldoCarteiraResponse = $this->buscaSaldoCarteira();
+
+        // Verifica se houve erro ao buscar o saldo
+        if (isset($buscaSaldoCarteiraResponse['error'])) {
+            // Lida com o erro, se houver
+            return redirect()->back()->with('error', $buscaSaldoCarteiraResponse['error']);
+        }
+
+        // Obtém o saldo da carteira
+        $saldo = $buscaSaldoCarteiraResponse['balance'];
+
+        // Depura o saldo (ou utilize o saldo conforme a lógica desejada)
+        //dump($saldo);
+
+        // Buscar o pagamento pelo ID da venda
+        $payment = Payment::find($saleId);
+
+        //Esse erro é exibido na view painel-administrativo ao gerar etiqueta
+        if ($saldo < $payment->valor) {
+            return redirect()->route('painel-administrativo')
+                ->with('error', 'Saldo insuficiente!<br> Adicione saldo à carteira da Melhor Envio para continuar.<br>Saldo da carteira: R$' . $saldo)
+                ->with('sale_id', $saleId);
+
+        }
         // Adiciona ao carrinho
         $adicionarResponse = $this->adicionarAoCarrinho($saleId);
+        ////////////////////
 
         if ($adicionarResponse->getStatusCode() !== 200) {
-            return redirect()->route('painel-administrativo')->with('error', 'Erro ao adicionar ao carrinho.');
+            return redirect()->route('painel-administrativo')
+                ->with('error');
         }
 
         $adicionarData = json_decode($adicionarResponse->getContent(), true);
@@ -224,6 +253,57 @@ class PainelAdministrativoController extends Controller
 
     }
 
+    public function buscaSaldoCarteira()
+    {
+        // Inicializa o cURL
+        $ch = curl_init();
+
+        // Configurações do cURL
+        curl_setopt_array($ch, [
+            //em desenvolvimento
+            //CURLOPT_URL => 'https://sandbox.melhorenvio.com.br/api/v2/me/balance',
+            //em produção
+             CURLOPT_URL => 'https://melhorenvio.com.br/api/v2/me/balance',
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => '',
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 0,
+            CURLOPT_FOLLOWLOCATION => true,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => 'GET',
+            //deixar linha abaixo em desenvolvimento e remover em produção
+            CURLOPT_SSL_VERIFYPEER => false, // Desativa a verificação de SSL
+            CURLOPT_HTTPHEADER => [
+                'Accept: application/json',
+                'Authorization: Bearer ' . env('MELHOR_ENVIO_TOKEN'), // Pegando o token da variável de ambiente
+                'User-Agent: MinhaAplicacao (email@example.com)', // Substitua pelo seu e-mail de contato
+            ],
+        ]);
+
+        // Executa a requisição e obtém a resposta
+        $response = curl_exec($ch);
+
+        // Verifica se ocorreu algum erro
+        if (curl_errno($ch)) {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Erro ao buscar saldo: ' . curl_error($ch)
+            ]);
+        }
+
+        // Fecha a conexão cURL
+        curl_close($ch);
+
+        // Decodifica a resposta JSON
+        $saldo = json_decode($response, true);
+
+        // Verifica se o saldo foi obtido corretamente
+        if (isset($saldo['balance'])) {
+            return $saldo; // Retorna o saldo diretamente
+        } else {
+            return ['error' => 'Não foi possível obter o saldo.'];
+        }
+    }
 
 
     //Adicionando frete ao carrinho com sucesso
@@ -231,7 +311,17 @@ class PainelAdministrativoController extends Controller
     {
         // Buscar o pagamento pelo ID da venda
         $payment = Payment::find($saleId);
-        //dd($payment->valor);
+
+
+        //Esse erro é jogado para a Função gerarEtiqueta Completa
+/*         if ($payment->valor < 3) {
+            return redirect()->route('painel-administrativo')
+            ->with('error', 'Saldo insuficiente. Adicione saldo à carteira da Melhor Envio para continuar. ' . $payment->valor)
+            ->with('sale_id', $saleId);        
+
+        } */
+        //dump($payment->valor);
+
 
         // Se o pagamento não for encontrado, retornar um erro
         if (!$payment) {
@@ -360,7 +450,7 @@ class PainelAdministrativoController extends Controller
 
             /*  Para salvar id da etiqueta no banco de dados e utiliza-la na aba minhas vendas */
             $etiqueta = json_decode($response, true); // Decodifica o JSON para um array associativo
-           // dd($etiqueta); // Exibe apenas o ID
+            // dd($etiqueta); // Exibe apenas o ID
             //Unauthenticated
 
             $payment = Payment::find($saleId);  // Ajuste para buscar pelo ID de pagamento se necessário
