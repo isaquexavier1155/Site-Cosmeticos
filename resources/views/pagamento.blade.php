@@ -109,7 +109,7 @@
                         paymentMethods: {
                             bankTransfer: "all",//pix
                             creditCard: "all",
-                            mercadoPago: "all",
+                            mercadoPago: [],
                         },
                     },
                     callbacks: {
