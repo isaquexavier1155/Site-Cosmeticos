@@ -586,7 +586,7 @@ class PainelAdministrativoController extends Controller
             curl_setopt($ch, CURLOPT_POSTFIELDS, $payload);
 
             // Desativa a verificação de SSL para desenvolvimento
-            // curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+             //curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 
             // Executa a requisição cURL
             $response = curl_exec($ch);
