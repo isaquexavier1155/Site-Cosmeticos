@@ -3687,7 +3687,7 @@
 				<!-- Campo oculto para capturar a opção de frete selecionada -->
 				<input type="hidden" name="frete_option" id="hidden-frete-option" value="">
 				<button type="submit" id="finalizar-compra-btn" class="btn btn-dark w-100 mb-7" title="Finalizar Compra"
-					disabled>Finalizar Compra</button>
+					>Finalizar Compra</button>
 			</form>
 		</div>
 
