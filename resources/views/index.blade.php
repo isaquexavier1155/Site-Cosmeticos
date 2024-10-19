@@ -2196,7 +2196,7 @@
 						data-bg-src="{{ asset('images/banner/banner-02.jpg') }}" data-animate="fadeInUp">
 						<div class="card-img-overlay d-flex align-items-center justify-content-center w-lg-half-screen">
 							<!-- <a href="https://www.youtube.com/watch?v=6v2L2UGZJAM" -->
-							 <a href="https://www.youtube.com/shorts/_7LCIsQ8gwU"
+							 <a href="https://www.youtube.com/watch?v=vl-6x7fRUU4"
 							
 								class="square view-video rounded-circle z-index-1 bg-body text-body-emphasis fs-2 bg-dark-hover text-light-hover"
 								style="--square-size:115px;"><svg class="icon">
