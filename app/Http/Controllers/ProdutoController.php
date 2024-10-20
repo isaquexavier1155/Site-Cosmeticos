@@ -31,8 +31,9 @@ class ProdutoController extends Controller
 
     public function index()
     {
-        // Filtrar produtos pelas categorias especificadas
-        $produtosPerfumes = Produto::where('categoria', 'Perfumes')->get();
+         // Filtrar produtos pelas categorias especificadas, exceto o com id 83
+        $produtosPerfumes = Produto::where('categoria', 'Perfumes')->where('id', '!=', 83)->get();
+        //$produtosPerfumes = Produto::where('categoria', 'Perfumes')->get();
         $produtosBodySplash = Produto::where('categoria', 'Body splash')->get();
         $produtosHidratantes = Produto::where('categoria', 'Hidratantes')->get();
 
@@ -56,35 +57,35 @@ class ProdutoController extends Controller
         return response()->json(['error' => 'Produto não encontrado'], 404);
     }
 
-/* Função responsavel pela busca no cabeçalho */
-public function busca(Request $request)
-{
-    $query = $request->input('query');
+    /* Função responsavel pela busca no cabeçalho */
+    public function busca(Request $request)
+    {
+        $query = $request->input('query');
 
-    // Buscar todos os produtos com base no nome
-    $produtos = Produto::where('nome', 'like', '%' . $query . '%')->get();
+        // Buscar todos os produtos com base no nome
+        $produtos = Produto::where('nome', 'like', '%' . $query . '%')->get();
 
-    // Buscar produtos por categorias
-    $produtosPerfumes = Produto::where('categoria', 'Perfumes')->get();
-    $produtosBodySplash = Produto::where('categoria', 'Body Splash')->get();
-    $produtosHidratantes = Produto::where('categoria', 'Hidratantes')->get();
+        // Buscar produtos por categorias
+        $produtosPerfumes = Produto::where('categoria', 'Perfumes')->get();
+        $produtosBodySplash = Produto::where('categoria', 'Body Splash')->get();
+        $produtosHidratantes = Produto::where('categoria', 'Hidratantes')->get();
 
-    // Verificar se o usuário está logado para informações do carrinho
-    $user = Auth::user();
-    if ($user) {
-        $carrinho = Cart::where('user_id', $user->id)->get();
-        $total_items = $carrinho->count();
-        $total = $carrinho->reduce(function ($carry, $item) {
-            return $carry + ($item->price * $item->quantity);
-        }, 0);
+        // Verificar se o usuário está logado para informações do carrinho
+        $user = Auth::user();
+        if ($user) {
+            $carrinho = Cart::where('user_id', $user->id)->get();
+            $total_items = $carrinho->count();
+            $total = $carrinho->reduce(function ($carry, $item) {
+                return $carry + ($item->price * $item->quantity);
+            }, 0);
 
-        // Redireciona para a view index com os produtos filtrados e as categorias
-        return view('index', compact('produtos', 'produtosPerfumes', 'produtosBodySplash', 'produtosHidratantes', 'carrinho', 'total', 'total_items'));
+            // Redireciona para a view index com os produtos filtrados e as categorias
+            return view('index', compact('produtos', 'produtosPerfumes', 'produtosBodySplash', 'produtosHidratantes', 'carrinho', 'total', 'total_items'));
+        }
+
+        // Se o usuário não estiver logado, retornar sem carrinho
+        return view('index', compact('produtos', 'produtosPerfumes', 'produtosBodySplash', 'produtosHidratantes'));
     }
-
-    // Se o usuário não estiver logado, retornar sem carrinho
-    return view('index', compact('produtos', 'produtosPerfumes', 'produtosBodySplash', 'produtosHidratantes'));
-}
 
 
 
@@ -95,6 +96,16 @@ public function busca(Request $request)
         $todos_produtos = Produto::all(); // Busca todos os produtos do banco de dados
 
         if ($produto) {
+
+            ///////////////////
+
+            /*if ($id == 31) { // Substitua 48 pelo ID do seu produto promocional
+                $preco_promocional = 66.90; // Define o preço promocional
+                $produto->preco_promocional= $preco_promocional;
+               
+            } */
+            ///////////////////
+
             $user = Auth::user();
             if ($user) {
                 $carrinho = Cart::where('user_id', $user->id)->get();
@@ -104,6 +115,7 @@ public function busca(Request $request)
                 }, 0);
                 return view('product-details-v1', compact('produto', 'todos_produtos', 'carrinho', 'total', 'total_items'));
             }
+
 
             return view('product-details-v1', compact('produto', 'todos_produtos'));
         }
@@ -199,16 +211,16 @@ public function busca(Request $request)
         // Obter o parâmetro de categoria, se existir
         $categoria = $request->query('categoria');
         $scrollTo = $request->query('scroll_to', ''); // 'scroll_to' é opcional
-    
+
         // Inicializar variáveis de categorias para evitar erro de variável indefinida
         $produtosPerfumes = collect();
         $produtosBodySplash = collect();
         $produtosHidratantes = collect();
-    
+
         // Buscar produtos com base na categoria fornecida
         if ($categoria) {
             $produtos = Produto::where('categoria', $categoria)->get();
-    
+
             // Se for a categoria "Perfumes", atribuir os produtos à variável correta
             if ($categoria == 'Perfumes') {
                 $produtosPerfumes = $produtos;
@@ -217,18 +229,18 @@ public function busca(Request $request)
             } elseif ($categoria == 'Hidratantes') {
                 $produtosHidratantes = $produtos;
             }
-    
+
             // Se nenhum produto for encontrado, buscar todos os produtos
             if ($produtos->isEmpty()) {
                 $produtosPerfumes = Produto::all();
                 $categoria = null; // Remover a categoria do filtro quando retornar todos os produtos
             }
         }
-    
+
         // Retornar a view index com os produtos encontrados e as variáveis adequadas
         return view('index', compact('produtosPerfumes', 'produtosBodySplash', 'produtosHidratantes', 'categoria', 'scrollTo'));
     }
-    
+
 
     /* Funçao para adicionar itens ao carrinho e depois abrir carrinho de compras se der tudo certo
      */

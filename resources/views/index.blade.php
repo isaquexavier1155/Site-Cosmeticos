@@ -965,8 +965,8 @@
 										@else
 											<li>
 												<!-- <a class="dropdown-item" href="{{ route('login') }}">
-																													Entrar
-																												</a> -->
+																																		Entrar
+																																	</a> -->
 												<a class="dropdown-item" href="#" data-bs-toggle="modal"
 													data-bs-target="#signInModal">
 													Entrar
@@ -1391,7 +1391,7 @@
 																		<!-- Repeat for more stars -->
 																	</div>
 																</div>
-																<span class="reviews ms-4 pt-3 fs-14px">101 avaliações</span>
+																<span class="reviews ms-4 pt-3 fs-14px">100 avaliações</span>
 															</div>
 														</div>
 													</div>
@@ -1473,7 +1473,7 @@
 																		<!-- Repeat for more stars -->
 																	</div>
 																</div>
-																<span class="reviews ms-4 pt-3 fs-14px">101 avaliações</span>
+																<span class="reviews ms-4 pt-3 fs-14px">100 avaliações</span>
 															</div>
 														</div>
 													</div>
@@ -1557,7 +1557,7 @@
 																		<!-- Repeat for more stars -->
 																	</div>
 																</div>
-																<span class="reviews ms-4 pt-3 fs-14px">101 avaliações</span>
+																<span class="reviews ms-4 pt-3 fs-14px">100 avaliações</span>
 															</div>
 														</div>
 													</div>
@@ -2134,23 +2134,25 @@
 
 			<div class="container">
 				<div class="row align-items-center">
-					<div class="col-lg-6 px-0 bg-image bg-col-lg-half-screen-left lazy-bg"
-						data-bg-src="{{ asset('images/Countdown/countdown-06.jpg') }}" data-animate="fadeInUp">
-
-						<!-- 		<div class="col-lg-6 px-0 bg-image bg-col-lg-half-screen-left lazy-bg" data-bg-src="./assets/images/Countdown/countdown-06.jpg" data-animate="fadeInUp">
- -->
+					<div class="col-lg-6 px-0 bg-image custom-bg-col-lg-half-screen-left lazy-bg"
+						data-bg-src="{{ asset('images/promorelampago/05.jpg') }}" data-animate="fadeInUp">
 						<div class="py-25 my-xl-21 my-lg-8"></div>
 					</div>
+
 					<div class="col-lg-6 py-lg-10 py-16 ps-lg-10 ps-xl-18 order-2" data-animate="fadeInUp">
 						<div class="text-left">
 							<p class="fs-15px mb-6 ls-1 text-body-emphasis fw-semibold">Promoção Relâmpago<span
 									class="badge bg-primary fs-15px py-3 px-4 ms-4"></span></p>
 							<h2 class="mb-6">Não perca essa chance!</h2>
+							<h3 class="mb-6">DREAM BRAND COLLECTION 007 INSPIRAÇÃO J'ADORE</h3>
 							<p class="fs-18px w-md-70 w-lg-100 w-xl-75 mb-7 text-body">
-								Não perca a chance de adquirir suas fragrâncias favoritas com descontos imperdíveis!
-								Confira nossas promoções e aproveite para renovar sua coleção com perfumes e body splash
-								de alta qualidade.
-								Ofertas limitadas para quem ama se sentir bem!
+							O Perfume Feminino Brand Collection 007 é todinho inspirado em J'adore de Dior,
+							 com aromas que expressam sedução e sensualidade com uma delicadeza indescritível. 
+							 Simplesmente luxuoso e com cheirinho de deusa! É um perfume feminino floral.
+							  Um verdadeiro buquê de flores, desenvolvido a partir de finas essências para expressar sensualidade e frescor. 
+							  É precioso como ouro líquido, e reflete essa inspiração luminosa nas notas de flores nobres que compõem a fragrância. 
+							  O Ylang-ylang das Ilhas Comores no topo é o toque exótico do perfume. O coração de Rosa Damascena possui sensualidade, já o fundo composto pelo par de Jasmim Sambac e Jasmim de Grasse são luxuosos e voluptuosos. 
+							  
 							</p>
 						</div>
 
@@ -2176,13 +2178,31 @@
 
 						</div>
 
-						<a href="#listagemPerfumes"
+						<!-- Passa produto de maneira fixa utilizando o ID 83 --> 
+						<a href="{{ route('produtos.show', 83) }}"
 							class="mt-11 btn btn-dark btn-hover-text-light btn-hover-bg-primary btn-hover-border-primary shadow-sm">Apenas
-							R$39,00</a>
+							R$66,90</a>
 					</div>
+					<style>
+						.bg-image {
+							background-size: contain;
+							/* background-position: center; */
+							/* height: auto; */
+							
+						}
+
+	                    /* .bg-image.custom-bg-col-lg-half-screen-left:after {
+							background: none !important;
+							content: none !important;
+							height: 0 !important;
+							
+						} */
+					</style>
 
 				</div>
 			</div>
+
+
 		</section>
 
 
@@ -2196,8 +2216,7 @@
 						data-bg-src="{{ asset('images/banner/banner-02.jpg') }}" data-animate="fadeInUp">
 						<div class="card-img-overlay d-flex align-items-center justify-content-center w-lg-half-screen">
 							<!-- <a href="https://www.youtube.com/watch?v=6v2L2UGZJAM" -->
-							 <a href="https://www.youtube.com/watch?v=vl-6x7fRUU4"
-							
+							<a href="https://www.youtube.com/watch?v=vl-6x7fRUU4"
 								class="square view-video rounded-circle z-index-1 bg-body text-body-emphasis fs-2 bg-dark-hover text-light-hover"
 								style="--square-size:115px;"><svg class="icon">
 									<use xlink:href="#icon-play-fill"></use>
@@ -3710,7 +3729,7 @@
 					alert('Por favor, informe um CEP.');
 					return;
 				}
-				
+
 
 				fetch('{{ route('calcular-frete') }}', {
 					method: 'POST',
@@ -3751,7 +3770,7 @@
 					</label>
 				`;
 							freteValorSpan.appendChild(optionDiv);
-							
+
 
 							// Atualiza o valor e a opção de frete selecionada quando a opção é alterada
 							document.querySelector(`input[name="frete"][value="${price}"]`).addEventListener('change', function () {
