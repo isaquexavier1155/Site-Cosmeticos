@@ -35,10 +35,10 @@
 
     <header id="header" class="header header-sticky header-sticky-smart disable-transition-all z-index-5">
         <div class="topbar bg-primary">
-            <div class="container-wide container">
+            <!-- <div class="container-wide container">
                 <p class="mb-0 text-white text-center p-4 fs-6 fw-semibold">Frete grátis para todo o Brasil em compras
                     acima de R$50</p>
-            </div>
+            </div> -->
         </div>
         <div class="sticky-area">
             <div class="main-header nav navbar bg-body navbar-light navbar-expand-xl py-6 py-xl-0">
@@ -1096,8 +1096,8 @@
                 </div>
                 <div class="col-md-6 pt-md-0 pt-10">
                     <p class="d-flex align-items-center mb-6">
-                        <span class="text-decoration-line-through">R${{ $produto->preco }}</span>
-                        <span class="fs-18px text-body-emphasis ps-6 fw-bold">R${{ $produto->preco_promocional }}</span>
+                        <span class="text-decoration-line-through">R$ {{ $produto->preco }}</span>
+                        <span class="fs-18px text-body-emphasis ps-6 fw-bold">R$ {{ $produto->preco_promocional }}</span>
                         <span
                             class="badge text-bg-primary fs-6 fw-semibold ms-7 px-6 py-3">-{{ round((($produto->preco - $produto->preco_promocional) / $produto->preco) * 100) }}%</span>
                     </p>
@@ -1197,7 +1197,7 @@
                                 class="me-4 form-check-input product-info-input">
                             <label for="buy1" class="text-body-emphasis form-check-label">
                                 Comprar 1 -
-                                <span class="text-body">R${{ number_format($precoOriginal, 2, ',', '.') }}</span>
+                                <span class="text-body">R$ {{ number_format($precoOriginal, 2, ',', '.') }}</span>
                             </label>
                         </div>
 
@@ -1208,8 +1208,8 @@
                             <label for="buy2" class="text-body-emphasis form-check-label">
                                 Comprar 2 -
                                 <span
-                                    class="text-decoration-line-through mx-3 text-body">R${{ number_format($precoOriginal * 2, 2, ',', '.') }}</span>
-                                <span class="fw-bold">R${{ number_format($precosComDesconto[2], 2, ',', '.') }}</span>
+                                    class="text-decoration-line-through mx-3 text-body">R$ {{ number_format($precoOriginal * 2, 2, ',', '.') }}</span>
+                                <span class="fw-bold">R$ {{ number_format($precosComDesconto[2], 2, ',', '.') }}</span>
                             </label>
                             <span class="badge badge-primary fs-12px border text-primary fw-bold ms-4">Economize
                                 +5%</span>
@@ -1222,8 +1222,8 @@
                             <label for="buy3" class="text-body-emphasis form-check-label">
                                 Comprar 3 -
                                 <span
-                                    class="text-decoration-line-through mx-3 text-body">R${{ number_format($precoOriginal * 3, 2, ',', '.') }}</span>
-                                <span class="fw-bold">R${{ number_format($precosComDesconto[3], 2, ',', '.') }}</span>
+                                    class="text-decoration-line-through mx-3 text-body">R$ {{ number_format($precoOriginal * 3, 2, ',', '.') }}</span>
+                                <span class="fw-bold">R$ {{ number_format($precosComDesconto[3], 2, ',', '.') }}</span>
                             </label>
                             <span class="badge badge-primary fs-12px border text-primary fw-bold ms-4">Economize
                                 +8%</span>
@@ -1236,8 +1236,8 @@
                             <label for="buy4" class="text-body-emphasis form-check-label">
                                 Comprar 4 -
                                 <span
-                                    class="text-decoration-line-through mx-3 text-body">R${{ number_format($precoOriginal * 4, 2, ',', '.') }}</span>
-                                <span class="fw-bold">R${{ number_format($precosComDesconto[4], 2, ',', '.') }}</span>
+                                    class="text-decoration-line-through mx-3 text-body">R$ {{ number_format($precoOriginal * 4, 2, ',', '.') }}</span>
+                                <span class="fw-bold">R$ {{ number_format($precosComDesconto[4], 2, ',', '.') }}</span>
                             </label>
                             <span class="badge badge-primary fs-12px border text-primary fw-bold ms-4">Economize
                                 +10%</span>
@@ -3927,7 +3927,7 @@
             <div class="d-flex align-items-center justify-content-between w-100 mb-5">
                 <span class="text-body-emphasis">Preço total:</span>
                 <span id="cart-total" class="cart-total fw-bold text-body-emphasis">
-                    R${{ number_format($total_geral, 2, ',', '.') }}
+                    R$ {{ number_format($total_geral, 2, ',', '.') }}
                 </span>
                 <input type="hidden" id="hidden-total" value="{{ $total_geral }}">
             </div>
@@ -4005,7 +4005,7 @@
 					<input type="radio" name="frete" value="${price}" id="frete-${option.id}" class="me-2">
 					<label for="frete-${option.id}">
 						<img src="${companyImage}" alt="${companyName}" style="width: 50px; height: auto; margin-right: 10px;">
-						<strong>${companyName}:</strong> R$${price} - ${deliveryTime} dias úteis
+						<strong>${companyName}:</strong> R$ ${price} - ${deliveryTime} dias úteis
 					</label>
 				`;
                             freteValorSpan.appendChild(optionDiv);
@@ -4034,7 +4034,7 @@
 
                 // Atualiza o valor do preço total
                 const newTotal = originalTotal + selectedFretePrice;
-                cartTotalElement.textContent = `R$${newTotal.toFixed(2).replace('.', ',')}`;
+                cartTotalElement.textContent = `R$ ${newTotal.toFixed(2).replace('.', ',')}`;
                 hiddenAmountElement.value = newTotal.toFixed(2); // Atualiza o valor escondido para o formulário
             }
 
