@@ -1358,14 +1358,14 @@
 																class="d-flex align-items-center price text-body-emphasis fw-bold justify-content-center mb-3 fs-6">
 																@if($produto->preco_promocional)
 																	<del
-																		class="text-body fw-500 me-4 fs-13px">R${{ number_format($produto->preco, 2, ',', '.') }}</del>
+																		class="text-body fw-500 me-4 fs-13px">R$ {{ number_format($produto->preco, 2, ',', '.') }}</del>
 																@endif
 
 																@php
 																	$idproduto = $produto->id;
 																@endphp
 																<ins
-																	class="text-decoration-none">R${{ number_format($produto->preco_promocional ?? $produto->preco, 2, ',', '.') }}</ins>
+																	class="text-decoration-none">R$ {{ number_format($produto->preco_promocional ?? $produto->preco, 2, ',', '.') }}</ins>
 															</span>
 															<h4
 																class="product-title card-title text-primary-hover text-body-emphasis fs-15px fw-500 mb-3">
@@ -1440,14 +1440,14 @@
 																class="d-flex align-items-center price text-body-emphasis fw-bold justify-content-center mb-3 fs-6">
 																@if($produto->preco_promocional)
 																	<del
-																		class="text-body fw-500 me-4 fs-13px">R${{ number_format($produto->preco, 2, ',', '.') }}</del>
+																		class="text-body fw-500 me-4 fs-13px">R$ {{ number_format($produto->preco, 2, ',', '.') }}</del>
 																@endif
 
 																@php
 																	$idproduto = $produto->id;
 																@endphp
 																<ins
-																	class="text-decoration-none">R${{ number_format($produto->preco_promocional ?? $produto->preco, 2, ',', '.') }}</ins>
+																	class="text-decoration-none">R$ {{ number_format($produto->preco_promocional ?? $produto->preco, 2, ',', '.') }}</ins>
 															</span>
 															<h4
 																class="product-title card-title text-primary-hover text-body-emphasis fs-15px fw-500 mb-3">
@@ -1531,7 +1531,7 @@
 																	$idproduto = $produto->id;
 																@endphp
 																<ins
-																	class="text-decoration-none">R${{ number_format($produto->preco_promocional ?? $produto->preco, 2, ',', '.') }}</ins>
+																	class="text-decoration-none">R$ {{ number_format($produto->preco_promocional ?? $produto->preco, 2, ',', '.') }}</ins>
 															</span>
 															<h4
 																class="product-title card-title text-primary-hover text-body-emphasis fs-15px fw-500 mb-3">
@@ -1987,7 +1987,7 @@
 						document.getElementById('modalProductNome').textContent = id;
 
 						const formatPrice = (price) => {
-							return `R$${parseFloat(price).toFixed(2).replace('.', ',')}`;
+							return `R$ ${parseFloat(price).toFixed(2).replace('.', ',')}`;
 						};
 
 						if (preco_promocional && preco_promocional !== 'null') {
@@ -2181,7 +2181,7 @@
 						<!-- Passa produto de maneira fixa utilizando o ID 83 --> 
 						<a href="{{ route('produtos.show', 83) }}"
 							class="mt-11 btn btn-dark btn-hover-text-light btn-hover-bg-primary btn-hover-border-primary shadow-sm">Apenas
-							R$66,90</a>
+							R$ 66,90</a>
 					</div>
 					<style>
 						.bg-image {
@@ -3688,7 +3688,7 @@
 			<div class="d-flex align-items-center justify-content-between w-100 mb-5">
 				<span class="text-body-emphasis">Preço total:</span>
 				<span id="cart-total" class="cart-total fw-bold text-body-emphasis">
-					R${{ number_format($total_geral, 2, ',', '.') }}
+					R$ {{ number_format($total_geral, 2, ',', '.') }}
 				</span>
 				<input type="hidden" id="hidden-total" value="{{ $total_geral }}">
 			</div>
@@ -3766,7 +3766,7 @@
 					<input type="radio" name="frete" value="${price}" id="frete-${option.id}" class="me-2">
 					<label for="frete-${option.id}">
 						<img src="${companyImage}" alt="${companyName}" style="width: 50px; height: auto; margin-right: 10px;">
-						<strong>${companyName}:</strong> R$${price} - ${deliveryTime} dias úteis
+						<strong>${companyName}:</strong> R$ ${price} - ${deliveryTime} dias úteis
 					</label>
 				`;
 							freteValorSpan.appendChild(optionDiv);
@@ -3796,7 +3796,7 @@
 
 				// Atualiza o valor do preço total
 				const newTotal = originalTotal + selectedFretePrice;
-				cartTotalElement.textContent = `R$${newTotal.toFixed(2).replace('.', ',')}`;
+				cartTotalElement.textContent = `R$ ${newTotal.toFixed(2).replace('.', ',')}`;
 				hiddenAmountElement.value = newTotal.toFixed(2); // Atualiza o valor escondido para o formulário
 			}
 
