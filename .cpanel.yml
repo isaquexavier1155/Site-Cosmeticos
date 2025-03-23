@@ -1,5 +1,5 @@
 deployment:
   tasks:
     # move todas as pastas onde está o arquivo .cpanel para /home1/rifad375/sitesdriversoft.com.br/Gerenciamento-de-Alunos/
-    - export DEPLOYPATH=/home1/rifad375/cintrabeauty.com.br/Site-Cosmeticos/
+    - export DEPLOYPATH=/home3/isaque87/cintrabeauty.com.br/Site-Cosmeticos/
     - /bin/cp -R * $DEPLOYPATH
