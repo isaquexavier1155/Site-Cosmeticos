@@ -154,3 +154,15 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+
+use Illuminate\Support\Facades\DB;
+
+Route::get('/banco-atual', function () {
+    return [
+        'Conexão' => DB::connection()->getName(),
+        'Banco de Dados' => DB::connection()->getDatabaseName(),
+        'Host' => DB::connection()->getConfig('host'),
+        'Usuário' => DB::connection()->getConfig('username'),
+    ];
+});
+
