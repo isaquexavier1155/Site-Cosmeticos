@@ -69,6 +69,7 @@ class RegisteredUserController extends Controller
 
         return redirect(route('index', absolute: false));
     } catch (\Exception $e) {
+        //adicionei linha abaixo para verificar porque não está criando os usuários de forma correta
         dd($e->getMessage()); // <-- aqui vai aparecer o erro real
     }
 }
