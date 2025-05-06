@@ -27,7 +27,7 @@ class RegisteredUserController extends Controller
      *
      * @throws \Illuminate\Validation\ValidationException
      */
-    /* public function store(Request $request): RedirectResponse
+    public function store(Request $request): RedirectResponse
     {
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
@@ -46,9 +46,11 @@ class RegisteredUserController extends Controller
         Auth::login($user);
 
         return redirect(route('index', absolute: false));
-    } */
+    }
 
-    public function store(Request $request): RedirectResponse
+/*     
+
+public function store(Request $request): RedirectResponse
 {
     $request->validate([
         'name' => ['required', 'string', 'max:255'],
@@ -72,6 +74,6 @@ class RegisteredUserController extends Controller
         //adicionei linha abaixo para verificar porque não está criando os usuários de forma correta
         dd($e->getMessage()); // <-- aqui vai aparecer o erro real
     }
-}
+} */
 
 }
