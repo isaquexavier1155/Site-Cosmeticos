@@ -9,7 +9,7 @@ class User extends Authenticatable
 {
     use HasFactory, Notifiable;
 
-    protected $fillable = [
+/*     protected $fillable = [
         'name',
         'email',
         'cpf',
@@ -23,6 +23,22 @@ class User extends Authenticatable
         'estado',
         'password',
         'is_admin', // Certifique-se de que isso está incluído
+    ]; */
+
+    protected $fillable = [
+        'name',
+        'email',
+        'password',
+        'cpf',
+        'celular',
+        'cep',
+        'rua',
+        'numero',
+        'complemento',
+        'bairro',
+        'cidade',
+        'estado',
+        'is_admin',
     ];
 
     protected $hidden = [
