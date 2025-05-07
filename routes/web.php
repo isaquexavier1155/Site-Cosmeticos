@@ -5,6 +5,7 @@ use App\Http\Controllers\ProdutoController;
 use App\Http\Controllers\PagamentoController;
 use App\Http\Controllers\FreteController;
 use App\Http\Controllers\PainelAdministrativoController;
+use App\Http\Controllers\Auth\RegisteredUserController;
 
 
 /* Route::get('/', function () {
@@ -14,6 +15,9 @@ use App\Http\Controllers\PainelAdministrativoController;
 // Rota para a página inicial
 Route::get('/', [ProdutoController::class, 'index'])->name('index');
 
+
+//Rota para criação de novo usuário em 05/05/2025
+Route::post('register', [RegisteredUserController::class, 'store'])->name('register');
 
 
 
