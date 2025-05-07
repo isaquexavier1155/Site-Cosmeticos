@@ -78,7 +78,9 @@ return [
     |
     */
 
-    'locale' => env('APP_LOCALE', 'en'),
+    //'locale' => env('APP_LOCALE', 'en'), Alterado para Portugues
+    'locale' => env('APP_LOCALE', 'pt-BR'),
+
 
     'fallback_locale' => env('APP_FALLBACK_LOCALE', 'en'),
 
