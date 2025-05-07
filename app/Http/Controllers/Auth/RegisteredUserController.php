@@ -30,7 +30,6 @@ class RegisteredUserController extends Controller
     public function store(Request $request): RedirectResponse
     {
 
-        dd('Store function is being called'); // Verifica se a função está sendo chamada
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],

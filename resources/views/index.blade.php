@@ -3873,7 +3873,29 @@
 				<div class="modal-body px-sm-13 px-8">
 					<p class="text-center fs-16 mb-10">Já tem uma conta? <a href="#" data-bs-toggle="modal"
 							data-bs-target="#signInModal" class="text-black">Entrar</a></p>
-					<form action="{{ route('register') }}" method="POST">
+					
+					/////////////////////////////////
+					@if ($errors->any())
+    <div class="alert alert-danger">
+        <ul class="mb-0">
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+
+    <script>
+        // reabre o modal automaticamente se houver erro
+        document.addEventListener("DOMContentLoaded", function() {
+            var modal = new bootstrap.Modal(document.getElementById('signUpModal'));
+            modal.show();
+        });
+    </script>
+@endif
+
+					/////////////////////////////////
+					
+							<form action="{{ route('register') }}" method="POST">
 						@csrf
 						<input name="name" type="text" class="form-control border-1 mb-5" placeholder="Nome" required>
 						<input name="email" type="email" class="form-control border-1 mb-5" placeholder="Seu email"
