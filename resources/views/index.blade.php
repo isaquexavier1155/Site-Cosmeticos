@@ -3874,7 +3874,7 @@
 					<p class="text-center fs-16 mb-10">Já tem uma conta? <a href="#" data-bs-toggle="modal"
 							data-bs-target="#signInModal" class="text-black">Entrar</a></p>
 					
-					/////////////////////////////////
+					
 					@if ($errors->any())
     <div class="alert alert-danger">
         <ul class="mb-0">
@@ -3893,7 +3893,7 @@
     </script>
 @endif
 
-					/////////////////////////////////
+					
 					
 							<form action="{{ route('register') }}" method="POST">
 						@csrf

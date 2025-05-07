@@ -54,32 +54,5 @@ class RegisteredUserController extends Controller
         return redirect(route('index', absolute: false));
     }
 
-/*     
-
-public function store(Request $request): RedirectResponse
-{
-    $request->validate([
-        'name' => ['required', 'string', 'max:255'],
-        'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
-        'password' => ['required', 'confirmed', Rules\Password::defaults()],
-    ]);
-
-    try {
-        $user = User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-        ]);
-
-        event(new Registered($user));
-
-        Auth::login($user);
-
-        return redirect(route('index', absolute: false));
-    } catch (\Exception $e) {
-        //adicionei linha abaixo para verificar porque não está criando os usuários de forma correta
-        dddd($e->getMessage()); // <-- aqui vai aparecer o erro real
-    }
-} */
 
 }
