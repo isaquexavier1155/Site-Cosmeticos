@@ -36,7 +36,6 @@ class RegisteredUserController extends Controller
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
-        dd('Fez a validação'); // Verifica se o usuário foi criado com sucesso
 
         $user = User::create([
             'name' => $request->name,
@@ -44,6 +43,7 @@ class RegisteredUserController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
+        //dd('Sucesso!'); // Verifica se o usuário foi criado com sucesso
 
         
 
