@@ -16,8 +16,13 @@ use App\Http\Controllers\Auth\RegisteredUserController;
 Route::get('/', [ProdutoController::class, 'index'])->name('index');
 
 
-//Rota para criação de novo usuário em 05/05/2025
-Route::post('register', [RegisteredUserController::class, 'store'])->name('register');
+
+Route::middleware('guest')->group(function () {
+    //Rota para criação de novo usuário em 05/05/2025
+    Route::get('register', [RegisteredUserController::class, 'create'])->name('register.create');
+    // rota GET para o formulário de cadastro está configurada:
+    Route::post('register', [RegisteredUserController::class, 'store'])->name('register');
+});
 
 
 
