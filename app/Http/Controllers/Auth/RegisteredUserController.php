@@ -30,7 +30,7 @@ class RegisteredUserController extends Controller
     public function store(Request $request): RedirectResponse
     {
 
-        dd('Store function is being called'); // Verifica se a função está sendo chamada
+        //dd('Store function is being called'); // Verifica se a função está sendo chamada
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
@@ -43,7 +43,8 @@ class RegisteredUserController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
-       
+        dd('User created successfully'); // Verifica se o usuário foi criado com sucesso
+
         
 
         event(new Registered($user));
